@@ -23,7 +23,7 @@ const contentTypes = [
 
 // FONCTION EXISTANTE - Recherche rapide avec données aléatoires
 async function getCotation(destinationLabel, poidsKg, boxtalData) {
-    const url = "https://test.envoimoinscher.com/api/v1/cotation";
+    const url = "https://www.envoimoinscher.com/api/v1/cotation";
 
     // Sélectionner aléatoirement une ville française d'origine
     const randomFrenchOrigin = frenchOriginCities[Math.floor(Math.random() * frenchOriginCities.length)];
