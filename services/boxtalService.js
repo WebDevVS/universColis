@@ -104,7 +104,7 @@ async function getCotationAvance({
     destinataire_code_postal,
     destinataire_pays
 }) {
-    const url = "https://test.envoimoinscher.com/api/v1/cotation"; 
+    const url = "https://www.envoimoinscher.com/api/v1/cotation"; 
 
     // Validation des données d'entrée
     if (!poids || !longueur || !largeur || !hauteur || !code_contenu) {
