@@ -1,0 +1,225 @@
+<section class="home">
+  <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row g-5">
+      <!-- Première colonne (par exemple : une sidebar) -->
+      <div class="col-md-6">
+        <div class="hero-content">
+          <h1 class="home-phrase">Tout l'univers de l'envoi en un seul endroit</h1>
+          <p class="hero-subtitle">
+            UniversColis est le comparateur nouvelle génération, rapide, malin et intuitif — spécialement conçu pour
+            l’expédition de colis, il vous fait gagner du temps et de l’argent, sans compromis sur la qualité.
+          </p>
+        </div>
+      </div>
+
+      <!-- Deuxième colonne (par exemple : le contenu principal) -->
+      <div class="submit-form col-md-6">
+
+        <h1 class="text-center">Mon Colis</h1>
+        <!-- Navigation à onglets -->
+        <div class="tab-navigation">
+          <div class="tabs">
+            <button class="tab-btn active" data-target="recherche-rapide">RECHERCHE RAPIDE</button>
+            <button class="tab-btn" data-target="recherche-avancee">RECHERCHE AVANCÉE</button>
+          </div>
+        </div>
+
+        <!-- Contenu des onglets -->
+        <div class="tab-content">
+          <!-- Formulaire de recherche rapide -->
+          <div id="recherche-rapide" class="tab-pane active">
+            <form class="container py-3" action="/comparateur-des-prix" method="GET">
+              <input type="hidden" name="formType" value="rapide">
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="origine-rapide" class="form-label">Origine</label>
+                  <input type="hidden" id="origine-rapide" name="origine" value="FR">
+                  <span class="form-control bg-light text-start border-none" readonly>FRANCE</span>
+                </div>
+                <div class="col-md-6">
+                  <label for="destination-rapide" class="form-label">Destination</label>
+                  <select id="destination-rapide" name="destination" class="form-select">
+                    <option value="" disabled selected>Pays</option>
+                    {{#each countries}}
+                    <option value="{{this.isoCode}}">{{this.label}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label for="poids-avance" class="form-label">Poids précis</label>
+                  <div class="position-relative">
+                    <input type="number" id="poids-avance" class="form-control poids-input" step="0.1" min="0"
+                      name="poids" required>
+                    <span class="poids-unit">kg</span>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-3 d-flex align-items-end">
+                  <button class="btn btn-primary w-100" type="submit">Comparer les prix</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Formulaire de recherche avancée -->
+          <div id="recherche-avancee" class="tab-pane">
+            <form class="container py-3" action="/comparateur-des-prix" method="GET">
+              <input type="hidden" name="form-type" value="avance">
+
+              <!-- Première ligne -->
+              <div class="row">
+                <!-- Origine -->
+                <div class="col-md-6">
+                  <label for="origine-avance" class="form-label">Pays d'origine</label>
+                  <input type="hidden" id="origine-rapide" name="origine" value="FR">
+                  <span class="form-control bg-light text-start border-none" readonly>FRANCE</span>
+
+                  <label for="ville-origine" class="form-label mt-2">Ville / Code postal d'origine</label>
+                  <input type="text" id="ville-origine" name="ville-origine" class="form-control"
+                    placeholder="Ex : Paris 75000" autocomplete="off" required>
+                  <ul id="results-origine" class="results-list position-absolute bg-white border w-100 z-index-1000">
+                  </ul>
+                </div>
+
+                <!-- Destination -->
+                <div class="col-md-6">
+                  <label for="destination-avance" class="form-label">Pays de destination</label>
+                  <select id="destination-avance" name="destination" class="form-select" required>
+                    <option value="" disabled selected>Pays</option>
+                    {{#each countries}}
+                    <option value="{{this.isoCode}}">{{this.label}}</option>
+                    {{/each}}
+                  </select>
+
+                  <label for="ville-destination" class="form-label mt-2">Ville / Code postal de destination</label>
+                  <input type="text" id="ville-destination" name="ville-destination" class="form-control"
+                    placeholder="Ex : Lyon 69000" autocomplete="off" required>
+                  <ul id="results-destination"
+                    class="results-list position-absolute bg-white border w-100 z-index-1000"></ul>
+                </div>
+              </div>
+
+              <!-- Deuxième ligne -->
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label for="poids-avance" class="form-label">Poids précis</label>
+                  <div class="position-relative">
+                    <input type="number" id="poids-avance" class="form-control poids-input" step="0.1" min="0"
+                      name="poids" required>
+                    <span class="poids-unit">kg</span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="dimensions" class="form-label">Dimensions</label>
+                  <div class="row g-2">
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="L (cm)" name="longueur" required>
+                    </div>
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="l (cm)" name="largeur" required>
+                    </div>
+                    <div class="col-4">
+                      <input type="text" class="form-control" placeholder="H (cm)" name="hauteur" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Troisième ligne -->
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label for="type-envoi" class="form-label">Type d'envoi</label>
+                  <select id="type-envoi" name="code-contenu" class="form-select" required>
+                    <option value="" disabled selected>Sélectionnez</option>
+                    {{#each categories}}
+                    <option value="{{this.category}}">{{this.category}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                  <div class="col mt-3 text-center">
+                    <button class="btn btn-primary w-100" type="submit">Comparer les prix</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="company-logos py-4">
+  <div class="container">
+    <p>Comparez les tarifs de plusieurs transporteurs en un clic. Que vous cherchiez la livraison la plus rapide ou la
+      plus économique, UniversColis vous propose les meilleures options selon votre destination.</p>
+    <div class="logo-container d-flex justify-content-start">
+      {{#each carriers}}
+      <div class="carrier">
+        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" />
+      </div>
+      {{/each}}
+      {{#each carriers}}
+      <div class="carrier">
+        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" />
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+
+<section class="services py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Nos Services</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+      <!-- Carte 1 : Suivre mon colis -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="link-icon mx-auto my-4">
+            <i class="fa-solid fa-map-marker-alt"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Suivre mon colis</h5>
+            <p class="card-text text-center">Suivez votre colis en temps réel et restez informé sur son statut.</p>
+            <a href="/suivi" class="btn btn-primary">Suivre maintenant</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte 2 : Matériel nécessaire -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="link-icon mx-auto my-4">
+            <i class="fa-solid fa-box"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Matériel nécessaire</h5>
+            <p class="card-text text-center">Découvrez le matériel essentiel pour un emballage efficace.</p>
+            <a href="/mon-materiel" class="btn btn-primary">Voir le matériel</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte 3 : Conseils d'emballage -->
+      <div class="col">
+        <div class="card shadow-sm">
+          <div class="link-icon mx-auto my-4">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Conseils d'emballage</h5>
+            <p class="card-text text-center mb-2">Obtenez des conseils pratiques pour un emballage sécurisé, étape par étape.
+            </p>
+            <a href="/conseils" class="btn btn-primary">Lire les conseils</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+{
+    "Chronopost": "https://resource.boxtal.build/images/carriers/chrp.png",
+    "Delivengo": "https://resource.boxtal.build/images/carriers/dlvg.png",
+    "DHL Express": "https://resource.boxtal.build/images/carriers/dhle.png",
+    "Happy Post": "https://resource.boxtal.build/images/carriers/imxe.png",
+    "La Poste": "https://resource.boxtal.build/images/carriers/pofr.png",
+    "Mondial Relay": "https://resource.boxtal.build/images/carriers/monr.png",
+    "Sodexi": "https://resource.boxtal.build/images/carriers/sodx.png",
+    "TNT Express": "https://resource.boxtal.build/images/carriers/tnte.png",
+    "UPS": "https://resource.boxtal.build/images/carriers/upse.png"
+  }

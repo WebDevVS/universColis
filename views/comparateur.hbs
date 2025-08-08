@@ -1,0 +1,351 @@
+<section class="container comparateur-page">
+    <!-- Titre principal simplifié -->
+    <div class="text-center mb-4">
+        <h1 class="results-main-title">Résultats de votre recherche</h1>
+        <p class="results-subtitle">{{offres.length}} offres trouvées</p>
+    </div>
+
+    <!-- Résumé de recherche mis en valeur -->
+    {{#if searchSummary}}
+    <div class="search-summary-card mb-4">
+        <div class="search-summary-header">
+            <i class="fa-solid fa-search me-2"></i>
+            <span>Votre recherche</span>
+        </div>
+        <div class="search-summary-content">
+            <div class="search-params">
+                {{#if (eq searchSummary.type "rapide")}}
+                <div class="param-item">
+                    <span class="param-label">De</span>
+                    <span class="param-value">{{searchSummary.origine}}</span>
+                </div>
+                <div class="param-separator">→</div>
+                <div class="param-item">
+                    <span class="param-label">Vers</span>
+                    <span class="param-value">{{searchSummary.destination}}</span>
+                </div>
+                <div class="param-separator">•</div>
+                <div class="param-item">
+                    <span class="param-label">Poids</span>
+                    <span class="param-value">{{searchSummary.poids}} kg</span>
+                </div>
+                {{else if (eq searchSummary.type "avance")}}
+                <div class="param-item">
+                    <span class="param-label">De</span>
+                    <span class="param-value">{{searchSummary.origine}}</span>
+                </div>
+                <div class="param-separator">→</div>
+                <div class="param-item">
+                    <span class="param-label">Vers</span>
+                    <span class="param-value">{{searchSummary.destination}}</span>
+                </div>
+                <div class="param-separator">•</div>
+                <div class="param-item">
+                    <span class="param-label">Poids</span>
+                    <span class="param-value">{{searchSummary.poids}} kg</span>
+                </div>
+                <div class="param-separator">•</div>
+                <div class="param-item">
+                    <span class="param-label">Dimensions</span>
+                    <span class="param-value">{{searchSummary.dimensions}}</span>
+                </div>
+                <div class="param-separator">•</div>
+                <div class="param-item">
+                    <span class="param-label">Type d'envoi</span>
+                    <span class="param-value">{{searchSummary.typeEnvoi}}</span>
+                </div>
+                {{/if}}
+            </div>
+            <button class="btn btn-modify" data-bs-toggle="modal" data-bs-target="#modaleModification">
+                <i class="fa-solid fa-edit me-1"></i>Modifier
+            </button>
+        </div>
+    </div>
+    {{/if}}
+
+    <!-- Modale (inchangée) -->
+    <div class="modal fade" id="modaleModification" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modifier votre recherche</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <form action="/comparateur-des-prix" method="GET">
+                    <div class="modal-body">
+                        {{#if (eq formType "avance")}}
+                        {{> formulaireAvance}}
+                        {{else}}
+                        {{> formulaireRapide}}
+                        {{/if}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section des filtres (légèrement améliorée) -->
+    <div class="filters-section glass-container mb-4" id="filtersContainer">
+        <h5 class="filters-title mb-3">
+            <i class="fa-solid fa-filter me-2"></i>Affiner vos résultats
+        </h5>
+
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label class="form-label">Transporteur</label>
+                <select class="form-select glass-input" id="transporteurSelect">
+                    <option value="">Tous les transporteurs</option>
+                    {{#each filterData.transporteurs}}
+                    <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Trier par</label>
+                <select class="form-select glass-input" id="sortBySelect">
+                    <option value="prix-asc">Prix croissant</option>
+                    <option value="prix-desc">Prix décroissant</option>
+                    <option value="delai-asc">Délai croissant</option>
+                    <option value="delai-desc">Délai décroissant</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end justify-content-end">
+                <div class="filter-actions">
+                    <button class="btn btn-glass me-2" id="resetFilters">
+                        <i class="fa-solid fa-rotate-left me-1"></i>Réinitialiser
+                    </button>
+                    <button class="btn btn-glass-secondary" id="shareFilters">
+                        <i class="fa-solid fa-share me-1"></i>Partager
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="subtitle alert alert-secondary d-flex align-items-center mt-4" role="alert">
+        <span class="me-2 fs-5">ℹ️</span>
+        <div>
+            <strong>À savoir :</strong> En cliquant sur « Réserver », vous serez redirigé(e) vers le site proposant
+            cette offre pour finaliser votre envoi.
+            Une inscription ou la création d’un compte peut être nécessaire selon le transporteur.
+        </div>
+    </div>
+
+    <!-- En-têtes du tableau améliorés -->
+    <div class="results-container">
+        <!-- Header avec Bootstrap -->
+        <div class="results-header">
+            <div class="row align-items-center">
+                <div class="col text-center">
+                    <i class="fa-solid fa-truck header-icon"></i>
+                    <span class="header-text">Transporteur</span>
+                </div>
+                <div class="col text-center">
+                    <i class="fa-regular fa-clock header-icon"></i>
+                    <span class="header-text">Délai</span>
+                </div>
+                <div class="col text-center">
+                    <i class="fa-solid fa-euro-sign header-icon"></i>
+                    <span class="header-text">Prix TTC</span>
+                </div>
+                <div class="col text-center">
+                    <i class="fa-solid fa-calendar-days header-icon"></i>
+                    <span class="header-text">Livraison</span>
+                </div>
+                <div class="col text-center">
+                    <i class="fa-solid fa-external-link-alt header-icon"></i>
+                    <span class="header-text">Action</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liste des résultats optimisée -->
+        <div class="results">
+            {{#each offres}}
+            <div class="result-card" data-aos="fade-up" data-aos-delay="{{multiply @index 100}}">
+                <div class="row align-items-center">
+                    <div class="col text-center transporteur-col">
+                        <img src="{{this.logo}}" alt="{{this.transporteur}}" class="transporteur-logo">
+                    </div>
+
+                    <div class="col text-center delai-col">
+                        <span class="value-inline">
+                            <span class="value-highlight">{{this.temps_livraison_jours}}</span>
+                            <span class="value-unit">jours</span>
+                        </span>
+                    </div>
+                    <div class="col text-center prix-col">
+                        <span class="value-inline">
+                            <span class="prix-value">{{this.prix_ttc}}</span>
+                            <span class="prix-currency">€</span>
+                        </span>
+                    </div>
+
+                    <div class="col text-center livraison-col">
+                        <span class="livraison-date">{{this.livraison_estimee}}</span>
+                    </div>
+
+                    <div class="col text-center action-col"> 
+                        <button type="button" class="btn btn-action-primary reserve-btn"
+                            data-url="https://www.google.fr"
+                            title="Ce lien ouvre le site du transporteur dans un nouvel onglet">
+                            <i class="fa-solid fa-external-link-alt me-1"></i>Réserver
+                        </button>
+                        <button class="btn btn-action-secondary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse-offre-{{@index}}">
+                            <i class="fa-solid fa-info-circle me-1"></i>Détails
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Détails avec style amélioré -->
+                <div class="collapse result-details" id="collapse-offre-{{@index}}">
+                    <div class="details-content">
+                        <div class="details-grid">
+                            <div class="detail-section">
+                                <h6 class="detail-section-title">
+                                    <i class="fa-solid fa-info-circle me-2"></i>Informations
+                                </h6>
+                                <div class="detail-item">
+                                    <span class="detail-label">Transporteur :</span>
+                                    <span class="detail-value">{{this.transporteur}}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Service :</span>
+                                    <span class="detail-value">{{this.service}}</span>
+                                </div>
+                            </div>
+
+                            {{#if this.characteristics_labels}}
+                            <div class="detail-section">
+                                <h6 class="detail-section-title">
+                                    <i class="fa-solid fa-list-check me-2"></i>Services inclus
+                                </h6>
+                                <div class="characteristics-grid">
+                                    {{#each this.characteristics_labels}}
+                                    <div class="characteristic-item">
+                                        <i class="fa-solid fa-check characteristic-check"></i>
+                                        <span>{{this}}</span>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+<!-- Overlay de redirection -->
+<div class="redirection-overlay" id="redirectionOverlay">
+    <div class="redirection-card">
+        <div class="redirection-icon">
+            <i class="fa-solid fa-paper-plane"></i>
+        </div>
+
+        <h3 class="redirection-title">Redirection en cours...</h3>
+        <p class="redirection-message">
+            Vous allez être redirigé vers le site du transporteur pour finaliser votre réservation
+        </p>
+
+        <div class="spinner-container">
+            <div class="modern-spinner"></div>
+            <span class="spinner-text">Préparation...</span>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <p class="countdown-text">Redirection dans <span id="countdown">3</span> secondes</p>
+    </div>
+</div>
+
+<!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
+<section class="related-links py-5">
+    <div class="container first-container">
+        <div class="text-center mb-4">
+            <h3 class="related-title">Découvrez l'univers du colis</h3>
+            <p class="related-subtitle">Découvrez nos autres services pour une expédition parfaite</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Suivi de colis -->
+            <div class="col-md-3">
+                <a href="/suivi" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-map-marker-alt"></i>
+                    </div>
+                    <h4 class="link-title">Suivre mon colis</h4>
+                    <p class="link-description">Suivez votre expédition en temps réel</p>
+                    <span class="link-action">
+                        Suivre maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Matériel d'emballage -->
+            <div class="col-md-3">
+                <a href="/mon-materiel" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <h4 class="link-title">Matériel d'emballage</h4>
+                    <p class="link-description">Découvrez le matériel essentiel pour emballer</p>
+                    <span class="link-action">
+                        Voir le matériel <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Conseils d'expédition -->
+            <div class="col-md-3">
+                <a href="/conseils" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h4 class="link-title">Conseils d'expédition</h4>
+                    <p class="link-description">Astuces pour une expédition réussie</p>
+                    <span class="link-action">
+                        Lire les conseils <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Services à venir -->
+            <div class="col-md-3">
+                <div class="link-card coming-soon">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+                    <h4 class="link-title">Services à venir</h4>
+                    <p class="link-description">De nouveaux services arrivent bientôt</p>
+                    <span class="link-action">
+                        Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call-to-action principal -->
+        <div class="text-center mt-5">
+            <div class="main-cta">
+                <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+                <p class="cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
+                <a href="/" class="btn btn-primary btn-lg">
+                    <i class="fa-solid fa-rocket me-2"></i>Commencer maintenant
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</section>

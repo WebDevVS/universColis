@@ -1,0 +1,77 @@
+<form method="GET" action="/comparateur-des-prix">
+<input type="hidden" name="form-type" value="avance">
+
+  <!-- Première ligne -->
+  <div class="row">
+    <!-- Origine -->
+    <div class="col-md-6 position-relative">
+      <label for="origine-avance" class="form-label">Pays d'origine</label>
+      <input type="text" id="origine-avance" class="form-control" name="origine" value="FRANCE" readonly>
+
+      <label for="ville-origine-modal" class="form-label mt-2">Ville / Code postal d'origine</label>
+      <input type="text" id="ville-origine-modal" name="ville-origine" class="form-control"
+        placeholder="Ex : Paris 75000" autocomplete="off" value="{{villeOrigine}}" required>
+      <ul id="results-origine-modal" class="results-list position-absolute bg-white border w-100" style="z-index: 1000;"></ul>
+    </div>
+
+    <!-- Destination -->
+    <div class="col-md-6 position-relative">
+      <label for="destination-modal" class="form-label">Pays de destination</label>
+      <select id="destination-modal" name="destination" class="form-select" required>
+        <option value="" disabled {{#unless destination}}selected{{/unless}}>Pays</option>
+        {{#each countries}}
+        <option value="{{this.isoCode}}" {{#if (eq ../destination this.isoCode)}}selected{{/if}}>{{this.label}}</option>
+        {{/each}}
+      </select>
+
+      <label for="ville-destination-modal" class="form-label mt-2">Ville / Code postal de destination</label>
+      <input type="text" id="ville-destination-modal" name="ville-destination" class="form-control"
+        placeholder="Ex : Lyon 69000" autocomplete="off" value="{{villeDestination}}" required>
+      <ul id="results-destination-modal" class="results-list position-absolute bg-white border w-100" style="z-index: 1000;"></ul>
+    </div>
+  </div>
+
+  <!-- Deuxième ligne -->
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <label for="poids-avance" class="form-label">Poids précis</label>
+      <div class="input-group">
+        <input type="number" id="poids-avance" name="poids" class="form-control" step="0.1" min="0" value="{{poids}}" required>
+        <span class="input-group-text">kg</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="dimensions" class="form-label">Dimensions</label>
+      <div class="row g-2">
+        <div class="col-4">
+          <input type="text" class="form-control" placeholder="L (cm)" name="longueur" value="{{longueur}}" required>
+        </div>
+        <div class="col-4">
+          <input type="text" class="form-control" placeholder="l (cm)" name="largeur" value="{{largeur}}" required>
+        </div>
+        <div class="col-4">
+          <input type="text" class="form-control" placeholder="H (cm)" name="hauteur" value="{{hauteur}}" required>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Troisième ligne -->
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <label for="type-envoi" class="form-label">Type d'envoi</label>
+      <select id="type-envoi" name="code-contenu" class="form-select" required>
+        <option value="" disabled {{#unless codeContenu}}selected{{/unless}}>Sélectionnez</option>
+        {{#each categories}}
+        <option value="{{this.category}}" {{#if (eq ../codeContenu this.category)}}selected{{/if}}>{{this.category}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="col-md-6 d-flex align-items-end">
+      <div class="col text-center">
+        <button class="btn btn-primary w-100" type="submit">Mettre à jour la recherche</button>
+      </div>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,117 @@
+<section class="materiel">
+  <div class="tracking-intro">
+    <h1 class="hero-title">Matériel d'emballage</h1>
+    <p class="hero-subtitle">
+      Choisissez une catégorie pour découvrir les produits associés.
+    </p>
+  </div>
+
+  <div class="materiel-nav">
+    <!-- Catégories -->
+    <div class="row g-3">
+      {{#each materiels}}
+      <div class="col-md-4">
+        <a href="#{{type}}" class="categorie-btn">
+          <div class="category-box">{{category}}</div>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+
+  </div>
+</section>
+
+<!-- Sections détaillées pour chaque catégorie -->
+<section class="produits">
+  <div class="container first-container">
+    {{#each materiels}}
+    <h2 id="{{type}}">{{category}}</h2>
+    {{#each products}}
+    <p>{{name}}</p>
+    {{/each}}
+    {{/each}}
+  </div>
+</section>
+
+<!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
+<section class="related-links py-5">
+  <div class="container first-container">
+    <div class="text-center mb-4">
+      <h3 class="related-title">Découvrez l'univers du colis</h3>
+      <p class="related-subtitle">Découvrez nos autres services pour une expédition parfaite</p>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Comparateur de prix -->
+      <div class="col-md-3">
+        <a href="/" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-balance-scale"></i>
+          </div>
+          <h4 class="link-title">Comparer les prix</h4>
+          <p class="link-description">Trouvez le meilleur tarif pour votre expédition</p>
+          <span class="link-action">
+            Comparer maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Suivi de colis -->
+      <div class="col-md-3">
+        <a href="/suivi" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-map-marker-alt"></i>
+          </div>
+          <h4 class="link-title">Suivre mon colis</h4>
+          <p class="link-description">Suivez votre expédition en temps réel</p>
+          <span class="link-action">
+            Suivre maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Conseils d'expédition -->
+      <div class="col-md-3">
+        <a href="/conseils" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <h4 class="link-title">Conseils d'expédition</h4>
+          <p class="link-description">Astuces pour une expédition réussie</p>
+          <span class="link-action">
+            Lire les conseils <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+            <!-- Services à venir -->
+<div class="col-md-3">
+  <div class="link-card coming-soon">
+    <div class="link-icon">
+      <i class="fa-solid fa-hourglass-half"></i>
+    </div>
+    <h4 class="link-title">Services à venir</h4>
+    <p class="link-description">De nouveaux services arrivent bientôt</p>
+    <span class="link-action">
+      Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
+    </span>
+  </div>
+</div>
+    </div>
+
+    <!-- Call-to-action principal -->
+    <div class="text-center mt-5">
+      <div class="main-cta">
+        <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+        <p class="cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
+        <a href="/" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket me-2"></i>Commencer maintenant
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</section>

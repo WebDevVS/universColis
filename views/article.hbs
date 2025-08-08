@@ -1,0 +1,267 @@
+<section class="article-details">
+  <div class="intro">
+    <h1 class="hero-title">{{article.title}}</h1>
+    <h2 class="text-center mb-3">Guide Simple et Pratique</h2>
+    <p class="article-subtitle">
+      {{{article.introduction}}}
+    </p>
+  </div>
+
+  <section class="nav-interne">
+    <div class="container">
+      <!-- Navigation Interne -->
+      <div class="page-nav d-flex flex-wrap justify-content-center gap-3">
+        <a href="#resume" class="nav-btn">Points Clés</a>
+        <a href="#etapes" class="nav-btn">Toutes les Étapes</a>
+        <a href="#materiel" class="nav-btn">Matériel Nécessaire</a>
+        <a href="#erreurs" class="nav-btn">Erreurs & Bonnes Pratiques</a>
+        <a href="#faq" class="nav-btn">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="resume" id="resume">
+    <div class="container">
+      <h2 class="text-center mb-4 mt-4">En Bref : Les Points Clés</h2>
+      <div class="row justify-content-center">
+        {{#each article.summary}}
+        <div class="col-md-6">
+          <div class="resume-item">
+            <span class="step-number"></span>
+            <p><i class="fa-regular fa-circle-check custom-beat-fade fa-xl"></i> {{{this}}}</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <section class="details" id="etapes">
+    <!-- Étapes -->
+    <h2 class="text-center mt-3"> <span>Étape Par Étape: </span>&nbsp;<i
+        class="fa-regular fa-hand-point-down fa-bounce fa-lg"></i>
+    </h2>
+    <p class="text-center text-muted">Suivez ces étapes pour protéger {{article.etapeWord}}.</p>
+
+
+    <!-- Sidebar horizontale 
+      <nav class="nav nav-pills justify-content-center mt-3">
+        <a class="nav-link" href="#step1">1 Choisir</a>
+        <a class="nav-link" href="#step2">2 Protéger</a>
+        <a class="nav-link" href="#step3">3 Sécuriser</a>
+        <a class="nav-link" href="#step4">4 Remplir</a>
+        <a class="nav-link" href="#step5">5 Emballer</a>
+        <a class="nav-link" href="#step6">6 Fermer</a>
+        <a class="nav-link" href="#step7">7 Étiqueter</a>
+      </nav> -->
+
+    {{#each article.steps}}
+    <div class="row step my-4" id="step{{@index}}">
+      {{#if this.image}}
+      <!-- Titre : ordre 1 sur mobile, 1 sur desktop -->
+      <div class="col-12 d-block d-md-none order-1 mb-2">
+        <h2 class="text-center">{{this.title}}</h2>
+      </div>
+      <!-- Image : ordre 2 sur mobile, 2 sur desktop -->
+      <div class="col-md-6 order-md-2 order-2 d-flex justify-content-center">
+        <figure class="etape-image">
+          <img src="/static/img/articleImg/{{this.image}}" loading="lazy" alt="{{this.imageAlt}}" width="768"
+            height="768" class="img-fluid rounded">
+          {{#if this.figcaption}}
+          <figcaption class="hover-caption">
+            {{this.figcaption}}
+          </figcaption>
+          {{/if}}
+        </figure>
+      </div>
+      <!-- Titre + description sur desktop, description seul sur mobile -->
+      <div class="col-md-6 d-flex align-items-center order-md-1 order-3">
+        <div>
+          <h2 class="d-none d-md-block">{{this.title}}</h2>
+          <p>{{{this.description}}}</p>
+        </div>
+      </div>
+
+      {{else}}
+      <div class="col-12 d-flex align-items-center">
+        <div>
+          <h3>{{this.title}}</h3>
+          <p>{{{this.description}}}</p>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+
+  </section>
+
+  <section class="materiels">
+    <div class="container">
+      <div class="row d-flex justify-content-center" id="materiel">
+        <h2 class="text-center">Matériel Recommandé pour Emballer {{article.materialsWord}}</h2>
+        <ul>
+          {{#each article.materials}}
+          <li class="materiel-item">{{{this}}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="erreurs row d-flex justify-content-center" id="erreurs">
+    <h2 class="text-center mb-1">Erreurs Fréquentes et Bonnes Pratiques </h2>
+
+    <div class="row g-2">
+      <!-- Colonne des bonnes pratiques -->
+      <div class="col-md-6 d-flex flex-column align-items-stretch">
+        <h4 class="text-success text-center"><i class="fa-regular fa-thumbs-up icon-success"></i></h4>
+        {{#each article.packingTips}}
+        <div class="solution-box mb-2">
+          <p>{{solution}}</p>
+        </div>
+        {{/each}}
+      </div>
+      <!-- Colonne des erreurs -->
+      <div class="col-md-6 d-flex flex-column align-items-stretch">
+        <h4 class="text-danger text-center"><i class="fa-regular fa-thumbs-down icon-danger"></i></h4>
+        {{#each article.packingTips}}
+        <div class="erreur-box mb-2">
+          <p>{{mistake}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+  </section>
+
+  <section class="faq-section row d-flex justify-content-center" id="faq">
+    <h2 class="text-center mb-4">FAQ 📦</h2>
+    <div class="accordion" id="faqAccordion">
+      {{#each article.faq}}
+      <div class="accordion-item">
+        <h4 class="accordion-header" id="faq{{@index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#answer{{@index}}">
+            <strong>{{this.question}}</strong>
+          </button>
+        </h4>
+        <div id="answer{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            {{#each this.responses}}
+            <p>
+              {{#if (eq this.type "negative")}}
+              <i class="fa-regular fa-thumbs-down icon-danger"></i> {{{this.text}}}
+              {{else}}
+              <i class="fa-regular fa-thumbs-up icon-success"></i> {{{this.text}}}
+              {{/if}}
+            </p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <!-- Astuce -->
+  <div class="alert alert-info mt-4">
+    <strong>💡 Astuce : </strong> {{{article.astuce}}}
+  </div>
+</section>
+
+<!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
+<section class="related-links py-5">
+  <div class="container first-container">
+    <div class="text-center mb-4">
+      <h3 class="related-title">Découvrez l'univers du colis</h3>
+      <p class="related-subtitle">Découvrez nos autres services pour une expédition parfaite</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Comparateur de prix -->
+      <div class="col-md-3">
+        <a href="/" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-balance-scale"></i>
+          </div>
+          <h4 class="link-title">Comparer les prix</h4>
+          <p class="link-description">Trouvez le meilleur tarif pour votre expédition</p>
+          <span class="link-action">
+            Comparer maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Suivi de colis -->
+      <div class="col-md-3">
+        <a href="/suivi" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-map-marker-alt"></i>
+          </div>
+          <h4 class="link-title">Suivre mon colis</h4>
+          <p class="link-description">Suivez votre expédition en temps réel</p>
+          <span class="link-action">
+            Suivre maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Matériel d'emballage -->
+      <div class="col-md-3">
+        <a href="/mon-materiel" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-box"></i>
+          </div>
+          <h4 class="link-title">Matériel d'emballage</h4>
+          <p class="link-description">Découvrez le matériel essentiel pour emballer</p>
+          <span class="link-action">
+            Voir le matériel <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Conseils d'expédition -->
+      <div class="col-md-3">
+        <a href="/conseils" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <h4 class="link-title">Conseils d'expédition</h4>
+          <p class="link-description">Astuces pour une expédition réussie</p>
+          <span class="link-action">
+            Lire les conseils <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      <!-- Services à venir -->
+      <div class="col-md-3">
+        <div class="link-card coming-soon">
+          <div class="link-icon">
+            <i class="fa-solid fa-hourglass-half"></i>
+          </div>
+          <h4 class="link-title">Services à venir</h4>
+          <p class="link-description">De nouveaux services arrivent bientôt</p>
+          <span class="link-action">
+            Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call-to-action principal -->
+    <div class="text-center mt-5">
+      <div class="main-cta">
+        <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+        <p class="cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
+        <a href="/" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-rocket me-2"></i>Commencer maintenant
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</section>

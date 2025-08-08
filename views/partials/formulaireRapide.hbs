@@ -1,0 +1,28 @@
+<form method="GET" action="/comparateur-des-prix">
+  <input type="hidden" name="form-type" value="rapide">
+
+  <div class="mb-3">
+    <label class="form-label">Origine (non modifiable)</label>
+    <input type="text" class="form-control" value="France" disabled>
+  </div>
+
+  <div class="mb-3">
+    <label for="destination-modal" class="form-label">Destination</label>
+    <select id="destination-modal" name="destination" class="form-select" required>
+      {{#each countries}}
+        <option value="{{this.isoCode}}" {{#if (eq ../destination this.isoCode)}}selected{{/if}}>
+          {{this.label}}
+        </option>
+      {{/each}}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="poids-modal" class="form-label">Poids (kg)</label>
+    <input type="number" step="0.01" name="poids" id="poids-modal" class="form-control" required value="{{poids}}">
+  </div>
+
+  <div class="text-end">
+    <button type="submit" class="btn btn-primary">Mettre à jour la recherche</button>
+  </div>
+</form>
