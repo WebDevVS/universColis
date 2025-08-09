@@ -64,7 +64,7 @@ module.exports = (app) => {
         // Seules les sources JS autorisées (aucun <script> inline ici !)
         scriptSrc: [
           "'self'",
-          "'sha256-sMzAKC7O0yoV3dI2BGeifm/ktjbdlPXtQUoBQ3Tm3+I='",
+          "'sha256-xurBXSyr0RNVujuxj1DD5wLMmcILWFbm7UF8Fs3awF8='",
           "https://www.googletagmanager.com",
           "https://www.google-analytics.com",
           "https://www.17track.net",
