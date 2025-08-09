@@ -64,6 +64,7 @@ module.exports = (app) => {
         // Seules les sources JS autorisées (aucun <script> inline ici !)
         scriptSrc: [
           "'self'",
+          "'sha256-8/jB750iB8ST9rcjq6lq1mA063aJk138rGhQRe4zG5M='",
           "https://www.googletagmanager.com",
           "https://www.google-analytics.com",
           "https://www.17track.net",
@@ -145,7 +146,7 @@ module.exports = (app) => {
   }));
 
   app.use(cors({
-    origin: 'https://tondomaine.com', // ou '*' en dev
+    origin: 'https://universcolis.fr', // ou '*' en dev
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }));
 
