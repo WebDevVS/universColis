@@ -54,9 +54,16 @@ module.exports = (app) => {
     next();
   });
 
+  // Génère un nonce aléatoire pour chaque requête
+  app.use((req, res, next) => {
+    res.locals.nonce = require('crypto').randomBytes(16).toString('base64');
+    next();
+  });
+
   // Sécurité : headers, CORS, rate limit
   app.use(helmet({
     contentSecurityPolicy: {
+      useDefaults: false,
       directives: {
         // Par défaut, tout est autorisé uniquement depuis ton domaine
         defaultSrc: ["'self'"],
@@ -64,7 +71,7 @@ module.exports = (app) => {
         // Seules les sources JS autorisées (aucun <script> inline ici !)
         scriptSrc: [
           "'self'",
-          "'sha256-xurBXSyr0RNVujuxj1DD5wLMmcILWFbm7UF8Fs3awF8='",
+          (req, res) => `'nonce-${res.locals.nonce}'`,
           "https://www.googletagmanager.com",
           "https://www.google-analytics.com",
           "https://www.17track.net",

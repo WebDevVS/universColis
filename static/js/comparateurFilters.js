@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const aSite = document.createElement('button');
         aSite.type = 'button';  
         aSite.className = 'btn btn-action-primary reserve-btn mb-2'; // <-- ajoute reserve-btn
-        aSite.setAttribute('data-url', offre.site_url || 'https://www.google.fr');       // <-- ajoute data-url
+        aSite.setAttribute('data-url', offre.site_url);       // <-- ajoute data-url
         aSite.setAttribute('title', 'Ce lien ouvre le site du transporteur dans un nouvel onglet');
         aSite.innerHTML = '<i class="fa-solid fa-external-link-alt me-1"></i>Réserver';
         colAction.appendChild(aSite);
