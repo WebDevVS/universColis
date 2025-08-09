@@ -718,6 +718,254 @@ div .input-group-text {
   white-space: nowrap !important;
 }
 
+/* ===== OVERLAY DE CHARGEMENT ===== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.loading-card {
+  background: var(--glassmorphic-bg);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--glassmorphic-border);
+  border-radius: var(--border-radius);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  width: 90%;
+  animation: slideInScale 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.loading-icon {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+.loading-title {
+  color: var(--text-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+.loading-message {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* ===== SPINNER MODERNE ===== */
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modern-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(130, 105, 164, 0.2);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.spinner-text {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 120px;
+}
+
+/* ===== ÉTAPES DE CHARGEMENT ===== */
+.loading-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.loading-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.loading-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(130, 105, 164, 0.2);
+  z-index: 1;
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(130, 105, 164, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.step-circle.active {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.step-circle.completed {
+  background: var(--accent-color);
+  color: white;
+}
+
+.step-circle:not(:last-child).completed::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: -65%;
+  width: 130%;
+  height: 2px;
+  background: var(--accent-color);
+  z-index: 1;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  opacity: 0.7;
+  text-align: center;
+  font-weight: 500;
+}
+
+.step-label.active {
+  opacity: 1;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .loading-card {
+    padding: 2.5rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .loading-icon {
+    font-size: 2.8rem;
+  }
+
+  .loading-title {
+    font-size: 1.2rem;
+  }
+
+  .loading-steps {
+    padding: 0 0.5rem;
+  }
+
+  .step-label {
+    font-size: 0.7rem;
+  }
+}
+
 /*  ===== SECTION LOGOS TRANSPORTEURS ===== */
 .company-logos {
   background-color: var(--white-transparent);
@@ -1726,9 +1974,12 @@ div .input-group-text {
     justify-content: center;
   }
 
+  .filters-section {
+    padding: 1rem !important;
+  }
+
   .filter-actions {
-    justify-content: center;
-    margin-top: 1rem;
+    justify-content: left;
   }
 
   /* Résultats en mode mobile */
@@ -2563,6 +2814,7 @@ div .input-group-text {
   font-size: 1.5rem;
   font-weight: 600;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  scroll-margin-top: 80px;
 }
 
 .produits p {
@@ -2629,6 +2881,7 @@ div .input-group-text {
   .produits h2 {
     font-size: 1.3rem;
     padding: 8px 12px;
+    scroll-margin-top: 80px;
   }
 
   .produits p {
@@ -2656,6 +2909,10 @@ div .input-group-text {
     padding: 0 0.5rem;
   }
 
+  .materiel-nav .col-md-4 {
+    margin-bottom: 0.3rem !important;
+  }
+
   .category-box {
     font-size: 0.9rem;
     padding: 12px;
@@ -2663,10 +2920,12 @@ div .input-group-text {
 
   .produits {
     padding: 0 0.5rem;
+    margin-top: 0 !important;
   }
 
   .produits .first-container {
     padding: 0.75rem;
+    margin-top: 0 !important;
   }
 
   .produits h2 {
@@ -2844,6 +3103,18 @@ div .input-group-text {
     padding-top: 60px;
   }
 
+  .catalogue .col-lg-4,
+  .catalogue .col-md-6,
+  .catalogue .col-sm-12 {
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+    margin-bottom: 1rem;
+  }
+
+  .articles-list .text-center.mb-4 {
+    margin-bottom: 0 !important;
+  }
+
   .tracking-intro {
     padding: 1.5rem 1rem;
   }
@@ -2885,6 +3156,18 @@ div .input-group-text {
 @media (max-width: 576px) {
   .articles-list {
     padding-top: 40px;
+  }
+
+  .articles-list .text-center.mb-4 {
+    margin-bottom: 0 !important;
+  }
+
+  .catalogue .col-lg-4,
+  .catalogue .col-md-6,
+  .catalogue .col-sm-12 {
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+    margin-bottom: 1rem;
   }
 
   .tracking-intro {
@@ -3140,15 +3423,18 @@ figure.etape-image .hover-caption {
   padding: 0.5rem 0 0 0;
   transform: none;
   max-width: 100%;
-  font-size: 0.92rem;    /* Taille réduite */
-  font-style: italic;    /* Optionnel : style légende */
+  font-size: 0.92rem;
+  /* Taille réduite */
+  font-style: italic;
+  /* Optionnel : style légende */
   line-height: 1.3;
 }
 
 figure.etape-image {
   position: relative;
   display: block;
-  text-align: center; /* Ajoute cette ligne */
+  text-align: center;
+  /* Ajoute cette ligne */
   margin-left: auto;
   margin-right: auto;
 }
@@ -3400,6 +3686,24 @@ figure.etape-image:hover .hover-caption {
   .step {
     margin: 1.5rem 0.5rem;
     padding: 1.5rem;
+  }
+
+  .resume,
+  .details,
+  .materiels,
+  .erreurs,
+  .faq-section,
+  .alert.alert-info {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+  }
+
+  .resume-item{
+    margin-bottom: 0 !important;
+  }
+
+  .details {
+    padding: 0.3rem !important;
   }
 
   .intro,
@@ -5033,8 +5337,7 @@ footer {
   .comparateur,
   .materiel,
   .suivi,
-  .articles-list,
-  .article-details {
+  .articles-list {
     padding: 1.5rem !important;
     margin-left: auto !important;
     margin-right: auto !important;

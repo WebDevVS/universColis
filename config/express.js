@@ -42,6 +42,7 @@ module.exports = (app) => {
       'cookiePreferencesButton',
       'cookiesConfig',
       'googleAnalytics',
+      'loading',
       'redirect',
       'static',
       'suivi',

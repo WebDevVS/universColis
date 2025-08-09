@@ -151,6 +151,47 @@
     </div>
   </div>
 
+  <!-- Overlay de chargement -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-card">
+      <div class="loading-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+
+      <h3 class="loading-title">Recherche en cours...</h3>
+      <p class="loading-message">
+        Nous analysons les meilleures offres de transporteurs pour vous
+      </p>
+
+      <!-- Étapes de progression -->
+      <div class="loading-steps">
+        <div class="loading-step">
+          <div class="step-circle active" id="step1">
+            <i class="fa-solid fa-search" style="font-size: 0.8rem;"></i>
+          </div>
+          <div class="step-label active">Recherche</div>
+        </div>
+        <div class="loading-step">
+          <div class="step-circle" id="step2">
+            <i class="fa-solid fa-chart-line" style="font-size: 0.8rem;"></i>
+          </div>
+          <div class="step-label">Analyse</div>
+        </div>
+        <div class="loading-step">
+          <div class="step-circle" id="step3">
+            <i class="fa-solid fa-check" style="font-size: 0.8rem;"></i>
+          </div>
+          <div class="step-label">Finalisation</div>
+        </div>
+      </div>
+
+      <div class="spinner-container">
+        <div class="modern-spinner"></div>
+        <span class="spinner-text" id="spinnerText">Recherche des offres...</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <section class="company-logos py-4">
@@ -213,7 +254,8 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">Conseils d'emballage</h5>
-            <p class="card-text text-center mb-2">Obtenez des conseils pratiques pour un emballage sécurisé, étape par étape.
+            <p class="card-text text-center mb-2">Obtenez des conseils pratiques pour un emballage sécurisé, étape par
+              étape.
             </p>
             <a href="/conseils" class="btn btn-primary">Lire les conseils</a>
           </div>
