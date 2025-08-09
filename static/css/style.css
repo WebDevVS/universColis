@@ -443,10 +443,21 @@ p {
   color: #333333;
   background-position: center top;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  /* ❌ JAMAIS fixed sur mobile */
   background-repeat: no-repeat;
-  min-height: 100vh;
   background-blend-mode: soft-light;
+
+  /* Hauteur universelle */
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* Nouveau standard */
+  min-height: -webkit-fill-available;
+  /* Safari iOS fix */
+
+  /* Performance universelle */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
@@ -943,6 +954,44 @@ div .input-group-text {
 }
 
 /* ===== RESPONSIVE ===== */
+
+/* Gestion différente desktop vs mobile */
+@media (min-width: 769px) {
+  .home-page {
+    background-attachment: fixed;
+    /* Fixed SEULEMENT sur desktop */
+  }
+}
+
+/* Fix spécifique Safari iOS */
+@supports (-webkit-touch-callout: none) {
+  .home-page {
+    background-attachment: scroll !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* Image haute résolution pour Retina */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .home-page {
+    background-image: url('/static/img/home@2x.webp');
+    /* Si tu as une version 2x */
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+  .home-page {
+    background-position: center center;
+    /* Mieux sur mobile */
+    background-attachment: scroll;
+  }
+}
+
 @media (max-width: 768px) {
   .loading-card {
     padding: 2.5rem 1.5rem;
@@ -3698,7 +3747,7 @@ figure.etape-image:hover .hover-caption {
     margin-right: 0.5rem !important;
   }
 
-  .resume-item{
+  .resume-item {
     margin-bottom: 0 !important;
   }
 
