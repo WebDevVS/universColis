@@ -5372,18 +5372,3 @@ footer {
     font-size: 1.2rem;
   }
 }
-
-@media (max-width: 900px), (pointer: coarse) {
-  .home-page,
-  .comparateur-page,
-  .materiel-page,
-  .suivi-page,
-  .articles-list-page,
-  .article-page {
-    background-attachment: scroll !important;
-    /* Optionnel : améliore la netteté sur iOS */
-    -webkit-background-size: cover !important;
-    background-size: cover !important;
-    background-position: center top !important;
-  }
-}
