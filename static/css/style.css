@@ -438,17 +438,15 @@ p {
 
 /*  ===== BACKGROUND GÉNÉRAL DE LA PAGE  =====  */
 .home-page {
-    background-image: url('/static/img/home.webp');
-    background-color: #E9E6E1;
-    color: #333333;
-    background-position: center top;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-blend-mode: soft-light;
-    min-height: 100vh;
-    
-    /* Fix iPhone SEULEMENT */
-    background-attachment: scroll;
+  background-image: url('/static/img/home.webp');
+  background-color: #E9E6E1;
+  color: #333333;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-blend-mode: soft-light;
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
@@ -1103,22 +1101,30 @@ div .input-group-text {
 
 /*  ===== RESPONSIVE  ===== */
 
+@media (max-width: 900px) {
+  .home-page,
+  .comparateur-page,
+  .materiel-page,
+  .suivi-page,
+  .articles-list-page,
+  .article-page {
+    background-attachment: scroll !important;
+  }
+}
+
+.home-page,
+.comparateur-page,
+.materiel-page,
+.suivi-page,
+.articles-list-page,
+.article-page {
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
 /* TABLETTE (768px et moins) */
-
-/* Desktop : remet le fixed */
-@media (min-width: 769px) {
-    .home-page {
-        background-attachment: fixed;
-    }
-}
-
-/* Fix Safari iOS spécifique pour éviter le flou */
-@supports (-webkit-touch-callout: none) and (max-width: 768px) {
-    .home-page {
-        transform: translateZ(0);
-    }
-}
-
 @media (max-width: 768px) {
 
   /* Hero */
