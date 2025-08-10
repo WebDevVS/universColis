@@ -1442,6 +1442,23 @@ div .input-group-text {
 
 /*  ===== MODALE DE MODIFICATION  =====*/
 /* Styles de la modale gérés par Bootstrap */
+/* Correction input-group uniquement pour le formulaire avancé de la modale */
+.formulaire-avance .input-group {
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+}
+
+.formulaire-avance .input-group .form-control {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.formulaire-avance .input-group .input-group-text {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  white-space: nowrap !important;
+}
 
 /*  ===== SECTION FILTRES  =====*/
 .filters-title {
@@ -5388,3 +5405,6 @@ footer {
     font-size: 1.2rem;
   }
 }
+
+
+

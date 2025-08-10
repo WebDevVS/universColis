@@ -47,12 +47,10 @@ function showLoadingSpinner() {
 
 // Pour ton vrai formulaire, attache cette fonction
 function attachLoadingToForms() {
-    // Formulaire rapide
-    const formsRapide = document.querySelectorAll('form[action="/comparateur-des-prix"]');
-
-    formsRapide.forEach(form => {
-        form.addEventListener('submit', function (e) {
-            // Ne pas empêcher la soumission, juste afficher le spinner
+    // Sélectionne tous les formulaires qui envoient vers /comparateur-des-prix (y compris dans la modale)
+    const forms = document.querySelectorAll('form[action="/comparateur-des-prix"]');
+    forms.forEach(form => {
+        form.addEventListener('submit', function () {
             showLoadingSpinner();
         });
     });
