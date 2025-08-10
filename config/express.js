@@ -94,6 +94,7 @@ module.exports = (app) => {
           "'self'",
           "data:",
           "https://resource.boxtal.build",
+          "https://resource.boxtal.com", // ← ajoute cette ligne
           "https://www.google-analytics.com",
           "https://parcelsapp.com",
           "https://track.global",

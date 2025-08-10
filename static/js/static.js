@@ -43,6 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  document.querySelectorAll('.reserve-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const url = btn.getAttribute('data-url');
+      // Vérifie que l'URL commence bien par https://www.boxtal.com/
+      if (url && url.startsWith('https://www.boxtal.com/')) {
+        window.open(url, '_blank', 'noopener');
+      }
+    });
+  });
 });
 
 function showTab(tabId) {
