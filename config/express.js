@@ -41,7 +41,6 @@ module.exports = (app) => {
       'comparateurFilters',
       'cookiePreferencesButton',
       'cookiesConfig',
-      'googleAnalytics',
       'loading',
       'redirect',
       'static',

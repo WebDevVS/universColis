@@ -336,6 +336,13 @@ p {
 }
 
 /* ===== ÉLÉMENTS COMMUNS ===== */
+.gtm-noscript-iframe {
+  display: none;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
 .form-label {
   font-weight: 500;
   color: var(--primary-color);
@@ -765,6 +772,10 @@ div .input-group-text {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   animation: pulse 2s infinite;
+}
+
+.loading-steps .fa-solid {
+  font-size: 0.8rem;
 }
 
 .loading-title {
@@ -1449,6 +1460,11 @@ div .input-group-text {
   font-size: 1rem;
   opacity: 0.8;
   margin-bottom: 0;
+}
+
+#results-origine-modal,
+#results-destination-modal {
+  z-index: 1000;
 }
 
 /*  ===== CONTAINER DES RÉSULTATS  =====*/
@@ -3698,7 +3714,7 @@ figure.etape-image:hover .hover-caption {
     margin-right: 0.5rem !important;
   }
 
-  .resume-item{
+  .resume-item {
     margin-bottom: 0 !important;
   }
 

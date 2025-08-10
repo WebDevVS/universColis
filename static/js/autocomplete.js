@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modale = document.getElementById('modaleModification');
 
   if (!modale) {
-    console.warn("⚠️ modaleModification introuvable !");
     return;
   }
 
