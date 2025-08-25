@@ -41,6 +41,7 @@ module.exports = (app) => {
       'comparateurFilters',
       'cookiePreferencesButton',
       'cookiesConfig',
+      'generate-sitemaps',
       'loading',
       'redirect',
       'static',

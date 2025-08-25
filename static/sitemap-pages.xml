@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.universcolis.fr/</loc>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/suivi</loc>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/conseils</loc>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/mon-materiel</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/comment-ca-marche</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/qui-sommes-nous</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/politique-confidentialite</loc>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/mentions-legales</loc>
+    <priority>0.4</priority>
+  </url>
+</urlset>
