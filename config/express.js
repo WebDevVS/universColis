@@ -25,6 +25,7 @@ module.exports = (app) => {
   app.engine('.hbs', hbs.engine);
   app.set('view engine', '.hbs');
 
+  app.use(express.static('static'));
   app.use('/static', express.static('static'));
   app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
   app.use(express.urlencoded({ extended: true }));
