@@ -27,6 +27,9 @@ meterielController.get('/', async (req, res) => {
       canonicalUrl: "https://universcolis.fr/materiel",
       robots: "index, follow",
 
+      publishedDate: "2025-08-25",
+      modifiedDate: "2025-08-25",
+
       ogType: "website",
       ogTitle: "Matériel d’emballage : guide complet des fournitures – UniversColis",
       ogDescription: "Référence des matériaux d’emballage pour colis : boîtes, protections, adhésifs, étiquettes, outils, essentiels pour expédier en toute confiance.",

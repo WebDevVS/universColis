@@ -36,6 +36,9 @@ homeController.get('/', async (req, res) => {
             author: "UniversColis",
             robots: "index, follow",
 
+            publishedDate: "2025-08-25",
+            modifiedDate: "2025-08-25",
+
             ogType: "website",
             ogTitle: "UniversColis : Comparateur d’envoi de colis ultra-rapide",
             ogDescription: "Comparez les tarifs d’expédition en quelques secondes, sans compte. Trouvez la meilleure offre parmi les plus grands transporteurs.",

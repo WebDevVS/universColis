@@ -152,6 +152,9 @@ comparateurController.get('/', async (req, res) => {
             canonicalUrl: "https://universcolis.fr/resultats",
             robots: "index, follow",
 
+            publishedDate: "2025-08-25",
+            modifiedDate: "2025-08-25",
+
             ogType: "website",
             ogTitle: "Résultats : Comparateur d’offres d’envoi de colis – UniversColis",
             ogDescription: "Trouvez la meilleure offre d’expédition selon vos critères : prix, délai, transporteur. Comparez et partagez vos résultats facilement.",

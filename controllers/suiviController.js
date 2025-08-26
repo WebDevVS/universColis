@@ -23,6 +23,9 @@ suiviController.get('/', (req, res) => {
         canonicalUrl: "https://universcolis.fr/suivi",
         robots: "index, follow",
 
+        publishedDate: "2025-08-25",
+        modifiedDate: "2025-08-25",
+
         ogType: "website",
         ogTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
         ogDescription: "Suivez vos colis avec 5 outils de tracking, sans compte ni inscription. Détection automatique du transporteur et comparatif des meilleurs trackers.",
