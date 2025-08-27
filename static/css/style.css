@@ -445,49 +445,35 @@ p {
 
 /*  ===== BACKGROUND GÉNÉRAL DE LA PAGE  =====  */
 .home-page {
+  /* Fallback JPEG en premier */
+  background-image: url('/static/img/home.jpg');
+  /* WebP pour les navigateurs compatibles */
   background-image: url('/static/img/home.webp');
+  
   background-color: #E9E6E1;
   color: #333333;
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: soft-light;
-  
-  /* Hauteurs compatibles tous appareils */
-  min-height: 100vh;
-  min-height: 100dvh; /* Nouveau standard */
-  min-height: -webkit-fill-available; /* Safari iOS */
-  
-  /* Mobile d'abord - scroll */
   background-attachment: scroll;
   
-  /* Optimisations performance */
-  will-change: transform;
-  transform: translateZ(0);
+  min-height: 100vh;
+  min-height: 100dvh;
+  min-height: -webkit-fill-available;
 }
 
-/* Desktop - remet l'effet parallax */
+/* WebP uniquement pour les navigateurs qui le supportent bien */
+@supports (background-image: url('data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=')) {
+  .home-page {
+    background-image: url('/static/img/home.webp');
+  }
+}
+
+/* Desktop - parallax */
 @media (min-width: 769px) and (hover: hover) {
   .home-page {
     background-attachment: fixed;
-  }
-}
-
-/* Corrections spécifiques iPhone/Safari */
-@supports (-webkit-touch-callout: none) {
-  .home-page {
-    background-attachment: scroll !important;
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-}
-
-/* Image haute résolution si disponible */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .home-page {
-    background-image: url('/static/img/home@2x.webp'); /* Si tu l'as */
   }
 }
 
