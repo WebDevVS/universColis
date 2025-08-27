@@ -449,11 +449,20 @@ p {
   background-color: #E9E6E1;
   color: #333333;
   background-position: center top;
-  background-size: cover;
-  background-attachment: fixed;
+  background-size: 100% auto;
+
   background-repeat: no-repeat;
   min-height: 100vh;
   background-blend-mode: soft-light;
+}
+
+@media (max-width: 900px) {
+  .home-page {
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
@@ -1971,7 +1980,29 @@ div .input-group-text {
   /* Styles manquants - à définir */
 }
 
+/* Adaptatif pour la section à découvrir */
+.related-links .row.g-4 {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-items: stretch;
+}
+.related-links .col-md-3 {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /*  ===== RESPONSIVE  ===== */
+
+@media (min-width: 992px) {
+  .related-links .row {
+    grid-template-columns: repeat(5, 1fr) !important;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
 
 /* TABLETTE LARGE (992px et moins) */
 @media (max-width: 992px) {
@@ -5405,6 +5436,3 @@ footer {
     font-size: 1.2rem;
   }
 }
-
-
-
