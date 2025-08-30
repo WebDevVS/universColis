@@ -17,7 +17,7 @@ commentCaMarcheController.get('/', (req, res) => {
             "transporteur colis",
             "livraison pas cher"
         ],
-        canonicalUrl: "https://universcolis.fr/comment-ca-marche",
+        canonicalUrl: "https://www.universcolis.fr/comment-ca-marche",
         author: "UniversColis",
         robots: "index, follow",
 
@@ -27,14 +27,14 @@ commentCaMarcheController.get('/', (req, res) => {
         ogType: "article",
         ogTitle: "Comment envoyer un colis facilement ? | UniversColis",
         ogDescription: "Expédiez vos colis en France ou à l’international en 3 étapes : recherche rapide, comparaison, envoi direct. UniversColis simplifie l’expédition pour tous.",
-        ogUrl: "https://universcolis.fr/comment-ca-marche",
-        ogImage: "https://universcolis.fr/static/img/og-image.png",
+        ogUrl: "https://www.universcolis.fr/comment-ca-marche",
+        ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
 
         twitterCard: "summary_large_image",
         twitterTitle: "Comment envoyer un colis facilement ? | UniversColis",
         twitterDescription: "UniversColis : expédiez vos colis en 3 étapes simples, sans inscription. Comparez prix, délais et modes de livraison.",
-        twitterImage: "https://universcolis.fr/static/img/og-image.png",
+        twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         // --- JSON-LD STRUCTURED DATA ---
         structuredData: JSON.stringify({
@@ -43,13 +43,13 @@ commentCaMarcheController.get('/', (req, res) => {
                 {
                     "@type": "Organization",
                     "name": "UniversColis",
-                    "url": "https://universcolis.fr",
-                    "logo": "https://universcolis.fr/static/img/logo.png"
+                    "url": "https://www.universcolis.fr",
+                    "logo": "https://www.universcolis.fr/static/img/logo.png"
                 },
                 {
                     "@type": "WebPage",
                     "name": "Comment ça marche",
-                    "url": "https://universcolis.fr/comment-ca-marche",
+                    "url": "https://www.universcolis.fr/comment-ca-marche",
                     "description": "Expédiez un colis en 3 étapes simples avec UniversColis : recherche rapide, comparaison des offres, envoi direct sans inscription.",
                     "inLanguage": "fr",
                     "datePublished": "2025-08-25",
@@ -61,13 +61,13 @@ commentCaMarcheController.get('/', (req, res) => {
                                 "@type": "ListItem",
                                 "position": 1,
                                 "name": "Accueil",
-                                "item": "https://universcolis.fr/"
+                                "item": "https://www.universcolis.fr/"
                             },
                             {
                                 "@type": "ListItem",
                                 "position": 2,
                                 "name": "Comment ça marche",
-                                "item": "https://universcolis.fr/comment-ca-marche"
+                                "item": "https://www.universcolis.fr/comment-ca-marche"
                             }
                         ]
                     }
@@ -76,7 +76,7 @@ commentCaMarcheController.get('/', (req, res) => {
                     "@type": "HowTo",
                     "name": "Envoyer un colis avec UniversColis",
                     "description": "Guide en 3 étapes pour comparer et expédier un colis facilement, sans inscription.",
-                    "image": "https://universcolis.fr/static/img/og-image.png",
+                    "image": "https://www.universcolis.fr/static/img/og-image.png",
                     "totalTime": "PT2M",
                     "supply": [],
                     "tool": [],

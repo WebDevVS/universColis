@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{seoTitle}}</title>
     <meta name="description" content="{{seoDescription}}" />
@@ -48,11 +48,14 @@
 
     <!-- Google Tag Manager -->
     <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-W4VCLVRJ');
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W4VCLVRJ');
     </script>
     <!-- End Google Tag Manager -->
 </head>
@@ -60,8 +63,8 @@
 <body class="{{bodyClass}} d-flex flex-column min-vh-100">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4VCLVRJ"
-    height="0" width="0" class="gtm-noscript-iframe"></iframe>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4VCLVRJ" height="0" width="0"
+            class="gtm-noscript-iframe"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-expand-lg">
@@ -112,7 +115,8 @@
         <div class="container">
             <div class="beta-content">
                 <span class="beta-text">
-                🚀 UniversColis est en constante évolution pour mieux répondre à vos besoins. Merci de votre confiance.
+                    🚀 UniversColis est en constante évolution pour mieux répondre à vos besoins. Merci de votre
+                    confiance.
                 </span>
             </div>
         </div>
@@ -157,6 +161,11 @@
                         <li>
                             <a href="/conseils">
                                 <i class="fa-solid fa-lightbulb me-2"></i>Conseils d'expédition
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/actualites">
+                                <i class="fa-solid fa-globe me-2"></i>Actualités
                             </a>
                         </li>
                     </ul>
@@ -222,59 +231,69 @@
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     {{#if isProd}}
-      <script src="/static/js/static.min.js" defer></script>
+    <script src="/static/js/static.min.js" defer></script>
 
-      {{#if hasAutocomplete}}
-        <script type="module" src="/static/js/autocomplete.min.js"></script>
-      {{/if}}
+    {{#if hasAutocomplete}}
+    <script type="module" src="/static/js/autocomplete.min.js"></script>
+    {{/if}}
 
-      {{#if (eq page 'comparateur')}}
-        <script id="offres-data" type="application/json">{{{json offres}}}</script>
-        <script src="/static/js/redirect.min.js" defer></script>
-        <script src="/static/js/comparateurFilters.min.js" defer></script>
-      {{/if}}
-      
-      {{#if (eq page 'suivi')}}
-        <script src="/static/js/suivi.min.js" defer></script>
-      {{/if}}
+    {{#if (eq page 'comparateur')}}
+    <script id="offres-data" type="application/json">{{{json offres}}}</script>
+    <script src="/static/js/redirect.min.js" defer></script>
+    <script src="/static/js/comparateurFilters.min.js" defer></script>
+    {{/if}}
 
-      <!-- Scripts spécifiques cookies -->
-      <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
-      <script src="/static/js/cookiesConfig.min.js"></script>
-      <script src="/static/js/cookiePreferencesButton.min.js"></script>
+    {{#if (eq page 'suivi')}}
+    <script src="/static/js/suivi.min.js" defer></script>
+    {{/if}}
 
-      <!-- Autres scripts -->
-      <script src="/static/js/tabs.min.js" defer></script>
-      <script src="/static/js/articleSelector.min.js" defer></script>
-      <script src="/static/js/loading.min.js"></script>
+    {{#if (eq page 'article')}}
+    <script src="/static/js/articleShare.min.js"></script>
+    {{/if}}
+
+    <!-- Scripts spécifiques cookies -->
+    <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
+    <script src="/static/js/cookiesConfig.min.js"></script>
+    <script src="/static/js/cookiePreferencesButton.min.js"></script>
+
+    <!-- Autres scripts -->
+    <script src="/static/js/tabs.min.js" defer></script>
+    <script src="/static/js/articleSelector.min.js" defer></script>
+    <script src="/static/js/loading.min.js"></script>
 
     {{else}}
-      <script src="/static/js/static.js" defer></script>
+    <script src="/static/js/static.js" defer></script>
 
-      {{#if hasAutocomplete}}
-        <script type="module" src="/static/js/autocomplete.js"></script>
-      {{/if}}
-
-      {{#if (eq page 'comparateur')}}
-        <script id="offres-data" type="application/json">{{{json offres}}}</script>
-        <script src="/static/js/redirect.js" defer></script>
-        <script src="/static/js/comparateurFilters.js" defer></script>  
-      {{/if}}
-
-      {{#if (eq page 'suivi')}}
-        <script src="/static/js/suivi.js" defer></script>
-      {{/if}}
-
-      <!-- Scripts spécifiques cookies -->
-      <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
-      <script src="/static/js/cookiesConfig.js"></script>
-      <script src="/static/js/cookiePreferencesButton.js"></script>
-
-      <!-- Autres scripts -->
-      <script src="/static/js/tabs.js" defer></script>
-      <script src="/static/js/articleSelector.js" defer></script>
-      <script src="/static/js/loading.js"></script>
+    {{#if hasAutocomplete}}
+    <script type="module" src="/static/js/autocomplete.js"></script>
     {{/if}}
+
+    {{#if (eq page 'comparateur')}}
+    <script id="offres-data" type="application/json">{{{json offres}}}</script>
+    <script src="/static/js/redirect.js" defer></script>
+    <script src="/static/js/comparateurFilters.js" defer></script>
+    {{/if}}
+
+    {{#if (eq page 'suivi')}}
+    <script src="/static/js/suivi.js" defer></script>
+    {{/if}}
+
+    {{#if (eq page 'article')}}
+    <script src="/static/js/articleShare.js"></script>
+    {{/if}}
+
+    <!-- Scripts spécifiques cookies -->
+    <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
+    <script src="/static/js/cookiesConfig.js"></script>
+    <script src="/static/js/cookiePreferencesButton.js"></script>
+
+    <!-- Autres scripts -->
+    <script src="/static/js/tabs.js" defer></script>
+    <script src="/static/js/articleSelector.js" defer></script>
+    <script src="/static/js/loading.js"></script>
+
+    {{/if}}
+
 </body>
 
 </html>

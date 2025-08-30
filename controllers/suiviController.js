@@ -20,7 +20,7 @@ suiviController.get('/', (req, res) => {
             "suivi colis international",
             "multi-tracker"
         ],
-        canonicalUrl: "https://universcolis.fr/suivi",
+        canonicalUrl: "https://www.universcolis.fr/suivi",
         robots: "index, follow",
 
         publishedDate: "2025-08-25",
@@ -29,14 +29,14 @@ suiviController.get('/', (req, res) => {
         ogType: "website",
         ogTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
         ogDescription: "Suivez vos colis avec 5 outils de tracking, sans compte ni inscription. Détection automatique du transporteur et comparatif des meilleurs trackers.",
-        ogUrl: "https://universcolis.fr/suivi",
-        ogImage: "https://universcolis.fr/static/img/og-image.png",
+        ogUrl: "https://www.universcolis.fr/suivi",
+        ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
 
         twitterCard: "summary_large_image",
         twitterTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
         twitterDescription: "Suivez tous vos colis, même sans connaître le transporteur. Comparez les meilleurs outils de tracking sur UniversColis.",
-        twitterImage: "https://universcolis.fr/static/img/og-image.png",
+        twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         structuredData: JSON.stringify({
             "@context": "https://schema.org",
@@ -44,16 +44,16 @@ suiviController.get('/', (req, res) => {
                 {
                     "@type": "WebPage",
                     "name": "Suivi de colis universel",
-                    "url": "https://universcolis.fr/suivi",
+                    "url": "https://www.universcolis.fr/suivi",
                     "description": "Page de suivi de colis permettant d’utiliser 5 outils de tracking différents sans compte, avec détection automatique du transporteur et comparatif des meilleurs trackers.",
                     "isPartOf": {
                         "@type": "WebSite",
                         "name": "UniversColis",
-                        "url": "https://universcolis.fr/"
+                        "url": "https://www.universcolis.fr/"
                     },
                     "potentialAction": {
                         "@type": "SearchAction",
-                        "target": "https://universcolis.fr/suivi?tracking={trackingNumber}",
+                        "target": "https://www.universcolis.fr/suivi?tracking={trackingNumber}",
                         "query-input": "required name=trackingNumber"
                     }
                 },

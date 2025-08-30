@@ -149,7 +149,7 @@ comparateurController.get('/', async (req, res) => {
                 "envoi international",
                 "partage résultats"
             ],
-            canonicalUrl: "https://universcolis.fr/resultats",
+            canonicalUrl: "https://www.universcolis.fr/comparateur-des-prix",
             robots: "index, follow",
 
             publishedDate: "2025-08-25",
@@ -158,14 +158,14 @@ comparateurController.get('/', async (req, res) => {
             ogType: "website",
             ogTitle: "Résultats : Comparateur d’offres d’envoi de colis – UniversColis",
             ogDescription: "Trouvez la meilleure offre d’expédition selon vos critères : prix, délai, transporteur. Comparez et partagez vos résultats facilement.",
-            ogUrl: "https://universcolis.fr/resultats",
-            ogImage: "https://universcolis.fr/static/img/og-image.png",
+            ogUrl: "https://www.universcolis.fr/comparateur-des-prix",
+            ogImage: "https://www.universcolis.fr/static/img/og-image.png",
             ogLocale: "fr_FR",
 
             twitterCard: "summary_large_image",
             twitterTitle: "Résultats : Comparateur d’offres d’envoi de colis – UniversColis",
             twitterDescription: "Comparez les tarifs et délais d’expédition de colis en temps réel. Filtrez, partagez et réservez en toute simplicité.",
-            twitterImage: "https://universcolis.fr/static/img/og-image.png",
+            twitterImage: "https://wwww.universcolis.fr/static/img/og-image.png",
 
             structuredData: JSON.stringify({
                 "@context": "https://schema.org",
@@ -173,16 +173,16 @@ comparateurController.get('/', async (req, res) => {
                     {
                         "@type": "SearchResultsPage",
                         "name": "Résultats de comparaison d’envoi de colis",
-                        "url": "https://universcolis.fr/resultats",
+                        "url": "https://www.universcolis.fr/comparateur-des-prix",
                         "description": "Page de résultats dynamique affichant les offres d’expédition de colis selon les critères de recherche de l’utilisateur. Filtrage par transporteur, prix, délai et partage des résultats.",
                         "isPartOf": {
                             "@type": "WebSite",
                             "name": "UniversColis",
-                            "url": "https://universcolis.fr/"
+                            "url": "https://www.universcolis.fr/"
                         },
                         "potentialAction": {
                             "@type": "SearchAction",
-                            "target": "https://universcolis.fr/comparateur-des-prix?destination={destination}&poids={poids}",
+                            "target": "https://www.universcolis.fr/comparateur-des-prix?destination={destination}&poids={poids}",
                             "query-input": [
                                 "required name=destination",
                                 "required name=poids"

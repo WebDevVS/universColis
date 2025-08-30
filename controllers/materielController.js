@@ -24,7 +24,7 @@ meterielController.get('/', async (req, res) => {
         "emballage e-commerce",
         "liste emballage"
       ],
-      canonicalUrl: "https://universcolis.fr/materiel",
+      canonicalUrl: "https://www.universcolis.fr/mon-materiel",
       robots: "index, follow",
 
       publishedDate: "2025-08-25",
@@ -33,14 +33,14 @@ meterielController.get('/', async (req, res) => {
       ogType: "website",
       ogTitle: "Matériel d’emballage : guide complet des fournitures – UniversColis",
       ogDescription: "Référence des matériaux d’emballage pour colis : boîtes, protections, adhésifs, étiquettes, outils, essentiels pour expédier en toute confiance.",
-      ogUrl: "https://universcolis.fr/materiel",
-      ogImage: "https://universcolis.fr/static/img/og-image.png",
+      ogUrl: "https://www.universcolis.fr/mon-materiel",
+      ogImage: "https://www.universcolis.fr/static/img/og-image.png",
       ogLocale: "fr_FR",
 
       twitterCard: "summary_large_image",
       twitterTitle: "Matériel d’emballage : guide complet des fournitures – UniversColis",
       twitterDescription: "Tout pour choisir le bon matériel d’emballage et expédier vos colis en toute sécurité.",
-      twitterImage: "https://universcolis.fr/static/img/og-image.png",
+      twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
       structuredData: JSON.stringify({
         "@context": "https://schema.org",
@@ -48,12 +48,12 @@ meterielController.get('/', async (req, res) => {
           {
             "@type": "CollectionPage",
             "name": "Matériel d’emballage",
-            "url": "https://universcolis.fr/materiel",
+            "url": "https://www.universcolis.fr/mon-materiel",
             "description": "Répertoire complet des matériaux et fournitures d’emballage pour colis : boîtes, protections, rubans, étiquettes, outils, essentiels pour expédier en toute sécurité.",
             "isPartOf": {
               "@type": "WebSite",
               "name": "UniversColis",
-              "url": "https://universcolis.fr/"
+              "url": "https://www.universcolis.fr/"
             }
           },
           {

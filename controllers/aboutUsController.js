@@ -18,7 +18,7 @@ aboutUsController.get('/', (req, res) => {
             "service indépendant",
             "transparence logistique"
         ],
-        canonicalUrl: "https://universcolis.fr/qui-sommes-nous",
+        canonicalUrl: "https://www.universcolis.fr/qui-sommes-nous",
         author: "UniversColis",
         robots: "index, follow",
 
@@ -28,15 +28,15 @@ aboutUsController.get('/', (req, res) => {
         ogType: "website",
         ogTitle: "Qui sommes-nous ? | UniversColis",
         ogDescription: "UniversColis, c’est une équipe passionnée qui rend l’expédition de colis plus simple, transparente et accessible à tous.",
-        ogUrl: "https://universcolis.fr/qui-sommes-nous",
-        ogImage: "https://universcolis.fr/static/img/og-image.png",
+        ogUrl: "https://www.universcolis.fr/qui-sommes-nous",
+        ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
         ogSiteName: "UniversColis",
 
         twitterCard: "summary_large_image",
         twitterTitle: "Qui sommes-nous ? | UniversColis",
         twitterDescription: "Découvrez l’histoire, l’équipe et la mission d’UniversColis, plateforme indépendante dédiée à l’envoi de colis en toute confiance.",
-        twitterImage: "https://universcolis.fr/static/img/og-image.png",
+        twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         // --- JSON-LD STRUCTURED DATA ---
         structuredData: JSON.stringify({
@@ -45,8 +45,8 @@ aboutUsController.get('/', (req, res) => {
                 {
                     "@type": "Organization",
                     "name": "UniversColis",
-                    "url": "https://universcolis.fr",
-                    "logo": "https://universcolis.fr/static/img/logo.png",
+                    "url": "https://www.universcolis.fr",
+                    "logo": "https://www.universcolis.fr/static/img/logo.png",
                     "description": "Plateforme indépendante de comparaison et de suivi de colis, fondée par une équipe internationale engagée pour la transparence et l’accessibilité.",
                     "founder": [
                         { "@type": "Person", "name": "L’équipe UniversColis" }
@@ -59,7 +59,7 @@ aboutUsController.get('/', (req, res) => {
                 {
                     "@type": "WebPage",
                     "name": "Qui sommes-nous ?",
-                    "url": "https://universcolis.fr/qui-sommes-nous",
+                    "url": "https://www.universcolis.fr/qui-sommes-nous",
                     "description": "Présentation de l’équipe, de la mission et des valeurs d’UniversColis, plateforme logistique dédiée à l’envoi de colis pour particuliers et professionnels.",
                     "inLanguage": "fr",
                     "datePublished": "2025-08-25",
@@ -71,13 +71,13 @@ aboutUsController.get('/', (req, res) => {
                                 "@type": "ListItem",
                                 "position": 1,
                                 "name": "Accueil",
-                                "item": "https://universcolis.fr/"
+                                "item": "https://www.universcolis.fr/"
                             },
                             {
                                 "@type": "ListItem",
                                 "position": 2,
                                 "name": "Qui sommes-nous ?",
-                                "item": "https://universcolis.fr/qui-sommes-nous"
+                                "item": "https://www.universcolis.fr/qui-sommes-nous"
                             }
                         ]
                     }

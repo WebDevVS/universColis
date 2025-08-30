@@ -38,6 +38,7 @@ module.exports = (app) => {
 
     res.locals.scripts = [
       'articleSelector',
+      'articleShare',
       'autocomplete',
       'comparateurFilters',
       'cookiePreferencesButton',

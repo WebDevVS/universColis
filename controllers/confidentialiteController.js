@@ -18,7 +18,7 @@ confidentialiteController.get('/', (req, res) => {
             "confidentialité expédition",
             "gestion consentement cookies"
         ],
-        canonicalUrl: "https://universcolis.fr/politique-confidentialite",
+        canonicalUrl: "https://www.universcolis.fr/politique-confidentialite",
         author: "UniversColis",
         robots: "index, follow",
 
@@ -28,15 +28,15 @@ confidentialiteController.get('/', (req, res) => {
         ogType: "website",
         ogTitle: "Politique de confidentialité & cookies | UniversColis",
         ogDescription: "UniversColis protège vos données et respecte vos choix. Consultez notre politique de confidentialité et de gestion des cookies.",
-        ogUrl: "https://universcolis.fr/politique-confidentialite",
-        ogImage: "https://universcolis.fr/static/img/og-image.png",
+        ogUrl: "https://www.universcolis.fr/politique-confidentialite",
+        ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
         ogSiteName: "UniversColis",
 
         twitterCard: "summary_large_image",
         twitterTitle: "Politique de confidentialité & cookies | UniversColis",
         twitterDescription: "UniversColis : plateforme conforme RGPD, transparente sur la gestion des données et des cookies.",
-        twitterImage: "https://universcolis.fr/static/img/og-image.png",
+        twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         // --- JSON-LD STRUCTURED DATA ---
         structuredData: JSON.stringify({
@@ -45,8 +45,8 @@ confidentialiteController.get('/', (req, res) => {
                 {
                     "@type": "Organization",
                     "name": "UniversColis",
-                    "url": "https://universcolis.fr",
-                    "logo": "https://universcolis.fr/static/img/logo.png",
+                    "url": "https://www.universcolis.fr",
+                    "logo": "https://www.universcolis.fr/static/img/logo.png",
                     "contactPoint": {
                         "@type": "ContactPoint",
                         "email": "contact@universcolis.fr",
@@ -60,7 +60,7 @@ confidentialiteController.get('/', (req, res) => {
                 {
                     "@type": "WebPage",
                     "name": "Politique de confidentialité & Cookies",
-                    "url": "https://universcolis.fr/politique-confidentialite",
+                    "url": "https://www.universcolis.fr/politique-confidentialite",
                     "description": "Politique de confidentialité et gestion des cookies de UniversColis : protection des données, droits utilisateur, conformité RGPD.",
                     "inLanguage": "fr",
                     "datePublished": "2025-08-25",
@@ -72,13 +72,13 @@ confidentialiteController.get('/', (req, res) => {
                                 "@type": "ListItem",
                                 "position": 1,
                                 "name": "Accueil",
-                                "item": "https://universcolis.fr/"
+                                "item": "https://www.universcolis.fr/"
                             },
                             {
                                 "@type": "ListItem",
                                 "position": 2,
                                 "name": "Politique de confidentialité",
-                                "item": "https://universcolis.fr/politique-confidentialite"
+                                "item": "https://www.universcolis.fr/politique-confidentialite"
                             }
                         ]
                     }

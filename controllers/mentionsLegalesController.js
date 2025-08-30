@@ -21,7 +21,7 @@ mentionsLegalesController.get('/', (req, res) => {
             "loi applicable",
             "tribunaux compétents"
         ],
-        canonicalUrl: "https://universcolis.fr/mentions-legales",
+        canonicalUrl: "https://www.universcolis.fr/mentions-legales",
         author: "VS Web Ltd",
         robots: "index, follow",
 
@@ -31,15 +31,15 @@ mentionsLegalesController.get('/', (req, res) => {
         ogType: "website",
         ogTitle: "Mentions légales | UniversColis",
         ogDescription: "Consultez les mentions légales du site UniversColis : éditeur, hébergeur, droits d’auteur, responsabilité et juridiction.",
-        ogUrl: "https://universcolis.fr/mentions-legales",
-        ogImage: "https://universcolis.fr/static/img/og-image.png",
+        ogUrl: "https://www.universcolis.fr/mentions-legales",
+        ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
         ogSiteName: "UniversColis",
 
         twitterCard: "summary",
         twitterTitle: "Mentions légales | UniversColis",
         twitterDescription: "Mentions légales officielles du site UniversColis : éditeur, hébergeur, droits, responsabilité.",
-        twitterImage: "https://universcolis.fr/static/img/og-image.png",
+        twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         // --- JSON-LD STRUCTURED DATA ---
         structuredData: JSON.stringify({
@@ -48,7 +48,7 @@ mentionsLegalesController.get('/', (req, res) => {
                 {
                     "@type": "Organization",
                     "name": "VS Web Ltd",
-                    "url": "https://universcolis.fr",
+                    "url": "https://www.universcolis.fr",
                     "vatID": "BG208279842",
                     "identifier": "208279842",
                     "address": {
@@ -64,7 +64,7 @@ mentionsLegalesController.get('/', (req, res) => {
                     "@type": "Person",
                     "name": "Dobrinka Naydenova",
                     "jobTitle": "Directrice de la publication",
-                    "worksFor": { "@id": "https://universcolis.fr" }
+                    "worksFor": { "@id": "https://www.universcolis.fr" }
                 },
                 {
                     "@type": "WebHostingService",
@@ -88,7 +88,7 @@ mentionsLegalesController.get('/', (req, res) => {
                 {
                     "@type": "WebPage",
                     "name": "Mentions légales",
-                    "url": "https://universcolis.fr/mentions-legales",
+                    "url": "https://www.universcolis.fr/mentions-legales",
                     "description": "Mentions légales officielles du site UniversColis : éditeur, hébergeur, droits d’auteur, responsabilité, loi applicable et tribunaux compétents.",
                     "inLanguage": "fr",
                     "datePublished": "2025-08-25",

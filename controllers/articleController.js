@@ -21,8 +21,8 @@ articleController.get('/', async (req, res) => {
       "emballer livre",
       "emballer œuvre d’art"
     ];
-    const canonicalUrl = "https://universcolis.fr/conseils";
-    const ogImage = "https://universcolis.fr/static/img/og-image.png";
+    const canonicalUrl = "https://www.universcolis.fr/conseils";
+    const ogImage = "https://www.universcolis.fr/static/img/og-image.png";
 
     // JSON-LD hub (WebPage + CollectionPage + ImageObject)
     const structuredData = {
@@ -43,8 +43,8 @@ articleController.get('/', async (req, res) => {
           "hasPart": articles.map(article => ({
             "@type": "CreativeWork",
             "name": article.cardTitle,
-            "url": `https://universcolis.fr/conseils/${article.slug}`,
-            "image": `https://universcolis.fr/static/img/cardImg/${article.cardImg}`,
+            "url": `https://www.universcolis.fr/conseils/${article.slug}`,
+            "image": `https://www.universcolis.fr/static/img/cardImg/${article.cardImg}`,
             "description": article.cardImgDescription
           }))
         },
@@ -66,9 +66,9 @@ articleController.get('/', async (req, res) => {
       "itemListElement": articles.map((article, i) => ({
         "@type": "ListItem",
         "position": i + 1,
-        "url": `https://universcolis.fr/conseils/${article.slug}`,
+        "url": `https://www.universcolis.fr/conseils/${article.slug}`,
         "name": article.cardTitle,
-        "image": `https://universcolis.fr/static/img/cardImg/${article.cardImg}`,
+        "image": `https://www.universcolis.fr/static/img/cardImg/${article.cardImg}`,
         "description": article.cardImgDescription
       }))
     };
