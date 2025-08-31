@@ -48,10 +48,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Material Icons (préchargement si utilisé) -->
-    <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" as="style" onload="this.rel='stylesheet'">
-    <noscript>
+
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    </noscript>
 
     {{#if (isProd)}}
     <link href="/static/css/style.min.css" type="text/css" rel="stylesheet">
@@ -267,7 +265,6 @@
     {{/if}}
 
     <!-- Scripts spécifiques cookies -->
-    <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
     <script src="/static/js/cookiesConfig.min.js"></script>
     <script src="/static/js/cookiePreferencesButton.min.js"></script>
 
