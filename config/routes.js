@@ -11,6 +11,7 @@ const commentCaMarcheController = require("../controllers/commentCaMarcheControl
 const mentionsLegalesController = require("../controllers/mentionsLegalesController")
 const confidentialiteController = require("../controllers/confidentialiteController")
 
+
 const cspSuivi = require("../middlewares/cspSuivi");
 
 module.exports = (app) => {
@@ -24,6 +25,7 @@ module.exports = (app) => {
     app.use('/comment-ca-marche', commentCaMarcheController)
     app.use('/mentions-legales', mentionsLegalesController)
     app.use('/politique-confidentialite', confidentialiteController)
+    
 
     app.use((req, res) => {
         res.status(404).render('404');

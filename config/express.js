@@ -71,7 +71,8 @@ module.exports = (app) => {
           "https://www.google-analytics.com",
           "https://www.17track.net",
           "https://cdn.track123.com",
-          "https://www.track123.com"
+          "https://www.track123.com",
+          "https://www.universcolis.fr"
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
