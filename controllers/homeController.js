@@ -1,12 +1,14 @@
 const { getAll } = require('../services/countryService')
 const { getAllCategories } = require('../services/categoryService')
 const carriers = require('../static/data/carriersLogo.json')
+const actualitesService = require('../services/actualitesService')
 const homeController = require('express').Router()
 
 homeController.get('/', async (req, res) => {
     try {
         const countries = await getAll();
         const categories = await getAllCategories();
+        const actualites = await actualitesService.getLatest(3);
 
         res.render('home', {
             title: 'Accueil',
@@ -14,6 +16,7 @@ homeController.get('/', async (req, res) => {
             countries,
             categories,
             carriers,
+            actualites,
             hasAutocomplete: true,
 
             // SEO DYNAMIQUE

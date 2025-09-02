@@ -1,0 +1,88 @@
+<!-- Contenu principal -->
+<div class="article-container mt-3">
+    <!-- Header de l'article -->
+    <header class="article-header">
+        <div class="article-meta">
+            <div class="article-date">
+                <i class="fa-regular fa-calendar"></i>
+                <span>{{publishedDate}}</span>
+            </div>
+            <div class="article-category">{{keyWord}}</div>
+        </div>
+
+        <h1 class="article-title">{{title}}</h1>
+        <p class="article-lead">
+        </p>
+    </header>
+
+    <!-- Contenu de l'article -->
+    <article class="article-content">
+        <!-- Image illustrative -->
+        <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}" class="article-image article-image-right">
+
+        <div class="article-text">
+            {{#each paragraphs}}
+
+            {{#if this.pTitle}}
+            <h3>{{this.pTitle}}</h3>
+            {{/if}}
+
+            {{#if this.hasLinks}}
+            <p>{{{parseMarkdownLinks this.text}}}</p>
+
+            {{else}}
+            <p>{{this.text}}</p>
+
+            {{/if}}
+
+            {{/each}}
+        </div>
+
+        {{#if sources.length}}
+        <div class="article-sources">
+            <h3>Sources</h3>
+            <ul>
+                {{#each sources}}
+                <li>
+                    <strong>{{this.name}}</strong>
+                    {{#if this.article}}
+                    {{this.article}}
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+        <!-- CTA vers le comparateur -->
+        <div class="article-cta">
+            <h3 class="cta-title">Trouvez des alternatives moins chères</h3>
+            <a href="/" class="cta-button">
+                <i class="fa-solid fa-search"></i>
+                Comparer les tarifs maintenant
+            </a>
+        </div>
+    </article>
+
+    <!-- Navigation entre articles -->
+    <nav class="article-navigation">
+        {{#if prevSlug}}
+        <a href="/actualites/{{prevSlug}}" class="nav-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Article précédent{{#if prevTitle}} : {{prevTitle}}{{/if}}</span>
+        </a>
+        {{/if}}
+
+        <a href="/actualites" class="nav-back-home">
+            <i class="fa-solid fa-list"></i>
+            Toutes les actualités
+        </a>
+
+        {{#if nextSlug}}
+        <a href="/actualites/{{nextSlug}}" class="nav-link next">
+            <span>Article suivant{{#if nextTitle}} : {{nextTitle}}{{/if}}</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {{/if}}
+    </nav>
+</div>

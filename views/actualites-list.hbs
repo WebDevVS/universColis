@@ -1,0 +1,133 @@
+{{!--  
+<!-- Breadcrumb -->
+<nav class="page-breadcrumb">
+    <div class="container">
+        <div class="articles-container">
+            <a href="/" class="breadcrumb-link">Accueil</a>
+            <span class="mx-2">></span>
+            <span class="breadcrumb-current">Actualités</span>
+        </div>
+    </div>
+</nav> --}}
+
+<!-- Header de la page -->
+<header class="page-header">
+    <div class="articles-container mt-3">
+        <h1 class="page-title">Les actualités</h1>
+        <p class="page-subtitle">
+            Restez informé des dernières évolutions qui impactent vos envois
+        </p>
+    </div>
+</header>
+
+{{!--  
+<!-- Filtres -->
+<div class="articles-container">
+    <div class="filters-section">
+        <h2 class="filters-title">
+            <i class="fa-solid fa-filter"></i>
+            Filtrer les actualités
+        </h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <select class="filter-select form-select">
+                    <option value="">Toutes les catégories</option>
+                    <option value="tarifs">Tarifs</option>
+                    <option value="reglementation">Réglementation</option>
+                    <option value="conseils">Conseils</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="filter-select form-select">
+                    <option value="">Toutes les dates</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="filter-select form-select">
+                    <option value="recent">Plus récent</option>
+                    <option value="ancien">Plus ancien</option>
+                    <option value="titre">Par titre</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<!-- Liste des articles -->
+<div class="articles-container">
+   
+    {{#each actualites}}
+    <article class="article-card-listing">
+        <div class="article-card-content">
+            <div class="article-image-container">
+                <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}" class="article-image-listing">
+            </div>
+            <div class="article-content-listing">
+                <div class="article-meta-listing">
+                    <div class="article-date-listing">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span>{{publishedDate}}</span>
+                    </div>
+                    <div class="article-category-listing">{{keyWord}}</div>
+                </div>
+                <h2 class="article-title-listing">
+                    <a href="/actualites/{{slug}}">
+                        {{resumeTitle}}
+                    </a>
+                </h2>
+                <p class="article-excerpt-listing">
+                    {{description}}
+                </p>
+                <a href="/actualites/{{slug}}" class="article-read-more-listing">
+                    Lire l'article complet
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </article>
+    {{/each}}
+
+    <!-- Pagination -->
+    {{#if totalPages}}
+    <div class="pagination-container">
+        <nav class="pagination-nav">
+            {{#if (gt currentPage 1)}}
+            <a href="?page={{subtract currentPage 1}}" class="pagination-link">
+                <i class="fa-solid fa-chevron-left"></i>
+            </a>
+            {{else}}
+            <span class="pagination-link disabled">
+                <i class="fa-solid fa-chevron-left"></i>
+            </span>
+            {{/if}}
+
+            {{#each (range 1 totalPages)}}
+            <a href="?page={{this}}" class="pagination-link {{#if (eq ../currentPage this)}}active{{/if}}">
+                {{this}}
+            </a>
+            {{/each}}
+
+            {{#if (lt currentPage totalPages)}}
+            <a href="?page={{add currentPage 1}}" class="pagination-link">
+                <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            {{else}}
+            <span class="pagination-link disabled">
+                <i class="fa-solid fa-chevron-right"></i>
+            </span>
+            {{/if}}
+        </nav>
+    </div>
+    {{/if}}
+
+    <!-- CTA retour accueil -->
+    <div class="back-to-home">
+        <a href="/" class="home-cta">
+            <i class="fa-solid fa-home"></i>
+            Retour à l'accueil
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+</div>

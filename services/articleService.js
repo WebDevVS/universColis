@@ -16,4 +16,4 @@ module.exports = {
     getAll,
     getBySlug,
     getMenuTiteles
-}
+} 

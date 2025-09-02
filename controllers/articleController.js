@@ -71,7 +71,7 @@ articleController.get('/', async (req, res) => {
         "image": `https://www.universcolis.fr/static/img/cardImg/${article.cardImg}`,
         "description": article.cardImgDescription
       }))
-    };
+    }; 
 
     res.render('articles-list', {
       title: 'Conseils d’emballage',

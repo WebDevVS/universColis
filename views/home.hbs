@@ -266,3 +266,49 @@
   </div>
 </section>
 
+<!-- Section Actualités -->
+<section class="news-section">
+  <div class="container">
+    <div class="news-header">
+      <h2 class="news-title">Les actualités</h2>
+      <p class="news-subtitle">Restez informé des dernières évolutions qui impactent vos envois</p>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+   
+        {{#each actualites}}
+        <article class="news-card-mixed">
+          <div class="news-meta-mixed">
+            <div class="news-date-compact">
+              <i class="fa-regular fa-calendar"></i>
+              <span>{{publishedDate}}</span>
+            </div>
+            <div class="news-category-compact">{{keyWord}}</div>
+          </div>
+
+          <h3 class="news-title-mixed">{{resumeTitle}}</h3>
+          <p class="news-excerpt-mixed">
+            {{description}}
+          </p>
+
+          <a href="{{canonicalUrl}}" class="news-read-more-mixed">
+            Lire l'article complet
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+        {{/each}}
+
+      </div>
+    </div>
+
+    <!-- Footer avec lien vers toutes les actualités -->
+    <div class="news-footer">
+      <a href="/actualites" class="news-view-all">
+        <i class="fa-solid fa-newspaper"></i>
+        Voir toutes les actualités
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section> 

@@ -9,7 +9,16 @@ module.exports = (app) => {
   const hbs = handlebars.create({
     extname: '.hbs',
     helpers: {
+      add: (a, b) => a + b,
+      subtract: (a, b) => a - b,
       eq: (a, b) => a === b,
+      gt: (a, b) => a > b,
+      lt: (a, b) => a < b,
+      range: function(start, end) {
+        let arr = [];
+        for (let i = start; i <= end; i++) arr.push(i);
+        return arr;
+      },
       split: (string, delimiter) => {
         if (typeof string === 'string') {
           return string.split(delimiter).map(str => str.trim());
@@ -18,7 +27,13 @@ module.exports = (app) => {
       },
       json: (context) => JSON.stringify(context),
       multiply: (a, b) => a * b,
-      isProd: () => process.env.NODE_ENV === 'production' // 🔧 nouveau helper
+      isProd: () => process.env.NODE_ENV === 'production',
+      parseMarkdownLinks: function(text) {
+        if (!text) return '';
+        return new hbs.handlebars.SafeString(
+          text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+        );
+      }
     }
   });
 
