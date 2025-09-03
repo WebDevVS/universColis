@@ -18,7 +18,8 @@
     <!-- Contenu de l'article -->
     <article class="article-content">
         <!-- Image illustrative -->
-        <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}" class="article-image article-image-right">
+        <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}"
+            class="article-image article-image-right">
 
         <div class="article-text">
             {{#each paragraphs}}
@@ -86,3 +87,8 @@
         {{/if}}
     </nav>
 </div>
+
+<!-- Bouton partager l'article -->
+<button id="share-article" class="share-article-btn" title="Partager l'article">
+  <i class="fa-solid fa-share"></i>
+</button>

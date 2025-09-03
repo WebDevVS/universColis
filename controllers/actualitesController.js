@@ -39,6 +39,7 @@ actualitesController.get('/:slug', async (req, res) => {
     const next = index < all.length - 1 ? all[index + 1] : null;
 
     res.render('actualites', {
+        page: 'actualites',
         ...actualite,
         prevSlug: prev ? prev.slug : null,
         nextSlug: next ? next.slug : null,

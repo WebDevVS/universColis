@@ -14,7 +14,7 @@ module.exports = (app) => {
       eq: (a, b) => a === b,
       gt: (a, b) => a > b,
       lt: (a, b) => a < b,
-      range: function(start, end) {
+      range: function (start, end) {
         let arr = [];
         for (let i = start; i <= end; i++) arr.push(i);
         return arr;
@@ -28,12 +28,13 @@ module.exports = (app) => {
       json: (context) => JSON.stringify(context),
       multiply: (a, b) => a * b,
       isProd: () => process.env.NODE_ENV === 'production',
-      parseMarkdownLinks: function(text) {
+      parseMarkdownLinks: function (text) {
         if (!text) return '';
         return new hbs.handlebars.SafeString(
           text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
         );
-      }
+      },
+      or: (a, b) => a || b
     }
   });
 

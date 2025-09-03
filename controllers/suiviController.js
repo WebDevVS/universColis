@@ -3,6 +3,7 @@ const suiviController = require('express').Router()
 suiviController.get('/', (req, res) => {
     res.render('suivi', {
         title: 'Suivre mon colis',
+        page: 'suivi',
         bodyClass: 'suivi-page',
 
         // SEO dynamique

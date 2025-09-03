@@ -260,7 +260,7 @@
     <script src="/static/js/suivi.min.js" defer></script>
     {{/if}}
 
-    {{#if (eq page 'article')}}
+    {{#if (or (eq page 'article') (eq page 'actualites'))}}
     <script src="/static/js/articleShare.min.js"></script>
     {{/if}}
 
@@ -291,7 +291,7 @@
     <script src="/static/js/suivi.js" defer></script>
     {{/if}}
 
-    {{#if (eq page 'article')}}
+    {{#if (or (eq page 'article') (eq page 'actualites'))}}
     <script src="/static/js/articleShare.js"></script>
     {{/if}}
 

@@ -121,6 +121,7 @@ articleController.get('/:slug', async (req, res) => {
 
     res.render('article', {
       bodyClass: 'article-page',
+      page: 'article',
       article,
       seoTitle: article.seoTitle,
       seoDescription: article.seoDescription,

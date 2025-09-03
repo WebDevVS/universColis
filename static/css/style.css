@@ -3443,8 +3443,8 @@ div .input-group-text {
 /* Ajoute dans style.css */
 .share-article-btn {
   position: fixed;
-  bottom: 90px; /* juste au-dessus du bouton remonter */
-  right: 32px;
+  bottom: 80px; /* juste au-dessus du bouton remonter */
+  right: 20px;
   z-index: 1001;
   background: var(--primary-color);
   color: #fff;
@@ -3464,8 +3464,8 @@ div .input-group-text {
 }
 @media (max-width: 600px) {
   .share-article-btn {
-    right: 16px;
-    bottom: 90px;
+    right: 15px;
+    bottom: 70px;
     width: 44px;
     height: 44px;
     font-size: 1.2rem;
