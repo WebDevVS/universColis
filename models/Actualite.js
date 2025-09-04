@@ -22,7 +22,7 @@ const actualiteShema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['tarifs', 'reglementation', 'conseils', 'transport', 'douanes', 'actualites']
+        enum: ['tarifs', 'reglementation', 'conseils', 'transport', 'douanes', 'actualites', 'logistique']
     },
     seoTitle: { type: String },
     seoDescription: { type: String },
