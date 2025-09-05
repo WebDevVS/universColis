@@ -27,7 +27,7 @@ module.exports = (app) => {
       },
       json: (context) => JSON.stringify(context),
       multiply: (a, b) => a * b,
-      isProd: () => process.env.NODE_ENV === 'production',
+      
       parseMarkdownLinks: function (text) {
         if (!text) return '';
         return new hbs.handlebars.SafeString(
