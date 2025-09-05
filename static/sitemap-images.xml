@@ -1,306 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
     <loc>https://www.universcolis.fr/</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/logo.png</image:loc>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/logo.png</image:loc>
+        <image:title>UniversColis Logo</image:title>
+        <image:caption>Logo UniversColis</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/mon-materiel</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/materiel.jpg</image:loc>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/materiel.jpg</image:loc>
+        <image:title>Matériel d'emballage</image:title>
+        <image:caption>Matériel d'emballage pour colis</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-antiquites</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/sculpture-fer-horloge-boite-musique-non-emballes.webp</image:loc>
-      <image:caption>Sculpture en fer, horloge ancienne et boîte à musique non emballées</image:caption>
-      <image:title>Antiquités Fragiles, Sculptures et Petites Statues</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-sculpture-metal-general-cheval-bulle-mousse.webp</image:loc>
-      <image:caption>Emballage sécurisé d’une sculpture en métal sur mousse prédécoupée</image:caption>
-      <image:title>Emballage sécurisé d’une sculpture en métal sur mousse prédécoupée</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/sculpture-metal-boite-mousse-calage-cheval.webp</image:loc>
-      <image:caption>Calage sécurisé d’une sculpture de cheval en métal dans boîte rigide</image:caption>
-      <image:title>Calage sécurisé d’une sculpture de cheval en métal dans boîte rigide</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-ferme-scotch-fragile-sens-colis.webp</image:loc>
-      <image:caption>Colis fermé avec pictogrammes fragiles et orientation</image:caption>
-      <image:title>Colis fermé avec pictogrammes fragiles et orientation</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-sculpture-metal-general-cheval-bulle-mousse.webp</image:loc>
+        
+        <image:caption>Apprenez à emballer et expédier des sculptures et antiquités fragiles grâce à des techniques testées : mousse, papier bulle, étiquetage FRAGILE.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-appareils-electroniques</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/ordinateur-portable-et-casque-non-emballes-expedition.webp</image:loc>
-      <image:caption>Ordinateur portable et casque audio non emballés</image:caption>
-      <image:title>Appareils Électroniques</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-ordinateur-sachet-antistatique-bulle.webp</image:loc>
-      <image:caption>Emballage d’un ordinateur portable avec sachet antistatique et papier bulle</image:caption>
-      <image:title>Emballage d’un ordinateur portable avec sachet antistatique et papier bulle</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/calage-ordinateur-boite-mousse-coussins-air.webp</image:loc>
-      <image:caption>Calage optimal d’un ordinateur dans une boîte rigide pour expédition sécurisée</image:caption>
-      <image:title>Calage optimal d’un ordinateur dans une boîte rigide pour expédition sécurisée</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-batterie-lithium-antistatique-un3480.webp</image:loc>
-      <image:caption>Emballage sécurisé d’une batterie au lithium avec protection réglementaire UN3480</image:caption>
-      <image:title>Emballage sécurisé d’une batterie au lithium avec protection réglementaire UN3480</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-ordinateur-sachet-antistatique-bulle.webp</image:loc>
+        
+        <image:caption>Emballage sécurisé d’appareils électroniques : ordinateur portable, batterie au lithium, console ou tablette. Suivez nos étapes antistatiques et calage mousse.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-bougies</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/bougies-artisanales-design-original-non-emballees.webp</image:loc>
-      <image:caption>Bougies artisanales non emballées avant envoi</image:caption>
-      <image:title>Bougies artisanales non emballées avant envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-bougies-sculptees-chaleur-ete.webp</image:loc>
-      <image:caption>Emballage bougies sculptées chaleur été – aluminium et accessoires</image:caption>
-      <image:title>Emballage bougies sculptées chaleur été – aluminium et accessoires</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-bougies-emballage-isotherme-ferme.webp</image:loc>
-      <image:caption>Colis pour bougies artistiques avec double emballage isotherme</image:caption>
-      <image:title>Colis pour bougies artistiques avec double emballage isotherme</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/bougies-artisanales-protegees-expedition-ete.webp</image:loc>
-      <image:caption>Bougies artisanales protégées pour expédition en été</image:caption>
-      <image:title>Bougies artisanales protégées pour expédition en été</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/bougies-artisanales-protegees-expedition-ete.webp</image:loc>
+        
+        <image:caption>Emballage sécurisé des bougies artisanales contre la chaleur : aluminium, sachets isothermes, mousse, ruban imperméable, astuces d'été.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-une-bouteille</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/bouteille-vin-rouge-verticale-etiquette.webp</image:loc>
-      <image:caption>Bouteille de vin rouge non emballée avant envoi</image:caption>
-      <image:title>Bouteille de vin rouge non emballée avant envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-bouteille-papier-bulle-mousse-nid-abeille.webp</image:loc>
-      <image:caption>Protection individuelle d’une bouteille fragile avant l’expédition</image:caption>
-      <image:title>Protection individuelle d’une bouteille fragile avant l’expédition</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/bouteille-calage-boite-papier-bulle-coussins-air.webp</image:loc>
-      <image:caption>Mise en boîte sécurisée d’une bouteille fragile avec calage complet</image:caption>
-      <image:title>Mise en boîte sécurisée d’une bouteille fragile avec calage complet</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-fragile-et-boite-bouteille-avec-pictogramme.webp</image:loc>
-      <image:caption>Colis d’expédition avec boîte bouteille et étiquetage clair</image:caption>
-      <image:title>Colis d’expédition avec boîte bouteille et étiquetage clair</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-bouteille-papier-bulle-mousse-nid-abeille.webp</image:loc>
+        
+        <image:caption>Emballage optimal de bouteilles fragiles avec papier bulle, mousse, coussins d’air et pictogrammes. Guide visuel ComparateurFrais.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-fleurs-et-plantes</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/plante-en-pot-non-emballee-expedition.webp</image:loc>
-      <image:caption>Plante en pot non emballée avant envoi</image:caption>
-      <image:title>Plante en pot non emballée avant envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/preparation-plante-film-plastique-gel-humidite.webp</image:loc>
-      <image:caption>Préparation d’une plante pour envoi sécurisé</image:caption>
-      <image:title>Préparation d’une plante pour envoi sécurisé</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-plante-carton-haut-separateur-kraft.webp</image:loc>
-      <image:caption>Emballage sécurisé d’une plante haute avec carton et papier kraft</image:caption>
-      <image:title>Emballage sécurisé d’une plante haute avec carton et papier kraft</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/boite-carton-longue-ventilation-plante-fermee.webp</image:loc>
-      <image:caption>Boîte d’expédition fermée avec trous de ventilation pour plante</image:caption>
-      <image:title>Boîte d’expédition fermée avec trous de ventilation pour plante</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/expedition-plantes-fleurs.jpg</image:loc>
+        
+        <image:caption>Suivez les étapes pour emballer correctement vos plantes et fleurs avant expédition : humidité contrôlée, aération, rembourrage, protections thermiques.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-un-instrument-de-musique</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/guitare-acoustique-non-emballee-expedition.webp</image:loc>
-      <image:caption>Guitare acoustique non emballée avant expédition</image:caption>
-      <image:title>Guitare acoustique non emballée avant expédition</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-guitare-mousse-bulle-fragile.webp</image:loc>
-      <image:caption>Préparation d’une guitare pour l’expédition – protection complète</image:caption>
-      <image:title>Préparation d’une guitare pour l’expédition – protection complète</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/guitare-carton-calage-mousse-journal.webp</image:loc>
-      <image:caption>Calage complet d’une guitare dans une boîte sans étui</image:caption>
-      <image:title>Calage complet d’une guitare dans une boîte sans étui</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-fragile-ruban-adhesif-marque.webp</image:loc>
-      <image:caption>Colis fermé avec ruban adhésif marqué FRAGILE</image:caption>
-      <image:title>Colis fermé avec ruban adhésif marqué FRAGILE</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-guitare-mousse-bulle-fragile.webp</image:loc>
+        
+        <image:caption>Apprenez à emballer une guitare, un violon ou une flûte pour l’envoi. Astuces de protection, rembourrage, étiquettes, et erreurs à éviter.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-livres-et-magazines</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/pile-livres-differents-formats-non-emballes.webp</image:loc>
-      <image:caption>Pile de livres de formats variés avant emballage</image:caption>
-      <image:title>Pile de livres de formats variés avant emballage</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-livre-ancien-comic-emballage-plastique.webp</image:loc>
-      <image:caption>Protection individuelle d’un livre ancien et d’un comic</image:caption>
-      <image:title>Protection individuelle d’un livre ancien et d’un comic</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/enveloppe-rigide-protection-livre-fragile-expedition.webp</image:loc>
-      <image:caption>Enveloppe rigide pour expédition de livre fragile</image:caption>
-      <image:title>Enveloppe rigide pour expédition de livre fragile</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-livres-comics-coussins-air-protection-zip.webp</image:loc>
-      <image:caption>Emballage sécurisé de livres et comics avec coussins d’air</image:caption>
-      <image:title>Emballage sécurisé de livres et comics avec coussins d’air</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-livres-comics-coussins-air-protection-zip.webp</image:loc>
+        
+        <image:caption>Méthodes d’emballage optimales : sachet zip, coussins d’air, enveloppe rigide et renforts en carton pour protéger vos livres et magazines fragiles ou anciens.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-un-miroir</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/cadre-photo-verre-corgi-et-famille-non-emballes.webp</image:loc>
-      <image:caption>Cadres photo en verre non emballés avec chien Corgi et famille</image:caption>
-      <image:title>Cadres photo en verre non emballés avec chien Corgi et famille</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-verre-miroir-scotch-coins.webp.webp</image:loc>
-      <image:caption>Protection du verre d’un miroir avant l’envoi</image:caption>
-      <image:title>Protection du verre d’un miroir avant l’envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-complet-miroir-film-etirable-protection.webp.webp</image:loc>
-      <image:caption>Emballage complet d’un miroir avec protections avant envoi</image:caption>
-      <image:title>Emballage complet d’un miroir avec protections avant envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-ferme-etiquette-fragile-scotch-carton.webp.webp</image:loc>
-      <image:caption>Colis fermé prêt à être expédié avec étiquette fragile</image:caption>
-      <image:title>Colis fermé prêt à être expédié avec étiquette fragile</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-complet-miroir-film-etirable-protection.webp</image:loc>
+        
+        <image:caption>Apprenez à emballer un miroir ou un cadre photo de façon professionnelle pour éviter toute casse. Illustrations étape par étape incluses.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-montres-des-bijoux</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/montre-plongee-et-bijoux-argentes-non-emballes.webp</image:loc>
-      <image:caption>Montre et bijoux non emballés avant envoi sécurisé</image:caption>
-      <image:title>Montre et bijoux non emballés avant envoi sécurisé</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/montres-luxe-emballage-papier-bulle-pochette.webp</image:loc>
-      <image:caption>Montres de luxe emballées pour expédition sécurisée</image:caption>
-      <image:title>Montres de luxe emballées pour expédition sécurisée</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/montres-bijoux-boite-carton-mousse-haute-densite.webp</image:loc>
-      <image:caption>Montres et bijoux emballés dans mousse haute densité</image:caption>
-      <image:title>Montres et bijoux emballés dans mousse haute densité</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-neutre-ruban-securite-void.webp</image:loc>
-      <image:caption>Colis sécurisé avec ruban VOID</image:caption>
-      <image:title>Colis sécurisé avec ruban VOID</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/montres-luxe-emballage-papier-bulle-pochette.webp</image:loc>
+        
+        <image:caption>Utilisez pochette velours, mousse haute densité et ruban VOID pour expédier montres et bijoux avec sécurité, discrétion et style.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-objets-en-ceramique-et-porcelaine</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/pile-assiettes-tasse-verre-non-emballe.webp</image:loc>
-      <image:caption>Vaisselle non emballée avant expédition</image:caption>
-      <image:title>Vaisselle non emballée avant expédition</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-vase-ceramique-bulle-carton.webp</image:loc>
-      <image:caption>Emballage sécurisé d’un vase fragile pour envoi</image:caption>
-      <image:title>Emballage sécurisé d’un vase fragile pour envoi</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-tasses-carton-separation-bulle.webp</image:loc>
-      <image:caption>Emballage de tasses avec calage séparé en carton pour l’expédition</image:caption>
-      <image:title>Emballage de tasses avec calage séparé en carton pour l’expédition</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/double-box-fragile-grande-boite.webp</image:loc>
-      <image:caption>Double emballage avec grande boîte marquée FRAGILE</image:caption>
-      <image:title>Double emballage avec grande boîte marquée FRAGILE</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-tasses-carton-separation-bulle.webp</image:loc>
+        
+        <image:caption>Apprenez à protéger des tasses, vases ou assiettes fragiles avec les techniques de calage, double emballage et séparation. Tutoriel illustré étape par étape.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-parfums-et-produits-cosmetiques</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/parfum-et-cosmetiques-non-emballes-expedition.webp</image:loc>
-      <image:caption>Parfum et cosmétiques avant emballage</image:caption>
-      <image:title>Parfum et cosmétiques avant emballage</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-bouteille-shampoing-colis-liquide.webp</image:loc>
-      <image:caption>Emballage sécurisé d’un flacon de shampoing pour expédition</image:caption>
-      <image:title>Emballage sécurisé d’un flacon de shampoing pour expédition</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-cosmetiques-parfums-ziplock-carton.webp</image:loc>
-      <image:caption>Emballage de cosmétiques et parfums dans carton sécurisé</image:caption>
-      <image:title>Emballage de cosmétiques et parfums dans carton sécurisé</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-fragile-ruban-impermeable.webp</image:loc>
-      <image:caption>Colis fragile fermé avec ruban imperméable et étiquette discrète</image:caption>
-      <image:title>Colis fragile fermé avec ruban imperméable et étiquette discrète</image:title>
-    </image:image>
-  </url>
-
-  <url>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-bouteille-shampoing-colis-liquide.webp</image:loc>
+        
+        <image:caption>Guide pratique : scellez les bouchons, utilisez des sachets zip, doublez l’emballage et protégez les flacons avec du papier bulle. Expédition sans fuite ni casse.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-un-tableau-ou-une-oeuvre-art</loc>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/cardImg/tableau-paysage-impressionniste-large-non-emballe.webp</image:loc>
-      <image:caption>Tableau impressionniste non emballé en format large</image:caption>
-      <image:title>Tableau impressionniste non emballé en format large</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-tableau-papier-glassine-toile-paysage.webp</image:loc>
-      <image:caption>Protection d’un tableau sur toile avec papier glassine</image:caption>
-      <image:title>Protection d’un tableau sur toile avec papier glassine</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-tableau-coins-mousse-papier-bulle-boite-carton.webp</image:loc>
-      <image:caption>Protection complète d’un tableau dans une boîte rigide</image:caption>
-      <image:title>Protection complète d’un tableau dans une boîte rigide</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.universcolis.fr/static/img/articleImg/colis-ferme-oeuvre-art-etiquette-fragile-ne-pas-empiler.webp</image:loc>
-      <image:caption>Colis fermé avec étiquetage complet pour œuvre d’art</image:caption>
-      <image:title>Colis fermé avec étiquetage complet pour œuvre d’art</image:title>
-    </image:image>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-tableau-coins-mousse-papier-bulle-boite-carton.webp</image:loc>
+        
+        <image:caption>Protégez vos œuvres d’art avec notre guide complet : papier glassine, protections mousse, boîte rigide et étiquetage FRAGILE.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/hausse-tarifs-la-poste-janvier-2026-7-4-pourcent</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/hausse-tarifs-la-poste-janvier-2026-7-4-pourcent.webp</image:loc>
+        <image:title>Hausse des tarifs postaux 2026 – Courrier et colis</image:title>
+        <image:caption>La Poste augmente ses tarifs courrier et colis de 7,4 % en moyenne à partir de janvier 2026</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/hausse-colissimo-janvier-2026-3-4-pourcent</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/hausse-colissimo-janvier-2026-3-4-pourcent.webp</image:loc>
+        <image:title>Tarifs Colissimo 2026 – France et international</image:title>
+        <image:caption>Colissimo : hausse moyenne des tarifs de 3,4 % à partir de janvier 2026</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/hausse-tarifs-usa-colis-export-août-2025</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/hausse-tarifs-usa-colis-export-août-2025.webp</image:loc>
+        <image:title>Tarifs USA 2025 – Suspension des envois postaux internationaux</image:title>
+        <image:caption>Hausse de 10 à 50 % des tarifs vers les États-Unis en août 2025</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/logtech-startups-logistique-septembre-2025</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/programme-logtech-emballage-e-commerce-2025.webp</image:loc>
+        <image:title>LogTech – Soutien à l’innovation logistique 2025</image:title>
+        <image:caption>Le programme LogTech soutient 5 startups de la logistique durable en septembre 2025</image:caption>
+      </image:image>
+    
   </url>
-  
 </urlset>
