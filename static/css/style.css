@@ -2,6 +2,21 @@
 /* Charge seulement ce que tu utilises vraiment */
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap');
 
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-regular-400.woff2') format('woff2');
+  font-display: swap;
+}
+
 /* ===== VARIABLES CSS GLOBALES ===== */
 :root {
   /* Palette de couleurs principale */

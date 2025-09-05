@@ -38,9 +38,45 @@ actualitesController.get('/:slug', async (req, res) => {
     const prev = index > 0 ? all[index - 1] : null;
     const next = index < all.length - 1 ? all[index + 1] : null;
 
+    // Correction : transforme structuredData en JSON string
+    const structuredData = actualite.structuredData
+        ? (typeof actualite.structuredData === 'string'
+            ? actualite.structuredData
+            : JSON.stringify(actualite.structuredData, null, 2))
+        : null;
+
     res.render('actualites', {
         page: 'actualites',
         ...actualite,
+
+        // SEO
+        seoTitle: actualite.seoTitle,
+        seoDescription: actualite.seoDescription,
+        seoKeywords: actualite.seoKeywords,
+        canonicalUrl: actualite.canonicalUrl,
+        robots: "index, follow",
+
+        publishedDate: actualite.publishedDate,
+        modifiedDate: actualite.modifiedDate,
+
+        // Open Graph / Twitter
+        ogType: actualite.ogType,
+        ogTitle: actualite.ogTitle,
+        ogDescription: actualite.ogDescription,
+        ogImage: actualite.ogImage,
+        ogUrl: actualite.canonicalUrl,
+        ogLocale: "fr_FR",
+        twitterCard: "summary_large_image",
+        twitterTitle: actualite.twitterTitle,
+        twitterDescription: actualite.twitterDescription,
+        twitterImage: actualite.twitterImage,
+
+        author: actualite.author || "UniversColis",
+
+        // JSON-LD
+        structuredData,
+
+        // Navigation
         prevSlug: prev ? prev.slug : null,
         nextSlug: next ? next.slug : null,
         prevTitle: prev ? prev.resumeTitle : null,
