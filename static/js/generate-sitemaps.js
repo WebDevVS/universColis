@@ -188,11 +188,17 @@ function generateAtomFeed(articles) {
   <id>${BASE_URL}/</id>
   ${articles.map(article => `
     <entry>
-      <title>${article.loc.replace('/conseils/', '').replace(/-/g, ' ')}</title>
+      <title>${article.loc.startsWith('/conseils/') 
+        ? article.loc.replace('/conseils/', '').replace(/-/g, ' ')
+        : article.loc.replace('/actualites/', '').replace(/-/g, ' ')}
+      </title>
       <link href="${BASE_URL}${article.loc}"/>
       <id>${BASE_URL}${article.loc}</id>
       ${article.lastmod ? `<updated>${article.lastmod}</updated>` : ''}
-      <summary>Un nouveau guide est disponible.</summary>
+      <summary>${article.loc.startsWith('/conseils/') 
+        ? 'Un nouveau guide est disponible.' 
+        : 'Une nouvelle actualité est disponible.'}
+      </summary>
     </entry>
   `).join('')}
 </feed>`;

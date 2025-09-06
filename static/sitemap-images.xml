@@ -163,5 +163,14 @@
         <image:caption>Le programme LogTech soutient 5 startups de la logistique durable en septembre 2025</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/jai-un-colis-pour-vous-emission-francaise</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/jai-un-colis-pour-vous.webp</image:loc>
+        <image:title>Affiche émission « J’ai un colis pour vous »</image:title>
+        <image:caption>Illustration graphique de l’émission télévisée française « J’ai un colis pour vous »</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
