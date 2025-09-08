@@ -172,5 +172,23 @@
         <image:caption>Illustration graphique de l’émission télévisée française « J’ai un colis pour vous »</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/emballage-durable-marche-france-2025</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/marche-emballage-durable-france-2025-7-21-milliards-euros.webp</image:loc>
+        <image:title>Marché emballage durable France 2025</image:title>
+        <image:caption>France 2025 : marché de l’emballage durable à 7,21 Md€ avec croissance annuelle de 5,6 %</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/greve-10-septembre-2025-perturbations-colis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/greve-10-septembre-2025-perturbations-colis-livraisons.webp</image:loc>
+        <image:title>Grève 10 septembre 2025 perturbations colis</image:title>
+        <image:caption>Grève du 10 septembre 2025 : perturbations colis et livraisons en France</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

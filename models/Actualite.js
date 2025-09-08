@@ -13,7 +13,8 @@ const actualiteShema = new Schema({
     }],
     sources: [{
         name: String,
-        article: String
+        article: String,
+        hasLinks: { type: Boolean, default: false }
     }],
     actualiteImg: { type: String, required: true },
     actualiteImgAlt: { type: String, required: true },
@@ -22,7 +23,7 @@ const actualiteShema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['tarifs', 'reglementation', 'conseils', 'transport', 'douanes', 'actualites', 'logistique', 'télévision']
+        enum: ['tarifs', 'reglementation', 'conseils', 'transport', 'douanes', 'actualites', 'logistique', 'télévision', ' emballage durable', 'grève']
     },
     seoTitle: { type: String },
     seoDescription: { type: String },

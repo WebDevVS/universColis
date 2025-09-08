@@ -31,7 +31,12 @@ module.exports = (app) => {
       parseMarkdownLinks: function (text) {
         if (!text) return '';
         return new hbs.handlebars.SafeString(
-          text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+          text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
+            if (url.startsWith('/') || url.startsWith('#')) {
+              return `<a href="${url}">${linkText}</a>`;
+            }
+            return `<a href="${url}" target="_blank" rel="noopener">${linkText}</a>`;
+          })
         );
       },
       or: (a, b) => a || b

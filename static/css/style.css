@@ -9,6 +9,7 @@
   src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2') format('woff2');
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Font Awesome 6 Free';
   font-style: normal;
@@ -3458,7 +3459,8 @@ div .input-group-text {
 /* Ajoute dans style.css */
 .share-article-btn {
   position: fixed;
-  bottom: 80px; /* juste au-dessus du bouton remonter */
+  bottom: 80px;
+  /* juste au-dessus du bouton remonter */
   right: 20px;
   z-index: 1001;
   background: var(--primary-color);
@@ -3467,16 +3469,18 @@ div .input-group-text {
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
 }
+
 .share-article-btn.copied {
   background: #28a745;
 }
+
 @media (max-width: 600px) {
   .share-article-btn {
     right: 15px;
@@ -3715,6 +3719,17 @@ figure.etape-image:hover .hover-caption {
   opacity: 1;
 }
 
+/* Alignement à gauche pour les titres et paragraphes des étapes */
+.step h3,
+.step h2 {
+  text-align: left !important;
+  color: #333 !important;
+}
+
+.step p {
+  text-align: left !important;
+}
+
 /* ===== SECTION MATÉRIEL RECOMMANDÉ ===== */
 .materiels {
   margin: 2rem 0;
@@ -3780,6 +3795,33 @@ figure.etape-image:hover .hover-caption {
   transform: translateY(-3px);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   border-color: rgba(130, 105, 164, 0.4);
+}
+
+#materiel ul {
+  text-align: left !important;
+  padding-left: 0 !important;
+}
+
+#materiel li,
+.materiel-item {
+  text-align: left !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+/* Alignement à gauche de la liste des matériaux sur mobile */
+@media (max-width: 576px) {
+  #materiel ul {
+    text-align: left !important;
+    padding-left: 0 !important;
+  }
+
+  #materiel li,
+  .materiel-item {
+    text-align: left !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
 }
 
 /* ===== SECTION ERREURS ET BONNES PRATIQUES ===== */
@@ -5492,10 +5534,12 @@ footer {
 
 .article-image {
   width: 100%;
-  max-width: 200px;      /* Limite la largeur max */
+  max-width: 200px;
+  /* Limite la largeur max */
   height: auto;
   display: block;
-  margin: 2rem auto;     /* Centre l'image */
+  margin: 2rem auto;
+  /* Centre l'image */
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
@@ -5510,6 +5554,7 @@ footer {
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
 @media (max-width: 768px) {
   .article-image-right {
     float: none;
@@ -5820,6 +5865,7 @@ footer {
     height: auto;
     min-height: 120px;
   }
+
   .article-image-listing {
     width: 100%;
     height: auto;

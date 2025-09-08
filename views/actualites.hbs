@@ -32,7 +32,7 @@
             <p>{{{parseMarkdownLinks this.text}}}</p>
 
             {{else}}
-            <p>{{this.text}}</p>
+            <p>{{{this.text}}}</p>
 
             {{/if}}
 
@@ -45,9 +45,13 @@
             <ul>
                 {{#each sources}}
                 <li>
-                    <strong>{{this.name}}</strong>
+                    {{#if this.hasLinks}}
+                        {{{parseMarkdownLinks this.name}}}
+                    {{else}}
+                        <strong>{{this.name}}</strong>
+                    {{/if}}
                     {{#if this.article}}
-                    {{this.article}}
+                        {{this.article}}
                     {{/if}}
                 </li>
                 {{/each}}
