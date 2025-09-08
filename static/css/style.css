@@ -5461,6 +5461,18 @@ footer {
 
 /* ===== PAGE ACTUALITÉS  ===== */
 
+.actualites-page {
+  background-image: url('/static/img/actualites.webp');
+  background-color: #E9E6E1;
+  color: #333333;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-blend-mode: soft-light;
+}
+
 /* ===== HEADER D'ARTICLE ===== */
 .article-header {
   text-align: center;

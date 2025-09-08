@@ -18,8 +18,9 @@ actualitesController.get('/', async (req, res) => {
 
     res.render('actualites-list', {
         actualites,
+        bodyClass: 'actualites-page',
         currentPage: page,
-        totalPages
+        totalPages 
     });
 });
 
@@ -47,6 +48,7 @@ actualitesController.get('/:slug', async (req, res) => {
 
     res.render('actualites', {
         page: 'actualites',
+        bodyClass: 'actualites-page',
         ...actualite,
 
         // SEO
