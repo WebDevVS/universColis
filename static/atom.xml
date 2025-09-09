@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2025-09-08T13:46:05.091Z</updated>
+  <updated>2025-09-09T19:06:53.130Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -192,6 +192,16 @@
       <link href="https://www.universcolis.fr/actualites/greve-10-septembre-2025-perturbations-colis"/>
       <id>https://www.universcolis.fr/actualites/greve-10-septembre-2025-perturbations-colis</id>
       <updated>2025-09-08</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>greve 10 septembre 2025 perturbations transporteurs
+      </title>
+      <link href="https://www.universcolis.fr/actualites/greve-10-septembre-2025-perturbations-transporteurs"/>
+      <id>https://www.universcolis.fr/actualites/greve-10-septembre-2025-perturbations-transporteurs</id>
+      <updated>2025-09-09</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
