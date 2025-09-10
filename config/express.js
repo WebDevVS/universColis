@@ -129,7 +129,8 @@ module.exports = (app) => {
           "https://www.17track.net",
           "https://track123.com",
           "https://track123-widget.track123.com",
-          "https://track123-widget.track123cdn.com"
+          "https://track123-widget.track123cdn.com",
+          "https://www.googletagmanager.com"
         ],
 
         // Pour les appels JS type `fetch()` ou XHR

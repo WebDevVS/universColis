@@ -89,7 +89,7 @@ homeController.get('/', async (req, res) => {
                         "@type": "Organization",
                         "name": "UniversColis",
                         "url": "https://www.universcolis.fr/",
-                        "logo": "https://www.universcolis.fr/static/img/copie%20poslednologo1.png",
+                        "logo": "https://www.universcolis.fr/static/img/logo.webp",
                         "sameAs": [
                             "https://www.universcolis.fr/"
                         ]
