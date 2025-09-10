@@ -1,4 +1,4 @@
-// Widgets HTML à injecter selon le choix
+ // Widgets HTML à injecter selon le choix
 const trackerWidgets = {
   'parcelsapp': num => `<iframe src="https://parcelsapp.com/widget?num=${encodeURIComponent(num)}" style="height:600px;" loading="lazy" frameborder="0"></iframe>`,
   'trackglobal': num => `
@@ -174,4 +174,3 @@ window.addEventListener('DOMContentLoaded', function () {
     answer.style.display = 'none';
   });
 });
-
