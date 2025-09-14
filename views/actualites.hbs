@@ -1,5 +1,18 @@
 <!-- Contenu principal -->
 <div class="article-container mt-3">
+
+    <nav class="breadcrumb">
+        <div class="container">
+            <div class="article-container">
+                <a href="/" class="breadcrumb-link">Accueil</a>
+                <span class="mx-2">></span>
+                <a href="/actualites" class="breadcrumb-link">Actualités</a>
+                <span class="mx-2">></span>
+                <span class="breadcrumb-current">{{title}}</span>
+            </div>
+        </div>
+    </nav>
+
     <!-- Header de l'article -->
     <header class="article-header">
         <div class="article-meta">
@@ -9,7 +22,6 @@
             </div>
             <div class="article-category">{{keyWord}}</div>
         </div>
-
         <h1 class="article-title">{{title}}</h1>
         <p class="article-lead">
         </p>
@@ -46,12 +58,12 @@
                 {{#each sources}}
                 <li>
                     {{#if this.hasLinks}}
-                        {{{parseMarkdownLinks this.name}}}
+                    {{{parseMarkdownLinks this.name}}}
                     {{else}}
-                        <strong>{{this.name}}</strong>
+                    <strong>{{this.name}}</strong>
                     {{/if}}
                     {{#if this.article}}
-                        {{this.article}}
+                    {{this.article}}
                     {{/if}}
                 </li>
                 {{/each}}

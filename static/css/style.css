@@ -3502,10 +3502,7 @@ div .input-group-text {
 }
 
 /* ===== CONTAINER PRINCIPAL ===== */
-.articles-list {
-  padding-top: 80px;
-  margin: 2rem 0;
-}
+
 
 /* ===== INTRODUCTION HERO ===== */
 .tracking-intro {
@@ -3778,9 +3775,6 @@ div .input-group-text {
 
 
 /* ===== CONTAINER PRINCIPAL ===== */
-.article-details {
-  padding-top: 80px;
-}
 
 .article-details h2 {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
@@ -6595,4 +6589,40 @@ footer {
   h1 {
     font-size: 1.2rem;
   }
+}
+
+/* ===== NAVIGATION BREADCRUMB ===== */
+.breadcrumb {
+  background: var(--gradient-light);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glassmorphic-border);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-radius: 18px;
+}
+
+.breadcrumb-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--accent-color);
+}
+
+.breadcrumb-current {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Breadcrumb aligné à la première section sur pages article et articles-list */
+.article-details .breadcrumb,
+.articles-list .breadcrumb {
+  max-width: 1200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }

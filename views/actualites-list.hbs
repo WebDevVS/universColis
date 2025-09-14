@@ -10,15 +10,27 @@
     </div>
 </nav> --}}
 
-<!-- Header de la page -->
-<header class="page-header">
-    <div class="articles-container mt-3">
-        <h1 class="page-title">Les actualités</h1>
-        <p class="page-subtitle">
-            Restez informé des dernières évolutions qui impactent vos envois
-        </p>
-    </div>
-</header>
+<div class="articles-container mt-3">
+
+    <nav class="breadcrumb">
+        <div class="container">
+            <div class="article-container">
+                <a href="/" class="breadcrumb-link">Accueil</a>
+                <span class="mx-2">></span>
+                <span class="breadcrumb-current">Actualités</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de la page -->
+    <header class="page-header">
+        <div class="articles-container mt-3">
+            <h1 class="page-title">Les actualités</h1>
+            <p class="page-subtitle">
+                Restez informé des dernières évolutions qui impactent vos envois
+            </p>
+        </div>
+    </header>
 
 {{!--
 <!-- Filtres -->
@@ -56,7 +68,7 @@
 </div> --}}
 
 <!-- Liste des articles -->
-<div class="articles-container">
+
 
     {{#each actualites}}
     <article class="article-card-listing">
