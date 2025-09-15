@@ -5918,6 +5918,48 @@ footer {
   transform: translateY(-2px);
 }
 
+
+/* ===== SOURCES MINIMALISTES ===== */
+.article-sources {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid rgba(130, 105, 164, 0.2);
+}
+
+.article-sources h3 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.article-sources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.article-sources li {
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.article-sources a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-decoration-color: rgba(130, 105, 164, 0.4);
+  text-decoration-thickness: 2px;
+  transition: all 0.3s ease;
+}
+
+.article-sources a:hover {
+  color: var(--accent-color);
+  text-decoration-color: var(--accent-color);
+  text-decoration-thickness: 2px;
+}
+
 /* ===== NAVIGATION ARTICLE ===== */
 .article-navigation {
   display: flex;

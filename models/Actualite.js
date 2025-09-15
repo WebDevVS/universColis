@@ -11,6 +11,10 @@ const actualiteShema = new Schema({
         text: String,
         hasLinks: { type: Boolean, default: false }
     }],
+    faq: [{
+        question: String,
+        responses: String
+    }],
     sources: [{
         name: String,
         article: String,
