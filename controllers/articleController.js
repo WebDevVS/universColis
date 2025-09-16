@@ -58,7 +58,7 @@ articleController.get('/', async (req, res) => {
           "@type": "CollectionPage",
           "name": "Guides d'emballage spécialisés",
           "url": canonicalUrl,
-          "about": "Collection complète de 13 guides d'emballage spécialisés pour tous types d'objets fragiles : antiquités, électronique, bouteilles, plantes, instruments, tableaux et plus.",
+          "about": "Collection complète de 12 guides d'emballage spécialisés pour tous types d'objets fragiles : antiquités, électronique, bouteilles, plantes, instruments, tableaux et plus.",
           "numberOfItems": articles.length,
           "audience": {
             "@type": "Audience",

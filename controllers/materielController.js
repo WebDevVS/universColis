@@ -82,10 +82,3 @@ meterielController.get('/', async (req, res) => {
 })
 
 module.exports = meterielController
-
-/*
-app.get('/suivi/mon-colis', (req, res) => {
-  const trackingNumber = req.query.tracking; // Récupère le numéro de suivi depuis l'URL
-  res.render('mon-colis', { trackingNumber });
-});
-*/

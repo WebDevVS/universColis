@@ -16,11 +16,93 @@ actualitesController.get('/', async (req, res) => {
 
     const totalPages = Math.ceil(total / PAGE_SIZE);
 
+    // SEO
+    const seoTitle = "Actualités du transport, logistique et expédition | UniversColis";
+    const seoDescription = "Restez informé des dernières actualités du secteur colis, transporteurs, logistique, tarifs postaux, innovations et réglementations. Toutes les news pour expédier malin.";
+    const seoKeywords = [
+        "actualités transport",
+        "news logistique",
+        "tarifs postaux",
+        "réglementation expédition",
+        "innovations colis",
+        "universcolis actualités"
+    ];
+    const canonicalUrl = "https://www.universcolis.fr/actualites";
+    const ogImage = "https://www.universcolis.fr/static/img/og-image.png";
+
+    // Structured Data (Breadcrumb + ItemList)
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": "https://www.universcolis.fr/"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Actualités"
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "name": "Actualités du secteur colis",
+                "description": seoDescription,
+                "numberOfItems": actualites.length,
+                "itemListElement": actualites.map((actu, i) => ({
+                    "@type": "ListItem",
+                    "position": i + 1,
+                    "item": {
+                        "@type": "Article",
+                        "name": actu.resumeTitle,
+                        "url": `https://www.universcolis.fr/actualites/${actu.slug}`,
+                        "image": `https://www.universcolis.fr/static/img/actualitesImg/${actu.actualiteImg}`,
+                        "description": actu.description,
+                        "datePublished": actu.publishedDate,
+                        "author": {
+                            "@type": "Person",
+                            "name": actu.author || "UniversColis"
+                        }
+                    }
+                }))
+            }
+        ]
+    };
+
     res.render('actualites-list', {
         actualites,
         bodyClass: 'actualites-page',
         currentPage: page,
-        totalPages 
+        totalPages,
+
+        // SEO
+        seoTitle,
+        seoDescription,
+        seoKeywords,
+        canonicalUrl,
+        robots: "index, follow",
+
+        // Open Graph / Twitter
+        ogType: "website",
+        ogTitle: seoTitle,
+        ogDescription: seoDescription,
+        ogUrl: canonicalUrl,
+        ogImage,
+        ogLocale: "fr_FR",
+        ogSiteName: "UniversColis",
+        twitterCard: "summary_large_image",
+        twitterTitle: seoTitle,
+        twitterDescription: seoDescription,
+        twitterImage: ogImage,
+
+        // JSON-LD
+        structuredData: JSON.stringify(structuredData)
     });
 });
 
