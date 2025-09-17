@@ -65,7 +65,11 @@
                     </h4>
                     <div id="answer{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            <p>{{this.responses}}</p>
+                             <ul class="faq-list">
+                            {{#each this.responses}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
                         </div>
                     </div>
                 </div>

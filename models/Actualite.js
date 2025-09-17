@@ -13,7 +13,7 @@ const actualiteShema = new Schema({
     }],
     faq: [{
         question: String,
-        responses: String
+        responses: [String]
     }],
     sources: [{
         name: String,
