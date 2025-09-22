@@ -65,11 +65,15 @@
                     </h4>
                     <div id="answer{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                             <ul class="faq-list">
-                            {{#each this.responses}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                            </ul>
+                            {{#if this.responses.[1]}}
+                                <ul class="faq-list">
+                                {{#each this.responses}}
+                                    <li>{{{parseMarkdownLinks this}}}</li>
+                                {{/each}}
+                                </ul>
+                            {{else}}
+                                <p>{{{parseMarkdownLinks this.responses.[0]}}}</p>
+                            {{/if}}
                         </div>
                     </div>
                 </div>
