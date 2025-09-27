@@ -13,6 +13,7 @@ module.exports = helmet.contentSecurityPolicy({
       "https://www.track123.com/widget/",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
+    scriptSrcAttr: ["'unsafe-inline'"],
     styleSrc: [
       "'self'",
       "https://fonts.googleapis.com",
