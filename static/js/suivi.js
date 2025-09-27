@@ -685,7 +685,7 @@ function startTracking() {
 
   if (!input || !trackBtn) return;
 
-  const trackingNumber = input.value.trim();
+  const trackingNumber = input.value ? input.value.trim() : '';
 
   if (!trackingNumber) {
     input.focus();
