@@ -117,45 +117,49 @@ function loadTrack123ScriptOnce() {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-  const trackBtn = document.getElementById('trackBtn');
-  const trackerSelect = document.getElementById('trackerSelect');
-  const trackingNumber = document.getElementById('trackingNumber');
-  const trackerLogo = document.getElementById('trackerLogo');
 
-  trackBtn.addEventListener('click', function () {
-    const input = trackingNumber;
-    if (input.value.trim() === '') {
-      input.focus();
-      input.style.borderColor = 'var(--accent-color)';
-      setTimeout(() => {
-        input.style.borderColor = '';
-      }, 2000);
-      return;
-    }
-    // Animation de chargement
-    trackBtn.classList.add('loading');
-    trackBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Recherche...';
+  if (trackBtn) {
+    trackBtn.addEventListener('click', function () {
+      const input = trackingNumber;
+      if (!input || input.value.trim() === '') {
+        if (input) {
+          input.focus();
+          input.style.borderColor = 'var(--accent-color)';
+          setTimeout(() => {
+            input.style.borderColor = '';
+          }, 2000);
+        }
+        return;
+      }
+      // Animation de chargement
+      trackBtn.classList.add('loading');
+      trackBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Recherche...';
 
-    // Affiche le widget
-    showWidget();
-
-    setTimeout(() => {
-      trackBtn.classList.remove('loading');
-      trackBtn.innerHTML = '<i class="fa-solid fa-search"></i> Suivre';
-    }, 2000);
-  });
-
-  trackerSelect.addEventListener('change', function () {
-    trackerLogo.src = trackerLogos[trackerSelect.value];
-    trackerLogo.alt = trackerSelect.options[trackerSelect.selectedIndex].text + ' logo';
-    showWidget();
-  });
-
-  trackingNumber.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
+      // Affiche le widget
       showWidget();
-    }
-  });
+
+      setTimeout(() => {
+        trackBtn.classList.remove('loading');
+        trackBtn.innerHTML = '<i class="fa-solid fa-search"></i> Suivre';
+      }, 2000);
+    });
+  }
+
+  if (trackerSelect && trackerLogo) {
+    trackerSelect.addEventListener('change', function () {
+      trackerLogo.src = trackerLogos[trackerSelect.value];
+      trackerLogo.alt = trackerSelect.options[trackerSelect.selectedIndex].text + ' logo';
+      showWidget();
+    });
+  }
+
+  if (trackingNumber) {
+    trackingNumber.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        showWidget();
+      }
+    });
+  }
 
   // FAQ toggle
   document.querySelectorAll('.faq-question').forEach(function (question) {
