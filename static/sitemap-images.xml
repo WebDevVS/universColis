@@ -244,5 +244,14 @@
         <image:caption>Infographie minimaliste sur les escroqueries « avis de livraison » (phishing colis) en France en 2025.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/manifestations-2-octobre-2025-retards-colis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/greve-colis-retards-2-octobre-2025.webp</image:loc>
+        <image:title>Greve colis retards 2 octobre 2025</image:title>
+        <image:caption>Infographie minimaliste sur les retards de livraison possibles lors de la grève nationale du 2 octobre 2025.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

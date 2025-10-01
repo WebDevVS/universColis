@@ -6,10 +6,16 @@ const actualiteShema = new Schema({
     slug: { type: String, required: true, unique: true },
     keyWord: { type: String, required: true },
     title: { type: String, required: true },
+    readingTime: { type: Number, required: false },
     paragraphs: [{
         pTitle: String,
         text: String,
-        hasLinks: { type: Boolean, default: false }
+        hasLinks: { type: Boolean, default: false },
+        isTable: { type: Boolean, default: false },
+        table: {
+            headers: [String],
+            rows: [[String]]
+        }
     }],
     faq: [{
         question: String,

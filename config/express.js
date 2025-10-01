@@ -39,7 +39,8 @@ module.exports = (app) => {
           })
         );
       },
-      or: (a, b) => a || b
+      or: (a, b) => a || b,
+
     }
   });
 

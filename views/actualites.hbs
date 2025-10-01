@@ -25,6 +25,9 @@
         <h1 class="article-title">{{title}}</h1>
         <p class="article-lead">
         </p>
+        {{#if readingTime}}
+        <p class="reading-time"><i class="fa-regular fa-clock"></i> {{readingTime}} min de lecture</p>
+        {{/if}}
     </header>
 
     <!-- Contenu de l'article -->
@@ -40,6 +43,26 @@
             <h3>{{this.pTitle}}</h3>
             {{/if}}
 
+            {{#if this.isTable}}
+            <table class="article-table">
+                <thead>
+                    <tr>
+                        {{#each this.table.headers}}
+                        <th>{{{this}}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.table.rows}}
+                    <tr>
+                        {{#each this}}
+                        <td>{{{this}}}</td>
+                        {{/each}}
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            {{else}}
             {{#if this.hasLinks}}
             <p>{{{parseMarkdownLinks this.text}}}</p>
 
@@ -47,7 +70,7 @@
             <p>{{{this.text}}}</p>
 
             {{/if}}
-
+            {{/if}}
             {{/each}}
         </div>
 
@@ -66,13 +89,13 @@
                     <div id="answer{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
                             {{#if this.responses.[1]}}
-                                <ul class="faq-list">
+                            <ul class="faq-list">
                                 {{#each this.responses}}
-                                    <li>{{{parseMarkdownLinks this}}}</li>
+                                <li>{{{parseMarkdownLinks this}}}</li>
                                 {{/each}}
-                                </ul>
+                            </ul>
                             {{else}}
-                                <p>{{{parseMarkdownLinks this.responses.[0]}}}</p>
+                            <p>{{{parseMarkdownLinks this.responses.[0]}}}</p>
                             {{/if}}
                         </div>
                     </div>
