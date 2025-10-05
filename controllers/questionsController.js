@@ -165,7 +165,10 @@ questionsController.get('/:category/:slug', async (req, res) => {
       categoryLabel,
       bodyClass: 'questions-page',
       prev,
-      next
+      next,
+      structuredData: question.structuredData
+        ? JSON.stringify(question.structuredData, null, 2)
+        : null
     });
   } catch (err) {
     console.error("Erreur lors de l'accès à la question :", err);
