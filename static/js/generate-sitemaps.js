@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGO_URL);
 // === Modèle Article ===
 const Article = require('../../models/Article');
 const Actualite = require('../../models/Actualite'); // ← Ajoute le modèle
+const Question = require('../../models/Question');
 
 // === Fonctions de récupération ===
 async function getStaticPages() {
@@ -61,11 +62,33 @@ async function getActualites() {
     }
     return {
       loc: `/actualites/${actu.slug}`,
-      priority: 0.9,
+      priority: 0.8,
       lastmod,
       ogImage: actu.ogImage || null,
       actualiteImgName: actu.actualiteImgName || '',
       actualiteImgDescription: actu.actualiteImgDescription || ''
+    };
+  });
+}
+
+async function getQuestions() {
+  const questions = await Question.find({}).select('slug category publishedDate modifiedDate questionImg questionImgName questionImgDescription').lean();
+  return questions.map(q => {
+    let lastmod = undefined;
+    if (q.modifiedDate) {
+      const d = new Date(q.modifiedDate);
+      if (!isNaN(d)) lastmod = d.toISOString().split('T')[0];
+    } else if (q.publishedDate) {
+      const d = new Date(q.publishedDate);
+      if (!isNaN(d)) lastmod = d.toISOString().split('T')[0];
+    }
+    return {
+      loc: `/questions/${q.category}/${q.slug}`,
+      priority: 0.9,
+      lastmod,
+      questionImg: q.questionImg ? `${BASE_URL}/static/img/questionsImg/${q.questionImg}` : null,
+      questionImgName: q.questionImgName || '',
+      questionImgDescription: q.questionImgDescription || ''
     };
   });
 }
@@ -116,6 +139,22 @@ async function getImages(pages, articles) {
     }
   });
 
+  // Ajout des images des questions
+  if (global.questionsList && Array.isArray(global.questionsList)) {
+    global.questionsList.forEach(q => {
+      if (q.questionImg) {
+        images.push({
+          page: q.loc,
+          images: [{
+            url: q.questionImg,
+            name: q.questionImgName || '',
+            description: q.questionImgDescription || ''
+          }]
+        });
+      }
+    });
+  }
+
   return images;
 }
 
@@ -159,12 +198,24 @@ ${articles.map(article => `
 </urlset>`;
 }
 
+function generateQuestionsSitemap(questions) {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${questions.map(q => `
+    <url>
+      <loc>${BASE_URL}${q.loc}</loc>
+      <priority>0.7</priority>
+      ${q.lastmod ? `<lastmod>${q.lastmod}</lastmod>` : ''}
+    </url>`).join('')}
+  </urlset>`;
+}
+
 function generateImagesSitemap(images) {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${images.map(img =>
-  `<url>
+    `<url>
     <loc>${BASE_URL}${img.page}</loc>
     ${img.images.map(src => `
       <image:image>
@@ -174,7 +225,7 @@ ${images.map(img =>
       </image:image>
     `).join('')}
   </url>`
-).join('')}
+  ).join('')}
 </urlset>`;
 }
 
@@ -188,16 +239,16 @@ function generateAtomFeed(articles) {
   <id>${BASE_URL}/</id>
   ${articles.map(article => `
     <entry>
-      <title>${article.loc.startsWith('/conseils/') 
-        ? article.loc.replace('/conseils/', '').replace(/-/g, ' ')
-        : article.loc.replace('/actualites/', '').replace(/-/g, ' ')}
+      <title>${article.loc.startsWith('/conseils/')
+      ? article.loc.replace('/conseils/', '').replace(/-/g, ' ')
+      : article.loc.replace('/actualites/', '').replace(/-/g, ' ')}
       </title>
       <link href="${BASE_URL}${article.loc}"/>
       <id>${BASE_URL}${article.loc}</id>
       ${article.lastmod ? `<updated>${article.lastmod}</updated>` : ''}
-      <summary>${article.loc.startsWith('/conseils/') 
-        ? 'Un nouveau guide est disponible.' 
-        : 'Une nouvelle actualité est disponible.'}
+      <summary>${article.loc.startsWith('/conseils/')
+      ? 'Un nouveau guide est disponible.'
+      : 'Une nouvelle actualité est disponible.'}
       </summary>
     </entry>
   `).join('')}
@@ -212,13 +263,17 @@ async function main() {
   const pages = await getStaticPages();
   const articles = await getArticles();
   const actualites = await getActualites(); // ← Ajoute cette ligne
-  const allArticles = [...articles, ...actualites]; // ← Fusionne les deux
+  const questions = await getQuestions();
+  const allArticles = [...articles, ...actualites];
 
+  // Stocker la liste des questions pour getImages
+  global.questionsList = questions;
   const images = await getImages(pages, allArticles);
 
   fs.writeFileSync(path.join(staticDir, 'sitemap.xml'), generateSitemapIndex());
   fs.writeFileSync(path.join(staticDir, 'sitemap-pages.xml'), generatePagesSitemap(pages));
-  fs.writeFileSync(path.join(staticDir, 'sitemap-articles.xml'), generateArticlesSitemap(allArticles)); // ← Utilise allArticles
+  fs.writeFileSync(path.join(staticDir, 'sitemap-articles.xml'), generateArticlesSitemap(allArticles));
+  fs.writeFileSync(path.join(staticDir, 'sitemap-questions.xml'), generateQuestionsSitemap(questions));
   fs.writeFileSync(path.join(staticDir, 'sitemap-images.xml'), generateImagesSitemap(images));
   fs.writeFileSync(path.join(staticDir, 'atom.xml'), generateAtomFeed(allArticles));
 

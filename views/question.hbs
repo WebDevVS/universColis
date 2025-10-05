@@ -1,0 +1,210 @@
+<nav class="breadcrumb">
+    <div class="container">
+        <a href="/" class="breadcrumb-link">Accueil</a>
+        <span class="mx-2">></span>
+        <a href="/questions" class="breadcrumb-link">Questions</a>
+        <span class="mx-2">></span>
+        <a href="/questions/{{category}}" class="breadcrumb-link">{{categoryLabel}}</a>
+        <span class="mx-2">></span>
+        <span class="breadcrumb-current">{{title}}</span>
+    </div>
+</nav>
+
+<div class="question-container">
+    <!-- Header dynamique -->
+    <div class="question-header">
+        {{#if categoryLabels}}
+        {{#each categoryLabels}}
+        <a href="/questions/{{this.key}}" class="category-badge {{this.colorClass}}">
+            <i class="{{this.icon}}"></i>
+            {{this.label}}
+        </a>
+        {{/each}}
+        {{else}}
+        <a href="/questions/{{category}}" class="category-badge">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            {{categoryLabel}}
+        </a>
+        {{/if}}
+        <h1 class="question-title">{{title}}</h1>
+        <div class="question-meta">
+            <span><i class="fa-solid fa-clock"></i>{{readingTime}} min de lecture</span>
+        </div>
+    </div>
+
+    <!-- Quick Answer -->
+    {{#if resume.text}}
+    <div class="quick-answer">
+        <div class="quick-answer-title">
+            <i class="fa-solid fa-bolt"></i>
+            En bref
+        </div>
+        <p class="quick-answer-text">
+            {{#if resume.hasLinks}}
+            {{{parseMarkdownLinks resume.text}}}
+            {{else}}
+            {{{resume.text}}}
+            {{/if}}
+        </p>
+    </div>
+    {{/if}}
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="content-text">
+            {{#each paragraphs}}
+            {{#if this.pTitle}}<h3>{{this.pTitle}}</h3>{{/if}}
+            {{#if this.pSubtitle}}<p><strong>{{this.pSubtitle}}</strong></p>{{/if}}
+            {{#if this.questionImg}}
+            <figure class="etape-image">
+                <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
+                    width="768" height="768" class="img-fluid rounded">
+                {{#if this.questionImgFigcaption}}
+                <figcaption class="hover-caption">
+                    {{this.questionImgFigcaption}}
+                </figcaption>
+                {{/if}}
+            </figure>
+            {{/if}}
+            {{#if this.text}}
+            <p>
+                {{#if this.hasLinks}}
+                {{{parseMarkdownLinks this.text}}}
+                {{else}}
+                {{{this.text}}}
+                {{/if}}
+            </p>
+            {{/if}}
+            {{#if this.highlight}}
+            <div class="highlight-box">
+                <p><strong><i class="fa-solid fa-info-circle me-2"></i>À savoir :</strong>
+                    {{#if this.hasLinks}}
+                    {{{parseMarkdownLinks this.highlight}}}
+                    {{else}}
+                    {{{this.highlight}}}
+                    {{/if}}
+                </p>
+            </div>
+            {{/if}}
+            {{#if this.list}}
+            <ul>
+                {{#each this.list}}
+                <li>
+                    {{#if ../hasLinks}}
+                    {{{parseMarkdownLinks this}}}
+                    {{else}}
+                    {{{this}}}
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{/each}}
+        </div>
+    </div>
+
+    <!-- FAQ Section (optionnelle) -->
+    <!-- FAQ Section dynamique -->
+    {{#if faq}}
+    <div class="faq-section">
+        <h2 class="faq-title">Questions fréquentes sur les retards</h2>
+        <div class="accordion" id="faqAccordion">
+            {{#each faq}}
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq{{@index}}">
+                        {{this.question}}
+                    </button>
+                </h3>
+                <div id="faq{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        {{#if this.responses.[1]}}
+                        <ul>
+                            {{#each this.responses}}
+                            <li>
+                                {{#if ../hasLinks}}
+                                {{{parseMarkdownLinks this}}}
+                                {{else}}
+                                {{{this}}}
+                                {{/if}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                        {{else}}
+                        <p>
+                            {{#if hasLinks}}
+                            {{{parseMarkdownLinks this.responses.[0]}}}
+                            {{else}}
+                            {{{this.responses.[0]}}}
+                            {{/if}}
+                        </p>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    <!-- Sources -->
+    <!-- Sources dynamiques -->
+    {{#if sources}}
+    <div class="sources-section">
+        <h3 class="sources-title">Sources</h3>
+        <ul class="sources-list">
+            {{#each sources}}
+            <li>
+                {{#if this.hasLinks}}
+                {{{parseMarkdownLinks this.name}}}
+                {{else}}
+                <strong>{{this.name}}</strong>
+                {{/if}}
+                {{#if this.article}}
+                {{#if this.hasLinks}}
+                {{{parseMarkdownLinks this.article}}}
+                {{else}}
+                {{this.article}}
+                {{/if}}
+                {{/if}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    {{/if}}
+
+
+    {{!--
+    <!-- CTA -->
+    <div class="cta-section">
+        <h3 class="cta-title">Évitez les mauvaises surprises</h3>
+        <a href="/" class="cta-button">
+            <i class="fa-solid fa-search"></i>
+            Comparer les transporteurs les plus fiables
+        </a>
+    </div> --}}
+
+    <!-- Navigation -->
+    <nav class="question-navigation">
+        {{#if prevSlug}}
+        <a href="/questions/{{category}}/{{prevSlug}}" class="nav-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Question précédente</span>
+        </a>
+        {{/if}}
+
+        <a href="/questions/{{category}}" class="nav-back-home">
+            <i class="fa-solid fa-list"></i>
+            Toutes les questions
+        </a>
+
+        {{#if nextSlug}}
+        <a href="/questions/{{category}}/{{nextSlug}}" class="nav-link next">
+            <span>Question suivante</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {{/if}}
+    </nav>
+</div>
+

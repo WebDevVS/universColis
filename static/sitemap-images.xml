@@ -253,5 +253,23 @@
         <image:caption>Infographie minimaliste sur les retards de livraison possibles lors de la grève nationale du 2 octobre 2025.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/logistique-bleus-france-azerbaidjan-islande-octobre-2025</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/france-azerbaidjan-islande-qualifications-coupe-du-monde-2025.webp</image:loc>
+        <image:title>France Azerbaïdjan Islande qualifications Coupe du Monde 2025</image:title>
+        <image:caption>Infographie minimaliste représentant les deux matchs de qualification de l’équipe de France pour la Coupe du Monde 2026, reliant la France, l’Azerbaïdjan et l’Islande par une ligne en pointillés symbolisant les flux logistiques internationaux.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/livraison/retard-colis-causes-solutions</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/procedure-retard-colis-verifier-adresse-contacter-comparateur.webp</image:loc>
+        
+        <image:caption>Colis retardé — que faire : vérifier l’adresse, s’assurer d’être disponible, suivre le colis, contacter le transporteur sous 48 h.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

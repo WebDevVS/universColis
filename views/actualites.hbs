@@ -63,13 +63,24 @@
                 </tbody>
             </table>
             {{else}}
-            {{#if this.hasLinks}}
-            <p>{{{parseMarkdownLinks this.text}}}</p>
-
-            {{else}}
-            <p>{{{this.text}}}</p>
-
-            {{/if}}
+                {{#if this.hasLinks}}
+                <p>{{{parseMarkdownLinks this.text}}}</p>
+                {{else}}
+                <p>{{{this.text}}}</p>
+                {{/if}}
+                {{#if this.list}}
+                <ul>
+                    {{#each this.list}}
+                    <li>
+                        {{#if ../hasLinks}}
+                        {{{parseMarkdownLinks this}}}
+                        {{else}}
+                        {{{this}}}
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                </ul>
+                {{/if}}
             {{/if}}
             {{/each}}
         </div>

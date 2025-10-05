@@ -1,0 +1,260 @@
+<nav class="breadcrumb">
+    <div class="container">
+        <a href="/" class="breadcrumb-link">Accueil</a>
+        <span class="mx-2">></span>
+        <span class="breadcrumb-current">Questions</span>
+    </div>
+</nav>
+
+<!-- Hero compact -->
+<section class="questions-hero">
+    <h1 class="hero-title">Vos questions sur l'envoi de colis</h1>
+    <p class="hero-subtitle">
+        Parcourez nos catégories pour trouver toutes les réponses dont vous avez besoin
+    </p>
+</section>
+
+{{!--
+<!-- Search Bar -->
+<section class="search-section">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Rechercher une question... Ex : Comment calculer le prix ?"
+            id="searchInput">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    </div>
+</section> --}}
+
+<!-- Categories en grandes cards -->
+<section class="categories-section">
+    <div class="row g-4">
+        <!-- Tarifs & Prix -->
+        <div class="col-lg-6">
+            <a href="/questions/tarifs" class="big-category-card">
+                <div class="big-category-icon icon-tarifs">
+                    <i class="fa-solid fa-euro-sign"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Tarifs & Prix</h2>
+                    <p class="big-category-description">
+                        Comprendre les coûts d'envoi, calculer le prix de vos colis et comparer les tarifs des
+                        différents transporteurs
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.tarifs}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+                <!-- Suivi -->
+        <div class="col-lg-6">
+            <a href="/questions/suivi" class="big-category-card">
+                <div class="big-category-icon icon-suivi">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Suivi de colis</h2>
+                    <p class="big-category-description">
+                        Suivre votre colis en temps réel, comprendre les statuts de livraison et résoudre les problèmes
+                        de tracking
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.suivi}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Transporteurs -->
+        <div class="col-lg-6">
+            <a href="/questions/transporteurs" class="big-category-card">
+                <div class="big-category-icon icon-transporteurs">
+                    <i class="fa-solid fa-truck"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Transporteurs</h2>
+                    <p class="big-category-description">
+                        Choisir le bon transporteur pour vos envois, découvrir les services disponibles et leurs
+                        spécificités
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.transporteurs}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Livraison -->
+        <div class="col-lg-6">
+            <a href="/questions/livraison" class="big-category-card">
+                <div class="big-category-icon icon-delais">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Délais de livraison</h2>
+                    <p class="big-category-description">
+                        Tout savoir sur les temps d'acheminement, les options express et gérer les retards éventuels
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.livraison}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Dimensions -->
+        <div class="col-lg-6">
+            <a href="/questions/dimensions" class="big-category-card">
+                <div class="big-category-icon icon-dimensions">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Dimensions & Poids</h2>
+                    <p class="big-category-description">
+                        Comprendre les limites de taille et poids, le calcul du poids volumétrique et les restrictions
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.dimensions}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- International -->
+        <div class="col-lg-6">
+            <a href="/questions/international" class="big-category-card">
+                <div class="big-category-icon icon-international">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Envoi international</h2>
+                    <p class="big-category-description">
+                        Procédures douanières, documents nécessaires, taxes et zones de livraison à l'international
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.international}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Assurance -->
+        <div class="col-lg-6">
+            <a href="/questions/assurance" class="big-category-card">
+                <div class="big-category-icon icon-assurance">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Assurance & Litiges</h2>
+                    <p class="big-category-description">
+                        Protéger vos colis, faire une réclamation et comprendre les responsabilités des transporteurs
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.assurance}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Divers -->
+        <div class="col-lg-6">
+            <a href="/questions/divers" class="big-category-card">
+                <div class="big-category-icon icon-divers">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <div class="big-category-content">
+                    <h2 class="big-category-title">Divers</h2>
+                    <p class="big-category-description">
+                        Autres questions pratiques sur l'emballage, les étiquettes, les documents et les conseils
+                        généraux d'expédition
+                    </p>
+                    <div class="big-category-meta">
+                        <span class="category-count">
+                            <i class="fa-solid fa-comments"></i>
+                            {{questionCounts.divers}} questions
+                        </span>
+                        <i class="fa-solid fa-arrow-right category-arrow"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+{{!--
+<!-- Questions populaires -->
+<section class="popular-section container">
+    <h2 class="popular-title"><i class="fa-solid fa-fire me-2"></i>Questions les plus consultées</h2>
+
+    <a href="/questions/comment-calculer-prix-envoi" class="popular-question">
+        <div class="popular-icon">
+            <i class="fa-solid fa-calculator"></i>
+        </div>
+        <span class="popular-text">Comment calculer le prix d'un envoi de colis ?</span>
+    </a>
+
+    <a href="/questions/quel-transporteur-choisir" class="popular-question">
+        <div class="popular-icon">
+            <i class="fa-solid fa-question"></i>
+        </div>
+        <span class="popular-text">Quel transporteur choisir pour mon envoi ?</span>
+    </a>
+
+    <a href="/questions/delai-livraison-colissimo" class="popular-question">
+        <div class="popular-icon">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+        <span class="popular-text">Quel est le délai de livraison avec Colissimo ?</span>
+    </a>
+
+    <a href="/questions/assurer-colis-fragile" class="popular-question">
+        <div class="popular-icon">
+            <i class="fa-solid fa-box-open"></i>
+        </div>
+        <span class="popular-text">Comment assurer un colis fragile ?</span>
+    </a>
+
+    <a href="/questions/envoyer-colis-international" class="popular-question">
+        <div class="popular-icon">
+            <i class="fa-solid fa-plane"></i>
+        </div>
+        <span class="popular-text">Comment envoyer un colis à l'international ?</span>
+    </a>
+</section> --}}
+
+{{!--
+<script>
+    document.getElementById('searchInput').addEventListener('input', function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        console.log('Recherche:', searchTerm);
+    });
+</script> --}}

@@ -1,0 +1,182 @@
+const questionsController = require('express').Router()
+const questionsService = require('../services/questionsService');
+
+// TODO replace by real controler
+questionsController.get('/', async (req, res) => {
+  try {
+    // Récupère toutes les questions
+    const allQuestions = await questionsService.getAll();
+    // Catégories à afficher
+    const categories = [
+      'tarifs', 'suivi', 'transporteurs', 'livraison', 'dimensions', 'international', 'assurance', 'divers'
+    ];
+    // Compte le nombre de questions par catégorie
+    const questionCounts = {};
+    categories.forEach(cat => {
+      questionCounts[cat] = allQuestions.filter(q => q.category === cat).length;
+    });
+
+    res.render('questions-catalogue', {
+      title: 'Questions',
+      bodyClass: 'questions-page',
+      questionCounts
+    });
+  } catch (err) {
+    console.error("Erreur lors de l'accès aux articles :", err)
+    res.status(500).send('Erreur serveur')
+  }
+})
+
+
+questionsController.get('/:category', async (req, res) => {
+  try {
+    const category = req.params.category;
+
+    // Table de correspondance des catégories
+    const categoryData = {
+      tarifs: {
+        label: 'Tarifs & Prix',
+        icon: 'fa-solid fa-euro-sign',
+        description: "Tout comprendre sur les coûts d'envoi, les méthodes de calcul et les tarifs des transporteurs"
+      },
+      suivi: {
+        label: 'Suivi de colis',
+        icon: 'fa-solid fa-map-location-dot',
+        description: "Suivre vos colis en temps réel, décrypter les statuts de livraison et résoudre les blocages"
+      },
+      transporteurs: {
+        label: 'Transporteurs',
+        icon: 'fa-solid fa-truck',
+        description: "Comparez les services, découvrez les spécificités de chaque transporteur et faites le bon choix pour vos envois"
+      },
+      livraison: {
+        label: 'Délais de livraison',
+        icon: 'fa-solid fa-clock',
+        description: "Comprendre les temps d'acheminement, anticiper les retards et choisir la bonne option d'expédition"
+      },
+      dimensions: {
+        label: 'Dimensions & Poids',
+        icon: 'fa-solid fa-ruler-combined',
+        description: "Maîtriser les limites de taille, calculer le poids volumétrique et éviter les mauvaises surprises"
+      },
+      international: {
+        label: 'Envoi international',
+        icon: 'fa-solid fa-globe',
+        description: "Naviguer les procédures douanières, préparer les documents requis et gérer les taxes internationales"
+      },
+      assurance: {
+        label: 'Assurance & Litiges',
+        icon: 'fa-solid fa-shield-halved',
+        description: "Protéger vos envois, comprendre vos droits et résoudre efficacement les problèmes de livraison"
+      },
+      divers: {
+        label: 'Divers',
+        icon: 'fa-solid fa-circle-question',
+        description: "Conseils pratiques sur l'emballage, les étiquettes et toutes vos autres questions d'expédition"
+      }
+    };
+
+    // Récupère les infos de la catégorie
+    const data = categoryData[category] || { label: category, icon: '', description: '' };
+
+    // Récupère les questions de la catégorie depuis le service
+    const questions = await questionsService.getByCategory(category);
+    const questionsCount = questions.length;
+
+    // Tableau des catégories pour la section "Voir aussi"
+    const categoriesList = [
+      {key: 'tarifs', label: 'Questions sur les tarifs & prix', icon: 'fa-euro-sign', class: 'icon-tarifs'},
+      {key: 'suivi', label: 'Questions sur le suivi de colis', icon: 'fa-map-location-dot', class: 'icon-suivi'},
+      {key: 'transporteurs', label: 'Questions sur les transporteurs', icon: 'fa-truck', class: 'icon-transporteurs'},
+      {key: 'livraison', label: 'Questions sur les délais de livraison', icon: 'fa-clock', class: 'icon-delais'},
+      {key: 'dimensions', label: 'Questions sur les dimensions et poids', icon: 'fa-ruler-combined', class: 'icon-dimensions'},
+      {key: 'international', label: "Questions sur l'envoi international", icon: 'fa-globe', class: 'icon-international'},
+      {key: 'assurance', label: "Questions sur l'assurance & litiges", icon: 'fa-shield-halved', class: 'icon-assurance'},
+      {key: 'divers', label: 'Questions diverses', icon: 'fa-circle-question', class: 'icon-divers'}
+    ];
+
+    res.render('questions-categorie', {
+      title: 'Questions ' + data.label,
+      bodyClass: 'questions-page',
+      category,
+      categoryLabel: data.label,
+      categoryIcon: data.icon,
+      categoryDescription: data.description,
+      questionsCount,
+      questions, // Passe la liste à la vue
+      categories: categoriesList // Pour la section "Voir aussi"
+    });
+  } catch (err) {
+    console.error("Erreur lors de l'accès aux questions :", err);
+    res.status(500).send('Erreur serveur');
+  }
+});
+
+
+// Route dynamique pour chaque question par son slug (à placer AVANT la route catégorie)
+questionsController.get('/:category/:slug', async (req, res) => {
+  try {
+    const { category, slug } = req.params;
+    const question = await questionsService.getBySlugAndCategory(slug, category);
+
+    if (!question) {
+      return res.status(404).render('404', { title: 'Question non trouvée' });
+    }
+
+    // Table de correspondance des catégories pour le label
+    const categoryData = {
+      tarifs: { label: 'Tarifs & Prix', icon: 'fa-solid fa-euro-sign', colorClass: 'icon-tarifs' },
+      suivi: { label: 'Suivi de colis', icon: 'fa-solid fa-map-location-dot', colorClass: 'icon-suivi' },
+      transporteurs: { label: 'Transporteurs', icon: 'fa-solid fa-truck', colorClass: 'icon-transporteurs' },
+      livraison: { label: 'Délais de livraison', icon: 'fa-solid fa-clock', colorClass: 'icon-delais' },
+      dimensions: { label: 'Dimensions & Poids', icon: 'fa-solid fa-ruler-combined', colorClass: 'icon-dimensions' },
+      international: { label: 'Envoi international', icon: 'fa-solid fa-globe', colorClass: 'icon-international' },
+      assurance: { label: 'Assurance & Litiges', icon: 'fa-solid fa-shield-halved', colorClass: 'icon-assurance' },
+      divers: { label: 'Divers', icon: 'fa-solid fa-circle-question', colorClass: 'icon-divers' }
+    };
+
+    // Transforme le tableau categoryLabels en [{key, label}]
+    let categoryLabels = null;
+    if (Array.isArray(question.categoryLabels) && question.categoryLabels.length > 0) {
+      categoryLabels = question.categoryLabels.map(catKey => ({
+        key: catKey,
+        label: categoryData[catKey] ? categoryData[catKey].label : catKey,
+        icon: categoryData[catKey] ? categoryData[catKey].icon : '',
+        colorClass: categoryData[catKey] ? categoryData[catKey].colorClass : ''
+      }));
+    }
+
+    // Pour compatibilité, garde categoryLabel unique si besoin
+    const categoryLabel = categoryData[category] ? categoryData[category].label : category;
+
+    // Récupère toutes les questions de la catégorie, triées (par date ou par ordre voulu)
+    const questionsInCategory = await questionsService.getByCategory(category);
+
+    // Trouve l'index de la question courante
+    const index = questionsInCategory.findIndex(q => q.slug === slug);
+
+    // Précédente et suivante
+    const prev = index > 0 ? questionsInCategory[index - 1] : null;
+    const next = index < questionsInCategory.length - 1 ? questionsInCategory[index + 1] : null;
+
+    res.render('question', {
+      ...question,
+      categoryLabels,
+      categoryLabel,
+      bodyClass: 'questions-page',
+      prev,
+      next
+    });
+  } catch (err) {
+    console.error("Erreur lors de l'accès à la question :", err);
+    res.status(500).send('Erreur serveur');
+  }
+});
+
+
+module.exports = questionsController
+
+
+
+
+

@@ -1,22 +1,35 @@
 const { Schema, model } = require('mongoose')
 
-const actualiteShema = new Schema({
-    resumeTitle: { type: String, required: true },
-    description: { type: String, required: true },
-    slug: { type: String, required: true, unique: true },
-    keyWord: { type: String, required: true },
+const questionShema = new Schema({
     title: { type: String, required: true },
+    teaser : { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+    category: { type: String, required: true },
+    categoryLabels: {
+        type: [String],
+        required: true,
+    },
     readingTime: { type: Number, required: false },
+    resume: {
+        text: { type: String, required: true },
+        hasLinks: { type: Boolean, default: false }
+    } ,
     paragraphs: [{
         pTitle: String,
+        pSubtitle: String,
         text: String,
         list: [String],
+        highlight: String,
         hasLinks: { type: Boolean, default: false },
         isTable: { type: Boolean, default: false },
         table: {
             headers: [String],
             rows: [[String]]
-        }
+        },
+        questionImg: String,
+        questionImgAlt: String,
+        questionImgFigcaption: String,
+        questionImgDescription: String
     }],
     faq: [{
         question: String,
@@ -28,15 +41,14 @@ const actualiteShema = new Schema({
         article: String,
         hasLinks: { type: Boolean, default: false }
     }],
-    actualiteImg: { type: String, required: true },
-    actualiteImgAlt: { type: String, required: true },
-    actualiteImgDescription: { type: String, required: true },
-    actualiteImgName: { type: String, required: true },
-    category: {
-        type: String,
-        required: true,
-        enum: ['tarifs', 'reglementation', 'conseils', 'transport', 'douanes', 'actualites', 'logistique', 'télévision', ' emballage durable', 'grève', 'transporteurs', 'fret']
-    },
+    cta: [{
+        phrase: String,
+        button: String,
+    }],
+    questionImg: { type: String, required: true },
+    questionImgAlt: { type: String, required: true },
+    questionImgDescription: { type: String, required: true },
+    questionImgFigcaption: { type: String, required: true },
     seoTitle: { type: String },
     seoDescription: { type: String },
     seoKeywords: [{ type: String }],
@@ -54,11 +66,10 @@ const actualiteShema = new Schema({
     author: { type: String },
     // Accepte tout objet JSON pour structuredData
     structuredData: { type: Schema.Types.Mixed }
-}, { collection: 'actualites' })
+}, { collection: 'questions' })
 
-actualiteShema.index({ category: 1, publishedDate: -1 })
 
-const Actualite = model('Actualite', actualiteShema)
+const Question = model('Question', questionShema)
 
-module.exports = Actualite
+module.exports = Question
 

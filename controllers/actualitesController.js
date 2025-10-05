@@ -128,6 +128,16 @@ actualitesController.get('/:slug', async (req, res) => {
             : JSON.stringify(actualite.structuredData, null, 2))
         : null;
 
+    // Normalisation de la FAQ
+    if (Array.isArray(actualite.faq)) {
+        actualite.faq = actualite.faq.map(item => ({
+            ...item,
+            responses: Array.isArray(item.responses)
+                ? item.responses
+                : (item.responses ? [item.responses] : [])
+        }));
+    }
+
     res.render('actualites', {
         page: 'actualites',
         bodyClass: 'actualites-page',
