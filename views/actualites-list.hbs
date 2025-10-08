@@ -1,26 +1,12 @@
-{{!--
-<!-- Breadcrumb -->
-<nav class="page-breadcrumb">
+<nav class="breadcrumb">
     <div class="container">
-        <div class="articles-container">
-            <a href="/" class="breadcrumb-link">Accueil</a>
-            <span class="mx-2">></span>
-            <span class="breadcrumb-current">Actualités</span>
-        </div>
+        <a href="/" class="breadcrumb-link">Accueil</a>
+        <span class="mx-2">></span>
+        <span class="breadcrumb-current">Actualités</span>
     </div>
-</nav> --}}
+</nav>
 
 <div class="articles-container mt-3">
-
-    <nav class="breadcrumb">
-        <div class="container">
-            <div class="article-container">
-                <a href="/" class="breadcrumb-link">Accueil</a>
-                <span class="mx-2">></span>
-                <span class="breadcrumb-current">Actualités</span>
-            </div>
-        </div>
-    </nav>
 
     <!-- Header de la page -->
     <header class="page-header">
@@ -32,42 +18,42 @@
         </div>
     </header>
 
-{{!--
-<!-- Filtres -->
-<div class="articles-container">
-    <div class="filters-section">
-        <h2 class="filters-title">
-            <i class="fa-solid fa-filter"></i>
-            Filtrer les actualités
-        </h2>
-        <div class="row g-3">
-            <div class="col-md-4">
-                <select class="filter-select form-select">
-                    <option value="">Toutes les catégories</option>
-                    <option value="tarifs">Tarifs</option>
-                    <option value="reglementation">Réglementation</option>
-                    <option value="conseils">Conseils</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <select class="filter-select form-select">
-                    <option value="">Toutes les dates</option>
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <select class="filter-select form-select">
-                    <option value="recent">Plus récent</option>
-                    <option value="ancien">Plus ancien</option>
-                    <option value="titre">Par titre</option>
-                </select>
+    {{!--
+    <!-- Filtres -->
+    <div class="articles-container">
+        <div class="filters-section">
+            <h2 class="filters-title">
+                <i class="fa-solid fa-filter"></i>
+                Filtrer les actualités
+            </h2>
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <select class="filter-select form-select">
+                        <option value="">Toutes les catégories</option>
+                        <option value="tarifs">Tarifs</option>
+                        <option value="reglementation">Réglementation</option>
+                        <option value="conseils">Conseils</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="filter-select form-select">
+                        <option value="">Toutes les dates</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select class="filter-select form-select">
+                        <option value="recent">Plus récent</option>
+                        <option value="ancien">Plus ancien</option>
+                        <option value="titre">Par titre</option>
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
-</div> --}}
+    </div> --}}
 
-<!-- Liste des articles -->
+    <!-- Liste des articles -->
 
 
     {{#each actualites}}

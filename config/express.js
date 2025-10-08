@@ -32,9 +32,18 @@ module.exports = (app) => {
         if (!text) return '';
         return new hbs.handlebars.SafeString(
           text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
-            if (url.startsWith('/') || url.startsWith('#')) {
+            // Liens internes : /, #, ou vers universcolis.fr
+            if (
+              url.startsWith('/') ||
+              url.startsWith('#') ||
+              url.startsWith('https://www.universcolis.fr') ||
+              url.startsWith('http://www.universcolis.fr') ||
+              url.startsWith('https://universcolis.fr') ||
+              url.startsWith('http://universcolis.fr')
+            ) {
               return `<a href="${url}">${linkText}</a>`;
             }
+            // Liens externes
             return `<a href="${url}" target="_blank" rel="noopener">${linkText}</a>`;
           })
         );

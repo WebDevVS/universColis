@@ -289,5 +289,23 @@
         <image:caption>Infographie minimaliste : vérifier le suivi, 3631, réclamation, Médiateur.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/ou-trouver-numero-de-suivi-colissimo-chronopost-la-poste</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colissimo-etiquette-numero-suivi.webp</image:loc>
+        
+        <image:caption>Étiquette d’envoi Colissimo illustrant l’emplacement exact du numéro de suivi à côté du code-barres.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/difference-numero-suivi-numero-commande</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/difference-numero-de-commande-vs-numero-de-suivi-que-faire-etapes.webp</image:loc>
+        
+        <image:caption>Infographie minimaliste en 3 étapes : identifier le type de code, récupérer le numéro de suivi, puis vérifier le statut sur UniversColis.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

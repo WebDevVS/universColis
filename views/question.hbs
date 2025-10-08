@@ -54,7 +54,7 @@
         <div class="content-text">
             {{#each paragraphs}}
             {{#if this.pTitle}}<h3>{{this.pTitle}}</h3>{{/if}}
-            {{#if this.pSubtitle}}<p><strong>{{this.pSubtitle}}</strong></p>{{/if}}
+            {{#if this.pSubtitle}}<p><strong class="subtitle-strong">{{this.pSubtitle}}</strong></p>{{/if}}
             {{#if this.questionImg}}
             <figure class="etape-image">
                 <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
@@ -208,3 +208,8 @@
     </nav>
 </div>
 
+
+<!-- Bouton partager l'article -->
+<button id="share-article" class="share-article-btn" title="Partager l'article">
+    <i class="fa-solid fa-share"></i>
+</button>

@@ -267,7 +267,7 @@ p {
 }
 
 .navbar .nav-link {
-  color: #5d3d8a;
+  color: #4e3472;
   transition: color 0.3s ease;
 
 }
@@ -7508,10 +7508,14 @@ footer {
             margin-bottom: 0.8rem;
         }
 
-        .content-text strong {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
+    .content-text strong {
+      font-weight: 600;
+    }
+
+    .subtitle-strong {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
 
         /* Image dans le contenu */
         .content-image {
