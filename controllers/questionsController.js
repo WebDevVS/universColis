@@ -164,8 +164,9 @@ questionsController.get('/:category/:slug', async (req, res) => {
       categoryLabels,
       categoryLabel,
       bodyClass: 'questions-page',
-      prev,
-      next,
+      prevSlug: prev ? prev.slug : null,
+      nextSlug: next ? next.slug : null,
+      category,
       structuredData: question.structuredData
         ? JSON.stringify(question.structuredData, null, 2)
         : null
