@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('articleShare.js chargé');
   const btn = document.getElementById('share-article');
   if (!btn) return;
   btn.addEventListener('click', function () {
