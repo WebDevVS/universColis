@@ -161,6 +161,7 @@ questionsController.get('/:category/:slug', async (req, res) => {
 
     res.render('question', {
       ...question,
+      page: 'question',
       categoryLabels,
       categoryLabel,
       bodyClass: 'questions-page',

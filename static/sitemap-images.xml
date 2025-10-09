@@ -307,5 +307,23 @@
         <image:caption>Infographie minimaliste en 3 étapes : identifier le type de code, récupérer le numéro de suivi, puis vérifier le statut sur UniversColis.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/retrouver-colis-sans-numero-de-suivi</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/retrouver-colis-sans-numero-de-suivi-3-etapes.webp</image:loc>
+        
+        <image:caption>Infographie 3 étapes pour retrouver un colis sans numéro de suivi en France : preuves d’envoi → vendeur → transporteur.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/pourquoi-colis-en-transit-plusieurs-jours</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/retard-colis-procedure-5-etapes-infographie.webp</image:loc>
+        
+        <image:caption>Retard colis : méthode express en 5 étapes.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

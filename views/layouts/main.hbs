@@ -269,9 +269,17 @@
     <script src="/static/js/suivi.min.js" defer></script>
     {{/if}}
 
-    {{#if (or (eq page 'article') (eq page 'actualites'))}}
-    <script src="/static/js/articleShare.min.js"></script>
-    {{/if}}
+        {{#if page}}
+            {{#if (eq page 'article')}}
+                <script src="/static/js/articleShare.min.js"></script>
+            {{/if}}
+            {{#if (eq page 'actualites')}}
+                <script src="/static/js/articleShare.min.js"></script>
+            {{/if}}
+            {{#if (eq page 'question')}}
+                <script src="/static/js/articleShare.min.js"></script>
+            {{/if}}
+        {{/if}}
 
     <!-- Scripts spécifiques cookies -->
     <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
@@ -300,9 +308,17 @@
     <script src="/static/js/suivi.js" defer></script>
     {{/if}}
 
-    {{#if (or (eq page 'article') (eq page 'actualites'))}}
-    <script src="/static/js/articleShare.js"></script>
-    {{/if}}
+        {{#if page}}
+            {{#if (eq page 'article')}}
+                <script src="/static/js/articleShare.js"></script>
+            {{/if}}
+            {{#if (eq page 'actualites')}}
+                <script src="/static/js/articleShare.js"></script>
+            {{/if}}
+            {{#if (eq page 'question')}}
+                <script src="/static/js/articleShare.js"></script>
+            {{/if}}
+        {{/if}}
 
     <!-- Scripts spécifiques cookies -->
     <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
