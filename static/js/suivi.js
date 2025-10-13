@@ -615,7 +615,7 @@ function startTracking() {
 
   if (!input || !trackBtn) return;
 
-  const rawInput = input.value ? input.value.trim() : '';
+  const rawInput = input && input.value ? input.value.trim() : '';
   const trackingNumber = sanitizeTrackingNumber(rawInput);
 
   // Vérifie que le numéro est valide après nettoyage
