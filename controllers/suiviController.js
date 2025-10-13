@@ -7,8 +7,8 @@ suiviController.get('/', (req, res) => {
         bodyClass: 'suivi-page',
 
         // SEO dynamique
-        seoTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
-        seoDescription: "Suivez n’importe quel colis, même sans connaître le transporteur. Comparez 5 outils de tracking, sans compte, sur une seule page UniversColis.",
+        seoTitle: "Suivi colis universel (5 trackers, auto-détection, couverture monde & France) | UniversColis",
+        seoDescription: "Comparez 5 trackers (17TRACK, ParcelsApp, Postal Ninja…) pour un suivi complet. Détection auto du transporteur, outil gratuit et sans compte. Explications et avantages de chaque outil.",
         seoKeywords: [
             "suivi colis",
             "tracking international",
@@ -19,7 +19,11 @@ suiviController.get('/', (req, res) => {
             "suivi livraison",
             "suivi colis France",
             "suivi colis international",
-            "multi-tracker"
+            "multi-tracker",
+            "expédition internationale",
+            "colis Chine",
+            "colis Amazon",
+            "colis Europe"
         ],
         canonicalUrl: "https://www.universcolis.fr/suivi",
         robots: "index, follow",
@@ -28,35 +32,48 @@ suiviController.get('/', (req, res) => {
         modifiedDate: "2025-08-25",
 
         ogType: "website",
-        ogTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
-        ogDescription: "Suivez vos colis avec 5 outils de tracking, sans compte ni inscription. Détection automatique du transporteur et comparatif des meilleurs trackers.",
+        ogTitle: "Suivi colis universel (5 trackers, auto-détection, couverture monde & France) | UniversColis",
+        ogDescription: "Outil de suivi universel : comparez 5 trackers, auto-détection du transporteur, explications claires, interface multi-boutons, couverture mondiale et France.",
         ogUrl: "https://www.universcolis.fr/suivi",
         ogImage: "https://www.universcolis.fr/static/img/og-image.png",
         ogLocale: "fr_FR",
 
         twitterCard: "summary_large_image",
-        twitterTitle: "Suivi de colis universel : 5 outils de tracking en un clic – UniversColis",
-        twitterDescription: "Suivez tous vos colis, même sans connaître le transporteur. Comparez les meilleurs outils de tracking sur UniversColis.",
+        twitterTitle: "Suivi colis universel (5 trackers, auto-détection, couverture monde & France) | UniversColis",
+        twitterDescription: "Comparez 5 trackers pour un suivi complet. Outil gratuit, sans compte, explications transparentes et UX optimisée.",
         twitterImage: "https://www.universcolis.fr/static/img/og-image.png",
 
         structuredData: JSON.stringify({
             "@context": "https://schema.org",
             "@graph": [
                 {
-                    "@type": "WebPage",
-                    "name": "Suivi de colis universel",
-                    "url": "https://www.universcolis.fr/suivi",
-                    "description": "Page de suivi de colis permettant d’utiliser 5 outils de tracking différents sans compte, avec détection automatique du transporteur et comparatif des meilleurs trackers.",
-                    "isPartOf": {
-                        "@type": "WebSite",
-                        "name": "UniversColis",
-                        "url": "https://www.universcolis.fr/"
-                    },
-                    "potentialAction": {
-                        "@type": "SearchAction",
-                        "target": "https://www.universcolis.fr/suivi?tracking={trackingNumber}",
-                        "query-input": "required name=trackingNumber"
+                    "@type": "WebSite",
+                    "name": "UniversColis",
+                    "url": "https://www.universcolis.fr/",
+                    "description": "UniversColis : comparateur d’expédition, suivi colis universel, conseils et actualités.",
+                    "publisher": {
+                        "@id": "https://www.universcolis.fr/"
                     }
+                },
+                {
+                    "@type": "WebPage",
+                    "name": "Suivi colis universel",
+                    "url": "https://www.universcolis.fr/suivi",
+                    "description": "Outil de suivi universel fiable et multi-plateforme. Comparez 5 trackers, auto-détection du transporteur, explications claires, interface multi-boutons, couverture mondiale et France.",
+                    "mainEntityOfPage": "https://www.universcolis.fr/suivi",
+                    "isPartOf": {
+                        "@id": "https://www.universcolis.fr/"
+                    }
+                },
+                {
+                    "@type": "HowTo",
+                    "name": "Comment utiliser le suivi UniversColis ?",
+                    "description": "Guide étape par étape pour suivre un colis sur UniversColis.",
+                    "step": [
+                        { "@type": "HowToStep", "text": "Entrez votre numéro de suivi dans le champ prévu." },
+                        { "@type": "HowToStep", "text": "Cliquez sur 'Suivre'." },
+                        { "@type": "HowToStep", "text": "Comparez les résultats des différents trackers proposés." }
+                    ]
                 },
                 {
                     "@type": "FAQPage",
@@ -94,6 +111,71 @@ suiviController.get('/', (req, res) => {
                             }
                         }
                     ]
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "17TRACK",
+                    "operatingSystem": "Web",
+                    "applicationCategory": "WebApplication",
+                    "url": "https://www.17track.net/fr",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR"
+                    },
+                    "description": "Suivi pour plus de 2 400 transporteurs mondiaux, détection automatique du transporteur, données officielles synchronisées."
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "ParcelsApp",
+                    "operatingSystem": "Web",
+                    "applicationCategory": "WebApplication",
+                    "url": "https://parcelsapp.com/fr",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR"
+                    },
+                    "description": "Prise en charge des envois UPU et de nombreux transporteurs internationaux, vérifie plusieurs sources officielles."
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Track.Global",
+                    "operatingSystem": "Web",
+                    "applicationCategory": "WebApplication",
+                    "url": "https://track.global/fr",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR"
+                    },
+                    "description": "Fiable pour les commandes provenant d’Asie et les transporteurs peu référencés."
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Postal Ninja",
+                    "operatingSystem": "Web",
+                    "applicationCategory": "WebApplication",
+                    "url": "https://postal.ninja/fr",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR"
+                    },
+                    "description": "Interface en français, spécialisée dans le suivi Europe / France avec peu de publicité."
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "name": "Track123",
+                    "operatingSystem": "Web",
+                    "applicationCategory": "WebApplication",
+                    "url": "https://www.track123.com/",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR"
+                    },
+                    "description": "Optimisé pour les expéditions en provenance de la Chine (AliExpress, Cainiao, Shein)."
                 }
             ]
         })

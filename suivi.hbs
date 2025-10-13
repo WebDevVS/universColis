@@ -1,0 +1,342 @@
+<section class="suivi">
+  <div class="tracking-intro">
+    <h1 class="hero-title">Suivi de colis simplifié</h1>
+    <p class="hero-subtitle">
+      Suivez vos colis avec 5 outils de tracking depuis une seule page. Trouvez rapidement celui qui fonctionne le mieux
+      pour vos envois, en France ou à l’international.
+    </p>
+  </div>
+</section>
+
+<sectionclass="tracking">
+  <div class="tracking-container">
+    <h1><i class="fa-solid fa-search me-2"></i>Entrez votre numéro de suivi :</h1>
+
+    <div class="tracking-form">
+      <!-- Champ unique pour le numéro de suivi -->
+      <div class="input-group">
+        <input type="text" id="trackingNumber" placeholder="Ex: RG017001606CN" maxlength="50" class="tracking-input" />
+        <button class="btn-track" id="trackBtn" type="button">
+          <i class="fa-solid fa-search"></i>
+          Suivre
+        </button>
+      </div>
+
+      <!-- Sélecteur de service de tracking -->
+      <div>
+        <div class="selector-label">
+          <i class="fa-solid fa-list-ul"></i>
+          Choisir un tracker
+        </div>
+        <div class="tracker-logo-container text-center mb-2">
+          <div class="floating-label">Sélectionné</div>
+          <img id="trackerLogo" src="/static/img/trackers/17Track.jpg" alt="Logo tracker" class="tracker-logo-img" />
+        </div>
+        <select id="trackerSelect" class="tracking-selector">
+          <option value="17track">17Track</option>
+          <option value="trackglobal">Track.Global</option>
+          <option value="parcelsapp">Parcels App</option>
+          <option value="postalninja">Postal Ninja</option>
+          <option value="track123">Track123 (English)</option>
+        </select>
+      </div>
+
+      <!-- Zone pour les widgets -->
+      <div id="tracker-widget-container" class="tracker-widget-container">
+        <div class="widget-placeholder">
+          <i class="fa-solid fa-package"></i>
+          <p>Entrez un numéro de suivi et sélectionnez un tracker pour commencer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.17track.net/externalcall.js" defer></script>
+  <script src="/static/js/suivi.js"></script>
+
+  <div class="tracking-info-section">
+
+    <h2 class="section-title">
+      <i class="fa-solid fa-compass"></i>
+      Quel Suivi Choisir ? – Le bon outil pour chaque situation
+    </h2>
+
+    <p class="tracking-info-intro">
+      Utilisez le menu juste au-dessus pour tester 5 outils de suivi différents sans changer de page. Chacun a ses
+      forces (et ses petites faiblesses). Voilà un petit récap' clair pour vous guider :
+    </p>
+
+    <div class="comparison-table">
+      <div class="table-container">
+        <div class="table-header">
+          <div>Tracker</div>
+          <div>Ce qu'on aime bien</div>
+          <div>Moins top...</div>
+          <div>Recommandé pour...</div>
+        </div>
+
+        <div class="table-row">
+          <div class="tracker-name">
+            <img src="/static/img/trackers/17Track.jpg" alt="Logo 17Track" class="tracker-table-logo">
+            17Track
+          </div>
+          <div class="pros" data-label="plus">Très large couverture, interface moderne</div>
+          <div class="cons" data-label="moins">Parfois lent à charger</div>
+          <div class="recommended" data-label="etoile">Envois internationaux, plusieurs colis à la fois</div>
+        </div>
+
+        <div class="table-row">
+          <div class="tracker-name">
+            <img src="/static/img/trackers/TrackGlobal.jpg" alt="Logo Track.Global" class="tracker-table-logo">
+            Track.Global
+          </div>
+          <div class="pros">Rapide et direct, trouve parfois des infos que les autres n'ont pas</div>
+          <div class="cons">Interface un peu basique</div>
+          <div class="recommended">Commandes depuis l'Asie, transporteurs peu connus</div>
+        </div>
+
+        <div class="table-row">
+          <div class="tracker-name">
+            <img src="/static/img/trackers/Parcelsapp.jpg" alt="Logo ParcelsApp" class="tracker-table-logo">
+            ParcelsApp
+          </div>
+          <div class="pros">Affiche tout le trajet du colis, très détaillé</div>
+          <div class="cons">Un peu trop d'infos parfois</div>
+          <div class="recommended">Pour suivre les étapes dans le détail, livraison longue</div>
+        </div>
+
+        <div class="table-row">
+          <div class="tracker-name">
+            <img src="/static/img/trackers/PostalNinja.png" alt="Logo Postal Ninja" class="tracker-table-logo">
+            Postal Ninja
+          </div>
+          <div class="pros">Tout en français, fiable pour l'Europe</div>
+          <div class="cons">Peu d'options avancées</div>
+          <div class="recommended">Colis envoyés ou reçus en France / Europe</div>
+        </div>
+
+        <div class="table-row">
+          <div class="tracker-name">
+            <img src="/static/img/trackers/Track123.jpg" alt="Logo Track123 (EN)" class="tracker-table-logo">
+            Track123 (EN)
+          </div>
+          <div class="pros">Super pour les colis chinois (AliExpress, Cainiao...)</div>
+          <div class="cons">Uniquement en anglais</div>
+          <div class="recommended">Commandes depuis la Chine, dropshipping</div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">
+      <i class="fa-solid fa-comments"></i>
+      Avis d'utilisateurs – ce qu'en disent les gens
+    </h2>
+
+    <div class="testimonials-section">
+      <div class="testimonial">
+        <p class="testimonial-text">Track123, c'était le seul qui a vraiment localisé mon colis AliExpress. Les autres
+          affichaient encore rien.</p>
+        <p class="testimonial-author">— utilisateur Reddit (r/aliexpress)</p>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">Je commence toujours par 17Track, mais quand ça coince, ParcelsApp me sauve souvent.
+        </p>
+        <p class="testimonial-author">— utilisateur expérimenté</p>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">Postal Ninja est le plus clair pour les envois en France. Moins de pubs, plus
+          rapide.</p>
+        <p class="testimonial-author">— client régulier</p>
+      </div>
+
+      <div class="testimonial">
+        <p class="testimonial-text">Track.Global fonctionne quand les autres restent muets. C'est mon joker pour les
+          colis chinois.</p>
+        <p class="testimonial-author">— acheteur en ligne</p>
+      </div>
+    </div>
+
+    <div class="tips-section">
+      <h2 class="section-title">
+        <i class="fa-solid fa-lightbulb"></i>
+        Petit conseil
+      </h2>
+
+      <div class="tip-item">
+        <i class="fa-solid fa-flag-checkered tip-icon"></i>
+        <div class="tip-text">
+          <strong>Si votre colis vient de Chine</strong> → essayez Track123 ou Track.Global en premier.
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <i class="fa-solid fa-truck tip-icon"></i>
+        <div class="tip-text">
+          <strong>Pour les livraisons classiques</strong> (Colissimo, Mondial Relay, UPS...) → 17Track ou Postal Ninja
+          feront l'affaire.
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title">
+      <i class="fa-solid fa-question-circle"></i>
+      FAQ Rapide
+    </h2>
+
+    <div class="faq-section">
+      <div class="faq-item">
+        <div class="faq-question">
+          Est-ce que je dois créer un compte ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Non, aucun compte n'est nécessaire. Vous entrez juste le numéro de suivi, et c'est tout.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Mes infos sont-elles enregistrées ici ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Non plus. Le numéro de suivi est directement envoyé au site du tracker – rien n'est stocké ici.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Pourquoi proposer plusieurs trackers ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Parce que parfois, un seul outil ne suffit pas. Certains trackers travaillent avec plus de transporteurs que
+          d'autres, ce qui leur donne une meilleure couverture. D'autres sont plus rapides, mais ne détectent pas tous
+          les colis. Alors autant vous laisser le choix – vous pourrez tester et voir lequel trouve le mieux votre
+          envoi.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Est-ce que je dois payer pour utiliser ces outils ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Non, absolument pas ! Tous les trackers qu'on propose ici sont gratuits. Pas besoin de compte, pas de limite
+          d'utilisation, pas de frais cachés – c'est 100 % libre d'accès.
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <h3 class="highlight-title">
+        <i class="fa-solid fa-lightbulb"></i>
+        Astuce Pro
+      </h3>
+      <p class="highlight-text">
+        Vous n'avez aucune information sur votre colis ? Cela peut arriver. Tous les outils de suivi n'ont pas les mêmes
+        accords avec les transporteurs, ce qui signifie qu'ils n'accèdent pas aux mêmes données. Pour optimiser vos
+        chances, il est conseillé d'en tester au moins deux. Il n'est pas rare qu'un seul d'entre eux affiche les
+        informations de suivi, tandis que les autres restent sans résultat. C'est particulièrement utile si votre colis
+        traverse plusieurs pays ou utilise un transporteur peu connu.
+      </p>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
+  <section class="related-links py-5">
+    <div class="container first-container">
+      <div class="text-center mb-4">
+        <h3 class="related-title">Découvrez l'univers du colis</h3>
+        <p class="related-subtitle">Tous nos services pour une expédition parfaite</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Comparateur de prix -->
+        <div class="col-md-3">
+          <a href="/" class="link-card">
+            <div class="link-icon">
+              <i class="fa-solid fa-balance-scale"></i>
+            </div>
+            <h4 class="link-title">Comparer les prix</h4>
+            <p class="link-description">Trouvez le meilleur tarif pour votre expédition</p>
+            <span class="link-action">
+              Comparer maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+            </span>
+          </a>
+        </div>
+
+        <!-- Matériel d'emballage -->
+        <div class="col-md-3">
+          <a href="/mon-materiel" class="link-card">
+            <div class="link-icon">
+              <i class="fa-solid fa-box"></i>
+            </div>
+            <h4 class="link-title">Matériel d'emballage</h4>
+            <p class="link-description">Découvrez le matériel essentiel pour emballer</p>
+            <span class="link-action">
+              Voir le matériel <i class="fa-solid fa-arrow-right ms-1"></i>
+            </span>
+          </a>
+        </div>
+
+        <!-- Conseils d'expédition -->
+        <div class="col-md-3">
+          <a href="/conseils" class="link-card">
+            <div class="link-icon">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <h4 class="link-title">Conseils d'emballage</h4>
+            <p class="link-description">Astuces pour un emballage réussi</p>
+            <span class="link-action">
+              Lire les conseils <i class="fa-solid fa-arrow-right ms-1"></i>
+            </span>
+          </a>
+        </div>
+
+        <!-- Actualités -->
+        <div class="col-md-3">
+          <a href="/actualites" class="link-card">
+            <div class="link-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h4 class="link-title">Actualités</h4>
+            <p class="link-description">Restez informé des dernières évolutions du secteur</p>
+            <span class="link-action">
+              Voir les actualités <i class="fa-solid fa-arrow-right ms-1"></i>
+            </span>
+          </a>
+        </div>
+
+        <!-- Services à venir -->
+        <div class="col-md-3">
+          <div class="link-card coming-soon">
+            <div class="link-icon">
+              <i class="fa-solid fa-hourglass-half"></i>
+            </div>
+            <h4 class="link-title">Services à venir</h4>
+            <p class="link-description">De nouveaux services arrivent bientôt</p>
+            <span class="link-action">
+              Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Call-to-action principal -->
+      <div class="text-center mt-5">
+        <div class="main-cta">
+          <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+          <p class="cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
+          <a href="/" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-rocket me-2"></i>Commencer maintenant
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
