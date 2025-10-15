@@ -182,7 +182,9 @@ async function parseBoxtalResponse(xmlData) {
 
         // Nettoyage et formatage des offres pour le front-end
         const cleanedOffers = offersArray.map((offer) => {
-            const price = parseFloat(offer.price["tax-exclusive"]);
+            // Utilise le prix HT et multiplie par 1.20 pour obtenir le TTC
+            const priceHT = parseFloat(offer.price["tax-exclusive"]);
+            const priceTTC = Math.round(priceHT * 1.20 * 100) / 100; // arrondi à 2 décimales
             const transporteur = offer.operator.label;
             const logo = offer.operator.logo;
             const service = offer.service.label;
@@ -210,7 +212,7 @@ async function parseBoxtalResponse(xmlData) {
                 transporteur,
                 logo,
                 service,
-                prix_ttc: price,
+                prix_ttc: priceTTC,
                 livraison_estimee: dateLivraison,
                 temps_livraison_jours: tempsLivraison,
                 mode_envoi: modeEnvoi,
