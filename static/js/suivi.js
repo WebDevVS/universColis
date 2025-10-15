@@ -92,10 +92,15 @@ document.addEventListener('DOMContentLoaded', function () {
 // Remplace le handler du bouton pour lancer la timeline avant le tracking
 document.addEventListener('DOMContentLoaded', function () {
   const trackBtn = document.getElementById('trackBtn');
+  const infoDetails = document.querySelector('.tracking-info-details');
   if (trackBtn) {
     trackBtn.addEventListener('click', function (e) {
       e.preventDefault();
       showTrackingTimeline();
+      // Affiche la section cachée après le clic
+      if (infoDetails) {
+        infoDetails.classList.remove('hidden-info');
+      }
     });
   }
 });

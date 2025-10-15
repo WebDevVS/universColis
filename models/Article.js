@@ -9,6 +9,8 @@ const articleShema = new Schema({
     cardImgAlt: { type: String, required: true },
     cardImgDescription: { type: String, required: true },
     cardImgName: { type: String, required: true },
+    cardTeaser: { type: String, required: true },
+    readingTime: { type: Number, required: false },
     idCard: { type: String, required: true },
     introduction: { type: String, required: true },
     summary: [{ type: String }],

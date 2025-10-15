@@ -1,8 +1,8 @@
 <nav class="breadcrumb">
   <div class="container">
-      <a href="/" class="breadcrumb-link">Accueil</a>
-      <span class="mx-2">></span>
-      <span class="breadcrumb-current">Conseils d'emballage</span>
+    <a href="/" class="breadcrumb-link">Accueil</a>
+    <span class="mx-2">></span>
+    <span class="breadcrumb-current">Conseils d'emballage</span>
   </div>
 </nav>
 
@@ -38,8 +38,13 @@
             height="768" class="card-img-top">
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{this.cardTitle}}</h5>
+            <div class="card-meta mb-2">
+              <span>⏱️ <strong>{{this.readingTime}} min</strong> de lecture</span>
+              <span>📋 <strong>{{this.steps.length}} étapes</strong> faciles à suivre</span>
+            </div>
+            <p class="card-teaser">{{this.cardTeaser}}</p>
             <div class="mt-auto">
-              <a href="/conseils/{{this.slug}}" class="btn btn-primary w-100">Voir les conseils</a>
+              <a href="/conseils/{{this.slug}}" class="btn btn-primary w-100">Consulter le guide →</a>
             </div>
           </div>
         </div>
