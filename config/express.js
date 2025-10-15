@@ -87,6 +87,12 @@ module.exports = (app) => {
     next();
   });
 
+  // Permissions Policy pour limiter les warnings navigateur
+  app.use((req, res, next) => {
+    res.setHeader('Permissions-Policy', 'autoplay=(), fullscreen=(), cross-origin-isolated=()');
+    next();
+  });
+
   // Sécurité : headers, CORS, rate limit
   app.use(helmet({
     contentSecurityPolicy: {

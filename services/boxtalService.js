@@ -182,7 +182,7 @@ async function parseBoxtalResponse(xmlData) {
 
         // Nettoyage et formatage des offres pour le front-end
         const cleanedOffers = offersArray.map((offer) => {
-            const price = parseFloat(offer.price["tax-inclusive"]);
+            const price = parseFloat(offer.price["tax-exclusive"]);
             const transporteur = offer.operator.label;
             const logo = offer.operator.logo;
             const service = offer.service.label;

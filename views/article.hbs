@@ -126,7 +126,7 @@
     <div class="row g-2">
       <!-- Colonne des bonnes pratiques -->
       <div class="col-md-6 d-flex flex-column align-items-stretch">
-        <h4 class="text-success text-center"><i class="fa-regular fa-thumbs-up icon-success"></i></h4>
+        <h4 class="text-success text-center"><i class="fa-regular fa-thumbs-up icon-success"></i> À faire</h4>
         {{#each article.packingTips}}
         <div class="solution-box mb-2">
           <p>{{solution}}</p>
@@ -135,7 +135,7 @@
       </div>
       <!-- Colonne des erreurs -->
       <div class="col-md-6 d-flex flex-column align-items-stretch">
-        <h4 class="text-danger text-center"><i class="fa-regular fa-thumbs-down icon-danger"></i></h4>
+        <h4 class="text-danger text-center"><i class="fa-regular fa-thumbs-down icon-danger"></i> À éviter</h4>
         {{#each article.packingTips}}
         <div class="erreur-box mb-2">
           <p>{{mistake}}</p>
