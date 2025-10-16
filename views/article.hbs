@@ -10,13 +10,18 @@
 
 
 <section class="article-details">
-
-  <div class="intro">
-    <h1 class="hero-title">{{article.title}}</h1>
-    <h2 class="text-center mb-3">Guide Simple et Pratique</h2>
-    <p class="article-subtitle">
-      {{{article.introduction}}}
-    </p>
+  <div class="article-hero">
+    <div class="intro">
+      <h1 class="hero-title">{{article.title}}</h1>
+      <h2 class="text-center mb-3">Guide Simple et Pratique</h2>
+      <p class="article-subtitle">
+        {{{article.introduction}}}
+      </p>
+      <div class="card-meta mt-2 mb-2">
+        <span>⏱️ <strong>{{article.readingTime}} min</strong> de lecture</span>
+        <span>📋 <strong>{{article.steps.length}} étapes</strong> faciles à suivre</span>
+      </div>
+    </div>
   </div>
 
   <section class="nav-interne">
@@ -24,9 +29,9 @@
       <!-- Navigation Interne -->
       <div class="page-nav d-flex flex-wrap justify-content-center gap-3">
         <a href="#resume" class="nav-btn">Points Clés</a>
-        <a href="#etapes" class="nav-btn">Toutes les Étapes</a>
-        <a href="#materiel" class="nav-btn">Matériel Nécessaire</a>
-        <a href="#erreurs" class="nav-btn">Erreurs & Bonnes Pratiques</a>
+        <a href="#etapes" class="nav-btn">Étapes</a>
+        <a href="#materiel" class="nav-btn">Matériel</a>
+        <a href="#erreurs" class="nav-btn">Conseils</a>
         <a href="#faq" class="nav-btn">FAQ</a>
       </div>
     </div>
@@ -50,7 +55,7 @@
 
   <section class="details" id="etapes">
     <!-- Étapes -->
-    <h2 class="text-center mt-3"> <span>Étape Par Étape: </span>&nbsp;<i
+    <h2 class="text-center mt-3"> <span>Guide Étape Par Étape: </span>&nbsp;<i
         class="fa-regular fa-hand-point-down fa-bounce fa-lg"></i>
     </h2>
     <p class="text-center text-muted">Suivez ces étapes pour protéger {{article.etapeWord}}.</p>

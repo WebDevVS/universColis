@@ -43,6 +43,8 @@
   --gradient-light: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), rgba(233, 230, 225, 0.6));
   --glassmorphic-bg: rgba(255, 255, 255, 0.7);
   --glassmorphic-border: rgba(130, 105, 164, 0.3);
+  /* Offset used for anchor placement to account for sticky navs */
+  --anchor-offset: 120px;
 }
 
 /* ===== RESET ET BASE ===== */
@@ -4120,7 +4122,8 @@ div .input-group-text {
 /* ===== INTRODUCTION HERO ===== */
 .tracking-intro {
   text-align: center;
-  margin: 3rem auto 2rem; /* ✅ Plus d'air */
+  margin: 3rem auto 2rem;
+  /* ✅ Plus d'air */
   max-width: 900px;
   padding: 3rem 1rem 2rem;
 }
@@ -4237,12 +4240,19 @@ div .input-group-text {
 }
 
 .card-meta {
-   display: flex;
+  display: flex;
   gap: 0.75rem;
   font-size: 0.8rem;
   color: #666;
   margin-bottom: 0.75rem;
   font-weight: 500;
+}
+
+.article-hero .intro .card-meta {
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -4404,6 +4414,7 @@ div .input-group-text {
 
 /* ===== CONTAINER PRINCIPAL ===== */
 
+
 .article-details h2 {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
@@ -4425,7 +4436,6 @@ div .input-group-text {
 
 /* ===== SECTION INTRO HERO ===== */
 .intro {
-  padding: 2rem;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -4448,23 +4458,51 @@ div .input-group-text {
   opacity: 0.9;
 }
 
+.article-hero {
+  background: var(--glassmorphic-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glassmorphic-border);
+  box-shadow: var(--shadow-standard);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-top: 10px;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
 /* ===== NAVIGATION INTERNE ===== */
 .nav-interne {
+  position: sticky;
+  top: 80px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(130, 105, 164, 0.3);
+  border-radius: var(--border-radius);
+  padding: 1rem;
   margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
 }
 
 .page-nav {
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Changé de 20px à 0 */
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 12px; /* Réduit de 15px à 12px */
 }
 
 .nav-btn {
-  display: block;
-  font-size: 16px;
+  display: inline-block; /* Changé de block à inline-block */
+  font-size: 15px; /* Réduit de 16px à 15px */
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -4475,17 +4513,73 @@ div .input-group-text {
   backdrop-filter: blur(5px);
   color: var(--primary-color);
   transition: all 0.3s ease;
-  transform: translateY(-2px);
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Supprimé le transform: translateY(-2px) par défaut */
 }
 
-.nav-btn:hover,
+.nav-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(130, 105, 164, 0.1);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(130, 105, 164, 0.25);
+}
+
+/* ACTIVE STATE - Changement complet de couleur */
 .nav-btn.active {
-  transform: translateY(0);
-  background: var(--primary-color);
+ background: var(--primary-color);
   color: white;
-  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(130, 105, 164, 0.35);
+}
+
+/* Anchor offset: use variable so designers can tweak per breakpoint */
+section[id] {
+  /* fallback for older browsers */
+  scroll-margin-top: var(--anchor-offset, 120px);
+}
+
+/* Responsive tweaks: reduce offset on smaller screens where nav is smaller */
+@media (max-width: 992px) {
+  :root { --anchor-offset: 96px; }
+}
+
+@media (max-width: 768px) {
+  :root { --anchor-offset: 72px; }
+}
+
+@media (max-width: 576px) {
+  :root { --anchor-offset: 56px; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-interne {
+    top: 80px;
+    padding: 0.75rem;
+    border-radius: 25px;
+  }
+
+  .page-nav {
+    gap: 8px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .page-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    flex-shrink: 0;
+    font-size: 14px;
+    padding: 0.65em 1.2em;
+    white-space: nowrap;
+  }
 }
 
 /* ===== SECTION RÉSUMÉ POINTS CLÉS ===== */
@@ -4914,6 +5008,7 @@ figure.etape-image:hover .hover-caption {
   }
 
   .resume,
+  .article-hero,
   .details,
   .materiels,
   .erreurs,
@@ -4931,14 +5026,18 @@ figure.etape-image:hover .hover-caption {
     padding: 0.3rem !important;
   }
 
-  .intro,
   .resume,
+  .article-hero,
   .details,
   #materiel,
   .erreurs,
   #faq {
     padding: 1.5rem;
     border-radius: var(--border-radius-small);
+  }
+
+  .intro {
+    padding: 0 !important;
   }
 }
 
@@ -4951,6 +5050,7 @@ figure.etape-image:hover .hover-caption {
 
   .intro,
   .resume,
+  .article-hero,
   .details,
   #materiel,
   .erreurs,
