@@ -576,6 +576,15 @@ p {
   text-align: center;
 }
 
+/* Ensure h2 in submit-form looks the same as previous h1 (visual parity) */
+.submit-form h2 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
 /* Controls généraux du formulaire */
 .submit-form .form-select,
 .submit-form .form-control {
@@ -1134,6 +1143,12 @@ div .input-group-text {
   font-weight: 600;
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
+}
+
+/* Center titles inside the services cards */
+.services .card-body .card-title {
+  text-align: center;
+  width: 100%;
 }
 
 .services .card-text {

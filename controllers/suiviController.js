@@ -7,7 +7,7 @@ suiviController.get('/', (req, res) => {
         bodyClass: 'suivi-page',
 
         // SEO dynamique 
-        seoTitle: "Suivi de colis universel – 5 outils gratuits et fiables en France et à l’international | UniversColis",
+        seoTitle: "Suivi de colis universel – 5 outils gratuits et fiables en France et à l’international",
         seoDescription: "Suivez vos colis en France et à l’international avec UniversColis : 5 outils gratuits et fiables pour identifier automatiquement votre transporteur, comme Colissimo, Chronopost, DHL, UPS ou Mondial Relay.",
         seoKeywords: [
             "suivi colis",

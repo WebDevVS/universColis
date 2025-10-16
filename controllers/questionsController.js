@@ -16,10 +16,93 @@ questionsController.get('/', async (req, res) => {
       questionCounts[cat] = allQuestions.filter(q => q.category === cat).length;
     });
 
+    // SEO + structured data for the questions catalogue
+    const seoTitle = 'Questions fréquentes sur l\'envoi de colis – UniversColis';
+    const seoDescription = 'Retrouvez nos questions/réponses sur l\'envoi de colis : tarifs, suivi, transporteurs, dimensions, livraison, international, assurance et conseils pratiques.';
+    const canonicalUrl = 'https://www.universcolis.fr/questions';
+
+    // Build a lightweight FAQ summary from top categories (static for catalogue)
+    const faqEntities = [
+      {
+        "@type": "Question",
+        "name": "Comment calculer le prix d\'un envoi ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Consultez notre rubrique Tarifs & Prix pour comprendre les éléments qui composent le coût d\'un envoi." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment suivre un colis sans connaître le transporteur ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Utilisez notre outil de suivi universel : entrez le numéro et testez plusieurs trackers proposés par UniversColis." }
+      }
+    ];
+
+    const structuredData = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.universcolis.fr/#website",
+          "name": "UniversColis",
+          "url": "https://www.universcolis.fr/",
+          "inLanguage": "fr-FR",
+          "description": "UniversColis : comparateur d\'expédition, suivi de colis, conseils et actualités.",
+          "publisher": { "@id": "https://www.universcolis.fr/#org" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.universcolis.fr/questions?q={query}",
+            "query-input": "required name=query"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.universcolis.fr/#org",
+          "name": "UniversColis",
+          "url": "https://www.universcolis.fr/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.universcolis.fr/static/img/logo.png"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.universcolis.fr/questions#webpage",
+          "name": "Questions - UniversColis",
+          "url": "https://www.universcolis.fr/questions",
+          "inLanguage": "fr-FR",
+          "isPartOf": { "@id": "https://www.universcolis.fr/#website" },
+          "description": "Foire aux questions autour de l\'envoi de colis : tarifs, suivi, transporteurs, dimensions, livraison, international et assurance."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.universcolis.fr/questions#faq",
+          "mainEntity": faqEntities
+        }
+      ]
+    });
+
     res.render('questions-catalogue', {
       title: 'Questions',
       bodyClass: 'questions-page',
-      questionCounts
+      questionCounts,
+      // SEO fields used by main layout
+      seoTitle,
+      seoDescription,
+      seoKeywords: [
+        'questions envoi colis', 'tarifs colis', 'suivi colis', 'transporteurs', 'dimensions colis', 'delai livraison', 'assurance colis'
+      ],
+      canonicalUrl,
+      robots: 'index, follow',
+      publishedDate: (new Date()).toISOString().slice(0,10),
+      modifiedDate: (new Date()).toISOString().slice(0,10),
+      ogType: 'website',
+      ogTitle: seoTitle,
+      ogDescription: seoDescription,
+      ogUrl: canonicalUrl,
+      ogImage: 'https://www.universcolis.fr/static/img/og-image.png',
+      twitterCard: 'summary_large_image',
+      twitterTitle: seoTitle,
+      twitterDescription: seoDescription,
+      twitterImage: 'https://www.universcolis.fr/static/img/og-image.png',
+      structuredData
     });
   } catch (err) {
     console.error("Erreur lors de l'accès aux articles :", err)
@@ -95,6 +178,68 @@ questionsController.get('/:category', async (req, res) => {
       {key: 'divers', label: 'Questions diverses', icon: 'fa-circle-question', class: 'icon-divers'}
     ];
 
+    // Build ItemList for structured data
+    const itemListElements = questions.map((q, idx) => ({
+      "@type": "ListItem",
+      "position": idx + 1,
+      "url": `https://www.universcolis.fr/questions/${category}/${q.slug}`,
+      "name": q.title
+    }));
+
+    // Build FAQ entries if question objects include faq-like fields or resume; fall back to titles
+    const faqFromQuestions = questions.slice(0, 10).map(q => ({
+      "@type": "Question",
+      "name": q.title,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.quickAnswer || q.excerpt || ''
+      }
+    }));
+
+    const structuredDataCategory = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.universcolis.fr/#website",
+          "name": "UniversColis",
+          "url": "https://www.universcolis.fr/",
+          "inLanguage": "fr-FR",
+          "publisher": { "@id": "https://www.universcolis.fr/#org" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.universcolis.fr/#org",
+          "name": "UniversColis",
+          "url": "https://www.universcolis.fr/",
+          "logo": { "@type": "ImageObject", "url": "https://www.universcolis.fr/static/img/logo.png" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": `https://www.universcolis.fr/questions/${category}#webpage`,
+          "name": `Questions - ${data.label} - UniversColis`,
+          "url": `https://www.universcolis.fr/questions/${category}`,
+          "inLanguage": "fr-FR",
+          "isPartOf": { "@id": "https://www.universcolis.fr/#website" },
+          "description": data.description
+        },
+        {
+          "@type": "ItemList",
+          "@id": `https://www.universcolis.fr/questions/${category}#list`,
+          "itemListElement": itemListElements
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `https://www.universcolis.fr/questions/${category}#faq`,
+          "mainEntity": faqFromQuestions
+        }
+      ]
+    });
+
+    const seoTitle = `Questions ${data.label} – UniversColis`;
+    const seoDescription = data.description || `Questions et réponses sur ${data.label}`;
+    const canonicalUrl = `https://www.universcolis.fr/questions/${category}`;
+
     res.render('questions-categorie', {
       title: 'Questions ' + data.label,
       bodyClass: 'questions-page',
@@ -104,7 +249,25 @@ questionsController.get('/:category', async (req, res) => {
       categoryDescription: data.description,
       questionsCount,
       questions, // Passe la liste à la vue
-      categories: categoriesList // Pour la section "Voir aussi"
+      categories: categoriesList, // Pour la section "Voir aussi"
+      // SEO fields
+      seoTitle,
+      seoDescription,
+      seoKeywords: [data.label, 'questions envoi colis', 'FAQ', 'universcolis'],
+      canonicalUrl,
+      robots: 'index, follow',
+      publishedDate: (new Date()).toISOString().slice(0,10),
+      modifiedDate: (new Date()).toISOString().slice(0,10),
+      ogType: 'website',
+      ogTitle: seoTitle,
+      ogDescription: seoDescription,
+      ogUrl: canonicalUrl,
+      ogImage: 'https://www.universcolis.fr/static/img/og-image.png',
+      twitterCard: 'summary_large_image',
+      twitterTitle: seoTitle,
+      twitterDescription: seoDescription,
+      twitterImage: 'https://www.universcolis.fr/static/img/og-image.png',
+      structuredData: structuredDataCategory
     });
   } catch (err) {
     console.error("Erreur lors de l'accès aux questions :", err);
