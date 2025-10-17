@@ -8354,6 +8354,13 @@ footer {
 /* Main Content */
 .content-wrapper {
   background: var(--gradient-light);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--glassmorphic-border);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-standard);
+}
 
 /* Ensure anchor targets (h3 with id and generic section[id]) leave room for sticky header */
 /* Uses the --anchor-offset variable already defined in the stylesheet (adjust per breakpoint) */
@@ -8363,13 +8370,6 @@ section[id] {
   scroll-margin-top: var(--anchor-offset);
   /* fallback for older engines */
   -webkit-scroll-margin-top: var(--anchor-offset);
-}
-  backdrop-filter: blur(10px);
-  border: 2px solid var(--glassmorphic-border);
-  border-radius: var(--border-radius);
-  padding: 2.5rem;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-standard);
 }
 
 .content-text {
