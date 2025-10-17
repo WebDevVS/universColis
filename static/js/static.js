@@ -111,6 +111,36 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+
+    // TOC toggle + count + auto-close on item click
+    (function setupTocToggle(){
+      const tocToggle = document.getElementById('tocToggle');
+      const tocNav = document.getElementById('tocNav');
+      const tocCount = document.getElementById('tocCount');
+      if (!tocNav) return;
+
+      const items = Array.from(tocNav.querySelectorAll('.toc-item'));
+      // update count
+      if (tocCount) tocCount.textContent = items.length + (items.length > 1 ? ' sections' : ' section');
+
+      if (!tocToggle) return;
+
+      tocToggle.addEventListener('click', function(){
+        tocNav.classList.toggle('show');
+        tocToggle.classList.toggle('active');
+        const isExpanded = tocNav.classList.contains('show');
+        tocToggle.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Close TOC on mobile when selecting an item
+      items.forEach(a => a.addEventListener('click', () => {
+        if (window.innerWidth <= 767) {
+          tocNav.classList.remove('show');
+          tocToggle.classList.remove('active');
+          tocToggle.setAttribute('aria-expanded', false);
+        }
+      }));
+    })();
   })();
 
 
@@ -137,5 +167,7 @@ function showTab(tabId) {
   const activeBtn = document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`);
   if (activeBtn) activeBtn.classList.add('active');
 }
+
+// (TOC toggle is initialized within DOMContentLoaded)
 
 

@@ -4507,17 +4507,21 @@ div .input-group-text {
 }
 
 .page-nav {
-  margin-bottom: 0; /* Changé de 20px à 0 */
+  margin-bottom: 0;
+  /* Changé de 20px à 0 */
   text-align: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px; /* Réduit de 15px à 12px */
+  gap: 12px;
+  /* Réduit de 15px à 12px */
 }
 
 .nav-btn {
-  display: inline-block; /* Changé de block à inline-block */
-  font-size: 15px; /* Réduit de 16px à 15px */
+  display: inline-block;
+  /* Changé de block à inline-block */
+  font-size: 15px;
+  /* Réduit de 16px à 15px */
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -4542,7 +4546,7 @@ div .input-group-text {
 
 /* ACTIVE STATE - Changement complet de couleur */
 .nav-btn.active {
- background: var(--primary-color);
+  background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
   transform: translateY(-2px);
@@ -4557,15 +4561,23 @@ section[id] {
 
 /* Responsive tweaks: reduce offset on smaller screens where nav is smaller */
 @media (max-width: 992px) {
-  :root { --anchor-offset: 96px; }
+  :root {
+    --anchor-offset: 96px;
+  }
 }
 
 @media (max-width: 768px) {
-  :root { --anchor-offset: 72px; }
+  :root {
+    /* Increased offset on smaller screens to account for taller stacked headers */
+    --anchor-offset: 120px;
+  }
 }
 
 @media (max-width: 576px) {
-  :root { --anchor-offset: 56px; }
+  :root {
+    /* Mobile: larger offset to ensure headings are visible below fixed UI */
+    --anchor-offset: 140px;
+  }
 }
 
 /* RESPONSIVE */
@@ -8235,9 +8247,123 @@ footer {
   margin: 0;
 }
 
+/* Table of Contents (version collapsible) */
+.table-of-contents {
+  background: rgba(130, 105, 164, 0.08);
+  border-left: 3px solid var(--primary-color);
+  border-radius: 15px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.toc-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.toc-title {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.toc-arrow {
+  color: var(--primary-color);
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.toc-toggle:hover .toc-title {
+  color: var(--accent-color);
+}
+
+.toc-toggle:hover .toc-arrow {
+  color: var(--accent-color);
+}
+
+.toc-toggle.active .toc-arrow {
+  transform: rotate(180deg);
+}
+
+.toc-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+  margin-top: 0;
+}
+
+.toc-nav.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.toc-item {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(130, 105, 164, 0.2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.toc-item::before {
+  content: "→";
+  color: var(--primary-color);
+  font-weight: 700;
+  transition: transform 0.3s ease;
+}
+
+.toc-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(130, 105, 164, 0.2);
+}
+
+.toc-item:hover::before {
+  transform: translateX(2px);
+}
+
+
 /* Main Content */
 .content-wrapper {
   background: var(--gradient-light);
+
+/* Ensure anchor targets (h3 with id and generic section[id]) leave room for sticky header */
+/* Uses the --anchor-offset variable already defined in the stylesheet (adjust per breakpoint) */
+h3[id],
+section[id] {
+  /* modern browsers use scroll-margin-top for anchor offsets */
+  scroll-margin-top: var(--anchor-offset);
+  /* fallback for older engines */
+  -webkit-scroll-margin-top: var(--anchor-offset);
+}
   backdrop-filter: blur(10px);
   border: 2px solid var(--glassmorphic-border);
   border-radius: var(--border-radius);

@@ -49,11 +49,29 @@
     </div>
     {{/if}}
 
+    <!-- Table of Contents (dynamic, collapsible) -->
+    <div class="table-of-contents">
+        <button class="toc-toggle" id="tocToggle" aria-expanded="false">
+            <div class="toc-title">
+                <i class="fa-solid fa-list"></i>
+                Sommaire
+            </div>
+            <i class="fa-solid fa-chevron-down toc-arrow"></i>
+        </button>
+        <nav class="toc-nav" id="tocNav">
+            {{#each paragraphs}}
+            {{#if this.pTitle}}
+            <a href="#section-{{@index}}" class="toc-item">{{this.pTitle}}</a>
+            {{/if}}
+            {{/each}}
+        </nav>
+    </div>
+
     <!-- Main Content -->
     <div class="content-wrapper">
         <div class="content-text">
             {{#each paragraphs}}
-            {{#if this.pTitle}}<h3>{{this.pTitle}}</h3>{{/if}}
+            {{#if this.pTitle}}<h3 id="section-{{@index}}">{{this.pTitle}}</h3>{{/if}}
             {{#if this.pSubtitle}}<p><strong class="subtitle-strong">{{this.pSubtitle}}</strong></p>{{/if}}
             {{#if this.questionImg}}
             <figure class="etape-image">
