@@ -486,16 +486,10 @@ p {
   color: #333333;
   background-position: center top;
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
   background-blend-mode: soft-light;
-}
-
-@media (min-width: 1024px) {
-  .home-page {
-    background-attachment: fixed;
-  }
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
