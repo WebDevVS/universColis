@@ -486,10 +486,16 @@ p {
   color: #333333;
   background-position: center top;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-repeat: no-repeat;
   min-height: 100vh;
   background-blend-mode: soft-light;
+}
+
+@media (min-width: 1024px) {
+  .home-page {
+    background-attachment: fixed;
+  }
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
@@ -8789,54 +8795,4 @@ idget-section-title {
   margin-top: 1.5rem;
   border-top: 1px solid rgba(130, 105, 164, 0.1);
   padding-top: 1.5rem;
-}
-
-/* Fix: improve background-image rendering on mobile / iOS devices
-   iOS has issues with `background-attachment: fixed` (causes zoomed/blurred backgrounds).
-   Disable fixed attachment on touch devices and ensure cover/center positioning. */
-@supports (-webkit-overflow-scrolling: touch) {
-  /* iOS Safari and many iOS browsers will match this */
-  .home-page,
-  .comparateur-page,
-  .suivi-page,
-  .materiel-page,
-  .article-page,
-  .actualites-page,
-  .questions-page {
-    background-attachment: scroll !important;
-    background-position: center top !important;
-    background-size: cover !important;
-    backface-visibility: hidden; /* helps with rendering */
-    -webkit-backface-visibility: hidden; /* helps with rendering */
-    transform: translateZ(0); /* promote to its own layer */
-    -webkit-transform: translateZ(0); /* promote to its own layer */
-  }
-}
-
-/* Fallback: target touch devices generally */
-@media (pointer: coarse) and (max-width: 1024px) {
-  .home-page,
-  .comparateur-page,
-  .suivi-page,
-  .materiel-page,
-  .article-page,
-  .actualites-page,
-  .questions-page {
-    background-attachment: scroll !important;
-    background-size: cover !important;
-    background-position: center top !important;
-  }
-}
-
-/* Optional: if you still need a parallax-like effect on desktop, keep fixed for non-touch */
-@media (hover: hover) and (pointer: fine) {
-  .home-page.fixed-bg,
-  .comparateur-page.fixed-bg,
-  .suivi-page.fixed-bg,
-  .materiel-page.fixed-bg,
-  .article-page.fixed-bg,
-  .actualites-page.fixed-bg,
-  .questions-page.fixed-bg {
-    background-attachment: fixed;
-  }
 }
