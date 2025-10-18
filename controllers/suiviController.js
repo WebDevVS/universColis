@@ -5,6 +5,7 @@ suiviController.get('/', (req, res) => {
         title: 'Suivre mon colis',
         page: 'suivi',
         bodyClass: 'suivi-page',
+        imageClass: 'img-suivi',
 
         // SEO dynamique 
         seoTitle: "Suivi de colis universel – 5 outils gratuits et fiables en France et à l’international",

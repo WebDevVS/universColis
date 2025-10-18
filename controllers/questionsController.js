@@ -82,6 +82,7 @@ questionsController.get('/', async (req, res) => {
     res.render('questions-catalogue', {
       title: 'Questions',
       bodyClass: 'questions-page',
+      imageClass: 'img-questions',
       questionCounts,
       // SEO fields used by main layout
       seoTitle,
@@ -243,6 +244,7 @@ questionsController.get('/:category', async (req, res) => {
     res.render('questions-categorie', {
       title: 'Questions ' + data.label,
       bodyClass: 'questions-page',
+      imageClass: 'img-questions',
       category,
       categoryLabel: data.label,
       categoryIcon: data.icon,
@@ -325,6 +327,7 @@ questionsController.get('/:category/:slug', async (req, res) => {
     res.render('question', {
       ...question,
       page: 'question',
+      imageClass: 'img-questions',
       categoryLabels,
       categoryLabel,
       bodyClass: 'questions-page',

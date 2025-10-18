@@ -147,6 +147,7 @@ articleController.get('/', async (req, res) => {
     res.render('articles-list', {
       title: 'Conseils d’emballage',
       bodyClass: 'articles-list-page',
+      imageClass: 'img-articles',
       articles,
 
       // SEO
@@ -193,6 +194,7 @@ articleController.get('/:slug', async (req, res) => {
     res.render('article', {
       bodyClass: 'article-page',
       page: 'article',
+      imageClass: 'img-articles',
       article,
       seoTitle: article.seoTitle,
       seoDescription: article.seoDescription,

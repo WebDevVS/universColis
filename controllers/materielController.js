@@ -7,6 +7,7 @@ meterielController.get('/', async (req, res) => {
     res.render('materiel', {
       title: 'Matériel d’emballage',
       bodyClass: 'materiel-page',
+      imageClass: 'img-materiel',
       materiels,
 
       // SEO dynamique

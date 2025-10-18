@@ -119,6 +119,7 @@ comparateurController.get('/', async (req, res) => {
             title: 'Comparateur des prix',
             bodyClass: 'comparateur-page',
             page: 'comparateur',
+            imageClass: 'img-comparateur',
             countries,
             categories,
             destination,

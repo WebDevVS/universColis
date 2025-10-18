@@ -13,6 +13,7 @@ homeController.get('/', async (req, res) => {
         res.render('home', {
             title: 'Accueil',
             bodyClass: 'home-page',
+            imageClass: 'img-home',
             countries,
             categories,
             carriers,

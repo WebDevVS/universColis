@@ -78,6 +78,7 @@ actualitesController.get('/', async (req, res) => {
     res.render('actualites-list', {
         actualites,
         bodyClass: 'actualites-page',
+        imageClass: 'img-actualites',
         currentPage: page,
         totalPages,
 
@@ -141,6 +142,7 @@ actualitesController.get('/:slug', async (req, res) => {
     res.render('actualites', {
         page: 'actualites',
         bodyClass: 'actualites-page',
+        imageClass: 'img-actualites',
         ...actualite,
 
         // SEO
