@@ -481,15 +481,37 @@ p {
 
 /*  ===== BACKGROUND GÉNÉRAL DE LA PAGE  =====  */
 .home-page {
-  background-image: url('/static/img/home.webp');
-  background-color: #E9E6E1;
-  color: #333333;
-  background-position: center top;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  background-blend-mode: soft-light;
+ position: relative; /* ESSENTIEL pour que le contenu s'affiche au-dessus */
+    position: relative; 
+    /* La couleur de fond est conservée, elle transparaîtra */
+    
+    color: #333333;
+    min-height: 100vh;
+}
+
+/* NOUVEAU CSS POUR .home-background-fix */
+.home-background-fix {
+  /* Propriétés de POSITIONNEMENT (restent les mêmes) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    
+    /* Propriétés de FOND (restent les mêmes) */
+    background-image: url('/static/img/home.webp');
+    background-position: center top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    /* NOUVELLE PROPRIÉTÉ : Contrôle la transparence de l'image */
+    /* Ajustez la valeur (de 0.0 à 1.0) jusqu'à obtenir l'effet désiré. */
+    /* 0.4 est un bon point de départ pour un effet "moins visible". */
+    opacity: 0.1; 
+
+    /* La propriété background-blend-mode est RETIRÉE ici */
+    -webkit-background-size: cover;
 }
 
 /*  ===== SECTION HOME PRINCIPALE  =====  */
