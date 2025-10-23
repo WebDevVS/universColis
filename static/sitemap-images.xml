@@ -370,5 +370,14 @@
         <image:caption>Guide visuel UniversColis illustrant les étapes essentielles lorsqu'un colis est retourné : comment vérifier le suivi, comprendre la cause du retour, corriger les erreurs et renvoyer le colis correctement affranchi.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/transporteurs/meilleur-transporteur-colis-fragile</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/processus-selection-transporteur-colis-fragile.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis montrant les cinq étapes clés pour choisir un transporteur adapté aux objets fragiles : évaluer le contenu, sélectionner le bon service, contrôler les options de sécurité, emballer correctement et conserver une preuve d'expédition.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
