@@ -352,5 +352,23 @@
         <image:caption>Guide visuel pour choisir un transporteur fiable : comparez les tarifs et délais sur UniversColis.fr, filtrez selon vos besoins (prix, rapidité, fiabilité), puis finalisez l'envoi en achetant directement l'étiquette sur le site du transporteur.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/transporteurs/colis-lourd-vs-transport-de-fret</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/choisir-service-expedition-messagerie-fret-collaboratif-universcolis.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis pour comprendre quel service d'expédition convient à votre envoi : messagerie pour les petits colis rapides, fret pour les palettes ou lots volumineux, et livraison collaborative pour les colis atypiques et flexibles.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/livraison/colis-refuse-colissimo-chronopost</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/etapes-retour-colis-colissimo-chronopost.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis illustrant les étapes essentielles lorsqu'un colis est retourné : comment vérifier le suivi, comprendre la cause du retour, corriger les erreurs et renvoyer le colis correctement affranchi.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

@@ -85,34 +85,36 @@
             </figure>
             {{/if}}
             {{#if this.isTable}}
-            <table class="article-table">
-                <thead>
-                    <tr>
-                        {{#each this.table.headers}}
-                        {{#if ../hasLinks}}
-                        <th>{{{parseMarkdownLinks this}}}</th>
-                        {{else}}
-                        <th>{{{this}}}</th>
-                        {{/if}}
-                        {{/each}}
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each this.table.rows}}
-                    <tr>
-                        {{#each this}}
-                        <td>
-                            {{#if ../../hasLinks}}
-                            {{{parseMarkdownLinks this}}}
+            <div class="article-table-wrapper">
+                <table class="article-table">
+                    <thead>
+                        <tr>
+                            {{#each this.table.headers}}
+                            {{#if ../hasLinks}}
+                            <th>{{{parseMarkdownLinks this}}}</th>
                             {{else}}
-                            {{{this}}}
+                            <th>{{{this}}}</th>
                             {{/if}}
-                        </td>
+                            {{/each}}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this.table.rows}}
+                        <tr>
+                            {{#each this}}
+                            <td>
+                                {{#if ../../hasLinks}}
+                                {{{parseMarkdownLinks this}}}
+                                {{else}}
+                                {{{this}}}
+                                {{/if}}
+                            </td>
+                            {{/each}}
+                        </tr>
                         {{/each}}
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             {{else}}
             {{#if this.text}}
             <p>
@@ -147,6 +149,19 @@
                 {{/each}}
             </ul>
             {{/if}}
+            {{#if this.listNum}}
+            <ol>
+                {{#each this.listNum}}
+                <li>
+                    {{#if ../hasLinks}}
+                    {{{parseMarkdownLinks this}}}
+                    {{else}}
+                    {{{this}}}
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ol>
+            {{/if}}
             {{/if}}
             {{/each}}
         </div>
@@ -156,7 +171,7 @@
     <!-- FAQ Section dynamique -->
     {{#if faq}}
     <div class="faq-section">
-        <h2 class="faq-title">Questions fréquentes sur les retards</h2>
+        <h2 class="faq-title">Questions fréquentes</h2>
         <div class="accordion" id="faqAccordion">
             {{#each faq}}
             <div class="accordion-item">
@@ -245,7 +260,7 @@
 
         <a href="/questions/{{category}}" class="nav-back-home">
             <i class="fa-solid fa-list"></i>
-            Toutes les questions
+            Toutes les questions {{categoryLabel}}
         </a>
 
         {{#if nextSlug}}

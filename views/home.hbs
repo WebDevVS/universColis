@@ -15,7 +15,7 @@
       <!-- Deuxième colonne (par exemple : le contenu principal) -->
       <div class="submit-form col-md-6">
 
-  <h2 class="text-center">Comparez maintenant</h2>
+        <h2 class="text-center">Comparez maintenant</h2>
         <!-- Navigation à onglets -->
         <div class="tab-navigation">
           <div class="tabs">
@@ -201,12 +201,12 @@
     <div class="logo-container d-flex justify-content-start">
       {{#each carriers}}
       <div class="carrier">
-        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" width="160" height="48" loading="lazy" />
+        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" />
       </div>
       {{/each}}
       {{#each carriers}}
       <div class="carrier">
-        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" width="160" height="48" loading="lazy" />
+        <img src="{{this}}" alt="{{@key}}" title="{{@key}}" />
       </div>
       {{/each}}
     </div>
@@ -276,23 +276,24 @@
 
     <div class="row">
       <div class="col-12">
-   
+
         {{#each actualites}}
-        <article class="news-card-mixed">
+        <article class="news-card-mixed" itemscope itemtype="https://schema.org/NewsArticle">
+        <meta itemprop="datePublished" content="{{publishedDate}}">
           <div class="news-meta-mixed">
             <div class="news-date-compact">
               <i class="fa-regular fa-calendar"></i>
-              <span>{{publishedDate}}</span>
+              <span itemprop="dateModified" content="{{publishedDate}}">{{publishedDate}}</span>
             </div>
             <div class="news-category-compact">{{keyWord}}</div>
           </div>
 
-          <h3 class="news-title-mixed">{{resumeTitle}}</h3>
-          <p class="news-excerpt-mixed">
+          <h3 class="news-title-mixed" itemprop="headline">{{resumeTitle}}</h3>
+          <p class="news-excerpt-mixed" itemprop="description">
             {{description}}
           </p>
 
-          <a href="{{canonicalUrl}}" class="news-read-more-mixed">
+          <a href="{{canonicalUrl}}" class="news-read-more-mixed" itemprop="url">
             Lire l'article complet
             <i class="fa-solid fa-arrow-right"></i>
           </a>
@@ -311,6 +312,4 @@
       </a>
     </div>
   </div>
-</section> 
-
-
+</section>

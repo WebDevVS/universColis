@@ -19,6 +19,7 @@ const questionShema = new Schema({
         pSubtitle: String,
         text: String,
         list: [String],
+        listNum: [String],
         highlight: String,
         hasLinks: { type: Boolean, default: false },
         isTable: { type: Boolean, default: false },

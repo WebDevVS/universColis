@@ -4343,7 +4343,8 @@ div .input-group-text {
     margin-top: 0 !important;
   }
 
-  .row.g-4 {
+  /* Limit added gap to articles list only to avoid extra spacing on other pages */
+  .articles-list .row.g-4 {
     gap: 1rem !important;
   }
 
@@ -4365,6 +4366,8 @@ div .input-group-text {
   .first-container {
     padding: 0 1rem;
   }
+
+
 }
 
 /* ===== PAGE ARTICLE DÉTAILS ===== */
@@ -6477,7 +6480,7 @@ footer {
 
 /* ===== PAGE ACTUALITÉS  ===== */
 
-.img-actualites{
+.img-actualites {
   background-image: url('/static/img/actualites.webp');
 }
 
@@ -6795,12 +6798,30 @@ footer {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
 }
 
+/* ===== CONTENEUR POUR LE SCROLL ===== */
+.article-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 15px;
+}
+
+/* Style de la barre de défilement */
+.article-table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.article-table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(130, 105, 164, 0.3);
+  border-radius: 4px;
+}
+
+/* ===== EN-TÊTE ===== */
 .article-table thead {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
 }
-
 .article-table th {
   padding: 1rem;
   text-align: left;
@@ -6808,26 +6829,25 @@ footer {
   font-weight: 600;
   font-size: 0.95rem;
   border: none;
+
 }
 
+/* ===== CORPS ===== */
 .article-table tbody tr {
-  border-bottom: 1px solid rgba(130, 105, 164, 0.15);
+  border-bottom: 1px solid rgba(10, 7, 14, 0.15);
   transition: background 0.2s ease;
 }
-
 .article-table tbody tr:last-child {
   border-bottom: none;
 }
-
 .article-table tbody tr:hover {
   background: rgba(130, 105, 164, 0.05);
 }
-
 .article-table td {
   padding: 1rem;
   color: var(--text-color);
-  font-size: 0.95rem;
   line-height: 1.5;
+  vertical-align: top;
 }
 
 /* Première colonne en gras */
@@ -6836,7 +6856,7 @@ footer {
   color: var(--primary-color);
 }
 
-/* Responsive mobile */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .article-table {
     font-size: 0.85rem;
@@ -6847,35 +6867,8 @@ footer {
     padding: 0.75rem 0.5rem;
   }
 
-  /* Version empilée sur très petit écran si nécessaire */
-  @media (max-width: 576px) {
-    .article-table thead {
-      display: none;
-    }
-
-    .article-table tbody tr {
-      display: block;
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 0.5rem;
-    }
-
-    .article-table td {
-      display: block;
-      text-align: left;
-      padding: 0.5rem;
-      border: none;
-    }
-
-    .article-table td:before {
-      content: attr(data-label);
-      font-weight: 600;
-      color: var(--primary-color);
-      display: block;
-      margin-bottom: 0.25rem;
-      font-size: 0.8rem;
-    }
+  .article-table th {
+    font-size: 0.85rem;
   }
 }
 
@@ -8099,6 +8092,7 @@ footer {
 
   .question-card-body {
     padding: 1.5rem;
+    text-align: left;
   }
 
   .question-title {
@@ -8752,3 +8746,6 @@ idget-section-title {
   border-top: 1px solid rgba(130, 105, 164, 0.1);
   padding-top: 1.5rem;
 }
+
+
+
