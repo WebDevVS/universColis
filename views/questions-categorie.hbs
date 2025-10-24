@@ -39,7 +39,7 @@
             </div>
         </div>
         {{/each}}
-       
+
     </div>
 </section>
 
@@ -53,18 +53,125 @@
 
 <!-- Related Categories -->
 <section class="related-categories container">
-        <h2 class="related-title">Voir aussi</h2>
-        {{#each categories}}
-          {{#if key}}
-            {{#unless (eq key ../category)}}
-                <a href="/questions/{{key}}" class="related-link">
-                    <div class="related-icon {{class}}">
-                        <i class="fa-solid {{icon}}"></i>
-                    </div>
-                    <span class="related-text">{{label}}</span>
-                </a>
-            {{/unless}}
-          {{/if}}
-        {{/each}}
+    <h2 class="related-title">Voir aussi</h2>
+    {{#each categories}}
+    {{#if key}}
+    {{#unless (eq key ../category)}}
+    <a href="/questions/{{key}}" class="related-link">
+        <div class="related-icon {{class}}">
+            <i class="fa-solid {{icon}}"></i>
+        </div>
+        <span class="related-text">{{label}}</span>
+    </a>
+    {{/unless}}
+    {{/if}}
+    {{/each}}
 </section>
 
+<!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
+<section class="related-links py-5">
+    <div class="decouvrir-container">
+        <div class="text-center mb-4">
+            <h3 class="related-title">Découvrez l'univers du colis</h3>
+            <p class="related-subtitle">Tous nos services pour une expédition parfaite</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Comparateur de prix -->
+            <div class="col-md-3">
+                <a href="/" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-balance-scale"></i>
+                    </div>
+                    <h4 class="link-title">Comparer les prix</h4>
+                    <p class="link-description">Trouvez le meilleur tarif pour votre expédition</p>
+                    <span class="link-action">
+                        Comparer maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Suivi de colis -->
+            <div class="col-md-3">
+                <a href="/suivi" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-map-marker-alt"></i>
+                    </div>
+                    <h4 class="link-title">Suivre mon colis</h4>
+                    <p class="link-description">Suivez votre expédition en temps réel</p>
+                    <span class="link-action">
+                        Suivre maintenant <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Matériel d'emballage -->
+            <div class="col-md-3">
+                <a href="/mon-materiel" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <h4 class="link-title">Matériel d'emballage</h4>
+                    <p class="link-description">Découvrez le matériel essentiel pour emballer</p>
+                    <span class="link-action">
+                        Voir le matériel <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Conseils d'emballage -->
+            <div class="col-md-3">
+                <a href="/conseils" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h4 class="link-title">Conseils d'emballage</h4>
+                    <p class="link-description">Astuces pour un emballage réussi</p>
+                    <span class="link-action">
+                        Lire les conseils <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Actualités -->
+            <div class="col-md-3">
+                <a href="/actualites" class="link-card">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h4 class="link-title">Actualités</h4>
+                    <p class="link-description">Restez informé des dernières évolutions du secteur</p>
+                    <span class="link-action">
+                        Voir les actualités <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            {{!--
+            <!-- Services à venir -->
+            <div class="col-md-3">
+                <div class="link-card coming-soon">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+                    <h4 class="link-title">Services à venir</h4>
+                    <p class="link-description">De nouveaux services arrivent bientôt</p>
+                    <span class="link-action">
+                        Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
+                    </span>
+                </div>
+            </div> --}}
+        </div>
+
+        <!-- Call-to-action principal -->
+        <div class="text-center mt-5">
+            <div class="main-cta">
+                <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+                <p class="cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
+                <a href="/" class="btn btn-primary btn-lg">
+                    <i class="fa-solid fa-rocket me-2"></i>Commencer maintenant
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

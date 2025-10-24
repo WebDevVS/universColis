@@ -17,7 +17,7 @@
     </p>
   </div>
   <!-- Liste déroulante avec style glassmorphique -->
-  <div class="text-center mb-4">
+  <div class="text-center mb-4 py-3 px-3">
     <select id="article-select" class="form-select w-50 mx-auto">
       <option value="" selected disabled>Choisissez un objet...</option>
       {{#each articles}}
@@ -30,7 +30,7 @@
 <section class="catalogue">
   <div class="container first-container">
     <!-- Grille d'articles -->
-    <div class="row g-4 mt-4">
+    <div class="row g-4">
       {{#each articles}}
       <div id="{{this.idCard}}" class="col-lg-4 col-md-6 col-sm-12">
         <div class="card h-100">
@@ -113,7 +113,7 @@
 
 <!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
 <section class="related-links py-5">
-  <div class="container first-container">
+  <div class="decouvrir-container">
     <div class="text-center mb-4">
       <h3 class="related-title">Découvrez l'univers du colis</h3>
       <p class="related-subtitle">Tous nos services pour une expédition parfaite</p>
@@ -176,6 +176,22 @@
         </a>
       </div>
 
+      <!-- FAQ -->
+
+      <div class="col-md-3">
+        <a href="/questions" class="link-card">
+          <div class="link-icon">
+            <i class="fa-solid fa-question-circle"></i>
+          </div>
+          <h4 class="link-title">Questions fréquentes</h4>
+          <p class="link-description">Toutes les réponses aux questions que vous vous posez sur l'expédition</p>
+          <span class="link-action">
+            Voir la FAQ <i class="fa-solid fa-arrow-right ms-1"></i>
+          </span>
+        </a>
+      </div>
+
+      {{!--
       <!-- Services à venir -->
       <div class="col-md-3">
         <div class="link-card coming-soon">
@@ -188,7 +204,7 @@
             Bientôt disponible <i class="fa-solid fa-clock ms-1"></i>
           </span>
         </div>
-      </div>
+      </div> --}}
     </div>
 
     <!-- Call-to-action principal -->
