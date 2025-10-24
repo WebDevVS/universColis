@@ -1756,6 +1756,11 @@ div .input-group-text {
   font-size: 0.9rem;
 }
 
+/* Masquer l'en-tête sur petit écran */
+@media (max-width: 768px) {
+  .results-header { display: none !important; }
+}
+
 /*  ===== LISTE DES RÉSULTATS  ===== */
 .results-list {
   display: flex;
