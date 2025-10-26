@@ -379,5 +379,23 @@
         <image:caption>Guide visuel UniversColis montrant les cinq étapes clés pour choisir un transporteur adapté aux objets fragiles : évaluer le contenu, sélectionner le bon service, contrôler les options de sécurité, emballer correctement et conserver une preuve d'expédition.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/comment-payer-frais-douane-colis-dhl</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/parcours-colis-dhl-dedouanement-paiement.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis montrant les principales étapes du traitement douanier d'un colis DHL importé en France : DHL règle d'abord les droits et taxes, le destinataire reçoit une notification de paiement, règle en ligne ou par téléphone, puis la livraison est effectuée après validation du paiement.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/qui-paie-frais-douane-ups</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/reflexes-eviter-surprises-expedition.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis présentant les quatre réflexes essentiels pour anticiper les frais et retards d'expédition : choisir le bon mode d'envoi, estimer les droits de douane et la TVA, vérifier les documents requis et comparer les tarifs avant de valider l'expédition.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
