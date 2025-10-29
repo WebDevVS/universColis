@@ -515,152 +515,226 @@ p {
 .img-home {
   background-image: url('/static/img/home.webp')
 }
+/* ========================================= */
+/* SECTION HERO - VERSION OPTIMISÉE */
+/* ========================================= */
 
-/*  ===== SECTION HOME PRINCIPALE  =====  */
+/*  ===== SECTION PRINCIPALE  ===== */
 .home {
-  padding: 2rem 0;
+  padding: 3rem 0;
+  position: relative;
 }
 
-/* Pour la hauteur de la section principale */
-.min-vh-100 {
-  min-height: 100vh;
+/* Hauteur adaptative */
+.home .min-vh-100 {
+  min-height: auto;
+  padding: 3rem 0;
 }
 
-/* Pour supprimer la bordure du span */
+/* Si tu veux quand même centrer verticalement sur grand écran */
+@media (min-width: 1200px) and (min-height: 800px) {
+  .home .min-vh-100 {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Utilitaires */
 .border-none {
   border: none !important;
 }
 
-/* Pour la liste des résultats autocomplete */
 .z-index-1000 {
   z-index: 1000 !important;
 }
 
-/*  ===== COLONNE HERO (titre + sous-titre) ===== */
+/*  ===== COLONNE HERO (gauche) ===== */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
 
-/* Container pour le hero content */
-
-/* Titre principal */
+/* Titre principal - TAILLE ÉQUILIBRÉE */
 .home-phrase {
   font-family: 'Exo', sans-serif;
   font-weight: 700;
-  /* ← Réduit */
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  /* ← Taille réduite */
+  font-size: clamp(1.8rem, 3.5vw, 2.3rem); /* ← AJUSTÉ : juste milieu entre 2.5rem et 3.5rem */
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+  margin-bottom: 0;
+  line-height: 1.3;
   letter-spacing: -0.02em;
-  text-align: center;
+  text-align: left;
+  filter: drop-shadow(0 2px 4px rgba(130, 105, 164, 0.15));
 }
 
 /* Sous-titre */
 .hero-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem); /* ← LÉGÈREMENT RÉDUIT */
   color: var(--text-color);
-  line-height: 1.6;
-  font-weight: 500;
-  opacity: 0.9;
-
-  background: rgba(255, 255, 255, 0.1);
-  /* Fond subtil */
-  backdrop-filter: blur(5px);
-  /* Flou de fond */
+  line-height: 1.7;
+  font-weight: 400;
+  opacity: 1;
+  text-align: left;
+  
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
   padding: 1.5rem;
-  /* Espacement interne */
   border-radius: 15px;
-  /* Coins arrondis */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  /* Bordure subtile */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
+  border: 1px solid rgba(130, 105, 164, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
-/*  ===== FORMULAIRE (colonne droite)  ===== */
-.glass-container,
+/*  ===== FORMULAIRE (droite) - ENCORE PLUS LARGE ===== */
 .submit-form {
   background: var(--gradient-light);
   backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
   border: 2px solid var(--glassmorphic-border);
   box-shadow: var(--shadow-standard);
-  padding: 2rem;
+  padding: 2.5rem;
+  height: fit-content;
+  max-width: 100%;
 }
 
+/* AJOUT : Force le formulaire à prendre plus de place dans la grille */
+.home .submit-form-col {
+  flex: 0 0 auto;
+  width: 55%; /* ← Le formulaire prend 55% au lieu de 50% */
+}
+
+.home .hero-content-col {
+  flex: 0 0 auto;
+  width: 45%; /* ← Le hero prend 45% au lieu de 50% */
+}
+
+/* Sur tablette et desktop moyen, équilibre 50/50 */
+@media (max-width: 1400px) {
+  .home .submit-form-col,
+  .home .hero-content-col {
+    width: 50%;
+  }
+}
+
+/* Titre du formulaire */
 .submit-form h1 {
   color: var(--primary-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem; /* ↓ moins d'espace sous le titre */
   font-weight: 700;
-  /* ← Renforcé */
-  font-size: 1.8rem;
-  /* ← Taille explicite */
+  font-size: clamp(1.5rem, 2vw, 1.8rem);
   text-align: center;
 }
 
-/* Ensure h2 in submit-form looks the same as previous h1 (visual parity) */
-.submit-form h2 {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  font-size: 1.8rem;
-  text-align: center;
-}
-
-/* Controls généraux du formulaire */
+/* Controls généraux du formulaire - ESPACEMENTS RÉDUITS */
 .submit-form .form-select,
 .submit-form .form-control {
   width: 100% !important;
   min-width: 0 !important;
   box-sizing: border-box !important;
+  transition: all 0.2s ease;
+  padding: 0.7rem 0.9rem; /* ↓ champs un peu moins hauts */
+  margin-bottom: 0; /* ← SUPPRIMÉ l'espace supplémentaire */
 }
 
-/*  ===== NAVIGATION À ONGLETS   ===== */
+/* Groupes de formulaire - ESPACEMENTS RÉDUITS */
+.submit-form .mb-3 {
+  margin-bottom: 0.75rem !important; /* ↓ réduit l'espacement des groupes */
+}
+
+/* Espacement spécifique pour les row (grilles) */
+.submit-form .row {
+  margin-bottom: 0.5rem; /* ↓ espace vertical plus serré entre lignes */
+}
+
+/* Réduit les gutters Bootstrap à l'intérieur du formulaire */
+.submit-form .row.g-3 {
+  --bs-gutter-x: 0.75rem; /* défaut ~1rem */
+  --bs-gutter-y: 0.5rem;  /* défaut ~1rem */
+}
+
+.submit-form .row.g-2 {
+  --bs-gutter-x: 0.5rem;
+  --bs-gutter-y: 0.4rem;
+}
+
+.submit-form .row:last-of-type {
+  margin-bottom: 0; /* ← Pas d'espace après la dernière ligne */
+}
+
+/* Dernière ligne avec Type d'envoi + Bouton alignés */
+.submit-form .row.final-row {
+  margin-bottom: 0;
+}
+
+.submit-form .row.final-row .col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Focus state amélioré */
+.submit-form .form-select:focus,
+.submit-form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(130, 105, 164, 0.1);
+  outline: none;
+}
+
+/*  ===== NAVIGATION À ONGLETS - MOINS IMPOSANTE ===== */
 .tab-navigation {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; /* ↓ espace sous l'onglet */
 }
 
 .tabs {
   display: flex;
-  border-bottom: 2px solid rgba(130, 105, 164, 0.2);
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
+  background: rgba(130, 105, 164, 0.03); /* ↓ fond plus léger */
+  border-radius: 8px; /* ↓ coins un peu moins arrondis */
+  padding: 3px; /* ↓ cadre plus fin */
+  margin-bottom: 0.75rem; /* ↓ espace sous la barre d'onglets */
+  gap: 3px; /* ↓ espace entre boutons */
 }
 
 .tab-btn {
-  background: none;
+  background: transparent;
   border: none;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.85rem; /* ↓ boutons plus compacts */
   font-weight: 600;
-  color: #666;
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   flex: 1;
   text-align: center;
-  font-size: 0.9rem;
-  min-width: 120px;
+  font-size: 0.78rem; /* ↓ texte légèrement plus petit */
+  border-radius: 6px; /* ↓ coins moins arrondis */
+  letter-spacing: 0.2px; /* ↓ espacement des lettres */
 }
 
 .tab-btn:hover {
   color: var(--primary-color);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .tab-btn.active {
   color: var(--primary-color);
+  background: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08); /* ↓ ombre atténuée */
 }
 
+/* Supprime l'ancien underline */
 .tab-btn.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--primary-color);
-  border-radius: 3px 3px 0 0;
+  display: none;
+}
+
+/* Ajoutez des icônes pour différenciation visuelle */
+.tab-btn i {
+  margin-right: 8px;
+  font-size: 0.9rem;
 }
 
 /*  ===== CONTENU DES ONGLETS  ===== */
@@ -678,11 +752,18 @@ p {
     opacity: 0;
     transform: translateY(5px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/*  ===== LABELS DES FORMULAIRES ===== */
+.form-label {
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem; /* ↓ réduit l'espace sous le label */
+  font-size: 0.95rem; /* ← LÉGÈREMENT AUGMENTÉ */
 }
 
 /*  ===== INPUT POIDS AVEC UNITÉ  ===== */
@@ -695,12 +776,232 @@ p {
   right: 0.75rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-color);
-  font-weight: 500;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
   pointer-events: none;
   z-index: 5;
 }
 
+/*  ===== BOUTON SUBMIT - ALIGNÉ AVEC LES CHAMPS ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border: none;
+  font-weight: 600;
+  padding: 0.85rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(130, 105, 164, 0.25);
+  margin-top: 0;
+  width: 100%;
+  height: fit-content; /* ← S'adapte au contenu */
+}
+
+/* Container du bouton aligné avec les autres champs */
+.submit-form .button-container {
+  margin-top: 0; /* ← Pas de marge supplémentaire */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* ← Aligne en bas */
+}
+
+/* Pour aligner le bouton avec un champ dans une row */
+.submit-form .row.align-items-end {
+  align-items: flex-end !important;
+}
+
+/* Assure que les colonnes dans la row finale s'alignent en bas */
+.submit-form .row.align-items-end > .col,
+.submit-form .row.align-items-end > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(130, 105, 164, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ========================================= */
+/* RESPONSIVE - MOBILE FIRST */
+/* ========================================= */
+
+/* Tablette */
+@media (max-width: 992px) {
+  .home {
+    padding: 2rem 0;
+  }
+
+  .home .min-vh-100 {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+
+  .home-phrase {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  }
+
+  .submit-form {
+    padding: 2rem;
+  }
+
+  /* Colonnes 100% sur tablette */
+  .home .submit-form-col,
+  .home .hero-content-col {
+    width: 100% !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .home {
+    padding: 1.5rem 0;
+  }
+
+  .home .min-vh-100 {
+    padding: 1.5rem 0;
+  }
+
+  /* GARDE L'ORDRE NORMAL : titre → formulaire (pas d'inversion) */
+  .home .row.g-5 {
+    flex-direction: column; /* ← ENLEVÉ le -reverse */
+    /* ↓ Réduit l'espace vertical entre les deux colonnes (hero ↔ formulaire) */
+    --bs-gutter-y: 0.5rem; /* défaut g-5 ≈ 3rem */
+  }
+
+  .hero-content {
+    margin-bottom: 0.75rem; /* ↓ moins d'espace sous le bloc hero */
+    text-align: center;
+  }
+
+  .home-phrase {
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 1.25rem;
+  }
+
+  .submit-form {
+    padding: 1.25rem; /* ↓ moins d'espace interne sur mobile/tablette */
+  }
+
+  .submit-form h1 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem; /* ↓ espace sous le titre */
+  }
+
+  /* Espacement des champs sur mobile - RÉDUIT */
+  .submit-form .mb-3 {
+    margin-bottom: 0.65rem !important; /* ↓ encore un peu plus compact */
+  }
+
+  /* Réduit l'espace vertical entre lignes dans le formulaire */
+  .submit-form .row {
+    margin-bottom: 0.4rem;
+  }
+
+  /* Gouttières plus fines pour les grilles internes */
+  .submit-form .row.g-3 {
+    --bs-gutter-x: 0.6rem;
+    --bs-gutter-y: 0.35rem;
+  }
+  .submit-form .row.g-2 {
+    --bs-gutter-x: 0.45rem;
+    --bs-gutter-y: 0.3rem;
+  }
+
+  /* Atténue l'effet des utilitaires Bootstrap dans le formulaire */
+  .submit-form .mt-2 { margin-top: 0.35rem !important; }
+
+  /* Onglets en colonne sur petit mobile */
+  .tabs {
+    flex-direction: column;
+    gap: 4px; /* ↓ espace entre les boutons d'onglet */
+  }
+
+  .tab-btn {
+    width: 100%;
+    padding: 0.7rem; /* ↓ hauteur des boutons d'onglet */
+  }
+}
+
+/* Très petit mobile */
+@media (max-width: 576px) {
+  .home {
+    padding: 1rem 0;
+  }
+
+  .home .min-vh-100 {
+    padding: 1rem 0;
+  }
+
+  .hero-subtitle {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .submit-form {
+    padding: 1rem; /* ↓ encore moins d'espace interne sur très petit mobile */
+  }
+
+  .submit-form h1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem; /* ↓ espace sous le titre */
+  }
+
+  /* Form inputs plus spacieux sur mobile */
+  .form-control,
+  .form-select {
+    padding: 0.7rem; /* ↓ hauteur des champs, garde font-size pour iOS */
+    font-size: 1rem; /* Évite le zoom sur iOS */
+  }
+
+  /* Labels plus compacts */
+  .submit-form .form-label { margin-bottom: 0.4rem; }
+
+  /* Resserre encore l'espace entre les lignes et gouttières */
+  .submit-form .row { margin-bottom: 0.35rem; }
+  .submit-form .row.g-3 { --bs-gutter-x: 0.5rem; --bs-gutter-y: 0.3rem; }
+  .submit-form .row.g-2 { --bs-gutter-x: 0.4rem; --bs-gutter-y: 0.25rem; }
+  .submit-form .mt-2 { margin-top: 0.3rem !important; }
+
+  /* Onglets: espace sous la barre réduit */
+  .tab-navigation { margin-bottom: 0.75rem; }
+  .tabs { margin-bottom: 0.75rem; }
+}
+
+/* ========================================= */
+/* ACCESSIBILITÉ */
+/* ========================================= */
+
+/* Focus visible pour navigation clavier */
+.tab-btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.btn-primary:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Réduction des animations si demandé */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 /*  ===== AUTOCOMPLÉTION  ===== */
 .autocomplete-container {
   position: relative;
@@ -1049,9 +1350,6 @@ div .input-group-text {
 /*  ===== SECTION LOGOS TRANSPORTEURS ===== */
 .company-logos {
   background-color: var(--white-transparent);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin: 2rem;
   box-shadow: var(--shadow-standard);
   overflow: hidden;
 }
@@ -1059,7 +1357,6 @@ div .input-group-text {
 .company-logos p {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: var(--primary-color);
   font-weight: 500;
 }
 
@@ -1247,7 +1544,6 @@ div .input-group-text {
 
   /* Sections générales */
   .home,
-  .company-logos,
   .services {
     padding: 1.5rem;
     margin-left: auto;
@@ -1366,15 +1662,17 @@ div .input-group-text {
   /* Onglets en mode vertical */
   .tabs {
     flex-direction: column;
-    gap: 0;
+    gap: 0; /* déjà serré */
+    background: rgba(130, 105, 164, 0.02); /* ↓ fond quasi imperceptible */
+    padding: 2px; /* ↓ cadre plus fin */
   }
 
   .tab-btn {
     flex: none;
     width: 100%;
-    padding: 0.75rem;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(130, 105, 164, 0.1);
+    padding: 0.6rem; /* ↓ hauteur */
+    font-size: 0.8rem; /* ↓ texte */
+    border-bottom: 1px solid rgba(130, 105, 164, 0.08); /* ↓ séparation plus légère */
   }
 
   .tab-btn:last-child {
@@ -1383,12 +1681,18 @@ div .input-group-text {
 
   .tab-btn.active::after {
     bottom: 0;
-    height: 2px;
+    height: 1px; /* ↓ soulignement plus fin */
   }
 
   /* Services mobile */
   .services .card img {
     height: 120px;
+  }
+
+  /* Boutons des features plus compacts sur très petit mobile */
+  .feature-link-compact {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.88rem;
   }
 
   .services .card-body {
@@ -1407,8 +1711,7 @@ div .input-group-text {
 /* ===== SECTION ACTUALITÉS FORMAT MIXTE ===== */
 .news-section {
   background: transparent !important;
-  padding: 4rem 0;
-  margin: 3rem 0;
+  padding: 2rem 0;
 }
 
 .news-header {
@@ -1545,7 +1848,7 @@ div .input-group-text {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .news-section {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   .news-title {
@@ -4376,6 +4679,11 @@ div .input-group-text {
 /* Anchor offset: use variable so designers can tweak per breakpoint */
 section[id] {
   /* fallback for older browsers */
+  scroll-margin-top: var(--anchor-offset, 120px);
+}
+
+/* Ensure the home form anchor respects sticky header when using #formulaire-comparateur */
+#formulaire-comparateur {
   scroll-margin-top: var(--anchor-offset, 120px);
 }
 
@@ -8732,5 +9040,1025 @@ idget-section-title {
   padding-top: 1.5rem;
 }
 
+
+
+/* ========================================= */
+/* VARIABLES GLOBALES */
+/* ========================================= */
+
+
+/* ========================================= */
+/* SECTION 1 - EXPÉDIEZ EN 3 ÉTAPES */
+/* ========================================= */
+.benefits-v3 {
+  
+  background-color: var(--white-transparent);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin: 2rem;
+  box-shadow: var(--shadow-standard);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title-home {
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.benefits-numbered {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.benefit-numbered {
+  position: relative;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(130, 105, 164, 0.03), rgba(250, 126, 117, 0.03));
+  border-radius: 16px;
+  border: 2px solid rgba(130, 105, 164, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-numbered:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(130, 105, 164, 0.15);
+}
+
+.benefit-number {
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* ✅ Numéros plus imposants */
+.benefit-number {
+  width: 55px;  /* Au lieu de 40px */
+  height: 55px;
+  font-size: 1.8rem; /* Au lieu de 1.2rem */
+  box-shadow: 0 6px 20px rgba(130, 105, 164, 0.4);
+}
+
+/* Ajoutez une ligne de connexion entre les étapes */
+.benefit-numbered::after {
+  content: '';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  width: 30px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+.benefit-numbered:last-child::after {
+  display: none;
+}
+
+/* Sur mobile, ligne verticale */
+@media (max-width: 768px) {
+  .benefit-numbered::after {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -15px;
+    width: 3px;
+    height: 30px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, var(--primary-color), transparent);
+  }
+}
+
+.benefit-numbered h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 12px;
+  margin-top: 15px;
+}
+
+.benefit-numbered p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Séparateur */
+.separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  margin: 60px 0;
+}
+
+.benefit-number {
+  width: 40px;  /* Plus grand */
+  height: 40px;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(130, 105, 164, 0.3);
+}
+
+.benefit-numbered {
+  padding: 2.5rem; /* Plus d'espace interne */
+}
+
+.benefit-numbered h3 {
+  font-size: 1.4rem; /* Plus gros */
+  margin-top: 20px;
+}
+
+/* ========================================= */
+/* SECTION 2 - LES AVANTAGES UNIVERSCOLIS */
+/* ========================================= */
+/* ========================================= */
+/* SECTION BENEFITS - STYLE CARDS 3D GRADIENT */
+/* Compatible avec le HTML existant */
+/* ========================================= */
+
+.benefits {
+  background-color: var(--white-transparent);
+  border-radius: var(--border-radius);
+  padding: 3rem 2rem;
+  margin: 2rem;
+  box-shadow: var(--shadow-standard);
+}
+
+/* ===== HEADER ===== */
+.benefits .section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.benefits .section-title-home {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.benefits .section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== CONTAINER ===== */
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== BENEFIT CARDS ===== */
+.benefit-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 25px;
+  padding: 45px 35px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 2px solid rgba(130, 105, 164, 0.15);
+  text-align: center;
+}
+
+/* Fond gradient subtil (pas d'animation permanente) */
+.benefit-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(130, 105, 164, 0.03),
+    rgba(250, 126, 117, 0.03)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.benefit-item:hover::before {
+  opacity: 1;
+}
+
+/* Barre latérale colorée */
+.benefit-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.benefit-item:hover::after {
+  transform: scaleY(1);
+}
+
+/* Effet hover simplifié */
+.benefit-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(130, 105, 164, 0.2);
+  border-color: var(--primary-color);
+}
+
+/* ===== ICÔNE ===== */
+.benefit-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  min-width: 90px;
+  background: linear-gradient(135deg, rgba(130, 105, 164, 0.15), rgba(250, 126, 117, 0.15));
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.benefit-icon-wrapper i {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+/* Hover icône : scale simple, sans rotation 3D */
+.benefit-item:hover .benefit-icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(130, 105, 164, 0.3);
+}
+
+/* ===== CONTENU ===== */
+.benefit-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* Titre */
+.benefit-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Séparateur sous le titre (apparaît au hover) */
+.benefit-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+  margin: 15px auto 0;
+  transition: width 0.3s ease;
+}
+
+.benefit-item:hover .benefit-title::after {
+  width: 100%;
+}
+
+.benefit-item:hover .benefit-title {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Description */
+.benefit-description {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .benefits-container {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits {
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 1rem;
+  }
+
+  .benefits .section-title-home {
+    font-size: 2rem;
+  }
+
+  .benefits .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .benefits-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .benefit-item {
+    padding: 35px 25px;
+  }
+
+  .benefit-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  .benefit-title {
+    font-size: 1.4rem;
+  }
+
+  .benefit-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .benefits {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 98vw;
+    padding: 1.5rem 1rem;
+  }
+
+  .benefit-item {
+    padding: 30px 20px;
+  }
+
+  .benefit-title {
+    font-size: 1.3rem;
+  }
+
+  .benefit-description {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* ========================================= */
+/* SECTION 3 - ÉCOSYSTÈME DE SERVICES */
+/* Version finale full-width avec fond différent */
+/* ========================================= */
+
+/* Container wrapper full-width */
+.ecosystem-wrapper {
+  background: linear-gradient(180deg, 
+    #F8F9FA 0%,
+    rgba(130, 105, 164, 0.1) 100%
+  );
+  padding: 80px 0;
+  margin-top: 80px;
+}
+
+.ecosystem-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===== HEADER ===== */
+.ecosystem-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.ecosystem-section .section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+}
+
+.ecosystem-section .section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== GRID DES FEATURES ===== */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-card-compact {
+  background: white;
+  border-radius: 20px;
+  padding: 35px 30px;
+  border: 2px solid rgba(130, 105, 164, 0.15);
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card-compact:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(130, 105, 164, 0.2);
+}
+
+/* ===== ICÔNE ===== */
+.feature-icon-compact {
+  width: 70px;
+  height: 70px;
+  min-width: 70px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(130, 105, 164, 0.25);
+}
+
+.feature-card-compact:hover .feature-icon-compact {
+  transform: scale(1.08);
+}
+
+/* ===== CONTENU ===== */
+.feature-content-compact {
+  flex: 1;
+}
+
+.feature-title-compact {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.feature-description-compact {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.feature-link-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.55rem 0.95rem; /* bouton plus présent visuellement */
+  border-radius: 999px; /* look pill */
+  background: rgba(130, 105, 164, 0.08);
+  border: 1px solid rgba(130, 105, 164, 0.25);
+  color: var(--primary-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease, gap 0.2s ease;
+}
+
+.feature-link-compact:hover {
+  color: #ffffff;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(130, 105, 164, 0.25);
+  transform: translateY(-1px);
+  gap: 12px;
+}
+
+.feature-link-compact i {
+  transition: transform 0.3s ease;
+}
+
+.feature-link-compact:hover i {
+  transform: translateX(3px);
+}
+
+/* Active/pressed state */
+.feature-link-compact:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(130, 105, 164, 0.2);
+}
+
+/* ===== VERSION ALTERNATIVE : CTA avec fond coloré (contraste maximum) ===== */
+
+.cta-box {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 20px;
+  padding: 45px 40px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(130, 105, 164, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pattern subtil en fond */
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cta-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(130, 105, 164, 0.4);
+}
+
+.cta-box h3 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  color: white;
+  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cta-box p {
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 28px;
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: var(--primary-color);
+  padding: 16px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.cta-button i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-button:hover i {
+  transform: translateX(4px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .cta-box {
+    padding: 35px 25px;
+  }
+
+  .cta-box h3 {
+    font-size: 1.6rem;
+  }
+
+  .cta-box p {
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-box {
+    padding: 30px 20px;
+  }
+
+  .cta-box h3 {
+    font-size: 1.4rem;
+  }
+
+  .cta-button {
+    font-size: 1rem;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .ecosystem-wrapper {
+    padding: 60px 0;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .ecosystem-wrapper {
+    padding: 50px 0;
+    margin-top: 60px;
+  }
+
+  .ecosystem-section {
+    padding: 0 20px;
+  }
+
+  .ecosystem-section .section-header {
+    margin-bottom: 40px;
+  }
+
+  .ecosystem-section .section-title {
+    font-size: 2rem;
+  }
+
+  .ecosystem-section .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .features-grid {
+    margin-bottom: 40px;
+  }
+
+  .feature-card-compact {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 25px;
+  }
+
+  .feature-icon-compact {
+    margin: 0 auto;
+  }
+
+  .feature-card-compact:hover {
+    transform: translateY(-5px);
+  }
+
+  .cta-box {
+    padding: 40px 25px;
+    border-radius: 20px;
+  }
+
+  .cta-box h3 {
+    font-size: 1.8rem;
+  }
+
+  .cta-box p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 30px;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 576px) {
+  .ecosystem-wrapper {
+    padding: 40px 0;
+    margin-top: 40px;
+  }
+
+  .ecosystem-section {
+    padding: 0 15px;
+  }
+
+  .feature-card-compact {
+    padding: 25px 20px;
+  }
+
+  .feature-title-compact {
+    font-size: 1.2rem;
+  }
+
+  .feature-description-compact {
+    font-size: 0.9rem;
+  }
+
+  .cta-box {
+    padding: 35px 20px;
+  }
+}
+
+/* ===== ACCESSIBILITÉ ===== */
+.feature-link-compact:focus-visible,
+.cta-button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card-compact,
+  .feature-icon-compact,
+  .feature-link-compact,
+  .cta-button {
+    transition: none;
+  }
+  
+  .feature-card-compact:hover,
+  .cta-button:hover {
+    transform: none;
+  }
+}
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-card-compact {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feature-icon-compact {
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+@media (max-width: 768px) {
+
+    /* Ensure benefits sections match article margins on small screens */
+  .benefits,
+  .benefits-v3 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 98vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Section 1 - Expédiez en 3 étapes */
+  .benefits-v3 {
+    padding: 60px 0;
+  }
+
+  .benefits-numbered {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Section 2 - Les avantages */
+  .benefits {
+    padding: 60px 0;
+  }
+
+  .section-title-home {
+    font-size: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .benefits-container {
+    gap: 20px;
+  }
+
+  .benefit-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .benefit-icon-wrapper {
+    margin: 0 auto;
+  }
+
+  /* Section 3 - Services */
+  .services-section {
+    padding: 60px 0;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .service-card {
+    padding: 32px 24px;
+  }
+
+  .main-cta {
+    padding: 40px 24px;
+  }
+
+  .cta-title {
+    font-size: 1.6rem;
+  }
+}
+
+
+
+/* ===== BADGES DE LOCALISATION ===== */
+.step-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 12px;
+  opacity: 0.85;
+  background: rgba(130, 105, 164, 0.08);
+  padding: 5px 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.step-location i {
+  font-size: 0.9rem;
+}
+
+/* Badge spécial pour l'étape 3 (redirection) */
+.step-location.highlight {
+  background: rgba(250, 126, 117, 0.15);
+  padding: 8px 16px;
+  border-radius: 15px;
+  color: var(--accent-color);
+  opacity: 1;
+  font-size: 0.85rem;
+  border: 2px solid rgba(250, 126, 117, 0.3);
+}
+
+.step-location.highlight i {
+  font-size: 1rem;
+}
+
+/* Animation pulse sur le badge de l'étape 3 */
+.benefit-numbered:last-child .step-location.highlight {
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(250, 126, 117, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(250, 126, 117, 0);
+  }
+}
+
+/* Hover effect sur les badges */
+.benefit-numbered:hover .step-location {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Highlight visuel de l'étape 3 */
+.benefit-numbered:last-child {
+  background: linear-gradient(135deg, rgba(250, 126, 117, 0.06), rgba(250, 126, 117, 0.03));
+  border-color: rgba(250, 126, 117, 0.2);
+}
+
+.benefit-numbered:last-child:hover {
+  border-color: var(--accent-color);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Badges de localisation */
+  .step-location {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+  }
+
+  .step-location.highlight {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Note de réassurance */
+  .reassurance-note {
+    flex-direction: column;
+    padding: 18px 20px;
+    font-size: 0.95rem;
+    gap: 10px;
+  }
+
+  .reassurance-note i {
+    font-size: 1.5rem;
+  }
+
+  /* Animation pulse moins prononcée sur mobile */
+  @keyframes pulse-border {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(250, 126, 117, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 0 5px rgba(250, 126, 117, 0);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .reassurance-note {
+    font-size: 0.9rem;
+    padding: 16px 18px;
+  }
+
+  .reassurance-note span {
+    line-height: 1.5;
+  }
+}
 
 

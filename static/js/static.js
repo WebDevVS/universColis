@@ -143,6 +143,35 @@ document.addEventListener("DOMContentLoaded", function () {
     })();
   })();
 
+  const scrollLinks = document.querySelectorAll('a[href="#formulaire-comparateur"]');
+
+  scrollLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const formulaire = document.getElementById('formulaire-comparateur');
+      if (!formulaire) return;
+
+      // Mesure dynamique de la navbar sticky si présente
+      const navbar = document.querySelector('.navbar');
+      const navHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+      // Marge additionnelle légère pour la respiration visuelle
+      const extra = 12;
+      const headerOffset = Math.max(56, Math.min(160, Math.round(navHeight + extra)));
+
+      const elementPosition = formulaire.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerOffset;
+
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+      // Focus sur le premier champ après le scroll
+      setTimeout(() => {
+        const firstInput = formulaire.querySelector('input, select');
+        if (firstInput) firstInput.focus();
+      }, 500);
+    });
+  });
+
 
 });
 

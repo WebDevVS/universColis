@@ -16,12 +16,12 @@ module.exports = helmet.contentSecurityPolicy({
     scriptSrcAttr: ["'unsafe-inline'"],
     styleSrc: [
       "'self'",
+      "'unsafe-inline'",
       "https://fonts.googleapis.com",
       "https://cdnjs.cloudflare.com",
       "https://cdn.jsdelivr.net",
       "https://cdn.track123.com",
-      "https://www.track123.com",
-      "'unsafe-inline'" // ⚠️ nécessaire pour certains widgets injectés
+      "https://www.track123.com"
     ],
     fontSrc: [
       "'self'",
@@ -35,6 +35,8 @@ module.exports = helmet.contentSecurityPolicy({
       "data:",
       "https://resource.boxtal.build",
       "https://www.google-analytics.com",
+      "https://www.googletagmanager.com",
+      "https://stats.g.doubleclick.net",
       "https://parcelsapp.com",
       "https://track.global",
       "https://postal.ninja",
@@ -49,6 +51,8 @@ module.exports = helmet.contentSecurityPolicy({
       "'self'",
       "https://www.google-analytics.com",
       "https://region1.google-analytics.com",
+      "https://www.googletagmanager.com",
+      "https://stats.g.doubleclick.net",
       "https://parcelsapp.com",
       "https://track.global",
       "https://postal.ninja",
@@ -58,6 +62,8 @@ module.exports = helmet.contentSecurityPolicy({
     ],
     frameSrc: [
       "'self'",
+      "https://www.googletagmanager.com",
+      "https://tagassistant.google.com",
       "https://parcelsapp.com",
       "https://track.global",
       "https://postal.ninja",

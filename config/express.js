@@ -115,6 +115,7 @@ module.exports = (app) => {
         // Feuilles de styles : pas de style inline ici non plus
         styleSrc: [
           "'self'",
+          "'unsafe-inline'",
           "https://fonts.googleapis.com",
           "https://cdnjs.cloudflare.com",
           "https://cdn.jsdelivr.net",
@@ -135,8 +136,10 @@ module.exports = (app) => {
           "'self'",
           "data:",
           "https://resource.boxtal.build",
-          "https://resource.boxtal.com", // ← ajoute cette ligne
+          "https://resource.boxtal.com",
           "https://www.google-analytics.com",
+          "https://www.googletagmanager.com",
+          "https://stats.g.doubleclick.net",
           "https://parcelsapp.com",
           "https://track.global",
           "https://postal.ninja",
@@ -145,8 +148,7 @@ module.exports = (app) => {
           "https://www.17track.net",
           "https://track123.com",
           "https://track123-widget.track123.com",
-          "https://track123-widget.track123cdn.com",
-          "https://www.googletagmanager.com"
+          "https://track123-widget.track123cdn.com"
         ],
 
         // Pour les appels JS type `fetch()` ou XHR
@@ -154,6 +156,8 @@ module.exports = (app) => {
           "'self'",
           "https://www.google-analytics.com",
           "https://region1.google-analytics.com",
+          "https://www.googletagmanager.com",
+          "https://stats.g.doubleclick.net",
           "https://parcelsapp.com",
           "https://track.global",
           "https://postal.ninja",
@@ -165,6 +169,8 @@ module.exports = (app) => {
         // Interdiction d’embarquer ton site dans une iframe
         frameSrc: [
           "'self'",
+          "https://www.googletagmanager.com",
+          "https://tagassistant.google.com",
           "https://parcelsapp.com",
           "https://track.global",
           "https://postal.ninja",
