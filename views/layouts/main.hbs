@@ -56,27 +56,33 @@
 
         <!-- Consent defaults (must be BEFORE GTM) -->
         <script>
-                // Initialize dataLayer and gtag helper
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
+          // Initialize dataLayer and gtag helper
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
 
-                // Compute consent values from Silktide stored choices (no suffix by default)
-                (function(){
-                    try {
-                        var analytics = localStorage.getItem('silktideCookieChoice_analytics') === 'true' ? 'granted' : 'denied';
-                        var marketing = localStorage.getItem('silktideCookieChoice_marketing') === 'true' ? 'granted' : 'denied';
-                        var necessary = localStorage.getItem('silktideCookieChoice_necessary') === 'true' ? 'granted' : 'denied';
+          // Optional: suffix Silktide si configuré (ex: '_fr'), sinon laissez vide
+          var SILKTIDE_SUFFIX = '';
+          function skKey(id){ return 'silktideCookieChoice_' + id + SILKTIDE_SUFFIX; }
 
-                        gtag('consent', 'default', {
-                            analytics_storage: analytics,
-                            ad_storage: marketing,
-                            ad_user_data: marketing,
-                            ad_personalization: marketing,
-                            functionality_storage: necessary,
-                            security_storage: necessary
-                        });
-                    } catch (e) { /* swallow */ }
-                })();
+          // Google Consent Mode v2 - valeurs par défaut
+          (function(){
+            try {
+              var analyticsGranted = localStorage.getItem(skKey('analytics')) === 'true';
+              var marketingGranted = localStorage.getItem(skKey('marketing')) === 'true';
+
+              gtag('consent','default', {
+                // Analyse selon le choix Analytics
+                analytics_storage:  analyticsGranted ? 'granted' : 'denied',
+                // Marketing selon le choix Marketing
+                ad_storage:         marketingGranted ? 'granted' : 'denied',
+                ad_user_data:       marketingGranted ? 'granted' : 'denied',
+                ad_personalization: marketingGranted ? 'granted' : 'denied',
+                // Nécessaires: toujours GRANTED (non désactivables)
+                functionality_storage: 'granted',
+                security_storage:      'granted'
+              });
+            } catch(e) { /* no-op */ }
+          })();
         </script>
 
     <!-- Google Tag Manager -->
