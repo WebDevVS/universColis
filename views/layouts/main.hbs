@@ -54,8 +54,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
+        <!-- Consent defaults (must be BEFORE GTM) -->
+        <script>
+                // Initialize dataLayer and gtag helper
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+
+                // Compute consent values from Silktide stored choices (no suffix by default)
+                (function(){
+                    try {
+                        var analytics = localStorage.getItem('silktideCookieChoice_analytics') === 'true' ? 'granted' : 'denied';
+                        var marketing = localStorage.getItem('silktideCookieChoice_marketing') === 'true' ? 'granted' : 'denied';
+                        var necessary = localStorage.getItem('silktideCookieChoice_necessary') === 'true' ? 'granted' : 'denied';
+
+                        gtag('consent', 'default', {
+                            analytics_storage: analytics,
+                            ad_storage: marketing,
+                            ad_user_data: marketing,
+                            ad_personalization: marketing,
+                            functionality_storage: necessary,
+                            security_storage: necessary
+                        });
+                    } catch (e) { /* swallow */ }
+                })();
+        </script>
+
     <!-- Google Tag Manager -->
     <script>
+        
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
