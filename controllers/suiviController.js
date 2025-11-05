@@ -56,11 +56,7 @@ suiviController.get('/', (req, res) => {
                     "inLanguage": "fr-FR",
                     "description": "UniversColis : comparateur d’expédition, suivi de colis, conseils et actualités.",
                     "publisher": { "@id": "https://www.universcolis.fr/#org" },
-                    "potentialAction": {
-                        "@type": "SearchAction",
-                        "target": "https://www.universcolis.fr/suivi?q={query}",
-                        "query-input": "required name=query"
-                    }
+                    // NOTE: potentialAction (SearchAction) removed – pas de /suivi?q=… en prod
                 },
                 {
                     "@type": "Organization",
