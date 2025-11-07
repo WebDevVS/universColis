@@ -424,5 +424,14 @@
         <image:caption>Guide visuel UniversColis présentant les quatre réflexes essentiels pour anticiper les frais et retards d'expédition : choisir le bon mode d'envoi, estimer les droits de douane et la TVA, vérifier les documents requis et comparer les tarifs avant de valider l'expédition.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/refuser-de-payer-droits-taxes-importation</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/etapes-refuser-frais-douane-france.webp</image:loc>
+        
+        <image:caption>Guide visuel UniversColis expliquant le processus complet de refus des frais de douane en France : comment signaler le refus au transporteur, comprendre les conséquences pour l'expéditeur et savoir quels documents conserver en cas de litige.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
