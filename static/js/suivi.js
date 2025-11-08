@@ -733,15 +733,30 @@ function startTracking() {
   }, 150); // Délai minimal pour fluidité
 }
 
+function scrollToTrackingSection() {
+  const section = document.getElementById('tracking-section');
+  if (!section) return;
+  const header = document.querySelector('.navbar');
+  const headerH = header ? header.offsetHeight : 0;
+  const rect = section.getBoundingClientRect();
+  const absoluteTop = rect.top + window.scrollY;
+  // Centre réel avec offset header
+  const centerY = absoluteTop - Math.max(0, (window.innerHeight - rect.height) / 2) - headerH;
+  window.scrollTo({ top: centerY, behavior: 'smooth' });
+}
+
+// Nouvelle aide: déclenchement différé pour éviter le flash haut
+function scrollTrackingDeferred() {
+  setTimeout(() => scrollToTrackingSection(), 60); // petit délai pour layout
+}
+
 function showOptimizedWidget(trackerType, trackingNumber) {
-  // On ne s'appuie plus sur le container HTML de base pour l'injection dynamique
   if (!trackerType || !trackingNumber) return;
 
-  // Création du bloc de suivi (section identique à la recommandation)
-  let oldSection = document.getElementById('tracking-section');
+  // Ne pas supprimer / recréer deux fois: retire uniquement l'ancien
+  const oldSection = document.getElementById('tracking-section');
   if (oldSection) oldSection.remove();
 
-  // Création de la section
   const section = document.createElement('section');
   section.id = 'tracking-section';
   section.className = 'recommendation-section';
@@ -839,17 +854,15 @@ if (needsCopyBtn) {
     oldTrackingSection.parentNode.removeChild(oldTrackingSection);
   }
 
-  // Insère le widget de suivi juste avant la recommandation (si elle existe)
+  // Insertion (garde la position stable avant scroll)
   const recSection = document.getElementById('recommendation-section');
   if (recSection && recSection.parentNode) {
     recSection.parentNode.insertBefore(section, recSection);
   } else {
-    // fallback : ajoute à la fin du container principal
-    const mainContainer = document.querySelector('.tracking-container') || document.body;
-    mainContainer.appendChild(section);
+    (document.querySelector('.tracking-container') || document.body).appendChild(section);
   }
 
-  // Ajoute le spinner dans le container dynamique
+  // Ajout spinner + widget container
   widgetContainer.innerHTML = '';
   const loadingDiv = document.createElement('div');
   loadingDiv.className = 'widget-loading-inside';
@@ -897,6 +910,7 @@ if (needsCopyBtn) {
         clearTimeout(currentWidgetTimeout);
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
+        scrollTrackingDeferred(); // recentrage après rendu
       };
       iframe.onerror = () => {
         clearTimeout(currentWidgetTimeout);
@@ -930,6 +944,7 @@ if (needsCopyBtn) {
         clearTimeout(currentWidgetTimeout);
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
+        scrollTrackingDeferred();
         clearInterval(interval);
       } else if (waited > 9500) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
@@ -954,6 +969,7 @@ if (needsCopyBtn) {
         clearTimeout(currentWidgetTimeout);
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
+        scrollTrackingDeferred();
         clearInterval(interval);
       } else if (waited > 9500) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
@@ -1017,30 +1033,18 @@ function recordDetectionAttempt(trackingNumber, detection) {
 // ===== FONCTIONS UTILITAIRES OPTIMISÉES =====
 function tryAlternative(tracker) {
   if (currentTrackingNumber) {
-
-    // NE PAS cacher la recommandation, juste mettre à jour la section tracker actuel
     currentTracker = tracker;
-
-    // Met à jour seulement l'affichage du tracker actuel
-  // updateCurrentTrackerDisplay(tracker); // supprimé
-
-    // Charge le nouveau widget
     showOptimizedWidget(tracker, currentTrackingNumber);
     updateTrackerButtons(tracker);
-
     trackUserAction('alternative_tried', tracker);
+    // Plus besoin de scroll ici: showOptimizedWidget le gère déjà
   }
 }
 
 function switchTracker(newTracker) {
   if (!currentTrackingNumber || isLoading) return;
-
   currentTracker = newTracker;
   hideFeedback();
-
-  // Met à jour seulement l'affichage du tracker actuel, pas toute la recommandation
-  // updateCurrentTrackerDisplay(newTracker); // supprimé
-
   showOptimizedWidget(newTracker, currentTrackingNumber);
   recordManualChoice(newTracker);
   trackUserAction('manual_switch', newTracker);
