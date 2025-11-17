@@ -25,7 +25,26 @@ const articleShema = new Schema({
         imageName: String,
     }],
     materialsWord: { type: String },
-    materials: [{ type: String }],
+    materials: [{
+        name: { type: String, required: true },
+        description: { type: String },
+        hasSizes: { type: Boolean, default: false },
+        links: [{
+            text: { type: String, required: true },
+            url: { type: String, required: true },
+            category: { type: String, default: 'primary' },
+            class: { type: String, default: 'primary' },
+            label: { type: String }
+        }],
+        sizes: [{
+            label: { type: String, required: true },  // "Pour 6 bouteilles"
+            category: { type: String, default: 'primary' },
+            dimensions: { type: String },                   // "34×34×11 cm"
+            url: { type: String, required: true },   // Lien Amazon
+            asin: { type: String },                   // ASIN du produit
+        }],
+        sizeNote: { type: String }
+    }],
     packingTips: [{
         mistake: String,
         solution: String
