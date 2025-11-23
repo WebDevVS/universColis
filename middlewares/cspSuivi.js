@@ -16,6 +16,13 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.ezoic.net",
       "https://go.ezodn.com",
       "https://go.ezoic.net",
+      // Partenaires publicitaires Ezoic
+      "https://cdn.id5-sync.com",           // ID5 (identity tracking)
+      "https://*.googlesyndication.com",    // Google Ads
+      "https://*.googleadservices.com",     // Google Ads
+      "https://*.doubleclick.net",          // DoubleClick (Google)
+      "https://securepubads.g.doubleclick.net",
+      "https://pagead2.googlesyndication.com",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
@@ -27,7 +34,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://cdn.jsdelivr.net",
       "https://cdn.track123.com",
       "https://www.track123.com",
-      "https://*.ezoic.net"
+      "https://*.ezoic.net",
+      "https://*.googlesyndication.com"
     ],
     fontSrc: [
       "'self'",
@@ -70,7 +78,12 @@ module.exports = helmet.contentSecurityPolicy({
       "https://www.17track.net",
       "https://*.ezoic.net",
       "https://go.ezodn.com",
-      "https://g.ezoic.net"
+      "https://g.ezoic.net",
+        // Partenaires pub
+      "https://cdn.id5-sync.com",
+      "https://*.id5-sync.com",
+      "https://*.googlesyndication.com",
+      "https://*.doubleclick.net"
     ],
     frameSrc: [
       "'self'",
@@ -83,7 +96,12 @@ module.exports = helmet.contentSecurityPolicy({
       "https://www.17track.net",
       "https://extcall.17track.net",
       "https://*.ezoic.net",
-      "https://go.ezoic.net"
+      "https://go.ezoic.net",
+       // Partenaires pub (iframes de pubs)
+      "https://*.googlesyndication.com",
+      "https://*.doubleclick.net",
+      "https://googleads.g.doubleclick.net",
+      "https://tpc.googlesyndication.com"
     ],
     objectSrc: ["'none'"],
     baseUri: ["'self'"]
