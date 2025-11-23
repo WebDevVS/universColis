@@ -79,9 +79,12 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.ezoic.net",
       "https://go.ezodn.com",
       "https://g.ezoic.net",
-        // Partenaires pub
+      // Partenaires pub
+      "https://id5-sync.com",              // ← AJOUTÉ (domaine racine)
       "https://cdn.id5-sync.com",
-      "https://*.id5-sync.com",
+      "https://*.id5-sync.com",            // Wildcard sous-domaines
+      "https://lbs.eu-1-id5-sync.com",     // ← AJOUTÉ (explicite)
+      "https://lb.eu-1-id5-sync.com",      // ← AJOUTÉ (explicite)
       "https://*.googlesyndication.com",
       "https://*.doubleclick.net"
     ],
@@ -97,7 +100,7 @@ module.exports = helmet.contentSecurityPolicy({
       "https://extcall.17track.net",
       "https://*.ezoic.net",
       "https://go.ezoic.net",
-       // Partenaires pub (iframes de pubs)
+      // Partenaires pub (iframes de pubs)
       "https://*.googlesyndication.com",
       "https://*.doubleclick.net",
       "https://googleads.g.doubleclick.net",
