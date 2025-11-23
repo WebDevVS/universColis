@@ -11,6 +11,11 @@ module.exports = helmet.contentSecurityPolicy({
       "https://cdn.track123.com",
       "https://www.track123.com",
       "https://www.track123.com/widget/",
+      "https://www.ezojs.com",
+      "https://www.ezoic.com",
+      "https://*.ezoic.net",
+      "https://go.ezodn.com",
+      "https://go.ezoic.net",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
@@ -21,7 +26,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://cdnjs.cloudflare.com",
       "https://cdn.jsdelivr.net",
       "https://cdn.track123.com",
-      "https://www.track123.com"
+      "https://www.track123.com",
+      "https://*.ezoic.net"
     ],
     fontSrc: [
       "'self'",
@@ -45,7 +51,10 @@ module.exports = helmet.contentSecurityPolicy({
       "https://www.17track.net",
       "https://track123.com",
       "https://track123-widget.track123.com",
-      "https://track123-widget.track123cdn.com"
+      "https://track123-widget.track123cdn.com",
+      "https://*.ezoic.net",
+      "https:",  // Pour toutes les images de pubs
+      "http:"    // Certaines pubs anciennes
     ],
     connectSrc: [
       "'self'",
@@ -58,7 +67,10 @@ module.exports = helmet.contentSecurityPolicy({
       "https://postal.ninja",
       "https://www.track123.com",
       "https://cdn.track123.com",
-      "https://www.17track.net"
+      "https://www.17track.net",
+      "https://*.ezoic.net",
+      "https://go.ezodn.com",
+      "https://g.ezoic.net"
     ],
     frameSrc: [
       "'self'",
@@ -69,7 +81,9 @@ module.exports = helmet.contentSecurityPolicy({
       "https://postal.ninja",
       "https://www.track123.com",
       "https://www.17track.net",
-      "https://extcall.17track.net"
+      "https://extcall.17track.net",
+      "https://*.ezoic.net",
+      "https://go.ezoic.net"
     ],
     objectSrc: ["'none'"],
     baseUri: ["'self'"]
