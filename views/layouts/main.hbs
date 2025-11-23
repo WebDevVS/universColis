@@ -35,6 +35,15 @@
 
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
+    {{!-- EZOIC ADS - Scripts header --}}
+    {{!-- Charge uniquement sur pages définies dans middleware --}}
+    {{#if showEzoic}}
+        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+        <script>
+            window.ezstandalone = window.ezstandalone || {};
+            ezstandalone.cmd = ezstandalone.cmd || [];
+        </script>
+    {{/if}}
 
     {{#if isProd}}
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -101,12 +110,15 @@
 </head>
 
 <body class="{{bodyClass}} d-flex flex-column min-vh-100">
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4VCLVRJ" height="0" width="0"
             class="gtm-noscript-iframe"></iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
