@@ -27,7 +27,7 @@ module.exports = (app) => {
       },
       json: (context) => JSON.stringify(context),
       multiply: (a, b) => a * b,
-      
+
       parseMarkdownLinks: function (text) {
         if (!text) return '';
         return new hbs.handlebars.SafeString(
@@ -109,7 +109,20 @@ module.exports = (app) => {
           "https://www.17track.net",
           "https://cdn.track123.com",
           "https://www.track123.com",
-          "https://www.universcolis.fr"
+          "https://www.universcolis.fr",
+          // Ezoic
+          "https://www.ezojs.com",
+          "https://www.ezoic.com",
+          "https://*.ezoic.net",
+          "https://go.ezodn.com",
+          "https://go.ezoic.net",
+          // Partenaires pub
+          "https://cdn.id5-sync.com",
+          "https://*.googlesyndication.com",
+          "https://*.googleadservices.com",
+          "https://*.doubleclick.net",
+          "https://securepubads.g.doubleclick.net",
+          "https://pagead2.googlesyndication.com"
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
@@ -119,7 +132,10 @@ module.exports = (app) => {
           "https://fonts.googleapis.com",
           "https://cdnjs.cloudflare.com",
           "https://cdn.jsdelivr.net",
-          "https://cdn.track123.com"
+          "https://cdn.track123.com",
+          // Ezoic
+          "https://*.ezoic.net",
+          "https://*.googlesyndication.com"
         ],
 
         // Polices de caractères (Google Fonts en général)
@@ -128,7 +144,8 @@ module.exports = (app) => {
           "https://fonts.gstatic.com",
           "https://cdnjs.cloudflare.com",
           "https://cdn.jsdelivr.net",
-          "https://cdn.track123.com"
+          "https://cdn.track123.com",
+          "data:"
         ],
 
         // Images : autorise les liens vers Boxtal + analytics + les images locales
@@ -148,7 +165,11 @@ module.exports = (app) => {
           "https://www.17track.net",
           "https://track123.com",
           "https://track123-widget.track123.com",
-          "https://track123-widget.track123cdn.com"
+          "https://track123-widget.track123cdn.com",
+          // Ezoic
+          "https://*.ezoic.net",
+          "https:",  // Pour toutes images de pubs
+          "http:"
         ],
 
         // Pour les appels JS type `fetch()` ou XHR
@@ -163,7 +184,20 @@ module.exports = (app) => {
           "https://postal.ninja",
           "https://www.track123.com",
           "https://cdn.track123.com",
-          "https://www.17track.net"
+          "https://www.17track.net",
+          // Ezoic
+          "https://*.ezoic.net",
+          "https://go.ezodn.com",
+          "https://g.ezoic.net",
+          // ID5
+          "https://id5-sync.com",
+          "https://cdn.id5-sync.com",
+          "https://*.id5-sync.com",
+          "https://lbs.eu-1-id5-sync.com",
+          "https://lb.eu-1-id5-sync.com",
+          // Google Ads
+          "https://*.googlesyndication.com",
+          "https://*.doubleclick.net"
         ],
 
         // Interdiction d’embarquer ton site dans une iframe
@@ -175,7 +209,15 @@ module.exports = (app) => {
           "https://track.global",
           "https://postal.ninja",
           "https://www.track123.com",
-          "https://www.17track.net"
+          "https://www.17track.net",
+          // Ezoic
+          "https://*.ezoic.net",
+          "https://go.ezoic.net",
+          // Google Ads
+          "https://*.googlesyndication.com",
+          "https://*.doubleclick.net",
+          "https://googleads.g.doubleclick.net",
+          "https://tpc.googlesyndication.com"
         ],
 
         // Empêche les plugins type Flash/Java
