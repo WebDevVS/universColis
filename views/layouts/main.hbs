@@ -300,7 +300,7 @@
 
     <!-- Script de remontée en haut -->
 
-    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 
     {{#if isProd}}
     <script src="/static/js/static.min.js" defer></script>
@@ -332,6 +332,37 @@
     {{/if}}
 
     <!-- Scripts spécifiques cookies -->
+    <script>
+      (function(){
+        window.clarityConsentState = { loaded:false, lastStatus:null };
+        window.loadClarityWithConsent = function(granted){
+          var status = granted ? 'granted' : 'denied';
+          if (window.clarityConsentState.lastStatus === status) return;
+          window.clarityConsentState.lastStatus = status;
+          if (!window.clarityConsentState.loaded){
+            (function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/ublc3yobr9";
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script");
+            window.clarityConsentState.loaded = true;
+          }
+          function send(){
+            if (typeof window.clarity === 'function'){
+              try {
+                window.clarity('consentv2', {
+                  ad_storage: 'denied',
+                  analytics_storage: status
+                });
+              } catch(e){}
+            } else {
+              setTimeout(send,150);
+            }
+          }
+          send();
+        };
+      })();
+    </script>
     <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
     <script src="/static/js/cookiesConfig.min.js"></script>
     <script src="/static/js/cookiePreferencesButton.min.js"></script>

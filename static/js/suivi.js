@@ -1,4 +1,22 @@
-// ===== TIMELINE ANIMATION POUR L'ANALYSE =====
+// ===== VERSION COMPLÈTE OPTIMISÉE POUR INP =====
+// Lazy-loading intelligent des widgets de tracking
+// Objectif : Réduire INP de 234ms à ~150ms
+
+// ===== SYSTÈME DE LAZY-LOADING (NOUVEAU) =====
+let widgetsLoaded = {
+  '17track': false,
+  'track123': false,
+  'trackglobal': false,
+  'parcelsapp': false,
+  'postalninja': false
+};
+
+let widgetScriptsLoaded = {
+  '17track': false,
+  'track123': false
+};
+
+// ===== TIMELINE ANIMATION (ORIGINAL - DÉSACTIVÉ) =====
 let currentStep = 0;
 let timelineInterval;
 
@@ -76,7 +94,6 @@ function progressTimeline() {
   }
 }
 
-// Fermer la timeline si clic sur overlay
 document.addEventListener('DOMContentLoaded', function () {
   const overlay = document.getElementById('trackingTimelineOverlay');
   if (overlay) {
@@ -89,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// Remplace le handler du bouton pour lancer la timeline avant le tracking
 document.addEventListener('DOMContentLoaded', function () {
   const trackBtn = document.getElementById('trackBtn');
   const infoDetails = document.querySelector('.tracking-info-details');
@@ -97,14 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
     trackBtn.addEventListener('click', function (e) {
       e.preventDefault();
       showTrackingTimeline();
-      // Affiche la section cachée après le clic
       if (infoDetails) {
         infoDetails.classList.remove('hidden-info');
       }
     });
   }
 });
-// Map nom tracker -> nom de fichier image (unique pour tout le fichier)
+
+// ===== CONFIGURATION (ORIGINAL) =====
 const trackerLogoMap = {
   '17track': '/static/img/trackers/17Track.jpg',
   'trackglobal': '/static/img/trackers/TrackGlobal.jpg',
@@ -112,15 +128,12 @@ const trackerLogoMap = {
   'postalninja': '/static/img/trackers/PostalNinja.png',
   'track123': '/static/img/trackers/Track123.jpg'
 };
-// Masque la description du tracker sélectionné partout via CSS
+
 const styleHideDescription = document.createElement('style');
 styleHideDescription.innerHTML = `.current-tracker-description { display: none !important; }`;
 document.head.appendChild(styleHideDescription);
 
-// ===== VERSION FINALE OPTIMISÉE - TRACKING SYSTEM =====
-// Combine le meilleur des 4 versions : UX simple + IA précise + apprentissage intelligent
-
-// ===== CONFIGURATION DES WIDGETS =====
+// ===== CONFIGURATION DES WIDGETS (ORIGINAL) =====
 const trackerWidgets = {
   'parcelsapp': num => `<iframe src="https://parcelsapp.com/widget?num=${encodeURIComponent(num)}" style="height:600px; width:100%; border:none; border-radius:10px;" loading="lazy"></iframe>`,
   'trackglobal': num => `
@@ -138,7 +151,7 @@ const trackerWidgets = {
   '17track': num => `<div id="YQContainer" style="border-radius:10px; overflow:hidden;"></div>`
 };
 
-// ===== CONFIGURATION INTELLIGENTE OPTIMISÉE =====
+// ===== CONFIGURATION INTELLIGENTE (ORIGINAL) =====
 const trackersIntelligentConfig = {
   '17track': {
     name: '17Track',
@@ -155,30 +168,21 @@ const trackersIntelligentConfig = {
       countries: 230
     },
     patterns: [
-      // UPS, FedEx, Postal International (déjà présents)
       { regex: /^1Z[A-Z0-9]{16}$/, confidence: 0.98, type: 'UPS', priority: 1 },
       { regex: /^\d{12}$/, confidence: 0.95, type: 'FedEx Express', priority: 1 },
       { regex: /^\d{10}$/, confidence: 0.90, type: 'FedEx Ground', priority: 1 },
       { regex: /^[A-Z]{2}\d{9}[A-Z]{2}$/, confidence: 0.92, type: 'Postal International', priority: 2 },
       { regex: /^RR\d{9}[A-Z]{2}$/, confidence: 0.90, type: 'Recommandé International', priority: 2 },
       { regex: /^[0-9][A-Z][0-9]{11}$/, confidence: 0.80, type: 'Format alphanumérique 13 char', priority: 1 },
-      // DHL
       { regex: /^\d{10}$/, confidence: 0.92, type: 'DHL (10 chiffres)', priority: 1 },
       { regex: /^\d{20}$/, confidence: 0.92, type: 'DHL (20 chiffres)', priority: 1 },
       { regex: /^JVGL\d{9,}$/, confidence: 0.92, type: 'DHL (JVGL)', priority: 1 },
-      // GLS
       { regex: /^00\d{12,14}$/, confidence: 0.90, type: 'GLS', priority: 1 },
-      // DPD
       { regex: /^\d{14}$/, confidence: 0.90, type: 'DPD', priority: 1 },
-      // TNT
       { regex: /^\d{9}$/, confidence: 0.88, type: 'TNT', priority: 1 },
-      // USPS
       { regex: /^9\d{15,21}$/, confidence: 0.90, type: 'USPS', priority: 1 },
-      // Colissimo (autres formats)
       { regex: /^(8R|6A|6C)\d{11}$/, confidence: 0.90, type: 'Colissimo (autres)', priority: 1 },
-      // Hermes
       { regex: /^\d{16}$/, confidence: 0.85, type: 'Hermes', priority: 1 },
-      // Royal Mail
       { regex: /^[A-Z]{2}\d{9}GB$/, confidence: 0.88, type: 'Royal Mail', priority: 1 }
     ]
   },
@@ -224,11 +228,8 @@ const trackersIntelligentConfig = {
       { regex: /^CP\d{9}[A-Z]{2}$/, confidence: 0.95, type: 'Colissimo', priority: 1 },
       { regex: /^LX\d{9}[A-Z]{2}$/, confidence: 0.90, type: 'Chronopost', priority: 1 },
       { regex: /^[A-Z]{2}\d{9}(FR|ES|DE|IT|NL|BE)$/, confidence: 0.88, type: 'Postal européen', priority: 2 },
-      // Colissimo (autres formats)
       { regex: /^(8R|6A|6C)\d{11}$/, confidence: 0.92, type: 'Colissimo (autres)', priority: 1 },
-      // La Poste (France)
       { regex: /^\d{11}$/, confidence: 0.85, type: 'La Poste (France)', priority: 1 },
-      // Royal Mail
       { regex: /^[A-Z]{2}\d{9}GB$/, confidence: 0.88, type: 'Royal Mail', priority: 1 }
     ]
   },
@@ -272,7 +273,7 @@ const trackersIntelligentConfig = {
   }
 };
 
-// ===== VARIABLES GLOBALES =====
+// ===== VARIABLES GLOBALES (ORIGINAL) =====
 let currentTracker = null;
 let currentTrackingNumber = null;
 let isLoading = false;
@@ -280,32 +281,25 @@ let trackingHistory = JSON.parse(localStorage.getItem('trackingHistory') || '[]'
 let detectionCache = new Map();
 let currentWidgetTimeout = null;
 let performanceStats = JSON.parse(localStorage.getItem('performanceStats') || '{}');
+let originalDetection = null;
 
+// ===== SANITIZATION (ORIGINAL) =====
 function sanitizeTrackingNumber(input) {
-  // Vérifie que c'est bien une chaîne
   if (typeof input !== 'string') {
     console.warn('⚠️ Numéro de suivi invalide (pas une chaîne)');
     return '';
   }
-
-  // Nettoie et sécurise l'entrée
   const cleaned = input
-    .trim()                           // Supprime espaces début/fin
-    .toUpperCase()                    // Uniformise en majuscules
-    .replace(/[^A-Z0-9\-]/g, '')     // Garde seulement lettres, chiffres, tirets
-    .substring(0, 50);               // Limite à 50 caractères max
-
-  // Log si modification
-  if (cleaned !== input.trim()) {
-    console.log(`🧹 Numéro nettoyé: "${input}" → "${cleaned}"`);
-  }
-
+    .trim()
+    .toUpperCase()
+    .replace(/[^A-Z0-9\-]/g, '')
+    .substring(0, 50);
+  if (cleaned !== input.trim()) {}
   return cleaned;
 }
 
-// ===== SYSTÈME DE DÉTECTION ULTRA-OPTIMISÉ =====
+// ===== DÉTECTION (ORIGINAL - COMPLET) =====
 function detectBestTracker(trackingNumber) {
-
   const cacheKey = trackingNumber.trim().toUpperCase();
   if (detectionCache.has(cacheKey)) {
     return detectionCache.get(cacheKey);
@@ -316,7 +310,6 @@ function detectBestTracker(trackingNumber) {
   let maxConfidence = 0;
   let maxPriority = 0;
 
-  // Test tous les patterns avec système de priorité
   for (const [trackerId, config] of Object.entries(trackersIntelligentConfig)) {
     if (!config.patterns) continue;
 
@@ -341,21 +334,17 @@ function detectBestTracker(trackingNumber) {
     }
   }
 
-  // Analyse heuristique si aucun pattern précis
   if (!bestMatch) {
     bestMatch = analyzeByAdvancedHeuristics(cleanNumber);
   }
 
-  // Apprentissage utilisateur
   const historicalMatch = getHistoricalWinner(cleanNumber);
   if (historicalMatch && historicalMatch.confidence > bestMatch.confidence) {
     bestMatch = historicalMatch;
   }
 
-  // Alternatives intelligentes seulement si confiance < 95% (TOUJOURS pour avoir 2 options)
   bestMatch.alternatives = getSmartAlternatives(bestMatch.tracker, cleanNumber);
 
-  // Cache et enregistrement
   detectionCache.set(cacheKey, bestMatch);
   recordDetectionAttempt(cleanNumber, bestMatch);
 
@@ -368,7 +357,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
   const onlyNumbers = /^\d+$/.test(trackingNumber);
   const startsWithLetter = /^[A-Z]/.test(trackingNumber);
 
-  // Yanwen ultra-prioritaire
   if (length === 16 && trackingNumber.startsWith('YT')) {
     return {
       tracker: 'track123',
@@ -379,7 +367,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
     };
   }
 
-  // UPS ultra-prioritaire
   if (length === 18 && trackingNumber.startsWith('1Z')) {
     return {
       tracker: '17track',
@@ -390,7 +377,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
     };
   }
 
-  // Colissimo France
   if (trackingNumber.startsWith('CP') && (trackingNumber.endsWith('FR') || length === 13)) {
     return {
       tracker: 'postalninja',
@@ -401,7 +387,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
     };
   }
 
-  // Formats chinois longs
   if (length === 13 && onlyNumbers) {
     return {
       tracker: 'track123',
@@ -412,7 +397,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
     };
   }
 
-  // Amazon
   if (trackingNumber.startsWith('TBA') || trackingNumber.includes('AMAZON')) {
     return {
       tracker: 'parcelsapp',
@@ -423,7 +407,6 @@ function analyzeByAdvancedHeuristics(trackingNumber) {
     };
   }
 
-  // CORRECTION: Format générique - assure des alternatives
   return {
     tracker: '17track',
     confidence: 0.75,
@@ -457,35 +440,27 @@ function getHistoricalWinner(trackingNumber) {
 }
 
 function getSmartAlternatives(primaryTracker, trackingNumber) {
-  // Puisque 17Track est TOUJOURS affiché par défaut,
-  // on propose uniquement des trackers SPÉCIALISÉS
   const cleanNumber = trackingNumber.trim().toUpperCase();
 
-  // 1. Formats chinois → Track123 (champion absolu)
   if (/^(YT|LP|LY|LZ|UJ|UG|LS)\d+/.test(cleanNumber)) {
     return ['track123'];
   }
 
-  // 2. Colissimo/France → Postal Ninja
   if (/^(CP|LX|8R|6A|6C)/.test(cleanNumber) || cleanNumber.includes('FR')) {
     return ['postalninja'];
   }
 
-  // 3. Amazon → ParcelsApp
   if (/^TBA/.test(cleanNumber) || cleanNumber.includes('AMAZON')) {
     return ['parcelsapp'];
   }
 
-  // 4. Formats atypiques → Track.Global
   if (cleanNumber.length < 10 || /^[A-Z]{4,}/.test(cleanNumber)) {
     return ['trackglobal'];
   }
 
-  // 5. DÉFAUT: Track123 (complément idéal de 17Track)
   return ['track123'];
 }
 
-// ===== SYSTÈME D'AFFICHAGE INTELLIGENT POUR LA CONFIANCE =====
 function getSmartDisplayConfidence(realConfidence, tracker) {
   const config = trackersIntelligentConfig[tracker];
 
@@ -516,7 +491,6 @@ function getSmartDisplayConfidence(realConfidence, tracker) {
     };
   }
 
-  // Pour les scores bas : met l'accent sur la couverture
   return {
     display: 'Couverture maximale',
     label: 'Réseau mondial le plus large',
@@ -525,21 +499,14 @@ function getSmartDisplayConfidence(realConfidence, tracker) {
   };
 }
 
-// Variables pour conserver la recommandation IA originale
-let originalDetection = null;
-
-// ===== INTERFACE OPTIMISÉE AVEC STRUCTURE DEMANDÉE =====
+// ===== AFFICHAGE RECOMMANDATION (ORIGINAL) =====
 function showOptimizedRecommendation(detection, trackingNumber) {
   hideRecommendation();
-
-  // CORRECTION: Sauvegarde TOUJOURS la nouvelle détection (pas seulement si null)
   originalDetection = { ...detection };
 
-  // Correction : affiche TOUJOURS l'alternative (jamais 17Track)
   let altTrackerId = null;
   if (originalDetection.alternatives && originalDetection.alternatives.length > 0) {
     altTrackerId = originalDetection.alternatives.find(t => t !== '17track');
-    // Si aucune alternative autre que 17track, prend le premier (track123 par défaut)
     if (!altTrackerId) altTrackerId = originalDetection.alternatives[0];
   }
 
@@ -549,7 +516,6 @@ function showOptimizedRecommendation(detection, trackingNumber) {
   const summaryHTML = `
     <div id="recommendation-section" class="recommendation-section">
       <div class="ai-summary-content">
-          <!-- Alternative recommandée (jamais 17Track) -->
           <div class="detection-row highlight">
             <div class="detection-label">
               <i class="fa-solid fa-bullseye"></i>
@@ -563,30 +529,24 @@ function showOptimizedRecommendation(detection, trackingNumber) {
               <span class="tracker-subtitle">${altConfig ? altConfig.subtitle : ''}</span>
             </div>
           </div>
-
-          <!-- (Section tracker sélectionné supprimée) -->
         </div>
       </div>
     </div>
   `;
 
-  // Supprime l'ancienne recommandation si présente
   const oldRec = document.getElementById('recommendation-section');
   if (oldRec && oldRec.parentNode) {
     oldRec.parentNode.removeChild(oldRec);
   }
 
-  // Insère la recommandation juste après le widget (tracking-section)
   const trackingSection = document.getElementById('tracking-section');
   if (trackingSection && trackingSection.parentNode) {
     trackingSection.insertAdjacentHTML('afterend', summaryHTML);
   } else {
-    // Fallback : insère dans le container principal
     const mainContainer = document.querySelector('.tracking-container') || document.body;
     mainContainer.insertAdjacentHTML('beforeend', summaryHTML);
   }
 
-  // Animation fluide
   const section = document.getElementById('recommendation-section');
   if (section) {
     section.style.opacity = '0';
@@ -599,11 +559,8 @@ function showOptimizedRecommendation(detection, trackingNumber) {
   }
 }
 
-// ===== FONCTION POUR METTRE À JOUR SEULEMENT LA SECTION TRACKER ACTUEL =====
 function updateCurrentTrackerDisplay(tracker) {
-  // (Section tracker sélectionné supprimée, fonction rendue vide)
 }
-// Fonction supprimée : updateCurrentTrackerDisplay
 
 function hideRecommendation() {
   const section = document.getElementById('recommendation-section');
@@ -613,7 +570,123 @@ function hideRecommendation() {
   }
 }
 
-// ===== FONCTIONS PRINCIPALES ULTRA-OPTIMISÉES =====
+// ===== CHARGEMENT LAZY DES TRACKERS (NOUVEAU - OPTIMISÉ) =====
+function load17TrackLazy(trackingNumber) {
+  
+  // RESET COMPLET : vide le conteneur ET force le rechargement du script
+  const container = document.getElementById('YQContainer');
+  if (container) {
+    container.innerHTML = '';
+  }
+  
+  // Si le script est déjà chargé ET YQV5 existe, réutilise-le
+  if (widgetScriptsLoaded['17track'] && typeof YQV5 !== "undefined") {
+    // Attend que le DOM soit stable et que le conteneur soit vraiment prêt
+    setTimeout(() => {
+      const verifyContainer = document.getElementById('YQContainer');
+      if (!verifyContainer) {
+        console.error('❌ Conteneur YQContainer introuvable');
+        return;
+      }
+      
+      YQV5.trackSingle({
+        YQ_ContainerId: "YQContainer",
+        YQ_Height: 600,
+        YQ_Lang: "fr",
+        YQ_Fc: "0",
+        YQ_Num: trackingNumber
+      });
+      widgetsLoaded['17track'] = true;
+    }, 100); // Augmenté à 100ms pour laisser le temps au DOM
+    return;
+  }
+
+  const script = document.createElement('script');
+  script.src = 'https://www.17track.net/externalcall.js';
+  script.async = true;
+  script.onload = () => {
+    widgetScriptsLoaded['17track'] = true;
+    if (typeof YQV5 !== "undefined") {
+      YQV5.trackSingle({
+        YQ_ContainerId: "YQContainer",
+        YQ_Height: 600,
+        YQ_Lang: "fr",
+        YQ_Fc: "0",
+        YQ_Num: trackingNumber
+      });
+      widgetsLoaded['17track'] = true;
+    }
+  };
+  document.head.appendChild(script);
+}
+
+function loadTrack123ScriptOnce() {
+  // Supprime l'ancien widget Track123 s'il existe
+  const oldWidget = document.getElementById("track123-tracking-widget");
+  if (oldWidget) {
+    oldWidget.innerHTML = "";
+  }
+
+  // Supprime l'ancien script Track123 s'il existe
+  const oldScript = document.getElementById("track123-tracking-widget-script");
+  if (oldScript && oldScript.parentNode) {
+    oldScript.parentNode.removeChild(oldScript);
+  }
+
+  // Définit la config globale comme recommandé
+  window.track123WidgetConfig = {
+    api_base: "https://www.track123.com",
+    provider_type: 3,
+    language: "en_US",
+    theme_color: "#5B62FF",
+    width_type: "auto",
+    width_value: ""
+  };
+
+  // Ajoute le script officiel Track123 (méthode recommandée)
+  (function (e, t, n) {
+    var r, i = e.getElementsByTagName(t)[0];
+    r = e.createElement(t);
+    r.src = "https://www.track123.com/track123-widget.min.js";
+    r.id = n;
+    i.parentNode.insertBefore(r, i);
+  })(document, "script", "track123-tracking-widget-script");
+}
+
+function preloadIframeWidgets() {
+  widgetsLoaded['trackglobal'] = true;
+  widgetsLoaded['parcelsapp'] = true;
+  widgetsLoaded['postalninja'] = true;
+}
+
+function initLazyLoading(trackingNumber) {
+  
+  // NE PAS charger 17Track ici - il sera chargé dans showOptimizedWidget()
+  // après la création du conteneur YQContainer
+  
+  const loadSecondaryWidgets = () => {
+    preloadIframeWidgets();
+    window.removeEventListener('scroll', scrollHandler);
+  };
+  
+  const delayTimer = setTimeout(loadSecondaryWidgets, 2000);
+  
+  const scrollHandler = () => {
+    clearTimeout(delayTimer);
+    loadSecondaryWidgets();
+  };
+  
+  window.addEventListener('scroll', scrollHandler, { once: true, passive: true });
+}
+
+// ===== REMPLACE LES FONCTIONS ORIGINALES =====
+function load17Track(trackingNumber) {
+  load17TrackLazy(trackingNumber);
+}
+
+// Pas de remplacement pour Track123 - on utilise directement loadTrack123ScriptOnce()
+
+// ===== FONCTION PRINCIPALE OPTIMISÉE =====
 function startTracking() {
   const input = document.getElementById('trackingNumber');
   const trackBtn = document.getElementById('trackBtn');
@@ -623,67 +696,46 @@ function startTracking() {
   const rawInput = input && input.value ? input.value.trim() : '';
   const trackingNumber = sanitizeTrackingNumber(rawInput);
 
-  // Vérifie que le numéro est valide après nettoyage
   if (!trackingNumber) {
     input.focus();
     input.style.borderColor = '#ef4444';
-
-    // Message d'erreur plus explicite
     const errorMsg = document.createElement('div');
     errorMsg.style.cssText = `
-    color: #dc2626;
-    font-size: 12px;
-    margin-top: 4px;
-    animation: fadeIn 0.3s;
-  `;
+      color: #dc2626;
+      font-size: 12px;
+      margin-top: 4px;
+      animation: fadeIn 0.3s;
+    `;
     errorMsg.textContent = 'Veuillez entrer un numéro de suivi valide';
-
-    // Supprime l'ancien message d'erreur s'il existe
     const oldError = input.parentElement.querySelector('.error-message');
     if (oldError) oldError.remove();
-
     errorMsg.className = 'error-message';
     input.parentElement.appendChild(errorMsg);
-
     setTimeout(() => {
       input.style.borderColor = '';
       if (errorMsg.parentElement) errorMsg.remove();
     }, 3000);
-
     return;
   }
 
-  // Vérifie la longueur minimale
   if (trackingNumber.length < 6) {
     input.focus();
     input.style.borderColor = '#f59e0b';
-
     const warnMsg = document.createElement('div');
     warnMsg.style.cssText = `
-    color: #d97706;
-    font-size: 12px;
-    margin-top: 4px;
-  `;
+      color: #d97706;
+      font-size: 12px;
+      margin-top: 4px;
+    `;
     warnMsg.textContent = 'Le numéro semble trop court (minimum 6 caractères)';
     warnMsg.className = 'error-message';
-
     const oldError = input.parentElement.querySelector('.error-message');
     if (oldError) oldError.remove();
-
     input.parentElement.appendChild(warnMsg);
-
     setTimeout(() => {
       input.style.borderColor = '';
       if (warnMsg.parentElement) warnMsg.remove();
     }, 3000);
-
-    return;
-  }
-
-  if (!trackingNumber) {
-    input.focus();
-    input.style.borderColor = '#ef4444';
-    setTimeout(() => input.style.borderColor = '', 1000);
     return;
   }
 
@@ -691,14 +743,11 @@ function startTracking() {
 
   isLoading = true;
   currentTrackingNumber = trackingNumber;
-
-  // CORRECTION 1: Reset complet pour un nouveau tracking
   originalDetection = null;
   currentTracker = null;
 
   const originalHTML = trackBtn.textContent;
   trackBtn.classList.add('loading');
-  // Nettoie le bouton et ajoute l'icône de chargement de façon sécurisée
   trackBtn.textContent = '';
   const spinner = document.createElement('i');
   spinner.className = 'fa-solid fa-spinner fa-spin';
@@ -708,16 +757,26 @@ function startTracking() {
   hideRecommendation();
   hideFeedback();
 
-  // Détection ultrarapide
   setTimeout(() => {
-    // Force le widget 17Track comme choix par défaut
     const startTime = Date.now();
     const detection = detectBestTracker(trackingNumber);
     const analysisTime = Date.now() - startTime;
 
-    // Remplace le tracker détecté par 17track
     currentTracker = '17track';
-    // On affiche quand même la recommandation IA pour info
+    
+    // ⚡ RESET des flags de lazy-loading pour un nouveau tracking
+    widgetsLoaded = {
+      '17track': false,
+      'track123': false,
+      'trackglobal': false,
+      'parcelsapp': false,
+      'postalninja': false
+    };
+    secondaryWidgetsLoaded = false;
+    
+    // ⚡⚡⚡ LANCE LE LAZY-LOADING ICI ⚡⚡⚡
+    initLazyLoading(trackingNumber);
+    
     showOptimizedRecommendation(detection, trackingNumber);
 
     setTimeout(() => {
@@ -730,9 +789,10 @@ function startTracking() {
 
     }, 200);
 
-  }, 150); // Délai minimal pour fluidité
+  }, 150);
 }
 
+// ===== RESTE DU CODE ORIGINAL (showOptimizedWidget, etc.) =====
 function scrollToTrackingSection() {
   const section = document.getElementById('tracking-section');
   if (!section) return;
@@ -740,20 +800,17 @@ function scrollToTrackingSection() {
   const headerH = header ? header.offsetHeight : 0;
   const rect = section.getBoundingClientRect();
   const absoluteTop = rect.top + window.scrollY;
-  // Centre réel avec offset header
   const centerY = absoluteTop - Math.max(0, (window.innerHeight - rect.height) / 2) - headerH;
   window.scrollTo({ top: centerY, behavior: 'smooth' });
 }
 
-// Nouvelle aide: déclenchement différé pour éviter le flash haut
 function scrollTrackingDeferred() {
-  setTimeout(() => scrollToTrackingSection(), 60); // petit délai pour layout
+  setTimeout(() => scrollToTrackingSection(), 60);
 }
 
 function showOptimizedWidget(trackerType, trackingNumber) {
   if (!trackerType || !trackingNumber) return;
 
-  // Ne pas supprimer / recréer deux fois: retire uniquement l'ancien
   const oldSection = document.getElementById('tracking-section');
   if (oldSection) oldSection.remove();
 
@@ -761,11 +818,9 @@ function showOptimizedWidget(trackerType, trackingNumber) {
   section.id = 'tracking-section';
   section.className = 'recommendation-section';
 
-  // Card principale
   const card = document.createElement('div');
   card.className = 'ai-summary-card';
 
-  // Header
   const header = document.createElement('div');
   header.className = 'ai-summary-header';
   const title = document.createElement('div');
@@ -774,87 +829,76 @@ function showOptimizedWidget(trackerType, trackingNumber) {
   header.appendChild(title);
   card.appendChild(header);
 
-  // Contenu principal (regroupe header widget, bouton copy, widget)
   const content = document.createElement('div');
   content.className = 'ai-summary-content';
 
-  // Header widget (supprimé : widget-section-title)
-  // (on ne crée plus le header/titre du widget)
+  const needsCopyBtn = trackerType === 'track123' || trackerType === 'trackglobal' || trackerType === 'parcelsapp' || trackerType === 'postalninja';
 
-  // Bouton copier
-const needsCopyBtn = trackerType === 'track123' || trackerType === 'trackglobal' || trackerType === 'parcelsapp' || trackerType === 'postalninja';
+  const oldCopyDiv = document.getElementById('copy-tracking-btn-global');
+  if (oldCopyDiv) oldCopyDiv.remove();
 
-const oldCopyDiv = document.getElementById('copy-tracking-btn-global');
-if (oldCopyDiv) oldCopyDiv.remove();
-
-if (needsCopyBtn) {
-  const copyDiv = document.createElement('div');
-  copyDiv.className = 'copy-tracking-btn-container';
-  copyDiv.id = 'copy-tracking-btn-global';
-  copyDiv.innerHTML = `
-    <div class="tracking-number-header">
-      <i class="fa-solid fa-clipboard"></i>
-      <strong>Votre numéro de suivi</strong>
-    </div>
-    <div class="tracking-number-display">
-      <span class="tracking-number-text">${trackingNumber}</span>
-      <button class="copy-tracking-btn" type="button" id="copy-btn-${Date.now()}">
-        <i class="fa-solid fa-copy"></i> Copier
-      </button>
-    </div>
-    <div class="tracking-instructions">
-      <div class="instructions-title">
-        <i class="fa-solid fa-lightbulb"></i>
-        <strong>Pour comparer les trackers ci-dessous :</strong>
+  if (needsCopyBtn) {
+    const copyDiv = document.createElement('div');
+    copyDiv.className = 'copy-tracking-btn-container';
+    copyDiv.id = 'copy-tracking-btn-global';
+    copyDiv.innerHTML = `
+      <div class="tracking-number-header">
+        <i class="fa-solid fa-clipboard"></i>
+        <strong>Votre numéro de suivi</strong>
       </div>
-      <ol class="instructions-list">
-        <li>Cliquez sur <strong>"Copier"</strong></li>
-        <li>Collez le numéro dans chaque tracker</li>
-        <li>Cliquez sur <strong>"Tracking"</strong> ou <strong>"Suivre"</strong></li>
-      </ol>
-    </div>
-  `;
+      <div class="tracking-number-display">
+        <span class="tracking-number-text">${trackingNumber}</span>
+        <button class="copy-tracking-btn" type="button" id="copy-btn-${Date.now()}">
+          <i class="fa-solid fa-copy"></i> Copier
+        </button>
+      </div>
+      <div class="tracking-instructions">
+        <div class="instructions-title">
+          <i class="fa-solid fa-lightbulb"></i>
+          <strong>Pour comparer les trackers ci-dessous :</strong>
+        </div>
+        <ol class="instructions-list">
+          <li>Cliquez sur <strong>"Copier"</strong></li>
+          <li>Collez le numéro dans chaque tracker</li>
+          <li>Cliquez sur <strong>"Tracking"</strong> ou <strong>"Suivre"</strong></li>
+        </ol>
+      </div>
+    `;
 
-  // Gestion du bouton copier
-  content.appendChild(copyDiv);
-  
-  const copyBtn = copyDiv.querySelector('.copy-tracking-btn');
-  copyBtn.addEventListener('click', function () {
-    navigator.clipboard.writeText(trackingNumber).then(() => {
-      copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copié !';
-      copyBtn.classList.add('copied');
-      setTimeout(() => {
-        copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Copier';
-        copyBtn.classList.remove('copied');
-      }, 2000);
-    }).catch(err => {
-      console.error('Erreur de copie:', err);
-      copyBtn.innerHTML = '<i class="fa-solid fa-times"></i> Erreur';
-      setTimeout(() => {
-        copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Copier';
-      }, 2000);
+    content.appendChild(copyDiv);
+    
+    const copyBtn = copyDiv.querySelector('.copy-tracking-btn');
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(trackingNumber).then(() => {
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copié !';
+        copyBtn.classList.add('copied');
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Copier';
+          copyBtn.classList.remove('copied');
+        }, 2000);
+      }).catch(err => {
+        console.error('Erreur de copie:', err);
+        copyBtn.innerHTML = '<i class="fa-solid fa-times"></i> Erreur';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-solid fa-copy"></i> Copier';
+        }, 2000);
+      });
     });
-  });
-}
+  }
 
-
-  // Crée un nouveau container pour cette session
   const widgetContainer = document.createElement('div');
   widgetContainer.className = 'tracker-widget-container active';
   widgetContainer.id = 'current-tracking-widget';
 
-  // L'intègre dans la structure
   card.appendChild(content);
   card.appendChild(widgetContainer);
   section.appendChild(card);
 
-  // Supprime l'ancienne section de suivi si présente
   const oldTrackingSection = document.getElementById('tracking-section');
   if (oldTrackingSection && oldTrackingSection.parentNode) {
     oldTrackingSection.parentNode.removeChild(oldTrackingSection);
   }
 
-  // Insertion (garde la position stable avant scroll)
   const recSection = document.getElementById('recommendation-section');
   if (recSection && recSection.parentNode) {
     recSection.parentNode.insertBefore(section, recSection);
@@ -862,7 +906,6 @@ if (needsCopyBtn) {
     (document.querySelector('.tracking-container') || document.body).appendChild(section);
   }
 
-  // Ajout spinner + widget container
   widgetContainer.innerHTML = '';
   const loadingDiv = document.createElement('div');
   loadingDiv.className = 'widget-loading-inside';
@@ -876,13 +919,11 @@ if (needsCopyBtn) {
   loadingDiv.appendChild(textDiv);
   widgetContainer.appendChild(loadingDiv);
 
-  // Nettoyage du timeout précédent
   if (currentWidgetTimeout) {
     clearTimeout(currentWidgetTimeout);
     currentWidgetTimeout = null;
   }
 
-  // Timeout de fallback automatique (10s)
   let widgetLoadedFlag = false;
   currentWidgetTimeout = setTimeout(() => {
     if (!widgetLoadedFlag) {
@@ -897,9 +938,7 @@ if (needsCopyBtn) {
     if (insideSpinner) insideSpinner.style.display = 'none';
   }, 10000);
 
-  // Ajout du widget après le spinner, et suppression du spinner seulement après le vrai chargement
   if (['parcelsapp', 'trackglobal', 'postalninja'].includes(trackerType)) {
-    // Crée l'iframe manuellement pour gérer onload
     let widgetHTML = trackerWidgets[trackerType](trackingNumber);
     let tempDiv = document.createElement('div');
     tempDiv.innerHTML = widgetHTML;
@@ -910,7 +949,7 @@ if (needsCopyBtn) {
         clearTimeout(currentWidgetTimeout);
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
-        scrollTrackingDeferred(); // recentrage après rendu
+        scrollTrackingDeferred();
       };
       iframe.onerror = () => {
         clearTimeout(currentWidgetTimeout);
@@ -924,13 +963,11 @@ if (needsCopyBtn) {
         if (insideSpinner) insideSpinner.style.display = 'none';
       };
       widgetContainer.appendChild(iframe);
-      // Ajoute le reste du HTML si besoin
       Array.from(tempDiv.childNodes).forEach(node => {
         if (node !== iframe) widgetContainer.appendChild(node);
       });
     }
   } else if (trackerType === 'track123') {
-    // Ajoute le spinner, puis le widget Track123, retire le spinner quand le widget est prêt
     let widgetHTML = trackerWidgets[trackerType](trackingNumber);
     let tempDiv = document.createElement('div');
     tempDiv.innerHTML = widgetHTML;
@@ -954,14 +991,12 @@ if (needsCopyBtn) {
       waited += 200;
     }, 200);
   } else if (trackerType === '17track') {
-    // Ajoute le spinner, puis le widget 17Track, retire le spinner quand le widget est prêt
     let widgetHTML = trackerWidgets[trackerType](trackingNumber);
     let tempDiv = document.createElement('div');
     tempDiv.innerHTML = widgetHTML;
     let widget = tempDiv.querySelector('#YQContainer');
     widgetContainer.appendChild(widget);
     load17Track(trackingNumber);
-    // Utilise un observer pour détecter le chargement du widget
     let waited = 0;
     const interval = setInterval(() => {
       if (widget && widget.childNodes.length > 0) {
@@ -984,11 +1019,7 @@ if (needsCopyBtn) {
   recordPerformance(trackerType, 'loaded');
 }
 
-// ===== SYSTÈME DE FEEDBACK INTELLIGENT =====
-
-// Feedback-widget supprimé : aucune fonction d'affichage ou d'enregistrement de feedback utilisateur n'est conservée.
-
-// ===== SYSTÈME D'APPRENTISSAGE ET PERFORMANCE =====
+// ===== FONCTIONS UTILITAIRES (ORIGINAL) =====
 function updatePerformanceStats(tracker, success) {
   if (!performanceStats[tracker]) {
     performanceStats[tracker] = {
@@ -1022,7 +1053,6 @@ function recordDetectionAttempt(trackingNumber, detection) {
 
   trackingHistory.push(record);
 
-  // Garde les 150 derniers pour apprentissage optimal
   if (trackingHistory.length > 150) {
     trackingHistory = trackingHistory.slice(-150);
   }
@@ -1030,14 +1060,12 @@ function recordDetectionAttempt(trackingNumber, detection) {
   localStorage.setItem('trackingHistory', JSON.stringify(trackingHistory));
 }
 
-// ===== FONCTIONS UTILITAIRES OPTIMISÉES =====
 function tryAlternative(tracker) {
   if (currentTrackingNumber) {
     currentTracker = tracker;
     showOptimizedWidget(tracker, currentTrackingNumber);
     updateTrackerButtons(tracker);
     trackUserAction('alternative_tried', tracker);
-    // Plus besoin de scroll ici: showOptimizedWidget le gère déjà
   }
 }
 
@@ -1079,7 +1107,6 @@ function updateTrackerButtons(activeTracker) {
 function showManualSelector() {
   const manualSelector = document.getElementById('manual-selector');
   if (manualSelector) {
-    // Déplace le sélecteur juste après la recommandation IA
     const recSection = document.getElementById('recommendation-section');
     if (recSection && recSection.parentNode) {
       recSection.parentNode.insertBefore(manualSelector, recSection.nextSibling);
@@ -1090,35 +1117,6 @@ function showManualSelector() {
         manualSelector.classList.remove('hidden');
       }, 800);
     }
-  }
-}
-
-// ===== CHARGEMENT DES TRACKERS =====
-function load17Track(trackingNumber) {
-  // Charge le script seulement si nécessaire
-  if (typeof YQV5 === "undefined") {
-    const script = document.createElement('script');
-    script.src = 'https://www.17track.net/externalcall.js';
-    script.onload = () => {
-      // Une fois chargé, initialise le widget
-      YQV5.trackSingle({
-        YQ_ContainerId: "YQContainer",
-        YQ_Height: 600,
-        YQ_Lang: "fr",
-        YQ_Fc: "0",
-        YQ_Num: trackingNumber
-      });
-    };
-    document.head.appendChild(script);
-  } else {
-    // Script déjà chargé
-    YQV5.trackSingle({
-      YQ_ContainerId: "YQContainer",
-      YQ_Height: 600,
-      YQ_Lang: "fr",
-      YQ_Fc: "0",
-      YQ_Num: trackingNumber
-    });
   }
 }
 
@@ -1133,41 +1131,6 @@ function setupTrackGlobalResize() {
   };
 }
 
-function loadTrack123ScriptOnce() {
-
-  // Supprime l'ancien widget Track123 s'il existe
-  const oldWidget = document.getElementById("track123-tracking-widget");
-  if (oldWidget) {
-    oldWidget.innerHTML = "";
-  }
-
-  // Supprime l'ancien script Track123 s'il existe
-  const oldScript = document.getElementById("track123-tracking-widget-script");
-  if (oldScript && oldScript.parentNode) {
-    oldScript.parentNode.removeChild(oldScript);
-  }
-
-  // Définit la config globale comme recommandé
-  window.track123WidgetConfig = {
-    api_base: "https://www.track123.com",
-    provider_type: 3,
-    language: "en_US",
-    theme_color: "#5B62FF",
-    width_type: "auto",
-    width_value: ""
-  };
-
-  // Ajoute le script officiel Track123 (méthode recommandée)
-  (function (e, t, n) {
-    var r, i = e.getElementsByTagName(t)[0];
-    r = e.createElement(t);
-    r.src = "https://www.track123.com/track123-widget.min.js";
-    r.id = n;
-    i.parentNode.insertBefore(r, i);
-  })(document, "script", "track123-tracking-widget-script");
-}
-
-// ===== SUGGESTIONS INTELLIGENTES BASÉES SUR L'HISTORIQUE =====
 function showSmartSuggestions(inputValue) {
   if (inputValue.length < 3) {
     hideSuggestions();
@@ -1195,7 +1158,6 @@ function showSmartSuggestions(inputValue) {
   hideSuggestions();
   const trackingInput = document.getElementById('trackingNumber');
   if (trackingInput) {
-    // Création sécurisée du dropdown
     const container = document.createElement('div');
     container.id = 'tracking-suggestions';
     container.className = 'tracking-suggestions-optimized dropdown-suggestions';
@@ -1212,7 +1174,6 @@ function showSmartSuggestions(inputValue) {
       const item = document.createElement('div');
       item.className = 'suggestion-item-optimized';
 
-      // Ajoute l'action de sélection sécurisée
       item.addEventListener('click', () => {
         selectSuggestion(suggestion.number);
       });
@@ -1244,7 +1205,6 @@ function showSmartSuggestions(inputValue) {
       container.appendChild(item);
     });
 
-    // Ajoute le dropdown juste après le champ input
     trackingInput.parentNode.insertBefore(container, trackingInput.nextSibling);
   }
 }
@@ -1252,7 +1212,6 @@ function showSmartSuggestions(inputValue) {
 function selectSuggestion(trackingNumber) {
   const trackingInput = document.getElementById('trackingNumber');
   if (trackingInput) {
-    // Valide avant d'utiliser
     const cleanNumber = sanitizeTrackingNumber(trackingNumber);
     trackingInput.value = cleanNumber;
     hideSuggestions();
@@ -1267,10 +1226,9 @@ function hideSuggestions() {
   }
 }
 
-// ===== SYSTÈME DE CACHE INTELLIGENT =====
 const smartCache = {
   detectionCache: new Map(),
-  maxAge: 10 * 60 * 1000, // 10 minutes
+  maxAge: 10 * 60 * 1000,
 
   get(key) {
     const item = this.detectionCache.get(key);
@@ -1290,7 +1248,6 @@ const smartCache = {
       timestamp: Date.now()
     });
 
-    // Nettoyage automatique
     if (this.detectionCache.size > 100) {
       const oldestKeys = Array.from(this.detectionCache.entries())
         .sort((a, b) => a[1].timestamp - b[1].timestamp)
@@ -1302,7 +1259,6 @@ const smartCache = {
   }
 };
 
-// ===== ANALYTICS ET MONITORING =====
 function trackUserAction(action, tracker = null, details = {}) {
   const event = {
     action: action,
@@ -1312,11 +1268,9 @@ function trackUserAction(action, tracker = null, details = {}) {
     details: details
   };
 
-  // Stockage local pour analytics
   const analytics = JSON.parse(localStorage.getItem('trackingAnalytics') || '[]');
   analytics.push(event);
 
-  // Garde seulement les 500 derniers événements
   if (analytics.length > 500) {
     analytics.splice(0, analytics.length - 500);
   }
@@ -1324,23 +1278,18 @@ function trackUserAction(action, tracker = null, details = {}) {
   localStorage.setItem('trackingAnalytics', JSON.stringify(analytics));
 }
 
-// ===== GESTION D'ERREURS AVANCÉE =====
 function handleTrackingError(error, tracker, trackingNumber) {
-
   console.error(`❌ Erreur ${tracker}:`, error);
 
-  // Cherche le container actuel en priorité, puis fallback sur l'ancien
   const container = document.getElementById('current-tracking-widget') ||
     document.getElementById('tracker-widget-container');
 
-  // Si aucun container trouvé, crée une notification d'erreur en haut de page
   if (!container) {
     showErrorNotification(tracker, error.message);
     return;
   }
 
   if (container) {
-    // Création sécurisée du widget d'erreur
     container.innerHTML = '';
     const widget = document.createElement('div');
     widget.className = 'widget-error-optimized';
@@ -1384,11 +1333,9 @@ function handleTrackingError(error, tracker, trackingNumber) {
 }
 
 function showErrorNotification(tracker, errorMessage) {
-  // Supprime les anciennes notifications
   const oldNotif = document.getElementById('error-notification');
   if (oldNotif) oldNotif.remove();
 
-  // Crée une notification en haut de page
   const notification = document.createElement('div');
   notification.id = 'error-notification';
   notification.style.cssText = `
@@ -1427,7 +1374,6 @@ function showErrorNotification(tracker, errorMessage) {
 
   document.body.appendChild(notification);
 
-  // Auto-suppression après 5 secondes
   setTimeout(() => {
     if (notification.parentNode) {
       notification.style.opacity = '0';
@@ -1451,7 +1397,6 @@ function useBackupTracker(trackingNumber) {
   }
 }
 
-// ===== OPTIMISATIONS PERFORMANCE =====
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -1466,7 +1411,7 @@ function debounce(func, wait) {
 
 const debouncedShowSuggestions = debounce(showSmartSuggestions, 300);
 
-// ===== INITIALISATION OPTIMISÉE =====
+// ===== INITIALISATION (ORIGINAL) =====
 document.addEventListener('DOMContentLoaded', function () {
   const trackBtn = document.getElementById('trackBtn');
   const trackingInput = document.getElementById('trackingNumber');
@@ -1486,38 +1431,24 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Désactivation de l'affichage des suggestions récentes
-    // trackingInput.addEventListener('input', function () {
-    //   debouncedShowSuggestions(this.value);
-    // });
-
-    // trackingInput.addEventListener('blur', function () {
-    //   setTimeout(() => hideSuggestions(), 200);
-    // });
-
     trackingInput.addEventListener('focus', function () {
       trackUserAction('input_focused');
     });
   }
 
-  // Boutons de sélection manuelle avec tracking
   document.querySelectorAll('.tracker-btn').forEach(btn => {
     btn.addEventListener('click', function () {
       const tracker = this.dataset.tracker;
       const trackingInput = document.getElementById('trackingNumber');
-      // Si aucun numéro n'est en cours, on lance la recherche puis le switch
       if (tracker && (!currentTrackingNumber || currentTrackingNumber.trim() === '')) {
         if (trackingInput && trackingInput.value.trim() !== '') {
           trackUserAction('search_clicked');
-          // Lance la recherche, puis switch après affichage IA
           startTracking();
-          // On attend que le widget IA soit affiché, puis on switch
           setTimeout(() => {
-            // Si le tracker demandé est différent du tracker IA, on switch
             if (window.originalDetection && tracker !== window.originalDetection.tracker) {
               switchTracker(tracker);
             }
-          }, 600); // 200ms (affichage IA) + 300ms (affichage widget) + marge
+          }, 600);
         }
       } else if (tracker && currentTrackingNumber) {
         trackUserAction('manual_switch', tracker);
@@ -1526,7 +1457,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // FAQ avec analytics
   document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', function () {
       const answer = this.nextElementSibling;
@@ -1551,7 +1481,6 @@ document.addEventListener('DOMContentLoaded', function () {
     answer.style.display = 'none';
   });
 
-  // Raccourcis clavier optimisés
   document.addEventListener('keydown', function (e) {
     if (e.ctrlKey && e.key === 'Enter') {
       e.preventDefault();
@@ -1565,19 +1494,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Nettoyage périodique optimisé
   setInterval(() => {
     smartCache.detectionCache.forEach((value, key) => {
       if (Date.now() - value.timestamp > smartCache.maxAge) {
         smartCache.detectionCache.delete(key);
       }
     });
-  }, 5 * 60 * 1000); // Toutes les 5 minutes
+  }, 5 * 60 * 1000);
 
-  // Analytics de session
   trackUserAction('session_started');
 
-  // Nettoyage des timeouts au changement de page
   window.addEventListener('beforeunload', () => {
     if (currentWidgetTimeout) {
       clearTimeout(currentWidgetTimeout);
@@ -1586,7 +1512,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-// ===== FONCTIONS AVANCÉES BONUS =====
 function exportUserData() {
   const data = {
     trackingHistory: trackingHistory,
@@ -1644,7 +1569,7 @@ function getMostSuccessfulTracker() {
   };
 }
 
-// ===== VERSION CONSOLE POUR DEBUG =====
+// ===== DEBUG CONSOLE =====
 if (typeof window !== 'undefined') {
   window.trackingSystemDebug = {
     getStats: getOptimizationStats,
@@ -1656,5 +1581,9 @@ if (typeof window !== 'undefined') {
       trackingHistory = [];
       performanceStats = {};
     },
-    version: '4.0-optimized'
-  }};
+    version: '4.0-optimized',
+    lazyLoadingStatus: () => widgetsLoaded,
+    scriptsStatus: () => widgetScriptsLoaded
+  };
+
+}

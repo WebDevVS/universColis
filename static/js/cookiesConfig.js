@@ -24,32 +24,36 @@ window.silktideCookieBannerManager.updateCookieBannerConfig({
     {
       id: "analytics",
       name: "Cookies d’analyse",
-      description: "Nous aident à améliorer le site.", 
+      description: "Nous aident à améliorer le site.",
       defaultValue: false,
-      onAccept: () =>
-        window.gtag &&
-        gtag("consent", "update", { analytics_storage: "granted" }),
-      onReject: () =>
-        window.gtag &&
-        gtag("consent", "update", { analytics_storage: "denied" }),
+      onAccept: () => {
+        window.gtag && gtag("consent", "update", { analytics_storage: "granted" });
+        window.loadClarityWithConsent && loadClarityWithConsent(true);
+      },
+      onReject: () => {
+        window.gtag && gtag("consent", "update", { analytics_storage: "denied" });
+        window.loadClarityWithConsent && loadClarityWithConsent(false);
+      },
     },
     {
       id: "marketing",
       name: "Cookies marketing",
       description: "Utilisés pour la publicité personnalisée.",
       defaultValue: false,
-      onAccept: () =>
-        window.gtag &&
-        gtag("consent", "update", {
+      onAccept: () => {
+        window.gtag && gtag("consent", "update", {
           ad_storage: "granted",
+          ad_user_data: "granted",
           ad_personalization: "granted",
-        }),
-      onReject: () =>
-        window.gtag &&
-        gtag("consent", "update", {
+        });
+      },
+      onReject: () => {
+        window.gtag && gtag("consent", "update", {
           ad_storage: "denied",
+          ad_user_data: "denied",
           ad_personalization: "denied",
-        }),
+        });
+      },
     },
   ],
   position: {
