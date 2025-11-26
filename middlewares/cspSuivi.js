@@ -23,6 +23,9 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.doubleclick.net",          // DoubleClick (Google)
       "https://securepubads.g.doubleclick.net",
       "https://pagead2.googlesyndication.com",
+      // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
+      "https://www.clarity.ms",
+      "https://*.clarity.ms",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
@@ -86,7 +89,11 @@ module.exports = helmet.contentSecurityPolicy({
       "https://lbs.eu-1-id5-sync.com",     // ← AJOUTÉ (explicite)
       "https://lb.eu-1-id5-sync.com",      // ← AJOUTÉ (explicite)
       "https://*.googlesyndication.com",
-      "https://*.doubleclick.net"
+      "https://*.doubleclick.net",
+      // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
+      "https://www.clarity.ms",
+      "https://*.clarity.ms",
+      "https://c.clarity.ms"
     ],
     frameSrc: [
       "'self'",

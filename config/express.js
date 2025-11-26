@@ -122,7 +122,10 @@ module.exports = (app) => {
           "https://*.googleadservices.com",
           "https://*.doubleclick.net",
           "https://securepubads.g.doubleclick.net",
-          "https://pagead2.googlesyndication.com"
+          "https://pagead2.googlesyndication.com",
+          // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
+          "https://www.clarity.ms",
+          "https://*.clarity.ms",
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
@@ -197,7 +200,11 @@ module.exports = (app) => {
           "https://lb.eu-1-id5-sync.com",
           // Google Ads
           "https://*.googlesyndication.com",
-          "https://*.doubleclick.net"
+          "https://*.doubleclick.net",
+          // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
+          "https://www.clarity.ms",
+          "https://*.clarity.ms",
+          "https://c.clarity.ms"
         ],
 
         // Interdiction d’embarquer ton site dans une iframe
