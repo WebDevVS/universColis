@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===== Active nav using IntersectionObserver + smooth scroll for .nav-btn =====
-  (function() {
+  (function () {
     const navButtons = Array.from(document.querySelectorAll('.nav-btn'));
 
     // Map section id -> nav button
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Smooth scroll au clic (utilise scrollIntoView et prend en compte le sticky)
     navButtons.forEach(btn => {
-      btn.addEventListener('click', function(e) {
+      btn.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // TOC toggle + count + auto-close on item click
-    (function setupTocToggle(){
+    (function setupTocToggle() {
       const tocToggle = document.getElementById('tocToggle');
       const tocNav = document.getElementById('tocNav');
       const tocCount = document.getElementById('tocCount');
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (!tocToggle) return;
 
-      tocToggle.addEventListener('click', function(){
+      tocToggle.addEventListener('click', function () {
         tocNav.classList.toggle('show');
         tocToggle.classList.toggle('active');
         const isExpanded = tocNav.classList.contains('show');
@@ -141,12 +141,62 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }));
     })();
+
+    // ===== Mobile Menu: Close on outside click =====
+    (function setupMobileMenuClose() {
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+
+      if (!navbarToggler || !navbarCollapse) return;
+
+      // Detect clicks outside the menu on mobile
+      document.addEventListener('click', function (e) {
+        // Check if menu is open
+        const isMenuOpen = navbarCollapse.classList.contains('show');
+        if (!isMenuOpen) return;
+
+        // Check if click is outside both the menu and the toggle button
+        const clickedInsideMenu = navbarCollapse.contains(e.target);
+        const clickedToggler = navbarToggler.contains(e.target);
+
+        if (!clickedInsideMenu && !clickedToggler) {
+          // Close the menu
+          navbarCollapse.classList.remove('show');
+          navbarToggler.classList.add('collapsed');
+          navbarToggler.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close menu when clicking on a nav link (except dropdown toggle)
+      const navLinks = navbarCollapse.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 991) { // Breakpoint Bootstrap lg
+            navbarCollapse.classList.remove('show');
+            navbarToggler.classList.add('collapsed');
+            navbarToggler.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Close menu when clicking on a dropdown item
+      const dropdownItems = navbarCollapse.querySelectorAll('.dropdown-item');
+      dropdownItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (window.innerWidth <= 991) {
+            navbarCollapse.classList.remove('show');
+            navbarToggler.classList.add('collapsed');
+            navbarToggler.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    })();
   })();
 
   const scrollLinks = document.querySelectorAll('a[href="#formulaire-comparateur"]');
 
   scrollLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       e.preventDefault();
 
       const formulaire = document.getElementById('formulaire-comparateur');

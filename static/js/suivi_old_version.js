@@ -16,6 +16,95 @@ let widgetScriptsLoaded = {
   'track123': false
 };
 
+// ===== TIMELINE ANIMATION (ORIGINAL - DÉSACTIVÉ) =====
+let currentStep = 0;
+let timelineInterval;
+
+function showTrackingTimeline() {
+  const overlay = document.getElementById('trackingTimelineOverlay');
+  const progressFill = document.getElementById('timelineProgressFill');
+  currentStep = 0;
+  if (progressFill) progressFill.style.width = '0%';
+  for (let i = 1; i <= 3; i++) {
+    const stepEl = document.getElementById(`step${i}`);
+    const labelEl = document.getElementById(`label${i}`);
+    if (stepEl) stepEl.className = 'step-circle';
+    if (labelEl) labelEl.className = 'step-label';
+  }
+  if (overlay) {
+    overlay.style.display = 'flex';
+    setTimeout(() => {
+      progressTimeline();
+    }, 200);
+  }
+}
+
+function progressTimeline() {
+  const steps = [
+    {
+      title: "Analyse en cours...",
+      subtitle: "Nous analysons votre numéro de suivi",
+      progress: 33
+    },
+    {
+      title: "Sélection intelligente...",
+      subtitle: "Choix du meilleur tracker pour votre colis",
+      progress: 66
+    },
+    {
+      title: "Préparation du résultat...",
+      subtitle: "Configuration de l'interface de suivi",
+      progress: 100
+    }
+  ];
+  currentStep++;
+  if (currentStep <= 3) {
+    const stepData = steps[currentStep - 1];
+    document.querySelector('.timeline-title').textContent = stepData.title;
+    document.querySelector('.timeline-subtitle').textContent = stepData.subtitle;
+    document.getElementById('timelineProgressFill').style.width = stepData.progress + '%';
+    if (currentStep > 1) {
+      const prevStep = document.getElementById(`step${currentStep - 1}`);
+      const prevLabel = document.getElementById(`label${currentStep - 1}`);
+      prevStep.classList.remove('active');
+      prevStep.classList.add('completed');
+      prevLabel.classList.remove('active');
+      prevLabel.classList.add('completed');
+    }
+    const currentStepEl = document.getElementById(`step${currentStep}`);
+    const currentLabel = document.getElementById(`label${currentStep}`);
+    currentStepEl.classList.add('active');
+    currentLabel.classList.add('active');
+    if (currentStep < 3) {
+      timelineInterval = setTimeout(progressTimeline, 1200);
+    } else {
+      setTimeout(() => {
+        currentStepEl.classList.remove('active');
+        currentStepEl.classList.add('completed');
+        currentLabel.classList.remove('active');
+        currentLabel.classList.add('completed');
+        document.querySelector('.timeline-title').textContent = "Analyse terminée !";
+        document.querySelector('.timeline-subtitle').textContent = "Redirection vers votre interface de suivi...";
+        setTimeout(() => {
+          document.getElementById('trackingTimelineOverlay').style.display = 'none';
+          startTracking();
+        }, 1000);
+      }, 800);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const overlay = document.getElementById('trackingTimelineOverlay');
+  if (overlay) {
+    overlay.addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        clearTimeout(timelineInterval);
+      }
+    });
+  }
+});
 
 document.addEventListener('DOMContentLoaded', function () {
   const trackBtn = document.getElementById('trackBtn');
@@ -23,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (trackBtn) {
     trackBtn.addEventListener('click', function (e) {
       e.preventDefault();
+      showTrackingTimeline();
       if (infoDetails) {
         infoDetails.classList.remove('hidden-info');
       }
@@ -48,16 +138,16 @@ const trackerWidgets = {
   'parcelsapp': num => `<iframe src="https://parcelsapp.com/widget?num=${encodeURIComponent(num)}" style="height:600px; width:100%; border:none; border-radius:10px;" loading="lazy"></iframe>`,
   'trackglobal': num => `
     <iframe src='https://track.global/fr/iframe?wuid=0&init_params=eyJoZWlnaHQiOiI0MHB4In0='
-            id='track-widget' frameborder='0' style='height: 500px; width:100%; border:none; border-radius:10px;'></iframe>
+            id='track-widget' frameborder='0' style='height: 140px; width:100%; border:none; border-radius:10px;'></iframe>
     <div style='margin-top:20px;'></div>
   `,
   'track123': num => `<div id="track123-tracking-widget" style="border-radius:10px; overflow:hidden;"></div>`,
   'postalninja': num => `
-   <iframe title="Widget de suivi des colis" 
-          src="https://postal.ninja/widget/tracker"
-          style="width: 100%; height: 500px; border: none; border-radius: 10px;"
-          frameborder="0">
-  </iframe>`,
+    <iframe title="Postal Ninja" 
+            src="https://postal.ninja/widget/tracker?lc=fr&autoSize=true&num=${encodeURIComponent(num)}"
+            style="width: 100%; min-height: 120px; border:none; border-radius:10px;"
+            scrolling="no">
+    </iframe>`,
   '17track': num => `<div id="YQContainer" style="border-radius:10px; overflow:hidden;"></div>`
 };
 
@@ -204,7 +294,7 @@ function sanitizeTrackingNumber(input) {
     .toUpperCase()
     .replace(/[^A-Z0-9\-]/g, '')
     .substring(0, 50);
-  if (cleaned !== input.trim()) { }
+  if (cleaned !== input.trim()) {}
   return cleaned;
 }
 
@@ -482,13 +572,13 @@ function hideRecommendation() {
 
 // ===== CHARGEMENT LAZY DES TRACKERS (NOUVEAU - OPTIMISÉ) =====
 function load17TrackLazy(trackingNumber) {
-
+  
   // RESET COMPLET : vide le conteneur ET force le rechargement du script
   const container = document.getElementById('YQContainer');
   if (container) {
     container.innerHTML = '';
   }
-
+  
   // Si le script est déjà chargé ET YQV5 existe, réutilise-le
   if (widgetScriptsLoaded['17track'] && typeof YQV5 !== "undefined") {
     // Attend que le DOM soit stable et que le conteneur soit vraiment prêt
@@ -498,7 +588,7 @@ function load17TrackLazy(trackingNumber) {
         console.error('❌ Conteneur YQContainer introuvable');
         return;
       }
-
+      
       YQV5.trackSingle({
         YQ_ContainerId: "YQContainer",
         YQ_Height: 600,
@@ -570,22 +660,22 @@ function preloadIframeWidgets() {
 }
 
 function initLazyLoading(trackingNumber) {
-
+  
   // NE PAS charger 17Track ici - il sera chargé dans showOptimizedWidget()
   // après la création du conteneur YQContainer
-
+  
   const loadSecondaryWidgets = () => {
     preloadIframeWidgets();
     window.removeEventListener('scroll', scrollHandler);
   };
-
+  
   const delayTimer = setTimeout(loadSecondaryWidgets, 2000);
-
+  
   const scrollHandler = () => {
     clearTimeout(delayTimer);
     loadSecondaryWidgets();
   };
-
+  
   window.addEventListener('scroll', scrollHandler, { once: true, passive: true });
 }
 
@@ -673,7 +763,7 @@ function startTracking() {
     const analysisTime = Date.now() - startTime;
 
     currentTracker = '17track';
-
+    
     // ⚡ RESET des flags de lazy-loading pour un nouveau tracking
     widgetsLoaded = {
       '17track': false,
@@ -683,10 +773,10 @@ function startTracking() {
       'postalninja': false
     };
     secondaryWidgetsLoaded = false;
-
+    
     // ⚡⚡⚡ LANCE LE LAZY-LOADING ICI ⚡⚡⚡
     initLazyLoading(trackingNumber);
-
+    
     showOptimizedRecommendation(detection, trackingNumber);
 
     setTimeout(() => {
@@ -776,7 +866,7 @@ function showOptimizedWidget(trackerType, trackingNumber) {
     `;
 
     content.appendChild(copyDiv);
-
+    
     const copyBtn = copyDiv.querySelector('.copy-tracking-btn');
     copyBtn.addEventListener('click', function () {
       navigator.clipboard.writeText(trackingNumber).then(() => {
