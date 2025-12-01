@@ -724,7 +724,7 @@ function showOptimizedWidget(trackerType, trackingNumber) {
           <i class="fa-solid fa-lightbulb"></i>
           <strong>Pour comparer :</strong>
         </div>
-        <p class="instructions-list">Copiez votre numéro avec le bouton ci-dessous, collez-le dans chaque tracker et cliquez sur leur bouton de recherche.</p>
+        <p class="instructions-list">Copiez votre numéro avec le bouton "Copier", collez-le dans chaque tracker et cliquez sur leur bouton de recherche.</p>
       </div>
     `;
 
