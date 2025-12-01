@@ -409,65 +409,6 @@ function getSmartDisplayConfidence(realConfidence, tracker) {
   };
 }
 
-// ===== AFFICHAGE RECOMMANDATION (ORIGINAL) =====
-function showOptimizedRecommendation(detection, trackingNumber) {
-  hideRecommendation();
-  originalDetection = { ...detection };
-
-  let altTrackerId = null;
-  if (originalDetection.alternatives && originalDetection.alternatives.length > 0) {
-    altTrackerId = originalDetection.alternatives.find(t => t !== '17track');
-    if (!altTrackerId) altTrackerId = originalDetection.alternatives[0];
-  }
-
-  let altConfig = altTrackerId ? trackersIntelligentConfig[altTrackerId] : null;
-  let altLogo = altTrackerId ? trackerLogoMap[altTrackerId] : '';
-
-  const summaryHTML = `
-    <div id="recommendation-section" class="recommendation-section">
-      <div class="ai-summary-content">
-          <div class="detection-row highlight">
-            <div class="detection-label">
-              <i class="fa-solid fa-bullseye"></i>
-              Alternative recommandée pour votre numéro de suivi :
-            </div>
-            <div class="detection-value">
-              <span class="tracker-main-row">
-                <img class="tracker-logo-mini" alt="Logo ${altTrackerId || ''}" src="${altLogo}">
-                <strong>${altConfig ? altConfig.name : ''}</strong>
-              </span>
-              <span class="tracker-subtitle">${altConfig ? altConfig.subtitle : ''}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  const oldRec = document.getElementById('recommendation-section');
-  if (oldRec && oldRec.parentNode) {
-    oldRec.parentNode.removeChild(oldRec);
-  }
-
-  const trackingSection = document.getElementById('tracking-section');
-  if (trackingSection && trackingSection.parentNode) {
-    trackingSection.insertAdjacentHTML('afterend', summaryHTML);
-  } else {
-    const mainContainer = document.querySelector('.tracking-container') || document.body;
-    mainContainer.insertAdjacentHTML('beforeend', summaryHTML);
-  }
-
-  const section = document.getElementById('recommendation-section');
-  if (section) {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(10px)';
-    setTimeout(() => {
-      section.style.transition = 'all 0.3s ease';
-      section.style.opacity = '1';
-      section.style.transform = 'translateY(0)';
-    }, 50);
-  }
-}
 
 function updateCurrentTrackerDisplay(tracker) {
 }
@@ -651,6 +592,12 @@ function startTracking() {
 
   if (isLoading) return;
 
+  // Nettoie les anciens badges AVANT de démarrer
+  clearAllBadges();
+
+  // Supprime aussi l'ancienne explication si elle existe
+  document.getElementById('tracker-explanation')?.remove();
+
   isLoading = true;
   currentTrackingNumber = trackingNumber;
   originalDetection = null;
@@ -674,7 +621,7 @@ function startTracking() {
 
     currentTracker = '17track';
 
-    // ⚡ RESET des flags de lazy-loading pour un nouveau tracking
+    // RESET des flags de lazy-loading pour un nouveau tracking
     widgetsLoaded = {
       '17track': false,
       'track123': false,
@@ -684,10 +631,8 @@ function startTracking() {
     };
     secondaryWidgetsLoaded = false;
 
-    // ⚡⚡⚡ LANCE LE LAZY-LOADING ICI ⚡⚡⚡
+    // LANCE LE LAZY-LOADING ICI 
     initLazyLoading(trackingNumber);
-
-    showOptimizedRecommendation(detection, trackingNumber);
 
     setTimeout(() => {
       showOptimizedWidget('17track', trackingNumber);
@@ -696,6 +641,18 @@ function startTracking() {
       trackBtn.classList.remove('loading');
       trackBtn.textContent = originalHTML;
       isLoading = false;
+
+      // ⚡ NOUVEAU : Affiche juste la phrase (déjà dans le HTML)
+      const universalTip = document.querySelector('.universal-tip');
+      if (universalTip) {
+        universalTip.classList.remove('hidden');
+      }
+
+      // ⚡ Badge seulement si pertinent
+      const detection = detectBestTracker(trackingNumber);
+      if (detection.confidence >= 0.90 && detection.tracker !== '17track') {
+        addSuggestedBadge(detection.tracker);
+      }
 
     }, 200);
 
@@ -765,13 +722,9 @@ function showOptimizedWidget(trackerType, trackingNumber) {
       <div class="tracking-instructions">
         <div class="instructions-title">
           <i class="fa-solid fa-lightbulb"></i>
-          <strong>Pour comparer les trackers ci-dessous :</strong>
+          <strong>Pour comparer :</strong>
         </div>
-        <ol class="instructions-list">
-          <li>Cliquez sur <strong>"Copier"</strong></li>
-          <li>Collez le numéro dans chaque tracker</li>
-          <li>Cliquez sur <strong>"Tracking"</strong> ou <strong>"Suivre"</strong></li>
-        </ol>
+        <p class="instructions-list">Copiez votre numéro avec le bouton ci-dessous, collez-le dans chaque tracker et cliquez sur leur bouton de recherche.</p>
       </div>
     `;
 
@@ -794,13 +747,14 @@ function showOptimizedWidget(trackerType, trackingNumber) {
         }, 2000);
       });
     });
+
+    card.appendChild(content);
   }
 
   const widgetContainer = document.createElement('div');
   widgetContainer.className = 'tracker-widget-container active';
   widgetContainer.id = 'current-tracking-widget';
 
-  card.appendChild(content);
   card.appendChild(widgetContainer);
   section.appendChild(card);
 
@@ -809,12 +763,19 @@ function showOptimizedWidget(trackerType, trackingNumber) {
     oldTrackingSection.parentNode.removeChild(oldTrackingSection);
   }
 
-  const recSection = document.getElementById('recommendation-section');
-  if (recSection && recSection.parentNode) {
-    recSection.parentNode.insertBefore(section, recSection);
+// ✅ NOUVEAU CODE : Insère APRÈS .universal-tip
+const universalTip = document.querySelector('.universal-tip');
+if (universalTip && universalTip.parentNode) {
+  universalTip.parentNode.insertBefore(section, universalTip.nextSibling);
+} else {
+  // Fallback : insère avant manual-selector
+  const manualSelector = document.getElementById('manual-selector');
+  if (manualSelector && manualSelector.parentNode) {
+    manualSelector.parentNode.insertBefore(section, manualSelector);
   } else {
     (document.querySelector('.tracking-container') || document.body).appendChild(section);
   }
+}
 
   widgetContainer.innerHTML = '';
   const loadingDiv = document.createElement('div');
@@ -1016,17 +977,54 @@ function updateTrackerButtons(activeTracker) {
 
 function showManualSelector() {
   const manualSelector = document.getElementById('manual-selector');
-  if (manualSelector) {
-    const recSection = document.getElementById('recommendation-section');
-    if (recSection && recSection.parentNode) {
-      recSection.parentNode.insertBefore(manualSelector, recSection.nextSibling);
+  if (!manualSelector) return;
+
+  // ⚡ NE DÉPLACE RIEN, JUSTE AFFICHE
+  if (manualSelector.classList.contains('hidden')) {
+    setTimeout(() => {
+      manualSelector.classList.remove('hidden');
+      manualSelector.style.opacity = '1';
+      manualSelector.style.visibility = 'visible';
+      manualSelector.style.display = 'block';
+    }, 400);
+  }
+}
+
+// ===== BADGE SUGGÉRÉ INTÉGRÉ DANS LE BOUTON =====
+function addSuggestedBadge(recommendedTracker) {
+  setTimeout(() => {
+    const trackerBtn = document.querySelector(`[data-tracker="${recommendedTracker}"]`);
+    if (!trackerBtn) return;
+
+    // Ajoute la classe
+    trackerBtn.classList.add('recommended');
+
+    // Crée le badge INTÉGRÉ (pas en absolute)
+    if (!trackerBtn.querySelector('.recommended-badge-inline')) {
+      const badge = document.createElement('div');
+      badge.className = 'recommended-badge-inline';
+      badge.innerHTML = '<i class="fa-solid fa-star"></i> Recommandé';
+      trackerBtn.appendChild(badge);
     }
-    if (manualSelector.classList.contains('hidden')) {
-      setTimeout(() => {
-        manualSelector.style.transition = 'all 0.4s ease';
-        manualSelector.classList.remove('hidden');
-      }, 800);
-    }
+  }, 600);
+}
+
+// ===== NETTOYAGE DES ANCIENS BADGES =====
+function clearAllBadges() {
+  // Retire toutes les classes "recommended"
+  document.querySelectorAll('.tracker-btn.recommended').forEach(btn => {
+    btn.classList.remove('recommended');
+  });
+
+  // Supprime tous les badges
+  document.querySelectorAll('.recommended-badge-inline').forEach(badge => {
+    badge.remove();
+  });
+
+  // ⚡ NOUVEAU : Cache la phrase (ne la supprime pas)
+  const universalTip = document.querySelector('.universal-tip');
+  if (universalTip) {
+    universalTip.classList.add('hidden');
   }
 }
 
