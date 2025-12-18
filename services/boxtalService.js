@@ -1,63 +1,70 @@
 const axios = require('axios');
 const xml2js = require('xml2js');
-const { getAuthHeader } = require('../config/auth');
-const { getFormattedData } = require('../services/countryService')
+const { getBoxtalAuthHeader } = require('../config/auth');
 
-// Liste des villes d'origine possibles (France)
-const frenchOriginCities = [
-    { city: "Paris", postal_code: "75001" },
-    { city: "Lyon", postal_code: "69001" },
-    { city: "Marseille", postal_code: "13001" },
-    { city: "Toulouse", postal_code: "31000" },
-    { city: "Nice", postal_code: "06000" }
-];
+// ============================================================================
+// IMPORT DU SERVICE CENTRALISÉ
+// ============================================================================
+// On utilise defaultsService pour garantir que les valeurs par défaut sont
+// identiques entre Boxtal et Eurosender (comparaison équitable des prix)
+const {
+    generateRandomDimensions,
+    pickRandomOriginCity,
+    pickRandomContentType,
+    pickRandomDestinationCity
+} = require('./defaultsService');
 
-// Liste des types de contenu disponibles
-const contentTypes = [
-    { code: 10100, label: "Documents sans valeur commerciale" },
-    { code: 10120, label: "Effets personnels" },
-    { code: 10130, label: "Cadeaux" },
-    { code: 10140, label: "Accessoires électroniques" },
-    { code: 10150, label: "Vêtements" }
-];
-
-// FONCTION EXISTANTE - Recherche rapide avec données aléatoires
+// ============================================================================
+// FONCTION : RECHERCHE RAPIDE (formulaire simple)
+// ============================================================================
+// Cette fonction génère automatiquement toutes les valeurs nécessaires :
+// - Ville d'origine française aléatoire
+// - Ville de destination aléatoire (depuis boxtalData/MongoDB)
+// - Dimensions aléatoires (15 ou 20 cm)
+// - Type de contenu aléatoire
+// 
+// Paramètres :
+//   - destinationLabel : Code ISO du pays de destination (ex: "DE", "ES")
+//   - poidsKg : Poids du colis en kg
+//   - boxtalData : Données MongoDB avec les villes par pays
 async function getCotation(destinationLabel, poidsKg, boxtalData) {
-    const url = "https://www.envoimoinscher.com/api/v1/cotation";
+    const url = "https://test.envoimoinscher.com/api/v1/cotation";
 
-    // Sélectionner aléatoirement une ville française d'origine
-    const randomFrenchOrigin = frenchOriginCities[Math.floor(Math.random() * frenchOriginCities.length)];
-    const expediteurVille = randomFrenchOrigin.city;
-    const expediteurPostal = randomFrenchOrigin.postal_code;
+    // -------------------------------------------------------------------------
+    // GÉNÉRATION DES VALEURS PAR DÉFAUT via defaultsService
+    // -------------------------------------------------------------------------
+    
+    // 1️⃣ Ville d'origine française aléatoire
+    const randomOrigin = pickRandomOriginCity();
+    const expediteurVille = randomOrigin.city;
+    const expediteurPostal = randomOrigin.postal_code;
 
-    const countryInfo = boxtalData[destinationLabel];
+    // 2️⃣ Ville de destination aléatoire depuis MongoDB
+    // Note : Lève une erreur si le pays n'existe pas dans boxtalData
+    const randomDestination = pickRandomDestinationCity(boxtalData, destinationLabel);
+    const destinataireVille = randomDestination.name;
+    const destinatairePostal = randomDestination.postal;
 
-    if (!countryInfo || !countryInfo.cities || countryInfo.cities.length === 0) {
-        throw new Error(`Aucune ville trouvée pour le pays : ${destinationLabel}`);
-    }
-
-    // Choisir aléatoirement une ville de destination
-    const randomDestinationCity = countryInfo.cities[Math.floor(Math.random() * countryInfo.cities.length)];
-    const destinataireVille = randomDestinationCity.name;
-    const destinatairePostal = randomDestinationCity.postal;
-
-    // Choisir aléatoirement un type de contenu
-    const randomContent = contentTypes[Math.floor(Math.random() * contentTypes.length)];
+    // 3️⃣ Type de contenu aléatoire (code numérique Boxtal)
+    const randomContent = pickRandomContentType();
     const codeContenu = randomContent.code;
-    const contenuLabel = randomContent.label;
 
-    // Date de collecte (lendemain)
+    // 4️⃣ Dimensions aléatoires (15 ou 20 cm pour chaque dimension)
+    const dimensions = generateRandomDimensions();
+    const longueur = dimensions.longueur;
+    const largeur = dimensions.largeur;
+    const hauteur = dimensions.hauteur;
+
+    // -------------------------------------------------------------------------
+    // PRÉPARATION DE LA REQUÊTE BOXTAL
+    // -------------------------------------------------------------------------
+    
+    // Date de collecte = demain
     const collecte = new Date();
     collecte.setDate(collecte.getDate() + 1);
     const collecteFormatted = collecte.toISOString().split('T')[0];
 
-    // 📦 Choisir des dimensions aléatoires : 15 cm ou 20 cm
-    const dimensionChoices = [15, 20];
-    const longueur = dimensionChoices[Math.floor(Math.random() * dimensionChoices.length)];
-    const largeur = dimensionChoices[Math.floor(Math.random() * dimensionChoices.length)];
-    const hauteur = dimensionChoices[Math.floor(Math.random() * dimensionChoices.length)];
-
-    // Construire les paramètres pour l'appel API
+    // Construction des paramètres de la requête
     const params = new URLSearchParams({
         "colis_1.poids": poidsKg,
         "colis_1.longueur": longueur,
@@ -75,23 +82,31 @@ async function getCotation(destinationLabel, poidsKg, boxtalData) {
         "collecte": collecteFormatted
     });
 
-
+    // -------------------------------------------------------------------------
+    // APPEL API BOXTAL
+    // -------------------------------------------------------------------------
+    
     try {
-        // Appel API Boxtal
         const response = await axios.get(url, {
-            headers: getAuthHeader(),
+            headers: getBoxtalAuthHeader(),
             params: params
         });
 
         return await parseBoxtalResponse(response.data);
 
     } catch (error) {
-        console.error("Erreur lors de la cotation :", error.message);
+        console.error("❌ Erreur Boxtal (recherche rapide) :", error.message);
         throw error;
     }
 }
 
-// NOUVELLE FONCTION - Recherche avancée avec données utilisateur
+// ============================================================================
+// FONCTION : RECHERCHE AVANCÉE (formulaire complet)
+// ============================================================================
+// Cette fonction utilise les données fournies par l'utilisateur
+// Aucune génération automatique, toutes les valeurs viennent du formulaire
+// 
+// Paramètres : Objet contenant toutes les données du formulaire avancé
 async function getCotationAvance({
     poids,
     longueur,
@@ -104,9 +119,12 @@ async function getCotationAvance({
     destinataire_code_postal,
     destinataire_pays
 }) {
-    const url = "https://www.envoimoinscher.com/api/v1/cotation"; 
+    const url = "https://test.envoimoinscher.com/api/v1/cotation";
 
-    // Validation des données d'entrée
+    // -------------------------------------------------------------------------
+    // VALIDATION DES DONNÉES UTILISATEUR
+    // -------------------------------------------------------------------------
+    
     if (!poids || !longueur || !largeur || !hauteur || !code_contenu) {
         throw new Error("Données de colis incomplètes");
     }
@@ -117,7 +135,11 @@ async function getCotationAvance({
         throw new Error("Données destinataire incomplètes");
     }
 
-    // Sélection aléatoire du type d'expéditeur et destinataire (comme dans le code original)
+    // -------------------------------------------------------------------------
+    // PRÉPARATION DE LA REQUÊTE BOXTAL
+    // -------------------------------------------------------------------------
+    
+    // Sélection aléatoire du type (particulier/entreprise)
     const types = ["particulier", "entreprise"];
     const expediteur_type = types[Math.floor(Math.random() * types.length)];
     const destinataire_type = types[Math.floor(Math.random() * types.length)];
@@ -127,7 +149,7 @@ async function getCotationAvance({
     collecte.setDate(collecte.getDate() + 1);
     const collecteStr = collecte.toISOString().split('T')[0];
 
-    // Construction des paramètres de la requête à Boxtal
+    // Construction des paramètres de la requête
     const params = new URLSearchParams({
         "colis_1.poids": poids,
         "colis_1.longueur": longueur,
@@ -145,28 +167,38 @@ async function getCotationAvance({
         "collecte": collecteStr
     });
 
+    // -------------------------------------------------------------------------
+    // APPEL API BOXTAL
+    // -------------------------------------------------------------------------
+    
     try {
-        // Envoi de la requête HTTP GET vers l'API Boxtal
         const response = await axios.get(url, {
-            headers: getAuthHeader(),
+            headers: getBoxtalAuthHeader(),
             params: params
         });
 
         return await parseBoxtalResponse(response.data);
 
     } catch (error) {
-        console.error("Erreur lors de la cotation avancée :", error.message);
+        console.error("❌ Erreur Boxtal (recherche avancée) :", error.message);
         if (error.response) {
-            console.error("Contenu retourné par Boxtal :", error.response.data);
+            console.error("Réponse Boxtal :", error.response.data);
         }
         throw error;
     }
 }
 
-// FONCTION UTILITAIRE - Parser la réponse XML Boxtal (commune aux deux fonctions)
+// ============================================================================
+// FONCTION UTILITAIRE : PARSER LA RÉPONSE XML BOXTAL
+// ============================================================================
+// Convertit le XML retourné par Boxtal en tableau d'offres formatées
+// Utilisée par getCotation() ET getCotationAvance()
 async function parseBoxtalResponse(xmlData) {
     try {
-        // Transformation XML → JSON
+        // -------------------------------------------------------------------------
+        // TRANSFORMATION XML → JSON
+        // -------------------------------------------------------------------------
+        
         const result = await xml2js.parseStringPromise(xmlData, {
             explicitArray: false,
             ignoreAttrs: false
@@ -174,25 +206,35 @@ async function parseBoxtalResponse(xmlData) {
 
         // Extraction des offres de livraison
         const offers = result?.cotation?.shipment?.offer;
-        const offersArray = Array.isArray(offers) ? offers : [offers];
-
+        
         if (!offers) {
             return [];
         }
 
-        // Nettoyage et formatage des offres pour le front-end
+        // Normaliser en tableau (l'API retourne un objet si une seule offre)
+        const offersArray = Array.isArray(offers) ? offers : [offers];
+
+        // -------------------------------------------------------------------------
+        // FORMATAGE DES OFFRES POUR LE FRONT-END
+        // -------------------------------------------------------------------------
+        
         const cleanedOffers = offersArray.map((offer) => {
-            // Utilise le prix HT et multiplie par 1.20 pour obtenir le TTC
+            // Calcul du prix TTC (HT × 1.20)
             const priceHT = parseFloat(offer.price["tax-exclusive"]);
-            const priceTTC = Math.round(priceHT * 1.20 * 100) / 100; // arrondi à 2 décimales
+            const priceTTC = Math.round(priceHT * 1.20 * 100) / 100;
+
+            // Informations de base
             const transporteur = offer.operator.label;
             const logo = offer.operator.logo;
             const service = offer.service.label;
-            const collecteDate = offer.collection?.date;
-            const livraisonDate = offer.delivery?.date;
+            const modeEnvoi = offer.collection?.type?.label || "Mode inconnu";
 
+            // Calcul du délai de livraison
             let tempsLivraison = null;
             let dateLivraison = "Inconnue";
+
+            const collecteDate = offer.collection?.date;
+            const livraisonDate = offer.delivery?.date;
 
             if (collecteDate && livraisonDate) {
                 const d1 = new Date(collecteDate);
@@ -201,14 +243,15 @@ async function parseBoxtalResponse(xmlData) {
                 dateLivraison = d2.toLocaleDateString('fr-FR');
             }
 
-            const modeEnvoi = offer.collection?.type?.label || "Mode inconnu";
-
+            // Caractéristiques du service (normaliser en tableau)
             let characteristics = offer.characteristics?.label || [];
             if (typeof characteristics === 'string') {
                 characteristics = [characteristics];
             }
 
+            // Retour au format standardisé
             return {
+                provider: 'boxtal', // 🆕 Identifiant du fournisseur
                 transporteur,
                 logo,
                 service,
@@ -223,13 +266,15 @@ async function parseBoxtalResponse(xmlData) {
         return cleanedOffers;
 
     } catch (parseError) {
-        console.error("Erreur lors du parsing XML :", parseError.message);
+        console.error("❌ Erreur parsing XML Boxtal :", parseError.message);
         throw new Error("Erreur lors du traitement de la réponse Boxtal");
     }
 }
 
-// Exporter les deux fonctions
+// ============================================================================
+// EXPORTS
+// ============================================================================
 module.exports = {
-    getCotation,           // Fonction existante (recherche rapide)
-    getCotationAvance      // Nouvelle fonction (recherche avancée)
+    getCotation,           // Recherche rapide (génère les valeurs automatiquement)
+    getCotationAvance      // Recherche avancée (utilise les données utilisateur)
 };

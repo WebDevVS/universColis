@@ -1,6 +1,6 @@
 const { getAll } = require('../services/countryService')
 const { getAllCategories } = require('../services/categoryService')
-const carriers = require('../static/data/carriersLogo.json')
+const { getAllLogos } = require('../services/logoService')
 const actualitesService = require('../services/actualitesService')
 const homeController = require('express').Router()
 
@@ -9,6 +9,21 @@ homeController.get('/', async (req, res) => {
         const countries = await getAll();
         const categories = await getAllCategories();
         const actualites = await actualitesService.getLatest(3);
+        const allLogos = getAllLogos();
+        const carriers = {
+            "Chronopost": allLogos.Chronopost,
+            "Delivengo": allLogos.Delivengo,
+            "DHL": allLogos.DHL,
+            "Happy Post": allLogos["Happy Post"],
+            "La Poste": allLogos["La Poste"],
+            "Mondial Relay": allLogos["Mondial Relay"],
+            "Sodexi": allLogos.Sodexi,
+            "TNT Express": allLogos["TNT Express"],
+            "UPS": allLogos.UPS,
+            "FedEx": allLogos.FedEx,
+            "GLS": allLogos.GLS,
+            "DPD": allLogos.DPD
+        };
 
         res.render('home', {
             title: 'Accueil',

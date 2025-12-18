@@ -4,6 +4,25 @@ window.offresData = offresData; // si tu veux le garder global
 
 /**Système de filtrage pour le comparateur de prix */
 
+function fermerDetails(bouton) {
+
+    const resultCard = bouton.closest('.result-card');
+    if (resultCard) {
+        const toggleButton = resultCard.querySelector('[data-bs-toggle="collapse"]');
+
+        if (toggleButton) {
+            toggleButton.click();
+
+            setTimeout(() => {
+                resultCard.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 350);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Vérifier qu'on est bien sur la page comparateur
     if (!document.getElementById('filtersContainer')) {
@@ -63,6 +82,23 @@ document.addEventListener('DOMContentLoaded', function () {
         mettreAJourURL();
     }
 
+    // Fonction pour fermer les tooltips quand on clique ailleurs
+    function fermerTooltips(e) {
+        // Si on ne clique pas sur une icône tooltip
+        if (!e.target.closest('[data-bs-toggle="tooltip"]')) {
+            // Fermer tous les tooltips ouverts
+            const tooltips = document.querySelectorAll('.tooltip.show');
+            tooltips.forEach(tooltipEl => {
+                const tooltipInstance = bootstrap.Tooltip.getInstance(
+                    document.querySelector(`[aria-describedby="${tooltipEl.id}"]`)
+                );
+                if (tooltipInstance) {
+                    tooltipInstance.hide();
+                }
+            });
+        }
+    }
+
     function mettreAJourAffichage() {
         // Met à jour le nombre de résultats si tu as un compteur
         if (elements.resultCount) {
@@ -82,6 +118,26 @@ document.addEventListener('DOMContentLoaded', function () {
             const offreElement = creerElementOffre(offre, index);
             elements.resultsList.appendChild(offreElement);
         });
+
+        const boutonsFermer = document.querySelectorAll('.btn-close-details-compact');
+        boutonsFermer.forEach(bouton => {
+            bouton.addEventListener('click', function () {
+                fermerDetails(this);
+            });
+        });
+
+        // ✅ Initialiser les tooltips Bootstrap (desktop + mobile)
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl, {
+                trigger: 'click hover focus',  // ← Fonctionne sur mobile (tap) et desktop (hover)
+                placement: 'top',
+                html: true
+            });
+        });
+
+        // Fermer le tooltip quand on clique ailleurs (mobile)
+        document.addEventListener('click', fermerTooltips);
 
         // Ré-attache les listeners pour l'animation de redirection
         if (window.attachRedirectionListeners) {
@@ -142,9 +198,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const colAction = document.createElement('div');
         colAction.className = 'col text-center action-col';
         const aSite = document.createElement('button');
-        aSite.type = 'button';  
-        aSite.className = 'btn btn-action-primary reserve-btn mb-2'; // <-- ajoute reserve-btn
-        aSite.setAttribute('data-url', offre.site_url || 'https://www.boxtal.com/fr/fr/tarifs-expedition');       // <-- ajoute data-url
+        aSite.type = 'button';
+        aSite.className = 'btn btn-action-primary reserve-btn mb-2';
+
+        // ✅ Utiliser provider (pas plateforme)
+        const isEurosender = offre.provider === 'eurosender';
+
+        // ✅ URL selon le provider
+        if (isEurosender) {
+            aSite.setAttribute('data-url', 'https://tc.tradetracker.net/?c=33513&m=1811998&a=501587&r=&u=');
+            aSite.setAttribute('data-provider', 'eurosender');
+        } else {
+            aSite.setAttribute('data-url', offre.site_url || 'https://www.boxtal.com/fr/fr/tarifs-expedition');
+            aSite.setAttribute('data-provider', 'boxtal');
+        }
+
         aSite.setAttribute('title', 'Ce lien ouvre le site du transporteur dans un nouvel onglet');
         aSite.innerHTML = '<i class="fa-solid fa-external-link-alt me-1"></i>Réserver';
         colAction.appendChild(aSite);
@@ -174,10 +242,115 @@ document.addEventListener('DOMContentLoaded', function () {
         const detailsContent = document.createElement('div');
         detailsContent.className = 'details-content';
 
-        // Informations
-        const infoSection = document.createElement('div');
-        infoSection.className = 'detail-section mb-2';
-        infoSection.innerHTML = `
+        // ✅ Vérifier si c'est Eurosender avec détails enrichis
+        if (offre.provider === 'eurosender' && offre.details && offre.details.enrichis) {
+            detailsContent.innerHTML = genererDetailsEurosender(offre);
+        } else {
+            // Boxtal ou offres sans enrichissement
+            detailsContent.innerHTML = genererDetailsBoxtal(offre);
+        }
+
+        collapse.appendChild(detailsContent);
+        card.appendChild(collapse);
+
+        return card;
+    }
+
+    // =========================================================================
+    // ✅ FONCTION : Générer détails Eurosender enrichis (VERSION SIMPLIFIÉE)
+    // =========================================================================
+    function genererDetailsEurosender(offre) {
+        const enrichis = offre.details.enrichis;
+        let html = '';
+
+        // Section 1 : Informations
+        html += `
+<div class="detail-section">
+    <h6 class="detail-section-title">
+        <i class="fa-solid fa-info-circle me-2"></i>Informations
+    </h6>
+    <div class="detail-item">
+        <span class="detail-label">Transporteur :</span>
+        <span class="detail-value">${offre.transporteur}</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">Service :</span>
+        <span class="detail-value">${offre.service || ''}</span>
+    </div>
+</div>
+`;
+
+        // Section 2 : Services inclus
+        if (enrichis.servicesInclus && enrichis.servicesInclus.length) {
+            html += `
+<div class="detail-section">
+    <h6 class="detail-section-title">
+        <i class="fa-solid fa-list-check me-2"></i>Services inclus
+    </h6>
+    <div class="characteristics-grid">
+`;
+            enrichis.servicesInclus.forEach(service => {
+                html += `
+    <div class="characteristic-item">
+        <i class="fa-solid fa-check characteristic-check"></i>
+        <span>
+            ${service.texte}
+            ${service.tooltip ?
+                        `<i class="fa-solid fa-info-circle text-muted ms-1" 
+                    data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="${service.tooltip}"
+                    style="cursor: pointer; font-size: 0.85em;"></i>`
+                        : ''}
+        </span>
+    </div>
+`;
+            });
+            html += `
+    </div>
+</div>
+`;
+        }
+
+        // Section 3 : Processus de réservation
+        if (enrichis.processusTexte) {
+            // Appliquer le formatage markdown simple
+            const processusFormate = enrichis.processusTexte
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/(\d+️⃣)/g, '<span style="font-size: 1.1em;">$1</span>')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/\n/g, '<br>');
+
+            html += `
+<div class="detail-section full-width">
+    <h6 class="detail-section-title">
+        <i class="fa-solid fa-clipboard-check me-2"></i>Processus de réservation
+    </h6>
+    <div class="processus-texte" style="white-space: pre-line; line-height: 1.7;">
+        ${processusFormate}
+    </div>
+</div>
+`;
+        }
+
+        html += `
+<div class="details-footer">
+    <button class="btn-close-details-compact">
+        <i class="fa-solid fa-angle-up"></i>
+        Fermer les détails
+    </button>
+</div>
+`;
+
+        return html;
+    }
+
+    // =========================================================================
+    // ✅ FONCTION EXISTANTE : Générer détails Boxtal (inchangé)
+    // =========================================================================
+    function genererDetailsBoxtal(offre) {
+        let html = `
+        <div class="detail-section mb-2">
             <h6 class="detail-section-title">
                 <i class="fa-solid fa-info-circle me-2"></i>Informations
             </h6>
@@ -189,34 +362,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 <span class="detail-label">Service :</span>
                 <span class="detail-value">${offre.service || ''}</span>
             </div>
-        `;
-        detailsContent.appendChild(infoSection);
+        </div>
+    `;
 
-        // Caractéristiques
         if (offre.characteristics_labels && offre.characteristics_labels.length) {
-            const caracSection = document.createElement('div');
-            caracSection.className = 'detail-section';
-            caracSection.innerHTML = `
+            html += `
+            <div class="detail-section">
                 <h6 class="detail-section-title">
                     <i class="fa-solid fa-list-check me-2"></i>Services inclus
                 </h6>
                 <div class="characteristics-grid">
-                    ${offre.characteristics_labels.map(label =>
-                        `<div class="characteristic-item">
-                            <i class="fa-solid fa-check characteristic-check"></i>
-                            <span>${label}</span>
-                        </div>`
-                    ).join('')}
+        `;
+            offre.characteristics_labels.forEach(label => {
+                html += `
+                <div class="characteristic-item">
+                    <i class="fa-solid fa-check characteristic-check"></i>
+                    <span>${label}</span>
                 </div>
             `;
-            detailsContent.appendChild(caracSection);
+            });
+            html += `
+                </div>
+            </div>
+        `;
         }
 
-        collapse.appendChild(detailsContent);
-        card.appendChild(collapse);
-
-        return card;
+        return html;
     }
+
 
     function afficherMessageAucunResultat() {
         const noResultElement = document.createElement('div');
@@ -317,4 +490,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialisation
     initialiserDepuisURL();
     appliquerFiltres();
+
 });
+

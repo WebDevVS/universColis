@@ -2067,10 +2067,51 @@ div .input-group-text {
   min-width: 0 !important;
 }
 
-.formulaire-avance .input-group .input-group-text {
-  flex: 0 0 auto !important;
-  width: auto !important;
-  white-space: nowrap !important;
+/* ----- MOBILE FIX ----- */
+@media (max-width: 576px) {
+
+  /* Assurer que l'input-group reste sur une seule ligne */
+  .formulaire-avance .input-group {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    /* IMPORTANT : empêche le retour à la ligne */
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0 !important;
+  }
+
+  /* L'input prend tout l'espace restant */
+  .formulaire-avance .input-group .form-control {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    /* permet à flex de rétrécir proprement */
+    width: auto !important;
+    /* évite qu'un autre style force width:100% */
+    box-sizing: border-box !important;
+  }
+
+  /* Le texte "kg" ne doit pas s'afficher en block ni passer en dessous */
+  .formulaire-avance .input-group .input-group-text {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+    width: auto !important;
+  }
+
+  /* Retirer toute règle qui pourrait forcer le .input-group à wrap */
+  .formulaire-avance .input-group>* {
+    max-width: none !important;
+  }
+
+  /* Optionnel : si le stepper du input[type=number] crée un espace, masquer l'apparence native */
+  .formulaire-avance .input-group input[type="number"]::-webkit-outer-spin-button,
+  .formulaire-avance .input-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 /*  ===== SECTION FILTRES  =====*/
@@ -2311,7 +2352,11 @@ div .input-group-text {
   border-color: var(--primary-color);
 }
 
-/*  ===== DÉTAILS ACCORDÉON  ===== */
+/* ========================================= */
+/* DÉTAILS ENRICHIS - VERSION OPTIMISÉE */
+/* ========================================= */
+
+/* ===== CONTAINER PRINCIPAL ===== */
 .result-details {
   border-top: 1px solid rgba(130, 105, 164, 0.2);
   background: rgba(255, 255, 255, 0.5);
@@ -2321,62 +2366,448 @@ div .input-group-text {
   padding: 2rem;
 }
 
+/* ===== GRID DES DÉTAILS ===== */
 .details-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* ✅ Espace entre sections */
 }
 
+/* ===== SECTIONS (Cards individuelles) ===== */
+.detail-section {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(130, 105, 164, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.detail-section:hover {
+  border-color: rgba(130, 105, 164, 0.3);
+  box-shadow: 0 2px 8px rgba(130, 105, 164, 0.1);
+}
+
+/* ===== TITRES DE SECTION ===== */
 .detail-section-title {
   color: var(--primary-color);
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid rgba(130, 105, 164, 0.15);
 }
 
+.detail-section-title i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* ===== SECTION 1 : INFORMATIONS ===== */
 .detail-item {
   display: flex;
   align-items: center;
-  gap: 0.3em;
-  margin-bottom: 0.5rem;
-  padding: 0.2rem 0;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
 }
 
-.detail-label,
-.detail-value {
-  margin: 0;
-  padding: 0 0.2rem;
+.detail-item:last-child {
+  margin-bottom: 0;
 }
 
 .detail-label {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-color);
   opacity: 0.8;
+  min-width: 120px;
 }
 
 .detail-value {
   font-weight: 600;
   color: var(--text-color);
+  flex: 1;
 }
 
+/* ===== SECTION 2 : SERVICES INCLUS ===== */
 .characteristics-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem 1.5rem;
+  /* ✅ Plus d'espace horizontal */
+  align-items: start;
 }
 
 .characteristic-item {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: flex-start;
+  gap: 0.75rem;
   font-size: 0.95rem;
-  padding: 0.25rem 0;
+  padding: 0.5rem;
+  background: rgba(130, 105, 164, 0.04);
+  /* ✅ Légère couleur de fond */
+  border-radius: 8px;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.characteristic-item:hover {
+  background: rgba(130, 105, 164, 0.08);
+  transform: translateX(3px);
 }
 
 .characteristic-check {
   color: #28a745;
+  font-size: 1rem;
+  flex: 0 0 1rem;
+  margin-top: 0.2rem;
+}
+
+.characteristic-item span {
+  display: inline-block;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  flex: 1;
+}
+
+/* ✅ TOOLTIPS plus visibles */
+.characteristic-item i[data-bs-toggle="tooltip"] {
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.characteristic-item i[data-bs-toggle="tooltip"]:hover {
+  opacity: 1;
+  transform: scale(1.15);
+  color: var(--accent-color);
+}
+
+/* ===== SECTION 3 : PROCESSUS (Mise en avant) ===== */
+.detail-section.full-width {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(130, 105, 164, 0.08), rgba(250, 126, 117, 0.08));
+  /* ✅ Gradient subtil */
+  border: 2px solid rgba(130, 105, 164, 0.2);
+  border-left: 5px solid var(--accent-color);
+  /* ✅ Barre latérale accent */
+}
+
+.processus-texte {
+  font-size: 0.95rem;
+  color: #444;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.6);
+  /* ✅ Fond plus visible */
+  border-radius: 8px;
+  line-height: 1.8;
+  border: 1px solid rgba(130, 105, 164, 0.1);
+}
+
+/* ✅ Titres en gras dans processus */
+.processus-texte strong {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+/* ✅ Badges numérotés stylés */
+.processus-texte span[style*="font-size"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1rem !important;
+  margin-right: 0.5rem;
+  box-shadow: 0 2px 6px rgba(130, 105, 164, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .details-content {
+    padding: 1.5rem;
+  }
+
+  .details-grid {
+    gap: 1.25rem;
+  }
+
+  .characteristics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .detail-section {
+    padding: 1.25rem;
+  }
+
+  .detail-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .detail-label {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .details-content {
+    padding: 1rem;
+  }
+
+  .detail-section {
+    padding: 1rem;
+  }
+
+  .detail-section-title {
+    font-size: 1rem;
+  }
+
+  .processus-texte {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== TOOLTIPS BOOTSTRAP (Mobile-friendly) ===== */
+[data-bs-toggle="tooltip"] {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+  [data-bs-toggle="tooltip"] {
+    font-size: 1em !important;
+    padding: 5px;
+  }
+}
+
+.tooltip-inner {
+  max-width: 300px;
+  text-align: left;
+  padding: 8px 12px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip.show {
+  opacity: 1;
+}
+
+/* ========================================= */
+/* BADGES NUMÉROTÉS (remplace 1️⃣ 2️⃣ 3️⃣...) */
+/* ========================================= */
+.badge-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Taille */
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+
+  /* Style */
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  font-weight: 700;
   font-size: 0.9rem;
+  border-radius: 50%;
+
+  /* Espacement */
+  margin-right: 0.5rem;
+
+  /* Effet */
+  box-shadow: 0 2px 6px rgba(130, 105, 164, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.badge-numero:hover {
+  transform: scale(1.1);
+}
+
+/* ========================================= */
+/* ICÔNES INFO INLINE (remplace ℹ️) */
+/* ========================================= */
+.icon-info-inline {
+  color: var(--info-color);
+  font-size: 1em;
+  margin: 0 0.25rem;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+.icon-info-inline:hover {
+  color: var(--primary-color);
+  transform: scale(1.15);
+}
+
+/* Icône warning/ampoule (remplace 💡) */
+.icon-warning-inline {
+  color: #ffc107;
+  font-size: 1.1em;
+  margin: 0 0.25rem;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+}
+
+.icon-warning-inline:hover {
+  color: #ff9800;
+  transform: scale(1.15);
+}
+
+/* ========================================= */
+/* TITRES DE SECTION - Icônes améliorées */
+/* ========================================= */
+.detail-section-title i {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.detail-section:hover .detail-section-title i {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Icône info dans caractéristiques (tooltips) */
+.characteristic-item i.fa-circle-info {
+  color: var(--primary-color) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.characteristic-item i.fa-circle-info:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  color: var(--accent-color) !important;
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+@media (max-width: 768px) {
+  .badge-numero {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 0.85rem;
+    margin-right: 0.4rem;
+  }
+}
+
+/* ========================================= */
+/* VERSION 3 : Petit badge arrondi */
+/* ========================================= */
+.details-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem 1.5rem;
+    border-top: 1px solid rgba(130, 105, 164, 0.1);
+    background: transparent;
+    text-align: center;  /* ✅ Ajouté */
+}
+
+.btn-close-details-compact {
+    background: rgba(130, 105, 164, 0.08);
+    border: 1px solid rgba(130, 105, 164, 0.15);
+    color: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.btn-close-details-compact:hover {
+    background: rgba(130, 105, 164, 0.12);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.btn-close-details-compact i {
+    font-size: 0.75rem;
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+@media (max-width: 768px) {
+  .details-footer {
+    padding: 0.75rem 1rem 1rem;
+  }
+
+  .btn-close-details,
+  .btn-close-details-link,
+  .btn-close-details-compact {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== DISCLAIMER AFFILIATION ===== */
+.affiliation-disclaimer {
+    background: rgba(130, 105, 164, 0.08);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.affiliation-disclaimer i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.affiliation-disclaimer span {
+    line-height: 1.6;
+}
+
+.affiliation-disclaimer strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .affiliation-disclaimer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.85rem;
+        margin: 1.5rem 1rem;
+    }
+    
+    .affiliation-disclaimer i {
+        margin: 0 auto 0.5rem;
+    }
 }
 
 /* ===== OVERLAY DE REDIRECTION ===== */
@@ -3603,18 +4034,22 @@ div .input-group-text {
 /* ===== RÉDUCTION DES ESPACEMENTS ===== */
 #tracking-section {
   order: 1;
-  margin-bottom: 1rem; /* Réduit l'espace sous le widget */
+  margin-bottom: 1rem;
+  /* Réduit l'espace sous le widget */
 }
 
 .universal-tip {
   order: 2;
-  margin-top: 1rem; /* Supprime marge du haut */
-  margin-bottom: 1rem; /* Réduit marge du bas */
+  margin-top: 1rem;
+  /* Supprime marge du haut */
+  margin-bottom: 1rem;
+  /* Réduit marge du bas */
 }
 
 #manual-selector {
   order: 3;
-  margin-top: 0; /* Supprime marge du haut */
+  margin-top: 0;
+  /* Supprime marge du haut */
 }
 
 /* Si trop d'espace dans la carte widget elle-même */
@@ -10384,4 +10819,34 @@ idget-section-title {
   .about-text {
     font-size: 0.92rem;
   }
+}
+
+/* Désactive visuellement le bouton Track.Global */
+.tracker-btn[data-tracker="trackglobal"] {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  pointer-events: none; /* Empêche le clic */
+  position: relative;
+}
+
+/* Badge "Temporairement indisponible" */
+.tracker-btn[data-tracker="trackglobal"]::after {
+  content: "Temporairement indisponible";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid #fde68a;
+}
+
+/* Ajuster l'espacement pour le badge */
+.tracker-buttons {
+  padding-bottom: 30px; /* Pour faire de la place pour le badge */
 }

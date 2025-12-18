@@ -245,8 +245,17 @@ function showTab(tabId) {
   // Activer le bouton d'onglet correspondant
   const activeBtn = document.querySelector(`.tab-btn[onclick="showTab('${tabId}')"]`);
   if (activeBtn) activeBtn.classList.add('active');
+
+  document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(button => {
+    button.addEventListener('click', function () {
+      setTimeout(() => {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      }, 350); // Attendre que l'animation collapse soit terminée
+    });
+  });
 }
 
 // (TOC toggle is initialized within DOMContentLoaded)
-
-

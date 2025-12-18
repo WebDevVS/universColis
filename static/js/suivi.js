@@ -2,6 +2,8 @@
 // Lazy-loading intelligent des widgets de tracking
 // Objectif : Réduire INP de 234ms à ~150ms
 
+
+
 // ===== SYSTÈME DE LAZY-LOADING (NOUVEAU) =====
 let widgetsLoaded = {
   '17track': false,
@@ -724,7 +726,7 @@ function showOptimizedWidget(trackerType, trackingNumber) {
           <i class="fa-solid fa-lightbulb"></i>
           <strong>Pour comparer :</strong>
         </div>
-        <p class="instructions-list">Copiez votre numéro avec le bouton "Copier", collez-le dans chaque tracker et cliquez sur leur bouton de recherche.</p>
+        <p class="instructions-list">Copiez votre numéro avec le bouton "Copier", collez-le dans chaque tracker et cliquez sur leur bouton de recherche <i class="fa-solid fa-arrow-down"></i>.</p>
       </div>
     `;
 

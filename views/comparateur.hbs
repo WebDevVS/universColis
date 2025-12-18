@@ -191,7 +191,8 @@
 
                     <div class="col text-center action-col">
                         <button type="button" class="btn btn-action-primary reserve-btn"
-                            data-url="https://www.boxtal.com/fr/fr/tarifs-expedition"
+                            data-url="{{#if (eq provider 'eurosender')}}https://tc.tradetracker.net/?c=33513&m=1811998&a=501587&r=&u={{else}}https://www.boxtal.com/fr/fr/tarifs-expedition{{/if}}"
+                            data-provider="{{provider}}"
                             title="Ce lien ouvre le site du transporteur dans un nouvel onglet">
                             <i class="fa-solid fa-external-link-alt me-1"></i>Réserver
                         </button>
@@ -203,8 +204,69 @@
                 </div>
 
                 <!-- Détails avec style amélioré -->
+                <!-- Détails avec style amélioré -->
                 <div class="collapse result-details" id="collapse-offre-{{@index}}">
                     <div class="details-content">
+
+                        {{#if (eq this.provider "eurosender")}}
+                        {{!-- ✅ DÉTAILS ENRICHIS EUROSENDER (version simplifiée) --}}
+                        <div class="details-grid">
+
+                            {{!-- Section 1 : Informations --}}
+                            <div class="detail-section">
+                                <h6 class="detail-section-title">
+                                    <i class="fa-solid fa-info-circle me-2"></i>Informations
+                                </h6>
+                                <div class="detail-item">
+                                    <span class="detail-label">Transporteur :</span>
+                                    <span class="detail-value">{{this.transporteur}}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Service :</span>
+                                    <span class="detail-value">{{this.service}}</span>
+                                </div>
+                            </div>
+
+                            {{!-- Section 2 : Services inclus avec tooltips --}}
+                            {{#if this.details.enrichis.servicesInclus}}
+                            <div class="detail-section">
+                                <h6 class="detail-section-title">
+                                    <i class="fa-solid fa-list-check me-2"></i>Services inclus
+                                </h6>
+                                <div class="characteristics-grid">
+                                    {{#each this.details.enrichis.servicesInclus}}
+                                    <div class="characteristic-item">
+                                        <i class="fa-solid fa-check characteristic-check"></i>
+                                        <span>
+                                            {{this.texte}}
+                                            {{#if this.tooltip}}
+                                            <i class="fa-solid fa-info-circle text-muted ms-1" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="{{this.tooltip}}"
+                                                style="cursor: pointer; font-size: 0.85em;"></i>
+                                            {{/if}}
+                                        </span>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            {{/if}}
+
+                            {{!-- Section 3 : Processus de réservation --}}
+                            {{#if this.details.enrichis.processusTexte}}
+                            <div class="detail-section full-width">
+                                <h6 class="detail-section-title">
+                                    <i class="fa-solid fa-clipboard-check me-2"></i>Processus de réservation
+                                </h6>
+                                <div class="processus-texte" style="white-space: pre-line; line-height: 1.7;">
+                                    {{{markdown this.details.enrichis.processusTexte}}}
+                                </div>
+                            </div>
+                            {{/if}}
+
+                        </div>
+
+                        {{else}}
+                        {{!-- ✅ DÉTAILS BOXTAL (classique) --}}
                         <div class="details-grid">
                             <div class="detail-section">
                                 <h6 class="detail-section-title">
@@ -236,6 +298,15 @@
                             </div>
                             {{/if}}
                         </div>
+                        {{/if}}
+
+                        <div class="details-footer">
+                            <button class="btn-close-details-compact">
+                                <i class="fa-solid fa-angle-up"></i>
+                                Fermer les détails
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -243,6 +314,15 @@
         </div>
     </div>
 </section>
+
+<div class="affiliation-disclaimer">
+    <i class="fa-solid fa-info-circle"></i>
+    <span>
+        Les liens vers nos partenaires peuvent contenir des codes
+        d'affiliation. Cela nous permet de maintenir ce service de comparaison gratuit
+        sans frais supplémentaires pour vous.
+    </span>
+</div>
 
 <!-- Overlay de chargement -->
 <div class="loading-overlay" id="loadingOverlay">
@@ -294,7 +374,7 @@
 
         <h3 class="redirection-title">Redirection en cours...</h3>
         <p class="redirection-message">
-            Vous allez être redirigé vers le site du transporteur pour finaliser votre réservation
+            Vous allez être redirigé(e) vers le site du transporteur pour finaliser votre réservation
         </p>
 
         <div class="spinner-container">

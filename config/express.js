@@ -50,6 +50,24 @@ module.exports = (app) => {
       },
       or: (a, b) => a || b,
 
+      markdown: function (text) {
+        if (!text) return '';
+
+        let html = text
+          // **Gras** → <strong>
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          // Emojis numérotés (plus gros)
+          .replace(/(\d+️⃣)/g, '<span style="font-size: 1.1em;">$1</span>')
+          // Puces • → avec marge
+          .replace(/^(\s*)•\s/gm, '$1<span style="margin-left: 1em;">• </span>')
+          // Sauts de ligne doubles
+          .replace(/\n\n/g, '<br><br>')
+          // Sauts de ligne simples
+          .replace(/\n/g, '<br>');
+
+        return new hbs.handlebars.SafeString(html);
+      }
+
     }
   });
 

@@ -4,13 +4,13 @@ const countryService = require('../services/countryService')
 const categoryService = require('../services/categoryService')
 const Category = require('../models/Category')
 
-// ✅ SEO à faire
-// Page comparateur avec gestion des deux formulaires (rapide et avancé)
+// Import du service Eurosender pour la comparaison multi-APIs
+const { getEurosenderOffers } = require('../services/eurosenderService')
+
 comparateurController.get('/', async (req, res) => {
     try {
         const countries = await countryService.getAll();
         const categories = await categoryService.getAllCategories();
-
 
         const {
             origine,
@@ -22,22 +22,22 @@ comparateurController.get('/', async (req, res) => {
             "code-contenu": codeContenu,
             "ville-origine": villeOrigine,
             "ville-destination": villeDestination,
-            "form-type": formType
+            formType
         } = req.query;
 
-        // Fonction inline pour parser "ville codePostal pays"
+        // Fonction pour parser "ville, codePostal, pays" depuis l'autocomplete
         const parseVilleCodePostal = (adresseComplete) => {
             if (!adresseComplete) return { ville: '', code_postal: '', pays: '' };
-
-            // 1. Séparer par virgule d'abord (ville, code postal, pays)
-            const parts = adresseComplete.split(',').map(p => p.trim()).filter(p => p !== '');
-
-            if (parts.length < 3) return { ville: '', code_postal: '', pays: '' };
-
-            const ville = parts[0]; // ex: "Athina Proastia"
-            const codePostalBrut = parts[1].replace(/\s/g, ''); // supprime les espaces → "10431"
-            const pays = parts[2].toUpperCase(); // "GRÈCE" → "GRÈCE"
-
+            const parts = adresseComplete
+                .split(',')
+                .map(p => p.trim())
+                .filter(p => p !== '');
+            if (parts.length < 3) {
+                return { ville: '', code_postal: '', pays: '' };
+            }
+            const ville = parts[0];
+            const codePostalBrut = parts[1].replace(/\s/g, '');
+            const pays = parts[2].toUpperCase();
             return {
                 ville,
                 code_postal: codePostalBrut,
@@ -45,13 +45,16 @@ comparateurController.get('/', async (req, res) => {
             };
         };
 
-
         let offres = [];
         let searchSummary = null;
 
-        // Cas 1 : formulaire rapide
+        // ============================================================
+        // FORMULAIRE RAPIDE
+        // ============================================================
+        // Les valeurs par defaut (villes, dimensions) sont generees
+        // automatiquement par defaultsService pour garantir que
+        // Boxtal et Eurosender comparent avec les MEMES parametres
         if ((formType === 'rapide' || !formType) && destination && poids) {
-
             searchSummary = {
                 type: 'rapide',
                 origine: 'FRANCE',
@@ -59,27 +62,73 @@ comparateurController.get('/', async (req, res) => {
                 poids
             };
 
+            // Recuperation des villes depuis MongoDB
+            // Ces donnees sont utilisees par les DEUX APIs via defaultsService
             const boxtalData = await countryService.getFormattedData(destination);
-            offres = await getCotation(destination, poids, boxtalData);
+
+            // Appel API Boxtal
+            const boxtalOffres = await getCotation(destination, poids, boxtalData);
+
+            // Appel API Eurosender
+            // IMPORTANT : boxtalData est passe en 2eme parametre pour garantir
+            // que la meme ville de destination est utilisee (coherence)
+            let eurosenderOffres = [];
+            try {
+                if (typeof getEurosenderOffers === 'function') {
+                    const searchContextRapide = {
+                        formType: 'rapide',
+                        origin: {
+                            countryIso: 'FR'
+                            // city et postalCode seront generes par defaultsService
+                        },
+                        destination: {
+                            countryIso: destination
+                            // city et postalCode seront generes par defaultsService
+                        },
+                        parcel: {
+                            weightKg: poids ? Number(poids) : null
+                            // dimensions seront generees par defaultsService
+                        },
+                        category: {
+                            selectedCategory: null,
+                            boxtalCodeContenu: null
+                        },
+                        pickupDate: null
+                    };
+
+                    eurosenderOffres = await getEurosenderOffers(searchContextRapide, boxtalData);
+                } else {
+                    console.warn('getEurosenderOffers n\'est pas une fonction');
+                }
+            } catch (e) {
+                console.error('Erreur Eurosender (rapide):', e);
+            }
+
+            // Fusion des offres des deux APIs
+            offres = [
+                ...boxtalOffres,
+                ...eurosenderOffres
+            ];
         }
 
-        // Cas 2 : formulaire avancé
+        // ============================================================
+        // FORMULAIRE AVANCE
+        // ============================================================
+        // Utilise les donnees saisies par l'utilisateur
+        // (villes, dimensions, type de contenu)
         else if (formType === 'avance') {
             const origineParsed = parseVilleCodePostal(villeOrigine);
             const destinationParsed = parseVilleCodePostal(villeDestination);
 
-            const selectedCategory = req.query["code-contenu"]; // c’est le nom de la grande catégorie choisie
-
-            // On récupère la catégorie complète depuis MongoDB
+            // Recuperation de la categorie et selection aleatoire d'un code_contenu
+            const selectedCategory = req.query["code-contenu"];
             const category = await Category.findOne({ category: selectedCategory });
-            // On choisit un sous-produit au hasard
+            if (!category || !Array.isArray(category.products) || category.products.length === 0) {
+                throw new Error("Categorie invalide ou vide");
+            }
             const randomSub = category.products[Math.floor(Math.random() * category.products.length)];
 
-            if (!category || category.products.length === 0) {
-                throw new Error("Catégorie invalide ou vide");
-            }
-
-
+            // Parametres pour l'API Boxtal (format XML strict)
             const params = {
                 poids,
                 longueur,
@@ -105,16 +154,71 @@ comparateurController.get('/', async (req, res) => {
                 typeEnvoi: selectedCategory
             };
 
-            offres = await getCotationAvance(params);
+            // searchContext neutre pour Eurosender (format JSON flexible)
+            const searchContext = {
+                formType: 'avance',
+                origin: {
+                    countryIso: 'FR',
+                    postalCode: origineParsed.code_postal,
+                    city: origineParsed.ville
+                },
+                destination: {
+                    countryIso: destination,
+                    postalCode: destinationParsed.code_postal,
+                    city: destinationParsed.ville
+                },
+                parcel: {
+                    weightKg: poids ? Number(poids) : null,
+                    lengthCm: longueur ? Number(longueur) : null,
+                    widthCm: largeur ? Number(largeur) : null,
+                    heightCm: hauteur ? Number(hauteur) : null
+                },
+                category: {
+                    selectedCategory,
+                    boxtalCodeContenu: randomSub.code
+                },
+                pickupDate: null
+            };
+
+            // Recuperation des donnees MongoDB (pour coherence)
+            const boxtalData = await countryService.getFormattedData(destination);
+
+            // Appel des deux APIs
+            const boxtalOffres = await getCotationAvance(params);
+
+            let eurosenderOffres = [];
+            try {
+                if (typeof getEurosenderOffers === 'function') {
+                    eurosenderOffres = await getEurosenderOffers(searchContext, boxtalData);
+                } else {
+                    console.warn('getEurosenderOffers n\'est pas une fonction');
+                }
+            } catch (e) {
+                console.error('Erreur Eurosender (avance):', e);
+            }
+
+            // Fusion des offres des deux APIs
+            offres = [
+                ...boxtalOffres,
+                ...eurosenderOffres
+            ];
         }
 
-        const filterData = {
+        // Construction des donnees de filtrage (transporteurs, services, prix, delai)
+        const hasOffres = Array.isArray(offres) && offres.length > 0;
+        const filterData = hasOffres ? {
             transporteurs: [...new Set(offres.map(o => o.transporteur))].sort(),
             services: [...new Set(offres.map(o => o.service))].sort(),
             prixMax: Math.max(...offres.map(o => parseFloat(o.prix_ttc))),
             delaiMax: Math.max(...offres.map(o => parseInt(o.temps_livraison_jours)))
+        } : {
+            transporteurs: [],
+            services: [],
+            prixMax: 0,
+            delaiMax: 0
         };
 
+        // Rendu de la page avec toutes les offres fusionnees
         res.render('comparateur', {
             title: 'Comparateur des prix',
             bodyClass: 'comparateur-page',
@@ -136,19 +240,19 @@ comparateurController.get('/', async (req, res) => {
             formType,
             hasAutocomplete: true,
 
-            seoTitle: "Résultats : Comparez les offres d’envoi de colis – UniversColis",
-            seoDescription: "Comparez instantanément les tarifs, délais et services pour l’expédition de colis. Filtrez par transporteur, prix ou rapidité et partagez vos résultats en un clic.",
+            seoTitle: "Resultats : Comparez les offres d'envoi de colis - UniversColis",
+            seoDescription: "Comparez instantanement les tarifs, delais et services pour l'expedition de colis. Filtrez par transporteur, prix ou rapidite et partagez vos resultats en un clic.",
             seoKeywords: [
                 "comparateur colis",
                 "frais envoi",
                 "livraison rapide",
-                "expédition pas cher",
+                "expedition pas cher",
                 "transporteur",
                 "suivi colis",
-                "offre expédition",
+                "offre expedition",
                 "comparatif livraison",
                 "envoi international",
-                "partage résultats"
+                "partage resultats"
             ],
             canonicalUrl: "https://www.universcolis.fr/comparateur-des-prix",
             robots: "index, follow",
@@ -157,15 +261,15 @@ comparateurController.get('/', async (req, res) => {
             modifiedDate: "2025-08-25",
 
             ogType: "website",
-            ogTitle: "Résultats : Comparateur d’offres d’envoi de colis – UniversColis",
-            ogDescription: "Trouvez la meilleure offre d’expédition selon vos critères : prix, délai, transporteur. Comparez et partagez vos résultats facilement.",
+            ogTitle: "Resultats : Comparateur d'offres d'envoi de colis - UniversColis",
+            ogDescription: "Trouvez la meilleure offre d'expedition selon vos criteres : prix, delai, transporteur. Comparez et partagez vos resultats facilement.",
             ogUrl: "https://www.universcolis.fr/comparateur-des-prix",
             ogImage: "https://www.universcolis.fr/static/img/og-image.png",
             ogLocale: "fr_FR",
 
             twitterCard: "summary_large_image",
-            twitterTitle: "Résultats : Comparateur d’offres d’envoi de colis – UniversColis",
-            twitterDescription: "Comparez les tarifs et délais d’expédition de colis en temps réel. Filtrez, partagez et réservez en toute simplicité.",
+            twitterTitle: "Resultats : Comparateur d'offres d'envoi de colis - UniversColis",
+            twitterDescription: "Comparez les tarifs et delais d'expedition de colis en temps reel. Filtrez, partagez et reservez en toute simplicite.",
             twitterImage: "https://wwww.universcolis.fr/static/img/og-image.png",
 
             structuredData: JSON.stringify({
@@ -173,9 +277,9 @@ comparateurController.get('/', async (req, res) => {
                 "@graph": [
                     {
                         "@type": "SearchResultsPage",
-                        "name": "Résultats de comparaison d’envoi de colis",
+                        "name": "Resultats de comparaison d'envoi de colis",
                         "url": "https://www.universcolis.fr/comparateur-des-prix",
-                        "description": "Page de résultats dynamique affichant les offres d’expédition de colis selon les critères de recherche de l’utilisateur. Filtrage par transporteur, prix, délai et partage des résultats.",
+                        "description": "Page de resultats dynamique affichant les offres d'expedition de colis selon les criteres de recherche de l'utilisateur. Filtrage par transporteur, prix, delai et partage des resultats.",
                         "isPartOf": {
                             "@type": "WebSite",
                             "name": "UniversColis",
@@ -192,7 +296,7 @@ comparateurController.get('/', async (req, res) => {
                     },
                     {
                         "@type": "ItemList",
-                        "name": "Offres d’expédition de colis",
+                        "name": "Offres d'expedition de colis",
                         "itemListOrder": "http://schema.org/ItemListOrderAscending",
                         "numberOfItems": offres.length,
                         "itemListElement": offres.map((offre, idx) => ({
@@ -200,8 +304,8 @@ comparateurController.get('/', async (req, res) => {
                             "position": idx + 1,
                             "itemOffered": {
                                 "@type": "Service",
-                                "name": "Expédition de colis",
-                                "description": "Offre de livraison de colis avec affichage du prix total, délai estimé et options de réservation.",
+                                "name": "Expedition de colis",
+                                "description": "Offre de livraison de colis avec affichage du prix total, delai estime et options de reservation.",
                                 "provider": {
                                     "@type": "Organization",
                                     "name": offre.transporteur
@@ -214,8 +318,8 @@ comparateurController.get('/', async (req, res) => {
         });
 
     } catch (err) {
-        console.error('Erreur dans comparateurController :', err);
-        res.status(500).render('error', { message: "Une erreur est survenue lors de la recherche. Veuillez réessayer plus tard." });
+        console.error('Erreur dans comparateurController:', err);
+        res.status(500).render('error', { message: "Une erreur est survenue lors de la recherche. Veuillez reessayer plus tard." });
     }
 });
 
@@ -225,4 +329,3 @@ function getCountryLabel(isoCode, countries) {
 }
 
 module.exports = comparateurController;
-
