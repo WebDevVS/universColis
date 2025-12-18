@@ -16,3 +16,5 @@ services:
         sync: false
       - key: GEONAMES_USER
         sync: false
+      - key: EUROSENDER_API_KEY
+        sync: false
