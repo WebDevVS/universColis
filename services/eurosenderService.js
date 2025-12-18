@@ -477,94 +477,46 @@ Cette offre est proposée via Eurosender, plateforme partenaire travaillant avec
 // 🆕 IMPORTANT : Maintenant on passe boxtalData pour garantir la cohérence
 
 async function getEurosenderOffers(searchContext, boxtalData) {
-    
-    console.log('🔵 ===== DÉBUT APPEL EUROSENDER =====');
-    console.log('Environment:', process.env.NODE_ENV);
-    console.log('API Key (10 premiers chars):', API_KEY?.substring(0, 10));
-    console.log('Base URL:', BASE_URL);
-    
-    if (!ensureApiKey()) { 
-        console.log('❌ Pas de clé API valide');
-        return []; 
-    }
+
+    if (!ensureApiKey()) { return []; }
 
     // Vérifier si le pays est blacklisté
     const destination = searchContext?.destination?.countryIso;
-    console.log('Destination country:', destination);
-    
     if (eurosenderUnsupportedCountries.includes(destination)) {
-        console.log('❌ Pays non supporté par Eurosender:', destination);
+        // Pays non supporté : retourner silencieusement aucune offre
+        // L'utilisateur verra quand même les offres Boxtal
         return [];
     }
 
-    console.log('✅ Pays supporté, construction du payload...');
     const payload = buildShipmentOptionsPayload(searchContext, boxtalData);
-    console.log('📦 Payload construit:', JSON.stringify(payload, null, 2));
-    
     const endpoint = `${BASE_URL}/v1/quotes`;
-    console.log('📤 Endpoint:', endpoint);
-    
     try {
-        console.log('⏳ Envoi de la requête...');
-        
         const res = await axios.post(endpoint, payload, {
             headers: {
-                ...getEurosenderAuthHeader()
+                ...getEurosenderAuthHeader() // => { 'x-api-key': <key>, JSON }
             },
             timeout: 15000
         });
 
-        console.log('✅ RÉPONSE REÇUE !');
-        console.log('Status:', res.status);
-        console.log('Headers:', res.headers);
-        
         const data = res.data || {};
-        console.log('Data reçue:', JSON.stringify(data, null, 2));
-        
         const options = data.options || {};
         const serviceTypes = Array.isArray(options.serviceTypes) ? options.serviceTypes : [];
-        console.log('Nombre de serviceTypes:', serviceTypes.length);
-        
         const generalTC = options.generalTermsAndConditionsLink || null;
 
-        if (serviceTypes.length === 0) {
-            console.log('⚠️ Aucune offre dans la réponse');
-            return [];
-        }
+        if (serviceTypes.length === 0) return [];
 
-        const offers = serviceTypes
+        return serviceTypes
             .map(st => normalizeServiceTypeToOffer(st, generalTC))
             .filter(Boolean);
-        
-        console.log('✅ Offres normalisées:', offers.length);
-        console.log('🔵 ===== FIN APPEL EUROSENDER =====');
-        
-        return offers;
 
     } catch (err) {
-        console.error('❌ ===== ERREUR EUROSENDER =====');
-        console.error('Message:', err.message);
-        
+        console.error('❌ Eurosender /v1/quotes FAILED:');
         if (err.response) {
-            console.error('Status:', err.response.status);
-            console.error('Status Text:', err.response.statusText);
-            console.error('Headers:', err.response.headers);
-            console.error('Body:', JSON.stringify(err.response.data, null, 2));
-        } else if (err.request) {
-            console.error('Pas de réponse reçue');
-            console.error('Request:', err.request);
+            console.error('   Status:', err.response.status, err.response.statusText || '');
+            console.error('   Body:', JSON.stringify(err.response.data, null, 2));
         } else {
-            console.error('Erreur config:', err.message);
+            console.error(err);
         }
-        
-        console.error('Config:', {
-            url: err.config?.url,
-            method: err.config?.method,
-            headers: err.config?.headers,
-            data: err.config?.data
-        });
-        
-        console.error('============================');
         return [];
     }
 }
