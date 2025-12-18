@@ -28,7 +28,7 @@ const {
 //   - poidsKg : Poids du colis en kg
 //   - boxtalData : Données MongoDB avec les villes par pays
 async function getCotation(destinationLabel, poidsKg, boxtalData) {
-    const url = "https://test.envoimoinscher.com/api/v1/cotation";
+    const url = "https://envoimoinscher.com/api/v1/cotation";
 
     // -------------------------------------------------------------------------
     // GÉNÉRATION DES VALEURS PAR DÉFAUT via defaultsService
@@ -119,7 +119,7 @@ async function getCotationAvance({
     destinataire_code_postal,
     destinataire_pays
 }) {
-    const url = "https://test.envoimoinscher.com/api/v1/cotation";
+    const url = "https://envoimoinscher.com/api/v1/cotation";
 
     // -------------------------------------------------------------------------
     // VALIDATION DES DONNÉES UTILISATEUR

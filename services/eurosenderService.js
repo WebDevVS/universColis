@@ -37,7 +37,7 @@ const {
     getCarrierNameByEurosenderCourierId
 } = require('./logoService');
 
-const BASE_URL = 'https://sandbox-api.eurosender.com';
+const BASE_URL = 'https://api.eurosender.com';
 const API_KEY = process.env.EUROSENDER_API_KEY || 'A_REMPLACER_PAR_VOTRE_CLE_SANDBOX';
 
 function ensureApiKey() {
