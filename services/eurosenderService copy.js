@@ -39,7 +39,6 @@ const {
 
 const BASE_URL = 'https://api.eurosender.com';
 const API_KEY = process.env.EUROSENDER_API_KEY || 'A_REMPLACER_PAR_VOTRE_CLE_SANDBOX';
-const EUROSENDER_DISABLED = process.env.EUROSENDER_DISABLED === 'true';
 
 function ensureApiKey() {
     if (!API_KEY || API_KEY === 'A_REMPLACER_PAR_VOTRE_CLE_SANDBOX') {
@@ -478,13 +477,8 @@ Cette offre est proposée via Eurosender, plateforme partenaire travaillant avec
 // 🆕 IMPORTANT : Maintenant on passe boxtalData pour garantir la cohérence
 
 async function getEurosenderOffers(searchContext, boxtalData) {
-  // Désactivation totale via variable d'environnement
-  if (EUROSENDER_DISABLED) {
-    console.warn('Eurosender désactivé (EUROSENDER_DISABLED=true) → aucune requête envoyée.');
-    return [];
-  }
 
-  if (!ensureApiKey()) { return []; }
+    if (!ensureApiKey()) { return []; }
 
     // Vérifier si le pays est blacklisté
     const destination = searchContext?.destination?.countryIso;
