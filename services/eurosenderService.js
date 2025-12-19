@@ -40,12 +40,6 @@ const {
 const BASE_URL = 'https://api.eurosender.com';
 const API_KEY = process.env.EUROSENDER_API_KEY || 'A_REMPLACER_PAR_VOTRE_CLE_SANDBOX';
 
-// ✅ LOGS DE DEBUG
-console.log('🔑 Chargement API Key Eurosender:');
-console.log('   - API_KEY (10 premiers chars):', API_KEY?.substring(0, 10));
-console.log('   - process.env complet?', !!process.env.EUROSENDER_API_KEY);
-console.log('   - Valeur brute:', process.env.EUROSENDER_API_KEY);
-
 function ensureApiKey() {
     if (!API_KEY || API_KEY === 'A_REMPLACER_PAR_VOTRE_CLE_SANDBOX') {
         console.warn('⚠️ eurosenderService: API_KEY manquante ou placeholder. Aucune offre Eurosender ne sera retournée.');
@@ -497,12 +491,28 @@ async function getEurosenderOffers(searchContext, boxtalData) {
     const payload = buildShipmentOptionsPayload(searchContext, boxtalData);
     const endpoint = `${BASE_URL}/v1/quotes`;
     try {
+
+         console.log('⏳ Envoi de la requête Eurosender...');
+    
+    const headers = getEurosenderAuthHeader();
+
+     // ✅ LOG DES HEADERS AVANT ENVOI
+    console.log('📤 Headers qui vont être envoyés:');
+    console.log('   - x-api-key:', headers['x-api-key']?.substring(0, 10));
+    console.log('   - x-api-key complet (pour debug):', headers['x-api-key']);
+    console.log('   - Accept:', headers['Accept']);
+    console.log('   - Content-Type:', headers['Content-Type']);
+    
+
+
         const res = await axios.post(endpoint, payload, {
             headers: {
                 ...getEurosenderAuthHeader() // => { 'x-api-key': <key>, JSON }
             },
             timeout: 15000
         });
+
+         console.log('✅ RÉPONSE REÇUE:', res.status);
 
         const data = res.data || {};
         const options = data.options || {};
