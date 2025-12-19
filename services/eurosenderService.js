@@ -491,28 +491,12 @@ async function getEurosenderOffers(searchContext, boxtalData) {
     const payload = buildShipmentOptionsPayload(searchContext, boxtalData);
     const endpoint = `${BASE_URL}/v1/quotes`;
     try {
-
-         console.log('⏳ Envoi de la requête Eurosender...');
-    
-    const headers = getEurosenderAuthHeader();
-
-     // ✅ LOG DES HEADERS AVANT ENVOI
-    console.log('📤 Headers qui vont être envoyés:');
-    console.log('   - x-api-key:', headers['x-api-key']?.substring(0, 10));
-    console.log('   - x-api-key complet (pour debug):', headers['x-api-key']);
-    console.log('   - Accept:', headers['Accept']);
-    console.log('   - Content-Type:', headers['Content-Type']);
-    
-
-
         const res = await axios.post(endpoint, payload, {
             headers: {
                 ...getEurosenderAuthHeader() // => { 'x-api-key': <key>, JSON }
             },
             timeout: 15000
         });
-
-         console.log('✅ RÉPONSE REÇUE:', res.status);
 
         const data = res.data || {};
         const options = data.options || {};

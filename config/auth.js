@@ -1,4 +1,4 @@
-const base64 = require('base-64');
+const base64 = require('base-64'); // npm install base-64
 
 // Boxtal
 const BOXTAL_ACCESS_KEY = process.env.BOXTAL_ACCESS_KEY;
@@ -16,36 +16,18 @@ function getBoxtalAuthHeader() {
   };
 }
 
-// Eurosender
+// Eurosender (si token Bearer)
 const EUROSENDER_API_KEY = process.env.EUROSENDER_API_KEY;
 
-// ✅ LOG AU CHARGEMENT DU MODULE
-console.log('🔑 [auth.js] Chargement EUROSENDER_API_KEY:');
-console.log('   - Définie:', !!EUROSENDER_API_KEY);
-console.log('   - Type:', typeof EUROSENDER_API_KEY);
-console.log('   - Longueur:', EUROSENDER_API_KEY?.length);
-console.log('   - 10 premiers chars:', EUROSENDER_API_KEY?.substring(0, 10));
-console.log('   - Contient guillemets?', EUROSENDER_API_KEY?.includes('"'));
-
 function getEurosenderAuthHeader() {
-  // ✅ LOG À CHAQUE APPEL
-  console.log('🔑 [getEurosenderAuthHeader] Génération header:');
-  console.log('   - Clé utilisée:', EUROSENDER_API_KEY?.substring(0, 10));
-  
   if (!EUROSENDER_API_KEY) {
     throw new Error('Manque EUROSENDER_API_KEY');
   }
-  
-  const headers = {
+  return {
     'x-api-key': EUROSENDER_API_KEY,
     Accept: 'application/json',
     'Content-Type': 'application/json'
   };
-  
-  // ✅ LOG DU HEADER GÉNÉRÉ
-  console.log('   - Header x-api-key (10 premiers):', headers['x-api-key']?.substring(0, 10));
-  
-  return headers;
 }
 
 module.exports = { getBoxtalAuthHeader, getEurosenderAuthHeader };
