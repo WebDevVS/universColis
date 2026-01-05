@@ -498,8 +498,6 @@ async function getEurosenderOffers(searchContext, boxtalData) {
             timeout: 15000
         });
 
-        console.log(JSON.stringify(res.data, null, 2));
-
         const data = res.data || {};
         const options = data.options || {};
         const serviceTypes = Array.isArray(options.serviceTypes) ? options.serviceTypes : [];

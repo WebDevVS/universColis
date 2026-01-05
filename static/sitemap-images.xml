@@ -478,5 +478,23 @@
         <image:caption>Infographie UniversColis présentant le fonctionnement général de l'expédition d'un colis de 10 à 15 kg de la France vers l'Espagne, incluant la comparaison des offres, la redirection vers un transporteur partenaire et l'envoi du colis en fonction du mode de livraison sélectionné.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/tarifs/envoyer-colis-5kg-france-italie</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/cycle-expedition-colis-fonctionnement.webp</image:loc>
+        
+        <image:caption>Infographie UniversColis présentant le fonctionnement général de l'expédition d'un colis de 5 kg de la France vers l'Italie, incluant la comparaison des offres, la redirection vers un transporteur partenaire et l'envoi du colis en fonction du mode de livraison sélectionné.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/tarifs/envoyer-colis-10-15kg-france-italie</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/cycle-expedition-colis-fonctionnement.webp</image:loc>
+        
+        <image:caption>Infographie UniversColis présentant le fonctionnement général de l'expédition d'un colis de 10 à 15 kg de la France vers l'Italie, incluant la comparaison des offres, la redirection vers un transporteur partenaire et l'envoi du colis en fonction du mode de livraison sélectionné.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

@@ -94,6 +94,13 @@
           })();
         </script>
 
+    {{#if isProd}}
+    {{#unless showEzoic}}
+    <!-- Google AdSense Auto Ads loader (gated: prod only, no Ezoic) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7938112028284701" crossorigin="anonymous"></script>
+    {{/unless}}
+    {{/if}}
+
     <!-- Google Tag Manager -->
     <script>
         
