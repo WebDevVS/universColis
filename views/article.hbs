@@ -112,16 +112,80 @@
 
   </section>
 
-  <section class="materiels">
-    <div class="container">
-      <div class="row d-flex justify-content-center" id="materiel">
-        <h2 class="text-center">Matériel Recommandé pour Emballer {{article.materialsWord}}</h2>
-        <ul>
-          {{#each article.materials}}
-          <li class="materiel-item">{{{this}}}</li>
+  <section class="materiels" id="materiel">
+    <h2> Matériel Recommandé pour {{article.materialsWord}}</h2>
+
+    <div class="materials-list">
+      {{#each article.materials}}
+      <div class="material-item {{#unless this.hasSizes}}simple-layout{{/unless}}">
+
+        <!-- ===== HEADER (Check + Titre + Bouton pour simples) ===== -->
+        <div class="material-header">
+          <!-- Check icon -->
+          <div class="material-check">
+            <i class="fa-solid fa-check"></i>
+          </div>
+
+          <div class="material-title-section">
+            <!-- Titre + Badge -->
+            <div class="material-title-group">
+              <h4 class="material-name">{{this.name}}</h4>
+              {{#if this.optionsBadge}}
+              <span class="material-badge">{{this.optionsBadge}}</span>
+              {{/if}}
+            </div>
+
+            <!-- Bouton pour produits simples (à droite du titre) -->
+            {{#unless this.hasSizes}}
+            {{#if this.links.length}}
+            {{#with this.links.[0]}}
+            <a href="{{this.url}}" class="btn-material-inline" target="_blank" rel="nofollow noopener">
+              {{this.label}} <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            {{/with}}
+            {{/if}}
+            {{/unless}}
+          </div>
+        </div>
+
+        <!-- ===== DESCRIPTION ===== -->
+        <p class="material-description">{{this.description}}</p>
+
+        <!-- ===== CAS 2 : OPTIONS MULTIPLES (sous la description) ===== -->
+        {{#if this.hasSizes}}
+        <div class="material-options">
+          {{#each this.sizes}}
+          {{#if this.url}}
+          <div class="size-option">
+            <div class="size-info">
+              <strong class="size-label">{{this.label}}</strong>
+              <span class="size-dimensions">{{this.dimensions}}</span>
+            </div>
+            <a href="{{this.url}}" class="btn-material-small" target="_blank" rel="nofollow noopener">
+              Voir <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+          {{/if}}
           {{/each}}
-        </ul>
+        </div>
+        {{/if}}
+
+        <!-- ===== GUIDE DE TAILLES ===== -->
+        {{#if this.sizeGuide}}
+        <div class="size-guide-box">
+          {{{this.sizeGuide}}}
+        </div>
+        {{/if}}
+
+        <!-- ===== NOTE COMPLÉMENTAIRE ===== -->
+        {{#if this.sizeNote}}
+        <div class="material-note">
+          {{{this.sizeNote}}}
+        </div>
+        {{/if}}
+
       </div>
+      {{/each}}
     </div>
   </section>
 
@@ -184,6 +248,15 @@
   <div class="alert alert-info mt-4">
     <strong>💡 Astuce : </strong> {{{article.astuce}}}
   </div>
+
+  <div class="affiliation-disclaimer">
+    <i class="fa-solid fa-info-circle"></i>
+    <span>
+      Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour
+      vous, ce qui nous aide à maintenir nos services gratuits.
+    </span>
+  </div>
+
 </section>
 
 <!-- ===== SECTION À DÉCOUVRIR (HBS) ===== -->
@@ -303,3 +376,21 @@
 <button id="share-article" class="share-article-btn" title="Partager l'article">
   <i class="fa-solid fa-share"></i>
 </button>
+
+
+
+
+{{!--
+<section class="materiels">
+  <div class="container">
+    <div class="row d-flex justify-content-center" id="materiel">
+      <h2 class="text-center">Matériel Recommandé pour Emballer {{article.materialsWord}}</h2>
+      <ul>
+        {{#each article.materials}}
+        <li class="materiel-item">{{{this}}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>
+--}}
