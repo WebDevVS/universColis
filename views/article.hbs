@@ -139,7 +139,7 @@
             {{#unless this.hasSizes}}
             {{#if this.links.length}}
             {{#with this.links.[0]}}
-            <a href="{{this.url}}" class="btn-material-inline" target="_blank" rel="nofollow noopener">
+            <a href="{{this.url}}" class="btn-material-inline d-none d-md-inline-flex" target="_blank" rel="nofollow noopener">
               {{this.label}} <i class="fa-solid fa-arrow-right"></i>
             </a>
             {{/with}}
@@ -150,6 +150,16 @@
 
         <!-- ===== DESCRIPTION ===== -->
         <p class="material-description">{{this.description}}</p>
+
+        {{#unless this.hasSizes}}
+        {{#if this.links.length}}
+        {{#with this.links.[0]}}
+        <a href="{{this.url}}" class="btn-material-inline d-inline-flex d-md-none" target="_blank" rel="nofollow noopener">
+          {{this.label}} <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {{/with}}
+        {{/if}}
+        {{/unless}}
 
         <!-- ===== CAS 2 : OPTIONS MULTIPLES (sous la description) ===== -->
         {{#if this.hasSizes}}

@@ -5999,6 +5999,12 @@ figure.etape-image:hover .hover-caption {
     margin-top: 0;
   }
 
+  /* Espace quand le bouton mobile suit la description */
+  .material-description + .btn-material-inline {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
   .material-description,
   .material-item.simple-layout .material-description {
     padding-left: 0;
@@ -6080,6 +6086,12 @@ figure.etape-image:hover .hover-caption {
     font-size: 0.85rem;
   }
 
+  /* Espace quand le bouton mobile suit la description (petits écrans) */
+  .material-description + .btn-material-inline {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
   .material-options {
     padding: 0.75rem;
   }
@@ -6098,7 +6110,7 @@ figure.etape-image:hover .hover-caption {
     font-size: 0.85rem;
   }
 
-  .affiliate-disclaimer {
+  .affiliate-disclaime {
     padding: 0.75rem 0.875rem;
     font-size: 0.85rem;
   }
