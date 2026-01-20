@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-01-08T16:43:00.291Z</updated>
+  <updated>2026-01-20T15:36:52.665Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -322,6 +322,16 @@
       <link href="https://www.universcolis.fr/actualites/taxe-petits-colis-2026-fin-exoneration-150-euros"/>
       <id>https://www.universcolis.fr/actualites/taxe-petits-colis-2026-fin-exoneration-150-euros</id>
       <updated>2025-11-20</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>taxe 3 euros petits colis importes 2026
+      </title>
+      <link href="https://www.universcolis.fr/actualites/taxe-3-euros-petits-colis-importes-2026"/>
+      <id>https://www.universcolis.fr/actualites/taxe-3-euros-petits-colis-importes-2026</id>
+      <updated>2026-01-20</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
