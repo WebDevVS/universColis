@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boîtes & Contenants - UniversColis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap');
+
+        /* ========================================= */
+        /* VARIABLES GLOBALES */
+        /* ========================================= */
+        :root {
+            --primary-color: #8269A4;
+            --accent-color: #FA7E75;
+            --light-bg: #E9E6E1;
+            --text-color: #333333;
+            --text-muted: #666666;
+            
+            /* Couleurs gammes */
+            --budget-color: #3498DB;
+            --eco-color: #27AE60;
+            --premium-color: #F39C12;
+            
+            --border-radius: 20px;
+            --border-radius-small: 15px;
+            --shadow-standard: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+            color: var(--text-color);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ========================================= */
+        /* HEADER */
+        /* ========================================= */
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-header h1 {
+            font-family: "Exo", sans-serif;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .category-subtitle {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+        }
+
+        /* ========================================= */
+        /* QUICK STATS */
+        /* ========================================= */
+        .quick-stats {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        /* ========================================= */
+        /* LÉGENDE DES GAMMES - NOUVELLE SECTION */
+        /* ========================================= */
+        .gammes-legend-section {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .legend-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .legend-icon-main {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(130, 105, 164, 0.3);
+        }
+
+        .legend-title {
+            font-family: "Exo", sans-serif;
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .legend-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Grid des 3 gammes */
+        .gammes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .gamme-card {
+            background: white;
+            border: 3px solid;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .gamme-card.budget {
+            border-color: var(--budget-color);
+        }
+
+        .gamme-card.eco {
+            border-color: var(--eco-color);
+        }
+
+        .gamme-card.premium {
+            border-color: var(--premium-color);
+        }
+
+        .gamme-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .gamme-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .gamme-card.budget .gamme-icon-circle {
+            background: var(--budget-color);
+        }
+
+        .gamme-card.eco .gamme-icon-circle {
+            background: var(--eco-color);
+        }
+
+        .gamme-card.premium .gamme-icon-circle {
+            background: var(--premium-color);
+        }
+
+        .gamme-card-title {
+            font-family: "Exo", sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .gamme-checklist {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .gamme-check-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .gamme-check-icon {
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        .gamme-card.budget .gamme-check-icon {
+            color: var(--budget-color);
+        }
+
+        .gamme-card.eco .gamme-check-icon {
+            color: var(--eco-color);
+        }
+
+        .gamme-card.premium .gamme-check-icon {
+            color: var(--premium-color);
+        }
+
+        .gamme-ideal-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: left;
+        }
+
+        .gamme-card.budget .gamme-ideal-box {
+            background: rgba(52, 152, 219, 0.08);
+            border-left: 3px solid var(--budget-color);
+        }
+
+        .gamme-card.eco .gamme-ideal-box {
+            background: rgba(39, 174, 96, 0.08);
+            border-left: 3px solid var(--eco-color);
+        }
+
+        .gamme-card.premium .gamme-ideal-box {
+            background: rgba(243, 156, 18, 0.08);
+            border-left: 3px solid var(--premium-color);
+        }
+
+        .ideal-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .ideal-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ========================================= */
+        /* VERSION DESKTOP - ACCORDÉON */
+        /* ========================================= */
+        .desktop-layout {
+            display: block;
+        }
+
+        .mobile-layout {
+            display: none;
+        }
+
+        /* Accordion Product */
+        .accordion-product {
+            background: white;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-product:hover {
+            border-color: var(--primary-color);
+        }
+
+        .accordion-product.active {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Accordion Header */
+        .accordion-header {
+            padding: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .accordion-header:hover {
+            background: rgba(130, 105, 164, 0.03);
+        }
+
+        .accordion-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .accordion-info {
+            flex: 1;
+        }
+
+        .accordion-title {
+            font-family: "Exo", sans-serif;
+            font-size: 1.7rem;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .accordion-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .accordion-toggle {
+            width: 40px;
+            height: 40px;
+            background: rgba(130, 105, 164, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-product.active .accordion-toggle {
+            transform: rotate(180deg);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Accordion Content */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-product.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .options-container {
+            padding: 0 2rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Mini Option Card - NOUVELLE VERSION */
+        .mini-option {
+            background: #fafafa;
+            border: 3px solid;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mini-option.budget {
+            border-color: var(--budget-color);
+        }
+
+        .mini-option.eco {
+            border-color: var(--eco-color);
+        }
+
+        .mini-option.premium {
+            border-color: var(--premium-color);
+        }
+
+        .mini-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* Header avec badge + icône */
+        .mini-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .mini-icon-left {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .mini-option.budget .mini-icon-left {
+            background: var(--budget-color);
+        }
+
+        .mini-option.eco .mini-icon-left {
+            background: var(--eco-color);
+        }
+
+        .mini-option.premium .mini-icon-left {
+            background: var(--premium-color);
+        }
+
+        .mini-badge-right {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .mini-option.budget .mini-badge-right {
+            background: var(--budget-color);
+        }
+
+        .mini-option.eco .mini-badge-right {
+            background: var(--eco-color);
+        }
+
+        .mini-option.premium .mini-badge-right {
+            background: var(--premium-color);
+        }
+
+        /* Nom du produit */
+        .mini-product-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        /* Prix */
+        .mini-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: left;
+        }
+
+        .mini-option.budget .mini-price {
+            color: var(--budget-color);
+        }
+
+        .mini-option.eco .mini-price {
+            color: var(--eco-color);
+        }
+
+        .mini-option.premium .mini-price {
+            color: var(--premium-color);
+        }
+
+        .mini-unit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: block;
+            text-align: left;
+        }
+
+        /* Features */
+        .mini-features {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .mini-feature {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mini-feature i {
+            font-size: 0.6rem;
+        }
+
+        .mini-option.budget .mini-feature i {
+            color: var(--budget-color);
+        }
+
+        .mini-option.eco .mini-feature i {
+            color: var(--eco-color);
+        }
+
+        .mini-option.premium .mini-feature i {
+            color: var(--premium-color);
+        }
+
+        /* CTA */
+        .mini-cta {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .mini-option.budget .mini-cta {
+            background: var(--budget-color);
+        }
+
+        .mini-option.eco .mini-cta {
+            background: var(--eco-color);
+        }
+
+        .mini-option.premium .mini-cta {
+            background: var(--premium-color);
+        }
+
+        .mini-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* ========================================= */
+        /* VERSION MOBILE - CARDS AVEC ONGLETS */
+        /* ========================================= */
+        @media (max-width: 991px) {
+            .desktop-layout {
+                display: none;
+            }
+
+            .mobile-layout {
+                display: block;
+            }
+
+            .gammes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gammes-legend-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Products Grid Mobile */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        /* Product Card Mobile */
+        .product-card-stacked {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-stacked:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Product Visual */
+        .product-visual {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-visual::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        /* Product Info */
+        .product-card-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card-title {
+            font-family: "Exo", sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .product-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Tabs */
+        .product-tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+
+        .product-tab {
+            flex: 1;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            background: transparent;
+            min-height: 44px;
+        }
+
+        .product-tab.budget {
+            color: var(--budget-color);
+        }
+
+        .product-tab.eco {
+            color: var(--eco-color);
+        }
+
+        .product-tab.premium {
+            color: var(--premium-color);
+        }
+
+        .product-tab.active.budget {
+            background: var(--budget-color);
+            color: white;
+        }
+
+        .product-tab.active.eco {
+            background: var(--eco-color);
+            color: white;
+        }
+
+        .product-tab.active.premium {
+            background: var(--premium-color);
+            color: white;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .option-details {
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Product name mobile */
+        .mobile-product-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .option-price-large {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .tab-content.budget .price-amount {
+            color: var(--budget-color);
+        }
+
+        .tab-content.eco .price-amount {
+            color: var(--eco-color);
+        }
+
+        .tab-content.premium .price-amount {
+            color: var(--premium-color);
+        }
+
+        .price-detail {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Features List */
+        .features-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+
+        .tab-content.budget .feature-icon {
+            background: var(--budget-color);
+        }
+
+        .tab-content.eco .feature-icon {
+            background: var(--eco-color);
+        }
+
+        .tab-content.premium .feature-icon {
+            background: var(--premium-color);
+        }
+
+        /* CTA Button */
+        .card-cta {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tab-content.budget .card-cta {
+            background: var(--budget-color);
+        }
+
+        .tab-content.eco .card-cta {
+            background: var(--eco-color);
+        }
+
+        .tab-content.premium .card-cta {
+            background: var(--premium-color);
+        }
+
+        .card-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* ========================================= */
+        /* RESPONSIVE TWEAKS */
+        /* ========================================= */
+        @media (max-width: 1200px) {
+            .options-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .quick-stats {
+                gap: 1rem;
+            }
+
+            .stat-card {
+                min-width: 150px;
+                padding: 1rem 1.5rem;
+            }
+
+            .product-visual {
+                height: 150px;
+                font-size: 3rem;
+            }
+
+            .product-card-info {
+                padding: 1.25rem;
+            }
+
+            .options-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .category-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .stat-card {
+                min-width: 130px;
+                padding: 0.75rem 1rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .legend-title {
+                font-size: 1.6rem;
+            }
+
+            .gamme-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ========================================= -->
+        <!-- HEADER -->
+        <!-- ========================================= -->
+        <div class="category-header">
+            <h1>🎁 Boîtes & Contenants</h1>
+            <p class="category-subtitle">Découvrez notre sélection de solutions d'emballage pour tous vos besoins</p>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- QUICK STATS -->
+        <!-- ========================================= -->
+        <div class="quick-stats">
+            <div class="stat-card">
+                <span class="stat-number">9</span>
+                <span class="stat-label">Produits</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">27</span>
+                <span class="stat-label">Options au total</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">3</span>
+                <span class="stat-label">Gammes par produit</span>
+            </div>
+        </div>
+
+        <!-- ========================================= -->
+        <!-- LÉGENDE DES GAMMES -->
+        <!-- ========================================= -->
+        <section class="gammes-legend-section">
+            <div class="legend-header">
+                <div class="legend-icon-main">
+                    <i class="fas fa-compass"></i>
+                </div>
+                <h2 class="legend-title">Quelle gamme choisir ?</h2>
+                <p class="legend-subtitle">Trouvez la solution adaptée à vos besoins</p>
+            </div>
+
+            <div class="gammes-grid">
+                <!-- Budget -->
+                <div class="gamme-card budget">
+                    <div class="gamme-icon-circle">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="gamme-card-title">Choisissez Budget si :</h3>
+                    <div class="gamme-checklist">
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous expédiez occasionnellement</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous recherchez le meilleur prix</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vos articles sont peu fragiles</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous débutez dans l'expédition</span>
+                        </div>
+                    </div>
+                    <div class="gamme-ideal-box">
+                        <span class="ideal-label">Idéal pour :</span>
+                        <p class="ideal-text">Vêtements, livres, petits objets non fragiles</p>
+                    </div>
+                </div>
+
+                <!-- Éco -->
+                <div class="gamme-card eco">
+                    <div class="gamme-icon-circle">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="gamme-card-title">Choisissez Éco si :</h3>
+                    <div class="gamme-checklist">
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>L'environnement est une priorité</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous souhaitez une image responsable</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous recherchez des matériaux durables</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vos clients sont sensibles à l'écologie</span>
+                        </div>
+                    </div>
+                    <div class="gamme-ideal-box">
+                        <span class="ideal-label">Idéal pour :</span>
+                        <p class="ideal-text">E-commerce responsable, produits bio/naturels</p>
+                    </div>
+                </div>
+
+                <!-- Premium -->
+                <div class="gamme-card premium">
+                    <div class="gamme-icon-circle">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="gamme-card-title">Choisissez Premium si :</h3>
+                    <div class="gamme-checklist">
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous expédiez des objets de valeur</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>La protection maximale est essentielle</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vous visez une image haut de gamme</span>
+                        </div>
+                        <div class="gamme-check-item">
+                            <i class="fas fa-check gamme-check-icon"></i>
+                            <span>Vos articles sont fragiles ou lourds</span>
+                        </div>
+                    </div>
+                    <div class="gamme-ideal-box">
+                        <span class="ideal-label">Idéal pour :</span>
+                        <p class="ideal-text">Électronique, objets fragiles, produits premium</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- VERSION DESKTOP - ACCORDÉON -->
+        <!-- ========================================= -->
+        <div class="desktop-layout">
+
+            <!-- Product 1 -->
+            <div class="accordion-product active">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="accordion-info">
+                        <h2 class="accordion-title">Cartons d'expédition standards</h2>
+                        <p class="accordion-subtitle">
+                            Les cartons standards sont parfaits pour la plupart des envois. Disponibles en plusieurs dimensions.
+                        </p>
+                    </div>
+                    <div class="accordion-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="accordion-content">
+                    <div class="options-container">
+                        <!-- Budget -->
+                        <div class="mini-option budget">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="mini-badge-right">BUDGET</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 25 Cartons Simple Cannelure</h3>
+                            <div class="mini-price">15,99 €</div>
+                            <span class="mini-unit">Pack de 25 · 0,64 €/carton</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Simple cannelure résistante</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Plusieurs tailles disponibles</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Bon rapport qualité/prix</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <!-- Éco -->
+                        <div class="mini-option eco">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="mini-badge-right">ÉCO</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 20 Cartons 100% Recyclés</h3>
+                            <div class="mini-price">18,99 €</div>
+                            <span class="mini-unit">Pack de 20 · 0,95 €/carton</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>100% matériaux recyclés</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Double cannelure résistante</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Certifié FSC</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <!-- Premium -->
+                        <div class="mini-option premium">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="mini-badge-right">PREMIUM</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 15 Cartons Triple Cannelure Pro</h3>
+                            <div class="mini-price">24,99 €</div>
+                            <span class="mini-unit">Pack de 15 · 1,67 €/carton</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Triple cannelure renforcée</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Protection maximale</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Charge jusqu'à 50kg</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="accordion-product">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="accordion-info">
+                        <h2 class="accordion-title">Caisses américaines à rabats</h2>
+                        <p class="accordion-subtitle">
+                            Les caisses américaines avec rabats sont pratiques et polyvalentes. Montage rapide sans colle.
+                        </p>
+                    </div>
+                    <div class="accordion-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="accordion-content">
+                    <div class="options-container">
+                        <div class="mini-option budget">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="mini-badge-right">BUDGET</div>
+                            </div>
+                            <h3 class="mini-product-name">Lot 30 Caisses Rabats Standards</h3>
+                            <div class="mini-price">17,99 €</div>
+                            <span class="mini-unit">Lot de 30 · 0,60 €/caisse</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Montage sans outils</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Format polyvalent</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <div class="mini-option eco">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="mini-badge-right">ÉCO</div>
+                            </div>
+                            <h3 class="mini-product-name">Lot 25 Caisses Kraft Non Blanchi</h3>
+                            <div class="mini-price">21,99 €</div>
+                            <span class="mini-unit">Lot de 25 · 0,88 €/caisse</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Kraft non blanchi naturel</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>100% biodégradable</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <div class="mini-option premium">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="mini-badge-right">PREMIUM</div>
+                            </div>
+                            <h3 class="mini-product-name">Lot 20 Caisses Double Paroi Pro</h3>
+                            <div class="mini-price">28,99 €</div>
+                            <span class="mini-unit">Lot de 20 · 1,45 €/caisse</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Double paroi ultra-solide</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Charge jusqu'à 40kg</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="accordion-product">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="accordion-info">
+                        <h2 class="accordion-title">Boîtes postales format lettre</h2>
+                        <p class="accordion-subtitle">
+                            Boîtes compactes adaptées aux envois postaux de petits objets. Conformes aux formats standards.
+                        </p>
+                    </div>
+                    <div class="accordion-toggle">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <div class="accordion-content">
+                    <div class="options-container">
+                        <div class="mini-option budget">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="mini-badge-right">BUDGET</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 50 Boîtes Postales Standards</h3>
+                            <div class="mini-price">12,99 €</div>
+                            <span class="mini-unit">Pack de 50 · 0,26 €/boîte</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Format lettre max</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Montage facile</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <div class="mini-option eco">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="mini-badge-right">ÉCO</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 40 Boîtes Carton Recyclé</h3>
+                            <div class="mini-price">14,99 €</div>
+                            <span class="mini-unit">Pack de 40 · 0,37 €/boîte</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Carton 100% recyclé</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Compostable</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+
+                        <div class="mini-option premium">
+                            <div class="mini-header">
+                                <div class="mini-icon-left">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="mini-badge-right">PREMIUM</div>
+                            </div>
+                            <h3 class="mini-product-name">Pack 30 Boîtes Rigides Matelassées</h3>
+                            <div class="mini-price">19,99 €</div>
+                            <span class="mini-unit">Pack de 30 · 0,67 €/boîte</span>
+                            <div class="mini-features">
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Carton rigide renforcé</span>
+                                </div>
+                                <div class="mini-feature">
+                                    <i class="fas fa-circle"></i>
+                                    <span>Matelassage intérieur</span>
+                                </div>
+                            </div>
+                            <a href="#" class="mini-cta"><i class="fas fa-shopping-cart"></i> Voir sur Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========================================= -->
+        <!-- VERSION MOBILE - CARDS AVEC ONGLETS -->
+        <!-- ========================================= -->
+        <div class="mobile-layout">
+            <div class="products-grid">
+
+                <!-- Product Card 1 -->
+                <article class="product-card-stacked">
+                    <div class="product-visual">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="product-card-info">
+                        <h2 class="product-card-title">Cartons d'expédition standards</h2>
+                        <p class="product-card-desc">
+                            Parfaits pour la plupart des envois. Plusieurs dimensions disponibles.
+                        </p>
+
+                        <div class="product-tabs">
+                            <button class="product-tab budget active" onclick="switchTab(this, 'product1', 'budget')">
+                                Budget
+                            </button>
+                            <button class="product-tab eco" onclick="switchTab(this, 'product1', 'eco')">
+                                Éco
+                            </button>
+                            <button class="product-tab premium" onclick="switchTab(this, 'product1', 'premium')">
+                                Premium
+                            </button>
+                        </div>
+
+                        <div class="tab-content budget active" id="product1-budget">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 25 Cartons Simple Cannelure</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">15,99 €</div>
+                                    <div class="price-detail">Pack de 25 · 0,64 €/carton</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Simple cannelure résistante</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Plusieurs tailles disponibles</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Bon rapport qualité/prix</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">
+                                <i class="fas fa-shopping-cart"></i> Voir sur Amazon
+                            </a>
+                        </div>
+
+                        <div class="tab-content eco" id="product1-eco">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 20 Cartons 100% Recyclés</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">18,99 €</div>
+                                    <div class="price-detail">Pack de 20 · 0,95 €/carton</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>100% matériaux recyclés</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Double cannelure résistante</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Certifié FSC</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">
+                                <i class="fas fa-shopping-cart"></i> Voir sur Amazon
+                            </a>
+                        </div>
+
+                        <div class="tab-content premium" id="product1-premium">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 15 Cartons Triple Cannelure Pro</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">24,99 €</div>
+                                    <div class="price-detail">Pack de 15 · 1,67 €/carton</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Triple cannelure renforcée</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Protection maximale</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Charge jusqu'à 50kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">
+                                <i class="fas fa-shopping-cart"></i> Voir sur Amazon
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product Card 2 -->
+                <article class="product-card-stacked">
+                    <div class="product-visual">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="product-card-info">
+                        <h2 class="product-card-title">Caisses américaines à rabats</h2>
+                        <p class="product-card-desc">
+                            Pratiques et polyvalentes. Montage rapide sans colle ni scotch.
+                        </p>
+
+                        <div class="product-tabs">
+                            <button class="product-tab budget active" onclick="switchTab(this, 'product2', 'budget')">
+                                Budget
+                            </button>
+                            <button class="product-tab eco" onclick="switchTab(this, 'product2', 'eco')">
+                                Éco
+                            </button>
+                            <button class="product-tab premium" onclick="switchTab(this, 'product2', 'premium')">
+                                Premium
+                            </button>
+                        </div>
+
+                        <div class="tab-content budget active" id="product2-budget">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Lot 30 Caisses Rabats Standards</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">17,99 €</div>
+                                    <div class="price-detail">Lot de 30 · 0,60 €/caisse</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Montage sans outils</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Format polyvalent</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+
+                        <div class="tab-content eco" id="product2-eco">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Lot 25 Caisses Kraft Non Blanchi</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">21,99 €</div>
+                                    <div class="price-detail">Lot de 25 · 0,88 €/caisse</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Kraft non blanchi naturel</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>100% biodégradable</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+
+                        <div class="tab-content premium" id="product2-premium">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Lot 20 Caisses Double Paroi Pro</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">28,99 €</div>
+                                    <div class="price-detail">Lot de 20 · 1,45 €/caisse</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Double paroi ultra-solide</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Charge jusqu'à 40kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product Card 3 -->
+                <article class="product-card-stacked">
+                    <div class="product-visual">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="product-card-info">
+                        <h2 class="product-card-title">Boîtes postales format lettre</h2>
+                        <p class="product-card-desc">
+                            Compactes et adaptées aux petits objets. Conformes aux formats standards.
+                        </p>
+
+                        <div class="product-tabs">
+                            <button class="product-tab budget active" onclick="switchTab(this, 'product3', 'budget')">
+                                Budget
+                            </button>
+                            <button class="product-tab eco" onclick="switchTab(this, 'product3', 'eco')">
+                                Éco
+                            </button>
+                            <button class="product-tab premium" onclick="switchTab(this, 'product3', 'premium')">
+                                Premium
+                            </button>
+                        </div>
+
+                        <div class="tab-content budget active" id="product3-budget">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 50 Boîtes Postales Standards</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">12,99 €</div>
+                                    <div class="price-detail">Pack de 50 · 0,26 €/boîte</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Format lettre max</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Montage facile</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+
+                        <div class="tab-content eco" id="product3-eco">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 40 Boîtes Carton Recyclé</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">14,99 €</div>
+                                    <div class="price-detail">Pack de 40 · 0,37 €/boîte</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Carton 100% recyclé</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Compostable</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+
+                        <div class="tab-content premium" id="product3-premium">
+                            <div class="option-details">
+                                <h3 class="mobile-product-name">Pack 30 Boîtes Rigides Matelassées</h3>
+                                <div class="option-price-large">
+                                    <div class="price-amount">19,99 €</div>
+                                    <div class="price-detail">Pack de 30 · 0,67 €/boîte</div>
+                                </div>
+                                <div class="features-list">
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Carton rigide renforcé</span>
+                                    </div>
+                                    <div class="feature-row">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <span>Matelassage intérieur</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="card-cta">Voir sur Amazon</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================================= -->
+    <script>
+        // ========================================= 
+        // FONCTION ACCORDÉON (Desktop)
+        // ========================================= 
+        function toggleAccordion(header) {
+            const product = header.closest('.accordion-product');
+            const allProducts = document.querySelectorAll('.accordion-product');
+            
+            // Ferme tous les autres accordéons
+            allProducts.forEach(p => {
+                if (p !== product) {
+                    p.classList.remove('active');
+                }
+            });
+            
+            // Toggle l'accordéon cliqué
+            product.classList.toggle('active');
+        }
+
+        // ========================================= 
+        // FONCTION SWITCH TAB (Mobile)
+        // ========================================= 
+        function switchTab(button, productId, gamme) {
+            const card = button.closest('.product-card-stacked');
+            const tabs = card.querySelectorAll('.product-tab');
+            const contents = card.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+            button.classList.add('active');
+
+            contents.forEach(content => content.classList.remove('active'));
+
+            const targetContent = document.getElementById(`${productId}-${gamme}`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
