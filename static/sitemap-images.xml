@@ -514,5 +514,14 @@
         <image:caption>Infographie UniversColis présentant le fonctionnement général de l'expédition d'un colis de 10 à 15 kg de la France vers l'Italie, incluant la comparaison des offres, la redirection vers un transporteur partenaire et l'envoi du colis en fonction du mode de livraison sélectionné.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/cn22-cn23-formulaire-2976-usa</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/formulaire-douane-cn22-cn23-usa.webp</image:loc>
+        
+        <image:caption>Comment choisir entre CN22 et CN23 pour vos colis USA ? Découvrez les seuils de 2 kg et 370 € pour une déclaration douanière conforme et un envoi sans blocage.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
