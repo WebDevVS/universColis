@@ -523,5 +523,23 @@
         <image:caption>Comment choisir entre CN22 et CN23 pour vos colis USA ? Découvrez les seuils de 2 kg et 370 € pour une déclaration douanière conforme et un envoi sans blocage.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/facture-commerciale-colis-usa</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/exemple-facture-commerciale-envoi-colis-usa.webp</image:loc>
+        
+        <image:caption>À quoi ressemble une facture commerciale pour expédier un colis aux États-Unis ? Exemple détaillé des informations exigées par les douanes américaines : expéditeur, destinataire, description des marchandises, codes HS, pays d'origine et signature.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/facture-pro-forma-colis-usa</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/exemple-facture-pro-forma-colis-cadeau-france-usa.webp</image:loc>
+        
+        <image:caption>À quoi ressemble une facture pro forma pour expédier un colis cadeau de la France vers les États-Unis ? Exemple détaillé des informations attendues par les douanes américaines : expéditeur, destinataire, motif d'export, description des marchandises, code HS, pays d'origine, valeur douanière et déclaration « no charge ».</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
