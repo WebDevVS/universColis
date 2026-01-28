@@ -1,0 +1,106 @@
+{{!-- ========================================= --}}
+{{!-- CATÉGORIE MATÉRIEL (dynamique)           --}}
+{{!-- Contexte : Regarde produits, va acheter  --}}
+{{!-- puis emballer                             --}}
+{{!-- ========================================= --}}
+
+{{!-- Guides pertinents selon la catégorie --}}
+{{#if (eq materialCategory "boites-et-contenants")}}
+  <div class="col-md-4">
+    <a href="/conseils/antiquites-fragiles" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-vase"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Antiquités</h4>
+        <p class="link-description">Utilise boîtes renforcées haute protection</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/conseils/electronique" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-laptop"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Électronique</h4>
+        <p class="link-description">Boîtes antistatiques recommandées</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{else if (eq materialCategory "materiaux-de-protection")}}
+  <div class="col-md-4">
+    <a href="/conseils/miroir" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-image"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer un Miroir</h4>
+        <p class="link-description">Mousse haute densité essentielle</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/conseils/ceramique-porcelaine" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-mug-hot"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Porcelaine</h4>
+        <p class="link-description">Papier bulle multicouche requis</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{else if (eq materialCategory "adhesifs-et-rubans")}}
+  <div class="col-md-4">
+    <a href="/conseils/livres-magazines" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-book"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Livres</h4>
+        <p class="link-description">Technique ruban renforcé</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/conseils/tableau-oeuvre-art" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-palette"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Tableau</h4>
+        <p class="link-description">Ruban spécial angles requis</p>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{else}}
+  {{!-- Guides par défaut si catégorie non matchée --}}
+  <div class="col-md-4">
+    <a href="/conseils/antiquites-fragiles" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-vase"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Antiquités</h4>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/conseils/electronique" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-laptop"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Emballer Électronique</h4>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{/if}}
+
+{{!-- Lien vers toutes catégories --}}
+<div class="col-md-4">
+  <a href="/mon-materiel" class="link-card">
+    <div class="link-icon"><i class="fa-solid fa-boxes"></i></div>
+    <div class="link-content">
+      <h4 class="link-title">Toutes les Catégories</h4>
+      <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
+</div>

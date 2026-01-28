@@ -1,0 +1,41 @@
+<!-- ===== SECTION À DÉCOUVRIR CONTEXTUELLE ===== -->
+<section class="related-links py-5">
+  <div class="decouvrir-container">
+    
+    <!-- HEADER (Titre contextuel) -->
+    <div class="text-center mb-4">
+      {{#if sectionTitle}}
+        <h3 class="related-title">{{sectionTitle}}</h3>
+      {{else}}
+        {{!-- Titre par défaut selon pageType --}}
+        {{#if (eq pageType "home")}}
+          <h3 class="related-title">Avant de comparer, préparez votre envoi</h3>
+        {{else if (eq pageType "guide-detail")}}
+          <h3 class="related-title">Guides d'emballage similaires</h3>
+        {{else if (eq pageType "materiel-catalog")}}
+          <h3 class="related-title">Découvrez comment utiliser ce matériel</h3>
+        {{else if (eq pageType "question-detail")}}
+          <h3 class="related-title">Ressources utiles</h3>
+        {{else}}
+          <h3 class="related-title">Continuez votre parcours</h3>
+        {{/if}}
+      {{/if}}
+      
+      {{#if sectionSubtitle}}
+        <p class="related-subtitle">{{sectionSubtitle}}</p>
+      {{/if}}
+    </div>
+    
+    <!-- PARTIE 1 : LIENS CONTEXTUELS (3-5 liens selon page) -->
+    <div class="row g-4 mb-5">
+      {{> related-links/_contextual-links}}
+    </div>
+    
+    <!-- PARTIE 2 : NAVIGATION COMPLÈTE (Collapsible, identique partout) -->
+    {{> related-links/_nav-complete}}
+    
+    <!-- PARTIE 3 : CTA PRINCIPAL (Contextuel) -->
+    {{> related-links/_cta-principal}}
+    
+  </div>
+</section>

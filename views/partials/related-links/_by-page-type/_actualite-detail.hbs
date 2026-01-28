@@ -1,0 +1,79 @@
+{{!-- ========================================= --}}
+{{!-- ARTICLE ACTUALITÉ (dynamique)            --}}
+{{!-- Adapte selon tags de l'article            --}}
+{{!-- ========================================= --}}
+
+{{#if (contains articleTags "tarifs")}}
+  <div class="col-md-4">
+    <a href="/#formulaire-comparateur" class="link-card featured">
+      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Calculer Impact Tarifs</h4>
+        <p class="link-description">Prix réel pour vos envois</p>
+        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/questions/tarifs-et-prix" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-euro-sign"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Questions Tarifs</h4>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{else if (contains articleTags "greves")}}
+  <div class="col-md-4">
+    <a href="/questions/delais-de-livraison" class="link-card featured">
+      <div class="link-icon"><i class="fa-solid fa-clock"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Éviter les Retards</h4>
+        <p class="link-description">Solutions concrètes</p>
+        <span class="link-action">Comprendre <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/#formulaire-comparateur" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Alternatives</h4>
+        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+
+{{else}}
+  {{!-- Liens par défaut --}}
+  <div class="col-md-4">
+    <a href="/#formulaire-comparateur" class="link-card featured">
+      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Comparer Transporteurs</h4>
+        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4">
+    <a href="/conseils" class="link-card">
+      <div class="link-icon"><i class="fa-solid fa-box-open"></i></div>
+      <div class="link-content">
+        <h4 class="link-title">Guides</h4>
+        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+      </div>
+    </a>
+  </div>
+{{/if}}
+
+{{!-- 3e lien : Autres actualités --}}
+<div class="col-md-4">
+  <a href="/actualites" class="link-card">
+    <div class="link-icon"><i class="fa-solid fa-newspaper"></i></div>
+    <div class="link-content">
+      <h4 class="link-title">Autres Actualités</h4>
+      <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
+    </div>
+  </a>
+</div>

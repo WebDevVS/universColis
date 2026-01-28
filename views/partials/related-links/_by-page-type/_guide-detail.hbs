@@ -1,0 +1,87 @@
+{{!-- ========================================= --}}
+{{!-- GUIDE INDIVIDUEL (dynamique)             --}}
+{{!-- Contexte : Lit guide, va commander       --}}
+{{!-- matériel PUIS comparer transporteurs      --}}
+{{!-- ========================================= --}}
+
+{{!-- 3 Guides similaires (passés depuis serveur) --}}
+{{#each relatedGuides}}
+<div class="col-md-4">
+  <a href="/conseils/{{this.slug}}" class="link-card">
+    {{#if this.cardImg}}
+    <img src="/static/img/cardImg/{{this.cardImg}}" 
+         alt="{{this.cardImgAlt}}" 
+         class="guide-thumb">
+    {{/if}}
+    <div class="link-content">
+      <h4 class="link-title">{{this.cardTitle}}</h4>
+      {{#if this.readingTime}}
+      <div class="guide-meta">
+        <span><i class="fa-solid fa-clock"></i> {{this.readingTime}} min</span>
+        {{#if this.steps}}
+        <span><i class="fa-solid fa-list-check"></i> {{this.steps.length}} étapes</span>
+        {{/if}}
+      </div>
+      {{/if}}
+      <span class="link-action">
+        Voir le guide <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </div>
+  </a>
+</div>
+{{/each}}
+
+{{!-- Si moins de 3 guides similaires, afficher lien catalogue --}}
+{{#if (lt relatedGuides.length 3)}}
+<div class="col-md-4">
+  <a href="/conseils" class="link-card">
+    <div class="link-icon">
+      <i class="fa-solid fa-books"></i>
+    </div>
+    <div class="link-content">
+      <h4 class="link-title">Tous les Guides</h4>
+      <p class="link-description">
+        Découvrez nos 12 guides d'emballage professionnels.
+      </p>
+      <span class="link-action">
+        Voir le catalogue <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </div>
+  </a>
+</div>
+{{/if}}
+
+{{!-- Matériel + Comparateur (ligne suivante) --}}
+<div class="col-md-6 mt-3">
+  <a href="/mon-materiel{{#if article.materialCategory}}#{{article.materialCategory}}{{/if}}" class="link-card">
+    <div class="link-icon">
+      <i class="fa-solid fa-toolbox"></i>
+    </div>
+    <div class="link-content">
+      <h4 class="link-title">Matériel pour {{article.cardTitle}}</h4>
+      <p class="link-description">
+        Budget/Éco/Premium : 3 alternatives par produit.
+      </p>
+      <span class="link-action">
+        Voir <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </div>
+  </a>
+</div>
+
+<div class="col-md-6 mt-3">
+  <a href="/#formulaire-comparateur" class="link-card featured">
+    <div class="link-icon">
+      <i class="fa-solid fa-truck-fast"></i>
+    </div>
+    <div class="link-content">
+      <h4 class="link-title">Comparer Transporteurs</h4>
+      <p class="link-description">
+        Transporteurs spécialisés objets fragiles.
+      </p>
+      <span class="link-action">
+        Comparer <i class="fa-solid fa-arrow-right"></i>
+      </span>
+    </div>
+  </a>
+</div>

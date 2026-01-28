@@ -1,0 +1,45 @@
+<!-- ===== CTA PRINCIPAL CONTEXTUEL ===== -->
+<div class="text-center mt-5">
+  <div class="main-cta">
+    
+    {{!-- Titre selon pageType --}}
+    {{#if ctaTitle}}
+      <h4 class="cta-title">{{ctaTitle}}</h4>
+    {{else}}
+      {{#if (eq pageType "guide-detail")}}
+        <h4 class="cta-title">Objet emballé ? Trouvez le meilleur transporteur</h4>
+      {{else if (eq pageType "materiel-catalog")}}
+        <h4 class="cta-title">Matériel commandé ? Comparez les transporteurs</h4>
+      {{else if (eq pageType "question-detail")}}
+        <h4 class="cta-title">Question résolue ? Envoyez votre colis</h4>
+      {{else if (eq pageType "suivi")}}
+        <h4 class="cta-title">Nouveau colis à envoyer ?</h4>
+      {{else}}
+        <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
+      {{/if}}
+    {{/if}}
+    
+    {{!-- Subtitle optionnel --}}
+    {{#if ctaSubtitle}}
+      <p class="cta-subtitle">{{ctaSubtitle}}</p>
+    {{/if}}
+    
+    {{!-- Bouton selon pageType --}}
+    {{#if ctaLink}}
+      <a href="{{ctaLink}}" class="btn-cta-primary">
+        {{ctaButtonText}} <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    {{else}}
+      {{#if (eq pageType "guides-catalog")}}
+        <a href="#article-select" class="btn-cta-primary">
+          Choisir mon guide <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      {{else}}
+        <a href="/#formulaire-comparateur" class="btn-cta-primary">
+          Comparer les prix <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      {{/if}}
+    {{/if}}
+    
+  </div>
+</div>
