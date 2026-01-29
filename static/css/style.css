@@ -11285,15 +11285,41 @@ idget-section-title {
   }
 }
 
-/* Désactive visuellement le bouton Track.Global */
-.tracker-btn[data-tracker="trackglobal"] {
+/* Badges "Temporairement indisponible" */
+
+.tracker-btn[data-tracker="postalninja"] {
   opacity: 0.4;
   cursor: not-allowed !important;
-  pointer-events: none; /* Empêche le clic */
+  pointer-events: none;
   position: relative;
 }
 
-/* Badge "Temporairement indisponible" */
+.tracker-btn[data-tracker="postalninja"]::after {
+  content: "Temporairement indisponible";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid #fde68a;
+}
+
+/* 
+Désactive visuellement le bouton Track.Global
+
+.tracker-btn[data-tracker="trackglobal"] {
+  opacity: 0.4;
+  cursor: not-allowed !important;
+  pointer-events: none;
+  position: relative;
+}
+
 .tracker-btn[data-tracker="trackglobal"]::after {
   content: "Temporairement indisponible";
   position: absolute;
@@ -11309,6 +11335,7 @@ idget-section-title {
   white-space: nowrap;
   border: 1px solid #fde68a;
 }
+*/
 
 /* Ajuster l'espacement pour le badge */
 .tracker-buttons {
@@ -11553,3 +11580,9 @@ idget-section-title {
     padding: 0.75rem;
   }
 }
+
+
+
+
+
+
