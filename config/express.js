@@ -66,6 +66,63 @@ module.exports = (app) => {
           .replace(/\n/g, '<br>');
 
         return new hbs.handlebars.SafeString(html);
+      },
+
+      // Format date to dd/mm/yyyy, robust to French month names
+      formatDate: function (input) {
+        try {
+          let d = null;
+          const monthMap = {
+            'jan': 0, 'janvier': 0,
+            'fév': 1, 'fev': 1, 'févr': 1, 'fevrier': 1,
+            'mar': 2, 'mars': 2,
+            'avr': 3, 'avril': 3,
+            'mai': 4,
+            'juin': 5,
+            'juil': 6, 'juillet': 6,
+            'août': 7, 'aout': 7,
+            'sept': 8, 'septembre': 8,
+            'oct': 9, 'octobre': 9,
+            'nov': 10, 'novembre': 10,
+            'déc': 11, 'dec': 11, 'décembre': 11
+          };
+
+          if (!input) return '';
+
+          if (input instanceof Date) {
+            d = input;
+          } else if (typeof input === 'number') {
+            d = new Date(input);
+          } else if (typeof input === 'string') {
+            const iso = input.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (iso) {
+              const y = parseInt(iso[1], 10);
+              const m = parseInt(iso[2], 10) - 1;
+              const day = parseInt(iso[3], 10);
+              d = new Date(Date.UTC(y, m, day));
+            } else {
+              const parts = input.trim().toLowerCase().replace(/\./g, '').split(/\s+/);
+              // e.g. "28 jan 2025"
+              if (parts.length >= 3 && /^\d{1,2}$/.test(parts[0]) && monthMap[parts[1]] !== undefined && /^\d{4}$/.test(parts[2])) {
+                const day = parseInt(parts[0], 10);
+                const m = monthMap[parts[1]];
+                const y = parseInt(parts[2], 10);
+                d = new Date(Date.UTC(y, m, day));
+              } else {
+                const t = Date.parse(input);
+                if (!isNaN(t)) d = new Date(t);
+              }
+            }
+          }
+
+          if (!d || isNaN(d.getTime())) return input;
+          const dd = String(d.getUTCDate()).padStart(2, '0');
+          const mm = String(d.getUTCMonth() + 1).padStart(2, '0');
+          const yyyy = d.getUTCFullYear();
+          return `${dd}/${mm}/${yyyy}`;
+        } catch (e) {
+          return input || '';
+        }
       }
 
     }

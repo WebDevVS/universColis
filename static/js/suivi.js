@@ -594,11 +594,21 @@ function startTracking() {
 
   if (isLoading) return;
 
-  // Nettoie les anciens badges AVANT de démarrer
-  clearAllBadges();
+  // Nettoyage des anciens badges désactivé (recommandation supprimée)
+  // clearAllBadges();
 
   // Supprime aussi l'ancienne explication si elle existe
   document.getElementById('tracker-explanation')?.remove();
+
+  // Masque l'encart "Comment ça marche" dès le lancement du suivi
+  try {
+    const explainer = document.querySelector('.explainer-banner-wrapper');
+    if (explainer) {
+      explainer.style.display = 'none';
+    }
+  } catch (e) {
+    console.warn('Hide explainer failed:', e);
+  }
 
   isLoading = true;
   currentTrackingNumber = trackingNumber;
@@ -613,7 +623,7 @@ function startTracking() {
   trackBtn.appendChild(spinner);
   trackBtn.appendChild(document.createTextNode(' Analyse...'));
 
-  hideRecommendation();
+  // hideRecommendation(); // Section de recommandation désactivée
   hideFeedback();
 
   setTimeout(() => {
@@ -650,11 +660,10 @@ function startTracking() {
         universalTip.classList.remove('hidden');
       }
 
-      // ⚡ Badge seulement si pertinent
-      const detection = detectBestTracker(trackingNumber);
-      if (detection.confidence >= 0.90 && detection.tracker !== '17track') {
-        addSuggestedBadge(detection.tracker);
-      }
+      // Recommandation désactivée: pas d'ajout de badge "Recommandé"
+
+      // Afficher les sections post-suivi (actions rapides, articles, etc.)
+      revealPostTrackingSections();
 
     }, 200);
 
@@ -683,6 +692,12 @@ function showOptimizedWidget(trackerType, trackingNumber) {
   const oldSection = document.getElementById('tracking-section');
   if (oldSection) oldSection.remove();
 
+  // Sécurité: s'assurer que l'encart explicatif est caché quand le widget s'affiche
+  const explainer = document.querySelector('.explainer-banner-wrapper');
+  if (explainer) {
+    explainer.style.display = 'none';
+  }
+
   const section = document.createElement('section');
   section.id = 'tracking-section';
   section.className = 'recommendation-section';
@@ -694,12 +709,11 @@ function showOptimizedWidget(trackerType, trackingNumber) {
   header.className = 'ai-summary-header';
   const title = document.createElement('div');
   title.className = 'ai-summary-title';
-  title.innerHTML = '<h3>📦 Suivi de votre colis</h3><p>Interface de suivi et actions</p>';
+  title.innerHTML = '<h3 class="widget-section-title"><i class="fa-solid fa-route"></i>Résultats du suivi</h3>';
   header.appendChild(title);
   card.appendChild(header);
 
-  const content = document.createElement('div');
-  content.className = 'ai-summary-content';
+  // Supprime le wrapper "ai-summary-content" autour du bloc copie pour gagner de la place
 
   const needsCopyBtn = trackerType === 'track123' || trackerType === 'trackglobal' || trackerType === 'parcelsapp' || trackerType === 'postalninja';
 
@@ -712,8 +726,11 @@ function showOptimizedWidget(trackerType, trackingNumber) {
     copyDiv.id = 'copy-tracking-btn-global';
     copyDiv.innerHTML = `
       <div class="tracking-number-header">
-        <i class="fa-solid fa-clipboard"></i>
-        <strong>Votre numéro de suivi</strong>
+        <i class="fa-solid fa-lightbulb"></i>
+        <strong>Comparez facilement</strong>
+      </div>
+      <div class="tracking-instructions">
+        <p class="instructions-list">Copiez votre numéro ci-dessous, puis collez-le directement dans chaque tracker pour comparer les résultats <i class="fa-solid fa-arrow-down"></i>.</p>
       </div>
       <div class="tracking-number-display">
         <span class="tracking-number-text">${trackingNumber}</span>
@@ -721,16 +738,9 @@ function showOptimizedWidget(trackerType, trackingNumber) {
           <i class="fa-solid fa-copy"></i> Copier
         </button>
       </div>
-      <div class="tracking-instructions">
-        <div class="instructions-title">
-          <i class="fa-solid fa-lightbulb"></i>
-          <strong>Pour comparer :</strong>
-        </div>
-        <p class="instructions-list">Copiez votre numéro avec le bouton "Copier", collez-le dans chaque tracker et cliquez sur leur bouton de recherche <i class="fa-solid fa-arrow-down"></i>.</p>
-      </div>
     `;
-
-    content.appendChild(copyDiv);
+    // Ajoute directement le bloc dans la carte, sans couche supplémentaire
+    card.appendChild(copyDiv);
 
     const copyBtn = copyDiv.querySelector('.copy-tracking-btn');
     copyBtn.addEventListener('click', function () {
@@ -750,7 +760,7 @@ function showOptimizedWidget(trackerType, trackingNumber) {
       });
     });
 
-    card.appendChild(content);
+    // plus de wrapper à ajouter
   }
 
   const widgetContainer = document.createElement('div');
@@ -765,17 +775,17 @@ function showOptimizedWidget(trackerType, trackingNumber) {
     oldTrackingSection.parentNode.removeChild(oldTrackingSection);
   }
 
-// ✅ NOUVEAU CODE : Insère APRÈS .universal-tip
+// ✅ Positionnement: insère le widget AVANT .universal-tip pour l'ordre souhaité
 const universalTip = document.querySelector('.universal-tip');
 if (universalTip && universalTip.parentNode) {
-  universalTip.parentNode.insertBefore(section, universalTip.nextSibling);
+  universalTip.parentNode.insertBefore(section, universalTip);
 } else {
   // Fallback : insère avant manual-selector
   const manualSelector = document.getElementById('manual-selector');
   if (manualSelector && manualSelector.parentNode) {
     manualSelector.parentNode.insertBefore(section, manualSelector);
   } else {
-    (document.querySelector('.tracking-container') || document.body).appendChild(section);
+    (document.querySelector('.tracking-form-container') || document.body).appendChild(section);
   }
 }
 
@@ -823,6 +833,8 @@ if (universalTip && universalTip.parentNode) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
         scrollTrackingDeferred();
+        // Révéler après chargement du widget iframe
+        revealPostTrackingSections();
       };
       iframe.onerror = () => {
         clearTimeout(currentWidgetTimeout);
@@ -855,6 +867,8 @@ if (universalTip && universalTip.parentNode) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
         scrollTrackingDeferred();
+        // Révéler après chargement du widget Track123
+        revealPostTrackingSections();
         clearInterval(interval);
       } else if (waited > 9500) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
@@ -878,6 +892,8 @@ if (universalTip && universalTip.parentNode) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
         if (insideSpinner) insideSpinner.style.display = 'none';
         scrollTrackingDeferred();
+        // Révéler après chargement du widget 17Track
+        revealPostTrackingSections();
         clearInterval(interval);
       } else if (waited > 9500) {
         const insideSpinner = widgetContainer.querySelector('#widget-loading-inside');
@@ -993,42 +1009,14 @@ function showManualSelector() {
 }
 
 // ===== BADGE SUGGÉRÉ INTÉGRÉ DANS LE BOUTON =====
-function addSuggestedBadge(recommendedTracker) {
-  setTimeout(() => {
-    const trackerBtn = document.querySelector(`[data-tracker="${recommendedTracker}"]`);
-    if (!trackerBtn) return;
-
-    // Ajoute la classe
-    trackerBtn.classList.add('recommended');
-
-    // Crée le badge INTÉGRÉ (pas en absolute)
-    if (!trackerBtn.querySelector('.recommended-badge-inline')) {
-      const badge = document.createElement('div');
-      badge.className = 'recommended-badge-inline';
-      badge.innerHTML = '<i class="fa-solid fa-star"></i> Recommandé';
-      trackerBtn.appendChild(badge);
-    }
-  }, 600);
-}
+// function addSuggestedBadge(recommendedTracker) {
+//   // Recommandation désactivée
+// }
 
 // ===== NETTOYAGE DES ANCIENS BADGES =====
-function clearAllBadges() {
-  // Retire toutes les classes "recommended"
-  document.querySelectorAll('.tracker-btn.recommended').forEach(btn => {
-    btn.classList.remove('recommended');
-  });
-
-  // Supprime tous les badges
-  document.querySelectorAll('.recommended-badge-inline').forEach(badge => {
-    badge.remove();
-  });
-
-  // ⚡ NOUVEAU : Cache la phrase (ne la supprime pas)
-  const universalTip = document.querySelector('.universal-tip');
-  if (universalTip) {
-    universalTip.classList.add('hidden');
-  }
-}
+// function clearAllBadges() {
+//   // Recommandation désactivée (plus de badges à nettoyer)
+// }
 
 function setupTrackGlobalResize() {
   window.onmessage = (e) => {
@@ -1186,6 +1174,18 @@ function trackUserAction(action, tracker = null, details = {}) {
   }
 
   localStorage.setItem('trackingAnalytics', JSON.stringify(analytics));
+}
+
+// Affiche les blocs post-tracking une fois le suivi lancé
+function revealPostTrackingSections() {
+  try {
+    document.querySelectorAll('.post-tracking-content.hidden').forEach(el => {
+      el.classList.remove('hidden');
+      el.classList.add('reveal-section');
+    });
+  } catch (e) {
+    console.warn('Post-tracking reveal error:', e);
+  }
 }
 
 function handleTrackingError(error, tracker, trackingNumber) {
@@ -1367,6 +1367,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ✅ Nouveaux boutons dans les cartes du comparatif
+  document.querySelectorAll('.btn-select-tracker').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const tracker = this.dataset.tracker;
+      const trackingInputEl = document.getElementById('trackingNumber');
+
+      // Si pas encore de numéro en cours, démarrer le suivi puis basculer sur le tracker sélectionné
+      if (tracker && (!currentTrackingNumber || currentTrackingNumber.trim() === '')) {
+        if (trackingInputEl && trackingInputEl.value.trim() !== '') {
+          trackUserAction('comparison_select_clicked', tracker);
+          startTracking();
+          setTimeout(() => {
+            switchTracker(tracker);
+          }, 600);
+        }
+      } else if (tracker && currentTrackingNumber) {
+        // Si un suivi est déjà en cours, basculer directement
+        trackUserAction('comparison_manual_switch', tracker);
+        switchTracker(tracker);
+      }
+    });
+  });
+
   document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', function () {
       const answer = this.nextElementSibling;
@@ -1377,10 +1400,11 @@ document.addEventListener('DOMContentLoaded', function () {
         opening: !isOpen
       });
 
-      document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-      document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
-
-      if (!isOpen) {
+      // Toggle only the clicked FAQ item; allow multiple open
+      if (isOpen) {
+        answer.style.display = 'none';
+        this.classList.remove('open');
+      } else {
         answer.style.display = 'block';
         this.classList.add('open');
       }
@@ -1497,3 +1521,5 @@ if (typeof window !== 'undefined') {
   };
 
 }
+
+

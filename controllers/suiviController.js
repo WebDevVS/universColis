@@ -1,29 +1,34 @@
 const suiviController = require('express').Router()
+const actualitesService = require('../services/actualitesService')
 
-suiviController.get('/', (req, res) => {
+suiviController.get('/', async (req, res) => {
+    const actualites = await actualitesService.getLatest(3);
     res.render('suivi', {
         title: 'Suivre mon colis',
         page: 'suivi',
         bodyClass: 'suivi-page',
         imageClass: 'img-suivi',
+        actualites,
 
         // SEO dynamique 
         seoTitle: "Suivi de colis universel – 5 outils gratuits et fiables en France et à l’international",
         seoDescription: "Suivez vos colis en France et à l’international avec UniversColis : 5 outils gratuits et fiables pour identifier automatiquement votre transporteur, comme Colissimo, Chronopost, DHL, UPS ou Mondial Relay.",
         seoKeywords: [
-            "suivi colis",
-            "suivi universel",
-            "suivi colis universel",
-            "suivi colis France",
-            "suivi colis international",
-            "outil suivi colis",
-            "multi-transporteurs",
-            "numéro de suivi",
-            "tracking colis",
-            "comparateur suivi colis",
-            "suivi multi-transporteurs gratuit",
-            "détection automatique transporteur",
-            "suivre un colis sans connaître le transporteur"
+            "suivi colis gratuit",
+            "tracker colis international",
+            "suivi colissimo",
+            "suivi chronopost",
+            "tracking colis temps réel",
+            "suivre colis sans transporteur",
+            "17track france",
+            "parcelsapp gratuit",
+            "suivi colis chine",
+            "numero suivi universel",
+            "tracker multi-transporteurs",
+            "suivi colis aliexpress",
+            "postal ninja france",
+            "track123 suivi",
+            "où est mon colis"
         ],
         canonicalUrl: "https://www.universcolis.fr/suivi",
         robots: "index, follow",
@@ -65,7 +70,7 @@ suiviController.get('/', (req, res) => {
                     "url": "https://www.universcolis.fr/",
                     "logo": {
                         "@type": "ImageObject",
-                        "url": "https://www.universcolis.fr/static/img/logo.png"
+                        "url": "https://www.universcolis.fr/static/img/logo.webp"
                     }
                 },
                 {
@@ -95,13 +100,31 @@ suiviController.get('/', (req, res) => {
                 {
                     "@type": "HowTo",
                     "@id": "https://www.universcolis.fr/suivi#howto",
-                    "name": "Comment utiliser le suivi UniversColis ?",
-                    "description": "Guide étape par étape pour suivre un colis sur UniversColis.",
+                    "name": "Comment suivre un colis sur UniversColis ?",
+                    "description": "Guide étape par étape pour tracker n'importe quel colis en 3 clics",
                     "inLanguage": "fr-FR",
                     "step": [
-                        { "@type": "HowToStep", "text": "Entrez votre numéro de suivi dans le champ prévu." },
-                        { "@type": "HowToStep", "text": "Cliquez sur « Suivre »." },
-                        { "@type": "HowToStep", "text": "Comparez les résultats des différents outils proposés." }
+                        {
+                            "@type": "HowToStep",
+                            "position": 1,
+                            "name": "Entrer le numéro",
+                            "text": "Entrez votre numéro de suivi dans le champ prévu (Ex: AB123456789FR)",
+                            "url": "https://www.universcolis.fr/suivi#tracking-form"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 2,
+                            "name": "Lancer la recherche",
+                            "text": "Cliquez sur « Suivre » pour lancer la détection automatique du transporteur",
+                            "url": "https://www.universcolis.fr/suivi#tracking-form"
+                        },
+                        {
+                            "@type": "HowToStep",
+                            "position": 3,
+                            "name": "Comparer les résultats",
+                            "text": "Comparez les résultats des 5 trackers disponibles pour obtenir l'information la plus complète",
+                            "url": "https://www.universcolis.fr/suivi#manual-selector"
+                        }
                     ]
                 },
                 {
@@ -110,34 +133,66 @@ suiviController.get('/', (req, res) => {
                     "mainEntity": [
                         {
                             "@type": "Question",
-                            "name": "Le service fonctionne-t-il en France et à l’international ?",
+                            "name": "Est-ce que le suivi de colis est vraiment gratuit ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Oui. UniversColis centralise le suivi des colis en France et à l’étranger, avec compatibilité Colissimo, Chronopost, DHL, UPS, Mondial Relay et d’autres transporteurs."
+                                "text": "Oui, 100% gratuit. UniversColis ne demande ni inscription, ni frais cachés. Vous pouvez suivre autant de colis que nécessaire sans limitation."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Dois-je créer un compte pour utiliser l’outil ?",
+                            "name": "Quels transporteurs sont supportés ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Non, aucun compte n’est nécessaire. Entrez simplement votre numéro de suivi pour accéder aux résultats."
+                                "text": "Plus de 2400 transporteurs mondiaux incluant Colissimo, Chronopost, DHL, UPS, FedEx, Mondial Relay, La Poste, TNT, GLS, Colis Privé, Cainiao, China Post, USPS, Royal Mail, et bien d'autres."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Mes informations sont-elles enregistrées ?",
+                            "name": "Comment fonctionne la détection automatique du transporteur ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Non, le numéro de suivi est transmis uniquement au service de tracking sélectionné. Rien n’est stocké sur UniversColis."
+                                "text": "Les 5 trackers analysent le format de votre numéro de suivi (longueur, préfixes, structure) pour identifier automatiquement le transporteur. Si un tracker ne trouve pas, essayez-en un autre."
                             }
                         },
                         {
                             "@type": "Question",
-                            "name": "Pourquoi proposer plusieurs outils de suivi (5) ?",
+                            "name": "Mes données de suivi sont-elles stockées ?",
                             "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Chaque outil a ses forces : détection large des transporteurs, rapidité, données officielles. UniversColis permet de choisir l’outil le plus efficace pour votre colis."
+                                "text": "Non. Le numéro de suivi est transmis directement aux services de tracking tiers. Aucune donnée n'est conservée sur les serveurs UniversColis."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Pourquoi utiliser 5 trackers différents ?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Chaque tracker a ses forces : 17Track excelle en couverture internationale, Track.Global pour l'Asie, ParcelsApp pour les détails, Postal Ninja pour l'Europe francophone, Track123 pour la Chine. Comparer permet d'obtenir l'info la plus complète."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Que faire si je ne connais pas mon transporteur ?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "C'est justement l'intérêt des trackers universels. Entrez simplement votre numéro : les outils détecteront automatiquement le transporteur en analysant le format du code."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Mon colis vient de Chine (AliExpress), quel tracker utiliser ?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Track123 et Track.Global sont les plus performants pour les colis chinois (Cainiao, Yanwen, SF Express). 17Track fonctionne également très bien pour ce type d'envoi."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Pourquoi mon numéro est 'introuvable' alors que j'ai reçu l'avis d'expédition ?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Le numéro est créé lors de l'impression de l'étiquette, mais le suivi ne s'active qu'après le premier scan physique (prise en charge). Ce délai peut aller de 2 à 24 heures."
                             }
                         }
                     ]
@@ -186,6 +241,33 @@ suiviController.get('/', (req, res) => {
                     "url": "https://www.track123.com/",
                     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
                     "description": "Optimisé pour expéditions depuis la Chine (AliExpress, Cainiao, Shein)."
+                },
+                {
+                    "@type": "ItemList",
+                    "name": "Articles recommandés - Suivi de colis",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Questions sur le suivi",
+                            "description": "Guides pratiques pour retrouver et suivre vos colis",
+                            "url": "https://www.universcolis.fr/questions/suivi"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Colis en retard",
+                            "description": "Solutions et recours pour retards de livraison",
+                            "url": "https://www.universcolis.fr/questions/livraison"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "International & Douane",
+                            "description": "Tout sur les frais de douane et envois internationaux",
+                            "url": "https://www.universcolis.fr/questions/international"
+                        }
+                    ]
                 }
             ]
         })
