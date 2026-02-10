@@ -550,5 +550,14 @@
         <image:caption>Peut-on envoyer du vin aux États-Unis en 2026 ? Cette infographie compare clairement la situation entre particuliers et professionnels : côté particulier, l'envoi de vin par colis est refusé par les réseaux postaux et la majorité des transporteurs ; côté professionnel, l'expédition reste possible sous conditions strictes, avec licences adaptées, importateur agréé et respect des règles fédérales et locales américaines.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/ddp-vs-dap-incoterm-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/atteindre-ddp-en-5-etapes-infographie-ecommerce.webp</image:loc>
+        
+        <image:caption>Comment déployer un DDP fiable sans se mettre en risque sur la marge et la conformité ? Cette infographie synthétise un plan en 5 étapes : identifier les pays prioritaires, fiabiliser les données produit (description, valeur, code HS, origine), sélectionner une option DDP réellement "sans friction", définir les conditions tarifaires via une logique de landed cost, puis préparer le support client et la gestion des retours. Elle sert de checklist visuelle pour structurer une mise en œuvre DDP progressive en e-commerce international.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>

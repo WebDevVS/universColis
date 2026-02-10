@@ -23,10 +23,12 @@ const questionShema = new Schema({
         highlight: String,
         hasLinks: { type: Boolean, default: false },
         isTable: { type: Boolean, default: false },
+        textBeforeTable: { type: Boolean, default: false },
         table: {
             headers: [String],
             rows: [[String]]
         },
+        imageBefore: { type: Boolean, default: false },
         questionImg: String,
         questionImgAlt: String,
         questionImgFigcaption: String,

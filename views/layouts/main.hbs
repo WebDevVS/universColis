@@ -57,6 +57,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+
 
     <!-- Google Fonts optimisé -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -419,5 +422,13 @@
     {{/if}}
 
 </body>
+
+<!-- GLightbox JS + init -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
+{{#if isProd}}
+<script src="/static/js/glightbox-init.min.js"></script>
+{{else}}
+<script src="/static/js/glightbox-init.js"></script>
+{{/if}}
 
 </html>

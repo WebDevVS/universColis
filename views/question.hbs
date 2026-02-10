@@ -73,10 +73,14 @@
             {{#each paragraphs}}
             {{#if this.pTitle}}<h3 id="section-{{@index}}">{{this.pTitle}}</h3>{{/if}}
             {{#if this.pSubtitle}}<p><strong class="subtitle-strong">{{this.pSubtitle}}</strong></p>{{/if}}
+            {{!-- Image AVANT le contenu si demandé --}}
             {{#if this.questionImg}}
+            {{#if this.imageBefore}}
             <figure class="etape-image">
-                <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
-                    width="768" height="768" class="img-fluid rounded">
+                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox" data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
+                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
+                        width="768" height="768" class="img-fluid rounded">
+                </a>
                 {{#if this.questionImgFigcaption}}
                 <figcaption class="hover-caption">
                     {{this.questionImgFigcaption}}
@@ -84,7 +88,20 @@
                 {{/if}}
             </figure>
             {{/if}}
+            {{/if}}
             {{#if this.isTable}}
+            {{!-- Texte AVANT le tableau si demandé --}}
+            {{#if this.text}}
+            {{#if this.textBeforeTable}}
+            <p>
+                {{#if this.hasLinks}}
+                {{{parseMarkdownLinks this.text}}}
+                {{else}}
+                {{{this.text}}}
+                {{/if}}
+            </p>
+            {{/if}}
+            {{/if}}
             <div class="article-table-wrapper">
                 <table class="article-table">
                     <thead>
@@ -115,6 +132,18 @@
                     </tbody>
                 </table>
             </div>
+            {{!-- Texte APRÈS le tableau si non demandé avant --}}
+            {{#if this.text}}
+            {{#unless this.textBeforeTable}}
+            <p>
+                {{#if this.hasLinks}}
+                {{{parseMarkdownLinks this.text}}}
+                {{else}}
+                {{{this.text}}}
+                {{/if}}
+            </p>
+            {{/unless}}
+            {{/if}}
             {{else}}
             {{#if this.text}}
             <p>
@@ -127,7 +156,7 @@
             {{/if}}
             {{#if this.highlight}}
             <div class="highlight-box-question">
-                <p><strong><i class="fa-solid fa-info-circle me-2"></i>À savoir :</strong>
+                <p>
                     {{#if this.hasLinks}}
                     {{{parseMarkdownLinks this.highlight}}}
                     {{else}}
@@ -162,6 +191,23 @@
                 {{/each}}
             </ol>
             {{/if}}
+            {{/if}}
+            
+            {{!-- Image APRÈS le contenu (par défaut) --}}
+            {{#if this.questionImg}}
+            {{#unless this.imageBefore}}
+            <figure class="etape-image">
+                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox" data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
+                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
+                        width="768" height="768" class="img-fluid rounded">
+                </a>
+                {{#if this.questionImgFigcaption}}
+                <figcaption class="hover-caption">
+                    {{this.questionImgFigcaption}}
+                </figcaption>
+                {{/if}}
+            </figure>
+            {{/unless}}
             {{/if}}
             {{/each}}
         </div>

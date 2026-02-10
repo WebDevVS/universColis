@@ -82,8 +82,10 @@
       <!-- Image : ordre 2 sur mobile, 2 sur desktop -->
       <div class="col-md-6 order-md-2 order-2 d-flex justify-content-center">
         <figure class="etape-image">
-          <img src="/static/img/articleImg/{{this.image}}" loading="lazy" alt="{{this.imageAlt}}" width="768"
-            height="768" class="img-fluid rounded">
+          <a href="/static/img/articleImg/{{this.image}}" class="glightbox" data-gallery="article-gallery" data-title="{{this.imageAlt}}">
+            <img src="/static/img/articleImg/{{this.image}}" loading="lazy" alt="{{this.imageAlt}}" width="768"
+              height="768" class="img-fluid rounded">
+          </a>
           {{#if this.figcaption}}
           <figcaption class="hover-caption">
             {{this.figcaption}}

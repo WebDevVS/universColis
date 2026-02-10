@@ -3069,53 +3069,19 @@ div .input-group-text {
 }
 
 /* ===== BADGES TRANSPORTEURS ===== */
-.transporteurs-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-top: 1rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+.carriers-list {
+  text-align: center;
 }
 
-.badge-transporteur {
-  background: rgba(130, 105, 164, 0.08);
-  color: var(--text-color);
-  border: 1px solid rgba(130, 105, 164, 0.15);
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.85rem;
+.carriers-intro {
+  font-size: 0.9rem;
+  color: rgba(51, 51, 51, 0.7);
   font-weight: 500;
-  cursor: default;
 }
 
-@media (max-width: 768px) {
-  .transporteurs-list {
-    gap: 0.4rem;
-  }
-  
-  .badge-transporteur {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.7rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .tracking-intro-optimized {
-    padding: 1rem 0.5rem 0.5rem;
-  }
-}
-
-/* Badge simple et élégant */
-.badge-more {
-  background: rgba(130, 105, 164, 0.1) !important;
-  color: var(--primary-color) !important;
-  font-weight: 600;
-  border: 2px solid rgba(130, 105, 164, 0.25) !important;
-  font-style: italic; /* Léger italique pour différencier */
-  transition: all 0.3s ease;
+.carriers-intro i {
+  color: var(--accent-color);
+  margin-right: 0.5rem;
 }
 
 /* ===== CONTAINER DE TRACKING ===== */
@@ -4503,6 +4469,7 @@ div .input-group-text {
 .questions-header {
   text-align: center;
   margin-bottom: 3rem;
+  padding: 0 1rem;
 }
 
 .questions-main-title {
@@ -4802,8 +4769,13 @@ div .input-group-text {
 @media (max-width: 576px) {
   .questions-main-title {
     flex-direction: row;
-    align-items: center;
+    align-items: baseline; /* align icon with first text line */
     gap: 0.5rem;
+  }
+  .questions-main-title i {
+    align-self: baseline; /* ensure icon uses the same baseline */
+    font-size: 1.1em; /* slightly closer to text size on mobile */
+    line-height: 1; /* avoid extra vertical space */
   }
 }
 
@@ -10191,9 +10163,10 @@ footer {
 }
 
 .toc-nav.show {
-  max-height: 500px;
+  max-height: none;
   opacity: 1;
   margin-top: 1rem;
+  overflow: visible;
 }
 
 .toc-item {
@@ -10360,7 +10333,7 @@ section[id] {
 
 /* Highlight Box */
 .highlight-box-question {
-  background: rgba(130, 105, 164, 0.1);
+  background: rgba(130, 105, 164, 0.2);
   border-left: 4px solid var(--accent-color);
   border-radius: var(--border-radius-small);
   padding: 1.5rem;
@@ -12049,3 +12022,174 @@ Désactive visuellement le bouton Track.Global
   }
 }
 
+
+
+/* ===== GLIGHTBOX CUSTOM - UNIVERSCOLIS THEME ===== */
+
+/* Override couleurs par défaut avec ta palette */
+.glightbox-container {
+  --primary-color: #8269A4; /* Ton violet */
+  --accent-color: #FA7E75;  /* Ton coral */
+}
+
+/* Background overlay plus dans ton style */
+.goverlay {
+  background: rgba(130, 105, 164, 0.95) !important; /* Violet transparent */
+}
+
+/* Bouton close personnalisé */
+.gclose {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color)) !important;
+  color: white !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 15px rgba(130, 105, 164, 0.4) !important;
+  transition: all 0.3s ease !important;
+}
+
+.gclose:hover {
+  transform: scale(1.1) rotate(90deg) !important;
+  box-shadow: 0 6px 20px rgba(130, 105, 164, 0.6) !important;
+}
+
+/* Flèches navigation personnalisées */
+.gnext,
+.gprev {
+  background: rgba(130, 105, 164, 0.9) !important;
+  color: white !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.gnext:hover,
+.gprev:hover {
+  background: var(--accent-color) !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(250, 126, 117, 0.5) !important;
+}
+
+/* Compteur d'images stylisé */
+.gslide-media .gslide-description {
+  background: linear-gradient(135deg, 
+    rgba(130, 105, 164, 0.95), 
+    rgba(250, 126, 117, 0.95)
+  ) !important;
+  padding: 1rem 1.5rem !important;
+  border-radius: 12px !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Loader personnalisé */
+.gloader {
+  border-color: var(--primary-color) transparent transparent transparent !important;
+}
+
+/* Image zoom cursor */
+.gslide-image img {
+  cursor: zoom-in !important;
+}
+
+.zoomed .gslide-image img {
+  cursor: zoom-out !important;
+}
+
+/* Indicateur "Cliquer pour agrandir" sur hover dans article */
+.article-content a.glightbox {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.article-content a.glightbox img {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.article-content a.glightbox:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(130, 105, 164, 0.3);
+}
+
+/* Badge "Cliquer pour agrandir" */
+.article-content a.glightbox::after {
+  content: '\f00e'; /* FontAwesome search-plus */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(130, 105, 164, 0.4);
+}
+
+.article-content a.glightbox:hover::after {
+  opacity: 1;
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+  .gnext,
+  .gprev {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .gclose {
+    width: 36px !important;
+    height: 36px !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+  
+  /* Badge plus discret sur mobile */
+  .article-content a.glightbox::after {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    bottom: 8px;
+    right: 8px;
+  }
+}
+
+/* Animation entrée/sortie personnalisée */
+.gslide-media {
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Style pour les descriptions sous images */
+.gslide-description {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  color: white;
+}
