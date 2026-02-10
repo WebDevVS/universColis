@@ -1,30 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function bindCookiePrefButton() {
-    const btn = document.getElementById("open-cookie-preferences");
-    if (
-      btn &&
-      window.silktideCookieBannerManager &&
-      typeof window.silktideCookieBannerManager.showPreferences === "function"
-    ) {
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.silktideCookieBannerManager.showPreferences();
+(function(){
+  function openPreferences(e){
+    if (e) e.preventDefault();
+    if (window.silktideCookieBannerManager && typeof window.silktideCookieBannerManager.showPreferences === 'function'){
+      window.silktideCookieBannerManager.showPreferences();
+    } else {
+      // If widget not ready yet, open once it loads
+      document.addEventListener('silktideCookieBannerLoaded', function once(){
+        document.removeEventListener('silktideCookieBannerLoaded', once);
+        if (window.silktideCookieBannerManager && typeof window.silktideCookieBannerManager.showPreferences === 'function'){
+          window.silktideCookieBannerManager.showPreferences();
+        }
       });
     }
   }
 
-  if (
-    window.silktideCookieBannerManager &&
-    typeof window.silktideCookieBannerManager.showPreferences === "function"
-  ) {
-    bindCookiePrefButton();
-  } else {
-    document.addEventListener("silktideCookieBannerLoaded", bindCookiePrefButton);
+  function bindDelegation(){
+    if (document.__uc_cookie_pref_bound) return;
+    document.__uc_cookie_pref_bound = true;
+    document.addEventListener('click', function(ev){
+      const trigger = ev.target && ev.target.closest('#open-cookie-preferences, .open-cookie-preferences');
+      if (trigger) openPreferences(ev);
+    });
   }
-  // When the silktide banner/modal is created it sometimes renders a H1 for the
-  // preferences title. That can create a second H1 on pages and trigger SEO warnings
-  // even when the banner is visually hidden. Replace any H1 inside the banner/modal
-  // with H2 after the widget is loaded.
+
+  function bindDirect(){
+    const nodes = document.querySelectorAll('#open-cookie-preferences, .open-cookie-preferences');
+    nodes.forEach(node => {
+      if (node.__uc_pref_bound) return;
+      node.__uc_pref_bound = true;
+      node.addEventListener('click', openPreferences);
+    });
+  }
+
   function normalizeSilktideHeadings() {
     const containers = [document.getElementById('silktide-modal'), document.getElementById('silktide-banner')];
     containers.forEach(c => {
@@ -32,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const h1s = c.querySelectorAll('h1');
       h1s.forEach(h1 => {
         const h2 = document.createElement('h2');
-        // copy attributes and content
         h2.innerHTML = h1.innerHTML;
         for (let i = 0; i < h1.attributes.length; i++) {
           const attr = h1.attributes[i];
@@ -43,10 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Run once when the banner is loaded
-  if (window.silktideCookieBannerManager && document.getElementById('silktide-wrapper')) {
-    normalizeSilktideHeadings();
-  } else {
-    document.addEventListener('silktideCookieBannerLoaded', normalizeSilktideHeadings);
+  function init(){
+    bindDelegation();
+    bindDirect();
+    if (window.silktideCookieBannerManager && document.getElementById('silktide-wrapper')) {
+      normalizeSilktideHeadings();
+    } else {
+      document.addEventListener('silktideCookieBannerLoaded', normalizeSilktideHeadings);
+    }
   }
-});
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

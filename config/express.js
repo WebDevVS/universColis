@@ -265,6 +265,9 @@ module.exports = (app) => {
           "https://www.track123.com",
           "https://cdn.track123.com",
           "https://www.17track.net",
+          // Google Ads traffic quality endpoint
+          "https://*.adtrafficquality.google",
+          "https://adtrafficquality.google",
           // Ezoic
           "https://*.ezoic.net",
           "https://go.ezodn.com",
