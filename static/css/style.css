@@ -8464,18 +8464,41 @@ footer {
   margin-bottom: 1rem;
   max-width: 250px;
   width: 40vw;
-  /* Garde les styles existants */
   border-radius: 15px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Force le comportement du lien GLightbox UNIQUEMENT dans les articles */
+.article-content a.glightbox.article-image-link {
+  position: relative;
+  display: inline;
+  cursor: zoom-in;
+  float: right;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  max-width: 250px;
+  width: 40vw;
+}
+
+.article-content a.glightbox.article-image-link img.article-image-right {
+  float: none;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
 @media (max-width: 768px) {
+  .article-content a.glightbox.article-image-link,
   .article-image-right {
     float: none;
     display: block;
     margin: 1.5rem auto;
     width: 90%;
     max-width: 250px;
+  }
+  
+  .article-content a.glightbox.article-image-link img.article-image-right {
+    width: 100%;
   }
 }
 
