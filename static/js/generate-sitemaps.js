@@ -20,6 +20,7 @@ async function getStaticPages() {
     { loc: '/suivi', priority: 1.0 },
     { loc: '/conseils', priority: 1.0 },
     { loc: '/actualites', priority: 0.8 },
+    { loc: '/questions', priority: 0.9 },
     { loc: '/mon-materiel', priority: 0.6 },
     { loc: '/comment-ca-marche', priority: 0.4 },
     { loc: '/qui-sommes-nous', priority: 0.4 },
@@ -29,7 +30,7 @@ async function getStaticPages() {
 }
 
 async function getArticles() {
-  const articles = await Article.find({}).select('slug publishedDate modifiedDate ogImage ogDescription').lean();
+  const articles = await Article.find({}).select('slug publishedDate modifiedDate ogImage ogDescription title seoTitle ').lean();
   return articles.map(article => {
     let lastmod = undefined;
     if (article.modifiedDate) {
@@ -44,13 +45,14 @@ async function getArticles() {
       priority: 0.9,
       lastmod,
       ogImage: article.ogImage || null,
-      ogDescription: article.ogDescription || ''
+      ogDescription: article.ogDescription || '',
+      title: article.title || article.seoTitle || article.slug.replace(/-/g, ' ')
     };
   });
 }
 
 async function getActualites() {
-  const actualites = await Actualite.find({}).select('slug publishedDate modifiedDate ogImage actualiteImgName actualiteImgDescription').lean();
+  const actualites = await Actualite.find({}).select('slug publishedDate modifiedDate ogImage actualiteImgName actualiteImgDescription title seoTitle').lean();
   return actualites.map(actu => {
     let lastmod = undefined;
     if (actu.modifiedDate) {
@@ -66,7 +68,8 @@ async function getActualites() {
       lastmod,
       ogImage: actu.ogImage || null,
       actualiteImgName: actu.actualiteImgName || '',
-      actualiteImgDescription: actu.actualiteImgDescription || ''
+      actualiteImgDescription: actu.actualiteImgDescription || '',
+      title: actu.title || actu.seoTitle || actu.slug.replace(/-/g, ' ')
     };
   });
 }
@@ -169,6 +172,9 @@ function generateSitemapIndex() {
     <loc>${BASE_URL}/sitemap-articles.xml</loc>
   </sitemap>
   <sitemap>
+    <loc>${BASE_URL}/sitemap-questions.xml</loc>
+  </sitemap>
+  <sitemap>
     <loc>${BASE_URL}/sitemap-images.xml</loc>
   </sitemap>
 </sitemapindex>`;
@@ -239,16 +245,13 @@ function generateAtomFeed(articles) {
   <id>${BASE_URL}/</id>
   ${articles.map(article => `
     <entry>
-      <title>${article.loc.startsWith('/conseils/')
-      ? article.loc.replace('/conseils/', '').replace(/-/g, ' ')
-      : article.loc.replace('/actualites/', '').replace(/-/g, ' ')}
-      </title>
+      <title>${article.title || article.loc.replace(/^\/[^/]+\//, '').replace(/-/g, ' ')}</title>
       <link href="${BASE_URL}${article.loc}"/>
       <id>${BASE_URL}${article.loc}</id>
       ${article.lastmod ? `<updated>${article.lastmod}</updated>` : ''}
-      <summary>${article.loc.startsWith('/conseils/')
-      ? 'Un nouveau guide est disponible.'
-      : 'Une nouvelle actualité est disponible.'}
+      <summary>${article.summary || (article.loc.startsWith('/conseils/') 
+        ? 'Un nouveau guide est disponible.' 
+        : 'Une nouvelle actualité est disponible.')}
       </summary>
     </entry>
   `).join('')}
