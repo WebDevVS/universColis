@@ -183,9 +183,11 @@ module.exports = (app) => {
           "https://www.googletagmanager.com",
           "https://www.google-analytics.com",
           "https://cdn.jsdelivr.net",
+          "https://*.jsdelivr.net",
           "https://www.17track.net",
           "https://cdn.track123.com",
           "https://www.track123.com",
+          "https://www.track123.com/widget/",
           "https://www.universcolis.fr",
           // Ezoic
           "https://www.ezojs.com",
@@ -203,7 +205,7 @@ module.exports = (app) => {
           // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
           "https://www.clarity.ms",
           "https://*.clarity.ms",
-               // Google Ads traffic quality endpoint
+          // Google Ads traffic quality endpoint
           "https://*.adtrafficquality.google",
           "https://adtrafficquality.google"
         ],
@@ -271,6 +273,8 @@ module.exports = (app) => {
           // Google Ads traffic quality endpoint
           "https://*.adtrafficquality.google",
           "https://adtrafficquality.google",
+          "https://ep1.adtrafficquality.google",
+          "https://ep2.adtrafficquality.google",
           // Ezoic
           "https://*.ezoic.net",
           "https://go.ezodn.com",
