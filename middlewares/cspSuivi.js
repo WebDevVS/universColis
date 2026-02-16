@@ -119,7 +119,11 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.googlesyndication.com",
       "https://*.doubleclick.net",
       "https://googleads.g.doubleclick.net",
-      "https://tpc.googlesyndication.com"
+      "https://tpc.googlesyndication.com",
+      // Google Ads traffic quality endpoint (ajout explicite)
+      "https://*.adtrafficquality.google",
+      "https://ep1.adtrafficquality.google",
+      "https://ep2.adtrafficquality.google"
     ],
     objectSrc: ["'none'"],
     baseUri: ["'self'"]
