@@ -7,6 +7,8 @@ module.exports = helmet.contentSecurityPolicy({
       "'self'",
       "https://www.googletagmanager.com",
       "https://www.google-analytics.com",
+      "https://cdn.jsdelivr.net", // Autorise glightbox et autres scripts CDN
+      "https://*.jsdelivr.net",
       "https://www.17track.net",
       "https://cdn.track123.com",
       "https://www.track123.com",
@@ -26,6 +28,9 @@ module.exports = helmet.contentSecurityPolicy({
       // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
       "https://www.clarity.ms",
       "https://*.clarity.ms",
+      // Google Ads traffic quality endpoint
+      "https://*.adtrafficquality.google",
+      "https://adtrafficquality.google",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
@@ -93,7 +98,10 @@ module.exports = helmet.contentSecurityPolicy({
       // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
       "https://www.clarity.ms",
       "https://*.clarity.ms",
-      "https://c.clarity.ms"
+      "https://c.clarity.ms",
+      // Autorise endpoint Google Ads traffic quality
+      "https://ep1.adtrafficquality.google",
+      "https://ep2.adtrafficquality.google"
     ],
     frameSrc: [
       "'self'",
