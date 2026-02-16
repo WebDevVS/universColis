@@ -311,7 +311,11 @@ module.exports = (app) => {
           "https://*.googlesyndication.com",
           "https://*.doubleclick.net",
           "https://googleads.g.doubleclick.net",
-          "https://tpc.googlesyndication.com"
+          "https://tpc.googlesyndication.com",
+          // Google Ads Traffic Quality - IFRAMES
+          "https://*.adtrafficquality.google",
+          "https://ep1.adtrafficquality.google",
+          "https://ep2.adtrafficquality.google"
         ],
 
         // Empêche les plugins type Flash/Java
