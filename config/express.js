@@ -203,6 +203,9 @@ module.exports = (app) => {
           // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
           "https://www.clarity.ms",
           "https://*.clarity.ms",
+               // Google Ads traffic quality endpoint
+          "https://*.adtrafficquality.google",
+          "https://adtrafficquality.google"
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
