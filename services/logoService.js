@@ -24,9 +24,9 @@ const carrierLogos = {
    // -------------------------------------------------------------------------
     // LOGOS CDN - Wikipedia (testés et fonctionnels)
     // -------------------------------------------------------------------------
-    "FedEx": "/static/img/logos/fedex.png",
-    "GLS": "/static/img/logos/gls.png",
-    "DPD": "/static/img/logos/dpd.png",
+    "FedEx": "/static/img/logos/fedex.webp",
+    "GLS": "/static/img/logos/gls.webp",
+    "DPD": "/static/img/logos/dpd.webp",
 
 };
 

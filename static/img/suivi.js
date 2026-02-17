@@ -16,11 +16,11 @@ const trackerWidgets = {
 };
 
 const trackerLogos = {
-  '17track': '../static/img/trackers/17Track.jpg',
-  'trackglobal': '../static/img/trackers/TrackGlobal.jpg',
-  'parcelsapp': '../static/img/trackers/Parcelsapp.jpg',
-  'postalninja': '../static/img/trackers/PostalNinja.jpg',
-  'track123': '../static/img/trackers/Track123.jpg' 
+  '17track': '../static/img/trackers/17Track.webp',
+  'trackglobal': '../static/img/trackers/TrackGlobal.webp',
+  'parcelsapp': '../static/img/trackers/Parcelsapp.webp',
+  'postalninja': '../static/img/trackers/PostalNinja.webp',
+  'track123': '../static/img/trackers/Track123.webp' 
 };
 
 function doTrack() {

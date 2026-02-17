@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // ===== CONFIGURATION (ORIGINAL) =====
 const trackerLogoMap = {
-  '17track': '/static/img/trackers/17Track.jpg',
-  'trackglobal': '/static/img/trackers/TrackGlobal.jpg',
-  'parcelsapp': '/static/img/trackers/Parcelsapp.jpg',
-  'postalninja': '/static/img/trackers/PostalNinja.png',
-  'track123': '/static/img/trackers/Track123.jpg'
+  '17track': '/static/img/trackers/17Track.webp',
+  'trackglobal': '/static/img/trackers/TrackGlobal.webp',
+  'parcelsapp': '/static/img/trackers/Parcelsapp.webp',
+  'postalninja': '/static/img/trackers/PostalNinja.webp',
+  'track123': '/static/img/trackers/Track123.webp'
 };
 
 const styleHideDescription = document.createElement('style');
