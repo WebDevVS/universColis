@@ -267,15 +267,34 @@ async function main() {
   const articles = await getArticles();
   const actualites = await getActualites(); // ← Ajoute cette ligne
   const questions = await getQuestions();
+
+  // Pagination pour les actualités
+  const pageSize = 10; // Nombre d'actualités par page
+  const totalActualites = actualites.length;
+  const totalPages = Math.ceil(totalActualites / pageSize);
+
+  // Générer les URLs paginées pour /actualites?page=2, 3, ...
+  const paginatedActualitesUrls = [];
+  for (let i = 2; i <= totalPages; i++) {
+    paginatedActualitesUrls.push({
+      loc: `/actualites?page=${i}`,
+      priority: 0.8
+    });
+  }
+
   const allArticles = [...articles, ...actualites];
 
   // Stocker la liste des questions pour getImages
   global.questionsList = questions;
   const images = await getImages(pages, allArticles);
 
+
+  // Ajout des URLs paginées dans le sitemap-articles.xml
+  const allArticlesAndPages = [...allArticles, ...paginatedActualitesUrls];
+
   fs.writeFileSync(path.join(staticDir, 'sitemap.xml'), generateSitemapIndex());
   fs.writeFileSync(path.join(staticDir, 'sitemap-pages.xml'), generatePagesSitemap(pages));
-  fs.writeFileSync(path.join(staticDir, 'sitemap-articles.xml'), generateArticlesSitemap(allArticles));
+  fs.writeFileSync(path.join(staticDir, 'sitemap-articles.xml'), generateArticlesSitemap(allArticlesAndPages));
   fs.writeFileSync(path.join(staticDir, 'sitemap-questions.xml'), generateQuestionsSitemap(questions));
   fs.writeFileSync(path.join(staticDir, 'sitemap-images.xml'), generateImagesSitemap(images));
   fs.writeFileSync(path.join(staticDir, 'atom.xml'), generateAtomFeed(allArticles));

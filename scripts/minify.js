@@ -53,3 +53,16 @@ fs.readdirSync(cookiesBannerDir).forEach(file => {
   }
 });
 
+// Minify CSS in /purged
+const purgedDir = path.join(__dirname, '../static/css/purged');
+if (fs.existsSync(purgedDir)) {
+  fs.readdirSync(purgedDir).forEach(file => {
+    if (file.endsWith('.css') && !file.endsWith('.min.css')) {
+      const filePath = path.join(purgedDir, file);
+      const code = fs.readFileSync(filePath, 'utf8');
+      const output = new CleanCSS().minify(code);
+      const outPath = filePath.replace('.css', '.min.css');
+      fs.writeFileSync(outPath, output.styles, 'utf8');
+    }
+  });
+}

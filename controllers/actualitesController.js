@@ -27,7 +27,9 @@ actualitesController.get('/', async (req, res) => {
         "innovations colis",
         "universcolis actualités"
     ];
-    const canonicalUrl = "https://www.universcolis.fr/actualites";
+    const canonicalUrl = page === 1
+        ? "https://www.universcolis.fr/actualites"
+        : `https://www.universcolis.fr/actualites?page=${page}`;
     const ogImage = "https://www.universcolis.fr/static/img/og-image.png";
 
     // Structured Data (Breadcrumb + ItemList)
