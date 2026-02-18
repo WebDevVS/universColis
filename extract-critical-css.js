@@ -59,7 +59,25 @@ const glob = require('glob');
     content: hbsFiles,
     css: [{ raw: filteredCSS }],
     safelist: {
-      standard: [/^show/, /^collapse/, /^modal/, /^dropdown/, /^fade/, /^carousel/, /^offcanvas/, /^tooltip/, /^popover/, /^toast/, /^alert/, /^d-/, /^col-/, /^row/, /^container/, /^navbar/, /^nav/, /^footer/, /^header/, /^btn/, /^form/, /^input/, /^is-/, /^has-/, /^active/, /^open/, /^in/, /^out/, /^top/, /^bottom/, /^start/, /^end/, /^left/, /^right/, /^center/, /^text-/, /^bg-/, /^border/, /^rounded/, /^shadow/, /^position-/, /^fixed/, /^sticky/, /^z-/, /^m[btlrxy]?/, /^p[btlrxy]?/, /^g-/, /^fs-/, /^fw-/, /^lh-/, /^order/, /^align-/, /^justify-/, /^gap-/, /^me-/, /^ms-/, /^pe-/, /^ps-/, /^vh/, /^vw/, /^vh-/, /^vw-/, /^w-/, /^h-/, /^min-/, /^max-/, /^overflow/, /^object-/, /^img-/, /^fa/, /^glightbox/, /^cookie/, /^consent/, /^beta-/]
+      standard: [
+        // Bootstrap et utilitaires globaux
+        /^show/, /^collapse/, /^modal/, /^dropdown/, /^fade/, /^carousel/, /^offcanvas/, /^tooltip/, /^popover/, /^toast/, /^alert/,
+        /^d-/, /^col-/, /^row/, /^container/, /^navbar/, /^nav/, /^footer/, /^header/, /^btn/, /^form/, /^input/, /^is-/, /^has-/,
+        /^active/, /^open/, /^in/, /^out/, /^top/, /^bottom/, /^start/, /^end/, /^left/, /^right/, /^center/,
+        /^text-/, /^bg-/, /^border/, /^rounded/, /^shadow/, /^position-/, /^fixed/, /^sticky/, /^z-/,
+        /^m[btlrxy]?/, /^p[btlrxy]?/, /^g-/, /^fs-/, /^fw-/, /^lh-/, /^order/, /^align-/, /^justify-/, /^gap-/,
+        /^me-/, /^ms-/, /^pe-/, /^ps-/, /^vh/, /^vw/, /^vh-/, /^vw-/, /^w-/, /^h-/, /^min-/, /^max-/, /^overflow/,
+        /^object-/, /^img-/, /^fa/, /^glightbox/, /^cookie/, /^consent/, /^beta-/,
+        // Spécifiques home/onglets/chargement/hero/benefits/news
+        /^home/, /^hero-/, /^submit-form/, /^tab-/, /^tab-pane/, /^tab-content/, /^tab-btn/, /^loading-/, /^spinner-/, /^step-/,
+        /^about-/, /^company-logos/, /^logo-container/, /^carrier/, /^benefits/, /^benefit-/, /^section-header/, /^section-title-home/,
+        /^section-subtitle/, /^benefits-numbered/, /^step-location/, /^feature-/, /^features-/, /^cta-box/, /^news-section/, /^news-header/,
+        /^news-title/, /^news-subtitle/, /^news-card-mixed/, /^news-meta-mixed/, /^news-date-compact/, /^news-category-compact/,
+        /^news-title-mixed/, /^news-excerpt-mixed/, /^news-read-more-mixed/, /^news-footer/, /^news-view-all/, /^separator/,
+        /^about-universcolis-mini/, /^about-text/, /^ecosystem-wrapper/, /^ecosystem-section/, /^features-grid/, /^feature-card-compact/,
+        /^feature-icon-compact/, /^feature-content-compact/, /^feature-title-compact/, /^feature-description-compact/, /^feature-link-compact/,
+        /^cta-button/, /^scroll-to-form/
+      ]
     }
   });
 
