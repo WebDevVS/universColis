@@ -123,6 +123,21 @@ module.exports = (app) => {
         } catch (e) {
           return input || '';
         }
+      },
+      // Helper pour lire un fichier (ex: critical CSS)
+      readFile: function (filePath) {
+        const fs = require('fs');
+        try {
+          // Chemin absolu depuis la racine du projet
+          const absPath = require('path').join(__dirname, '..', filePath.replace(/^\/+/, ''));
+          if (fs.existsSync(absPath)) {
+            return fs.readFileSync(absPath, 'utf8');
+          } else {
+            return '';
+          }
+        } catch (e) {
+          return '';
+        }
       }
 
     }
