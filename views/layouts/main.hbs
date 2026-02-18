@@ -45,21 +45,10 @@
         </script>
     {{/if}}
 
-        {{#if isProd}}
-        {{!-- Critical CSS inline --}}
-        <style id="critical-css">{{{readFile '/static/css/purged/critical.min.css'}}}</style>
-        <link rel="preload" href="/static/css/purged/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <link rel="preload" href="/static/css/purged/style.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript>
-            <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
-            <link rel="stylesheet" href="/static/css/purged/style.min.css">
-        </noscript>
+
+        <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/css/purged/style.min.css">
         <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
-        {{else}}
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.css">
-    {{/if}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
