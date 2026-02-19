@@ -145,6 +145,7 @@ actualitesController.get('/:slug', async (req, res) => {
         page: 'actualites',
         bodyClass: 'actualites-page',
         imageClass: 'img-actualites',
+        needsGallery: true,
         ...actualite,
 
         // SEO

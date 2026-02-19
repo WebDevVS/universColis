@@ -195,6 +195,7 @@ articleController.get('/:slug', async (req, res) => {
       bodyClass: 'article-page',
       page: 'article',
       imageClass: 'img-articles',
+      needsGallery: true,
       article,
       seoTitle: article.seoTitle,
       seoDescription: article.seoDescription,

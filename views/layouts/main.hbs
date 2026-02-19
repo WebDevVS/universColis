@@ -38,17 +38,17 @@
     {{!-- EZOIC ADS - Scripts header --}}
     {{!-- Charge uniquement sur pages définies dans middleware --}}
     {{#if showEzoic}}
-        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-        <script>
-            window.ezstandalone = window.ezstandalone || {};
-            ezstandalone.cmd = ezstandalone.cmd || [];
-        </script>
+    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+    <script>
+        window.ezstandalone = window.ezstandalone || {};
+        ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
     {{/if}}
 
 
-        <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
-        <link rel="stylesheet" href="/static/css/purged/style.min.css">
-        <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
+    <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/purged/style.min.css">
+    <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
@@ -61,45 +61,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 
-        <!-- Consent defaults (must be BEFORE GTM) -->
-        <script>
-          // Initialize dataLayer and gtag helper
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){ dataLayer.push(arguments); }
+    <!-- Consent defaults (must be BEFORE GTM) -->
+    <script>
+        // Initialize dataLayer and gtag helper
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
 
-          // Optional: suffix Silktide si configuré (ex: '_fr'), sinon laissez vide
-          var SILKTIDE_SUFFIX = '';
-          function skKey(id){ return 'silktideCookieChoice_' + id + SILKTIDE_SUFFIX; }
+        // Optional: suffix Silktide si configuré (ex: '_fr'), sinon laissez vide
+        var SILKTIDE_SUFFIX = '';
+        function skKey(id) { return 'silktideCookieChoice_' + id + SILKTIDE_SUFFIX; }
 
-          // Google Consent Mode v2 - valeurs par défaut
-          (function(){
+        // Google Consent Mode v2 - valeurs par défaut
+        (function () {
             try {
-              var analyticsGranted = localStorage.getItem(skKey('analytics')) === 'true';
-              var marketingGranted = localStorage.getItem(skKey('marketing')) === 'true';
+                var analyticsGranted = localStorage.getItem(skKey('analytics')) === 'true';
+                var marketingGranted = localStorage.getItem(skKey('marketing')) === 'true';
 
-              gtag('consent','default', {
-                // Analyse selon le choix Analytics
-                analytics_storage:  analyticsGranted ? 'granted' : 'denied',
-                // Marketing selon le choix Marketing
-                ad_storage:         marketingGranted ? 'granted' : 'denied',
-                ad_user_data:       marketingGranted ? 'granted' : 'denied',
-                ad_personalization: marketingGranted ? 'granted' : 'denied',
-                // Nécessaires: toujours GRANTED (non désactivables)
-                functionality_storage: 'granted',
-                security_storage:      'granted'
-              });
-            } catch(e) { /* no-op */ }
-          })();
-        </script>
+                gtag('consent', 'default', {
+                    // Analyse selon le choix Analytics
+                    analytics_storage: analyticsGranted ? 'granted' : 'denied',
+                    // Marketing selon le choix Marketing
+                    ad_storage: marketingGranted ? 'granted' : 'denied',
+                    ad_user_data: marketingGranted ? 'granted' : 'denied',
+                    ad_personalization: marketingGranted ? 'granted' : 'denied',
+                    // Nécessaires: toujours GRANTED (non désactivables)
+                    functionality_storage: 'granted',
+                    security_storage: 'granted'
+                });
+            } catch (e) { /* no-op */ }
+        })();
+    </script>
 
     {{#if isProd}}
     <!-- Google AdSense Auto Ads loader (prod) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5973618771807669" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5973618771807669"
+        crossorigin="anonymous"></script>
     {{/if}}
 
     <!-- Google Tag Manager -->
     <script>
-        
+
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -151,7 +152,8 @@
                             Conseils
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/conseils"><strong>Voir tous les conseils d'emballage</strong></a></li>
+                            <li><a class="dropdown-item" href="/conseils"><strong>Voir tous les conseils
+                                        d'emballage</strong></a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -335,37 +337,39 @@
     {{/if}}
 
     <!-- Scripts spécifiques cookies -->
+    {{#if isProd}}
     <script>
-      (function(){
-        window.clarityConsentState = { loaded:false, lastStatus:null };
-        window.loadClarityWithConsent = function(granted){
-          var status = granted ? 'granted' : 'denied';
-          if (window.clarityConsentState.lastStatus === status) return;
-          window.clarityConsentState.lastStatus = status;
-          if (!window.clarityConsentState.loaded){
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/ublc3yobr9";
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script");
-            window.clarityConsentState.loaded = true;
-          }
-          function send(){
-            if (typeof window.clarity === 'function'){
-              try {
-                window.clarity('consentv2', {
-                  ad_storage: 'denied',
-                  analytics_storage: status
-                });
-              } catch(e){}
-            } else {
-              setTimeout(send,150);
-            }
-          }
-          send();
-        };
-      })();
+        (function () {
+            window.clarityConsentState = { loaded: false, lastStatus: null };
+            window.loadClarityWithConsent = function (granted) {
+                var status = granted ? 'granted' : 'denied';
+                if (window.clarityConsentState.lastStatus === status) return;
+                window.clarityConsentState.lastStatus = status;
+                if (!window.clarityConsentState.loaded) {
+                    (function (c, l, a, r, i, t, y) {
+                        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/ublc3yobr9";
+                        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+                    })(window, document, "clarity", "script");
+                    window.clarityConsentState.loaded = true;
+                }
+                function send() {
+                    if (typeof window.clarity === 'function') {
+                        try {
+                            window.clarity('consentv2', {
+                                ad_storage: 'denied',
+                                analytics_storage: status
+                            });
+                        } catch (e) { }
+                    } else {
+                        setTimeout(send, 150);
+                    }
+                }
+                send();
+            };
+        })();
     </script>
+    {{/if}}
     <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
     <script src="/static/js/cookiesConfig.min.js"></script>
     <script src="/static/js/cookiePreferencesButton.min.js"></script>
@@ -419,11 +423,13 @@
 </body>
 
 <!-- GLightbox JS + init -->
-<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js"></script>
+{{#if needsGallery}}
+<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
 {{#if isProd}}
-<script src="/static/js/glightbox-init.min.js"></script>
+<script src="/static/js/glightbox-init.min.js" defer></script>
 {{else}}
-<script src="/static/js/glightbox-init.js"></script>
+<script src="/static/js/glightbox-init.js" defer></script>
+{{/if}}
 {{/if}}
 
 </html>

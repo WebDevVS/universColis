@@ -324,6 +324,7 @@ questionsController.get('/:category/:slug', async (req, res) => {
       ...question,
       page: 'question',
       imageClass: 'img-questions',
+      needsGallery: true,
       categoryLabels,
       categoryLabel,
       bodyClass: 'questions-page',
