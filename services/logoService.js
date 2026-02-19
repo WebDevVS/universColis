@@ -7,19 +7,18 @@
 
 const carrierLogos = {
     // -------------------------------------------------------------------------
-    // LOGOS BOXTAL (CDN officiel Boxtal - haute qualité)
+    // LOGOS STATIQUES (dossier /static/img/logos/)
     // -------------------------------------------------------------------------
-    "Chronopost": "https://resource.boxtal.build/images/carriers/chrp.png",
-    "Delivengo": "https://resource.boxtal.build/images/carriers/dlvg.png",
-    "DHL Express": "https://resource.boxtal.build/images/carriers/dhle.png",
-    "DHL": "https://resource.boxtal.build/images/carriers/dhle.png",
-    "Happy Post": "https://resource.boxtal.build/images/carriers/imxe.png",
-    "La Poste": "https://resource.boxtal.build/images/carriers/pofr.png",
-    "Mondial Relay": "https://resource.boxtal.build/images/carriers/monr.png",
-    "Sodexi": "https://resource.boxtal.build/images/carriers/sodx.png",
-    "Sodexim": "https://resource.boxtal.build/images/carriers/sodx.png",
-    "TNT Express": "https://resource.boxtal.build/images/carriers/tnte.png",
-    "UPS": "https://resource.boxtal.build/images/carriers/upse.png",
+    "Chronopost": "/static/img/logos/chronopost.webp",
+    "Delivengo": "/static/img/logos/delivengo.webp",
+    "DHL Express": "/static/img/logos/dhlexpress.webp",
+    "DHL": "/static/img/logos/dhlexpress.webp",
+    "Happy Post": "/static/img/logos/happypost.webp",
+    "La Poste": "/static/img/logos/laposte.webp",
+    "Mondial Relay": "/static/img/logos/mondialrelay.webp",
+    "Sodexi": "/static/img/logos/sodexi.webp",
+    "TNT Express": "/static/img/logos/tntexpress.webp",
+    "UPS": "/static/img/logos/ups.webp",
 
    // -------------------------------------------------------------------------
     // LOGOS CDN - Wikipedia (testés et fonctionnels)
