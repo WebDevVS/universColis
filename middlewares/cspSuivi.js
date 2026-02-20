@@ -105,6 +105,7 @@ module.exports = helmet.contentSecurityPolicy({
     ],
     frameSrc: [
       "'self'",
+      "https://www.google.com",
       "https://www.googletagmanager.com",
       "https://tagassistant.google.com",
       "https://parcelsapp.com",

@@ -312,6 +312,7 @@ module.exports = (app) => {
         // Interdiction d’embarquer ton site dans une iframe
         frameSrc: [
           "'self'",
+          "https://www.google.com",
           "https://www.googletagmanager.com",
           "https://tagassistant.google.com",
           "https://parcelsapp.com",

@@ -35,17 +35,6 @@
 
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
-    {{!-- EZOIC ADS - Scripts header --}}
-    {{!-- Charge uniquement sur pages définies dans middleware --}}
-    {{#if showEzoic}}
-    <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-    <script>
-        window.ezstandalone = window.ezstandalone || {};
-        ezstandalone.cmd = ezstandalone.cmd || [];
-    </script>
-    {{/if}}
-
-
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/purged/style.min.css">
     <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
@@ -147,7 +136,7 @@
                         <a class="nav-link" href="/mon-materiel"><i class="fa-solid fa-box me-1"></i>Matériel</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" 
                             aria-expanded="false"><i class="fa-solid fa-lightbulb me-1"></i>
                             Conseils
                         </a>
@@ -433,3 +422,4 @@
 {{/if}}
 
 </html>
+
