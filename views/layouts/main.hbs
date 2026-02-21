@@ -39,40 +39,25 @@
     <link rel="stylesheet" href="/static/css/purged/style.min.css">
     <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
 
-    <!-- LAZY LOAD : Font Awesome (via JS) -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style">
-    <script>
-        (function () {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
-            document.head.appendChild(link);
-        })();
-    </script>
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    </noscript>
-
-    <!-- GLightbox CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
-
-
-    <!-- Google Fonts optimisé -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <!-- Preconnect Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- LAZY LOAD : Google Fonts (via JS) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
-    <script>
-        (function () {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
-            document.head.appendChild(link);
-        })();
-    </script>
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    </noscript>
+
+    <!-- Preload Roboto fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2" as="font"
+        type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2" as="font"
+        type="font/woff2" crossorigin>
+
+    <!-- Roboto CSS with display=optional -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=optional">
+
+    <!-- Preload Font Awesome font -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2"
+        as="font" type="font/woff2" crossorigin>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
     <!-- Consent defaults (must be BEFORE GTM) -->
     <script>
@@ -111,19 +96,45 @@
         crossorigin="anonymous"></script>
     {{/if}}
 
+    {{#if isProd}}
     <!-- Google Tag Manager -->
     <script>
+        (function () {
+            var gtmLoaded = false;
 
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W4VCLVRJ');
+            function loadGTM() {
+                if (gtmLoaded) return;
+                gtmLoaded = true;
+
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-W4VCLVRJ');
+            }
+
+            // Charge dès la première interaction (priorité)
+            var events = ['click', 'scroll', 'touchstart', 'keydown', 'mousemove'];
+            events.forEach(function (event) {
+                document.addEventListener(event, loadGTM, { once: true, passive: true });
+            });
+
+            // Fallback : Si aucune interaction après 1 seconde
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(function () {
+                    setTimeout(loadGTM, 1000);
+                }, { timeout: 2000 });
+            } else {
+                setTimeout(loadGTM, 1000);
+            }
+        })();
     </script>
-    <!-- End Google Tag Manager -->
+    {{/if}}
+
 </head>
 
 <body class="{{bodyClass}} d-flex flex-column min-vh-100">
