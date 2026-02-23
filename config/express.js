@@ -162,8 +162,6 @@ module.exports = (app) => {
       'articleShare',
       'autocomplete',
       'comparateurFilters',
-      'cookiePreferencesButton',
-      'cookiesConfig',
       'generate-sitemaps',
       'glightbox-init',
       'loading',

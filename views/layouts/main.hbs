@@ -37,17 +37,22 @@
 
     {{!-- EZOIC ADS - Scripts header --}}
     {{!-- Charge uniquement sur pages définies dans middleware --}}
-    
+
     <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
-    
+
 
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/purged/style.min.css">
     <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
+
+    <!-- GLightbox CSS conditionnel -->
+    {{#if needsGallery}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
+    {{/if}}
 
     <!-- Preconnect Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,8 +70,7 @@
     <!-- Preload Font Awesome font -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2"
         as="font" type="font/woff2" crossorigin>
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <!-- Font Awesome lazy loaded (voir fin de body) -->
 
 
     <!-- Consent defaults (must be BEFORE GTM) -->
@@ -403,15 +407,33 @@
             };
         })();
     </script>
+    <!-- Cookies Bundle (PROD) -->
+    <script src="/static/cookiesBanner/cookiesBundle.min.js"></script>
+
+    {{else}}
+
+    <!-- Cookies séparés (DEV - pour debugging) -->
+    <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
+    <script src="/static/js/cookiesConfig.js"></script>
+    <script src="/static/js/cookiePreferencesButton.js"></script>
+
     {{/if}}
-    <script src="/static/cookiesBanner/silktide-consent-manager.min.js"></script>
-    <script src="/static/js/cookiesConfig.min.js"></script>
-    <script src="/static/js/cookiePreferencesButton.min.js"></script>
+
 
     <!-- Autres scripts -->
     <script src="/static/js/tabs.min.js" defer></script>
     <script src="/static/js/articleSelector.min.js" defer></script>
     <script src="/static/js/loading.min.js"></script>
+
+    <!-- Font Awesome lazy loaded -->
+    <script>
+        (function () {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+            document.head.appendChild(link);
+        })();
+    </script>
 
     {{else}}
     <script src="/static/js/static.js" defer></script>
@@ -442,11 +464,6 @@
     {{/if}}
     {{/if}}
 
-    <!-- Scripts spécifiques cookies -->
-    <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
-    <script src="/static/js/cookiesConfig.js"></script>
-    <script src="/static/js/cookiePreferencesButton.js"></script>
-
     <!-- Autres scripts -->
     <script src="/static/js/tabs.js" defer></script>
     <script src="/static/js/articleSelector.js" defer></script>
@@ -454,16 +471,16 @@
 
     {{/if}}
 
-</body>
+    <!-- GLightbox JS + init -->
+    {{#if needsGallery}}
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
+    {{#if isProd}}
+    <script src="/static/js/glightbox-init.min.js" defer></script>
+    {{else}}
+    <script src="/static/js/glightbox-init.js" defer></script>
+    {{/if}}
+    {{/if}}
 
-<!-- GLightbox JS + init -->
-{{#if needsGallery}}
-<script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
-{{#if isProd}}
-<script src="/static/js/glightbox-init.min.js" defer></script>
-{{else}}
-<script src="/static/js/glightbox-init.js" defer></script>
-{{/if}}
-{{/if}}
+</body>
 
 </html>
