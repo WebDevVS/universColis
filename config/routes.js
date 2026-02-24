@@ -12,6 +12,7 @@ const mentionsLegalesController = require("../controllers/mentionsLegalesControl
 const confidentialiteController = require("../controllers/confidentialiteController")
 const actualitesController = require("../controllers/actualitesController") 
 const questionsController = require("../controllers/questionsController")
+const contactController = require("../controllers/contactController")
 
 const cspSuivi = require("../middlewares/cspSuivi");
 
@@ -28,6 +29,7 @@ module.exports = (app) => {
     app.use('/politique-confidentialite', confidentialiteController)
     app.use('/actualites', actualitesController)
     app.use('/questions', questionsController)
+    app.use('/contact', contactController)
 
     app.use((req, res) => {
         res.status(404).render('404');

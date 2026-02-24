@@ -47,14 +47,6 @@ async function start() {
     next();
   });
 
-
-  // ADS.TXT - Redirection vers Ezoic
-  // ========================================
-  app.get('/ads.txt', (req, res) => {
-    res.redirect(301, 'https://srv.adstxtmanager.com/19390/universcolis.fr');
-  });
-
-
   routesConfig(app)
 
   const PORT = process.env.PORT || 5555;

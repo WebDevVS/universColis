@@ -46,7 +46,11 @@
 
 
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
+    {{#if isProd}}
     <link rel="stylesheet" href="/static/css/purged/style.min.css">
+    {{else}}
+    <link rel="stylesheet" href="/static/css/style.css">
+    {{/if}}
     <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
 
     <!-- GLightbox CSS conditionnel -->
@@ -198,6 +202,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/questions"><i class="fa-solid fa-question me-1"></i>Questions</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact"><i class="fa-solid fa-envelope me-1"></i>Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -301,6 +308,11 @@
                         <li>
                             <a href="/mentions-legales">
                                 <i class="fa-solid fa-gavel me-2"></i>Mentions légales
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <i class="fa-solid fa-envelope me-2"></i>Contact
                             </a>
                         </li>
                     </ul>
@@ -452,6 +464,7 @@
 
     {{/if}}
 
+
     <!-- GLightbox JS + init -->
     {{#if needsGallery}}
     <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
@@ -459,6 +472,15 @@
     <script src="/static/js/glightbox-init.min.js" defer></script>
     {{else}}
     <script src="/static/js/glightbox-init.js" defer></script>
+    {{/if}}
+    {{/if}}
+
+    <!-- Script spécifique page contact -->
+    {{#if (eq page 'contact')}}
+    {{#if isProd}}
+    <script src="/static/js/contactForm.min.js"></script>
+    {{else}}
+    <script src="/static/js/contactForm.js"></script>
     {{/if}}
     {{/if}}
 

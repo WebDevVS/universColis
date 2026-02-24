@@ -162,6 +162,7 @@ module.exports = (app) => {
       'articleShare',
       'autocomplete',
       'comparateurFilters',
+      'contactForm',
       'generate-sitemaps',
       'glightbox-init',
       'loading',
