@@ -1,11 +1,15 @@
 // ===================================================
 // Route Express – Formulaire de contact UniversColis
-// GET (affichage) + POST (envoi mail Nodemailer)
+// GET (affichage) + POST (envoi mail via Brevo API)
 // ===================================================
 
 const express = require('express');
-const nodemailer = require('nodemailer');
+const SibApiV3Sdk = require('sib-api-v3-sdk');
 const contactController = express.Router();
+
+const brevoClient = SibApiV3Sdk.ApiClient.instance;
+const apiKey = brevoClient.authentications['api-key'];
+apiKey.apiKey = process.env.BREVO_API_KEY; // Mets ta clé API dans .env
 
 // --- GET /contact : Affichage du formulaire ---
 contactController.get('/', (req, res) => {
@@ -71,30 +75,21 @@ contactController.get('/', (req, res) => {
                     "description": "Contactez l’équipe d’UniversColis pour toute question ou demande d’information sur nos services.",
                     "inLanguage": "fr",
                     "datePublished": "2026-02-24",
-                    "dateModified": "2026-08-24",
+                    "dateModified": "2026-02-24",
                 }
             ]
         })
     });
 });
 
-// --- Configuration du transporteur Zoho ---
-const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.eu',
-    port: 465,
-    secure: true,
-    auth: {
-        user: process.env.ZOHO_USER,
-        pass: process.env.ZOHO_PASS,
-    },
-});
-
 // --- POST /contact : Traitement du formulaire ---
-contactController.post('/contact', async (req, res) => {
+contactController.post('/', async (req, res) => {
     const { nom, email, sujet, message, privacy } = req.body;
 
+    console.log('req.body:', req.body);
+
     // Validation basique côté serveur
-    if (!nom || !email || !sujet || !message || !privacy) {
+    if (!nom || !email || !sujet || !message || typeof privacy === 'undefined') {
         return res.status(400).json({ success: false, error: 'Tous les champs sont requis.' });
     }
 
@@ -115,12 +110,13 @@ contactController.post('/contact', async (req, res) => {
     const sujetLabel = sujetLabels[sujet] || sujet;
 
     try {
-        await transporter.sendMail({
-            from: `"UniversColis Contact" <${process.env.ZOHO_USER}>`,
-            to: process.env.ZOHO_USER,
-            replyTo: email,
+        const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+        await apiInstance.sendTransacEmail({
+            sender: { name: 'UniversColis Contact', email: 'contact@universcolis.fr' },
+            to: [{ email: 'contact@universcolis.fr', name: 'UniversColis' }],
+            replyTo: { email, name: nom },
             subject: `[Contact] ${sujetLabel} – ${nom}`,
-            html: `
+            htmlContent: `
                 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #e0d8f0;border-radius:12px;overflow:hidden;">
                     <div style="background:linear-gradient(135deg,#8269A4,#a088c5);padding:24px 28px;">
                         <h2 style="color:#fff;margin:0;font-size:1.3rem;">📬 Nouveau message – UniversColis</h2>
@@ -149,13 +145,11 @@ contactController.post('/contact', async (req, res) => {
                         Message reçu via le formulaire de contact UniversColis.fr
                     </div>
                 </div>
-            `,
+            `
         });
-
         return res.json({ success: true });
-
     } catch (err) {
-        console.error('[Contact] Erreur envoi email :', err);
+        console.error('[Contact] Erreur envoi email Brevo :', err);
         return res.status(500).json({ success: false, error: 'Erreur lors de l\'envoi. Réessayez plus tard.' });
     }
 });

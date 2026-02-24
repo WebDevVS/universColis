@@ -12411,6 +12411,7 @@ Désactive visuellement le bouton Track.Global
     .page-header {
       text-align: center;
       margin-bottom: 50px;
+      margin-top: 30px;
       animation: fadeUp 0.6s ease both;
     }
 
@@ -12751,3 +12752,26 @@ Désactive visuellement le bouton Track.Global
         padding: 24px 20px;
       }
     }
+
+    .error-msg {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--accent-color);
+  margin-top: 5px;
+  padding-left: 4px;
+}
+
+.error-msg.visible {
+  display: block;
+}
+
+input.input-error,
+select.input-error,
+textarea.input-error {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(250,126,117,0.15);
+}
+
+.privacy-check.check-error label {
+  color: var(--accent-color);
+}

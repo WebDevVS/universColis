@@ -150,6 +150,7 @@ module.exports = (app) => {
   app.use('/static', express.static('static'));
   app.use('/bootstrap', express.static('node_modules/bootstrap/dist'));
   app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
 
   // 🧠 Middleware global pour toutes les vues
   app.use((req, res, next) => {
