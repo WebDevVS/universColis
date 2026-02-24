@@ -25,7 +25,8 @@ async function getStaticPages() {
     { loc: '/comment-ca-marche', priority: 0.4 },
     { loc: '/qui-sommes-nous', priority: 0.4 },
     { loc: '/politique-confidentialite', priority: 0.4 },
-    { loc: '/mentions-legales', priority: 0.4 }
+    { loc: '/mentions-legales', priority: 0.4 },
+    { loc: '/contact', priority: 0.4 }
   ];
 }
 
