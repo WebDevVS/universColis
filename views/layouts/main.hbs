@@ -35,14 +35,22 @@
 
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
-    {{!-- EZOIC ADS - Scripts header --}}
-    {{!-- Charge uniquement sur pages définies dans middleware --}}
+    {{!-- EZOIC ADS - Scripts header (ordre IMPORTANT : confidentialité → header → analytics) --}}
+    {{!-- 1. Scripts de confidentialité (GDPR/consentement) - EN PREMIER --}}
+    {{#if isProd}}
+    <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
+    <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
+    {{/if}}
 
+    {{!-- 2. Script header Ezoic principal --}}
     <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
+
+    {{!-- 3. Script analytics Ezoic --}}
+    {{!-- <script src="//ezoicanalytics.com/analytics.js"></script> --}}
 
 
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">

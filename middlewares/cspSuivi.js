@@ -31,6 +31,12 @@ module.exports = helmet.contentSecurityPolicy({
       // Google Ads traffic quality endpoint
       "https://*.adtrafficquality.google",
       "https://adtrafficquality.google",
+      // Gatekeeper Consent
+      "https://cmp.gatekeeperconsent.com",
+      "https://the.gatekeeperconsent.com",
+      "https://privacy.gatekeeperconsent.com",
+      // Ezoic Analytics
+      "https://ezoicanalytics.com",
       "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
@@ -101,7 +107,11 @@ module.exports = helmet.contentSecurityPolicy({
       "https://c.clarity.ms",
       // Autorise endpoint Google Ads traffic quality
       "https://ep1.adtrafficquality.google",
-      "https://ep2.adtrafficquality.google"
+      "https://ep2.adtrafficquality.google",
+      // Gatekeeper Consent privacy
+      "https://privacy.gatekeeperconsent.com",
+      // Gatekeeper Consent config
+      "https://the.gatekeeperconsent.com"
     ],
     frameSrc: [
       "'self'",
@@ -127,7 +137,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://ep2.adtrafficquality.google"
     ],
     objectSrc: ["'none'"],
-    baseUri: ["'self'"]
+    baseUri: ["'self'"],
+    scriptSrcAttr: ["'unsafe-inline'"]
   }
 });
 

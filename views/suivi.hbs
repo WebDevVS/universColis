@@ -10,11 +10,15 @@
 
 
     <div class="carriers-list">
-  <p class="carriers-intro">
-    Colissimo, Chronopost, DHL, UPS, FedEx, Mondial Relay et d'autres transporteurs mondiaux
-  </p>
-</div>
+      <p class="carriers-intro">
+        Colissimo, Chronopost, DHL, UPS, FedEx, Mondial Relay et d'autres transporteurs mondiaux
+      </p>
+    </div>
   </div>
+
+  {{#if showEzoic}}
+  <div id="ezoic-pub-ad-placeholder-101"></div>
+  {{/if}}
 
   <!-- TRACKING -->
   <div class="tracking-form-container">
@@ -55,8 +59,8 @@
       </div>
       <div class="tracker-buttons">
         <button class="tracker-btn" data-tracker="17track" aria-label="Utiliser 17Track pour suivre votre colis">
-          <img src="/static/img/trackers/17Track.webp" alt="Logo 17Track" class="tracker-btn-logo" width="80" height="32"
-            loading="lazy" />
+          <img src="/static/img/trackers/17Track.webp" alt="Logo 17Track" class="tracker-btn-logo" width="80"
+            height="32" loading="lazy" />
           17Track
         </button>
         <button class="tracker-btn" data-tracker="trackglobal"
@@ -529,6 +533,10 @@
       </div>
     </div>
 
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-103"></div>
+    {{/if}}
+
   </section>
 
 
@@ -650,3 +658,12 @@
   <!-- ✅ Section "À découvrir" CONTEXTUELLE (adaptée page suivi) (désactivée) -->
   {{!-- {{> related-links/_base pageType="suivi"}} --}}
 </section>
+
+
+{{#if showEzoic}}
+<script>
+  ezstandalone.cmd.push(function () {
+    ezstandalone.showAds(101, 103);
+  });
+</script>
+{{/if}}

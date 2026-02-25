@@ -222,7 +222,13 @@ module.exports = (app) => {
           "https://*.clarity.ms",
           // Google Ads traffic quality endpoint
           "https://*.adtrafficquality.google",
-          "https://adtrafficquality.google"
+          "https://adtrafficquality.google",
+          // Gatekeeper Consent
+          "https://cmp.gatekeeperconsent.com",
+          "https://the.gatekeeperconsent.com",
+          "https://privacy.gatekeeperconsent.com",
+          // Ezoic Analytics
+          "https://ezoicanalytics.com"
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
@@ -306,7 +312,11 @@ module.exports = (app) => {
           // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
           "https://www.clarity.ms",
           "https://*.clarity.ms",
-          "https://c.clarity.ms"
+          "https://c.clarity.ms",
+          // Gatekeeper Consent privacy
+          "https://privacy.gatekeeperconsent.com",
+          // Gatekeeper Consent config
+          "https://the.gatekeeperconsent.com"
         ],
 
         // Interdiction d’embarquer ton site dans une iframe
@@ -338,8 +348,10 @@ module.exports = (app) => {
         objectSrc: ["'none'"],
 
         // Le <base> doit venir du site uniquement
-        baseUri: ["'self'"]
-      }
+        baseUri: ["'self'"],
+        scriptSrcAttr: ["'unsafe-inline'"]
+      },
+      scriptSrcAttr: ["'self'", "'unsafe-inline'"]
     },
 
     // Politique de référence (utile pour le SEO + sécurité)

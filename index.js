@@ -26,12 +26,12 @@ async function start() {
     const ezoicPages = [
       '/suivi',           // Page de suivi de colis
       '/actualites/',     // Articles d'actualités
-      // '/questions/',   // Questions FAQ (décommentez pour activer)
+      '/questions/'   // Questions FAQ (décommentez pour activer)
       // '/mon-materiel'  // Page matériel (décommentez pour activer)
     ];
 
     // Vérifier si la page actuelle est dans la liste
-    res.locals.showEzoic = ezoicPages.some(page =>
+    res.locals.showEzoic = process.env.NODE_ENV === 'production' && ezoicPages.some(page =>
       req.path === page || req.path.startsWith(page)
     );
 

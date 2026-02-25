@@ -32,6 +32,11 @@
         </div>
     </div>
 
+    {{!-- EZOIC AD : Après header --}}
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-102"></div>
+    {{/if}}
+
     <!-- Quick Answer -->
     {{#if resume.text}}
     <div class="quick-answer">
@@ -77,9 +82,10 @@
             {{#if this.questionImg}}
             {{#if this.imageBefore}}
             <figure class="etape-image">
-                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox" data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
-                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
-                        width="768" height="768" class="img-fluid rounded">
+                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox"
+                    data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
+                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy"
+                        alt="{{this.questionImgAlt}}" width="768" height="768" class="img-fluid rounded">
                 </a>
                 {{#if this.questionImgFigcaption}}
                 <figcaption class="hover-caption">
@@ -192,14 +198,15 @@
             </ol>
             {{/if}}
             {{/if}}
-            
+
             {{!-- Image APRÈS le contenu (par défaut) --}}
             {{#if this.questionImg}}
             {{#unless this.imageBefore}}
             <figure class="etape-image">
-                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox" data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
-                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy" alt="{{this.questionImgAlt}}"
-                        width="768" height="768" class="img-fluid rounded">
+                <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox"
+                    data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
+                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy"
+                        alt="{{this.questionImgAlt}}" width="768" height="768" class="img-fluid rounded">
                 </a>
                 {{#if this.questionImgFigcaption}}
                 <figcaption class="hover-caption">
@@ -282,6 +289,11 @@
             {{/each}}
         </ul>
     </div>
+    {{/if}}
+
+    {{!-- EZOIC AD : Fin de page --}}
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-103"></div>
     {{/if}}
 
 
@@ -432,3 +444,12 @@
 <button id="share-article" class="share-article-btn" title="Partager l'article">
     <i class="fa-solid fa-share"></i>
 </button>
+
+{{!-- EZOIC SCRIPT --}}
+{{#if showEzoic}}
+<script>
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds(102, 103);
+    });
+</script>
+{{/if}}

@@ -29,10 +29,16 @@
         {{/if}}
     </header>
 
+    {{!-- EZOIC AD #1 : Under page title --}}
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-102"></div>
+    {{/if}}
+
     <!-- Contenu de l'article -->
     <article class="article-content">
         <!-- Image illustrative -->
-        <a href="/static/img/actualitesImg/{{actualiteImg}}" class="glightbox article-image-link" data-gallery="actualites-gallery" data-title="{{actualiteImgAlt}}">
+        <a href="/static/img/actualitesImg/{{actualiteImg}}" class="glightbox article-image-link"
+            data-gallery="actualites-gallery" data-title="{{actualiteImgAlt}}">
             <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}"
                 class="article-image article-image-right" width="1200" height="675" fetchpriority="high">
         </a>
@@ -146,6 +152,11 @@
             </a>
         </div>
     </article>
+
+    {{!-- EZOIC AD #2 : Fin d'article --}}
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-103"></div>
+    {{/if}}
 
     <!-- Navigation entre articles -->
     <nav class="article-navigation">
@@ -284,3 +295,14 @@
 <button id="share-article" class="share-article-btn" title="Partager l'article">
     <i class="fa-solid fa-share"></i>
 </button>
+
+
+
+{{!-- EZOIC SCRIPT --}}
+{{#if showEzoic}}
+<script>
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds(102, 103);
+    });
+</script>
+{{/if}}
