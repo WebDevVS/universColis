@@ -335,6 +335,15 @@
       </image:image>
     
   </url><url>
+    <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/taxe-2-euros-type-marchandise-colis-hors-ue-1er-mars-2026.webp</image:loc>
+        <image:title>taxe-2-euros-type-marchandise-colis-hors-ue-1er-mars-2026</image:title>
+        <image:caption>Visuel explicatif de la taxe de 2 € sur les petits colis importés hors Union européenne. Comprendre comment elle se calcule et qui est concerné dès mars 2026.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/questions/livraison/retard-colis-causes-solutions</loc>
     
       <image:image>
@@ -455,9 +464,9 @@
     <loc>https://www.universcolis.fr/questions/international/qui-paie-frais-douane-ups</loc>
     
       <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/reflexes-eviter-surprises-expedition.webp</image:loc>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/sms-ups-frais-de-douane-verification-arnaque-ou-legitime-2026.webp</image:loc>
         
-        <image:caption>Guide visuel UniversColis présentant les quatre réflexes essentiels pour anticiper les frais et retards d'expédition : choisir le bon mode d'envoi, estimer les droits de douane et la TVA, vérifier les documents requis et comparer les tarifs avant de valider l'expédition.</image:caption>
+        <image:caption>Cette infographie explique quoi faire après réception d'un SMS UPS demandant des frais de douane. Elle détaille un processus en plusieurs étapes : vérifier si le colis provient d'un pays hors Union européenne, consulter directement le suivi sur ups.com, identifier une tentative d'arnaque SMS ou confirmer des frais légitimes. Elle clarifie également la composition du montant demandé (TVA 20 %, frais de courtage UPS, taxe administrative 2026) afin d'éviter les paiements frauduleux et de sécuriser la transaction.</image:caption>
       </image:image>
     
   </url><url>

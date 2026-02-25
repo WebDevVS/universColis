@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-02-24T21:22:14.395Z</updated>
+  <updated>2026-02-25T11:07:45.220Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -317,6 +317,15 @@
       <link href="https://www.universcolis.fr/actualites/saint-valentin-2026-colis-arrivera-14-fevrier"/>
       <id>https://www.universcolis.fr/actualites/saint-valentin-2026-colis-arrivera-14-fevrier</id>
       <updated>2026-02-11</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Taxe 2€ Petits Colis 2026 : Qui paie et comment l'éviter ?</title>
+      <link href="https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026"/>
+      <id>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</id>
+      <updated>2026-02-25</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
