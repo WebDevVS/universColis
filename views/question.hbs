@@ -13,6 +13,7 @@
 <div class="question-container">
     <!-- Header dynamique -->
     <div class="question-header">
+        {{!--
         {{#if categoryLabels}}
         {{#each categoryLabels}}
         <a href="/questions/{{this.key}}" class="category-badge {{this.colorClass}}">
@@ -26,16 +27,17 @@
             {{categoryLabel}}
         </a>
         {{/if}}
+        --}}
+
+         <a href="/questions/{{category}}" class="category-badge">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            {{categoryLabel}}
+        </a>
         <h1 class="question-title">{{title}}</h1>
         <div class="question-meta">
             <span><i class="fa-solid fa-clock"></i>{{readingTime}} min de lecture</span>
         </div>
     </div>
-
-    {{!-- EZOIC AD : Après header --}}
-    {{#if showEzoic}}
-    <div id="ezoic-pub-ad-placeholder-102"></div>
-    {{/if}}
 
     <!-- Quick Answer -->
     {{#if resume.text}}
@@ -52,6 +54,11 @@
             {{/if}}
         </p>
     </div>
+    {{/if}}
+
+    {{!-- EZOIC AD : Après header --}}
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-102"></div>
     {{/if}}
 
     <!-- Table of Contents (dynamic, collapsible) -->
