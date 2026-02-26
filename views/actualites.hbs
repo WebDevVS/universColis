@@ -46,6 +46,11 @@
         <div class="article-text">
             {{#each paragraphs}}
 
+            {{!-- EZOIC AD : après le 2ème paragraphe (index 1 = 2ème élément) --}}
+            {{#if (eq @index 1)}}
+            <div id="ezoic-pub-ad-placeholder-109"></div>
+            {{/if}}
+
             {{#if this.pTitle}}
             <h3>{{this.pTitle}}</h3>
             {{/if}}
@@ -302,7 +307,7 @@
 {{#if showEzoic}}
 <script>
     ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(102, 103);
+        ezstandalone.showAds(102, 103, 109);
     });
 </script>
 {{/if}}
