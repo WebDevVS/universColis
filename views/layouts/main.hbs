@@ -35,23 +35,30 @@
 
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
-    {{!-- EZOIC ADS - Scripts header (ordre IMPORTANT : confidentialité → header → analytics) --}}
-    {{!-- 1. Scripts de confidentialité (GDPR/consentement) - EN PREMIER --}}
+    {{!-- ============================================================ --}}
+    {{!-- EZOIC ADS - Scripts header                                   --}}
+    {{!-- ORDRE CRITIQUE : GateKeeper CMP → Ezoic → Google Consent    --}}
+    {{!-- ============================================================ --}}
+
+    {{!-- 1. GateKeeper Ezoic (CMP TCF 2.2) - DOIT être en PREMIER    --}}
+    {{!--    Remplace Silktide. Gère le banner cookies RGPD et         --}}
+    {{!--    transmet le consentement à toutes les régies pub.         --}}
+    {{!--    NE PAS mettre en async/defer - doit bloquer le rendu      --}}
+    {{!--    pour éviter tout tracking avant consentement.             --}}
     {{#if isProd}}
     <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
     <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
     {{/if}}
 
-    {{!-- 2. Script header Ezoic principal --}}
+    {{!-- 2. Script principal Ezoic --}}
     <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
     <script>
         window.ezstandalone = window.ezstandalone || {};
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
 
-    {{!-- 3. Script analytics Ezoic --}}
+      {{!-- 3. Script analytics Ezoic --}}
     {{!-- <script src="//ezoicanalytics.com/analytics.js"></script> --}}
-
 
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
     {{#if isProd}}
@@ -59,7 +66,9 @@
     {{else}}
     <link rel="stylesheet" href="/static/css/style.css">
     {{/if}}
-    <link rel="stylesheet" href="/static/cookiesBanner/silktide-consent-manager.min.css">
+
+    {{!-- ⚠️ SUPPRIMÉ : silktide-consent-manager.min.css             --}}
+    {{!--    Plus besoin - GateKeeper a son propre style               --}}
 
     <!-- GLightbox CSS conditionnel -->
     {{#if needsGallery}}
@@ -73,48 +82,123 @@
     <!-- Preload Font Awesome font -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2"
         as="font" type="font/woff2" crossorigin>
-    <!-- Font Awesome lazy loaded (voir fin de body) -->
 
-
-    <!-- Consent defaults (must be BEFORE GTM) -->
+    {{!-- ============================================================ --}}
+    {{!-- GOOGLE CONSENT MODE v2 + CLARITY                            --}}
+    {{!-- ============================================================ --}}
     <script>
-        // Initialize dataLayer and gtag helper
+        // ── Initialisation dataLayer et gtag ──────────────────────────
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
 
-        // Optional: suffix Silktide si configuré (ex: '_fr'), sinon laissez vide
-        var SILKTIDE_SUFFIX = '';
-        function skKey(id) { return 'silktideCookieChoice_' + id + SILKTIDE_SUFFIX; }
+        // ── Google Consent Mode v2 - Valeurs par défaut (DENIED) ─────
+        // Tout est refusé par défaut jusqu'à ce que GateKeeper
+        // transmette le choix réel de l'utilisateur via TCF 2.2.
+        gtag('consent', 'default', {
+            analytics_storage:  'denied',
+            ad_storage:         'denied',
+            ad_user_data:       'denied',
+            ad_personalization: 'denied',
+            functionality_storage: 'granted',  // toujours nécessaire
+            security_storage:      'granted'   // toujours nécessaire
+        });
 
-        // Google Consent Mode v2 - valeurs par défaut
-        (function () {
-            try {
-                var analyticsGranted = localStorage.getItem(skKey('analytics')) === 'true';
-                var marketingGranted = localStorage.getItem(skKey('marketing')) === 'true';
+        // ── Clarity : chargement conditionnel au consentement ─────────
+        // On initialise l'état de Clarity
+        window.clarityConsentState = { loaded: false, lastStatus: null };
 
-                gtag('consent', 'default', {
-                    // Analyse selon le choix Analytics
-                    analytics_storage: analyticsGranted ? 'granted' : 'denied',
-                    // Marketing selon le choix Marketing
-                    ad_storage: marketingGranted ? 'granted' : 'denied',
-                    ad_user_data: marketingGranted ? 'granted' : 'denied',
-                    ad_personalization: marketingGranted ? 'granted' : 'denied',
-                    // Nécessaires: toujours GRANTED (non désactivables)
-                    functionality_storage: 'granted',
-                    security_storage: 'granted'
-                });
-            } catch (e) { /* no-op */ }
-        })();
+        window.loadClarityWithConsent = function (granted) {
+            var status = granted ? 'granted' : 'denied';
+            if (window.clarityConsentState.lastStatus === status) return;
+            window.clarityConsentState.lastStatus = status;
+
+            if (!window.clarityConsentState.loaded) {
+                (function (c, l, a, r, i, t, y) {
+                    c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                    t = l.createElement(r); t.async = 1;
+                    t.src = "https://www.clarity.ms/tag/ublc3yobr9";
+                    y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+                })(window, document, "clarity", "script");
+                window.clarityConsentState.loaded = true;
+            }
+
+            // Envoie le statut de consentement à Clarity
+            function sendClarityConsent() {
+                if (typeof window.clarity === 'function') {
+                    try {
+                        window.clarity('consentv2', {
+                            ad_storage:       'denied',   // Clarity = analytics uniquement
+                            analytics_storage: status
+                        });
+                    } catch (e) { }
+                } else {
+                    setTimeout(sendClarityConsent, 150);
+                }
+            }
+            sendClarityConsent();
+        };
+
+        // ── Écoute du consentement GateKeeper (TCF 2.2) ──────────────
+        // GateKeeper expose window.__tcfapi dès son chargement.
+        // On écoute 'useractioncomplete' (choix actif) ET
+        // 'tcloaded' (consentement déjà enregistré = visites suivantes).
+        function handleTCFConsent(tcData, success) {
+            if (!success) return;
+
+            // Purpose 1 = Store and/or access information on a device (analytics)
+            var analyticsConsented = !!(
+                tcData.purpose &&
+                tcData.purpose.consents &&
+                tcData.purpose.consents[1]
+            );
+
+            // Purpose 3/4 = ciblage pub
+            var adConsented = !!(
+                tcData.purpose &&
+                tcData.purpose.consents &&
+                tcData.purpose.consents[3]
+            );
+
+            // Mise à jour Google Consent Mode v2
+            gtag('consent', 'update', {
+                analytics_storage:  analyticsConsented ? 'granted' : 'denied',
+                ad_storage:         adConsented ? 'granted' : 'denied',
+                ad_user_data:       adConsented ? 'granted' : 'denied',
+                ad_personalization: adConsented ? 'granted' : 'denied'
+            });
+
+            // Chargement conditionnel de Clarity
+            window.loadClarityWithConsent(analyticsConsented);
+
+            // Push dans le dataLayer pour GTM (si besoin de triggers GTM)
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'consent_update',
+                analytics_granted: analyticsConsented,
+                ads_granted:       adConsented
+            });
+        }
+
+        // Attendre que __tcfapi soit disponible (GateKeeper async)
+        function waitForTCF() {
+            if (typeof window.__tcfapi === 'function') {
+                // Écoute les 2 événements : choix initial + visites suivantes
+                window.__tcfapi('addEventListener', 2, handleTCFConsent);
+            } else {
+                setTimeout(waitForTCF, 100);
+            }
+        }
+        waitForTCF();
     </script>
 
     {{#if isProd}}
-    <!-- Google AdSense Auto Ads loader (prod) -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5973618771807669"
         crossorigin="anonymous"></script>
     {{/if}}
 
     {{#if isProd}}
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager (chargement différé) -->
     <script>
         (function () {
             var gtmLoaded = false;
@@ -122,7 +206,6 @@
             function loadGTM() {
                 if (gtmLoaded) return;
                 gtmLoaded = true;
-
                 (function (w, d, s, l, i) {
                     w[l] = w[l] || [];
                     w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
@@ -134,17 +217,13 @@
                 })(window, document, 'script', 'dataLayer', 'GTM-W4VCLVRJ');
             }
 
-            // Charge dès la première interaction (priorité)
             var events = ['click', 'scroll', 'touchstart', 'keydown', 'mousemove'];
             events.forEach(function (event) {
                 document.addEventListener(event, loadGTM, { once: true, passive: true });
             });
 
-            // Fallback : Si aucune interaction après 1 seconde
             if ('requestIdleCallback' in window) {
-                requestIdleCallback(function () {
-                    setTimeout(loadGTM, 1000);
-                }, { timeout: 2000 });
+                requestIdleCallback(function () { setTimeout(loadGTM, 1000); }, { timeout: 2000 });
             } else {
                 setTimeout(loadGTM, 1000);
             }
@@ -161,8 +240,6 @@
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4VCLVRJ" height="0" width="0"
             class="gtm-noscript-iframe"></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
 
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -177,7 +254,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto"> <!-- ✅ Ça aligne le menu à droite -->
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/"><i class="fa-solid fa-balance-scale me-1"></i>Comparateur</a>
                     </li>
@@ -195,9 +272,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="/conseils"><strong>Voir tous les conseils
                                         d'emballage</strong></a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
+                            <li><hr class="dropdown-divider"></li>
                             {{#each menuArticles}}
                             <li>
                                 <a class="dropdown-item" href="/conseils/{{this.slug}}">
@@ -230,17 +305,13 @@
     </div>
 
     <div class="page-container">
-
         <div class="background-fix {{imageClass}}"></div>
-
         {{{body}}}
-
     </div>
 
     <footer class="text-white py-4">
         <div class="container">
             <div class="row">
-                <!-- Logo et description -->
                 <div class="col-md-4 mb-4">
                     <a href="/">
                         <picture>
@@ -253,84 +324,36 @@
                     </p>
                 </div>
 
-                <!-- Liens utiles -->
                 <div class="col-md-4 mb-4">
                     <h5 class="footer-title">
                         <i class="fa-solid fa-link me-2"></i>Nos Services
                     </h5>
                     <ul class="footer-links">
-                        <li>
-                            <a href="/">
-                                <i class="fa-solid fa-balance-scale me-2"></i>Comparateur de prix
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/suivi">
-                                <i class="fa-solid fa-map-marker-alt me-2"></i>Suivi de colis
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/mon-materiel">
-                                <i class="fa-solid fa-box me-2"></i>Matériel d'emballage
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/conseils">
-                                <i class="fa-solid fa-lightbulb me-2"></i>Conseils d'emballage
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/actualites">
-                                <i class="fa-solid fa-globe me-2"></i>Actualités
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/questions">
-                                <i class="fa-solid fa-question me-2"></i>Questions
-                            </a>
-                        </li>
+                        <li><a href="/"><i class="fa-solid fa-balance-scale me-2"></i>Comparateur de prix</a></li>
+                        <li><a href="/suivi"><i class="fa-solid fa-map-marker-alt me-2"></i>Suivi de colis</a></li>
+                        <li><a href="/mon-materiel"><i class="fa-solid fa-box me-2"></i>Matériel d'emballage</a></li>
+                        <li><a href="/conseils"><i class="fa-solid fa-lightbulb me-2"></i>Conseils d'emballage</a></li>
+                        <li><a href="/actualites"><i class="fa-solid fa-globe me-2"></i>Actualités</a></li>
+                        <li><a href="/questions"><i class="fa-solid fa-question me-2"></i>Questions</a></li>
                     </ul>
                 </div>
 
-                <!-- Informations légales -->
                 <div class="col-md-4 mb-4">
                     <h5 class="footer-title">
                         <i class="fa-solid fa-info-circle me-2"></i>Informations
                     </h5>
                     <ul class="footer-links">
-                        <li>
-                            <a href="/comment-ca-marche">
-                                <i class="fa-solid fa-question-circle me-2"></i>Comment ça marche ?
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/qui-sommes-nous">
-                                <i class="fa-solid fa-users me-2"></i>Qui sommes-nous ?
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/politique-confidentialite">
-                                <i class="fa-solid fa-shield-alt me-2"></i>Politique de confidentialité
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/mentions-legales">
-                                <i class="fa-solid fa-gavel me-2"></i>Mentions légales
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/contact">
-                                <i class="fa-solid fa-envelope me-2"></i>Contact
-                            </a>
-                        </li>
+                        <li><a href="/comment-ca-marche"><i class="fa-solid fa-question-circle me-2"></i>Comment ça marche ?</a></li>
+                        <li><a href="/qui-sommes-nous"><i class="fa-solid fa-users me-2"></i>Qui sommes-nous ?</a></li>
+                        <li><a href="/politique-confidentialite"><i class="fa-solid fa-shield-alt me-2"></i>Politique de confidentialité</a></li>
+                        <li><a href="/mentions-legales"><i class="fa-solid fa-gavel me-2"></i>Mentions légales</a></li>
+                        <li><a href="/contact"><i class="fa-solid fa-envelope me-2"></i>Contact</a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Ligne de séparation -->
             <hr class="footer-divider">
 
-            <!-- Copyright et contact -->
             <div class="row">
                 <div class="col-md-6">
                     <p class="footer-copyright mb-0">
@@ -347,12 +370,9 @@
         </div>
     </footer>
 
-    <!-- Le bouton de remontée en haut -->
     <button id="back-to-top" class="back-to-top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
-
-    <!-- Script de remontée en haut -->
 
     <script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 
@@ -385,58 +405,19 @@
     {{/if}}
     {{/if}}
 
-    <!-- Scripts spécifiques cookies -->
-    {{#if isProd}}
-    <script>
-        (function () {
-            window.clarityConsentState = { loaded: false, lastStatus: null };
-            window.loadClarityWithConsent = function (granted) {
-                var status = granted ? 'granted' : 'denied';
-                if (window.clarityConsentState.lastStatus === status) return;
-                window.clarityConsentState.lastStatus = status;
-                if (!window.clarityConsentState.loaded) {
-                    (function (c, l, a, r, i, t, y) {
-                        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-                        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/ublc3yobr9";
-                        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-                    })(window, document, "clarity", "script");
-                    window.clarityConsentState.loaded = true;
-                }
-                function send() {
-                    if (typeof window.clarity === 'function') {
-                        try {
-                            window.clarity('consentv2', {
-                                ad_storage: 'denied',
-                                analytics_storage: status
-                            });
-                        } catch (e) { }
-                    } else {
-                        setTimeout(send, 150);
-                    }
-                }
-                send();
-            };
-        })();
-    </script>
-    <!-- Cookies Bundle (PROD) -->
-    <script src="/static/cookiesBanner/cookiesBundle.min.js"></script>
+    {{!-- ⚠️ SUPPRIMÉ : cookiesBundle.min.js (Silktide)               --}}
+    {{!--    Remplacé par GateKeeper Ezoic (chargé dans le <head>)     --}}
+    {{!--    + le bouton "Préférences cookies" dans le footer           --}}
+    {{!--      si tu en as besoin, GateKeeper expose :                 --}}
+    {{!--      __tcfapi('displayConsentUi', 2, function(){})           --}}
 
-    {{else}}
-
-    <!-- Cookies séparés (DEV - pour debugging) -->
-    <script src="/static/cookiesBanner/silktide-consent-manager.js"></script>
-    <script src="/static/js/cookiesConfig.js"></script>
-    <script src="/static/js/cookiePreferencesButton.js"></script>
-
-    {{/if}}
-
-
-    <!-- Autres scripts -->
     <script src="/static/js/tabs.min.js" defer></script>
     <script src="/static/js/articleSelector.min.js" defer></script>
     <script src="/static/js/loading.min.js"></script>
 
     {{else}}
+
+    {{!-- ============ MODE DEV ============ --}}
     <script src="/static/js/static.js" defer></script>
 
     {{#if hasAutocomplete}}
@@ -465,13 +446,17 @@
     {{/if}}
     {{/if}}
 
-    <!-- Autres scripts -->
+    {{!-- ⚠️ SUPPRIMÉ en DEV aussi :                                  --}}
+    {{!--    silktide-consent-manager.js                               --}}
+    {{!--    cookiesConfig.js                                          --}}
+    {{!--    cookiePreferencesButton.js                                --}}
+    {{!--    GateKeeper gère tout cela nativement                      --}}
+
     <script src="/static/js/tabs.js" defer></script>
     <script src="/static/js/articleSelector.js" defer></script>
     <script src="/static/js/loading.js"></script>
 
     {{/if}}
-
 
     <!-- GLightbox JS + init -->
     {{#if needsGallery}}

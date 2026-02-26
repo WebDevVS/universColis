@@ -9049,62 +9049,11 @@ footer {
 
 /* Personnalisation avancée du cookie banner Silktide */
 
-#silktide-banner,
-#silktide-modal {
-  background: #fff !important;
-  border-radius: 16px !important;
-  box-shadow: 0 4px 24px rgba(130, 105, 164, 0.08);
-}
-
 /* Forcer le fond blanc sur toutes les couches du cookie banner Silktide */
-#silktide-banner,
-#silktide-modal,
-#silktide-banner>div,
-#silktide-modal>div,
-#silktide-banner .actions,
-#silktide-modal .actions {
-  background: #fff !important;
-  background-color: #fff !important;
-  box-shadow: 0 4px 24px rgba(130, 105, 164, 0.08);
-}
 
 /* Forcer le fond blanc sous les boutons du cookie banner Silktide */
-#silktide-modal footer {
-  background: #fff !important;
-  background-color: #fff !important;
-  box-shadow: none !important;
-}
-
-#silktide-modal footer {
-  margin: 0 !important;
-  padding: 1.5rem 0 0.5rem !important;
-}
 
 /* Affichage compact du cookie banner Silktide sur mobile */
-@media (max-width: 600px) {
-  #silktide-modal {
-    padding: 0.5rem !important;
-    max-width: 98vw !important;
-    min-width: 0 !important;
-    border-radius: 10px !important;
-  }
-
-  #silktide-modal header,
-  #silktide-modal p,
-  #silktide-modal footer {
-    padding: 0.5rem 0.5rem !important;
-  }
-
-  #silktide-modal header {
-    margin: 0 !important;
-  }
-
-  #silktide-modal .switch {
-    transform: scale(0.9);
-    margin-left: 0.5rem;
-  }
-
-}
 
 /* ===== RESPONSIVE GLOBAL ===== */
 @media (max-width: 768px) {
