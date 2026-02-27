@@ -259,3 +259,17 @@ function showTab(tabId) {
 }
 
 // (TOC toggle is initialized within DOMContentLoaded)
+
+// ============================================================
+// SEO FIX — Vendor List link (Ezoic/Silktide CMP)
+// Ajoute rel="nofollow" sur le lien "Vendor List" généré
+// automatiquement par la CMP Ezoic pour éviter le warning
+// PageSpeed "Links are not crawlable". Aucun impact sur le
+// fonctionnement des cookies ou du consentement.
+// ============================================================
+document.addEventListener('DOMContentLoaded', function () {
+  const vendorLink = document.getElementById('ez-vendors');
+  if (vendorLink) {
+    vendorLink.setAttribute('rel', 'nofollow');
+  }
+});
