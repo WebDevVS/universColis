@@ -85,10 +85,17 @@
             {{#each paragraphs}}
 
             {{!-- EZOIC AD : milieu de contenu --}}
-            {{#if (eq @index 4)}}
+            {{#if (eq @index 3)}}
             <div id="ezoic-pub-ad-placeholder-109"></div>
             {{/if}}
 
+            {{#if (eq @index 7)}}
+            <div id="ezoic-pub-ad-placeholder-110"></div>
+            {{/if}}
+
+            {{#if (eq @index 11)}}
+            <div id="ezoic-pub-ad-placeholder-111"></div>
+            {{/if}}
 
             {{#if this.pTitle}}<h3 id="section-{{@index}}">{{this.pTitle}}</h3>{{/if}}
             {{#if this.pSubtitle}}<p><strong class="subtitle-strong">{{this.pSubtitle}}</strong></p>{{/if}}
@@ -463,7 +470,7 @@
 {{#if showEzoic}}
 <script>
     ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(102, 103, 109);
+        ezstandalone.showAds(102, 103, 109, 110, 111);
     });
 </script>
 {{/if}}

@@ -47,9 +47,19 @@
             {{#each paragraphs}}
 
             {{!-- EZOIC AD : après le 5ème paragraphe (index 4 = 5ème élément) --}}
-            {{#if (eq @index 4)}}
+            {{#if (eq @index 3)}}
             <div id="ezoic-pub-ad-placeholder-109"></div>
             {{/if}}
+
+            {{#if (eq @index 7)}}
+            <div id="ezoic-pub-ad-placeholder-110"></div>
+            {{/if}}
+
+            {{#if (eq @index 11)}}
+            <div id="ezoic-pub-ad-placeholder-111"></div>
+            {{/if}}
+
+            {{/each}}
 
             {{#if this.pTitle}}
             <h3>{{this.pTitle}}</h3>
@@ -307,7 +317,7 @@
 {{#if showEzoic}}
 <script>
     ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(102, 103, 109);
+        ezstandalone.showAds(102, 103, 109, 110, 111);
     });
 </script>
 {{/if}}

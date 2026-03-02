@@ -242,6 +242,9 @@
       </div>
     </div>
 
+    {{#if showEzoic}}
+    <div id="ezoic-pub-ad-placeholder-108"></div>
+    {{/if}}
 
     <!-- COMPARATIF TRACKERS (accordéon moderne) -->
     <details class="trackers-comparison-collapsible post-tracking-content hidden">
@@ -663,7 +666,7 @@
 {{#if showEzoic}}
 <script>
   ezstandalone.cmd.push(function () {
-    ezstandalone.showAds(101, 103);
+    ezstandalone.showAds(101, 103, 108);
   });
 </script>
 {{/if}}
