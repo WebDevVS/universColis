@@ -105,8 +105,9 @@
             <figure class="etape-image">
                 <a href="/static/img/questionsImg/{{this.questionImg}}" class="glightbox"
                     data-gallery="question-gallery" data-title="{{this.questionImgAlt}}">
-                    <img src="/static/img/questionsImg/{{this.questionImg}}" loading="lazy"
-                        alt="{{this.questionImgAlt}}" width="768" height="768" class="img-fluid rounded">
+                    <img src="/static/img/questionsImg/{{this.questionImg}}" {{#if @first}}loading="eager"
+                        fetchpriority="high" {{else}}loading="lazy" {{/if}} alt="{{this.questionImgAlt}}" width="768"
+                        height="768" class="img-fluid rounded">
                 </a>
                 {{#if this.questionImgFigcaption}}
                 <figcaption class="hover-caption">

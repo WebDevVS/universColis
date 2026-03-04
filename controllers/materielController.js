@@ -6,6 +6,7 @@ meterielController.get('/', async (req, res) => {
     const materiels = await getAll()
     res.render('materiel', {
       title: 'Matériel d’emballage',
+      page: 'materiel',
       bodyClass: 'materiel-page',
       imageClass: 'img-materiel',
       materiels,

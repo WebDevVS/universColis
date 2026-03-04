@@ -12406,6 +12406,24 @@ Désactive visuellement le bouton Track.Global
 
 
 /* ===== PAGE CONTACT ===== */
+/* Affiche le formulaire avant les infos sur mobile */
+.contact-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+  .form-card {
+    order: 1;
+  }
+  .info-panel {
+    order: 2;
+  }
+}
 
 /* ===== PAGE HEADER ===== */
     .page-header {

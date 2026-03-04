@@ -169,7 +169,9 @@
             <div class="result-card" data-aos="fade-up" data-aos-delay="{{multiply @index 100}}">
                 <div class="row align-items-center">
                     <div class="col text-center transporteur-col">
-                        <img src="{{this.logo}}" alt="{{this.transporteur}}" class="transporteur-logo">
+                        <img src="{{this.logo}}" alt="{{this.transporteur}}" class="transporteur-logo" {{#if
+                            @first}}loading="eager" fetchpriority="high" {{else}}loading="lazy" {{/if}} width="120"
+                            height="40">
                     </div>
 
                     <div class="col text-center delai-col">

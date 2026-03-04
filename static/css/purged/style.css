@@ -11734,6 +11734,24 @@ Désactive visuellement le bouton Track.Global
 
 
 /* ===== PAGE CONTACT ===== */
+/* Affiche le formulaire avant les infos sur mobile */
+.contact-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+  }
+  .form-card {
+    order: 1;
+  }
+  .info-panel {
+    order: 2;
+  }
+}
 
 /* ===== PAGE HEADER ===== */
     .page-header {
@@ -11842,33 +11860,6 @@ Désactive visuellement le bouton Track.Global
     }
 
     /* ===== RESPONSE TIME ===== */
-    .response-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(250,126,117,0.1);
-      border: 1px solid rgba(250,126,117,0.3);
-      border-radius: var(--border-radius-small);
-      padding: 14px 18px;
-    }
-
-    .response-badge .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent-color);
-      animation: pulse 2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    .response-badge p {
-      font-size: 0.85rem;
-      color: #555;
-    }
-
-    .response-badge strong {
-      color: var(--accent-color);
-    }
 
     /* ===== FORM CARD ===== */
     .form-card {

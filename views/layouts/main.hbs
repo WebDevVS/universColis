@@ -84,6 +84,39 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2"
         as="font" type="font/woff2" crossorigin fetchpriority="high">
 
+    <!-- Preload images hero par page -->
+    {{#if (eq page 'home')}}
+    <link rel="preload" as="image" href="/static/img/home.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'suivi')}}
+    <link rel="preload" as="image" href="/static/img/suivi.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'comparateur')}}
+    <link rel="preload" as="image" href="/static/img/resultats.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'actualites')}}
+    <link rel="preload" as="image" href="/static/img/actualites.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'article')}}
+    <link rel="preload" as="image" href="/static/img/articles.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'questions')}}
+    <link rel="preload" as="image" href="/static/img/PAA.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'question')}}
+    <link rel="preload" as="image" href="/static/img/PAA.webp" fetchpriority="high">
+    {{/if}}
+
+    {{#if (eq page 'materiel')}}
+    <link rel="preload" as="image" href="/static/img/materiels.webp" fetchpriority="high">
+    {{/if}}
+
     {{!-- ============================================================ --}}
     {{!-- GOOGLE CONSENT MODE v2 + CLARITY --}}
     {{!-- ============================================================ --}}

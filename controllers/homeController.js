@@ -27,6 +27,7 @@ homeController.get('/', async (req, res) => {
 
         res.render('home', {
             title: 'Accueil',
+            page: 'home',
             bodyClass: 'home-page',
             imageClass: 'img-home',
             countries,

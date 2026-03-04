@@ -79,6 +79,7 @@ actualitesController.get('/', async (req, res) => {
 
     res.render('actualites-list', {
         actualites,
+        page: 'actualites',
         bodyClass: 'actualites-page',
         imageClass: 'img-actualites',
         currentPage: page,
@@ -142,8 +143,8 @@ actualitesController.get('/:slug', async (req, res) => {
     }
 
     res.render('actualites', {
-        page: 'actualites',
         bodyClass: 'actualites-page',
+        page: 'actualites',
         imageClass: 'img-actualites',
         needsGallery: true,
         ...actualite,

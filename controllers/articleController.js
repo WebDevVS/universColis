@@ -146,6 +146,7 @@ articleController.get('/', async (req, res) => {
 
     res.render('articles-list', {
       title: 'Conseils d’emballage',
+      page: 'article',
       bodyClass: 'articles-list-page',
       imageClass: 'img-articles',
       articles,

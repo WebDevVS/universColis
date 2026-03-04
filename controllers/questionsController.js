@@ -77,6 +77,7 @@ questionsController.get('/', async (req, res) => {
 
     res.render('questions-catalogue', {
       title: 'Questions',
+      page: 'questions',
       bodyClass: 'questions-page',
       imageClass: 'img-questions',
       questionCounts,
@@ -240,6 +241,7 @@ questionsController.get('/:category', async (req, res) => {
     res.render('questions-categorie', {
       title: 'Questions ' + data.label,
       bodyClass: 'questions-page',
+      page: 'questions',
       imageClass: 'img-questions',
       category,
       categoryLabel: data.label,
