@@ -12,7 +12,7 @@ module.exports = function minifyMiddleware(req, res, next) {
           collapseWhitespace: true,
           removeComments: true,
           minifyCSS: true,
-          minifyJS: true
+          minifyJS: false
         })
 
         return callback?.(null, minified) || res.send(minified)

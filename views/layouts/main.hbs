@@ -36,15 +36,15 @@
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
     {{!-- ============================================================ --}}
-    {{!-- EZOIC ADS - Scripts header                                   --}}
-    {{!-- ORDRE CRITIQUE : GateKeeper CMP → Ezoic → Google Consent    --}}
+    {{!-- EZOIC ADS - Scripts header --}}
+    {{!-- ORDRE CRITIQUE : GateKeeper CMP → Ezoic → Google Consent --}}
     {{!-- ============================================================ --}}
 
-    {{!-- 1. GateKeeper Ezoic (CMP TCF 2.2) - DOIT être en PREMIER    --}}
-    {{!--    Remplace Silktide. Gère le banner cookies RGPD et         --}}
-    {{!--    transmet le consentement à toutes les régies pub.         --}}
-    {{!--    NE PAS mettre en async/defer - doit bloquer le rendu      --}}
-    {{!--    pour éviter tout tracking avant consentement.             --}}
+    {{!-- 1. GateKeeper Ezoic (CMP TCF 2.2) - DOIT être en PREMIER --}}
+    {{!-- Remplace Silktide. Gère le banner cookies RGPD et --}}
+    {{!-- transmet le consentement à toutes les régies pub. --}}
+    {{!-- NE PAS mettre en async/defer - doit bloquer le rendu --}}
+    {{!-- pour éviter tout tracking avant consentement. --}}
     {{#if isProd}}
     <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
     <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
@@ -57,8 +57,9 @@
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
 
-      {{!-- 3. Script analytics Ezoic --}}
-    {{!-- <script src="//ezoicanalytics.com/analytics.js"></script> --}}
+    {{!-- 3. Script analytics Ezoic --}}
+    {{!--
+    <script src="//ezoicanalytics.com/analytics.js"></script> --}}
 
     <link rel="stylesheet" href="/static/css/purged/bootstrap.min.css">
     {{#if isProd}}
@@ -67,8 +68,8 @@
     <link rel="stylesheet" href="/static/css/style.css">
     {{/if}}
 
-    {{!-- ⚠️ SUPPRIMÉ : silktide-consent-manager.min.css             --}}
-    {{!--    Plus besoin - GateKeeper a son propre style               --}}
+    {{!-- ⚠️ SUPPRIMÉ : silktide-consent-manager.min.css --}}
+    {{!-- Plus besoin - GateKeeper a son propre style --}}
 
     <!-- GLightbox CSS conditionnel -->
     {{#if needsGallery}}
@@ -81,10 +82,10 @@
 
     <!-- Preload Font Awesome font -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/webfonts/fa-solid-900.woff2"
-        as="font" type="font/woff2" crossorigin>
+        as="font" type="font/woff2" crossorigin fetchpriority="high">
 
     {{!-- ============================================================ --}}
-    {{!-- GOOGLE CONSENT MODE v2 + CLARITY                            --}}
+    {{!-- GOOGLE CONSENT MODE v2 + CLARITY --}}
     {{!-- ============================================================ --}}
     <script>
         // ── Initialisation dataLayer et gtag ──────────────────────────
@@ -95,12 +96,12 @@
         // Tout est refusé par défaut jusqu'à ce que GateKeeper
         // transmette le choix réel de l'utilisateur via TCF 2.2.
         gtag('consent', 'default', {
-            analytics_storage:  'denied',
-            ad_storage:         'denied',
-            ad_user_data:       'denied',
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
             ad_personalization: 'denied',
             functionality_storage: 'granted',  // toujours nécessaire
-            security_storage:      'granted'   // toujours nécessaire
+            security_storage: 'granted'   // toujours nécessaire
         });
 
         // ── Clarity : chargement conditionnel au consentement ─────────
@@ -127,7 +128,7 @@
                 if (typeof window.clarity === 'function') {
                     try {
                         window.clarity('consentv2', {
-                            ad_storage:       'denied',   // Clarity = analytics uniquement
+                            ad_storage: 'denied',   // Clarity = analytics uniquement
                             analytics_storage: status
                         });
                     } catch (e) { }
@@ -161,9 +162,9 @@
 
             // Mise à jour Google Consent Mode v2
             gtag('consent', 'update', {
-                analytics_storage:  analyticsConsented ? 'granted' : 'denied',
-                ad_storage:         adConsented ? 'granted' : 'denied',
-                ad_user_data:       adConsented ? 'granted' : 'denied',
+                analytics_storage: analyticsConsented ? 'granted' : 'denied',
+                ad_storage: adConsented ? 'granted' : 'denied',
+                ad_user_data: adConsented ? 'granted' : 'denied',
                 ad_personalization: adConsented ? 'granted' : 'denied'
             });
 
@@ -175,7 +176,7 @@
             window.dataLayer.push({
                 event: 'consent_update',
                 analytics_granted: analyticsConsented,
-                ads_granted:       adConsented
+                ads_granted: adConsented
             });
         }
 
@@ -240,7 +241,8 @@
             <a class="navbar-brand" href="/">
                 <picture>
                     <source srcset="/static/img/logo.webp" type="image/webp">
-                    <img src="/static/img/logo.webp" alt="UniversColis Logo" width="89" height="40">
+                    <img src="/static/img/logo.webp" alt="UniversColis Logo" width="89" height="40"
+                        fetchpriority="high">
                 </picture>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -266,7 +268,9 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="/conseils"><strong>Voir tous les conseils
                                         d'emballage</strong></a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             {{#each menuArticles}}
                             <li>
                                 <a class="dropdown-item" href="/conseils/{{this.slug}}">
@@ -340,9 +344,11 @@
                         <i class="fa-solid fa-info-circle me-2"></i>Informations
                     </h5>
                     <ul class="footer-links">
-                        <li><a href="/comment-ca-marche"><i class="fa-solid fa-question-circle me-2"></i>Comment ça marche ?</a></li>
+                        <li><a href="/comment-ca-marche"><i class="fa-solid fa-question-circle me-2"></i>Comment ça
+                                marche ?</a></li>
                         <li><a href="/qui-sommes-nous"><i class="fa-solid fa-users me-2"></i>Qui sommes-nous ?</a></li>
-                        <li><a href="/politique-confidentialite"><i class="fa-solid fa-shield-alt me-2"></i>Politique de confidentialité</a></li>
+                        <li><a href="/politique-confidentialite"><i class="fa-solid fa-shield-alt me-2"></i>Politique de
+                                confidentialité</a></li>
                         <li><a href="/mentions-legales"><i class="fa-solid fa-gavel me-2"></i>Mentions légales</a></li>
                         <li><a href="/contact"><i class="fa-solid fa-envelope me-2"></i>Contact</a></li>
                     </ul>
@@ -402,87 +408,109 @@
     {{/if}}
     {{/if}}
 
-    {{!-- ⚠️ SUPPRIMÉ : cookiesBundle.min.js (Silktide)               --}}
-    {{!--    Remplacé par GateKeeper Ezoic (chargé dans le <head>)     --}}
-    {{!--    + le bouton "Préférences cookies" dans le footer           --}}
-    {{!--      si tu en as besoin, GateKeeper expose :                 --}}
-    {{!--      __tcfapi('displayConsentUi', 2, function(){})           --}}
+    {{!-- ⚠️ SUPPRIMÉ : cookiesBundle.min.js (Silktide) --}}
+    {{!-- Remplacé par GateKeeper Ezoic (chargé dans le
 
-    <script src="/static/js/tabs.min.js" defer></script>
-    <script src="/static/js/articleSelector.min.js" defer></script>
-    <script src="/static/js/loading.min.js"></script>
+    <head>) --}}
+        {{!-- + le bouton "Préférences cookies" dans le footer --}}
+        {{!-- si tu en as besoin, GateKeeper expose : --}}
+        {{!-- __tcfapi('displayConsentUi', 2, function(){}) --}}
 
-    {{else}}
+        <script src="/static/js/tabs.min.js" defer></script>
+        <script src="/static/js/articleSelector.min.js" defer></script>
+        <script src="/static/js/loading.min.js"></script>
 
-    {{!-- ============ MODE DEV ============ --}}
-    <script src="/static/js/static.js" defer></script>
+        {{else}}
 
-    {{#if hasAutocomplete}}
-    <script type="module" src="/static/js/autocomplete.js"></script>
-    {{/if}}
+        {{!-- ============ MODE DEV ============ --}}
+        <script src="/static/js/static.js" defer></script>
 
-    {{#if (eq page 'comparateur')}}
-    <script id="offres-data" type="application/json">{{{json offres}}}</script>
-    <script src="/static/js/redirect.js" defer></script>
-    <script src="/static/js/comparateurFilters.js" defer></script>
-    {{/if}}
+        {{#if hasAutocomplete}}
+        <script type="module" src="/static/js/autocomplete.js"></script>
+        {{/if}}
 
-    {{#if (eq page 'suivi')}}
-    <script src="/static/js/suivi.js" defer></script>
-    {{/if}}
+        {{#if (eq page 'comparateur')}}
+        <script id="offres-data" type="application/json">{{{json offres}}}</script>
+        <script src="/static/js/redirect.js" defer></script>
+        <script src="/static/js/comparateurFilters.js" defer></script>
+        {{/if}}
 
-    {{#if page}}
-    {{#if (eq page 'article')}}
-    <script src="/static/js/articleShare.js"></script>
-    {{/if}}
-    {{#if (eq page 'actualites')}}
-    <script src="/static/js/articleShare.js"></script>
-    {{/if}}
-    {{#if (eq page 'question')}}
-    <script src="/static/js/articleShare.js"></script>
-    {{/if}}
-    {{/if}}
+        {{#if (eq page 'suivi')}}
+        <script src="/static/js/suivi.js" defer></script>
+        {{/if}}
 
-    {{!-- ⚠️ SUPPRIMÉ en DEV aussi :                                  --}}
-    {{!--    silktide-consent-manager.js                               --}}
-    {{!--    cookiesConfig.js                                          --}}
-    {{!--    cookiePreferencesButton.js                                --}}
-    {{!--    GateKeeper gère tout cela nativement                      --}}
+        {{#if page}}
+        {{#if (eq page 'article')}}
+        <script src="/static/js/articleShare.js"></script>
+        {{/if}}
+        {{#if (eq page 'actualites')}}
+        <script src="/static/js/articleShare.js"></script>
+        {{/if}}
+        {{#if (eq page 'question')}}
+        <script src="/static/js/articleShare.js"></script>
+        {{/if}}
+        {{/if}}
 
-    <script src="/static/js/tabs.js" defer></script>
-    <script src="/static/js/articleSelector.js" defer></script>
-    <script src="/static/js/loading.js"></script>
+        {{!-- ⚠️ SUPPRIMÉ en DEV aussi : --}}
+        {{!-- silktide-consent-manager.js --}}
+        {{!-- cookiesConfig.js --}}
+        {{!-- cookiePreferencesButton.js --}}
+        {{!-- GateKeeper gère tout cela nativement --}}
 
-    {{/if}}
+        <script src="/static/js/tabs.js" defer></script>
+        <script src="/static/js/articleSelector.js" defer></script>
+        <script src="/static/js/loading.js"></script>
 
-    <!-- GLightbox JS + init -->
-    {{#if needsGallery}}
-    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
-    {{#if isProd}}
-    <script src="/static/js/glightbox-init.min.js" defer></script>
-    {{else}}
-    <script src="/static/js/glightbox-init.js" defer></script>
-    {{/if}}
-    {{/if}}
+        {{/if}}
 
-    <!-- Script spécifique page contact -->
-    {{#if (eq page 'contact')}}
-    {{#if isProd}}
-    <script src="/static/js/contactForm.min.js"></script>
-    {{else}}
-    <script src="/static/js/contactForm.js"></script>
-    {{/if}}
-    {{/if}}
+        <!-- GLightbox JS + init -->
+        {{#if needsGallery}}
+        <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" defer></script>
+        {{#if isProd}}
+        <script src="/static/js/glightbox-init.min.js" defer></script>
+        {{else}}
+        <script src="/static/js/glightbox-init.js" defer></script>
+        {{/if}}
+        {{/if}}
 
-    <!-- Font Awesome lazy loaded -->
-    <script>
-        (function () {
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
-            document.head.appendChild(link);
-        })();
-    </script>
+        <!-- Script spécifique page contact -->
+        {{#if (eq page 'contact')}}
+        {{#if isProd}}
+        <script src="/static/js/contactForm.min.js"></script>
+        {{else}}
+        <script src="/static/js/contactForm.js"></script>
+        {{/if}}
+        {{/if}}
+
+        <!-- Font Awesome lazy loaded -->
+        <script>
+            (function () {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css';
+                document.head.appendChild(link);
+            })();
+        </script>
+
+        {{#if isProd}}
+        <script type="speculationrules">
+{
+  "prefetch": [
+    {
+      "source": "list",
+      "urls": ["/suivi", "/", "/actualites", "/questions"]
+    },
+    {
+      "source": "document",
+      "where": {
+        "href_matches": ["/actualites/*", "/questions/*", "/conseils/*"]
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
+</script>
+        {{/if}}
 
 </body>
 
