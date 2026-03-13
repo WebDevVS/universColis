@@ -262,6 +262,7 @@
 </head>
 
 <body class="{{bodyClass}} d-flex flex-column min-vh-100">
+    <div id="reading-progress-bar" aria-hidden="true"></div>
 
     <!-- Google Tag Manager (noscript) -->
     <noscript>
@@ -327,6 +328,7 @@
         </div>
     </nav>
 
+    {{#unless (eq page "suivi")}}
     <div class="beta-banner" id="betaBanner">
         <div class="container">
             <div class="beta-content">
@@ -337,6 +339,7 @@
             </div>
         </div>
     </div>
+    {{/unless}}
 
     <div class="page-container">
         <div class="background-fix {{imageClass}}"></div>

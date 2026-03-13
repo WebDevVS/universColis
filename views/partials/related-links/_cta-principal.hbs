@@ -1,45 +1,81 @@
-<!-- ===== CTA PRINCIPAL CONTEXTUEL ===== -->
-<div class="text-center mt-5">
-  <div class="main-cta">
-    
-    {{!-- Titre selon pageType --}}
+{{!-- =============================================
+CTA PRINCIPAL — Format horizontal compact
+Contextuel selon pageType.
+Peut être surchargé via ctaTitle / ctaSubtitle / ctaLink / ctaButtonText
+============================================= --}}
+
+<div class="rl-cta">
+
+  <div class="rl-cta-text">
+    {{!-- Titre --}}
     {{#if ctaTitle}}
-      <h4 class="cta-title">{{ctaTitle}}</h4>
+    <h3 class="rl-cta-title">{{ctaTitle}}</h3>
     {{else}}
-      {{#if (eq pageType "guide-detail")}}
-        <h4 class="cta-title">Objet emballé ? Trouvez le meilleur transporteur</h4>
-      {{else if (eq pageType "materiel-catalog")}}
-        <h4 class="cta-title">Matériel commandé ? Comparez les transporteurs</h4>
-      {{else if (eq pageType "question-detail")}}
-        <h4 class="cta-title">Question résolue ? Envoyez votre colis</h4>
-      {{else if (eq pageType "suivi")}}
-        <h4 class="cta-title">Nouveau colis à envoyer ?</h4>
-      {{else}}
-        <h4 class="cta-title">Prêt à expédier votre colis ?</h4>
-      {{/if}}
+    {{#if (eq pageType "suivi")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre prochain colis ?</h3>
+    {{else if (eq pageType "guide-detail")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "materiel-catalog")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "materiel-category")}}
+    <h3 class="rl-cta-title">Votre colis emballé ? Expédiez au meilleur prix</h3>
+    {{else if (eq pageType "question-detail")}}
+    <h3 class="rl-cta-title">Question résolue ? Expédiez votre colis</h3>
+    {{else if (eq pageType "questions-catalog")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "questions-category")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "actualite-detail")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "actualites")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else if (eq pageType "guides-catalog")}}
+    <h3 class="rl-cta-title">Quel est le meilleur prix pour votre envoi ?</h3>
+    {{else}}
+    <h3 class="rl-cta-title">Prêt à expédier votre colis ?</h3>
     {{/if}}
-    
-    {{!-- Subtitle optionnel --}}
+    {{/if}}
+
+    {{!-- Sous-titre --}}
     {{#if ctaSubtitle}}
-      <p class="cta-subtitle">{{ctaSubtitle}}</p>
-    {{/if}}
-    
-    {{!-- Bouton selon pageType --}}
-    {{#if ctaLink}}
-      <a href="{{ctaLink}}" class="btn-cta-primary">
-        {{ctaButtonText}} <i class="fa-solid fa-arrow-right"></i>
-      </a>
+    <p class="rl-cta-subtitle">{{ctaSubtitle}}</p>
     {{else}}
-      {{#if (eq pageType "guides-catalog")}}
-        <a href="#article-select" class="btn-cta-primary">
-          Choisir mon guide <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      {{else}}
-        <a href="/#formulaire-comparateur" class="btn-cta-primary">
-          Comparer les prix <i class="fa-solid fa-arrow-right"></i>
-        </a>
-      {{/if}}
+    {{#if (eq pageType "suivi")}}
+    <p class="rl-cta-subtitle">Comparez les offres et trouvez le meilleur tarif en quelques clics</p>
+    {{else if (eq pageType "actualite-detail")}}
+    <p class="rl-cta-subtitle">Trouvez l'offre la plus compétitive parmi tous les transporteurs</p>
+    {{else if (eq pageType "actualites")}}
+    <p class="rl-cta-subtitle">Comparez les offres et expédiez au meilleur tarif.</p>
+    {{else if (eq pageType "questions-catalog")}}
+    <p class="rl-cta-subtitle">Comparez les offres et expédiez au meilleur tarif.</p>
+    {{else if (eq pageType "questions-category")}}
+    <p class="rl-cta-subtitle">Comparez les offres et expédiez au meilleur tarif.</p>
+    {{else}}
+    <p class="rl-cta-subtitle">Comparez les prix et trouvez la meilleure offre en quelques clics</p>
     {{/if}}
-    
+    {{/if}}
   </div>
+
+
+
+  {{!-- Bouton --}}
+  {{#if ctaLink}}
+  <a href="{{ctaLink}}" class="rl-cta-btn">
+    <i class="fa-solid fa-rocket"></i>
+    {{#if ctaButtonText}}{{ctaButtonText}}{{else}}Commencer{{/if}}
+  </a>
+  {{else}}
+  {{#if (eq pageType "guides-catalog")}}
+  <a href="/#formulaire-comparateur" class="rl-cta-btn">
+    <i class="fa-solid fa-rocket"></i>
+    Comparer les prix
+  </a>
+  {{else}}
+  <a href="/#formulaire-comparateur" class="rl-cta-btn">
+    <i class="fa-solid fa-rocket"></i>
+    Comparer les prix
+  </a>
+  {{/if}}
+  {{/if}}
+
 </div>

@@ -1,173 +1,72 @@
-{{!-- ========================================= --}}
-{{!-- QUESTION INDIVIDUELLE (dynamique)        --}}
-{{!-- Adapte selon catégorie                    --}}
-{{!-- ========================================= --}}
+{{!-- =============================================
+_question-detail.hbs
+Contexte : Vient de lire une question/réponse.
+Disponible : questionCategory, relatedQuestions (array)
+Suggérer : Comparateur · Questions liées · Suivi si catégorie suivi
+============================================= --}}
 
-{{#if (eq questionCategory "tarifs-et-prix")}}
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Comparer les Tarifs</h4>
-        <p class="link-description">Prix réel en 2 minutes</p>
-        <span class="link-action">Calculer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  
-  {{!-- 2 questions similaires (depuis serveur) --}}
-  {{#each relatedQuestions}}
-  <div class="col-md-4">
-    <a href="/questions/{{../questionCategory}}/{{this.slug}}" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-circle-question"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">{{this.questionTitle}}</h4>
-        <span class="link-action">Lire <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  {{/each}}
 
-{{else if (eq questionCategory "suivi-de-colis")}}
-  <div class="col-md-4">
-    <a href="/suivi" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-map-marker-alt"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Suivre Mon Colis</h4>
-        <p class="link-description">5 widgets de suivi</p>
-        <span class="link-action">Suivre <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+<a href="/#formulaire-comparateur" class="link-card featured">
+  <div class="link-icon">
+    <i class="fa-solid fa-calculator"></i>
   </div>
-  
-  {{#each relatedQuestions}}
-  <div class="col-md-4">
-    <a href="/questions/{{../questionCategory}}/{{this.slug}}" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-circle-question"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">{{this.questionTitle}}</h4>
-        <span class="link-action">Lire <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+  <div class="link-content">
+    <h4 class="link-title">Prêt à envoyer ?</h4>
+    <p class="link-description"> Comparez les offres et choisissez le meilleur tarif pour votre envoi.</p>
+    <span class="link-action">Comparer les prix<i class="fa-solid fa-arrow-right"></i></span>
   </div>
-  {{/each}}
+</a>
 
-{{else if (eq questionCategory "transporteurs")}}
-  <div class="col-md-4">
-    <a href="/conseils" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-box-open"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Guides d'Emballage</h4>
-        <p class="link-description">Protégez votre objet</p>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Comparer</h4>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  
-  {{#if relatedQuestions.[0]}}
-  <div class="col-md-4">
-    <a href="/questions/{{questionCategory}}/{{relatedQuestions.[0].slug}}" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-circle-question"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">{{relatedQuestions.[0].questionTitle}}</h4>
-        <span class="link-action">Lire <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  {{/if}}
 
-{{else if (eq questionCategory "delais-de-livraison")}}
-  <div class="col-md-4">
-    <a href="/questions/transporteurs" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-truck"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Transporteur Fiable</h4>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4">
-    <a href="/suivi" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-map-marker-alt"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Suivre Temps Réel</h4>
-        <span class="link-action">Suivre <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  
-  {{#if relatedQuestions.[0]}}
-  <div class="col-md-4">
-    <a href="/questions/{{questionCategory}}/{{relatedQuestions.[0].slug}}" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-circle-question"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">{{relatedQuestions.[0].questionTitle}}</h4>
-        <span class="link-action">Lire <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  {{/if}}
+{{!-- Carte 2 : Suivi si catégorie = suivi-de-colis, sinon guide d'emballage --}}
 
-{{else if (eq questionCategory "envoi-international")}}
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Comparer International</h4>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+{{#if (eq category "suivi")}}
+<a href="/suivi" class="link-card">
+  <div class="link-icon icon-teal">
+    <i class="fa-solid fa-map-marker-alt"></i>
   </div>
-  
-  {{#each relatedQuestions}}
-  <div class="col-md-4">
-    <a href="/questions/{{../questionCategory}}/{{this.slug}}" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-file-invoice"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">{{this.questionTitle}}</h4>
-        <span class="link-action">Lire <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+  <div class="link-content">
+    <h4 class="link-title">Votre colis est parti ?</h4>
+    <p class="link-description">Suivez-le en temps réel, tous transporteurs.</p>
+    <span class="link-action">Suivre maintenant <i class="fa-solid fa-arrow-right"></i></span>
   </div>
-  {{/each}}
-
+</a>
 {{else}}
-  {{!-- Default --}}
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Comparer</h4>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+<a href="/conseils" class="link-card">
+  <div class="link-icon icon-green">
+    <i class="fa-solid fa-book-open"></i>
   </div>
-  <div class="col-md-4">
-    <a href="/conseils" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-box-open"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Guides</h4>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+  <div class="link-content">
+    <h4 class="link-title">Guides d'emballage</h4>
+    <p class="link-description">Préparez votre colis correctement avant de l'expédier.</p>
+    <span class="link-action">Lire les guides <i class="fa-solid fa-arrow-right"></i></span>
   </div>
-  <div class="col-md-4">
-    <a href="/mon-materiel" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-toolbox"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Matériel</h4>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
+</a>
+{{/if}}
 
+
+{{!-- Carte 3 : Question liée si disponible, sinon toutes les questions de la catégorie --}}
+
+{{#if relatedQuestions.[0]}}
+<a href="/questions/{{questionCategory.slug}}/{{relatedQuestions.[0].slug}}" class="link-card">
+  <div class="link-icon icon-teal">
+    <i class="fa-solid fa-circle-question"></i>
+  </div>
+  <div class="link-content">
+    <h4 class="link-title">{{relatedQuestions.[0].titre}}</h4>
+    <p class="link-description">Question liée — continuez votre exploration.</p>
+    <span class="link-action">Lire la réponse <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+</a>
+{{else}}
+<a href="/questions/{{questionCategory.slug}}" class="link-card">
+  <div class="link-icon icon-teal">
+    <i class="fa-solid fa-circle-question"></i>
+  </div>
+  <div class="link-content">
+    <h4 class="link-title">D'autres questions ?</h4>
+    <p class="link-description">Tarifs, transporteurs, délais, douane : toutes les réponses au même endroit.</p>
+    <span class="link-action">Voir toutes les catégories<i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+</a>
 {{/if}}

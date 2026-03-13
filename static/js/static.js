@@ -1,3 +1,26 @@
+// === READING PROGRESS BAR ===
+(function () {
+  const ACTIVE_PATHS = [
+    /^\/actualites\/.+/,   // pages articles individuels
+    /^\/questions\/.+/,    // pages questions individuelles
+    /^\/conseils\/.+/,     // pages guides individuels
+  ];
+  const bar = document.getElementById('reading-progress-bar');
+  if (!bar) return;
+  const path = window.location.pathname;
+  const isActive = ACTIVE_PATHS.some(re => re.test(path));
+  if (!isActive) return;
+  bar.style.display = 'block';
+  function updateProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (docHeight <= 0) return;
+    const progress = Math.min(100, (scrollTop / docHeight) * 100);
+    bar.style.width = progress + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+})();
 // Fonction pour afficher le bouton de remontée en haut
 document.addEventListener("DOMContentLoaded", function () {
 

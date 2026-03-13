@@ -1,79 +1,40 @@
-{{!-- ========================================= --}}
-{{!-- ARTICLE ACTUALITÉ (dynamique)            --}}
-{{!-- Adapte selon tags de l'article            --}}
-{{!-- ========================================= --}}
+{{!-- =============================================
+_actualite-detail.hbs
+Contexte : Vient de lire un article d'actualité.
+Suggérer : Comparateur (action directe) · FAQ liée · Guides
+Les tags de l'article sont disponibles via articleTags (array)
+============================================= --}}
 
-{{#if (contains articleTags "tarifs")}}
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Calculer Impact Tarifs</h4>
-        <p class="link-description">Prix réel pour vos envois</p>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
-  <div class="col-md-4">
-    <a href="/questions/tarifs-et-prix" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-euro-sign"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Questions Tarifs</h4>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
-  </div>
 
-{{else if (contains articleTags "greves")}}
-  <div class="col-md-4">
-    <a href="/questions/delais-de-livraison" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-clock"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Éviter les Retards</h4>
-        <p class="link-description">Solutions concrètes</p>
-        <span class="link-action">Comprendre <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+<a href="/#formulaire-comparateur" class="link-card featured">
+  <div class="link-icon">
+    <i class="fa-solid fa-calculator"></i>
   </div>
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Alternatives</h4>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+  <div class="link-content">
+    <h4 class="link-title">Votre prochain envoi ?</h4>
+    <p class="link-description">Comparez les offres en temps réel et expédiez au meilleur prix.</p>
+    <span class="link-action">Comparer les prix <i class="fa-solid fa-arrow-right"></i></span>
   </div>
+</a>
 
-{{else}}
-  {{!-- Liens par défaut --}}
-  <div class="col-md-4">
-    <a href="/#formulaire-comparateur" class="link-card featured">
-      <div class="link-icon"><i class="fa-solid fa-calculator"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Comparer Transporteurs</h4>
-        <span class="link-action">Comparer <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+<a href="/questions" class="link-card">
+  <div class="link-icon icon-teal">
+    <i class="fa-solid fa-circle-question"></i>
   </div>
-  <div class="col-md-4">
-    <a href="/conseils" class="link-card">
-      <div class="link-icon"><i class="fa-solid fa-box-open"></i></div>
-      <div class="link-content">
-        <h4 class="link-title">Guides</h4>
-        <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-      </div>
-    </a>
+  <div class="link-content">
+    <h4 class="link-title">Vos questions sur l'expédition</h4>
+    <p class="link-description">Tarifs, transporteurs, délais, douane : toutes les réponses pratiques.</p>
+    <span class="link-action">Voir les questions<i class="fa-solid fa-arrow-right"></i></span>
   </div>
-{{/if}}
+</a>
 
-{{!-- 3e lien : Autres actualités --}}
-<div class="col-md-4">
-  <a href="/actualites" class="link-card">
-    <div class="link-icon"><i class="fa-solid fa-newspaper"></i></div>
-    <div class="link-content">
-      <h4 class="link-title">Autres Actualités</h4>
-      <span class="link-action">Voir <i class="fa-solid fa-arrow-right"></i></span>
-    </div>
-  </a>
-</div>
+<a href="/suivi" class="link-card">
+  <div class="link-icon icon-teal">
+    <i class="fa-solid fa-map-marker-alt"></i>
+  </div>
+  <div class="link-content">
+    <h4 class="link-title">Votre colis est parti ?</h4>
+    <p class="link-description">Suivez-le en temps réel, tous transporteurs.</p>
+    <span class="link-action">Suivre maintenant <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+</a>
