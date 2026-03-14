@@ -40,7 +40,8 @@
         <a href="/static/img/actualitesImg/{{actualiteImg}}" class="glightbox article-image-link"
             data-gallery="actualites-gallery" data-title="{{actualiteImgAlt}}">
             <img src="/static/img/actualitesImg/{{actualiteImg}}" alt="{{actualiteImgAlt}}"
-                class="article-image article-image-right" width="1200" height="675" fetchpriority="high" loading="eager">
+                class="article-image article-image-right" width="1200" height="675" fetchpriority="high"
+                loading="eager">
         </a>
 
         <div class="article-text">
@@ -48,21 +49,15 @@
 
             {{!-- EZOIC AD : après le 5ème paragraphe (index 4 = 5ème élément) --}}
             {{#if (eq @index 3)}}
-                {{#if showEzoic}}
-                <div id="ezoic-pub-ad-placeholder-109"></div>
-                {{/if}}
+            <div id="ezoic-pub-ad-placeholder-109"></div>
             {{/if}}
 
             {{#if (eq @index 7)}}
-                {{#if showEzoic}}
-                <div id="ezoic-pub-ad-placeholder-110"></div>
-                {{/if}}
+            <div id="ezoic-pub-ad-placeholder-110"></div>
             {{/if}}
 
             {{#if (eq @index 11)}}
-                {{#if showEzoic}}
-                <div id="ezoic-pub-ad-placeholder-111"></div>
-                {{/if}}
+            <div id="ezoic-pub-ad-placeholder-111"></div>
             {{/if}}
 
             {{#if this.pTitle}}
@@ -193,7 +188,7 @@
 </div>
 
 <!-- Section "À découvrir" CONTEXTUELLE  -->
-   {{> related-links/_base pageType="actualite-detail"}} 
+{{> related-links/_base pageType="actualite-detail"}}
 
 <!-- Bouton partager l'article -->
 <button id="share-article" class="share-article-btn" title="Partager l'article">

@@ -86,21 +86,15 @@
 
             {{!-- EZOIC AD : milieu de contenu --}}
             {{#if (eq @index 3)}}
-            {{#if showEzoic}}
             <div id="ezoic-pub-ad-placeholder-109"></div>
-            {{/if}}
             {{/if}}
 
             {{#if (eq @index 7)}}
-            {{#if showEzoic}}
             <div id="ezoic-pub-ad-placeholder-110"></div>
-            {{/if}}
             {{/if}}
 
             {{#if (eq @index 11)}}
-            {{#if showEzoic}}
             <div id="ezoic-pub-ad-placeholder-111"></div>
-            {{/if}}
             {{/if}}
 
             {{#if this.pTitle}}<h3 id="section-{{@index}}">{{this.pTitle}}</h3>{{/if}}
@@ -360,7 +354,7 @@
 
 
 <!-- Section "À découvrir" CONTEXTUELLE  -->
-   {{> related-links/_base pageType="question-detail"}} 
+{{> related-links/_base pageType="question-detail"}}
 
 <!-- Bouton partager l'article -->
 <button id="share-article" class="share-article-btn" title="Partager l'article">
