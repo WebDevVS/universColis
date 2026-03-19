@@ -6653,8 +6653,7 @@ figure.etape-image:hover .hover-caption {
   }
 
   .resume-item,
-  #materiel li,
-  .materiel-item {
+  #materiel li {
     text-align: left !important;
     align-items: flex-start !important;
   }
