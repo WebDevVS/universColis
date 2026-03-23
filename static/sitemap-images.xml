@@ -595,5 +595,14 @@
         <image:caption>Comment déployer un DDP fiable sans se mettre en risque sur la marge et la conformité ? Cette infographie synthétise un plan en 5 étapes : identifier les pays prioritaires, fiabiliser les données produit (description, valeur, code HS, origine), sélectionner une option DDP réellement "sans friction", définir les conditions tarifaires via une logique de landed cost, puis préparer le support client et la gestion des retours. Elle sert de checklist visuelle pour structurer une mise en œuvre DDP progressive en e-commerce international.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/suivi-colis-international-quel-site-choisir-selon-le-cas</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/infographie-suivi-colis-international-choisir-site-officiel-ou-tracker-universel.webp</image:loc>
+        
+        <image:caption>Cette infographie présente comment choisir un outil de suivi colis international selon le cas : transporteur connu, colis multi-opérateurs, transporteur inconnu ou numéro invalide. Elle montre quand utiliser un site officiel (La Poste, DHL, Chronopost, UPS) ou un tracker universel pour recouper les informations et obtenir un suivi plus fiable.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
