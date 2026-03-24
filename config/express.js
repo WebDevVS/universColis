@@ -169,6 +169,8 @@ module.exports = (app) => {
       'loading',
       'redirect',
       'static',
+      'statuts-colis',
+      'statuts-modal',
       'suivi',
       'tabs'
     ];

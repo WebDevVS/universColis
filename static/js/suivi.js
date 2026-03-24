@@ -775,19 +775,19 @@ function showOptimizedWidget(trackerType, trackingNumber) {
     oldTrackingSection.parentNode.removeChild(oldTrackingSection);
   }
 
-// ✅ Positionnement: insère le widget AVANT .universal-tip pour l'ordre souhaité
-const universalTip = document.querySelector('.universal-tip');
-if (universalTip && universalTip.parentNode) {
-  universalTip.parentNode.insertBefore(section, universalTip);
-} else {
-  // Fallback : insère avant manual-selector
-  const manualSelector = document.getElementById('manual-selector');
-  if (manualSelector && manualSelector.parentNode) {
-    manualSelector.parentNode.insertBefore(section, manualSelector);
+  // ✅ Positionnement: insère le widget AVANT .universal-tip pour l'ordre souhaité
+  const universalTip = document.querySelector('.universal-tip');
+  if (universalTip && universalTip.parentNode) {
+    universalTip.parentNode.insertBefore(section, universalTip);
   } else {
-    (document.querySelector('.tracking-form-container') || document.body).appendChild(section);
+    // Fallback : insère avant manual-selector
+    const manualSelector = document.getElementById('manual-selector');
+    if (manualSelector && manualSelector.parentNode) {
+      manualSelector.parentNode.insertBefore(section, manualSelector);
+    } else {
+      (document.querySelector('.tracking-form-container') || document.body).appendChild(section);
+    }
   }
-}
 
   widgetContainer.innerHTML = '';
   const loadingDiv = document.createElement('div');
@@ -1183,6 +1183,17 @@ function revealPostTrackingSections() {
       el.classList.remove('hidden');
       el.classList.add('reveal-section');
     });
+
+
+    // Afficher et repositionner le bouton décodeur APRÈS le widget
+    const decoderTrigger = document.getElementById('openDecoderModal');
+    const universalTip = document.querySelector('.universal-tip');
+    if (decoderTrigger && universalTip && universalTip.parentNode) {
+      // Déplace le bouton juste avant .universal-tip
+      universalTip.parentNode.insertBefore(decoderTrigger, universalTip);
+      decoderTrigger.classList.remove('hidden');
+    }
+
   } catch (e) {
     console.warn('Post-tracking reveal error:', e);
   }

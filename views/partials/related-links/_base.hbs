@@ -1,9 +1,9 @@
 {{!-- =============================================
-  SECTION À DÉCOUVRIR — BASE
-  Inclure dans chaque page via :
-    {{> related-links/_base}}
-  Passer pageType depuis la route Express.
-  Exemple : res.render('page', { pageType: 'suivi' })
+SECTION À DÉCOUVRIR — BASE
+Inclure dans chaque page via :
+{{> related-links/_base}}
+Passer pageType depuis la route Express.
+Exemple : res.render('page', { pageType: 'suivi' })
 ============================================= --}}
 
 <hr class="related-links-divider">
@@ -18,33 +18,35 @@
       </div>
 
       {{#if sectionTitle}}
-        <h2 class="related-title">{{{sectionTitle}}}</h2>
+      <h2 class="related-title">{{{sectionTitle}}}</h2>
       {{else}}
-        {{#if (eq pageType "home")}}
-          <h2 class="related-title">Avant d'envoyer, <em>préparez-vous</em></h2>
-        {{else if (eq pageType "suivi")}}
-          <h2 class="related-title">Pendant l'attente, <em>explorez</em></h2>
-        {{else if (eq pageType "guides-catalog")}}
-          <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
-        {{else if (eq pageType "guide-detail")}}
-          <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
-        {{else if (eq pageType "materiel-catalog")}}
-          <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
-        {{else if (eq pageType "materiel-category")}}
-          <h2 class="related-title">Votre colis emballé, <em>et maintenant ?</em></h2>
-        {{else if (eq pageType "questions-catalog")}}
-          <h2 class="related-title">De l'information <em>à l'expédition</em></h2>
-        {{else if (eq pageType "questions-category")}}
-          <h2 class="related-title">De l'information <em>à l'expédition</em></h2>
-        {{else if (eq pageType "question-detail")}}
-          <h2 class="related-title">Tout savoir, <em>pour mieux expédier</em></h2>
-        {{else if (eq pageType "actualites")}}
-          <h2 class="related-title">De l'actualité <em>à l'action</em></h2>
-        {{else if (eq pageType "actualite-detail")}}
-          <h2 class="related-title">De l'actualité <em>à l'action</em></h2>
-        {{else}}
-          <h2 class="related-title">Continuez votre <em>parcours</em></h2>
-        {{/if}}
+      {{#if (eq pageType "home")}}
+      <h2 class="related-title">Avant d'envoyer, <em>préparez-vous</em></h2>
+      {{else if (eq pageType "suivi")}}
+      <h2 class="related-title">Pendant l'attente, <em>explorez</em></h2>
+      {{else if (eq pageType "guides-catalog")}}
+      <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
+      {{else if (eq pageType "guide-detail")}}
+      <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
+      {{else if (eq pageType "materiel-catalog")}}
+      <h2 class="related-title">De l'emballage <em>à l'expédition</em></h2>
+      {{else if (eq pageType "materiel-category")}}
+      <h2 class="related-title">Votre colis emballé, <em>et maintenant ?</em></h2>
+      {{else if (eq pageType "questions-catalog")}}
+      <h2 class="related-title">De l'information <em>à l'expédition</em></h2>
+      {{else if (eq pageType "questions-category")}}
+      <h2 class="related-title">De l'information <em>à l'expédition</em></h2>
+      {{else if (eq pageType "question-detail")}}
+      <h2 class="related-title">Tout savoir, <em>pour mieux expédier</em></h2>
+      {{else if (eq pageType "actualites")}}
+      <h2 class="related-title">De l'actualité <em>à l'action</em></h2>
+      {{else if (eq pageType "actualite-detail")}}
+      <h2 class="related-title">De l'actualité <em>à l'action</em></h2>
+      {{else if (eq pageType "statuts-colis")}}
+      <h2 class="related-title">Pendant l'attente, <em></em>explorez</em></h2>
+      {{else}}
+      <h2 class="related-title">Continuez votre <em>parcours</em></h2>
+      {{/if}}
       {{/if}}
     </div>
 

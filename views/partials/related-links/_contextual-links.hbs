@@ -1,49 +1,52 @@
 {{!-- ============================================= --}}
-{{!-- ROUTER : Dispatch vers le bon partial        --}}
-{{!-- selon pageType                                --}}
+{{!-- ROUTER : Dispatch vers le bon partial --}}
+{{!-- selon pageType --}}
 {{!-- ============================================= --}}
 
 {{#if (eq pageType "home")}}
-  {{> related-links/_by-page-type/_home}}
+{{> related-links/_by-page-type/_home}}
 
 {{else if (eq pageType "suivi")}}
-  {{> related-links/_by-page-type/_suivi}}
+{{> related-links/_by-page-type/_suivi}}
 
 {{else if (eq pageType "guides-catalog")}}
-  {{> related-links/_by-page-type/_guides-catalog}}
+{{> related-links/_by-page-type/_guides-catalog}}
 
 {{else if (eq pageType "guide-detail")}}
-  {{> related-links/_by-page-type/_guide-detail 
-      article=article 
-      relatedGuides=relatedGuides}}
+{{> related-links/_by-page-type/_guide-detail
+article=article
+relatedGuides=relatedGuides}}
 
 {{else if (eq pageType "materiel-catalog")}}
-  {{> related-links/_by-page-type/_materiel-catalog}}
+{{> related-links/_by-page-type/_materiel-catalog}}
 
 {{else if (eq pageType "materiel-category")}}
-  {{> related-links/_by-page-type/_materiel-category 
-      materialCategory=materialCategory}}
+{{> related-links/_by-page-type/_materiel-category
+materialCategory=materialCategory}}
 
 {{else if (eq pageType "questions-catalog")}}
-  {{> related-links/_by-page-type/_questions-catalog}}
+{{> related-links/_by-page-type/_questions-catalog}}
 
 {{else if (eq pageType "questions-category")}}
-  {{> related-links/_by-page-type/_questions-category 
-      questionCategory=questionCategory}}
+{{> related-links/_by-page-type/_questions-category
+questionCategory=questionCategory}}
 
 {{else if (eq pageType "question-detail")}}
-  {{> related-links/_by-page-type/_question-detail 
-      questionCategory=questionCategory
-      relatedQuestions=relatedQuestions}}
+{{> related-links/_by-page-type/_question-detail
+questionCategory=questionCategory
+relatedQuestions=relatedQuestions}}
 
 {{else if (eq pageType "actualites")}}
-  {{> related-links/_by-page-type/_actualites}}
+{{> related-links/_by-page-type/_actualites}}
 
 {{else if (eq pageType "actualite-detail")}}
-  {{> related-links/_by-page-type/_actualite-detail 
-      articleTags=articleTags}}
+{{> related-links/_by-page-type/_actualite-detail
+articleTags=articleTags}}
+
+{{else if (eq pageType "statuts-colis")}}
+{{> related-links/_by-page-type/_statuts-colis}}
 
 {{else}}
-  {{> related-links/_by-page-type/_default}}
+{{> related-links/_by-page-type/_default}}
 
 {{/if}}

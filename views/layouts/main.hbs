@@ -369,6 +369,7 @@
                         <li><a href="/conseils"><i class="fa-solid fa-lightbulb me-2"></i>Conseils d'emballage</a></li>
                         <li><a href="/actualites"><i class="fa-solid fa-globe me-2"></i>Actualités</a></li>
                         <li><a href="/questions"><i class="fa-solid fa-question me-2"></i>Questions</a></li>
+                        <li><a href="/suivi/statuts-colis"><i class="fa-solid fa-magnifying-glass me-2"></i>Statuts colis</a></li>
                     </ul>
                 </div>
 
@@ -427,6 +428,11 @@
 
     {{#if (eq page 'suivi')}}
     <script src="/static/js/suivi.min.js" defer></script>
+    <script src="/static/js/statuts-modal.min.js" defer></script>
+    {{/if}}
+
+    {{#if (eq page 'statuts-colis')}}
+    <script src="/static/js/statuts-colis.min.js" defer></script>
     {{/if}}
 
     {{#if page}}
@@ -470,6 +476,11 @@
 
         {{#if (eq page 'suivi')}}
         <script src="/static/js/suivi.js" defer></script>
+        <script src="/static/js/statuts-modal.js" defer></script>
+        {{/if}}
+
+        {{#if (eq page 'statuts-colis')}}
+        <script src="/static/js/statuts-colis.js" defer></script>
         {{/if}}
 
         {{#if page}}

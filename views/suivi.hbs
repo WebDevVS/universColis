@@ -36,12 +36,25 @@
     <!-- Widget zone (comme actuellement) -->
     <div id="tracker-widget-container" class="tracker-widget-container"></div>
 
+    <!-- BOUTON TRIGGER DÉCODEUR -->
+    <button class="decoder-trigger hidden" id="openDecoderModal">
+      <div class="decoder-trigger-icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="decoder-trigger-text">
+        <strong>Votre statut colis est difficile à interpréter ?</strong>
+        <span>Trouvez sa signification en quelques secondes</span>
+      </div>
+      <i class="fa-solid fa-chevron-right decoder-trigger-arrow"></i>
+    </button>
+
     <!-- Message universel statique -->
     <div class="ai-summary-content universal-tip hidden">
       <div class="summary-tip">
         <p>
           <strong> Résultat incomplet ?</strong>
-           D'autres outils sont disponibles — chaque tracker utilise des sources différentes et peut avoir plus de détails sur votre colis. <i class="fa-solid fa-arrow-down"></i>
+          D'autres outils sont disponibles — chaque tracker utilise des sources différentes et peut avoir plus de
+          détails sur votre colis. <i class="fa-solid fa-arrow-down"></i>
         </p>
       </div>
     </div>
@@ -536,10 +549,62 @@
     <div id="ezoic-pub-ad-placeholder-103"></div>
     {{/if}}
 
+    <!-- MODAL DÉCODEUR -->
+    <div class="decoder-overlay" id="decoderOverlay" aria-hidden="true">
+      <div class="decoder-modal" role="dialog" aria-modal="true" aria-label="Décodeur de statuts">
+
+        <div class="decoder-modal-handle"></div>
+
+        <div class="decoder-modal-header">
+          <div class="decoder-modal-title">
+            <div class="decoder-modal-title-icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3>Décodeur de statuts</h3>
+          </div>
+          <button class="decoder-modal-close" id="closeDecoderModal" aria-label="Fermer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="decoder-modal-search">
+          <div class="decoder-modal-search-wrap">
+            <span class="decoder-modal-search-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </span>
+            <input type="text" id="modalSearch" placeholder="Tapez votre statut…" autocomplete="off"
+              spellcheck="false" />
+            <button class="decoder-modal-clear" id="modalClear" aria-label="Effacer">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="decoder-modal-tabs" id="modalTabs"></div>
+
+        <div class="decoder-modal-body" id="modalBody">
+          <div class="decoder-modal-loading">
+            <i class="fa-solid fa-spinner fa-spin"></i> Chargement…
+          </div>
+        </div>
+
+        <div class="decoder-modal-footer">
+          <a href="/suivi/statuts-colis">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Voir la page complète avec FAQ
+          </a>
+        </div>
+
+      </div>
+    </div>
+
   </section>
 
   <!-- ✅ Section "À découvrir" CONTEXTUELLE (adaptée page suivi) (désactivée) -->
-   {{> related-links/_base pageType="suivi"}} 
+  {{> related-links/_base pageType="suivi"}}
 </section>
 
 
@@ -550,5 +615,3 @@
   });
 </script>
 {{/if}}
-
-

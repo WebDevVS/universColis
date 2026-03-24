@@ -1,0 +1,208 @@
+<!-- Contenu principal -->
+<nav class="breadcrumb">
+  <div class="container">
+    <a href="/" class="breadcrumb-link">Accueil</a>
+    <span class="mx-2">></span>
+    <a href="/suivi" class="breadcrumb-link">Suivi</a>
+    <span class="mx-2">></span>
+    <span class="breadcrumb-current">Signification des statuts colis</span>
+  </div>
+</nav>
+
+<section class="statuts-colis">
+
+  <!-- Lien retour discret en haut -->
+  <div class="decoder-back-link">
+    <a href="/suivi">
+      <i class="fa-solid fa-arrow-left"></i> Retour au suivi
+    </a>
+  </div>
+
+  <!-- Hero centré -->
+  <div class="tracking-intro">
+    <h1 class="hero-title">Signification des statuts colis</h1>
+    <p class="hero-subtitle">
+      <span class="hero-subtitle-count"> Trouvez votre statut, comprenez ce qu'il signifie, et sachez quoi faire.</span>
+    </p>
+  </div>
+
+  <!-- Barre de recherche + onglets -->
+  <div class="decoder-search-zone">
+    <div class="decoder-search-wrap">
+      <i class="fa-solid fa-magnifying-glass decoder-search-icon"></i>
+      <input type="text" id="decoderSearch" placeholder="Tapez votre statut (ex : en transit, douane, livré…)"
+        autocomplete="off" spellcheck="false" />
+      <button class="decoder-clear" id="decoderClear" aria-label="Effacer">✕</button>
+    </div>
+    <div class="decoder-tabs" id="decoderTabs"></div>
+  </div>
+
+  <!-- Légende urgence -->
+  <div class="decoder-legend">
+    <span class="legend-item"><span class="legend-dot dot-attendre"></span>Patienter</span>
+    <span class="legend-item"><span class="legend-dot dot-verifier"></span>Vérifier</span>
+    <span class="legend-item"><span class="legend-dot dot-action"></span>À faire</span>
+    <span class="legend-item"><span class="legend-dot dot-urgent"></span>Urgent</span>
+    <span class="legend-note">Barre colorée = niveau d'action</span>
+  </div>
+
+  <p class="decoder-result-meta" id="decoderMeta"></p>
+
+</section>
+
+<!-- Cards statuts -->
+<section class="decoder-cards">
+  <div class="container">
+
+    {{#each statutsGroupes}}
+    <div class="phase-section" data-phase="{{this.id}}">
+
+      <div class="phase-header">
+        <span class="phase-label">
+          {{#if (eq this.id "avant")}}<i class="fa-solid fa-clock"></i> Avant envoi{{/if}}
+          {{#if (eq this.id "transit")}}<i class="fa-solid fa-truck"></i> Transit{{/if}}
+          {{#if (eq this.id "douane")}}<i class="fa-solid fa-passport"></i> Douane{{/if}}
+          {{#if (eq this.id "livraison")}}<i class="fa-solid fa-house"></i> Livraison{{/if}}
+          {{#if (eq this.id "probleme")}}<i class="fa-solid fa-triangle-exclamation"></i> Problèmes{{/if}}
+        </span>
+        <span class="phase-count">{{this.statuts.length}}</span>
+      </div>
+
+      {{#each this.statuts}}
+      <div class="mcard" data-u="{{this.urgence}}" data-phase="{{this.phase}}" data-fr="{{this.fr}}"
+        data-en="{{this.en}}" data-tags="{{this.tags}}">
+
+        <div class="mcard-top">
+          <span class="mu-dot dot-{{this.urgence}}"></span>
+          <div class="mcard-labels">
+            <div class="mcard-fr">{{this.fr}}</div>
+            {{#if this.en}}
+            <div class="mcard-en">{{this.en}}</div>
+            {{/if}}
+            {{#if this.transporteur}}
+            <span class="mcard-transporteur">{{this.transporteur}}</span>
+            {{/if}}
+          </div>
+          <span class="mpill pill-{{this.urgence}}">
+            {{#if (eq this.urgence "attendre")}}Patienter{{/if}}
+            {{#if (eq this.urgence "verifier")}}Vérifier{{/if}}
+            {{#if (eq this.urgence "action")}}À faire{{/if}}
+            {{#if (eq this.urgence "urgent")}}Urgent{{/if}}
+          </span>
+          <div class="mchevron">▾</div>
+        </div>
+
+        <div class="mcard-body">
+          <p class="mexplication">{{this.explication}}</p>
+          <div class="maction maction-{{this.urgence}}">
+            <span class="maction-emoji">
+              {{#if (eq this.urgence "attendre")}}<i class="fa-solid fa-check" style="color:#16a34a"></i>{{/if}}
+              {{#if (eq this.urgence "verifier")}}<i class="fa-solid fa-circle-info" style="color:#2563eb"></i>{{/if}}
+              {{#if (eq this.urgence "action")}}<i class="fa-solid fa-arrow-right" style="color:#ea580c"></i>{{/if}}
+              {{#if (eq this.urgence "urgent")}}<i class="fa-solid fa-circle-exclamation"
+                style="color:#dc2626"></i>{{/if}}
+            </span>
+            <div class="maction-text">
+              <strong>Que faire ?</strong> {{this.action}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {{/each}}
+
+    </div>
+    {{/each}}
+
+  </div>
+</section>
+
+<section class="decoder-faq">
+  <div class="container">
+
+    <div class="decoder-faq-header">
+      <h2 class="decoder-faq-title">
+        <i class="fa-solid fa-circle-question"></i> Questions fréquentes
+      </h2>
+    </div>
+
+    <div class="decoder-faq-list">
+
+      <div class="decoder-faq-item">
+        <button class="decoder-faq-question" aria-expanded="false">
+          Combien de temps dure un statut "en transit" ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="decoder-faq-answer">
+          <p>En France métropolitaine, un colis reste généralement en transit entre 24 et 72 h. Pour les envois
+            internationaux, cette phase peut durer de 5 à 15 jours selon la distance et le transporteur. L'absence de
+            scan pendant 48 h est normale — le colis continue d'avancer entre deux points de scan. Si aucune mise à jour
+            n'apparaît après 5 jours ouvrés, contactez le transporteur ou le vendeur.</p>
+        </div>
+      </div>
+
+      <div class="decoder-faq-item">
+        <button class="decoder-faq-question" aria-expanded="false">
+          Mon colis est bloqué en douane, que faire ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="decoder-faq-answer">
+          <p>Un blocage en douane nécessite presque toujours une action de votre part. Commencez par vérifier vos
+            e-mails et SMS — le transporteur ou la douane vous a probablement envoyé un message avec les instructions.
+            Dans la plupart des cas, il faut soit payer des droits de douane via un lien en ligne, soit fournir une
+            facture ou preuve d'achat. Agissez rapidement : un colis retenu en douane sans réponse peut être renvoyé à
+            l'expéditeur ou abandonné après un certain délai.</p>
+        </div>
+      </div>
+
+      <div class="decoder-faq-item">
+        <button class="decoder-faq-question" aria-expanded="false">
+          Mon colis est indiqué "livré" mais je ne l'ai pas reçu, que faire ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="decoder-faq-answer">
+          <p>Avant de contacter le transporteur, vérifiez systématiquement : votre boîte aux lettres (y compris les
+            grandes), votre voisin ou gardien d'immeuble, un lieu sûr si vous aviez donné une consigne de dépôt, et le
+            point relais le plus proche. Si le colis reste introuvable après ces vérifications, contactez le
+            transporteur avec votre numéro de suivi et demandez une preuve de livraison — ils peuvent fournir une photo
+            du dépôt ou la signature du réceptionnaire. En dernier recours, contactez le vendeur pour ouvrir une
+            réclamation.</p>
+        </div>
+      </div>
+
+      <div class="decoder-faq-item">
+        <button class="decoder-faq-question" aria-expanded="false">
+          Quelle différence entre "tentative de livraison" et "avisé en attente de retrait" ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="decoder-faq-answer">
+          <p>"Tentative de livraison" signifie que le livreur est passé mais n'a pas pu remettre le colis — il va
+            généralement repasser ou vous proposer des options (point relais, nouvelle date). "Avisé en attente de
+            retrait" signifie qu'un avis de passage physique a été laissé dans votre boîte aux lettres et que le colis
+            est désormais disponible dans un bureau ou point relais pour que vous veniez le chercher. Dans les deux cas,
+            consultez les instructions laissées par le transporteur pour choisir la meilleure option.</p>
+        </div>
+      </div>
+
+      <div class="decoder-faq-item">
+        <button class="decoder-faq-question" aria-expanded="false">
+          Mon statut ne change plus depuis plusieurs jours, est-ce normal ?
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+        <div class="decoder-faq-answer">
+          <p>Ça dépend du contexte. Pour un envoi national, une absence de mise à jour de plus de 3 jours ouvrés est
+            anormale et mérite un contact avec le transporteur. Pour un envoi international, des silences de 5 à 10
+            jours sont fréquents — notamment pendant le transport aérien ou le passage en douane. Les périodes de forte
+            activité (Noël, soldes, Black Friday) peuvent aussi ralentir les mises à jour sans que le colis soit
+            réellement bloqué. Si le délai de livraison estimé est dépassé, contactez le vendeur en premier — c'est
+            généralement lui qui initie les enquêtes auprès du transporteur.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Section "À découvrir" contextuelle -->
+{{> related-links/_base pageType="statuts-colis"}}
