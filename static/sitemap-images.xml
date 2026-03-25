@@ -604,5 +604,14 @@
         <image:caption>Cette infographie présente comment choisir un outil de suivi colis international selon le cas : transporteur connu, colis multi-opérateurs, transporteur inconnu ou numéro invalide. Elle montre quand utiliser un site officiel (La Poste, DHL, Chronopost, UPS) ou un tracker universel pour recouper les informations et obtenir un suivi plus fiable.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/suivi-colis-international-gratuit-ce-quon-peut-vraiment-suivre-sans-payer</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/infographie-suivi-colis-international-gratuit-etapes-visibles-sans-payer.webp</image:loc>
+        
+        <image:caption>Cette infographie illustre les principales étapes qu'un utilisateur peut suivre gratuitement pour un colis international : prise en charge, transit, arrivée dans le pays de destination, livraison et confirmation finale. Elle aide à comprendre ce qu'un suivi gratuit montre réellement dans la plupart des cas, sans promettre tous les détails intermédiaires. Elle est particulièrement utile pour les colis suivis depuis la France ou à destination de la France, notamment via des transporteurs ou partenaires internationaux.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
