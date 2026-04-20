@@ -46,7 +46,7 @@ questionsController.get('/', async (req, res) => {
           "inLanguage": "fr-FR",
           "description": "UniversColis : comparateur d\'expédition, suivi de colis, conseils et actualités.",
           "publisher": { "@id": "https://www.universcolis.fr/#org" },
-        // NOTE: potentialAction (SearchAction) removed because no on-site search on this page
+          // NOTE: potentialAction (SearchAction) removed because no on-site search on this page
         },
         {
           "@type": "Organization",
@@ -89,8 +89,8 @@ questionsController.get('/', async (req, res) => {
       ],
       canonicalUrl,
       robots: 'index, follow',
-      publishedDate: (new Date()).toISOString().slice(0,10),
-      modifiedDate: (new Date()).toISOString().slice(0,10),
+      publishedDate: (new Date()).toISOString().slice(0, 10),
+      modifiedDate: (new Date()).toISOString().slice(0, 10),
       ogType: 'website',
       ogTitle: seoTitle,
       ogDescription: seoDescription,
@@ -161,19 +161,24 @@ questionsController.get('/:category', async (req, res) => {
     const data = categoryData[category] || { label: category, icon: '', description: '' };
 
     // Récupère les questions de la catégorie depuis le service
-    const questions = await questionsService.getByCategory(category);
-    const questionsCount = questions.length;
+    const allQuestions = await questionsService.getByCategory(category);
+    const questionsCount = allQuestions.length;
+
+    const questions = allQuestions.map((q, i) => ({
+      ...q,
+      questionNum: String(i + 1).padStart(2, '0')
+    }));
 
     // Tableau des catégories pour la section "Voir aussi"
     const categoriesList = [
-      {key: 'tarifs', label: 'Questions sur les tarifs & prix', icon: 'fa-euro-sign', class: 'icon-tarifs'},
-      {key: 'suivi', label: 'Questions sur le suivi de colis', icon: 'fa-map-location-dot', class: 'icon-suivi'},
-      {key: 'transporteurs', label: 'Questions sur les transporteurs', icon: 'fa-truck', class: 'icon-transporteurs'},
-      {key: 'livraison', label: 'Questions sur les délais de livraison', icon: 'fa-clock', class: 'icon-delais'},
-      {key: 'dimensions', label: 'Questions sur les dimensions et poids', icon: 'fa-ruler-combined', class: 'icon-dimensions'},
-      {key: 'international', label: "Questions sur l'envoi international", icon: 'fa-globe', class: 'icon-international'},
-      {key: 'assurance', label: "Questions sur l'assurance & litiges", icon: 'fa-shield-halved', class: 'icon-assurance'},
-      {key: 'divers', label: 'Questions diverses', icon: 'fa-circle-question', class: 'icon-divers'}
+      { key: 'tarifs', label: 'Tarifs & Prix', icon: 'fa-euro-sign', class: 'icon-tarifs' },
+      { key: 'suivi', label: 'Suivi de colis', icon: 'fa-map-location-dot', class: 'icon-suivi' },
+      { key: 'transporteurs', label: 'Transporteurs', icon: 'fa-truck', class: 'icon-transporteurs' },
+      { key: 'livraison', label: 'Délais de livraison', icon: 'fa-clock', class: 'icon-delais' },
+      { key: 'dimensions', label: 'Dimensions & Poids', icon: 'fa-ruler-combined', class: 'icon-dimensions' },
+      { key: 'international', label: "Envoi international", icon: 'fa-globe', class: 'icon-international' },
+      { key: 'assurance', label: "Assurance & Litiges", icon: 'fa-shield-halved', class: 'icon-assurance' },
+      { key: 'divers', label: 'Divers', icon: 'fa-circle-question', class: 'icon-divers' }
     ];
 
     // Build ItemList for structured data
@@ -256,8 +261,8 @@ questionsController.get('/:category', async (req, res) => {
       seoKeywords: [data.label, 'questions envoi colis', 'FAQ', 'universcolis'],
       canonicalUrl,
       robots: 'index, follow',
-      publishedDate: (new Date()).toISOString().slice(0,10),
-      modifiedDate: (new Date()).toISOString().slice(0,10),
+      publishedDate: (new Date()).toISOString().slice(0, 10),
+      modifiedDate: (new Date()).toISOString().slice(0, 10),
       ogType: 'website',
       ogTitle: seoTitle,
       ogDescription: seoDescription,
@@ -329,6 +334,7 @@ questionsController.get('/:category/:slug', async (req, res) => {
       needsGallery: true,
       categoryLabels,
       categoryLabel,
+      categoryIcon: categoryData[category] ? categoryData[category].icon : '',
       bodyClass: 'questions-page',
       prevSlug: prev ? prev.slug : null,
       nextSlug: next ? next.slug : null,

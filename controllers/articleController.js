@@ -192,7 +192,10 @@ articleController.get('/:slug', async (req, res) => {
       return res.status(404).send("Article non trouvé");
     }
 
-    res.render('article', {
+        // Choix du template selon la version du guide
+    const template = article.version === 'v2' ? 'article' : 'article_old';
+
+    res.render(template, {
       bodyClass: 'article-page',
       page: 'article',
       imageClass: 'img-articles',

@@ -1,0 +1,284 @@
+<nav class="breadcrumb">
+  <div class="container">
+    <a href="/" class="breadcrumb-link">Accueil</a>
+    <span class="mx-2">></span>
+    <a href="/conseils" class="breadcrumb-link">Conseils d'emballage</a>
+    <span class="mx-2">></span>
+    <span class="breadcrumb-current">{{article.menuTitle}}</span>
+  </div>
+</nav>
+
+
+<section class="article-details">
+  <div class="article-hero">
+    <div class="intro">
+      <h1 class="hero-title">{{article.title}}</h1>
+      <h2 class="text-center mb-3">Guide Simple et Pratique</h2>
+      <p class="article-subtitle">
+        {{{article.introduction}}}
+      </p>
+      <div class="card-meta mt-2 mb-2">
+        <span>⏱️ <strong>{{article.readingTime}} min</strong> de lecture</span>
+        <span>📋 <strong>{{article.steps.length}} étapes</strong> faciles à suivre</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="nav-interne">
+    <div class="container">
+      <!-- Navigation Interne -->
+      <div class="page-nav d-flex flex-wrap justify-content-center gap-3">
+        <a href="#resume" class="nav-btn">Points Clés</a>
+        <a href="#etapes" class="nav-btn">Étapes</a>
+        <a href="#materiel" class="nav-btn">Matériel</a>
+        <a href="#erreurs" class="nav-btn">Conseils</a>
+        <a href="#faq" class="nav-btn">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="resume" id="resume">
+    <div class="container">
+      <h2 class="text-center mb-4 mt-4">En Bref : Les Points Clés</h2>
+      <div class="row justify-content-center">
+        {{#each article.summary}}
+        <div class="col-md-6">
+          <div class="resume-item">
+            <span class="step-number"></span>
+            <p><i class="fa-regular fa-circle-check custom-beat-fade fa-xl"></i> {{{this}}}</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <section class="details" id="etapes">
+    <!-- Étapes -->
+    <h2 class="text-center mt-3"> <span>Guide Étape Par Étape: </span>&nbsp;<i
+        class="fa-regular fa-hand-point-down fa-bounce fa-lg"></i>
+    </h2>
+    <p class="text-center text-muted">Suivez ces étapes pour protéger {{article.etapeWord}}.</p>
+
+
+    <!-- Sidebar horizontale 
+      <nav class="nav nav-pills justify-content-center mt-3">
+        <a class="nav-link" href="#step1">1 Choisir</a>
+        <a class="nav-link" href="#step2">2 Protéger</a>
+        <a class="nav-link" href="#step3">3 Sécuriser</a>
+        <a class="nav-link" href="#step4">4 Remplir</a>
+        <a class="nav-link" href="#step5">5 Emballer</a>
+        <a class="nav-link" href="#step6">6 Fermer</a>
+        <a class="nav-link" href="#step7">7 Étiqueter</a>
+      </nav> -->
+
+    {{#each article.steps}}
+    <div class="row step my-4" id="step{{@index}}">
+      {{#if this.image}}
+      <!-- Titre : ordre 1 sur mobile, 1 sur desktop -->
+      <div class="col-12 d-block d-md-none order-1 mb-2">
+        <h3>{{this.title}}</h3>
+      </div>
+      <!-- Image : ordre 2 sur mobile, 2 sur desktop -->
+      <div class="col-md-6 order-md-2 order-2 d-flex justify-content-center">
+        <figure class="etape-image">
+          <a href="/static/img/articleImg/{{this.image}}" class="glightbox" data-gallery="article-gallery"
+            data-title="{{this.imageAlt}}">
+            <img src="/static/img/articleImg/{{this.image}}" loading="lazy" alt="{{this.imageAlt}}" width="768"
+              height="768" class="img-fluid rounded">
+          </a>
+          {{#if this.figcaption}}
+          <figcaption class="hover-caption">
+            {{this.figcaption}}
+          </figcaption>
+          {{/if}}
+        </figure>
+      </div>
+      <!-- Titre + description sur desktop, description seul sur mobile -->
+      <div class="col-md-6 d-flex align-items-center order-md-1 order-3">
+        <div>
+          <h3 class="d-none d-md-block">{{this.title}}</h3>
+          <p>{{{this.description}}}</p>
+        </div>
+      </div>
+
+      {{else}}
+      <div class="col-12 d-flex align-items-center">
+        <div>
+          <h3>{{this.title}}</h3>
+          <p>{{{this.description}}}</p>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+    {{/each}}
+
+  </section>
+
+  <section class="materiels" id="materiel">
+    <h2> Matériel Recommandé pour {{article.materialsWord}}</h2>
+
+    <div class="materials-list">
+      {{#each article.materials}}
+      <div class="material-item {{#unless this.hasSizes}}simple-layout{{/unless}}">
+
+        <!-- ===== HEADER (Check + Titre + Bouton pour simples) ===== -->
+        <div class="material-header">
+          <!-- Check icon -->
+          <div class="material-check">
+            <i class="fa-solid fa-check"></i>
+          </div>
+
+          <div class="material-title-section">
+            <!-- Titre + Badge -->
+            <div class="material-title-group">
+              <h4 class="material-name">{{this.name}}</h4>
+              {{#if this.optionsBadge}}
+              <span class="material-badge">{{this.optionsBadge}}</span>
+              {{/if}}
+            </div>
+
+            <!-- Bouton pour produits simples (à droite du titre) -->
+            {{#unless this.hasSizes}}
+            {{#if this.links.length}}
+            {{#with this.links.[0]}}
+            <a href="{{this.url}}" class="btn-material-inline d-none d-md-inline-flex" target="_blank"
+              rel="nofollow noopener">
+              {{this.label}} <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            {{/with}}
+            {{/if}}
+            {{/unless}}
+          </div>
+        </div>
+
+        <!-- ===== DESCRIPTION ===== -->
+        <p class="material-description">{{this.description}}</p>
+
+        {{#unless this.hasSizes}}
+        {{#if this.links.length}}
+        {{#with this.links.[0]}}
+        <a href="{{this.url}}" class="btn-material-inline d-inline-flex d-md-none" target="_blank"
+          rel="nofollow noopener">
+          {{this.label}} <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        {{/with}}
+        {{/if}}
+        {{/unless}}
+
+        <!-- ===== CAS 2 : OPTIONS MULTIPLES (sous la description) ===== -->
+        {{#if this.hasSizes}}
+        <div class="material-options">
+          {{#each this.sizes}}
+          {{#if this.url}}
+          <div class="size-option">
+            <div class="size-info">
+              <strong class="size-label">{{this.label}}</strong>
+              <span class="size-dimensions">{{this.dimensions}}</span>
+            </div>
+            <a href="{{this.url}}" class="btn-material-small" target="_blank" rel="nofollow noopener">
+              Voir <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+          {{/if}}
+          {{/each}}
+        </div>
+        {{/if}}
+
+        <!-- ===== GUIDE DE TAILLES ===== -->
+        {{#if this.sizeGuide}}
+        <div class="size-guide-box">
+          {{{this.sizeGuide}}}
+        </div>
+        {{/if}}
+
+        <!-- ===== NOTE COMPLÉMENTAIRE ===== -->
+        {{#if this.sizeNote}}
+        <div class="material-note">
+          {{{this.sizeNote}}}
+        </div>
+        {{/if}}
+
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="erreurs row d-flex justify-content-center" id="erreurs">
+    <h2 class="text-center mb-1">Erreurs Fréquentes et Bonnes Pratiques </h2>
+
+    <div class="row g-2">
+      <!-- Colonne des bonnes pratiques -->
+      <div class="col-md-6 d-flex flex-column align-items-stretch">
+        <h4 class="text-success text-center"><i class="fa-regular fa-thumbs-up icon-success"></i> À faire</h4>
+        {{#each article.packingTips}}
+        <div class="solution-box mb-2">
+          <p>{{solution}}</p>
+        </div>
+        {{/each}}
+      </div>
+      <!-- Colonne des erreurs -->
+      <div class="col-md-6 d-flex flex-column align-items-stretch">
+        <h4 class="text-danger text-center"><i class="fa-regular fa-thumbs-down icon-danger"></i> À éviter</h4>
+        {{#each article.packingTips}}
+        <div class="erreur-box mb-2">
+          <p>{{mistake}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+  </section>
+
+  <section class="faq-section row d-flex justify-content-center" id="faq">
+    <h2 class="text-center mb-4">FAQ 📦</h2>
+    <div class="accordion" id="faqAccordion">
+      {{#each article.faq}}
+      <div class="accordion-item">
+        <h4 class="accordion-header" id="faq{{@index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#answer{{@index}}">
+            <strong>{{this.question}}</strong>
+          </button>
+        </h4>
+        <div id="answer{{@index}}" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            {{#each this.responses}}
+            <p>
+              {{#if (eq this.type "negative")}}
+              <i class="fa-regular fa-thumbs-down icon-danger"></i> {{{this.text}}}
+              {{else}}
+              <i class="fa-regular fa-thumbs-up icon-success"></i> {{{this.text}}}
+              {{/if}}
+            </p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+  <!-- Astuce -->
+  <div class="alert alert-info mt-4">
+    <strong>💡 Astuce : </strong> {{{article.astuce}}}
+  </div>
+
+  <div class="affiliation-disclaimer">
+    <i class="fa-solid fa-info-circle"></i>
+    <span>
+      Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour
+      vous, ce qui nous aide à maintenir nos services gratuits.
+    </span>
+  </div>
+
+</section>
+
+<!-- Section "À découvrir" CONTEXTUELLE  -->
+{{> related-links/_base pageType="guide-detail"}}
+
+<!-- Bouton partager l'article -->
+<button id="share-article" class="share-article-btn" title="Partager l'article">
+  <i class="fa-solid fa-share"></i>
+</button>
+
