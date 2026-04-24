@@ -28,6 +28,7 @@ const actualiteShema = new Schema({
         article: String,
         hasLinks: { type: Boolean, default: false }
     }],
+    hasAffiliateLink: { type: Boolean, default: false },
     actualiteImg: { type: String, required: true },
     actualiteImgAlt: { type: String, required: true },
     actualiteImgDescription: { type: String, required: true },
