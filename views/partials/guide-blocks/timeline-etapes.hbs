@@ -1,0 +1,18 @@
+<div class="sinistre-steps">
+  {{#each block.steps}}
+  <div class="sinistre-step">
+    <div class="sinistre-step-num">
+      <div class="sinistre-step-icon">{{this.icon}}</div>
+      <div class="sinistre-step-n">{{this.stepLabel}}</div>
+    </div>
+    <div class="sinistre-step-body">
+      <div class="sinistre-step-when">{{this.when}}</div>
+      <div class="sinistre-step-action">{{this.action}}</div>
+      <div class="sinistre-step-why">{{this.why}}</div>
+    </div>
+  </div>
+  {{#unless @last}}
+  <div class="sinistre-connector"></div>
+  {{/unless}}
+  {{/each}}
+</div>

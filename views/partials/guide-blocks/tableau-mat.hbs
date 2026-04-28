@@ -1,0 +1,18 @@
+<table class="mat-table">
+  <thead>
+    <tr>
+      <th>Matériau</th>
+      <th>Usage principal</th>
+      <th>Limite</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each block.rows}}
+    <tr>
+      <td>{{this.material}}</td>
+      <td>{{this.usage}}</td>
+      <td><span class="mat-tag {{this.limitType}}">{{this.limit}}</span></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

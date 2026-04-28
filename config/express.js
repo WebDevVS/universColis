@@ -159,6 +159,7 @@ module.exports = (app) => {
     res.locals.isProd = isProd;
 
     res.locals.scripts = [
+      'article-guide',
       'articleSelector',
       'articleShare',
       'autocomplete',

@@ -243,6 +243,7 @@ const articleSchema = new Schema({
     partNum:          { type: Number },
     title:            { type: String },
     intro:            { type: String },
+    heroSub:    { type: String },
     transition:       { type: String },
 
     sections: [{

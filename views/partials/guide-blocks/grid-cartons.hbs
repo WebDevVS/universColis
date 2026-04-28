@@ -1,0 +1,16 @@
+<div class="carton-grid">
+  {{#each block.cards}}
+  <div class="carton-card {{#if this.recommended}}rec{{/if}}">
+    {{#if this.img}}
+    <img src="/static/img/articleImg/{{this.img}}"
+         alt="{{this.imgAlt}}"
+         class="carton-card-img"
+         loading="lazy">
+    {{/if}}
+    <div class="carton-card-body">
+      <div class="carton-type">{{this.type}}</div>
+      <div class="carton-when">{{this.when}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

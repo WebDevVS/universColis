@@ -689,7 +689,6 @@ window.addEventListener('scroll',()=>{
 
 
 
-
 {{!-- ════════════════════════════════════════════
   BREADCRUMB
 ════════════════════════════════════════════ --}}
@@ -773,16 +772,46 @@ window.addEventListener('scroll',()=>{
     {{!-- SECTIONS --}}
     {{#each this.sections}}
     <div class="prose">
+
       {{#if this.h3}}
       <h3>{{this.h3}}</h3>
       {{/if}}
 
-      {{!-- DISPATCH DES BLOCS --}}
+      {{!-- ── DISPATCH DES BLOCS ── --}}
       {{#each this.blocks}}
 
         {{!-- texte --}}
         {{#if (eq this.type "texte")}}
           <p>{{{this.text}}}</p>
+
+        {{!-- info-box --}}
+        {{else if (eq this.type "info-box")}}
+          <div class="callout {{this.variant}}">
+            <div class="callout-ico">{{this.icon}}</div>
+            <div class="callout-body">
+              <strong>{{this.title}}</strong>
+              {{this.text}}
+            </div>
+          </div>
+
+        {{!-- texte-image --}}
+        {{else if (eq this.type "texte-image")}}
+          <div class="step-with-img">
+            <div>
+              {{#each this.prose}}
+              <p>{{{this}}}</p>
+              {{/each}}
+            </div>
+            <div class="step-img-col">
+              <img src="/static/img/articleImg/{{this.img}}"
+                   alt="{{this.imgAlt}}"
+                   class="step-img-real"
+                   loading="lazy">
+              {{#if this.caption}}
+              <div class="step-caption-txt">{{this.caption}}</div>
+              {{/if}}
+            </div>
+          </div>
 
         {{!-- info-cas-particulier --}}
         {{else if (eq this.type "info-cas-particulier")}}
@@ -806,65 +835,53 @@ window.addEventListener('scroll',()=>{
             {{/each}}
           </div>
 
-        {{!-- info-box → partial --}}
-        {{else if (eq this.type "info-box")}}
-          {{> guide-v2/blocks/info-box block=this}}
-
-        {{!-- texte-image → partial --}}
-        {{else if (eq this.type "texte-image")}}
-          {{> guide-v2/blocks/texte-image block=this}}
-
-        {{!-- materiaux → partial --}}
-        {{else if (eq this.type "materiaux")}}
-          {{> guide-v2/blocks/materiaux block=this}}
-
-        {{!-- etapes → partial --}}
+        {{!-- etapes → partial (récursif) --}}
         {{else if (eq this.type "etapes")}}
-          {{> guide-v2/blocks/etapes block=this}}
+          {{> guide-blocks/etapes block=this}}
 
         {{!-- formula-box → partial --}}
         {{else if (eq this.type "formula-box")}}
-          {{> guide-v2/blocks/formula-box block=this}}
+          {{> guide-blocks/formula-box block=this}}
 
         {{!-- schema-couches → partial --}}
         {{else if (eq this.type "schema-couches")}}
-          {{> guide-v2/blocks/schema-couches block=this}}
+          {{> guide-blocks/schema-couches block=this}}
 
         {{!-- grid-cartes → partial --}}
         {{else if (eq this.type "grid-cartes")}}
-          {{> guide-v2/blocks/grid-cartes block=this}}
+          {{> guide-blocks/grid-cartes block=this}}
 
         {{!-- tableau → partial --}}
         {{else if (eq this.type "tableau")}}
-          {{> guide-v2/blocks/tableau block=this}}
+          {{> guide-blocks/tableau block=this}}
 
         {{!-- tableau-mat → partial --}}
         {{else if (eq this.type "tableau-mat")}}
-          {{> guide-v2/blocks/tableau-mat block=this}}
+          {{> guide-blocks/tableau-mat block=this}}
 
         {{!-- flow-decision → partial --}}
         {{else if (eq this.type "flow-decision")}}
-          {{> guide-v2/blocks/flow-decision block=this}}
+          {{> guide-blocks/flow-decision block=this}}
 
         {{!-- timeline-etapes → partial --}}
         {{else if (eq this.type "timeline-etapes")}}
-          {{> guide-v2/blocks/timeline-etapes block=this}}
+          {{> guide-blocks/timeline-etapes block=this}}
 
         {{!-- grid-cartons → partial --}}
         {{else if (eq this.type "grid-cartons")}}
-          {{> guide-v2/blocks/grid-cartons block=this}}
+          {{> guide-blocks/grid-cartons block=this}}
 
         {{!-- procedure → partial --}}
         {{else if (eq this.type "procedure")}}
-          {{> guide-v2/blocks/procedure block=this}}
+          {{> guide-blocks/procedure block=this}}
 
         {{!-- grid-cout → partial --}}
         {{else if (eq this.type "grid-cout")}}
-          {{> guide-v2/blocks/grid-cout block=this}}
+          {{> guide-blocks/grid-cout block=this}}
 
         {{/if}}
       {{/each}}
-      {{!-- FIN DISPATCH --}}
+      {{!-- ── FIN DISPATCH ── --}}
 
     </div>
     {{/each}}
@@ -906,8 +923,8 @@ window.addEventListener('scroll',()=>{
     UPDATE NOTE
   ════════════════════════════════════════════ --}}
   {{#if article.updateNote}}
-  <div class="update-note">
-    <strong>Dernière mise à jour</strong><br>
+  <div style="max-width:960px;margin:1.25rem auto 0;background:var(--light);border-radius:var(--rsm);padding:0.9rem 1.25rem;font-size:0.8rem;color:var(--muted);line-height:1.6;border-left:3px solid rgba(0,0,0,0.1);">
+    <strong style="color:var(--text);font-family:'Sora',sans-serif;font-size:0.8rem;">Dernière mise à jour</strong><br>
     {{article.updateNote}}
   </div>
   {{/if}}
@@ -921,7 +938,11 @@ window.addEventListener('scroll',()=>{
     <ul>
       {{#each article.sources}}
       <li>
+        {{#if this.url}}
         <a href="{{this.url}}" target="_blank" rel="nofollow noopener">{{this.name}}</a>
+        {{else}}
+        {{this.name}}
+        {{/if}}
         {{#if this.article}} — {{this.article}}{{/if}}
       </li>
       {{/each}}
@@ -933,7 +954,7 @@ window.addEventListener('scroll',()=>{
     AFFILIATION
   ════════════════════════════════════════════ --}}
   <div class="affil">
-    <span>ℹ</span>
+    <span style="color:var(--violet);font-size:1rem;flex-shrink:0;margin-top:1px;">ℹ</span>
     <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission
     sans coût supplémentaire pour vous, ce qui nous aide à maintenir nos services gratuits.</span>
   </div>

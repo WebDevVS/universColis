@@ -1,0 +1,11 @@
+<div class="decision-flow">
+  {{#each block.steps}}
+  <div class="df-step">
+    <strong>{{this.title}}</strong>
+    {{this.text}}
+  </div>
+  {{#unless @last}}
+  <div class="df-arrow">→</div>
+  {{/unless}}
+  {{/each}}
+</div>

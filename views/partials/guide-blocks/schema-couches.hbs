@@ -1,0 +1,27 @@
+<div class="layers-wrap">
+  <div class="layers-diagram">
+    {{#each block.layers}}
+    <div class="layer l{{this.level}}">
+      <span>
+        {{this.label}}
+        {{#if this.sub}}
+        <span class="layer-sub"> — {{this.sub}}</span>
+        {{/if}}
+      </span>
+    </div>
+    {{#unless @last}}
+    <div class="layer-arrow">↓</div>
+    {{/unless}}
+    {{/each}}
+  </div>
+  {{#if block.img}}
+  <div class="layers-img">
+    <a href="/static/img/articleImg/{{block.img}}" class="glightbox"
+       data-gallery="schema-couches-gallery" data-title="{{block.imgAlt}}">
+      <img src="/static/img/articleImg/{{block.img}}"
+           alt="{{block.imgAlt}}"
+           loading="lazy">
+    </a>
+  </div>
+  {{/if}}
+</div>

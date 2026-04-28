@@ -1,0 +1,16 @@
+<div class="diag-grid">
+  {{#each block.cards}}
+  <div class="diag-card">
+    {{#if this.img}}
+    <img src="/static/img/articleImg/{{this.img}}"
+         alt="{{this.imgAlt}}"
+         class="diag-card-img"
+         loading="lazy">
+    {{/if}}
+    <div class="diag-card-body">
+      <div class="diag-label">{{this.label}}</div>
+      <div class="diag-sub">{{this.sub}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

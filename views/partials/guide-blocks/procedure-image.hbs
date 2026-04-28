@@ -1,0 +1,22 @@
+<div class="step-with-img">
+  <div class="procedure">
+    {{#each block.steps}}
+    <div class="proc-item">
+      <div class="proc-n">{{this.n}}</div>
+      <span>{{this.text}}</span>
+    </div>
+    {{/each}}
+  </div>
+  <div class="step-img-col">
+    <a href="/static/img/articleImg/{{block.img}}" class="glightbox"
+       data-gallery="procedure-image-gallery" data-title="{{block.imgAlt}}">
+      <img src="/static/img/articleImg/{{block.img}}"
+           alt="{{block.imgAlt}}"
+           class="step-img-real"
+           loading="lazy">
+    </a>
+    {{#if block.caption}}
+    <div class="step-caption-txt">{{block.caption}}</div>
+    {{/if}}
+  </div>
+</div>

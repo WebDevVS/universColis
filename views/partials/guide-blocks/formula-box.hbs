@@ -1,0 +1,15 @@
+<div class="formula-box">
+  {{#each block.items}}
+    {{#if this.operator}}
+    <div class="formula-op">{{this.operator}}</div>
+    {{else}}
+    <div class="formula-item">
+      <div class="formula-val {{#if this.color}}f-{{this.color}}{{/if}}">{{this.value}}</div>
+      <div class="formula-lbl">{{this.label}}</div>
+    </div>
+    {{/if}}
+  {{/each}}
+  {{#if block.footer}}
+  <div class="formula-vs">{{block.footer}}</div>
+  {{/if}}
+</div>
