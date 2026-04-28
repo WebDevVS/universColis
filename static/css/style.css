@@ -10441,6 +10441,43 @@ figure.etape-image:hover .hover-caption {
     font-size: 0.78rem;
     padding: 4px 11px;
   }
+
+    .mat-table {
+    table-layout: fixed;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mat-table th:nth-child(1),
+  .mat-table td:nth-child(1) {
+    width: 26%;
+  }
+
+  .mat-table th:nth-child(2),
+  .mat-table td:nth-child(2) {
+    width: 32%;
+  }
+
+  .mat-table th:nth-child(3),
+  .mat-table td:nth-child(3) {
+    width: 42%;
+  }
+
+  .mat-table td,
+  .mat-table th {
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 0.72rem;
+    padding: 6px 4px;
+  }
+
+  .mat-tag {
+    font-size: 0.62rem;
+    padding: 2px 4px;
+    white-space: normal;
+    word-wrap: break-word;
+    display: inline-block;
+  }
 }
 
 @media(prefers-reduced-motion:reduce) {
