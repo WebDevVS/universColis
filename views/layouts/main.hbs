@@ -8,7 +8,8 @@
     <meta name="description" content="{{seoDescription}}" />
     <meta name="keywords" content="{{#each seoKeywords}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}" />
     <meta name="author" content="{{author}}" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="{{#if robots}}{{robots}}{{else}}index, follow{{/if}}" />
+    <meta name="googlebot" content="{{#if googlebot}}{{googlebot}}{{else}}index, follow{{/if}}" />
     <meta name="date" content="{{modifiedDate}}" />
     <link rel="canonical" href="{{canonicalUrl}}" />
 

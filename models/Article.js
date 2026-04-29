@@ -10,6 +10,7 @@ const articleSchema = new Schema({
   title:              { type: String, required: true },
   slug:               { type: String, required: true, unique: true },
   menuTitle:          { type: String, required: true, unique: true },
+  brTitle:          { type: String, required: true, unique: true },
 
   // Routing template — absent sur les docs v1 existants (pas de migration nécessaire)
   // undefined ou absent → article_old / 'v2' → article

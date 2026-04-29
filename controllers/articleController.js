@@ -184,6 +184,11 @@ articleController.get('/', async (req, res) => {
   }
 })
 
+// Redirect 301 — ancienne URL vers nouvelle
+articleController.get('/comment-emballer-des-antiquites', (req, res) => {
+  res.redirect(301, '/conseils/expedier-oeuvre-art-fragile')
+})
+
 articleController.get('/:slug', async (req, res) => {
   try {
     const article = await getBySlug(req.params.slug);

@@ -8220,7 +8220,7 @@ figure.etape-image:hover .hover-caption {
 }
 
 .hero h1 {
-  font-size: clamp(1.6rem, 3.8vw, 2.4rem);
+  font-size: 2.5rem;
   font-weight: 800;
   line-height: 1.15;
   max-width: 700px;
@@ -8472,6 +8472,13 @@ figure.etape-image:hover .hover-caption {
   color: var(--violet);
   font-weight: 500;
   border: 1px solid var(--violet-m);
+}
+
+.eb-pill::before {
+  content: '✓';
+  color: var(--violet);
+  font-weight: 700;
+  margin-right: 5px;
 }
 
 /* ── SECTION PART HEADER ── */
@@ -9156,6 +9163,15 @@ figure.etape-image:hover .hover-caption {
   border-color: color-mix(in srgb, var(--pc) 35%, transparent);
 }
 
+.mat-link-row {
+  justify-content: space-between;
+}
+
+.mat-link-row .mat-link-btn {
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
 .mat-link-name {
   flex: 1;
   font-size: 0.86rem;
@@ -9247,6 +9263,12 @@ figure.etape-image:hover .hover-caption {
   line-height: 1.5;
 }
 
+.steps-list .step-img-col .step-img-real {
+  /* tes règles ici, par exemple : */
+  max-width: 260px;
+  height: auto;
+}
+
 /* responsive */
 @media(max-width: 600px) {
   .step-with-img {
@@ -9255,6 +9277,18 @@ figure.etape-image:hover .hover-caption {
 
   .step-img-real {
     height: auto;
+  }
+
+  .mat-link-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .mat-link-row .mat-link-btn {
+    margin-left: 0;
+    margin-top: 8px;
+    width: 100%;
+    align-self: center;
   }
 }
 
@@ -9385,6 +9419,13 @@ figure.etape-image:hover .hover-caption {
   background: var(--danger-bg);
   border: 1.5px solid var(--danger-bd);
   color: var(--danger);
+}
+
+@media (min-width: 768px) {
+  .tip-c {
+    min-height: 65px;
+    align-items: center; /* ajuste la valeur selon ton besoin */
+  }
 }
 
 /* ── DECISION FLOW ── */
@@ -9975,6 +10016,15 @@ figure.etape-image:hover .hover-caption {
     display: none;
   }
 
+  .tips-col-lbl {
+    display: block !important;
+    margin-bottom: 8px;
+  }
+
+   .tip-c {
+    text-align: left;
+  }
+
   .formula-box {
     flex-direction: column;
     align-items: flex-start;
@@ -10038,7 +10088,7 @@ figure.etape-image:hover .hover-caption {
   }
 
   .hero h1 {
-    font-size: 1.35rem;
+    font-size: 2rem;
   }
 
   .hero-lead {
@@ -10112,6 +10162,43 @@ figure.etape-image:hover .hover-caption {
   .eb-pill {
     font-size: 0.78rem;
     padding: 4px 11px;
+  }
+
+    .mat-table {
+    table-layout: fixed;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mat-table th:nth-child(1),
+  .mat-table td:nth-child(1) {
+    width: 26%;
+  }
+
+  .mat-table th:nth-child(2),
+  .mat-table td:nth-child(2) {
+    width: 32%;
+  }
+
+  .mat-table th:nth-child(3),
+  .mat-table td:nth-child(3) {
+    width: 42%;
+  }
+
+  .mat-table td,
+  .mat-table th {
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 0.72rem;
+    padding: 6px 4px;
+  }
+
+  .mat-tag {
+    font-size: 0.62rem;
+    padding: 2px 4px;
+    white-space: normal;
+    word-wrap: break-word;
+    display: inline-block;
   }
 }
 

@@ -45,10 +45,9 @@
               {{/each}}
             </div>
             <div class="step-img-col">
-              <img src="/static/img/articleImg/{{this.img}}"
-                   alt="{{this.imgAlt}}"
-                   class="step-img-real"
-                   loading="lazy">
+              <a href="/static/img/articleImg/{{this.img}}" class="glightbox" data-gallery="article-gallery" data-title="{{this.imgAlt}}">
+                <img src="/static/img/articleImg/{{this.img}}" alt="{{this.imgAlt}}" class="step-img-real" loading="lazy">
+              </a>
               {{#if this.caption}}
               <div class="step-caption-txt">{{this.caption}}</div>
               {{/if}}
