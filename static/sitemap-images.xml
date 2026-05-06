@@ -640,5 +640,14 @@
         <image:caption>Cette infographie illustre les principales étapes qu'un utilisateur peut suivre gratuitement pour un colis international : prise en charge, transit, arrivée dans le pays de destination, livraison et confirmation finale. Elle aide à comprendre ce qu'un suivi gratuit montre réellement dans la plupart des cas, sans promettre tous les détails intermédiaires. Elle est particulièrement utile pour les colis suivis depuis la France ou à destination de la France, notamment via des transporteurs ou partenaires internationaux.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/suivi-colissimo-colis-bloque-comment-verifier</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/infographie-suivi-colissimo-ne-bouge-plus-scans-parcours-colis.webp</image:loc>
+        
+        <image:caption>Cette infographie montre la différence entre le parcours réel d'un colis Colissimo et les informations visibles dans le suivi. Elle explique qu'un colis peut passer par le dépôt, un centre de tri, le transport international, un autre centre de tri puis la livraison finale, alors que le suivi public n'affiche que certains scans. Le visuel aide à comprendre pourquoi un suivi Colissimo peut sembler bloqué après le départ du pays d'origine, sans que cela signifie automatiquement que le colis est perdu.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
