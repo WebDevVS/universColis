@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-05-06T13:05:52.717Z</updated>
+  <updated>2026-05-11T13:09:31.321Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -371,6 +371,15 @@
       <link href="https://www.universcolis.fr/actualites/crise-ormuz-prix-carburant-tarifs-colis-france-2026"/>
       <id>https://www.universcolis.fr/actualites/crise-ormuz-prix-carburant-tarifs-colis-france-2026</id>
       <updated>2026-05-04</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Amazon ASCS en France : quels impacts en 2026 ?</title>
+      <link href="https://www.universcolis.fr/actualites/amazon-ascs-france-impact-logistique-2026"/>
+      <id>https://www.universcolis.fr/actualites/amazon-ascs-france-impact-logistique-2026</id>
+      <updated>2026-05-11</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
