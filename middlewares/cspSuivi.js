@@ -37,7 +37,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://privacy.gatekeeperconsent.com",
       // Ezoic Analytics
       "https://ezoicanalytics.com",
-      "'unsafe-inline'" // ⚠️ ici on assouplit uniquement sur cette route
+      "'unsafe-inline'", // ⚠️ ici on assouplit uniquement sur cette route
+      "'unsafe-eval'"    // ← Ajouté pour compatibilité Ezoic/Prebid
     ],
     scriptSrcAttr: ["'unsafe-inline'"],
     styleSrc: [

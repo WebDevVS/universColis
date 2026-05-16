@@ -231,7 +231,8 @@ module.exports = (app) => {
           "https://the.gatekeeperconsent.com",
           "https://privacy.gatekeeperconsent.com",
           // Ezoic Analytics
-          "https://ezoicanalytics.com"
+          "https://ezoicanalytics.com",
+          "'unsafe-eval'" // ← Ajouté pour compatibilité Ezoic/Prebid
         ],
 
         // Feuilles de styles : pas de style inline ici non plus
