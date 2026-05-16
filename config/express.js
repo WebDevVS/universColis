@@ -310,6 +310,9 @@ module.exports = (app) => {
           "https://*.id5-sync.com",
           "https://lbs.eu-1-id5-sync.com",
           "https://lb.eu-1-id5-sync.com",
+            "https://*.eu-3-id5-sync.com", // ← AJOUTE
+            "https://*.eu-4-id5-sync.com", // ← AJOUTE
+            "https://pbserver.ezoic.com",  // ← AJOUTE URGENT
           // Google Ads
           "https://*.googlesyndication.com",
           "https://*.doubleclick.net",

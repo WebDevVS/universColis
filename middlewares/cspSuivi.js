@@ -100,6 +100,9 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.id5-sync.com",            // Wildcard sous-domaines
       "https://lbs.eu-1-id5-sync.com",     // ← AJOUTÉ (explicite)
       "https://lb.eu-1-id5-sync.com",      // ← AJOUTÉ (explicite)
+        "https://*.eu-3-id5-sync.com", // ← AJOUTE
+        "https://*.eu-4-id5-sync.com", // ← AJOUTE
+        "https://pbserver.ezoic.com",  // ← AJOUTE URGENT
       "https://*.googlesyndication.com",
       "https://*.doubleclick.net",
       // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
