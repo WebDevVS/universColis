@@ -1,0 +1,32 @@
+{{!-- 
+  TEMP-VISUAL
+  Comparaison visuelle entre deux valeurs avec flèche centrale.
+  Utilisé pour : température extérieure vs température dans le véhicule
+  Peut servir pour toute comparaison de deux valeurs chiffrées.
+  
+  Paramètres JSON :
+  - left :
+      - value : valeur en grand (ex: "30 °C")
+      - label : description (ex: "Température extérieure")
+      - style : "outside" (bleu) ou "inside" (coral)
+  - right :
+      - value : valeur en grand (ex: "~46 °C")
+      - label : description
+      - style : "outside" ou "inside"
+  - caption : texte source affiché sous le bloc (optionnel)
+--}}
+
+<div class="temp-visual">
+  <div class="temp-col {{block.left.style}}">
+    <div class="temp-val">{{block.left.value}}</div>
+    <div class="temp-lbl">{{block.left.label}}</div>
+  </div>
+  <div class="temp-divider">→</div>
+  <div class="temp-col {{block.right.style}}">
+    <div class="temp-val">{{block.right.value}}</div>
+    <div class="temp-lbl">{{block.right.label}}</div>
+  </div>
+</div>
+{{#if block.caption}}
+<div class="temp-caption">{{block.caption}}</div>
+{{/if}}

@@ -1,0 +1,25 @@
+{{!-- 
+  DECISION-SCHEMA
+  Liste de branches décisionnelles colorées avec icône, label et action.
+  Utilisé pour : identifier le type de contenu avant expédition
+  
+  Paramètres JSON :
+  - branches[] :
+      - style : "solid" (vert), "coffret" (ambre), "mixte" (danger)
+               → correspond aux classes CSS .ds-branch.solid etc.
+      - icon  : emoji
+      - label : titre de la branche
+      - action: description de l'action à faire (HTML accepté)
+--}}
+
+<div class="decision-schema">
+  {{#each block.branches}}
+  <div class="ds-branch {{this.style}}">
+    <div class="ds-icon">{{this.icon}}</div>
+    <div class="ds-content">
+      <div class="ds-label">{{this.label}}</div>
+      <div class="ds-action">{{{this.action}}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

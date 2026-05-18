@@ -1,0 +1,24 @@
+{{!-- 
+  GRID-MATERIEL
+  Grille 2 colonnes listant les besoins en matériaux avec badge de priorité.
+  Utilisé pour : tableau récapitulatif du matériel avant les étapes
+  
+  Paramètres JSON :
+  - items[] :
+      - priority     : texte du badge (ex: "Essentiel", "Option ciblée")
+      - priorityStyle: "ess" (coloré avec --pc) ou "opt" (gris)
+      - label        : nom du besoin (ex: "Protection du verre")
+      - mat          : matériaux correspondants
+--}}
+
+<div class="mat-needs-grid">
+  {{#each block.items}}
+  <div class="mat-need-card">
+    <div class="mat-need-body">
+      <span class="prio {{this.priorityStyle}}">{{this.priority}}</span>
+      <div class="mat-need-label">{{this.label}}</div>
+      <div class="mat-need-mat">{{this.mat}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

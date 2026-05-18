@@ -1,0 +1,37 @@
+{{!-- 
+  COFFRET-COMPARE
+  Comparaison 2 colonnes : coffret mal organisé vs bien organisé.
+  Chaque carte : photo + label coloré + note descriptive.
+  Utilisé pour : montrer la différence entre maintien insuffisant et maintien optimal
+  
+  Paramètres JSON :
+  - cards[] : exactement 2 objets
+      - img    : chemin image
+      - imgAlt : texte alternatif
+      - style  : "bad" (rouge) ou "good" (vert)
+      - label  : texte avec ✓ ou ✗ déjà inclus
+      - note   : description courte
+--}}
+
+<div class="coffret-compare">
+  {{#each block.cards}}
+  <div class="coffret-side {{this.style}}">
+    <div class="coffret-ph">
+      {{#if this.img}}
+      <img src="/static/img/articleImg/{{this.img}}"
+           alt="{{this.imgAlt}}"
+           style="width:100%;height:100%;object-fit:cover;"
+           loading="lazy">
+      {{else}}
+      {{this.imgAlt}}
+      {{/if}}
+    </div>
+    <div class="coffret-body">
+      <div class="coffret-label">{{this.label}}</div>
+      {{#if this.note}}
+      <div class="coffret-note">{{this.note}}</div>
+      {{/if}}
+    </div>
+  </div>
+  {{/each}}
+</div>

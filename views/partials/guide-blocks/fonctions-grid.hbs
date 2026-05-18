@@ -1,0 +1,26 @@
+{{!-- 
+  FONCTIONS-GRID
+  Grille de 3 cartes numérotées avec titre, items et note clé.
+  Utilisé pour : expliquer les 3 fonctions d'un emballage (protéger/caler/présenter)
+  
+  Paramètres JSON :
+  - cards[] : idéalement 3 objets
+      - num  : numéro affiché en grand (1, 2, 3)
+      - color: couleur CSS — "p1", "p2", "p3" (optionnel, utilise --pc par défaut)
+      - title: titre de la carte
+      - items: texte des éléments (string, HTML accepté)
+      - key  : phrase clé en italique en bas de carte (optionnel)
+--}}
+
+<div class="fonctions-grid">
+  {{#each block.cards}}
+  <div class="fonction-card" {{#if this.color}}style="--pc:var(--{{this.color}})"{{/if}}>
+    <div class="fonction-num">{{this.num}}</div>
+    <div class="fonction-title">{{this.title}}</div>
+    <div class="fonction-items">{{{this.items}}}</div>
+    {{#if this.key}}
+    <div class="fonction-key">{{this.key}}</div>
+    {{/if}}
+  </div>
+  {{/each}}
+</div>

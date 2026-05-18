@@ -8,12 +8,6 @@
     
   </url>
   <url>
-    <loc>https://www.universcolis.fr/conseils/comment-emballer-des-bougies</loc>
-    <priority>0.9</priority>
-    <lastmod>2024-03-24</lastmod>
-    
-  </url>
-  <url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-une-bouteille</loc>
     <priority>0.9</priority>
     <lastmod>2024-03-24</lastmod>
@@ -71,6 +65,12 @@
     <loc>https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile</loc>
     <priority>0.9</priority>
     <lastmod>2026-04-29</lastmod>
+    
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/conseils/envoyer-bougies-par-colis</loc>
+    <priority>0.9</priority>
+    <lastmod>2026-05-18</lastmod>
     
   </url>
   <url>
@@ -254,6 +254,12 @@
     
   </url>
   <url>
+    <loc>https://www.universcolis.fr/actualites/rakuten-france-menace-2026-colis-retours-garanties</loc>
+    <priority>0.8</priority>
+    <lastmod>2026-05-18</lastmod>
+    
+  </url>
+  <url>
     <loc>https://www.universcolis.fr/actualites?page=2</loc>
     <priority>0.8</priority>
     
@@ -261,6 +267,12 @@
   </url>
   <url>
     <loc>https://www.universcolis.fr/actualites?page=3</loc>
+    <priority>0.8</priority>
+    
+    
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/actualites?page=4</loc>
     <priority>0.8</priority>
     
     

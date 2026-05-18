@@ -1,0 +1,31 @@
+{{!-- 
+  FORMAT-GRID
+  Grille de cartes pour identifier les risques selon le format de bougie.
+  Chaque carte : photo + type + risque + question clé.
+  Utilisé pour : identifier le niveau de risque par type de bougie
+  
+  Paramètres JSON :
+  - cards[] :
+      - img     : chemin image
+      - imgAlt  : texte alternatif
+      - type    : nom du format (ex: "Bougie en pot ou en verre")
+      - risk    : risque principal (ex: "Risque : casse, couvercle mobile")
+      - question: question clé en italique coloré
+--}}
+
+<div class="format-grid">
+  {{#each block.cards}}
+  <div class="format-card">
+    <div class="format-photo">
+      <img src="/static/img/articleImg/{{this.img}}"
+           alt="{{this.imgAlt}}"
+           loading="lazy">
+    </div>
+    <div class="format-card-body">
+      <div class="format-type">{{this.type}}</div>
+      <div class="format-risk">{{this.risk}}</div>
+      <div class="format-question">{{this.question}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

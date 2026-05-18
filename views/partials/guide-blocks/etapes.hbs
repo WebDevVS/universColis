@@ -19,95 +19,136 @@
       {{!-- ── BLOCS AVANT MATÉRIAUX ── --}}
       {{#each this.blocks}}
 
-        {{#if (eq this.type "h3")}}
-          <h3>{{this.text}}</h3>
+      {{#if (eq this.type "h3")}}
+      <h3>{{this.text}}</h3>
 
-        {{else if (eq this.type "texte")}}
-          <p>{{{this.text}}}</p>
+      {{else if (eq this.type "texte")}}
+      <p>{{{this.text}}}</p>
 
-        {{else if (eq this.type "note-texte")}}
-          <p class="note-texte">{{{this.text}}}</p>
+      {{else if (eq this.type "note-texte")}}
+      <p class="note-texte">{{{this.text}}}</p>
 
-        {{else if (eq this.type "info-box")}}
-          <div class="callout {{this.variant}}">
-            <div class="callout-ico">{{this.icon}}</div>
-            <div class="callout-body">
-              <strong>{{this.title}}</strong>
-              {{this.text}}
-            </div>
-          </div>
+      {{else if (eq this.type "info-box")}}
+      <div class="callout {{this.variant}}">
+        <div class="callout-ico">{{this.icon}}</div>
+        <div class="callout-body">
+          <strong>{{this.title}}</strong>
+          {{this.text}}
+        </div>
+      </div>
 
-        {{else if (eq this.type "texte-image")}}
-          <div class="step-with-img">
-            <div>
-              {{#each this.prose}}
-              <p>{{{this}}}</p>
-              {{/each}}
-            </div>
-            <div class="step-img-col">
-              <a href="/static/img/articleImg/{{this.img}}" class="glightbox" data-gallery="article-gallery" data-title="{{this.imgAlt}}">
-                <img src="/static/img/articleImg/{{this.img}}" alt="{{this.imgAlt}}" class="step-img-real" loading="lazy">
-              </a>
-              {{#if this.caption}}
-              <div class="step-caption-txt">{{this.caption}}</div>
-              {{/if}}
-            </div>
-          </div>
+      {{else if (eq this.type "texte-image")}}
+      <div class="step-with-img">
+        <div>
+          {{#each this.prose}}
+          <p>{{{this}}}</p>
+          {{/each}}
+        </div>
+        <div class="step-img-col">
+          <a href="/static/img/articleImg/{{this.img}}" class="glightbox" data-gallery="article-gallery"
+            data-title="{{this.imgAlt}}">
+            <img src="/static/img/articleImg/{{this.img}}" alt="{{this.imgAlt}}" class="step-img-real" loading="lazy">
+          </a>
+          {{#if this.caption}}
+          <div class="step-caption-txt">{{this.caption}}</div>
+          {{/if}}
+        </div>
+      </div>
 
-        {{else if (eq this.type "info-cas-particulier")}}
-          <div class="special-case">
-            <strong>{{this.title}}</strong>
-            {{this.text}}
-          </div>
+      {{else if (eq this.type "info-cas-particulier")}}
+      <div class="special-case">
+        <strong>{{this.title}}</strong>
+        {{this.text}}
+      </div>
 
-        {{else if (eq this.type "conseils-erreurs")}}
-          <div class="tips-wrap">
-            <div class="tips-head">
-              <div class="tips-col-lbl g">✓ À faire</div>
-              <div class="tips-col-lbl b">✗ À éviter</div>
-            </div>
-            {{#each this.pairs}}
-            <div class="tips-pair">
-              <div class="tip-c g"><span>✓</span><span>{{this.good}}</span></div>
-              <div class="tip-c b"><span>✗</span><span>{{this.bad}}</span></div>
-            </div>
-            {{/each}}
-          </div>
+      {{else if (eq this.type "conseils-erreurs")}}
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        {{#each this.pairs}}
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>{{this.good}}</span></div>
+          <div class="tip-c b"><span>✗</span><span>{{this.bad}}</span></div>
+        </div>
+        {{/each}}
+      </div>
 
-        {{else if (eq this.type "grid-cartons")}}
-          {{> guide-blocks/grid-cartons block=this}}
+      {{else if (eq this.type "grid-cartons")}}
+      {{> guide-blocks/grid-cartons block=this}}
 
-        {{else if (eq this.type "formula-box")}}
-          {{> guide-blocks/formula-box block=this}}
+      {{else if (eq this.type "formula-box")}}
+      {{> guide-blocks/formula-box block=this}}
 
-        {{else if (eq this.type "schema-couches")}}
-          {{> guide-blocks/schema-couches block=this}}
+      {{else if (eq this.type "schema-couches")}}
+      {{> guide-blocks/schema-couches block=this}}
 
-        {{else if (eq this.type "grid-cartes")}}
-          {{> guide-blocks/grid-cartes block=this}}
+      {{else if (eq this.type "grid-cartes")}}
+      {{> guide-blocks/grid-cartes block=this}}
 
-        {{else if (eq this.type "tableau")}}
-          {{> guide-blocks/tableau block=this}}
+      {{else if (eq this.type "tableau")}}
+      {{> guide-blocks/tableau block=this}}
 
-        {{else if (eq this.type "tableau-mat")}}
-          {{> guide-blocks/tableau-mat block=this}}
+      {{else if (eq this.type "tableau-mat")}}
+      {{> guide-blocks/tableau-mat block=this}}
 
-        {{else if (eq this.type "flow-decision")}}
-          {{> guide-blocks/flow-decision block=this}}
+      {{else if (eq this.type "flow-decision")}}
+      {{> guide-blocks/flow-decision block=this}}
 
-        {{else if (eq this.type "timeline-etapes")}}
-          {{> guide-blocks/timeline-etapes block=this}}
+      {{else if (eq this.type "timeline-etapes")}}
+      {{> guide-blocks/timeline-etapes block=this}}
 
-        {{else if (eq this.type "procedure")}}
-          {{> guide-blocks/procedure block=this}}
+      {{else if (eq this.type "procedure")}}
+      {{> guide-blocks/procedure block=this}}
 
-        {{else if (eq this.type "procedure-image")}}
-          {{> guide-blocks/procedure-image block=this}}
+      {{else if (eq this.type "procedure-image")}}
+      {{> guide-blocks/procedure-image block=this}}
 
-        {{else if (eq this.type "grid-cout")}}
-          {{> guide-blocks/grid-cout block=this}}
+      {{else if (eq this.type "grid-cout")}}
+      {{> guide-blocks/grid-cout block=this}}
 
-        {{/if}}
+      {{!-- risk-grid → partial --}}
+      {{else if (eq this.type "risk-grid")}}
+      {{> guide-blocks/risk-grid block=this}}
+
+      {{!-- format-grid → partial --}}
+      {{else if (eq this.type "format-grid")}}
+      {{> guide-blocks/format-grid block=this}}
+
+      {{!-- carton-compare → partial --}}
+      {{else if (eq this.type "carton-compare")}}
+      {{> guide-blocks/carton-compare block=this}}
+
+      {{!-- coffret-compare → partial --}}
+      {{else if (eq this.type "coffret-compare")}}
+      {{> guide-blocks/coffret-compare block=this}}
+
+      {{!-- fonctions-grid → partial --}}
+      {{else if (eq this.type "fonctions-grid")}}
+      {{> guide-blocks/fonctions-grid block=this}}
+
+      {{!-- grid-materiel → partial --}}
+      {{else if (eq this.type "grid-materiel")}}
+      {{> guide-blocks/grid-materiel block=this}}
+
+      {{!-- decision-schema → partial --}}
+      {{else if (eq this.type "decision-schema")}}
+      {{> guide-blocks/decision-schema block=this}}
+
+      {{!-- deux-colonnes → partial --}}
+      {{else if (eq this.type "deux-colonnes")}}
+      {{> guide-blocks/deux-colonnes block=this}}
+
+      {{!-- temp-visual → partial --}}
+      {{else if (eq this.type "temp-visual")}}
+      {{> guide-blocks/temp-visual block=this}}
+
+      {{!-- data-table → partial --}}
+      {{else if (eq this.type "data-table")}}
+      {{> guide-blocks/data-table block=this}}
+
+      {{/if}}
       {{/each}}
       {{!-- ── FIN BLOCS AVANT ── --}}
 
@@ -118,35 +159,29 @@
         <div class="mat-links">
           {{#each this.materiaux}}
 
-            {{#if this.dimensions}}
-            <div class="mat-option-row">
-              <div class="mat-option-info">
-                <div class="mat-option-lbl">{{this.name}}</div>
-                <div class="mat-option-dim">{{this.dimensions}}</div>
-              </div>
-              <a href="{{this.url}}"
-                 class="mat-link-btn"
-                 target="_blank"
-                 rel="nofollow noopener">
-                {{this.label}}
-              </a>
+          {{#if this.dimensions}}
+          <div class="mat-option-row">
+            <div class="mat-option-info">
+              <div class="mat-option-lbl">{{this.name}}</div>
+              <div class="mat-option-dim">{{this.dimensions}}</div>
             </div>
-            {{else}}
-            <div class="mat-link-row">
-              <div>
-                <div class="mat-link-name">{{this.name}}</div>
-                {{#if this.desc}}
-                <div class="mat-link-desc">{{this.desc}}</div>
-                {{/if}}
-              </div>
-              <a href="{{this.url}}"
-                 class="mat-link-btn"
-                 target="_blank"
-                 rel="nofollow noopener">
-                {{this.label}}
-              </a>
+            <a href="{{this.url}}" class="mat-link-btn" target="_blank" rel="nofollow noopener">
+              {{this.label}}
+            </a>
+          </div>
+          {{else}}
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">{{this.name}}</div>
+              {{#if this.desc}}
+              <div class="mat-link-desc">{{this.desc}}</div>
+              {{/if}}
             </div>
-            {{/if}}
+            <a href="{{this.url}}" class="mat-link-btn" target="_blank" rel="nofollow noopener">
+              {{this.label}}
+            </a>
+          </div>
+          {{/if}}
 
           {{/each}}
         </div>
@@ -157,96 +192,93 @@
       {{!-- ── BLOCS APRÈS MATÉRIAUX ── --}}
       {{#each this.blocksApres}}
 
-        {{#if (eq this.type "h3")}}
-          <h3>{{this.text}}</h3>
+      {{#if (eq this.type "h3")}}
+      <h3>{{this.text}}</h3>
 
-        {{else if (eq this.type "texte")}}
-          <p>{{{this.text}}}</p>
+      {{else if (eq this.type "texte")}}
+      <p>{{{this.text}}}</p>
 
-        {{else if (eq this.type "note-texte")}}
-          <p class="note-texte">{{{this.text}}}</p>
+      {{else if (eq this.type "note-texte")}}
+      <p class="note-texte">{{{this.text}}}</p>
 
-        {{else if (eq this.type "info-box")}}
-          <div class="callout {{this.variant}}">
-            <div class="callout-ico">{{this.icon}}</div>
-            <div class="callout-body">
-              <strong>{{this.title}}</strong>
-              {{this.text}}
-            </div>
-          </div>
+      {{else if (eq this.type "info-box")}}
+      <div class="callout {{this.variant}}">
+        <div class="callout-ico">{{this.icon}}</div>
+        <div class="callout-body">
+          <strong>{{this.title}}</strong>
+          {{this.text}}
+        </div>
+      </div>
 
-        {{else if (eq this.type "texte-image")}}
-          <div class="step-with-img">
-            <div>
-              {{#each this.prose}}
-              <p>{{{this}}}</p>
-              {{/each}}
-            </div>
-            <div class="step-img-col">
-              <img src="/static/img/articleImg/{{this.img}}"
-                   alt="{{this.imgAlt}}"
-                   class="step-img-real"
-                   loading="lazy">
-              {{#if this.caption}}
-              <div class="step-caption-txt">{{this.caption}}</div>
-              {{/if}}
-            </div>
-          </div>
+      {{else if (eq this.type "texte-image")}}
+      <div class="step-with-img">
+        <div>
+          {{#each this.prose}}
+          <p>{{{this}}}</p>
+          {{/each}}
+        </div>
+        <div class="step-img-col">
+          <img src="/static/img/articleImg/{{this.img}}" alt="{{this.imgAlt}}" class="step-img-real" loading="lazy">
+          {{#if this.caption}}
+          <div class="step-caption-txt">{{this.caption}}</div>
+          {{/if}}
+        </div>
+      </div>
 
-        {{else if (eq this.type "info-cas-particulier")}}
-          <div class="special-case">
-            <strong>{{this.title}}</strong>
-            {{this.text}}
-          </div>
+      {{else if (eq this.type "info-cas-particulier")}}
+      <div class="special-case">
+        <strong>{{this.title}}</strong>
+        {{this.text}}
+      </div>
 
-        {{else if (eq this.type "conseils-erreurs")}}
-          <div class="tips-wrap">
-            <div class="tips-head">
-              <div class="tips-col-lbl g">✓ À faire</div>
-              <div class="tips-col-lbl b">✗ À éviter</div>
-            </div>
-            {{#each this.pairs}}
-            <div class="tips-pair">
-              <div class="tip-c g"><span>✓</span><span>{{this.good}}</span></div>
-              <div class="tip-c b"><span>✗</span><span>{{this.bad}}</span></div>
-            </div>
-            {{/each}}
-          </div>
+      {{else if (eq this.type "conseils-erreurs")}}
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        {{#each this.pairs}}
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>{{this.good}}</span></div>
+          <div class="tip-c b"><span>✗</span><span>{{this.bad}}</span></div>
+        </div>
+        {{/each}}
+      </div>
 
-        {{else if (eq this.type "grid-cartons")}}
-          {{> guide-blocks/grid-cartons block=this}}
+      {{else if (eq this.type "grid-cartons")}}
+      {{> guide-blocks/grid-cartons block=this}}
 
-        {{else if (eq this.type "formula-box")}}
-          {{> guide-blocks/formula-box block=this}}
+      {{else if (eq this.type "formula-box")}}
+      {{> guide-blocks/formula-box block=this}}
 
-        {{else if (eq this.type "schema-couches")}}
-          {{> guide-blocks/schema-couches block=this}}
+      {{else if (eq this.type "schema-couches")}}
+      {{> guide-blocks/schema-couches block=this}}
 
-        {{else if (eq this.type "grid-cartes")}}
-          {{> guide-blocks/grid-cartes block=this}}
+      {{else if (eq this.type "grid-cartes")}}
+      {{> guide-blocks/grid-cartes block=this}}
 
-        {{else if (eq this.type "tableau")}}
-          {{> guide-blocks/tableau block=this}}
+      {{else if (eq this.type "tableau")}}
+      {{> guide-blocks/tableau block=this}}
 
-        {{else if (eq this.type "tableau-mat")}}
-          {{> guide-blocks/tableau-mat block=this}}
+      {{else if (eq this.type "tableau-mat")}}
+      {{> guide-blocks/tableau-mat block=this}}
 
-        {{else if (eq this.type "flow-decision")}}
-          {{> guide-blocks/flow-decision block=this}}
+      {{else if (eq this.type "flow-decision")}}
+      {{> guide-blocks/flow-decision block=this}}
 
-        {{else if (eq this.type "timeline-etapes")}}
-          {{> guide-blocks/timeline-etapes block=this}}
+      {{else if (eq this.type "timeline-etapes")}}
+      {{> guide-blocks/timeline-etapes block=this}}
 
-        {{else if (eq this.type "procedure")}}
-          {{> guide-blocks/procedure block=this}}
+      {{else if (eq this.type "procedure")}}
+      {{> guide-blocks/procedure block=this}}
 
-        {{else if (eq this.type "procedure-image")}}
-          {{> guide-blocks/procedure-image block=this}}
+      {{else if (eq this.type "procedure-image")}}
+      {{> guide-blocks/procedure-image block=this}}
 
-        {{else if (eq this.type "grid-cout")}}
-          {{> guide-blocks/grid-cout block=this}}
+      {{else if (eq this.type "grid-cout")}}
+      {{> guide-blocks/grid-cout block=this}}
 
-        {{/if}}
+      {{/if}}
       {{/each}}
       {{!-- ── FIN BLOCS APRÈS ── --}}
 

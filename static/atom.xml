@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-05-16T10:41:24.181Z</updated>
+  <updated>2026-05-18T16:20:23.144Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -11,15 +11,6 @@
       <link href="https://www.universcolis.fr/conseils/comment-emballer-des-appareils-electroniques"/>
       <id>https://www.universcolis.fr/conseils/comment-emballer-des-appareils-electroniques</id>
       <updated>2024-03-21</updated>
-      <summary>Un nouveau guide est disponible.
-      </summary>
-    </entry>
-  
-    <entry>
-      <title>Comment Emballer des Bougies Artisanales et Produits en Cire pour un Envoi Sécurisé ?</title>
-      <link href="https://www.universcolis.fr/conseils/comment-emballer-des-bougies"/>
-      <id>https://www.universcolis.fr/conseils/comment-emballer-des-bougies</id>
-      <updated>2024-03-24</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>
@@ -110,6 +101,15 @@
       <link href="https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile"/>
       <id>https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile</id>
       <updated>2026-04-29</updated>
+      <summary>Un nouveau guide est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Comment envoyer des bougies par colis : emballage, chaleur, règles et transporteurs</title>
+      <link href="https://www.universcolis.fr/conseils/envoyer-bougies-par-colis"/>
+      <id>https://www.universcolis.fr/conseils/envoyer-bougies-par-colis</id>
+      <updated>2026-05-18</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>
@@ -380,6 +380,15 @@
       <link href="https://www.universcolis.fr/actualites/amazon-ascs-france-impact-logistique-2026"/>
       <id>https://www.universcolis.fr/actualites/amazon-ascs-france-impact-logistique-2026</id>
       <updated>2026-05-11</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Rakuten France menacé en 2026 : que deviennent vos colis, retours et garanties ?</title>
+      <link href="https://www.universcolis.fr/actualites/rakuten-france-menace-2026-colis-retours-garanties"/>
+      <id>https://www.universcolis.fr/actualites/rakuten-france-menace-2026-colis-retours-garanties</id>
+      <updated>2026-05-18</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>

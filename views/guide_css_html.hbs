@@ -3080,3 +3080,1432 @@
 </body>
 
 </html>
+
+
+
+
+  <!-- BOUGIES -->
+
+  
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envoyer des bougies par colis en 2026 : emballage, chaleur, règles et transporteurs – UniversColis</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --violet: #8269A4; --violet-l: rgba(130,105,164,0.10); --violet-m: rgba(130,105,164,0.22);
+  --coral: #FA7E75; --coral-l: rgba(250,126,117,0.09);
+  --bg: #E9E6E1; --white: #fff; --text: #1e1e1e; --muted: #666; --light: #f7f5f2;
+  --success: #1a5f17; --success-bg: rgba(31,162,22,0.07); --success-bd: rgba(31,162,22,0.22);
+  --warn: #7a4f00; --warn-bg: rgba(255,160,0,0.09); --warn-bd: rgba(255,160,0,0.28);
+  --danger: #8a0000; --danger-bg: rgba(204,0,0,0.06); --danger-bd: rgba(204,0,0,0.18);
+  --r: 16px; --rsm: 10px;
+  --p1: #5B7FA0; --p1-l: rgba(91,127,160,0.10); --p1-m: rgba(91,127,160,0.22);
+  --p2: #C4843A; --p2-l: rgba(196,132,58,0.10); --p2-m: rgba(196,132,58,0.22);
+  --p3: #6A9E7F; --p3-l: rgba(106,158,127,0.10); --p3-m: rgba(106,158,127,0.22);
+}
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.7; padding-bottom:3rem; }
+
+/* ── BREADCRUMB ── */
+.bc { padding:14px 20px; font-size:0.8rem; color:var(--muted); display:flex; align-items:center; gap:6px; max-width:960px; margin:0 auto; flex-wrap:wrap; }
+.bc a { color:var(--violet); text-decoration:none; font-weight:500; }
+.bc a:hover { text-decoration:underline; }
+
+/* ── HERO ── */
+.hero { max-width:960px; margin:0 auto; padding:2.5rem 2.5rem 0; position:relative; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:7px; background:rgba(130,105,164,0.10); border:1px solid rgba(130,105,164,0.2); border-radius:20px; padding:4px 14px; font-size:0.73rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--violet); margin-bottom:1.2rem; }
+.hero h1 { font-family:'Sora',sans-serif; font-size:clamp(1.6rem,3.8vw,2.4rem); font-weight:800; line-height:1.15; max-width:700px; margin-bottom:0.75rem; color:var(--text); }
+.hero-tricolor { display:flex; gap:4px; margin-bottom:1.1rem; }
+.hero-tricolor span { height:4px; border-radius:2px; }
+.hero-tricolor span:nth-child(1){width:64px;background:var(--p1);}
+.hero-tricolor span:nth-child(2){width:44px;background:var(--p2);}
+.hero-tricolor span:nth-child(3){width:54px;background:var(--p3);}
+.hero-lead { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--muted); max-width:600px; margin-bottom:1.5rem; font-style:italic; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:1.75rem; }
+.hero-pill { background:white; border:1px solid rgba(0,0,0,0.1); border-radius:20px; padding:5px 14px; font-size:0.82rem; font-weight:600; color:var(--muted); box-shadow:0 1px 4px rgba(0,0,0,0.05); }
+.hero-bottom { background:white; border-radius:var(--r) var(--r) 0 0; margin:0 -2.5rem; padding:1.5rem 2.5rem 0; }
+.hero-bottom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,0.06); border-radius:var(--rsm) var(--rsm) 0 0; overflow:hidden; }
+.hb-col { background:var(--light); padding:1rem 1.25rem; font-size:0.82rem; color:var(--muted); line-height:1.5; border-top:3px solid transparent; text-decoration:none; display:block; transition:background .2s; }
+.hb-col:hover { background:white; }
+.hb-col:nth-child(1){border-top-color:var(--p1);}
+.hb-col:nth-child(2){border-top-color:var(--p2);}
+.hb-col:nth-child(3){border-top-color:var(--p3);}
+.hb-col strong { display:block; font-family:'Sora',sans-serif; font-size:0.85rem; color:var(--text); margin-bottom:3px; }
+
+/* ── STICKY NAV ── */
+.sticky-nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--violet-m); margin-bottom:2rem; }
+.snav-inner { max-width:960px; margin:0 auto; display:flex; overflow-x:auto; scrollbar-width:none; }
+.snav-inner::-webkit-scrollbar{display:none;}
+.sn { display:flex; align-items:center; gap:7px; padding:14px 20px; font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:600; color:var(--muted); text-decoration:none; white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; }
+.sn:hover{color:var(--violet);}
+.sn.active{color:var(--violet);border-bottom-color:var(--violet);}
+.sn.active[data-part="1"]{color:var(--p1);border-bottom-color:var(--p1);}
+.sn.active[data-part="2"]{color:var(--p2);border-bottom-color:var(--p2);}
+.sn.active[data-part="3"]{color:var(--p3);border-bottom-color:var(--p3);}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(130,105,164,0.2);flex-shrink:0;transition:background .2s;}
+.sn.active .sn-dot{background:var(--violet);}
+.sn.active[data-part="1"] .sn-dot{background:var(--p1);}
+.sn.active[data-part="2"] .sn-dot{background:var(--p2);}
+.sn.active[data-part="3"] .sn-dot{background:var(--p3);}
+
+/* ── PAGE ── */
+.page { max-width:960px; margin:0 auto; padding:0 0 3rem; }
+.section-gap { margin-bottom:2.25rem; }
+.p1{--pc:var(--p1);}
+.p2{--pc:var(--p2);}
+.p3{--pc:var(--p3);}
+.part-transition { text-align:center; padding:0.5rem 0 1.75rem; font-family:'Lora',serif; font-size:0.92rem; font-style:italic; color:var(--muted); }
+
+/* ── EN BREF ── */
+.en-bref { background:white; border-radius:var(--r); padding:1.75rem 2rem; margin:0 auto 2rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); border-top:4px solid var(--violet); }
+.en-bref-label { display:inline-flex; align-items:center; gap:6px; font-family:'Sora',sans-serif; font-size:0.71rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:1rem; }
+.en-bref-text { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--text); font-style:italic; margin-bottom:1.25rem; }
+.en-bref-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.eb-pill { background:var(--violet-l); border-radius:20px; padding:5px 14px; font-size:0.83rem; color:var(--violet); font-weight:500; border:1px solid var(--violet-m); }
+
+/* ── PART HEADER ── */
+.part-header { background:color-mix(in srgb,var(--pc) 5%,white); border-radius:var(--r); padding:1.75rem 2rem; margin-bottom:1.25rem; border-left:5px solid var(--pc); display:flex; align-items:flex-start; gap:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.part-num { font-family:'Sora',sans-serif; font-size:2.5rem; font-weight:800; color:var(--pc); opacity:0.25; line-height:1; flex-shrink:0; margin-top:-4px; }
+.part-tag { display:inline-block; background:color-mix(in srgb,var(--pc) 12%,transparent); color:var(--pc); border-radius:20px; padding:3px 12px; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+.part-header h2 { font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
+.part-header p { font-size:0.9rem; color:var(--muted); line-height:1.6; margin:0; }
+
+/* ── PROSE ── */
+.prose { background:white; border-radius:var(--r); padding:2rem; margin-bottom:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.p1 .prose { border-left:3px solid color-mix(in srgb,var(--p1) 35%,transparent); }
+.p2 .prose { border-left:3px solid color-mix(in srgb,var(--p2) 35%,transparent); }
+.p3 .prose { border-left:3px solid color-mix(in srgb,var(--p3) 35%,transparent); }
+.prose h3 { font-family:'Sora',sans-serif; font-size:1.03rem; font-weight:700; color:var(--text); margin-bottom:0.75rem; margin-top:1.5rem; }
+.prose h3:first-child{margin-top:0;}
+.prose p { font-size:0.93rem; color:var(--text); line-height:1.75; margin-bottom:0.9rem; }
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;}
+.prose ul { list-style:none; padding:0; display:flex; flex-direction:column; gap:5px; margin:0.75rem 0; }
+.prose ul li { font-size:0.91rem; color:var(--text); padding-left:20px; position:relative; line-height:1.6; }
+.prose ul li::before { content:'—'; position:absolute; left:0; color:var(--pc,var(--violet)); font-weight:700; }
+.prose a { color:var(--pc,var(--violet)); font-weight:500; }
+
+/* ── CALLOUT ── */
+.callout { border-radius:var(--rsm); padding:1rem 1.25rem; margin:1.1rem 0; font-size:0.88rem; line-height:1.65; display:flex; align-items:flex-start; gap:12px; }
+.callout-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.callout-body{flex:1;}
+.callout-body strong { display:block; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+.callout.warn{background:var(--warn-bg);border-left:3px solid #ffa000;color:var(--warn);}
+.callout.warn strong{color:#b37700;}
+.callout.info,.callout.tip { background:color-mix(in srgb,var(--pc,var(--violet)) 9%,white); border-left:3px solid var(--pc,var(--violet)); }
+.callout.info strong,.callout.tip strong{color:var(--pc,var(--violet));}
+.callout.danger{background:var(--danger-bg);border-left:3px solid var(--danger);color:var(--danger);}
+.callout.danger strong{color:var(--danger);}
+
+/* ── DECISION SCHEMA ── */
+.decision-schema { display:flex; flex-direction:column; gap:8px; margin:1.1rem 0; }
+.ds-branch { display:flex; align-items:flex-start; gap:12px; background:white; border-radius:var(--rsm); padding:12px 16px; border-left:4px solid transparent; }
+.ds-branch.solid{border-left-color:var(--success);}
+.ds-branch.coffret{border-left-color:var(--p2);}
+.ds-branch.mixte{border-left-color:var(--danger);}
+.ds-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+.ds-content{flex:1;}
+.ds-label{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.ds-action{font-size:0.8rem;color:var(--muted);line-height:1.5;}
+
+/* ── RISK CARDS ── */
+.risk-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:1.1rem 0; justify-items:center; }
+.risk-card { border-radius:var(--rsm); overflow:hidden; border:1.5px solid rgba(0,0,0,0.07); background:white; transition:box-shadow .2s; }
+.risk-card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.08);}
+.risk-card-ph { width:100%; height:180px; background:var(--light); overflow: hidden; display:block; align-items:center; justify-content:center; font-size:0.75rem; color:var(--muted); text-align:center; border-bottom:1px solid rgba(0,0,0,0.05); }
+.risk-card-body{padding:1rem;}
+.risk-badge { display:inline-block; font-size:0.80rem; font-weight:700; border-radius:8px; padding:2px 9px; margin-bottom:6px; }
+.risk-badge.casse{background:var(--danger-bg);color:var(--danger);}
+.risk-badge.chaleur{background:var(--warn-bg);color:var(--warn);}
+.risk-badge.chocs{background:var(--violet-l);color:var(--violet);}
+.risk-card-title{font-family:'Sora',sans-serif;font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.risk-card-when{font-size:0.77rem;color:var(--muted);margin-bottom:5px;line-height:1.45;}
+.risk-card-consequence{font-size:0.77rem;color:var(--text);line-height:1.5;}
+
+.risk-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.risk-card-ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.risk-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── STEP WITH IMG ── */
+.step-with-img { display:grid; grid-template-columns:1fr 200px; gap:16px; align-items:start; margin-bottom:0.75rem; }
+.step-img-col{display:flex;flex-direction:column;gap:6px;justify-self:center;max-width:200px;}
+.step-img-ph { width:100%; aspect-ratio:4/3; background:var(--light); border-radius:var(--rsm); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:var(--muted); text-align:center; border:1.5px dashed rgba(0,0,0,0.1); }
+.step-caption-txt{font-size:0.75rem;font-style:italic;color:var(--muted);line-height:1.5;}
+
+/* ── TEMP VISUAL ── */
+.temp-visual { display:flex; align-items:stretch; margin:1.1rem 0; background:white; border-radius:var(--rsm); overflow:hidden; border:1.5px solid rgba(0,0,0,0.07); }
+.temp-col { flex:1; padding:1.25rem; text-align:center; display:flex; flex-direction:column; justify-content:center; }
+.temp-col.outside{background:color-mix(in srgb,var(--p1) 10%,white);}
+.temp-col.inside{background:color-mix(in srgb,var(--coral) 10%,white);}
+.temp-divider { display:flex; align-items:center; padding:0 0.5rem; color:var(--coral); font-size:1.5rem; font-weight:700; }
+.temp-val { font-family:'Sora',sans-serif; font-size:2rem; font-weight:800; line-height:1; }
+.temp-col.outside .temp-val{color:var(--p1);}
+.temp-col.inside .temp-val{color:var(--coral);}
+.temp-lbl { font-size:0.78rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+.temp-caption { text-align:center; font-size:0.75rem; color:var(--muted); font-style:italic; padding:0.5rem 1rem 0.75rem; background:white; border-top:1px solid rgba(0,0,0,0.05); }
+
+/* ── WAX TABLE ── */
+.table-wrap { overflow-x:auto; margin:1.1rem 0; -webkit-overflow-scrolling:touch; border-radius:var(--rsm); }
+.data-table { width:100%; border-collapse:separate; border-spacing:0 4px; min-width:420px; }
+.data-table th { font-family:'Sora',sans-serif; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); padding:5px 12px; text-align:left; }
+.data-table td { padding:10px 12px; font-size:0.86rem; background:white; vertical-align:top; }
+.data-table tr td:first-child{border-radius:var(--rsm) 0 0 var(--rsm);font-weight:600;}
+.data-table tr td:last-child{border-radius:0 var(--rsm) var(--rsm) 0;color:var(--muted);font-size:0.82rem;}
+.wax-badge{display:inline-block;font-size:0.71rem;font-weight:600;border-radius:8px;padding:2px 9px;white-space:nowrap;}
+.wax-badge.low{background:var(--danger-bg);color:var(--danger);}
+.wax-badge.med{background:var(--warn-bg);color:var(--warn);}
+.wax-badge.ok{background:var(--success-bg);color:var(--success);}
+
+/* ── FORMAT RISK GRID ── */
+.format-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:1.1rem 0; justify-items: center;}
+.format-card { background:white; border-radius:var(--rsm); border:1.5px solid rgba(0,0,0,0.07); transition:box-shadow .2s; }
+.format-card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.format-type{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.format-risk{font-size:0.76rem;color:var(--muted);margin-bottom:4px;line-height:1.4;}
+.format-question{font-size:0.74rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;}
+.format-card {
+  width: 280px; /* ou 100% pour du responsive */
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.format-photo {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.format-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0; /* ou 8px si tu veux des coins arrondis sur la photo */
+}
+
+.format-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+/* ── 3 FONCTIONS ── */
+.fonctions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:1.1rem 0;}
+.fonction-card{border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);background:white;}
+.fonction-num{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--pc,var(--violet));opacity:0.25;margin-bottom:4px;}
+.fonction-title{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.fonction-items{font-size:0.78rem;color:var(--muted);line-height:1.6;}
+.fonction-key{font-size:0.74rem;font-style:italic;color:var(--pc,var(--violet));margin-top:6px;border-top:1px solid rgba(0,0,0,0.05);padding-top:6px;}
+
+/* ── MAT GRID ── */
+.mat-needs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:1.1rem 0;}
+.mat-need-card{background:white;border-radius:var(--rsm);padding:0.85rem 1rem;border:1.5px solid rgba(0,0,0,0.07);display:flex;align-items:flex-start;gap:10px;}
+.mat-need-body{flex:1;}
+.mat-need-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.mat-need-mat{font-size:0.78rem;color:var(--muted);line-height:1.45;}
+.prio{display:inline-block;font-size:0.68rem;font-weight:700;border-radius:8px;padding:2px 9px;margin-bottom:4px;white-space:nowrap;}
+.prio.ess{background:color-mix(in srgb,var(--pc,var(--violet)) 12%,transparent);color:var(--pc,var(--violet));}
+.prio.opt{background:var(--light);color:var(--muted);}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;}
+.step-row{display:grid;grid-template-columns:50px 1fr;position:relative;}
+.step-row:not(:last-child) .step-spine::after { content:''; position:absolute; top:40px; left:50%; transform:translateX(-50%); width:2px; height:calc(100% - 40px); background:linear-gradient(to bottom,color-mix(in srgb,var(--pc) 30%,transparent) 60%,transparent); }
+.step-spine{display:flex;flex-direction:column;align-items:center;position:relative;}
+.step-num { width:38px; height:38px; background:var(--pc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Sora',sans-serif; font-size:0.9rem; font-weight:800; box-shadow:0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent); z-index:1; flex-shrink:0; }
+.step-content{padding:2px 0 2.5rem 18px;}
+.step-content h4{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;line-height:1.3;}
+.step-content p{font-size:0.91rem;color:var(--text);line-height:1.72;margin-bottom:0.7rem;}
+.step-content p:last-child{margin-bottom:0;}
+.step-content strong{font-weight:600;}
+.step-content ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;margin:0.6rem 0;}
+.step-content ul li{font-size:0.88rem;padding-left:18px;position:relative;line-height:1.55;}
+.step-content ul li::before{content:'→';position:absolute;left:0;color:var(--coral);font-weight:700;}
+
+/* ── MAT INLINE ── */
+.mat-inline{background:color-mix(in srgb,var(--pc,var(--violet)) 8%,white);border-radius:var(--rsm);padding:1rem 1.25rem;margin:0.9rem 0;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 22%,transparent);}
+.mat-inline-label{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pc,var(--violet));margin-bottom:0.6rem;}
+.mat-links{display:flex;flex-direction:column;gap:6px;}
+.mat-link-row{display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:9px 12px;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 14%,transparent);transition:border-color .2s;flex-wrap:wrap;}
+.mat-link-row:hover{border-color:color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent);}
+.mat-link-name{flex:1;font-size:0.86rem;font-weight:600;color:var(--text);min-width:120px;}
+.mat-link-desc{font-size:0.78rem;color:var(--muted);width:100%;}
+.mat-link-btn{display:inline-flex;align-items:center;gap:6px;background:var(--pc,var(--violet));color:white;text-decoration:none;padding:6px 13px;border-radius:8px;font-size:0.78rem;font-weight:600;white-space:nowrap;flex-shrink:0;transition:opacity .2s;}
+.mat-link-btn::before{content:'🛒';font-size:0.82rem;}
+.mat-link-btn:hover{opacity:0.82;}
+
+/* ── CARTON COMPARE ── */
+.carton-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.carton-c{border-radius:var(--rsm);overflow:hidden;border:2px solid transparent;text-align:center;background:white;}
+.carton-c.bad-small{border-color:var(--danger-bd);}
+.carton-c.bad-big{border-color:var(--warn-bd);}
+.carton-c.good{border-color:var(--success-bd);}
+.carton-c-ph{width:100%;height:90px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:var(--muted);text-align:center;padding:10px;}
+.carton-c-body{padding:0.75rem 0.5rem;}
+.carton-c-label{font-family:'Sora',sans-serif;font-size:0.8rem;font-weight:700;}
+.carton-c.bad-small .carton-c-label{color:var(--danger);}
+.carton-c.bad-big .carton-c-label{color:var(--warn);}
+.carton-c.good .carton-c-label{color:var(--success);}
+.carton-c-note{font-size:0.72rem;color:var(--muted);margin-top:3px;line-height:1.4;}
+
+/* ── COFFRET COMPARE ── */
+.coffret-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.1rem 0;}
+.coffret-side{border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);background:white;}
+.coffret-ph{width:100%;height:100px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:var(--muted);text-align:center;padding:10px;}
+.coffret-body{padding:0.85rem;}
+.coffret-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;margin-bottom:4px;}
+.coffret-side.bad .coffret-label{color:var(--danger);}
+.coffret-side.good .coffret-label{color:var(--success);}
+.coffret-note{font-size:0.77rem;color:var(--muted);line-height:1.5;}
+
+/* ── CHALEUR BONS RÉFLEXES ── */
+.chaleur-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:1.1rem 0;}
+.chaleur-card{border-radius:var(--rsm);padding:0.9rem 1rem;border:1.5px solid transparent;background:white;}
+.chaleur-card.bon{border-color:var(--success-bd);}
+.chaleur-card.mauvais{border-color:var(--danger-bd);}
+.chaleur-card-label{font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+.chaleur-card.bon .chaleur-card-label{color:var(--success);}
+.chaleur-card.mauvais .chaleur-card-label{color:var(--danger);}
+.chaleur-items{display:flex;flex-direction:column;gap:4px;}
+.chaleur-item{font-size:0.8rem;color:var(--text);padding-left:16px;position:relative;line-height:1.45;}
+.chaleur-item::before{position:absolute;left:0;}
+.chaleur-card.bon .chaleur-item::before{content:'✓';color:var(--success);}
+.chaleur-card.mauvais .chaleur-item::before{content:'✗';color:var(--danger);}
+
+/* ── PRO SPLIT ── */
+.pro-split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.1rem 0;}
+.pro-col{background:white;border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);}
+.pro-col-label{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+.pro-col.marche .pro-col-label{color:var(--p1);}
+.pro-col.transport .pro-col-label{color:var(--p3);}
+.pro-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;}
+.pro-col ul li{font-size:0.82rem;color:var(--text);padding-left:16px;position:relative;line-height:1.5;}
+.pro-col ul li::before{content:'—';position:absolute;left:0;color:var(--pc,var(--muted));font-weight:700;}
+.pro-col.marche{--pc:var(--p1);}
+.pro-col.transport{--pc:var(--p3);}
+
+/* ── FORMULA BOX ── */
+.formula-box{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.1rem 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px;}
+.formula-item{text-align:center;}
+.formula-val{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:800;line-height:1;}
+.formula-lbl{font-size:0.72rem;color:var(--muted);margin-top:3px;}
+.formula-op{font-family:'Sora',sans-serif;font-size:1.2rem;color:var(--muted);align-self:center;}
+.formula-vs{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-bd);border-radius:8px;padding:6px 14px;white-space:nowrap;align-self:center;}
+.f-violet{color:var(--violet);}
+.f-danger{color:var(--danger);}
+
+/* ── PROCEDURE ── */
+.procedure{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.proc-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.proc-n{width:24px;height:24px;background:var(--pc,var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.73rem;font-weight:800;flex-shrink:0;}
+
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.check-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.check-ico{font-size:1.1rem;flex-shrink:0;}
+
+/* ── TIPS ── */
+.tips-wrap{display:flex;flex-direction:column;gap:7px;margin:1.1rem 0;}
+.tips-head{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tips-col-lbl{font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:6px 12px;border-radius:8px;text-align:center;}
+.tips-col-lbl.g{background:var(--success-bg);color:var(--success);}
+.tips-col-lbl.b{background:var(--danger-bg);color:var(--danger);}
+.tips-pair{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tip-c{border-radius:var(--rsm);padding:11px 13px;font-size:0.86rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;}
+.tip-c.g{background:var(--success-bg);border:1.5px solid var(--success-bd);color:var(--success);}
+.tip-c.b{background:var(--danger-bg);border:1.5px solid var(--danger-bd);color:var(--danger);}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:7px;}
+.faq-item{border:1.5px solid rgba(0,0,0,0.07);border-radius:var(--rsm);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;transition:background .2s;}
+.faq-q:hover{background:var(--violet-l);}
+.faq-q.open{background:var(--violet);color:white;}
+.faq-chev{font-size:0.65rem;flex-shrink:0;transition:transform .25s;}
+.faq-q.open .faq-chev{transform:rotate(180deg);}
+.faq-a{display:none;padding:14px 18px;font-size:0.9rem;color:var(--muted);background:rgba(130,105,164,0.04);border-top:1px solid rgba(130,105,164,0.1);line-height:1.7;}
+.faq-a.open{display:block;}
+
+/* ── SOURCES / AFFIL / MAJ ── */
+.sources{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.5rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.7;}
+.sources strong{font-family:'Sora',sans-serif;font-size:0.8rem;color:var(--text);display:block;margin-bottom:6px;}
+.sources ul{list-style:none;padding:0;}
+.sources li{padding-left:14px;position:relative;}
+.sources li::before{content:'·';position:absolute;left:0;}
+.sources a{color:var(--violet);text-decoration:none;}
+.sources a:hover{text-decoration:underline;}
+.affil{background:var(--violet-l);border-radius:var(--rsm);padding:11px 16px;margin:1.25rem 0 0;display:flex;align-items:flex-start;gap:9px;font-size:0.79rem;color:var(--muted);line-height:1.5;border-left:3px solid var(--violet);}
+.maj{background:var(--light);border-radius:var(--rsm);padding:0.9rem 1.25rem;margin:1.25rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.6;border-left:3px solid rgba(0,0,0,0.1);}
+.maj strong{color:var(--text);font-family:'Sora',sans-serif;font-size:0.8rem;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .hero{padding:1.75rem 1.5rem 0;}
+  .hero-bottom{margin:0 -1.5rem;padding:1.25rem 1.5rem 0;}
+  .hero-bottom-grid{grid-template-columns:1fr;}
+  .hb-col:not(:last-child){border-bottom:1px solid var(--violet-m);}
+  .part-header{padding:1.5rem;flex-direction:column;gap:0.5rem;}
+  .part-num{font-size:1.8rem;}
+  .prose{padding:1.5rem;}
+  .en-bref{padding:1.5rem;}
+  .risk-grid,.format-grid,.fonctions-grid,.chaleur-grid,.pro-split,.coffret-compare{grid-template-columns:1fr;}
+  .mat-needs-grid{grid-template-columns:1fr;}
+  .tips-pair,.tips-head{grid-template-columns:1fr;}
+  .tips-col-lbl.b{display:none;}
+  .carton-compare{grid-template-columns:1fr;}
+  .step-with-img{grid-template-columns:1fr;}
+  .formula-box{flex-direction:column;align-items:flex-start;gap:8px;}
+  .formula-vs{align-self:flex-start;}
+  .data-table,.artisan-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+}
+@media(max-width:520px){
+  .page{padding:0 0 2rem;}
+  .en-bref,.part-header,.prose{margin-left:8px;margin-right:8px;}
+  .hero{margin-left:0;margin-right:0;}
+  .bc{padding:10px 12px;}
+  .hero h1{font-size:1.35rem;}
+  .step-row{grid-template-columns:40px 1fr;}
+  .step-num{width:32px;height:32px;font-size:0.82rem;}
+  .step-content{padding:2px 0 2rem 12px;}
+  .sn{padding:12px 14px;font-size:0.76rem;}
+  .en-bref-pills{gap:6px;}
+  .eb-pill{font-size:0.78rem;padding:4px 11px;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="bc" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/conseils">Conseils d'emballage</a><span>›</span>
+  <span>Envoyer des bougies par colis</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">📦 Guide complet 2026</div>
+  <h1>Envoyer des bougies par colis en 2026 : emballage, chaleur, règles et transporteurs</h1>
+  <div class="hero-tricolor"><span></span><span></span><span></span></div>
+  <p class="hero-lead">Une bougie solide peut être expédiée par colis, à condition d'anticiper la casse, la chaleur et les mouvements internes. Le niveau de précaution dépend du format et du contenu exact du colis.</p>
+  <div class="hero-meta">
+    <div class="hero-pill">⏱ 10 min de lecture</div>
+    <div class="hero-pill">📋 3 parties</div>
+    <div class="hero-pill">🕯️ Tous formats de bougies</div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <a href="#risques" class="hb-col"><strong>Partie 1 - Identifier les risques</strong>Contenu, types de cires, formats, chaleur</a>
+      <a href="#emballage" class="hb-col"><strong>Partie 2 - Emballer correctement</strong>6 étapes avec matériaux recommandés</a>
+      <a href="#apres" class="hb-col"><strong>Partie 3 - Règles et vérifications</strong>Transporteurs, réglementation, preuves</a>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" aria-label="Navigation">
+  <div class="snav-inner">
+    <a href="#risques"  class="sn active" data-part="1"><span class="sn-dot"></span>Identifier les risques</a>
+    <a href="#emballage" class="sn" data-part="2"><span class="sn-dot"></span>Emballage</a>
+    <a href="#apres"    class="sn" data-part="3"><span class="sn-dot"></span>Règles et vérifications</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- EN BREF -->
+  <div class="en-bref">
+    <div class="en-bref-label">✦ En bref</div>
+    <p class="en-bref-text">Une bougie solide peut généralement être envoyée par colis si elle est bien emballée, bien calée et protégée contre la casse, la chaleur et les mouvements. Le niveau de précaution dépend du format. Attention aux coffrets mixtes : huiles parfumées, sprays et aérosols doivent être vérifiés séparément.</p>
+    <div class="en-bref-pills">
+      <span class="eb-pill">Possible si bougie solide</span>
+      <span class="eb-pill">Risque selon format</span>
+      <span class="eb-pill">Coffrets mixtes à vérifier</span>
+      <span class="eb-pill">Peser et mesurer avant étiquette</span>
+    </div>
+  </div>
+
+  <!-- ════════ PARTIE 1 ════════ -->
+  <div id="risques" class="section-gap p1">
+
+    <div class="part-header p1">
+      <div class="part-num">1</div>
+      <div>
+        <div class="part-tag">Identifier les risques</div>
+        <h2>Avant d'envoyer des bougies : identifier le contenu et les risques réels</h2>
+        <p>La première question à se poser n'est pas "comment emballer ?" mais "que contient exactement le colis ?" : une bougie solide et un coffret avec liquides ne relèvent pas des mêmes règles.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Bougie seule, coffret cadeau ou produit parfumé : bien identifier le contenu</h3>
+      <p>Une bougie en cire, avec ou sans pot, peut généralement être expédiée si elle est correctement préparée. En revanche, les bougies sont souvent vendues avec d'autres produits : coffrets parfumés, huiles, sprays d'ambiance, recharges liquides ou accessoires combustibles.</p>
+      <p>Le transport ne classe pas les produits selon leur usage commercial, mais selon leur nature physique et réglementaire. Une chandelle classique doit surtout être protégée contre trois risques : la casse, la chaleur et les chocs internes. En revanche, parfums liquides, aérosols, gels combustibles et produits inflammables peuvent relever de règles plus strictes. En France, La Poste et Colissimo classent ces produits parmi les <strong>marchandises dangereuses interdites</strong> dans les colis postaux ordinaires.</p>
+      <p><strong>Ce guide traite donc de l’expédition des bougies solides : bougies en pot, bougies en verre, chandelles, bougies moulées, bougies sculptées, coffrets de bougies et lots de plusieurs bougies.</strong></p>
+
+      <!-- Bloc décisionnel -->
+      <div class="decision-schema">
+        <div class="ds-branch solid">
+          <div class="ds-icon">🕯️</div>
+          <div class="ds-content">
+            <div class="ds-label">Bougie solide seule</div>
+            <div class="ds-action">Priorité à l'emballage, au calage et à la protection thermique en été. Généralement expédiable.</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret">
+          <div class="ds-icon">🎁</div>
+          <div class="ds-content">
+            <div class="ds-label">Coffret de bougies solides</div>
+            <div class="ds-action">Expédiable si chaque bougie est protégée et séparée. Vérifier que les bougies ne bougent pas dans le coffret.</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">⚠️</div>
+          <div class="ds-content">
+            <div class="ds-label">Coffret mixte avec liquide, spray, aérosol ou allume-feu</div>
+            <div class="ds-action">Vérification transporteur obligatoire avant achat de l'étiquette. Dans le doute, retirer le produit sensible du coffret.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">💼</div>
+        <div class="callout-body">
+          <strong>Pour les vendeurs de bougies parfumées</strong>
+          Étiquetage produit et acceptation par le transporteur sont deux vérifications différentes. Une bougie conforme au CLP peut être vendable mais son coffret peut rester problématique à expédier si il contient des liquides ou aérosols. Les détails sont en Partie 3.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les trois causes les plus fréquentes de dommage</h3>
+      <p>Les incidents viennent le plus souvent de trois facteurs : la fragilité du contenant, l'exposition à une température élevée et les impacts à l'intérieur du colis.</p>
+
+      <div class="risk-grid">
+        <div class="risk-card">
+          <div class="risk-card-ph">
+            <img src="/static/img/articleImg/bougie/bougie-verre-cassee-risque-casse-expedition-colis.webp" alt="pot bougie en verre fissuré, cire intacte" />
+          </div>
+          <div class="risk-card-body">
+            <span class="risk-badge casse">Casse</span>
+            <div class="risk-card-title">Fragmentation du contenant</div>
+            <div class="risk-card-when">Pot en verre, récipient fragile, couvercle mobile, plusieurs articles ensemble</div>
+            <div class="risk-card-consequence">Verre brisé, cire exposée, colis souillé, produit inutilisable. Le poids de la cire augmente l'impact : un pot qui glisse peut frapper une paroi avec beaucoup plus de force qu'on ne l'imagine.</div>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-ph">
+            <img src="/static/img/articleImg/bougie/bougie-parfumee-cire-deformee-chaleur-transport-colis.webp" alt="bougie déformée par chaleur, surface affaissée" />
+          </div>
+          <div class="risk-card-body">
+            <span class="risk-badge chaleur">Chaleur</span>
+            <div class="risk-card-title">Exposition thermique</div>
+            <div class="risk-card-when">Été, canicule, véhicule chaud, délai long, destination chaude</div>
+            <div class="risk-card-consequence">Cire assouplie, surface marquée, parfum altéré, forme déformée, coffret taché. Une bougie peut arriver entière, mais visuellement dégradée et invendable.</div>
+          </div>
+        </div>
+        <div class="risk-card">
+          <div class="risk-card-ph">
+            <img src="/static/img/articleImg/bougie/bougie-sculptee-cire-abimee-choc-mouvement-colis.webp" alt="bougie avec reliefs abîmés, marques de pression" />
+          </div>
+          <div class="risk-card-body">
+            <span class="risk-badge chocs">Chocs internes</span>
+            <div class="risk-card-title">Mouvements dans le colis</div>
+            <div class="risk-card-when">Carton trop grand, calage insuffisant, articles regroupés</div>
+            <div class="risk-card-consequence">Frottements, impacts entre pots, reliefs abîmés, présentation détériorée. Dans un lot, deux pots peuvent s'entrechoquer, un couvercle se déplacer ou un article plus lourd abîmer les autres.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>À retenir</strong>
+          Une expédition réussie ne se limite pas à éviter le verre cassé. Elle doit aussi anticiper l'exposition thermique, les impacts internes, la pression sur la cire et la préservation du parfum.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Chaleur et cire : pourquoi une bougie peut s'abîmer avant de fondre</h3>
+      <p>Pour l'expédition, il ne faut pas regarder uniquement la température de fusion. Une bougie peut se dégrader bien avant que la cire devienne liquide : surface marquée, forme déformée, parfum qui migre, mèche déplacée ou cire qui commence à se décoller du verre.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Type de cire</th><th>Repère thermique</th><th>Vigilance en transport chaud</th></tr></thead>
+          <tbody>
+            <tr><td>Cire de soja pour contenant</td><td>env. 42 à 48 °C</td><td><span class="wax-badge low">Très sensible en été</span></td></tr>
+            <tr><td>Cire de soja pour moulage</td><td>env. 49 à 60 °C</td><td><span class="wax-badge med">Marques possibles</span></td></tr>
+            <tr><td>Cire de coco ou mélanges coco</td><td>très variable</td><td><span class="wax-badge low">Pure, très molle</span></td></tr>
+            <tr><td>Cire de paraffine</td><td>env. 46 à 68 °C</td><td><span class="wax-badge med">Variable selon formule</span></td></tr>
+            <tr><td>Cire d'abeille</td><td>env. 62 à 65 °C</td><td><span class="wax-badge med">Reliefs sensibles</span></td></tr>
+            <tr><td>Cire de palme ou de colza</td><td>env. 55 à 65 °C</td><td><span class="wax-badge med">Tenue moyenne à bonne</span></td></tr>
+            <tr><td>Cires high-melt ou microcristallines</td><td>env. 63 à 90 °C</td><td><span class="wax-badge ok">Meilleure résistance</span></td></tr>
+            <tr><td>Cire gel</td><td>env. 99 °C ou plus</td><td><span class="wax-badge ok">Chaleur moins critique</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Ordres de grandeur, pas des garanties</strong>
+          Ces valeurs dépendent du fournisseur, des additifs, du parfum et de l'usage prévu. Le risque pratique commence souvent avant la fusion complète : cire plus molle, surface marquée, mèche déplacée, parfum qui migre.
+        </div>
+      </div>
+
+      <p style="margin-top:1rem;">En été, la température extérieure ne reflète pas toujours le risque réel. Un véhicule exposé au soleil peut atteindre des températures bien supérieures à l'air ambiant. Certaines cires de soja pour contenants fondent autour de 42 à 48 °C selon les fournisseurs, ce qui explique leur sensibilité particulière en été, surtout en pot parfumé.</p>
+
+      <!-- Temp visual -->
+      <div class="temp-visual">
+        <div class="temp-col outside">
+          <div class="temp-val">30 °C</div>
+          <div class="temp-lbl">Température extérieure</div>
+        </div>
+        <div class="temp-divider">→</div>
+        <div class="temp-col inside">
+          <div class="temp-val">~46 °C</div>
+          <div class="temp-lbl">Dans l'habitacle après 1 heure au soleil</div>
+        </div>
+      </div>
+      <div class="temp-caption">Le risque vient de la chaleur accumulée dans le véhicule, pas seulement de la météo extérieure. (Source : Arizona State University)</div>
+    </div>
+
+    <div class="prose">
+      <h3>Identifier le niveau de risque selon le type de bougie</h3>
+      <p>Toutes les bougies n'ont pas le même niveau de risque. L'objectif ici n'est pas de détailler l'emballage, mais d'identifier ce qui peut poser problème, pour ne pas choisir le matériel avant d'avoir identifié le vrai point faible.</p>
+
+      <div class="format-grid">
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-bougie-pot-verre-avant-expedition-colis.webp" alt="Bougie en pot ou en verre" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Bougie en pot ou en verre</div>
+            <div class="format-risk">Risque : casse, couvercle mobile</div>
+            <div class="format-question">Le pot peut-il heurter une paroi ou une autre bougie ?</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-bougie-moulee-sculptee-expedition-colis.webp" alt="Bougie moulée ou sculptée" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Bougie moulée ou sculptée</div>
+            <div class="format-risk">Risque : marques, reliefs abîmés</div>
+            <div class="format-question">La cire peut-elle être comprimée ou frottée ?</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-chandelle-longue-expedition-colis.webp" alt="Chandelle longue" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Chandelle longue</div>
+            <div class="format-risk">Risque : torsion, cassure</div>
+            <div class="format-question">La longueur exige-t-elle un tube ou une boîte rigide ?</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-coffret-cadeau-bougies-expedition-colis.webp" alt="Coffret cadeau" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Coffret cadeau</div>
+            <div class="format-risk">Risque : présentation abîmée, contenu mobile</div>
+            <div class="format-question">Les bougies bougent-elles dans le coffret ?</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-lot-bougies-differents-formats-expedition-colis.webp" alt="Lot de bougies" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Lot de bougies</div>
+            <div class="format-risk">Risque : chocs, frottements, poids mal réparti</div>
+            <div class="format-question">Les bougies peuvent-elles se toucher ?</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/bougie/identifier-risque-bougie-parfumee-pot-verre-expedition-colis.webp" alt="Bougie très parfumée" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Bougie très parfumée</div>
+            <div class="format-risk">Risque : parfum altéré, traces</div>
+            <div class="format-question">Le produit est-il fermé et protégé de la chaleur ?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>À retenir</strong>
+          Verre fragile, cire sensible, coffret mobile, lot de plusieurs bougies ou expédition en période chaude ne demandent pas la même réponse. La partie suivante consiste à transformer ce diagnostic en méthode d'emballage concrète.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /risques -->
+
+  <div class="part-transition">Une fois les risques identifiés, on peut choisir les bons matériaux et construire un emballage adapté, couche par couche.</div>
+
+  <!-- ════════ PARTIE 2 ════════ -->
+  <div id="emballage" class="section-gap p2">
+
+    <div class="part-header p2">
+      <div class="part-num">2</div>
+      <div>
+        <div class="part-tag">Emballage</div>
+        <h2>Comment expédier des bougies sans casse, avec un emballage adapté</h2>
+        <p>Protéger, caler et présenter sont trois fonctions différentes. Un bel unboxing ne protège pas une bougie en verre si le calage est insuffisant.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Avant de commencer : ne confondez pas protection, calage et présentation</h3>
+      <p>Avant de choisir le carton ou les matériaux, partez du risque réel. Une bougie peut s'abîmer de trois manières : le verre peut se fissurer, la cire peut se marquer, ou le produit peut bouger dans le colis.</p>
+
+      <div class="fonctions-grid">
+        <div class="fonction-card f-protect" style="--pc:var(--p2)">
+          <div class="fonction-num">1</div>
+          <div class="fonction-title">Protéger</div>
+          <div class="fonction-items">Papier bulle, mousse fine, couche douce au contact du produit</div>
+          <div class="fonction-key">Isole la surface des chocs et des frottements</div>
+        </div>
+        <div class="fonction-card f-cale" style="--pc:var(--p1)">
+          <div class="fonction-num">2</div>
+          <div class="fonction-title">Caler</div>
+          <div class="fonction-items">Kraft froissé, coussins d'air, amidon de maïs, fibres de calage</div>
+          <div class="fonction-key">Immobilise le produit dans le carton</div>
+        </div>
+        <div class="fonction-card f-present" style="--pc:var(--p3)">
+          <div class="fonction-num">3</div>
+          <div class="fonction-title">Présenter</div>
+          <div class="fonction-items">Frisure kraft, papier de soie, fibres naturelles décoratives</div>
+          <div class="fonction-key">Finition visuelle - complément, pas substitut au calage</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Unboxing ≠ protection transport</strong>
+          Un joli coffret peut aussi être fragile s'il n'est pas immobilisé. La frisure kraft ou les fibres naturelles ne remplacent pas un calage efficace.
+        </div>
+      </div>
+
+      <h3>Le matériel utile selon le risque</h3>
+      <div class="mat-needs-grid">
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel</span>
+            <div class="mat-need-label">Structure du colis</div>
+            <div class="mat-need-mat">Carton rigide ou double cannelure</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel si verre</span>
+            <div class="mat-need-label">Protection du verre</div>
+            <div class="mat-need-mat">Papier bulle, mousse fine</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel si sculptée</span>
+            <div class="mat-need-label">Protection de la cire</div>
+            <div class="mat-need-mat">Mousse 3 à 5 mm, papier doux</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel</span>
+            <div class="mat-need-label">Immobilisation</div>
+            <div class="mat-need-mat">Kraft froissé, coussins d'air, mousse de calage</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel si lot</span>
+            <div class="mat-need-label">Séparation des lots</div>
+            <div class="mat-need-mat">Cloisons carton, croisillons</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio ess">Essentiel</span>
+            <div class="mat-need-label">Fermeture</div>
+            <div class="mat-need-mat">Ruban adhésif renforcé</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio opt">Option esthétique</span>
+            <div class="mat-need-label">Présentation client</div>
+            <div class="mat-need-mat">Frisure kraft, fibres naturelles, papier de soie</div>
+          </div>
+        </div>
+        <div class="mat-need-card">
+          <div class="mat-need-body">
+            <span class="prio opt">Option ciblée</span>
+            <div class="mat-need-label">Humidité / stockage long</div>
+            <div class="mat-need-mat">Sachets de silice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPES -->
+    <div class="prose">
+      <div class="steps-list">
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">1</div></div>
+          <div class="step-content">
+            <h4>Protéger chaque bougie individuellement</h4>
+            <p>La protection individuelle signifie une chose simple : chaque bougie est préparée séparément avant d'être placée dans le carton. Plusieurs pots enveloppés ensemble dans une seule couche de papier bulle peuvent encore se toucher, frotter ou se casser.</p>
+
+            <div class="step-with-img">
+              <div>
+                <p><strong>Bougie en pot ou en verre :</strong> vérifier le couvercle, envelopper le pot, renforcer fond et côtés. Le récipient ne doit pas toucher une autre pièce.</p>
+                <p><strong>Bougie moulée ou sculptée :</strong> couche douce, puis rembourrage si besoin. Éviter toute pression sur les reliefs.</p>
+                <p><strong>Chandelle longue :</strong> tube carton rigide ou boîte longue. Empêcher la torsion sans trop serrer.</p>
+              </div>
+              <div class="step-img-col">
+                <div class="step-img-ph">
+                  <img src="/static/img/articleImg/bougie/proteger-chaque-bougie-individuellement-avant-expedition-colis.webp" alt="3 protections individuelles - pot verre, sculptée, chandelle" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Chaque bougie doit être protégée seule avant d'être placée dans le carton.</div>
+              </div>
+            </div>
+
+            <p>Utilisez un sachet zip seulement dans des cas précis : cire légèrement grasse, produit très parfumé, risque de transfert ou trajet humide. Pour les cires soja ou coco, un sachet de silice peut aider, sans remplacer le calage.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier bulle pour pot en verre</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Mousse fine pour bougie sculptée</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Tube carton rigide pour chandelles</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">2</div></div>
+          <div class="step-content">
+            <h4>Choisir un carton adapté</h4>
+            <p>Le carton doit être propre, rigide, intact et adapté au poids final. Pour un pot en verre, un coffret, un lot ou une commande professionnelle, privilégiez un carton en double cannelure.</p>
+            <p>Le format compte autant que la solidité. Le bon format laisse généralement <strong>3 à 5 cm</strong> autour de l'article pour placer le calage, sans surdimensionner l'envoi.</p>
+            <p>N'utilisez pas le coffret cadeau comme emballage d'expédition unique. Les enveloppes souples sont aussi à éviter dès qu'il y a du verre, un couvercle, une forme fragile ou une cire sensible.</p>
+
+            <div class="carton-compare">
+              <div class="carton-c bad-small">
+                <div class="carton-c-ph">
+                  <img src="/static/img/articleImg/bougie/carton-trop-petit-expedier-bougies-verre-cire-colis.webp" alt="carton trop petit, produit comprimé" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="carton-c-body">
+                  <div class="carton-c-label">✗ Trop petit</div>
+                  <div class="carton-c-note">Comprime la cire et le coffret</div>
+                </div>
+              </div>
+              <div class="carton-c good">
+                <div class="carton-c-ph">
+                  <img src="/static/img/articleImg/bougie/bon-format-carton-expedier-bougie-verre-colis-calage.webp" alt="carton bon format, 3-5 cm autour" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="carton-c-body">
+                  <div class="carton-c-label">✓ Bon format</div>
+                  <div class="carton-c-note">3 à 5 cm de zone tampon autour</div>
+                </div>
+              </div>
+              <div class="carton-c bad-big">
+                <div class="carton-c-ph">
+                  <img src="/static/img/articleImg/bougie/carton-trop-grand-expedier-bougie-colis-calage-excessif.webp" alt="carton trop grand, produit qui bouge" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="carton-c-body">
+                  <div class="carton-c-label">✗ Trop grand</div>
+                  <div class="carton-c-note">Crée trop de vide, colis instable</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton rigide petite bougie</div>
+                    <div class="mat-link-desc">Environ 20×20×15 cm pour petite bougie en pot</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton double cannelure bougie moyenne</div>
+                    <div class="mat-link-desc">Environ 35×25×20 cm pour bougie moyenne ou petite chandelle</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Tube carton pour chandelle longue</div>
+                    <div class="mat-link-desc">Empêche la torsion et la cassure sur la longueur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">3</div></div>
+          <div class="step-content">
+            <h4>Immobiliser la bougie dans le carton</h4>
+            <p>Le calage doit empêcher la bougie de bouger, pas seulement remplir la boîte. Placez une couche au fond, posez le produit déjà protégé au centre sans contact direct avec les parois, puis ajoutez du calage sur les côtés. <strong>Pour un pot en verre, le calage doit être ferme et sans vide ; pour une cire sculptée, il doit rester plus doux pour éviter les marques.</strong></p>
+            <p>Avant fermeture définitive, faites le <strong>test de mouvement</strong> : fermez la boîte sans scotch, soulevez-la et bougez-la doucement dans plusieurs directions.<br>Bruit ou déplacement = <strong>calage insuffisant</strong>.<br>Carton déformé = <strong>trop de matière</strong> ou contenu mal réparti.</p>
+
+            <div class="step-with-img">
+              <p>La frisure kraft ou les fibres naturelles peuvent stabiliser légèrement un coffret et améliorer la présentation, mais elles doivent être assez denses pour tenir le produit en place. Sinon, elles restent décoratives. Pour un rendu très naturel, le mélange kraft, fibres naturelles et amidon de maïs est plus cohérent que des coussins d'air plastiques.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">
+                  <img src="/static/img/articleImg/bougie/immobiliser-bougie-dans-carton-calage-frisure-kraft-expedition-colis.webp" alt="carton ouvert vu du dessus, bougie au centre, calage dense" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Si le colis fait du bruit au test de mouvement, il faut reprendre le calage.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier kraft froissé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Coussins d'air gonflables</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Calage en amidon de maïs biodégradable</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Fibres naturelles de calage</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Frisure kraft</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">4</div></div>
+          <div class="step-content">
+            <h4>Organiser un lot ou un coffret sans surcharger le colis</h4>
+            <p>Quand vous envoyez plusieurs bougies, il ne suffit pas de les séparer : il faut aussi organiser le poids. Pour un lot de deux à quatre bougies, utilisez des cloisons en carton, des croisillons ou des compartiments internes. Si le colis devient trop compact, mieux vaut préparer deux colis propres qu'un seul paquet trop chargé.</p>
+            <p>La règle est simple : <strong>cloisons ou mousse fine pour maintenir, frisure kraft ou papier de soie pour présenter.</strong></p>
+
+            <div class="coffret-compare">
+              <div class="coffret-side bad">
+                <div class="coffret-ph">
+                  <img src="/static/img/articleImg/bougie/lot-bougies-mal-organise-sans-separation-verre-casse-expedition-colis.webp" alt="coffret joli mais mal maintenu, frisure lâche" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="coffret-body">
+                  <div class="coffret-label">✗ Présentation soignée, maintien insuffisant</div>
+                  <div class="coffret-note">Frisure lâche, pots qui bougent, pas de séparation</div>
+                </div>
+              </div>
+              <div class="coffret-side good">
+                <div class="coffret-ph">
+                  <img src="/static/img/articleImg/bougie/lot-bougies-bien-emballe-separations-carton-expedition-colis.webp" alt="coffret avec cloisons et frisure dense" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="coffret-body">
+                  <div class="coffret-label">✓ Présentation soignée, maintien optimal</div>
+                  <div class="coffret-note">Cloisons ou mousse fine, frisure dense en finition</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout tip">
+              <div class="callout-ico">📋</div>
+              <div class="callout-body">
+                <strong>Lot ou coffret : 3 contrôles rapides</strong>
+                1. Les pots ne se touchent pas.<br>2. Le poids est réparti.<br>3. La présentation complète le calage, elle ne le remplace pas.
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Cloisons carton</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Croisillons pour pots en verre</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Mousse fine pour coffret cadeau</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier de soie</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 5 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">5</div></div>
+          <div class="step-content">
+            <h4>Adapter l'emballage en été ou vers une destination chaude</h4>
+            <p>Même en période chaude, gardez les bases : protection individuelle, immobilisation stable et absence de pression sur la cire. Évitez les dépôts la veille d'un week-end ou d'un jour férié, surtout en canicule. Prévenez le destinataire pour une récupération rapide.</p>
+
+            <div class="chaleur-grid">
+              <div class="chaleur-card bon">
+                <div class="chaleur-card-label">✓ Bons réflexes</div>
+                <div class="chaleur-items">
+                  <div class="chaleur-item">Déposer en début de semaine</div>
+                  <div class="chaleur-item">Prévenir le destinataire</div>
+                  <div class="chaleur-item">Sachet isotherme (option budget)</div>
+                  <div class="chaleur-item">Boîte isotherme (option premium)</div>
+                  <div class="chaleur-item">Pas de pression sur la cire</div>
+                </div>
+              </div>
+              <div class="chaleur-card mauvais">
+                <div class="chaleur-card-label">✗ Fausses bonnes idées</div>
+                <div class="chaleur-items">
+                  <div class="chaleur-item">Accumulateurs de froid improvisés</div>
+                  <div class="chaleur-item">Dépôt avant week-end en canicule</div>
+                  <div class="chaleur-item">Aluminium seul (réfléchit, n'isole pas)</div>
+                  <div class="chaleur-item">Condensation dans le colis</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Sachet isotherme</div>
+                    <div class="mat-link-desc">Option budget - ralentit l'exposition thermique</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Film à bulles isotherme</div>
+                    <div class="mat-link-desc">À enrouler autour de la bougie déjà protégée</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Boîte isotherme rigide</div>
+                    <div class="mat-link-desc">Option premium pour commandes sensibles ou forte chaleur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Sachets de silice</div>
+                  <div class="mat-link-desc">Pour cires soja/coco, destinations humides ou stockage long</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 6 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">6</div></div>
+          <div class="step-content" style="padding-bottom:0.5rem;">
+            <h4>Fermer et étiqueter sans affaiblir le colis</h4>
+            <p>Utilisez un <strong>ruban adhésif renforcé et fermez le carton en forme de H</strong> : une bande sur l'ouverture centrale, puis deux bandes sur les bords. En cas de réutilisation d'un carton, supprimez toutes les anciennes étiquettes, codes-barres et bordereaux.</p>
+            <p>L'étiquette de transport doit être posée sur une surface plane, visible, non pliée et sans code-barres caché. Ajoutez une étiquette "Fragile" ou "Haut / Bas" - ces mentions peuvent aider, mais préparez l'envoi comme si elles pouvaient être ignorées.</p>
+
+            <div class="step-with-img">
+              <p>Ce point est particulièrement important pour les petits vendeurs sur Vinted, eBay, Leboncoin ou marketplace : un ancien code-barres ou une adresse partiellement visible peut créer une confusion au tri.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">
+                  <img src="/static/img/articleImg/bougie/fermer-etiqueter-carton-bougies-colis-fragile-haut-bas.webp" alt="colis fermé en H, nouvelle étiquette à plat, pictogrammes Fragile" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">L'étiquette renseigne - l'emballage protège.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Ruban adhésif renforcé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Étiquettes FRAGILE</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Étiquettes HAUT / BAS</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Pochettes bordereau transparentes</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div>
+
+    <!-- TIPS PARTIE 2 -->
+    <div class="prose">
+      <h3>Erreurs fréquentes à éviter</h3>
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Protéger chaque bougie individuellement avant de les regrouper</span></div>
+          <div class="tip-c b"><span>✗</span><span>Envelopper plusieurs pots dans une seule couche de papier bulle</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Utiliser un carton rigide avec 3 à 5 cm de marge pour le calage</span></div>
+          <div class="tip-c b"><span>✗</span><span>Utiliser le coffret cadeau comme unique emballage d'expédition</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Faire le test de mouvement avant de fermer définitivement</span></div>
+          <div class="tip-c b"><span>✗</span><span>Utiliser la frisure kraft comme unique protection du coffret</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Utiliser des cloisons ou croisillons pour séparer les pots d'un lot</span></div>
+          <div class="tip-c b"><span>✗</span><span>Compter sur l'étiquette "Fragile" pour compenser un calage insuffisant</span></div>
+        </div>
+      </div>
+      <div class="callout info" style="margin-top:1rem;">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>À retenir</strong>
+          Une bougie bien emballée est protégée individuellement, placée dans un carton adapté, immobilisée, séparée des autres si nécessaire, puis fermée avec une étiquette lisible.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /emballage -->
+
+  <div class="part-transition">L'emballage protège la bougie. Les vérifications suivantes protègent l'envoi et vous protègent en cas de problème.</div>
+
+  <!-- ════════ PARTIE 3 ════════ -->
+  <div id="apres" class="section-gap p3">
+
+    <div class="part-header p3">
+      <div class="part-num">3</div>
+      <div>
+        <div class="part-tag">Règles et vérifications</div>
+        <h2>Après emballage : vérifier les règles d'envoi, le transporteur et les preuves</h2>
+        <p>Avant de déposer le colis, vérifiez le contenu exact, le poids réel, les dimensions fermées et les restrictions éventuelles du transporteur.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Dernière vérification avant dépôt</h3>
+      <p>Avant d'acheter votre étiquette, <strong>pesez le colis final</strong>, pas seulement la bougie. Le carton, le calage, les séparateurs, le coffret et le ruban peuvent modifier le poids. Mesurez aussi le colis une fois fermé : longueur, largeur et hauteur réelles. Ces données évitent les erreurs de tarif et les mauvaises surprises au moment de comparer les solutions d'envoi.</p>
+      <p>À ce stade, vous pouvez simuler l'envoi avec le poids et les dimensions réelles du colis. Sur <a href="https://www.universcolis.fr/" style="color:var(--pc);font-weight:600;">UniversColis</a>, vous pouvez estimer vos frais d'expédition et repérer des solutions parfois moins chères qu'un achat direct auprès d'un transporteur classique.</p>
+
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">📦</span><span>Rien ne bouge dans le colis</span></div>
+        <div class="check-item"><span class="check-ico">📐</span><span>Carton stable, non déformé</span></div>
+        <div class="check-item"><span class="check-ico">🏷️</span><span>Ancienne étiquette retirée ou barrée</span></div>
+        <div class="check-item"><span class="check-ico">⚖️</span><span>Poids mesuré après emballage complet</span></div>
+        <div class="check-item"><span class="check-ico">📏</span><span>Dimensions mesurées après fermeture</span></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Vérifier les règles d'envoi : bougie solide, bougie parfumée ou coffret mixte</h3>
+      <p>Le transporteur classe les produits par risque, pas par univers commercial. Une bougie en cire solide relève surtout d'un risque logistique : casse, chaleur, mouvement. En revanche, un parfum liquide, un aérosol, un gel combustible ou un produit inflammable peut entrer dans la catégorie des <strong>marchandises dangereuses</strong>. Dans les réseaux postaux classiques, les liquides inflammables, gaz sous pression, aérosols ou produits combustibles peuvent relever de ces classes de danger - Colissimo Entreprise rappelle que ces marchandises sont interdites dans ses envois nationaux et internationaux. <a href="https://aide.laposte.fr/contenu/quels-sont-les-produits-interdits-a-l-expedition-de-colis" target="_blank" rel="noopener" style="color:var(--pc);font-weight:500;">La Poste liste ces produits parmi les envois interdits.</a></p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Type de contenu</th><th>Lecture pratique avant envoi</th></tr></thead>
+          <tbody>
+            <tr><td>Bougie solide non parfumée</td><td style="color:var(--success)">Généralement expédiable si bien emballée</td></tr>
+            <tr><td>Bougie parfumée solide</td><td style="color:var(--success)">Généralement expédiable - étiquetage produit à vérifier en vente pro</td></tr>
+            <tr><td>Bougie en pot verre</td><td style="color:var(--p2)">Expédiable avec emballage renforcé</td></tr>
+            <tr><td>Coffret uniquement de bougies solides</td><td style="color:var(--p2)">Expédiable si chaque bougie est protégée et séparée</td></tr>
+            <tr><td>Coffret avec parfum, spray, aérosol, gel ou liquide</td><td style="color:var(--danger)">À vérifier séparément - risque de produit interdit en colis standard</td></tr>
+            <tr><td>Allume-feu ou produit combustible</td><td style="color:var(--danger)">À traiter comme produit sensible, pas comme accessoire décoratif</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Dans le doute</strong>
+          Mieux vaut retirer le produit sensible du coffret que risquer un refus ou un blocage. Si un composant est classé inflammable (pictogramme "flamme"), vérifiez les règles ADR, IATA ou IMDG selon le mode de transport.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Pour les vendeurs : étiquetage produit et transport ne sont pas la même chose</h3>
+      <p>Pour un vendeur, il y a deux vérifications différentes. La première concerne la mise sur le marché : composition, étiquetage, mentions de danger éventuelles. La seconde concerne le transport : le colis est-il accepté par le transporteur ?</p>
+      <p>En France et dans l'UE, une bougie parfumée peut relever du <a href="https://eur-lex.europa.eu/legal-content/FR/ALL/?uri=CELEX%3A32008R1272" target="_blank" rel="noopener" style="color:var(--pc);font-weight:500;">règlement CLP (CE n°1272/2008)</a> lorsqu'elle contient des substances classées. Selon la composition du parfum, l'étiquette peut mentionner des allergènes, des phrases de danger, un pictogramme ou un mot de signalisation.</p>
+
+      <div class="pro-split">
+        <div class="pro-col marche">
+          <div class="pro-col-label">Mise sur le marché</div>
+          <ul>
+            <li>Composition et classification CLP</li>
+            <li>Étiquetage produit (allergènes, pictogrammes)</li>
+            <li>Fiche de données de sécurité (parfum)</li>
+            <li>Informations REACH fournisseur</li>
+          </ul>
+        </div>
+        <div class="pro-col transport">
+          <div class="pro-col-label">Transport</div>
+          <ul>
+            <li>Contenu accepté par le transporteur</li>
+            <li>Marchandises dangereuses ou non</li>
+            <li>Règles ADR / IATA / IMDG si applicable</li>
+            <li>Restrictions selon réseau et destination</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Note importante</strong>
+          Une étiquette produit conforme ne rend pas automatiquement le colis expédiable. Une bougie conforme au CLP peut être vendable, mais son coffret avec aérosol ou liquide peut rester problématique à expédier.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>France, Outre-mer, Europe, international : les vérifications changent</h3>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Destination</th><th>Points à vérifier avant l'envoi</th></tr></thead>
+          <tbody>
+            <tr><td>France métropolitaine</td><td>Emballage, suivi, chaleur en été, disponibilité du destinataire</td></tr>
+            <tr><td>Outre-mer</td><td>Délai plus long, chaleur, conditions du transporteur, contenu exact</td></tr>
+            <tr><td>Union européenne</td><td>Suivi, délai, emballage renforcé si verre ou coffret</td></tr>
+            <tr><td>Hors Union européenne</td><td>Douane (code 3406), description précise, valeur déclarée, restrictions du pays</td></tr>
+            <tr><td>Coffret mixte</td><td>Vérifier séparément liquides, sprays, aérosols, gels ou produits inflammables</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-ico">🌍</div>
+        <div class="callout-body">
+          <strong>Hors UE : code douanier 3406</strong>
+          Les bougies sont généralement classées sous la position douanière 3406 "candles, tapers and the like". Utilisez une description précise : "bougie parfumée en cire de soja" ou "coffret de bougies", évitez "cadeau" ou "objet déco" seuls. Vérifiable sur <a href="https://trade.ec.europa.eu/access-to-markets/en/results?destination=AT&origin=PA&product=3406" target="_blank" rel="noopener" style="color:var(--pc);">Access2Markets</a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Assurance, dommage et preuves</h3>
+      <p>Pour une bougie standard de faible valeur, l'assurance n'est pas prioritaire : le meilleur investissement reste un bon emballage. Pour un coffret cher, un lot, une commande client ou une création artisanale haut de gamme, vérifiez l'indemnisation avant l'achat de l'étiquette.</p>
+
+      <div class="formula-box">
+        <div class="formula-item"><div class="formula-val f-violet">2 kg</div><div class="formula-lbl">Poids du colis</div></div>
+        <div class="formula-op">×</div>
+        <div class="formula-item"><div class="formula-val">23 €</div><div class="formula-lbl">Indemnité standard/kg</div></div>
+        <div class="formula-op">=</div>
+        <div class="formula-item"><div class="formula-val f-danger">46 €</div><div class="formula-lbl">Remboursement obtenu</div></div>
+        <div class="formula-vs">Coffret à 80 € ou 150 €</div>
+      </div>
+
+      <p>Conservez les preuves utiles : facture, confirmation de commande, photo du produit, photo du calage, photo du colis fermé et numéro de suivi. Si une bougie arrive cassée ou déformée, photographiez tout avant de jeter l'emballage.</p>
+
+      <h3 style="margin-top:1.5rem;">Procédure rapide en cas de casse</h3>
+      <div class="step-with-img" style="align-items:center;">
+        <div class="procedure">
+          <div class="proc-item"><div class="proc-n">1</div><span>Photographier le carton extérieur</span></div>
+          <div class="proc-item"><div class="proc-n">2</div><span>Photographier le calage et l'intérieur</span></div>
+          <div class="proc-item"><div class="proc-n">3</div><span>Photographier la bougie abîmée</span></div>
+          <div class="proc-item"><div class="proc-n">4</div><span>Conserver l'emballage complet</span></div>
+          <div class="proc-item"><div class="proc-n">5</div><span>Contacter vendeur ou transporteur avec numéro de suivi</span></div>
+        </div>
+        <div class="step-img-col">
+            <div class="step-img-ph">
+              <img src="/static/img/articleImg/bougie/bougie-verre-cassee-carton-abime-reclamation-indemnisation-colis.webp" alt="Bougie cassée ou déformée dans son colis ouvert" style="width:100%;height:auto;object-fit:cover;" />
+            </div>
+          <div class="step-caption-txt">Photographiez tout avant de jeter l'emballage - ces preuves sont indispensables pour la réclamation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Pour les artisans : standardiser sans surprotéger</h3>
+      <p>Pour une petite marque, l'objectif est de répéter le même niveau de protection sans alourdir chaque colis ni réduire inutilement la marge. Créez quelques formats standards et suivez les indicateurs clés.</p>
+
+      <div class="callout tip">
+        <div class="callout-ico">📊</div>
+        <div class="callout-body">
+          <strong>Standardiser = économiser</strong>
+          Moins de casse + coûts plus prévisibles + préparation plus rapide. Notez les incidents pour améliorer chaque format au fil des expéditions.
+        </div>
+      </div>
+
+      <div class="callout info" style="margin-top:1rem;">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>À retenir</strong>
+          Après l'emballage, vérifiez le contenu exact, le poids réel, les dimensions fermées, les restrictions éventuelles et les preuves conservées. Une bougie solide bien emballée peut souvent être expédiée sans difficulté ; un coffret contenant liquides, sprays ou produits inflammables demande une vérification beaucoup plus stricte.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /apres -->
+
+  <!-- FAQ -->
+  <div class="prose section-gap">
+    <h3>FAQ</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer une bougie par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, une bougie solide classique peut généralement être envoyée par colis si elle est bien emballée, bien calée et protégée contre la casse, la chaleur et les mouvements. En revanche, les coffrets contenant huiles parfumées, sprays, aérosols, liquides inflammables ou allume-feux doivent être vérifiés séparément auprès du transporteur.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment emballer une bougie en verre pour éviter la casse ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Protégez d'abord le pot individuellement avec une protection anti-chocs, en renforçant le fond et les côtés. Placez ensuite la bougie au centre d'un carton rigide, sans contact direct avec les parois ni avec d'autres pots. Faites le test de mouvement avant de fermer définitivement.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment éviter qu'une bougie fonde ou se déforme pendant le transport ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">En été ou vers une destination chaude, évitez les dépôts juste avant un week-end ou un jour férié, et prévenez le destinataire pour une récupération rapide. La chaleur peut abîmer la cire avant même la fonte complète : surface marquée, cire ramollie, parfum altéré ou mèche déplacée. Un sachet isotherme peut ralentir l'exposition thermique.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Faut-il assurer un colis contenant des bougies ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Pour une bougie standard de faible valeur, l'assurance n'est pas prioritaire : le plus important reste un bon emballage. Pour un coffret cher, un lot, une commande client ou une création artisanale haut de gamme, vérifiez l'indemnisation et gardez des preuves : facture, photos du calage et numéro de suivi. Colissimo indique une indemnisation de base de 23 €/kg ; Mondial Relay une couverture incluse de 25 €.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISE À JOUR -->
+  <div class="maj">
+    <strong>Dernière mise à jour</strong><br>
+    Informations logistiques, règles d'expédition et données transporteurs vérifiées pour publication en 2026. Les conditions pouvant évoluer, vérifiez toujours les CGV officielles du transporteur avant l'envoi.
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <strong>Sources principales</strong>
+    <ul>
+      <li><a href="https://aide.laposte.fr/contenu/quels-sont-les-produits-interdits-a-l-expedition-de-colis" target="_blank" rel="noopener">La Poste - produits interdits à l'expédition</a></li>
+      <li>Colissimo Entreprise - marchandises dangereuses</li>
+      <li><a href="https://eur-lex.europa.eu/legal-content/FR/ALL/?uri=CELEX%3A32008R1272" target="_blank" rel="noopener">EUR-Lex - règlement CLP CE n°1272/2008</a></li>
+      <li><a href="https://trade.ec.europa.eu/access-to-markets/en/results?destination=AT&origin=PA&product=3406" target="_blank" rel="noopener">Commission européenne Access2Markets - code douanier 3406</a></li>
+      <li>Terre de Bougies - cire soja contenant 42–48 °C</li>
+      <li>CERE - points de fusion paraffine / soja / cire d'abeille</li>
+      <li>Arizona State University - chaleur dans les véhicules stationnés au soleil</li>
+      <li>Mondial Relay - assurance et indemnisation</li>
+    </ul>
+  </div>
+
+  <!-- AFFILIATION -->
+  <div class="affil">
+    <span style="color:var(--violet);font-size:1rem;flex-shrink:0;margin-top:1px;">ℹ</span>
+    <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour
+      vous, ce qui nous aide à maintenir nos services gratuits.</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleFaq(btn){
+  const a=btn.nextElementSibling,was=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!was){btn.classList.add('open');a.classList.add('open');}
+}
+const navLinks=document.querySelectorAll('.sn');
+const ids=['risques','emballage','apres'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    let cur=ids[0];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130)cur=id;
+    });
+    navLinks.forEach(l=>{
+      const isActive=l.getAttribute('href')==='#'+cur;
+      l.classList.toggle('active',isActive);
+    });
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{{!-- 
+  CARTON-COMPARE
+  Grille de comparaison de 3 cartons : trop petit / bon format / trop grand.
+  Chaque carte : photo + label coloré + note descriptive.
+  Utilisé pour : montrer visuellement le bon format de carton
+  
+  Paramètres JSON :
+  - cards[] :
+      - img  : chemin image
+      - imgAlt : texte alternatif
+      - style  : "bad-small" (rouge), "good" (vert), "bad-big" (orange)
+      - label  : texte avec ✓ ou ✗ déjà inclus
+      - note   : description courte
+--}}
+
+<div class="carton-compare">
+  {{#each block.cards}}
+  <div class="carton-c {{this.style}}">
+    <div class="carton-c-ph">
+      {{#if this.img}}
+      <img src="/static/img/articleImg/{{this.img}}"
+           alt="{{this.imgAlt}}"
+           style="width:100%;height:100%;object-fit:cover;"
+           loading="lazy">
+      {{else}}
+      {{this.imgAlt}}
+      {{/if}}
+    </div>
+    <div class="carton-c-body">
+      <div class="carton-c-label">{{this.label}}</div>
+      {{#if this.note}}
+      <div class="carton-c-note">{{this.note}}</div>
+      {{/if}}
+    </div>
+  </div>
+  {{/each}}
+</div>

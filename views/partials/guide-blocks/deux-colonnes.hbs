@@ -1,0 +1,38 @@
+{{!-- 
+  DEUX-COLONNES
+  Deux colonnes avec titre et liste d'items.
+  Deux variantes selon le paramètre "variant" :
+  - "check" : ✓/✗ colorés (bons réflexes vs fausses idées)
+  - "list"  : listes avec tirets colorés (ex: marché vs transport)
+  
+  Paramètres JSON :
+  - variant : "check" ou "list"
+  - cols[]  : exactement 2 objets
+      - style : "bon"/"mauvais" pour check | "marche"/"transport" pour list
+      - label : titre de la colonne
+      - items[]: tableau de strings
+--}}
+
+<div class="deux-colonnes deux-colonnes--{{block.variant}}">
+  {{#each block.cols}}
+  <div class="deux-col {{this.style}}">
+    <div class="deux-col-label">{{this.label}}</div>
+
+    {{#if (eq ../block.variant "check")}}
+    <div class="chaleur-items">
+      {{#each this.items}}
+      <div class="chaleur-item">{{{this}}}</div>
+      {{/each}}
+    </div>
+
+    {{else}}
+    <ul>
+      {{#each this.items}}
+      <li>{{{this}}}</li>
+      {{/each}}
+    </ul>
+    {{/if}}
+
+  </div>
+  {{/each}}
+</div>

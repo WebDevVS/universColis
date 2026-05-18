@@ -1,0 +1,47 @@
+{{!-- 
+  CHECKLIST
+  Liste d'items dans un encadré coloré.
+  Deux styles disponibles selon le paramètre "style" :
+  - "numbered" : numéros CSS automatiques (défaut)
+  - "icon"     : icône emoji par item définie dans le JSON
+  
+  Paramètres JSON :
+  - title : titre de l'encadré (optionnel)
+  - style : "numbered" ou "icon" (défaut: "numbered")
+  - items[]:
+      - Si style "numbered" : simple string — ex: "Vérifier le calage"
+      - Si style "icon"     : objet — { icon: "📦", text: "Rien ne bouge" }
+  - note  : texte grisé en bas de l'encadré (optionnel)
+--}}
+
+<div class="checklist-box">
+
+  {{#if block.title}}
+  <div class="checklist-label">{{block.title}}</div>
+  {{/if}}
+
+  {{#if (eq block.style "icon")}}
+  {{!-- Style avec icônes emoji --}}
+  <div class="checklist">
+    {{#each block.items}}
+    <div class="check-item">
+      <span class="check-ico">{{this.icon}}</span>
+      <span>{{{this.text}}}</span>
+    </div>
+    {{/each}}
+  </div>
+
+  {{else}}
+  {{!-- Style numéroté (défaut) --}}
+  <ol class="checklist-list">
+    {{#each block.items}}
+    <li class="checklist-item">{{{this}}}</li>
+    {{/each}}
+  </ol>
+  {{/if}}
+
+  {{#if block.note}}
+  <p class="checklist-note">{{{block.note}}}</p>
+  {{/if}}
+
+</div>

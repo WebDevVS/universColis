@@ -1,0 +1,34 @@
+{{!-- 
+  RISK-GRID
+  Grille 3 cartes pour les risques principaux d'expédition.
+  Chaque carte : photo + badge coloré + titre + situation + conséquence.
+  Utilisé pour : les 3 causes de dommage (casse, chaleur, chocs internes)
+  
+  Paramètres JSON :
+  - cards[] :
+      - img        : chemin image
+      - imgAlt     : texte alternatif
+      - badge      : texte du badge (ex: "Casse")
+      - badgeType  : style — "casse" (rouge), "chaleur" (orange), "chocs" (violet)
+      - title      : titre de la carte
+      - when       : situation typique (texte grisé)
+      - consequence: conséquences possibles (texte)
+--}}
+
+<div class="risk-grid">
+  {{#each block.cards}}
+  <div class="risk-card">
+    <div class="risk-card-ph">
+      <img src="/static/img/articleImg/{{this.img}}"
+           alt="{{this.imgAlt}}"
+           loading="lazy">
+    </div>
+    <div class="risk-card-body">
+      <span class="risk-badge {{this.badgeType}}">{{this.badge}}</span>
+      <div class="risk-card-title">{{this.title}}</div>
+      <div class="risk-card-when">{{this.when}}</div>
+      <div class="risk-card-consequence">{{this.consequence}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

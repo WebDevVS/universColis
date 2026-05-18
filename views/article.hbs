@@ -99,7 +99,7 @@ STICKY NAV
         <div class="callout-ico">{{this.icon}}</div>
         <div class="callout-body">
           <strong>{{this.title}}</strong>
-          {{this.text}}
+          {{{this.text}}}
         </div>
       </div>
 
@@ -202,6 +202,50 @@ STICKY NAV
       {{!-- grid-cout → partial --}}
       {{else if (eq this.type "grid-cout")}}
       {{> guide-blocks/grid-cout block=this}}
+
+      {{!-- risk-grid → partial --}}
+      {{else if (eq this.type "risk-grid")}}
+      {{> guide-blocks/risk-grid block=this}}
+
+      {{!-- format-grid → partial --}}
+      {{else if (eq this.type "format-grid")}}
+      {{> guide-blocks/format-grid block=this}}
+
+      {{!-- carton-compare → partial --}}
+      {{else if (eq this.type "carton-compare")}}
+      {{> guide-blocks/carton-compare block=this}}
+
+      {{!-- coffret-compare → partial --}}
+      {{else if (eq this.type "coffret-compare")}}
+      {{> guide-blocks/coffret-compare block=this}}
+
+      {{!-- fonctions-grid → partial --}}
+      {{else if (eq this.type "fonctions-grid")}}
+      {{> guide-blocks/fonctions-grid block=this}}
+
+      {{!-- grid-materiel → partial --}}
+      {{else if (eq this.type "grid-materiel")}}
+      {{> guide-blocks/grid-materiel block=this}}
+
+      {{!-- decision-schema → partial --}}
+      {{else if (eq this.type "decision-schema")}}
+      {{> guide-blocks/decision-schema block=this}}
+
+      {{!-- deux-colonnes → partial --}}
+      {{else if (eq this.type "deux-colonnes")}}
+      {{> guide-blocks/deux-colonnes block=this}}
+
+      {{!-- temp-visual → partial --}}
+      {{else if (eq this.type "temp-visual")}}
+      {{> guide-blocks/temp-visual block=this}}
+
+      {{!-- data-table → partial --}}
+      {{else if (eq this.type "data-table")}}
+      {{> guide-blocks/data-table block=this}}
+
+      {{!-- checklist → partial --}}
+      {{else if (eq this.type "checklist")}}
+      {{> guide-blocks/checklist block=this}}
 
       {{/if}}
       {{/each}}
