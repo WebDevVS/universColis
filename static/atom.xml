@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-05-18T16:20:23.144Z</updated>
+  <updated>2026-06-01T15:03:00.850Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -389,6 +389,15 @@
       <link href="https://www.universcolis.fr/actualites/rakuten-france-menace-2026-colis-retours-garanties"/>
       <id>https://www.universcolis.fr/actualites/rakuten-france-menace-2026-colis-retours-garanties</id>
       <updated>2026-05-18</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Temu sanctionné par l'UE : recevoir un colis ne veut pas dire que le produit est sûr</title>
+      <link href="https://www.universcolis.fr/actualites/temu-produits-dangereux-colis-livre-verifications"/>
+      <id>https://www.universcolis.fr/actualites/temu-produits-dangereux-colis-livre-verifications</id>
+      <updated>2026-06-01</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
