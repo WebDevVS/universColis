@@ -190,7 +190,7 @@ articleController.get('/comment-emballer-des-antiquites', (req, res) => {
 })
 
 articleController.get('/comment-emballer-des-bougies', (req, res) => {
-  res.redirect(301, '/envoyer-bougies-par-colis')
+  res.redirect(301, '/conseils/envoyer-bougies-par-colis')
 })
 
 articleController.get('/:slug', async (req, res) => {

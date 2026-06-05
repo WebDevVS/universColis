@@ -88,18 +88,6 @@ homeController.get('/', async (req, res) => {
                                     "required name=poids"
                                 ]
                             },
-                            {
-                                "@type": "SearchAction",
-                                "target": "https://www.universcolis.fr/comparateur-des-prix?destination={destination}&poids={poids}&longueur={longueur}&largeur={largeur}&hauteur={hauteur}&code-contenu={code-contenu}",
-                                "query-input": [
-                                    "required name=destination",
-                                    "required name=poids",
-                                    "optional name=longueur",
-                                    "optional name=largeur",
-                                    "optional name=hauteur",
-                                    "optional name=code-contenu"
-                                ]
-                            }
                         ]
                     },
                     {

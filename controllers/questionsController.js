@@ -189,16 +189,6 @@ questionsController.get('/:category', async (req, res) => {
       "name": q.title
     }));
 
-    // Build FAQ entries if question objects include faq-like fields or resume; fall back to titles
-    const faqFromQuestions = questions.slice(0, 10).map(q => ({
-      "@type": "Question",
-      "name": q.title,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": q.quickAnswer || q.excerpt || ''
-      }
-    }));
-
     const structuredDataCategory = JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
@@ -230,11 +220,6 @@ questionsController.get('/:category', async (req, res) => {
           "@type": "ItemList",
           "@id": `https://www.universcolis.fr/questions/${category}#list`,
           "itemListElement": itemListElements
-        },
-        {
-          "@type": "FAQPage",
-          "@id": `https://www.universcolis.fr/questions/${category}#faq`,
-          "mainEntity": faqFromQuestions
         }
       ]
     });
