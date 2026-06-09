@@ -1,0 +1,25 @@
+{{!-- 
+  CUSTOMS-COMPARE
+  Comparaison 2 colonnes bad/good avec listes d'items texte.
+  Utilisé pour : bonne/mauvaise description douanière
+  Différent de coffret-compare : pas de photo, liste d'items texte
+  
+  Paramètres JSON :
+  - cols[] : exactement 2 objets
+      - style  : "bad" ou "good"
+      - header : titre de la colonne avec ✓ ou ✗
+      - items[]: liste de strings
+--}}
+
+<div class="customs-compare">
+  {{#each block.cols}}
+  <div class="customs-col {{this.style}}">
+    <div class="customs-col-header">{{this.header}}</div>
+    <div class="customs-col-body">
+      {{#each this.items}}
+      <div class="customs-item">{{this}}</div>
+      {{/each}}
+    </div>
+  </div>
+  {{/each}}
+</div>

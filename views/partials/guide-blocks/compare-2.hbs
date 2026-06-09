@@ -1,0 +1,33 @@
+{{!-- 
+  COMPARE-2
+  Comparaison 2 colonnes avec grande photo portrait + label + note.
+  Différent de coffret-compare : photos hautes (portrait), pas de style bad/good strict.
+  Utilisé pour : période normale vs canicule, avant/après avec grandes photos
+  
+  Paramètres JSON :
+  - imageHeight : hauteur des photos (ex: "280px", défaut "260px")
+  - cards[]     : exactement 2 objets
+      - img    : chemin image
+      - imgAlt : texte alternatif
+      - style  : "good" (vert), "mid" (orange), "bad" (rouge)
+      - label  : texte avec ✓, ⚠ ou ✗ déjà inclus
+      - note   : description courte
+--}}
+
+<div class="compare-2">
+  {{#each block.cards}}
+  <div class="compare-col {{this.style}}">
+    <img src="/static/img/articleImg/{{this.img}}"
+         alt="{{this.imgAlt}}"
+         class="compare-col-img"
+         style="height:{{#if ../block.imageHeight}}{{../block.imageHeight}}{{else}}260px{{/if}};"
+         loading="lazy">
+    <div class="compare-col-body">
+      <div class="compare-col-label">{{this.label}}</div>
+      {{#if this.note}}
+      <div class="compare-col-note">{{this.note}}</div>
+      {{/if}}
+    </div>
+  </div>
+  {{/each}}
+</div>

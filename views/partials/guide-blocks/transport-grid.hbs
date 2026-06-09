@@ -1,0 +1,29 @@
+{{!-- 
+  TRANSPORT-GRID
+  Liste verticale de cartes transporteurs.
+  Chaque carte : icône + badge + nom + usage + vérification.
+  Utilisé pour : présenter les transporteurs et leurs conditions
+  
+  Paramètres JSON :
+  - cards[] :
+      - icon   : emoji
+      - badge  : texte du badge (ex: "Standard", "Express")
+      - badgeStyle : "tb-standard", "tb-express", "tb-pro", "tb-intl"
+      - name   : nom du transporteur
+      - usage  : description d'usage
+      - check  : point de vérification en couleur --pc
+--}}
+
+<div class="transport-grid">
+  {{#each block.cards}}
+  <div class="transport-card">
+    <div style="flex-shrink:0;font-size:1.3rem;">{{this.icon}}</div>
+    <div style="flex:1;">
+      <span class="transport-badge {{this.badgeStyle}}">{{this.badge}}</span>
+      <div class="transport-name">{{this.name}}</div>
+      <div class="transport-usage">{{this.usage}}</div>
+      <div class="transport-check">{{{this.check}}}</div>
+    </div>
+  </div>
+  {{/each}}
+</div>

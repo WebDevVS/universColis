@@ -1,0 +1,22 @@
+{{!-- 
+  PLATFORM-LIST
+  Liste verticale de plateformes avec badge statut.
+  Utilisé pour : présenter les plateformes de vente en ligne
+  
+  Paramètres JSON :
+  - items[] :
+      - name        : nom de la plateforme
+      - interest    : description / intérêt
+      - badge       : texte du badge (ex: "Recommandé", "À vérifier")
+      - badgeStyle  : "pb-ok" (vert), "pb-warn" (orange), "pb-no" (rouge)
+--}}
+
+<div class="platform-list">
+  {{#each block.items}}
+  <div class="platform-row">
+    <div class="platform-name">{{this.name}}</div>
+    <div class="platform-interest">{{this.interest}}</div>
+    <span class="platform-badge {{this.badgeStyle}}">{{this.badge}}</span>
+  </div>
+  {{/each}}
+</div>

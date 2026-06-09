@@ -63,6 +63,19 @@ STICKY NAV
   </div>
 
   {{!-- ════════════════════════════════════════════
+  AUDIENCE
+  ════════════════════════════════════════════ --}}
+  {{#if article.blocks}}
+  <div class="prose" >
+    {{#each article.blocks}}
+    {{#if (eq this.type "texte")}}
+    <p>{{{this.text}}}</p>
+    {{/if}}
+    {{/each}}
+  </div>
+  {{/if}}
+
+  {{!-- ════════════════════════════════════════════
   PARTIES
   ════════════════════════════════════════════ --}}
   {{#each article.parts}}
@@ -227,6 +240,27 @@ STICKY NAV
       {{else if (eq this.type "grid-materiel")}}
       {{> guide-blocks/grid-materiel block=this}}
 
+      {{!-- materiaux (liens d'achat) --}}
+      {{else if (eq this.type "materiaux")}}
+      <div class="mat-inline">
+        <div class="mat-inline-label">🛒 Matériel recommandé</div>
+        <div class="mat-links">
+          {{#each this.items}}
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">{{this.name}}</div>
+              {{#if this.desc}}
+              <div class="mat-link-desc">{{this.desc}}</div>
+              {{/if}}
+            </div>
+            <a href="{{this.url}}" class="mat-link-btn" target="_blank" rel="nofollow noopener">
+              {{this.label}}
+            </a>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+
       {{!-- decision-schema → partial --}}
       {{else if (eq this.type "decision-schema")}}
       {{> guide-blocks/decision-schema block=this}}
@@ -246,6 +280,26 @@ STICKY NAV
       {{!-- checklist → partial --}}
       {{else if (eq this.type "checklist")}}
       {{> guide-blocks/checklist block=this}}
+
+      {{!-- transport-grid → partial --}}
+      {{else if (eq this.type "transport-grid")}}
+      {{> guide-blocks/transport-grid block=this}}
+
+      {{!-- dest-scale → partial --}}
+      {{else if (eq this.type "dest-scale")}}
+      {{> guide-blocks/dest-scale block=this}}
+
+      {{!-- customs-compare → partial --}}
+      {{else if (eq this.type "customs-compare")}}
+      {{> guide-blocks/customs-compare block=this}}
+
+      {{!-- platform-list → partial --}}
+      {{else if (eq this.type "platform-list")}}
+      {{> guide-blocks/platform-list block=this}}
+
+      {{!-- compare-2 → partial --}}
+      {{else if (eq this.type "compare-2")}}
+      {{> guide-blocks/compare-2 block=this}}
 
       {{/if}}
       {{/each}}

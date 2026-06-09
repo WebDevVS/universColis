@@ -4509,3 +4509,1439 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+ <!-- BOUTEILLE -->
+
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comment emballer et envoyer une bouteille de vin par colis – UniversColis</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --violet: #8269A4; --violet-l: rgba(130,105,164,0.10); --violet-m: rgba(130,105,164,0.22);
+  --coral: #FA7E75; --coral-l: rgba(250,126,117,0.09);
+  --bg: #E9E6E1; --white: #fff; --text: #1e1e1e; --muted: #666; --light: #f7f5f2;
+  --success: #1a5f17; --success-bg: rgba(31,162,22,0.07); --success-bd: rgba(31,162,22,0.22);
+  --warn: #7a4f00; --warn-bg: rgba(255,160,0,0.09); --warn-bd: rgba(255,160,0,0.28);
+  --danger: #8a0000; --danger-bg: rgba(204,0,0,0.06); --danger-bd: rgba(204,0,0,0.18);
+  --r: 16px; --rsm: 10px;
+  --p1: #5B7FA0; --p1-l: rgba(91,127,160,0.10); --p1-m: rgba(91,127,160,0.22);
+  --p2: #C4843A; --p2-l: rgba(196,132,58,0.10); --p2-m: rgba(196,132,58,0.22);
+  --p3: #6A9E7F; --p3-l: rgba(106,158,127,0.10); --p3-m: rgba(106,158,127,0.22);
+}
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.7; padding-bottom:3rem; }
+
+/* ── BREADCRUMB ── */
+.bc { padding:14px 20px; font-size:0.8rem; color:var(--muted); display:flex; align-items:center; gap:6px; max-width:960px; margin:0 auto; flex-wrap:wrap; }
+.bc a { color:var(--violet); text-decoration:none; font-weight:500; }
+.bc a:hover { text-decoration:underline; }
+
+/* ── HERO ── */
+.hero { max-width:960px; margin:0 auto; padding:2.5rem 2.5rem 0; position:relative; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:7px; background:rgba(130,105,164,0.10); border:1px solid rgba(130,105,164,0.2); border-radius:20px; padding:4px 14px; font-size:0.73rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--violet); margin-bottom:1.2rem; }
+.hero h1 { font-family:'Sora',sans-serif; font-size:clamp(1.6rem,3.8vw,2.4rem); font-weight:800; line-height:1.15; max-width:700px; margin-bottom:0.75rem; color:var(--text); }
+.hero-tricolor { display:flex; gap:4px; margin-bottom:1.1rem; }
+.hero-tricolor span { height:4px; border-radius:2px; }
+.hero-tricolor span:nth-child(1){width:64px;background:var(--p1);}
+.hero-tricolor span:nth-child(2){width:44px;background:var(--p2);}
+.hero-tricolor span:nth-child(3){width:54px;background:var(--p3);}
+.hero-lead { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--muted); max-width:600px; margin-bottom:1.5rem; font-style:italic; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:1.75rem; }
+.hero-pill { background:white; border:1px solid rgba(0,0,0,0.1); border-radius:20px; padding:5px 14px; font-size:0.82rem; font-weight:600; color:var(--muted); box-shadow:0 1px 4px rgba(0,0,0,0.05); }
+.hero-bottom { background:white; border-radius:var(--r) var(--r) 0 0; margin:0 -2.5rem; padding:1.5rem 2.5rem 0; }
+.hero-bottom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,0.06); border-radius:var(--rsm) var(--rsm) 0 0; overflow:hidden; }
+.hb-col { background:var(--light); padding:1rem 1.25rem; font-size:0.82rem; color:var(--muted); line-height:1.5; border-top:3px solid transparent; text-decoration:none; display:block; transition:background .2s; }
+.hb-col:hover { background:white; }
+.hb-col:nth-child(1){border-top-color:var(--p1);}
+.hb-col:nth-child(2){border-top-color:var(--p2);}
+.hb-col:nth-child(3){border-top-color:var(--p3);}
+.hb-col strong { display:block; font-family:'Sora',sans-serif; font-size:0.85rem; color:var(--text); margin-bottom:3px; }
+
+/* ── STICKY NAV ── */
+.sticky-nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--violet-m); margin-bottom:2rem; }
+.snav-inner { max-width:960px; margin:0 auto; display:flex; overflow-x:auto; scrollbar-width:none; }
+.snav-inner::-webkit-scrollbar{display:none;}
+.sn { display:flex; align-items:center; gap:7px; padding:14px 20px; font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:600; color:var(--muted); text-decoration:none; white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; }
+.sn:hover{color:var(--violet);}
+.sn.active{color:var(--violet);border-bottom-color:var(--violet);}
+.sn.active[data-part="1"]{color:var(--p1);border-bottom-color:var(--p1);}
+.sn.active[data-part="2"]{color:var(--p2);border-bottom-color:var(--p2);}
+.sn.active[data-part="3"]{color:var(--p3);border-bottom-color:var(--p3);}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(130,105,164,0.2);flex-shrink:0;transition:background .2s;}
+.sn.active .sn-dot{background:var(--violet);}
+.sn.active[data-part="1"] .sn-dot{background:var(--p1);}
+.sn.active[data-part="2"] .sn-dot{background:var(--p2);}
+.sn.active[data-part="3"] .sn-dot{background:var(--p3);}
+
+/* ── PAGE ── */
+.page { max-width:960px; margin:0 auto; padding:0 0 3rem; }
+.section-gap { margin-bottom:2.25rem; }
+.p1{--pc:var(--p1);}
+.p2{--pc:var(--p2);}
+.p3{--pc:var(--p3);}
+.part-transition { text-align:center; padding:0.5rem 0 1.75rem; font-family:'Lora',serif; font-size:0.92rem; font-style:italic; color:var(--muted); }
+
+/* ── EN BREF ── */
+.en-bref { background:white; border-radius:var(--r); padding:1.75rem 2rem; margin:0 auto 2rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); border-top:4px solid var(--violet); }
+.en-bref-label { display:inline-flex; align-items:center; gap:6px; font-family:'Sora',sans-serif; font-size:0.71rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:1rem; }
+.en-bref-text { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--text); font-style:italic; margin-bottom:1.25rem; }
+.en-bref-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.eb-pill { background:var(--violet-l); border-radius:20px; padding:5px 14px; font-size:0.83rem; color:var(--violet); font-weight:500; border:1px solid var(--violet-m); }
+
+/* ── PART HEADER ── */
+.part-header { background:color-mix(in srgb,var(--pc) 5%,white); border-radius:var(--r); padding:1.75rem 2rem; margin-bottom:1.25rem; border-left:5px solid var(--pc); display:flex; align-items:flex-start; gap:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.part-num { font-family:'Sora',sans-serif; font-size:2.5rem; font-weight:800; color:var(--pc); opacity:0.25; line-height:1; flex-shrink:0; margin-top:-4px; }
+.part-tag { display:inline-block; background:color-mix(in srgb,var(--pc) 12%,transparent); color:var(--pc); border-radius:20px; padding:3px 12px; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+.part-header h2 { font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
+.part-header p { font-size:0.9rem; color:var(--muted); line-height:1.6; margin:0; }
+
+/* ── PROSE ── */
+.prose { background:white; border-radius:var(--r); padding:2rem; margin-bottom:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.p1 .prose { border-left:3px solid color-mix(in srgb,var(--p1) 35%,transparent); }
+.p2 .prose { border-left:3px solid color-mix(in srgb,var(--p2) 35%,transparent); }
+.p3 .prose { border-left:3px solid color-mix(in srgb,var(--p3) 35%,transparent); }
+.prose h3 { font-family:'Sora',sans-serif; font-size:1.03rem; font-weight:700; color:var(--text); margin-bottom:0.75rem; margin-top:1.5rem; }
+.prose h3:first-child{margin-top:0;}
+.prose p { font-size:0.93rem; color:var(--text); line-height:1.75; margin-bottom:0.9rem; }
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;}
+.prose ul { list-style:none; padding:0; display:flex; flex-direction:column; gap:5px; margin:0.75rem 0; }
+.prose ul li { font-size:0.91rem; color:var(--text); padding-left:20px; position:relative; line-height:1.6; }
+.prose ul li::before { content:'—'; position:absolute; left:0; color:var(--pc,var(--violet)); font-weight:700; }
+.prose a { color:var(--pc,var(--violet)); font-weight:500; }
+
+/* ── CALLOUT ── */
+.callout { border-radius:var(--rsm); padding:1rem 1.25rem; margin:1.1rem 0; font-size:0.88rem; line-height:1.65; display:flex; align-items:flex-start; gap:12px; }
+.callout-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.callout-body{flex:1;}
+.callout-body strong { display:block; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+.callout.warn{background:var(--warn-bg);border-left:3px solid #ffa000;color:var(--warn);}
+.callout.warn strong{color:#b37700;}
+.callout.info,.callout.tip { background:color-mix(in srgb,var(--pc,var(--violet)) 9%,white); border-left:3px solid var(--pc,var(--violet)); }
+.callout.info strong,.callout.tip strong{color:var(--pc,var(--violet));}
+.callout.danger{background:var(--danger-bg);border-left:3px solid var(--danger);color:var(--danger);}
+.callout.danger strong{color:var(--danger);}
+
+/* ── DATA TABLE (réutilisé) ── */
+.table-wrap { overflow-x:auto; margin:1.1rem 0; -webkit-overflow-scrolling:touch; border-radius:var(--rsm); }
+.data-table { width:100%; border-collapse:separate; border-spacing:0 4px; min-width:420px; }
+.data-table th { font-family:'Sora',sans-serif; font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted); padding:5px 12px; text-align:left; }
+.data-table td { padding:10px 12px; font-size:0.86rem; background:white; vertical-align:top; }
+.data-table tr td:first-child{border-radius:var(--rsm) 0 0 var(--rsm);font-weight:600;}
+.data-table tr td:last-child{border-radius:0 var(--rsm) var(--rsm) 0;color:var(--muted);font-size:0.82rem;}
+
+/* ── DECISION SCHEMA (réutilisé) ── */
+.decision-schema { display:flex; flex-direction:column; gap:8px; margin:1.1rem 0; }
+.ds-branch { display:flex; align-items:flex-start; gap:12px; background:white; border-radius:var(--rsm); padding:12px 16px; border-left:4px solid transparent; }
+.ds-branch.solid{border-left-color:var(--success);}
+.ds-branch.coffret{border-left-color:var(--p2);}
+.ds-branch.mixte{border-left-color:var(--danger);}
+.ds-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+.ds-content{flex:1;}
+.ds-label{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.ds-action{font-size:0.8rem;color:var(--muted);line-height:1.5;}
+
+/* ── BOUTEILLE ZONES SENSIBLES ── */
+.bottle-zones { display:grid; grid-template-columns:auto 1fr; gap:20px; margin:1.1rem 0; align-items:start; background:white; border-radius:var(--rsm); padding:1.25rem; border:1.5px solid rgba(0,0,0,0.07); }
+.bottle-silhouette { width:80px; flex-shrink:0; }
+.bottle-svg { width:100%; }
+.bottle-zones-list { display:flex; flex-direction:column; gap:8px; }
+.bottle-zone { display:flex; align-items:flex-start; gap:10px; padding:8px 10px; border-radius:8px; background:var(--light); }
+.bottle-zone-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+.bottle-zone-label { font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:700; color:var(--text); }
+.bottle-zone-risk { font-size:0.75rem; color:var(--muted); margin-top:1px; line-height:1.4; }
+
+/* ── FORMAT BOUTEILLES ── */
+.bottle-formats { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin:1.1rem 0; }
+.bottle-format-card { background:white; border-radius:var(--rsm); padding:0.85rem 0.75rem; border:1.5px solid rgba(0,0,0,0.07); text-align:center; transition:box-shadow .2s; }
+.bottle-format-card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.bottle-format-icon { width:100%; height:58px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; }
+.bottle-format-icon img { max-width:100%; max-height:100%; object-fit:contain; border-radius:6px; }
+.bottle-format-name { font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+.bottle-format-specs { font-size:0.71rem; color:var(--muted); line-height:1.5; }
+.bottle-format-card.special { border-color:var(--p1-m); background:var(--p1-l); }
+.bottle-format-card.special .bottle-format-name{color:var(--p1);}
+
+/* ── CHECKLIST (réutilisé) ── */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.check-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.check-ico{font-size:1.1rem;flex-shrink:0;}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;}
+.step-row{display:grid;grid-template-columns:50px 1fr;position:relative;}
+.step-row:not(:last-child) .step-spine::after { content:''; position:absolute; top:40px; left:50%; transform:translateX(-50%); width:2px; height:calc(100% - 40px); background:linear-gradient(to bottom,color-mix(in srgb,var(--pc) 30%,transparent) 60%,transparent); }
+.step-spine{display:flex;flex-direction:column;align-items:center;position:relative;}
+.step-num { width:38px; height:38px; background:var(--pc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-family:'Sora',sans-serif; font-size:0.9rem; font-weight:800; box-shadow:0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent); z-index:1; flex-shrink:0; }
+.step-content{padding:2px 0 2.5rem 18px;}
+.step-content h4{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;line-height:1.3;}
+.step-content p{font-size:0.91rem;color:var(--text);line-height:1.72;margin-bottom:0.7rem;}
+.step-content p:last-child{margin-bottom:0;}
+.step-content strong{font-weight:600;}
+.step-content ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;margin:0.6rem 0;}
+.step-content ul li{font-size:0.88rem;padding-left:18px;position:relative;line-height:1.55;}
+.step-content ul li::before{content:'→';position:absolute;left:0;color:var(--coral);font-weight:700;}
+
+/* ── STEP WITH IMG (réutilisé) ── */
+.step-with-img { display:grid; grid-template-columns:1fr 200px; gap:16px; align-items:start; margin-bottom:0.75rem; }
+.step-img-col{display:flex;flex-direction:column;gap:6px;justify-self:center;max-width:200px;}
+.step-img-ph { width:100%; aspect-ratio:4/3; background:var(--light); border-radius:var(--rsm); display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:var(--muted); text-align:center; padding:12px; border:1.5px dashed rgba(0,0,0,0.1); }
+.step-img-real { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center; display:block; background:var(--light); border-radius:var(--rsm); }
+.step-caption-txt{font-size:0.75rem;font-style:italic;color:var(--muted);line-height:1.5;}
+
+/* ── COUPE COLIS BOUTEILLE ── */
+.colis-layers { display:flex; flex-direction:column; gap:3px; margin:1.1rem 0; }
+.colis-layer { border-radius:8px; padding:9px 14px; font-size:0.82rem; font-weight:500; display:flex; align-items:center; gap:10px; }
+.cl1{background:#2a3a4a;color:#c8d8e8;}
+.cl2{background:#3a4a5a;color:#c8d8e8;}
+.cl3{background:#4a5a6a;color:#dde6ed;}
+.cl4{background:#5a6a7a;color:#dde6ed;}
+.cl5{background:linear-gradient(90deg,var(--p2),color-mix(in srgb,var(--p2) 70%,white));color:white;}
+.cl-arrow{text-align:center;color:var(--muted);font-size:0.75rem;padding:1px 0;}
+.cl-sub{font-size:0.72rem;font-weight:400;opacity:0.8;margin-left:4px;}
+
+/* ── COMPARATIF 3 COLONNES ── */
+.compare-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:1.1rem 0; }
+.compare-col { background:white; border-radius:var(--rsm); overflow:hidden; border:1.5px solid rgba(0,0,0,0.07); }
+.compare-col.bad{border-color:var(--danger-bd);}
+.compare-col.mid{border-color:var(--warn-bd);}
+.compare-col.good{border-color:var(--success-bd);}
+.compare-col-ph { width:100%; height:90px; background:var(--light); display:flex; align-items:center; justify-content:center; font-size:0.72rem; color:var(--muted); text-align:center; padding:10px; }
+.compare-col-ph-link { display:block; }
+.compare-col-ph-img { width:100%; height:140px; object-fit:cover; object-position:center; display:block; background:var(--light); }
+.compare-col-body { padding:0.75rem; }
+.compare-col-label { font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:700; margin-bottom:3px; }
+.compare-col.bad .compare-col-label{color:var(--danger);}
+.compare-col.mid .compare-col-label{color:var(--warn);}
+.compare-col.good .compare-col-label{color:var(--success);}
+.compare-col-note{font-size:0.72rem;color:var(--muted);line-height:1.4;}
+
+/* ── COMPARATIF 2 COLONNES (avec photo portrait) ── */
+.compare-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin:1.1rem 0; }
+.compare-col-img { width:100%; height:280px; object-fit:contain; object-position:center; display:block; background:var(--light); }
+
+/* ── TIPS (réutilisé) ── */
+.tips-wrap{display:flex;flex-direction:column;gap:7px;margin:1.1rem 0;}
+.tips-head{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tips-col-lbl{font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:6px 12px;border-radius:8px;text-align:center;}
+.tips-col-lbl.g{background:var(--success-bg);color:var(--success);}
+.tips-col-lbl.b{background:var(--danger-bg);color:var(--danger);}
+.tips-pair{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tip-c{border-radius:var(--rsm);padding:11px 13px;font-size:0.86rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;}
+.tip-c.g{background:var(--success-bg);border:1.5px solid var(--success-bd);color:var(--success);}
+.tip-c.b{background:var(--danger-bg);border:1.5px solid var(--danger-bd);color:var(--danger);}
+
+/* ── MAT INLINE (réutilisé) ── */
+.mat-inline{background:color-mix(in srgb,var(--pc,var(--violet)) 8%,white);border-radius:var(--rsm);padding:1rem 1.25rem;margin:0.9rem 0;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 22%,transparent);}
+.mat-inline-label{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pc,var(--violet));margin-bottom:0.6rem;}
+.mat-links{display:flex;flex-direction:column;gap:6px;}
+.mat-link-row{display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:9px 12px;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 14%,transparent);transition:border-color .2s;flex-wrap:wrap;}
+.mat-link-row:hover{border-color:color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent);}
+.mat-link-name{flex:1;font-size:0.86rem;font-weight:600;color:var(--text);min-width:120px;}
+.mat-link-desc{font-size:0.78rem;color:var(--muted);width:100%;}
+.mat-link-btn{display:inline-flex;align-items:center;gap:6px;background:var(--pc,var(--violet));color:white;text-decoration:none;padding:6px 13px;border-radius:8px;font-size:0.78rem;font-weight:600;white-space:nowrap;flex-shrink:0;transition:opacity .2s;}
+.mat-link-btn::before{content:'🛒';font-size:0.82rem;}
+.mat-link-btn:hover{opacity:0.82;}
+
+/* ── TRANSPORTEURS GRID ── */
+.transport-grid{display:flex;flex-direction:column;gap:8px;margin:1.1rem 0;}
+.transport-card{background:white;border-radius:var(--rsm);padding:1rem 1.25rem;border:1.5px solid rgba(0,0,0,0.07);display:flex;align-items:flex-start;gap:12px;transition:box-shadow .2s;}
+.transport-card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.transport-name{font-family:'Sora',sans-serif;font-size:0.88rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.transport-usage{font-size:0.82rem;color:var(--muted);margin-bottom:5px;line-height:1.45;}
+.transport-check{font-size:0.78rem;color:var(--pc,var(--violet));line-height:1.4;}
+.transport-badge{display:inline-block;font-size:0.7rem;font-weight:700;border-radius:8px;padding:2px 9px;white-space:nowrap;margin-bottom:4px;}
+.tb-standard{background:var(--p1-l);color:var(--p1);}
+.tb-express{background:var(--p2-l);color:var(--p2);}
+.tb-pro{background:var(--p3-l);color:var(--p3);}
+.tb-intl{background:var(--violet-l);color:var(--violet);}
+
+/* ── DESTINATION SCALE ── */
+.dest-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:1.1rem 0;}
+.dest-col{border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);}
+.dest-col-header{padding:0.65rem 0.75rem;text-align:center;}
+.dest-col:nth-child(1) .dest-col-header{background:color-mix(in srgb,var(--success) 12%,white);}
+.dest-col:nth-child(2) .dest-col-header{background:color-mix(in srgb,var(--p2) 12%,white);}
+.dest-col:nth-child(3) .dest-col-header{background:color-mix(in srgb,var(--warn) 12%,white);}
+.dest-col:nth-child(4) .dest-col-header{background:color-mix(in srgb,var(--danger) 12%,white);}
+.dest-col-name{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;}
+.dest-col:nth-child(1) .dest-col-name{color:var(--success);}
+.dest-col:nth-child(2) .dest-col-name{color:var(--p2);}
+.dest-col:nth-child(3) .dest-col-name{color:var(--warn);}
+.dest-col:nth-child(4) .dest-col-name{color:var(--danger);}
+.dest-col-body{background:white;padding:0.65rem 0.75rem;}
+.dest-col-items{display:flex;flex-direction:column;gap:3px;}
+.dest-col-item{font-size:0.72rem;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.dest-col-item::before{content:'·';position:absolute;left:0;}
+
+/* ── DESCRIPTION DOUANE ── */
+.customs-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:1.1rem 0;}
+.customs-col{background:white;border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);}
+.customs-col.bad{border-color:var(--danger-bd);}
+.customs-col.good{border-color:var(--success-bd);}
+.customs-col-header{padding:0.65rem 1rem;font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;}
+.customs-col.bad .customs-col-header{background:var(--danger-bg);color:var(--danger);}
+.customs-col.good .customs-col-header{background:var(--success-bg);color:var(--success);}
+.customs-col-body{padding:0.75rem 1rem;}
+.customs-item{font-size:0.82rem;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.04);color:var(--text);}
+.customs-item:last-child{border-bottom:none;}
+.customs-col.bad .customs-item{color:var(--danger);}
+.customs-col.good .customs-item{color:var(--success);}
+
+/* ── PLATEFORMES ── */
+.platform-list{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.platform-row{background:white;border-radius:var(--rsm);padding:0.85rem 1rem;border:1.5px solid rgba(0,0,0,0.07);display:flex;align-items:center;gap:12px;transition:box-shadow .2s;}
+.platform-row:hover{box-shadow:0 3px 10px rgba(0,0,0,0.07);}
+.platform-name{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);min-width:130px;flex-shrink:0;}
+.platform-interest{flex:1;font-size:0.82rem;color:var(--muted);}
+.platform-badge{display:inline-block;font-size:0.7rem;font-weight:700;border-radius:8px;padding:2px 9px;white-space:nowrap;flex-shrink:0;}
+.pb-ok{background:var(--success-bg);color:var(--success);}
+.pb-warn{background:var(--warn-bg);color:var(--warn);}
+.pb-no{background:var(--danger-bg);color:var(--danger);}
+
+/* ── CHAIN SCHEMA ── */
+.chain-flow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;padding:1.1rem;background:var(--light);border-radius:var(--rsm);margin:1.1rem 0;}
+.chain-step{background:white;border-radius:8px;padding:8px 14px;text-align:center;border:1.5px solid var(--violet-m);font-size:0.79rem;line-height:1.35;flex:1;min-width:110px;}
+.chain-step strong{display:block;font-family:'Sora',sans-serif;font-size:0.77rem;color:var(--pc,var(--violet));margin-bottom:2px;}
+.chain-arrow{color:var(--muted);font-size:0.85rem;flex-shrink:0;}
+
+/* ── FORMULA BOX (réutilisé) ── */
+.formula-box{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.1rem 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px;}
+.formula-item{text-align:center;}
+.formula-val{font-family:'Sora',sans-serif;font-size:1.5rem;font-weight:800;line-height:1;}
+.formula-lbl{font-size:0.72rem;color:var(--muted);margin-top:3px;}
+.formula-op{font-family:'Sora',sans-serif;font-size:1.2rem;color:var(--muted);align-self:center;}
+.f-violet{color:var(--violet);}
+.f-p2{color:var(--p2);}
+
+/* ── PROCEDURE (réutilisé) ── */
+.procedure{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.proc-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.proc-n{width:24px;height:24px;background:var(--pc,var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.73rem;font-weight:800;flex-shrink:0;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:7px;}
+.faq-item{border:1.5px solid rgba(0,0,0,0.07);border-radius:var(--rsm);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;transition:background .2s;}
+.faq-q:hover{background:var(--violet-l);}
+.faq-q.open{background:var(--violet);color:white;}
+.faq-chev{font-size:0.65rem;flex-shrink:0;transition:transform .25s;}
+.faq-q.open .faq-chev{transform:rotate(180deg);}
+.faq-a{display:none;padding:14px 18px;font-size:0.9rem;color:var(--muted);background:rgba(130,105,164,0.04);border-top:1px solid rgba(130,105,164,0.1);line-height:1.7;}
+.faq-a.open{display:block;}
+
+/* ── SOURCES / AFFIL / MAJ ── */
+.sources{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.5rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.7;}
+.sources strong{font-family:'Sora',sans-serif;font-size:0.8rem;color:var(--text);display:block;margin-bottom:6px;}
+.sources ul{list-style:none;padding:0;}
+.sources li{padding-left:14px;position:relative;}
+.sources li::before{content:'·';position:absolute;left:0;}
+.sources a{color:var(--violet);text-decoration:none;}
+.sources a:hover{text-decoration:underline;}
+.affil{background:var(--violet-l);border-radius:var(--rsm);padding:11px 16px;margin:1.25rem 0 0;display:flex;align-items:flex-start;gap:9px;font-size:0.79rem;color:var(--muted);line-height:1.5;border-left:3px solid var(--violet);}
+.maj{background:var(--light);border-radius:var(--rsm);padding:0.9rem 1.25rem;margin:1.25rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.6;border-left:3px solid rgba(0,0,0,0.1);}
+.maj strong{color:var(--text);font-family:'Sora',sans-serif;font-size:0.8rem;}
+
+/* ── SPECIAL CASE ── */
+.special-case{background:var(--light);border-radius:var(--rsm);padding:1rem 1.25rem;margin:0.9rem 0;border:1.5px dashed color-mix(in srgb,var(--pc,var(--violet)) 30%,transparent);font-size:0.87rem;line-height:1.65;}
+.special-case strong{font-family:'Sora',sans-serif;font-size:0.8rem;color:var(--pc,var(--violet));display:block;margin-bottom:4px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .hero{padding:1.75rem 1.5rem 0;}
+  .hero-bottom{margin:0 -1.5rem;padding:1.25rem 1.5rem 0;}
+  .hero-bottom-grid{grid-template-columns:1fr;}
+  .hb-col:not(:last-child){border-bottom:1px solid var(--violet-m);}
+  .part-header{padding:1.5rem;flex-direction:column;gap:0.5rem;}
+  .part-num{font-size:1.8rem;}
+  .prose{padding:1.5rem;}
+  .en-bref{padding:1.5rem;}
+  .bottle-formats{grid-template-columns:repeat(3,1fr);}
+  .compare-3{grid-template-columns:1fr;}
+  .tips-pair,.tips-head{grid-template-columns:1fr;}
+  .tips-col-lbl.b{display:none;}
+  .step-with-img{grid-template-columns:1fr;}
+  .dest-scale{grid-template-columns:repeat(2,1fr);}
+  .customs-compare{grid-template-columns:1fr;}
+  .chain-flow{flex-direction:column;align-items:stretch;}
+  .formula-box{flex-direction:column;align-items:flex-start;gap:8px;}
+  .data-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .bottle-zones{grid-template-columns:1fr;}
+  .bottle-silhouette{display:none;}
+}
+@media(max-width:520px){
+  .page{padding:0 0 2rem;}
+  .en-bref,.part-header,.prose{margin-left:8px;margin-right:8px;}
+  .hero{margin-left:0;margin-right:0;}
+  .bc{padding:10px 12px;}
+  .hero h1{font-size:1.35rem;}
+  .step-row{grid-template-columns:40px 1fr;}
+  .step-num{width:32px;height:32px;font-size:0.82rem;}
+  .step-content{padding:2px 0 2rem 12px;}
+  .sn{padding:12px 14px;font-size:0.76rem;}
+  .bottle-formats{grid-template-columns:repeat(2,1fr);}
+  .dest-scale{grid-template-columns:1fr;}
+  .platform-row{flex-wrap:wrap;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="bc" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/conseils">Conseils d'emballage</a><span>›</span>
+  <span>Envoyer une bouteille de vin par colis</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">📦 Guide complet 2026</div>
+  <h1>Comment emballer et envoyer une bouteille de vin par colis</h1>
+  <div class="hero-tricolor"><span></span><span></span><span></span></div>
+  <p class="hero-lead">Cadeau, anti-casse, fuite, Colissimo, champagne ou coffret — tout ce qu'il faut savoir avant d'acheter l'étiquette.</p>
+  <div class="hero-meta">
+    <div class="hero-pill">⏱ 12 min de lecture</div>
+    <div class="hero-pill">📋 3 parties</div>
+    <div class="hero-pill">🍷 Vin, champagne, coffret</div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <a href="#risques" class="hb-col"><strong>Partie 1 — Identifier les risques</strong>Format, zones sensibles, chaleur, checklist</a>
+      <a href="#emballage" class="hb-col"><strong>Partie 2 — Emballage</strong>6 étapes, matériaux, lots, coffrets</a>
+      <a href="#apres" class="hb-col"><strong>Partie 3 — Règles et vérifications</strong>Transporteurs, prix, destinations, preuves</a>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" aria-label="Navigation">
+  <div class="snav-inner">
+    <a href="#risques"   class="sn active" data-part="1"><span class="sn-dot"></span>Identifier les risques</a>
+    <a href="#emballage" class="sn" data-part="2"><span class="sn-dot"></span>Emballage</a>
+    <a href="#apres"     class="sn" data-part="3"><span class="sn-dot"></span>Règles et vérifications</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- EN BREF -->
+  <div class="en-bref">
+    <div class="en-bref-label">✦ En bref</div>
+    <p class="en-bref-text">Envoyer une bouteille de vin par colis ne se résume pas à protéger le verre : il faut aussi limiter les fuites, protéger le goulot, préserver l'étiquette et empêcher tout mouvement dans le carton. Le bon emballage dépend du format — vin tranquille, champagne, magnum, coffret cadeau ou lot ne se protègent pas de la même façon.</p>
+    <div class="en-bref-pills">
+      <span class="eb-pill">Verre + liquide + fermeture + étiquette</span>
+      <span class="eb-pill">Coffret ≠ carton d'expédition</span>
+      <span class="eb-pill">Peser le colis fermé</span>
+      <span class="eb-pill">Vérifier l'acceptation transporteur</span>
+    </div>
+  </div>
+
+  <!-- AUDIENCE -->
+  <div class="prose" style="margin-bottom:1.5rem;">
+    <p>Ce guide s'adresse aux particuliers, petits vendeurs, cavistes, créateurs de coffrets et petits e-commerçants. Il explique comment identifier les risques, emballer une bouteille sans casse ni mouvement, puis vérifier l'expédition avant d'acheter l'étiquette : poids réel, dimensions, destination, documents et options utiles.</p>
+    <p>Le guide reste centré sur le vin, le champagne et les bouteilles proches de cet usage. Pour les autres liquides comme l'huile, les sauces, les parfums ou les cosmétiques, ne réutilisez pas automatiquement ces conseils : les risques, les règles et les restrictions peuvent être différents.</p>
+  </div>
+
+  <!-- ════════ PARTIE 1 ════════ -->
+  <div id="risques" class="section-gap p1">
+
+    <div class="part-header p1">
+      <div class="part-num">1</div>
+      <div>
+        <div class="part-tag">Identifier les risques</div>
+        <h2>Avant d'emballer : vérifier la bouteille, son format et les risques de transport</h2>
+        <p>Une bouteille de vin combine verre, liquide, fermeture et étiquette. Si le verre casse, le problème est évident — mais une bouteille peut aussi arriver inutilisable sans être brisée.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Ce qu'il faut protéger sur une bouteille de vin</h3>
+      <p>Pour un particulier, une bouteille abîmée peut gâcher un cadeau. Pour un vendeur, elle peut déclencher un remboursement, un remplacement et une perte de confiance. Le vrai objectif n'est pas d'ajouter beaucoup de matière, mais de <strong>garder la bouteille stable au centre du colis</strong>.</p>
+
+      <div class="step-with-img">
+        <div>
+          <p>Quatre zones concentrent l'essentiel des risques : le <strong>goulot et la fermeture</strong> (choc direct, bouchon poussé, muselet déformé, fuite) ; l'<strong>épaule</strong> (point d'appui contre la paroi, concentration des chocs) ; l'<strong>étiquette</strong> (frottement, humidité, tache — perte de valeur cadeau) ; et le <strong>fond</strong> (chocs verticaux, repose directement sur le carton si non amorti).</p>
+        </div>
+        <div class="step-img-col">
+          <a href="/static/img/articleImg/bouteille/zones-fragiles-bouteille-vin-transport.webp" class="glightbox" data-gallery="article-gallery" data-title="Zones fragiles d'une bouteille de vin pendant le transport">
+            <img src="/static/img/articleImg/bouteille/zones-fragiles-bouteille-vin-transport.webp" alt="Les quatre zones fragiles d'une bouteille de vin : goulot, épaule, étiquette et fond" class="step-img-real" loading="lazy">
+          </a>
+          <div class="step-caption-txt">Goulot, épaule, étiquette, fond — les quatre zones à protéger en priorité.</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Le vide dans le carton est un danger</strong>
+          Un carton peut sembler rempli, mais si la bouteille glisse, roule ou tape, l'emballage reste insuffisant. Le calage ne doit pas seulement occuper l'espace : il doit bloquer le déplacement.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Vin tranquille, champagne, spiritueux : le contenu change les précautions</h3>
+      <p>Ce guide concerne d'abord les bouteilles de vin. Avant d'emballer, identifiez précisément ce que vous envoyez — ces contenus ne présentent pas les mêmes risques et ne sont pas toujours acceptés de la même manière par les transporteurs.</p>
+
+      <div class="decision-schema">
+        <div class="ds-branch solid">
+          <div class="ds-icon">🍷</div>
+          <div class="ds-content">
+            <div class="ds-label">Vin tranquille</div>
+            <div class="ds-action">Cas central de ce guide. Protéger goulot, fond, étiquette, bouchon. Immobiliser la bouteille. Choisir un carton adapté.</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret">
+          <div class="ds-icon">🍾</div>
+          <div class="ds-content">
+            <div class="ds-label">Champagne / crémant / vin effervescent</div>
+            <div class="ds-action">Bouteille plus lourde, sous pression, muselet à protéger sans comprimer. Carton compatible avec le diamètre et la hauteur réels.</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret" style="border-left-color:var(--p1);">
+          <div class="ds-icon">🫙</div>
+          <div class="ds-content">
+            <div class="ds-label">Vin fortifié (Porto, Xérès…)</div>
+            <div class="ds-action">Alcool plus élevé — vérifier le degré, le service et la destination avant toute préparation.</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">⚠️</div>
+          <div class="ds-content">
+            <div class="ds-label">Spiritueux / alcool fort</div>
+            <div class="ds-action">Restrictions plus probables. Vérifier l'acceptation transporteur avant toute préparation. Ne pas appliquer automatiquement les règles du vin.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les points faibles d'une bouteille pendant le transport</h3>
+      <div class="step-with-img">
+        <div>
+          <p>La fuite est un risque trompeur. Une bouteille peut suinter sans que le verre soit brisé — quelques gouttes peuvent tacher une étiquette, humidifier un coffret ou rendre le colis désagréable. Pour une vente ou un cadeau, une bouteille intacte mais tachée reste un échec.</p>
+        </div>
+        <div class="step-img-col">
+          <a href="/static/img/articleImg/bouteille/risques-transport-bouteille-vin-casse-fuite-etiquette-chaleur.webp" class="glightbox" data-gallery="article-gallery"
+            data-title="Points faibles d'une bouteille pendant le transport">
+            <img src="/static/img/articleImg/bouteille/risques-transport-bouteille-vin-casse-fuite-etiquette-chaleur.webp"
+              alt="Une bouteille peut être inutilisable sans être totalement brisée : fuite, tache sur l’étiquette, casse ou variation thermique peuvent suffire à gâcher l’envoi." class="step-img-real" loading="lazy">
+          </a>
+          <div class="step-caption-txt">Zones sensibles d'une bouteille pendant le transport.</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Risque</th><th>Quand il apparaît</th><th>Conséquences possibles</th></tr></thead>
+          <tbody>
+            <tr><td>Casse</td><td>Choc direct, vide dans le carton, bouteille non immobilisée</td><td>Verre brisé, liquide répandu, colis inutilisable</td></tr>
+            <tr><td>Fuite</td><td>Bouchon instable, suintement, chaleur, pression champagne</td><td>Étiquette tachée, coffret humide, odeur de vin dans le carton</td></tr>
+            <tr><td>Étiquette abîmée</td><td>Frottement, humidité, pression contre paroi</td><td>Perte de valeur cadeau ou commerciale</td></tr>
+            <tr><td>Altération thermique</td><td>Chaleur, froid, variations répétées, trajet long</td><td>Qualité du vin dégradée sans trace visible sur le carton</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Chaleur, froid et variations : ce qui peut altérer le vin</h3>
+      <p>La température peut altérer le vin sans trace visible. Après mise en bouteille, la qualité peut être affectée par les variations de température, la durée du transport, la lumière et l'humidité. Le risque principal reste la chaleur : elle peut accélérer le vieillissement, réduire les arômes frais, fruités ou floraux, provoquer des notes oxydées et favoriser les fuites ou les bouchons poussés. Les <strong>variations répétées</strong> sont aussi problématiques : le vin se dilate quand il chauffe, se contracte quand il refroidit — ces cycles peuvent créer un effet de "pompage" qui augmente le risque d'oxydation.</p>
+
+     <div class="compare-2">
+  <div class="compare-col good">
+    <img src="/static/img/articleImg/bouteille/carton-bouteille-vin-expedition-standard.webp"
+         alt="Carton bouteille vin expédition standard" class="compare-col-img" loading="lazy">
+    <div class="compare-col-body">
+      <div class="compare-col-label">✓ Période normale</div>
+      <div class="compare-col-note">Emballage standard, suivi classique, dépôt en début de semaine</div>
+    </div>
+  </div>
+  <div class="compare-col mid">
+    <img src="/static/img/articleImg/bouteille/carton-bouteille-vin-protection-isotherme.webp"
+         alt="Carton bouteille vin protection isotherme canicule ou grand froid" class="compare-col-img" loading="lazy">
+    <div class="compare-col-body">
+      <div class="compare-col-label">⚠ Canicule ou grand froid</div>
+      <div class="compare-col-note">Reporter si possible, protection isotherme, récupération rapide, éviter le week-end. Même réflexe par grand froid : délai court, isotherme conseillé.</div>
+    </div>
+  </div>
+</div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Pour un vieux millésime, un grand cru ou un champagne de valeur</strong>
+          Évitez les pics météo, les longs temps de transit et les dépôts juste avant un week-end. Le risque ne se limite pas à la casse — la chaleur ou l'attente prolongée peuvent dégrader le vin sans dommage visible.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Choisir un carton adapté au format réel de la bouteille</h3>
+      <p>Toutes les bouteilles de 75 cl ne se ressemblent pas. Un carton ou un insert peut convenir à une bouteille et mal maintenir une autre. Les écarts de format créent vite des problèmes : carton trop étroit, jeu en hauteur, insert qui tient le corps mais laisse le goulot libre.</p>
+
+      <div class="bottle-formats">
+        <div class="bottle-format-card">
+          <div class="bottle-format-icon">
+            <img src="/static/img/articleImg/bouteille/bouteille-bordelaise-format-emballage.webp" alt="Bouteille bordelaise">
+          </div>
+          <div class="bottle-format-name">Bordelaise</div>
+          <div class="bottle-format-specs">Format standard<br>~75 cl · ~1,3 kg</div>
+        </div>
+        <div class="bottle-format-card">
+          <div class="bottle-format-icon">
+            <img src="/static/img/articleImg/bouteille/bouteille-bourguignonne-format-emballage.webp" alt="Bouteille bourguignonne">
+          </div>
+          <div class="bottle-format-name">Bourguignonne</div>
+          <div class="bottle-format-specs">Plus large<br>épaule arrondie</div>
+        </div>
+        <div class="bottle-format-card">
+          <div class="bottle-format-icon">
+            <img src="/static/img/articleImg/bouteille/flute-alsace-bouteille-format-emballage.webp" alt="Flute d'Alsace">
+          </div>
+          <div class="bottle-format-name">Flûte d'Alsace</div>
+          <div class="bottle-format-specs">Plus haute<br>plus fine</div>
+        </div>
+        <div class="bottle-format-card special">
+          <div class="bottle-format-icon">
+            <img src="/static/img/articleImg/bouteille/bouteille-champagne-format-emballage.webp" alt="Bouteille de champagne">
+          </div>
+          <div class="bottle-format-name">Champagne</div>
+          <div class="bottle-format-specs">Plus lourde<br>~1,6 kg · sous pression</div>
+        </div>
+        <div class="bottle-format-card special">
+          <div class="bottle-format-icon">
+            <img src="/static/img/articleImg/bouteille/magnum-vin-comparaison-bouteille-standard.webp" alt="Bouteille magnum">
+          </div>
+          <div class="bottle-format-name">Magnum</div>
+          <div class="bottle-format-specs">1,5 L · format spécial<br>carton dédié</div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Orientation à respecter</strong>
+          Certaines bouteilles se stockent couchées, mais certains cartons de transport sont conçus pour un maintien vertical et d'autres pour une position horizontale. Respectez l'orientation prévue par le carton ou l'insert.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Un bel emballage cadeau ne suffit pas pour un colis</h3>
+      <p>Un papier cadeau, un sac bouteille, un tissu, un ruban ou un coffret bois peuvent suffire pour une remise en main propre. Pour un colis, non. La règle est simple : <strong>présentation cadeau ≠ protection transport.</strong></p>
+      <p>Le coffret ou le papier cadeau doit devenir un emballage intérieur. La bouteille doit être stabilisée, le coffret calé dans un carton extérieur, la fermeture protégée et le mouvement supprimé.</p>
+
+      <div class="compare-3">
+        <div class="compare-col bad">
+          <a href="/static/img/articleImg/bouteille/coffret-vin-trois-bouteilles-cadeau.webp" class="glightbox compare-col-ph-link" data-gallery="article-gallery" data-title="Sac cadeau ou coffret sans protection transport">
+            <img src="/static/img/articleImg/bouteille/coffret-vin-trois-bouteilles-cadeau.webp" alt="Coffret cadeau seul sans protection de transport" class="compare-col-ph-img" loading="lazy">
+          </a>
+          <div class="compare-col-body">
+            <div class="compare-col-label">✗ Joli mais non expédiable</div>
+            <div class="compare-col-note">Sac cadeau, papier, coffret seul — aucune protection transport</div>
+          </div>
+        </div>
+        <div class="compare-col mid">
+          <a href="/static/img/articleImg/bouteille/coffret-vin-carton-exterieur-sans-calage.webp" class="glightbox compare-col-ph-link" data-gallery="article-gallery" data-title="Coffret dans carton sans calage suffisant">
+            <img src="/static/img/articleImg/bouteille/coffret-vin-carton-exterieur-sans-calage.webp" alt="Coffret dans carton sans calage suffisant" class="compare-col-ph-img" loading="lazy">
+          </a>
+          <div class="compare-col-body">
+            <div class="compare-col-label">⚠ Insuffisant</div>
+            <div class="compare-col-note">Coffret dans carton mais sans calage — bouteille bouge encore</div>
+          </div>
+        </div>
+        <div class="compare-col good">
+          <a href="/static/img/articleImg/bouteille/coffret-vin-cale-carton-papier-froisse.webp" class="glightbox compare-col-ph-link" data-gallery="article-gallery" data-title="Coffret calé dans carton extérieur avec calage dense">
+            <img src="/static/img/articleImg/bouteille/coffret-vin-cale-carton-papier-froisse.webp" alt="Coffret calé dans carton extérieur avec calage dense" class="compare-col-ph-img" loading="lazy">
+          </a>
+          <div class="compare-col-body">
+            <div class="compare-col-label">✓ Joli + protégé + expédiable</div>
+            <div class="compare-col-note">Coffret calé dans carton extérieur, aucun mouvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Checklist avant emballage</h3>
+      <p>Avant de choisir le carton et le calage, vérifiez ces points. Une bouteille ordinaire peut être préparée avec un bon carton bouteille. Un champagne premium, un grand cru, un coffret client, un magnum ou un lot demande une protection plus robuste.</p>
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">🍷</span><span>Type de bouteille identifié (vin tranquille, champagne, fortifié…)</span></div>
+        <div class="check-item"><span class="check-ico">📏</span><span>Format réel vérifié (diamètre, hauteur, poids)</span></div>
+        <div class="check-item"><span class="check-ico">🔒</span><span>Fermeture contrôlée (bouchon, capsule, muselet)</span></div>
+        <div class="check-item"><span class="check-ico">🔍</span><span>État vérifié (goulot sec, pas de fissure, étiquette propre)</span></div>
+        <div class="check-item"><span class="check-ico">📦</span><span>Nombre de bouteilles et format d'envoi décidés</span></div>
+        <div class="check-item"><span class="check-ico">💰</span><span>Valeur estimée (assurance utile si bouteille chère)</span></div>
+        <div class="check-item"><span class="check-ico">🌍</span><span>Destination vérifiée (France, UE, hors UE, Outre-mer)</span></div>
+        <div class="check-item"><span class="check-ico">🌡️</span><span>Météo et période d'envoi considérées</span></div>
+      </div>
+    </div>
+
+  </div><!-- /risques -->
+
+  <div class="part-transition">Une fois les risques et le format identifiés, on peut construire un vrai colis bouteille — couche par couche.</div>
+
+  <!-- ════════ PARTIE 2 ════════ -->
+  <div id="emballage" class="section-gap p2">
+
+    <div class="part-header p2">
+      <div class="part-num">2</div>
+      <div>
+        <div class="part-tag">Emballage</div>
+        <h2>Protéger une bouteille de vin contre la casse, la fuite et les mouvements</h2>
+        <p>La solution la plus sûre reste le carton bouteille conçu pour l'expédition. Avec un carton classique, vous devez recréer ces fonctions vous-même.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Le principe : bloquer, amortir, séparer</h3>
+      <p>Un bon emballage bouteille repose sur trois fonctions. <strong>Bloquer</strong> évite le mouvement. <strong>Amortir</strong> réduit les chocs. <strong>Séparer</strong> empêche le contact verre contre verre quand plusieurs bouteilles voyagent ensemble. Chaque matériau doit avoir un rôle clair.</p>
+
+      <div class="colis-layers">
+        <div class="colis-layer cl1"><span style="font-size:1rem;margin-right:8px;">📦</span><span>Carton extérieur solide (double cannelure)<span class="cl-sub"> — résistance structurelle</span></span></div>
+        <div class="cl-arrow">↓</div>
+        <div class="colis-layer cl2"><span style="font-size:1rem;margin-right:8px;">🫧</span><span>Zone d'amortissement (papier bulle, kraft froissé dense)<span class="cl-sub"> — absorption des chocs</span></span></div>
+        <div class="cl-arrow">↓</div>
+        <div class="colis-layer cl3"><span style="font-size:1rem;margin-right:8px;">🧱</span><span>Insert ou calage latéral<span class="cl-sub"> — immobilisation complète</span></span></div>
+        <div class="cl-arrow">↓</div>
+        <div class="colis-layer cl4"><span style="font-size:1rem;margin-right:8px;">🛡️</span><span>Protection directe de la bouteille (bulle, manchon, protection gonflable)<span class="cl-sub"> — goulot + fond + corps</span></span></div>
+        <div class="cl-arrow">↓</div>
+        <div class="colis-layer cl5"><span style="font-size:1rem;margin-right:8px;">🍷</span><span>La bouteille — centrée, sans contact avec les parois</span></div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-ico">💡</div>
+        <div class="callout-body">
+          <strong>La bonne question</strong>
+          Pas "ai-je mis assez de matière ?" mais "mon emballage fait-il le même travail qu'un emballage bouteille professionnel ?" — maintien du fond, calage du goulot, immobilisation complète.
+        </div>
+      </div>
+
+      <h3>Quel matériel choisir selon le type d'envoi ?</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Cas d'envoi</th><th>Matériel à privilégier</th><th>Point de contrôle</th></tr></thead>
+          <tbody>
+            <tr><td>Bouteille standard, sans coffret</td><td>Carton bouteille une place ou carton solide avec calage dense</td><td>Bouteille immobilisée, sans toucher les parois ni le fond</td></tr>
+            <tr><td>Coffret cadeau (bois ou carton)</td><td>Bouteille protégée, coffret dans carton extérieur, calage autour</td><td>Coffret présentable, ne remplace jamais le carton d'expédition</td></tr>
+            <tr><td>Champagne, crémant, magnum</td><td>Carton compatible diamètre/hauteur, insert adapté, protection goulot</td><td>Pas de compression du muselet, capsule ou bouchon</td></tr>
+            <tr><td>2 à 6 bouteilles</td><td>Carton renforcé avec séparateurs, croisillons ou logements</td><td>Aucun contact verre contre verre</td></tr>
+            <tr><td>Grand cru ou bouteille de valeur</td><td>Insert, anti-fuite, double carton si justifié, isotherme si sensible</td><td>Protéger bouteille, étiquette, température et valeur prouvable</td></tr>
+            <tr><td>Envoi client ou e-commerce</td><td>Formats répétables, poids connus, photographier les envois sensibles</td><td>Limiter les litiges, prouver que l'emballage était sérieux</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ÉTAPES -->
+    <div class="prose">
+      <div class="steps-list">
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">1</div></div>
+          <div class="step-content">
+            <h4>Vérifier que la bouteille peut être expédiée</h4>
+            <p>Avant d'ajouter la moindre protection, vérifiez que la bouteille est apte au transport. Elle doit être <strong>sèche au niveau du goulot, sans odeur de vin, sans fissure et sans éclat</strong>. Une petite égrenure peut devenir un point de casse pendant les vibrations.</p>
+            <p>Pour un bouchon : il ne doit pas être poussé, enfoncé, humide ou instable. Pour une capsule à vis : contrôlez qu'elle n'est pas déformée. Pour un champagne : vérifiez que le muselet est en place et la capsule intacte.</p>
+            <div class="step-with-img">
+              <p>Essuyez la bouteille avec un chiffon sec, vérifiez le goulot et le fond, puis mettez de côté toute bouteille humide, fendue, collante ou déjà suintante. Pour une bouteille cadeau, client ou de valeur, <strong>photographiez avant emballage</strong> : bouteille entière, étiquette, fermeture et absence de fuite.</p>
+              <div class="step-img-col">
+                <a href="/static/img/articleImg/bouteille/verifier-bouteille-vin-fermeture-verre-avant-emballage.webp" class="glightbox" data-gallery="article-gallery" data-title="Verification goulot, bouchon et fond de bouteille avant emballage">
+                  <img src="/static/img/articleImg/bouteille/verifier-bouteille-vin-fermeture-verre-avant-emballage.webp" alt="Verification du goulot, du bouchon et du fond d'une bouteille" class="step-img-real" loading="lazy">
+                </a>
+                <div class="step-caption-txt">Goulot sec, bouchon stable, verre sans fissure — trois contrôles avant tout emballage.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">2</div></div>
+          <div class="step-content">
+            <h4>Prévoir une barrière anti-fuite si le risque le justifie</h4>
+            <p>Une protection anti-fuite ne rend pas une bouteille fragile "sûre". Son rôle est de <strong>contenir le liquide</strong> : éviter que le vin détrempe le carton, abîme un coffret, tache les autres bouteilles ou sorte du colis.</p>
+            <p>Elle devient utile pour une bouteille cadeau, un coffret client, un lot de plusieurs bouteilles, un trajet long ou une bouteille de valeur. Utilisez un sachet anti-fuite ou une pochette étanche bien fermée autour de la bouteille, puis ajoutez le calage par-dessus.</p>
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Sachet anti-fuite pour bouteille</div>
+                    <div class="mat-link-desc">Contient le liquide si la bouteille suinte, fuit ou casse</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Pochette étanche pour bouteille</div>
+                    <div class="mat-link-desc">Utile pour coffret cadeau, envoi client ou trajet long</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">3</div></div>
+          <div class="step-content">
+            <h4>Protéger directement la bouteille : goulot, fond, corps et étiquette</h4>
+            <p>Ne protégez pas seulement le milieu de la bouteille. Le <strong>goulot concentre la fermeture</strong>, le <strong>fond reçoit les chocs verticaux</strong>, l'épaule peut prendre appui contre une paroi et l'étiquette peut être abîmée par frottement ou humidité.</p>
+            <p>Enveloppez la bouteille avec une protection qui reste bien en place : papier bulle épais, carton ondulé, papier kraft dense, manchon carton ou protection gonflable. <strong>Renforcez surtout le fond et le goulot.</strong> Si la protection glisse autour de la bouteille, elle protège mal.</p>
+
+            <div class="step-with-img">
+              <p>Pour un champagne, un magnum ou une bouteille de valeur, vérifiez que la protection respecte le diamètre et la hauteur réels. La bouteille ne doit ni flotter dans sa protection, ni être comprimée au niveau du bouchon, de la capsule ou du muselet.</p>
+              <div class="step-img-col">
+                <a href="/static/img/articleImg/bouteille/proteger-bouteille-vin-papier-bulle-goulot-fond.webp" class="glightbox" data-gallery="article-gallery" data-title="Protection de la bouteille avec renfort goulot et fond">
+                  <img src="/static/img/articleImg/bouteille/proteger-bouteille-vin-papier-bulle-goulot-fond.webp" alt="Bouteille protegee avec renfort au goulot et au fond" class="step-img-real" loading="lazy">
+                </a>
+                <div class="step-caption-txt">Goulot, fond et corps protégés — la protection doit rester bien en place.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais pour bouteille</div>
+                    <div class="mat-link-desc">Protection directe du verre, du fond et du goulot</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Protection gonflable pour bouteille</div>
+                    <div class="mat-link-desc">Protection enveloppante contre les chocs et les mouvements</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Manchon carton pour bouteille</div>
+                    <div class="mat-link-desc">Protection rigide et légère, compatible avec la plupart des formats</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">4</div></div>
+          <div class="step-content">
+            <h4>Placer la bouteille dans le carton et supprimer tout mouvement</h4>
+            <p>La bouteille ne doit jamais reposer directement sur le fond extérieur, toucher les parois ou bouger dans le vide. Ajoutez d'abord une <strong>couche amortissante au fond</strong>, placez la bouteille au centre, puis bloquez les côtés et le dessus.</p>
+            <p>Le calage peut être fait avec du kraft froissé dense, du papier bulle épais, du carton ondulé, des coussins d'air adaptés, une mousse de maintien ou une pulpe moulée. Le papier posé en vrac ne suffit pas : il doit créer une vraie résistance quand vous appuyez légèrement dessus.</p>
+            <p>Le calage doit créer une vraie résistance quand vous appuyez légèrement dessus. Le papier posé en vrac ne suffit pas. Le carton doit fermer à plat — s'il bombe, le calage est trop épais ; s'il reste un vide, la bouteille peut bouger.</p>
+
+            <div class="step-with-img">
+              <p><strong>Test final avant scotch</strong> : fermez les rabats sans ruban, soulevez le colis et inclinez-le doucement dans plusieurs directions. Si vous entendez la bouteille, l'emballage n'est pas terminé.</p>
+              <div class="step-img-col">
+                <a href="/static/img/articleImg/bouteille/emballer-bouteille-vin-carton-calage-papier-bulle.webp" class="glightbox" data-gallery="article-gallery" data-title="Bouteille centree dans carton avec fond amorti et calage lateral">
+                  <img src="/static/img/articleImg/bouteille/emballer-bouteille-vin-carton-calage-papier-bulle.webp" alt="Bouteille centree dans un carton avec calage lateral" class="step-img-real" loading="lazy">
+                </a>
+                <div class="step-caption-txt">Aucun contact avec les parois, fond amorti — la bouteille ne doit faire aucun bruit.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton bouteille une place</div>
+                    <div class="mat-link-desc">Maintien adapté pour une bouteille de vin standard</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton double cannelure</div>
+                    <div class="mat-link-desc">Carton plus résistant pour bouteille lourde, fragile ou de valeur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Protection isotherme pour bouteille</div>
+                    <div class="mat-link-desc">Utile en cas de chaleur, froid ou trajet sensible — en complément du calage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 5 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">5</div></div>
+          <div class="step-content">
+            <h4>Adapter l'emballage au nombre de bouteilles</h4>
+            <p>Plus le nombre de bouteilles augmente, plus le vrai problème devient le <strong>contact verre contre verre</strong>, la charge sur le fond et la résistance à la compression. À partir de deux bouteilles, raisonnez en compartiments — chaque bouteille doit avoir son propre logement.</p>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Format</th><th>Risque principal</th><th>Bonne pratique</th></tr></thead>
+                <tbody>
+                  <tr><td>1 bouteille</td><td>Choc contre les parois, mouvement interne</td><td>Carton bouteille ou calage manuel avec maintien complet</td></tr>
+                  <tr><td>2 à 3 bouteilles</td><td>Contact verre contre verre, déplacement latéral</td><td>Logements individuels, croisillons ou cloisons</td></tr>
+                  <tr><td>6 bouteilles</td><td>Poids concentré, fond sollicité, casse en cascade</td><td>Carton renforcé avec compartimentage stable et fond porteur</td></tr>
+                  <tr><td>12 bouteilles</td><td>Charge élevée, manutention difficile</td><td>Deux colis de six souvent plus sûrs qu'un seul colis trop lourd</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="step-with-img" style="margin-top:0.75rem;">
+              <p>Pour six bouteilles, le fond du carton devient critique : s'il s'affaisse, les séparateurs perdent leur rôle et les bouteilles peuvent se toucher. Pour douze bouteilles, vérifiez aussi le poids total et les conditions du transporteur.</p>
+              <div class="step-img-col">
+                <a href="/static/img/articleImg/bouteille/carton-six-bouteilles-vin-separateurs-calage.webp" class="glightbox" data-gallery="article-gallery" data-title="Vue du dessus d'un carton 6 bouteilles avec separateurs">
+                  <img src="/static/img/articleImg/bouteille/carton-six-bouteilles-vin-separateurs-calage.webp" alt="Carton de six bouteilles avec separateurs et calage" class="step-img-real" loading="lazy">
+                </a>
+                <div class="step-caption-txt">Chaque bouteille dans son compartiment — aucun contact direct.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton bouteille 3 logements</div>
+                    <div class="mat-link-desc">Compartimentage individuel pour éviter le contact verre contre verre</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton renforcé 6 bouteilles</div>
+                    <div class="mat-link-desc">Fond porteur et séparation stable pour lot plus lourd</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Croisillons pour bouteilles</div>
+                    <div class="mat-link-desc">Cloisons intercalaires pour stabiliser plusieurs bouteilles</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 6 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">6</div></div>
+          <div class="step-content" style="padding-bottom:0.5rem;">
+            <h4>Fermer et étiqueter proprement</h4>
+            <p>Fermez le colis avec un <strong>ruban adhésif solide en méthode H</strong> : une bande sur la jointure centrale, puis deux bandes sur les bords. Pour plusieurs bouteilles ou un colis lourd, renforcez aussi le dessous du carton. Évitez ficelle, ruban décoratif ou élément extérieur qui pourrait s'accrocher.</p>
+            <p>L'étiquette doit être posée bien à plat sur une grande face, <strong>visible, non pliée, sans ancien code-barres</strong>. Les mentions "Fragile", "Haut/Bas" ou "Liquide" peuvent informer, mais elles ne protègent pas — préparez l'envoi comme si elles pouvaient être ignorées.</p>
+            <p>Évitez de scotcher directement sur le code-barres si cela crée des reflets ou des plis.</p>
+
+            <div class="step-with-img">
+              <p>En cas de réutilisation d'un carton, supprimez toutes les anciennes étiquettes, codes-barres et bordereaux. Un ancien code-barres ou une adresse partiellement visible peut créer une confusion au tri.</p>
+              <div class="step-img-col">
+                <a href="/static/img/articleImg/bouteille/colis-bouteille-vin-fermeture-methode-h-etiquette.webp" class="glightbox" data-gallery="article-gallery" data-title="Colis ferme en methode H avec etiquette lisible">
+                  <img src="/static/img/articleImg/bouteille/colis-bouteille-vin-fermeture-methode-h-etiquette.webp" alt="Colis bouteille ferme en methode H avec etiquette a plat" class="step-img-real" loading="lazy">
+                </a>
+                <div class="step-caption-txt">Fermeture en H et étiquette lisible — sans ancien code-barres concurrent.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Ruban adhésif renforcé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Dévidoir pour ruban d'emballage</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div>
+
+    <!-- ERREURS + TIPS -->
+    <div class="prose">
+      <h3>Erreurs fréquentes à éviter</h3>
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Créer un fond amortissant avant de poser la bouteille</span></div>
+          <div class="tip-c b"><span>✗</span><span>Poser la bouteille directement sur le fond du carton</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Immobiliser goulot, fond et corps de la bouteille</span></div>
+          <div class="tip-c b"><span>✗</span><span>Laisser le goulot libre de tout maintien</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Placer le coffret cadeau dans un carton d'expédition calé</span></div>
+          <div class="tip-c b"><span>✗</span><span>Utiliser le coffret cadeau comme seul emballage d'expédition</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Utiliser croisillons ou logements pour plusieurs bouteilles</span></div>
+          <div class="tip-c b"><span>✗</span><span>Mettre plusieurs bouteilles sans séparation verre contre verre</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Faire le test de mouvement avant de fermer définitivement</span></div>
+          <div class="tip-c b"><span>✗</span><span>Compter sur "Fragile" pour compenser un calage insuffisant</span></div>
+        </div>
+      </div>
+      <div class="callout info" style="margin-top:1rem;">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>3 contrôles simples avant dépôt</strong>
+          La bouteille ne touche pas les parois. Elle ne repose pas directement sur le fond extérieur. Elle ne fait aucun bruit quand le carton est doucement incliné. Si l'un échoue, le colis n'est pas prêt.
+        </div>
+      </div>
+    </div>
+
+    <!-- CADEAU / GRAND CRU -->
+    <div class="prose">
+      <h3>Cadeau, grand cru ou client : quand renforcer</h3>
+      <p>Pour une <strong>bouteille cadeau</strong> : protégez la bouteille, stabilisez-la dans son coffret, placez le coffret dans un carton extérieur, calez autour. L'objectif n'est pas seulement d'éviter la casse : le coffret doit arriver propre, sec et présentable.</p>
+      <p>Pour un <strong>grand cru, un vieux millésime, un champagne cher ou un client e-commerce</strong> : renforcez l'ensemble. Insert adapté, sachet anti-fuite, protection d'étiquette, double carton si nécessaire, photos avant fermeture. Le double emballage n'est utile que si le carton intérieur est lui-même immobilisé dans le carton extérieur.</p>
+
+      <div class="mat-inline">
+        <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+        <div class="mat-links">
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Carton extérieur pour coffret bouteille</div>
+              <div class="mat-link-desc">Protège le coffret sans l'utiliser comme carton d'expédition</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Emballage isotherme pour bouteille de valeur</div>
+              <div class="mat-link-desc">Protection complémentaire contre chaleur et froid</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /emballage -->
+
+  <div class="part-transition">L'emballage protège la bouteille. Les vérifications suivantes protègent l'envoi — et vous protègent en cas de problème.</div>
+
+  <!-- ════════ PARTIE 3 ════════ -->
+  <div id="apres" class="section-gap p3">
+
+    <div class="part-header p3">
+      <div class="part-num">3</div>
+      <div>
+        <div class="part-tag">Règles et vérifications</div>
+        <h2>Après emballage : transport, prix, règles et preuves</h2>
+        <p>Une fois la bouteille emballée, le colis n'est pas encore prêt à partir. Avant d'acheter l'étiquette : contenu accepté, destination autorisée, poids réel, dimensions et preuves à conserver.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quels transporteurs acceptent le vin ?</h3>
+      <p>Tous les transporteurs n'acceptent pas le vin dans les mêmes conditions. Avant d'acheter une étiquette, vérifiez le service utilisé, la destination, le degré d'alcool, l'emballage exigé et le statut de l'envoi.</p>
+      <p>Avec La Poste, les boissons alcoolisées peuvent être envoyées avec Colissimo ou Chronopost si elles ne dépassent pas <strong>24 % d'alcool par volume</strong>. Cela couvre généralement le vin tranquille, beaucoup de champagnes et certains vins fortifiés, mais pas les spiritueux forts, parfums, alcools ménagers ou liquides inflammables.</p>
+
+      <div class="transport-grid">
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">📬</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-standard">Standard</span>
+            <div class="transport-name">Colissimo</div>
+            <div class="transport-usage">Bouteille standard, non urgente. Convient pour la plupart des envois de vin tranquille.</div>
+            <div class="transport-check">Vérifier : alcool sous 24 %, destination, emballage, suivi</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">⚡</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-express">Express</span>
+            <div class="transport-name">Chronopost</div>
+            <div class="transport-usage">Envoi rapide ou cadeau à date fixe. Champagne pour un événement, commande client urgente.</div>
+            <div class="transport-check">Vérifier : contenu accepté, délai, coût, destination</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">🍷</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-pro">Pro / spécialisé</span>
+            <div class="transport-name">Chrono Viti</div>
+            <div class="transport-usage">Envoi professionnel de vin ou champagne. Logique express, export et documents selon les pays.</div>
+            <div class="transport-check">Vérifier : contrat, format bouteille, export, documents</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">📦</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-standard">Point relais</span>
+            <div class="transport-name">Mondial Relay</div>
+            <div class="transport-usage">Bouteille ordinaire, trajet simple. L'emballage devient le point critique, avec carton double cannelure ou protection équivalente fortement recommandée.</div>
+            <div class="transport-check">Vérifier : emballage renforcé, fuite, casse, retrait rapide du destinataire</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">🌍</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-intl">International / Pro</span>
+            <div class="transport-name">DHL Express</div>
+            <div class="transport-usage">Solution internationale ou professionnelle. Vérifier le pays, le service DHL choisi, les règles alcool et les documents douaniers.</div>
+            <div class="transport-check">Vérifier : alcool autorisé, pays, douane, documents, accord DHL</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Mondial Relay et les liquides</strong>
+          L'assurance de base ne doit pas être considérée comme une vraie protection pour une bouteille de vin. Les liquides, la casse et la fuite peuvent être exclus ou très mal couverts selon les conditions applicables.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Combien coûte l'envoi de bouteilles de vin ?</h3>
+      <p>Le prix d'un envoi ne se calcule pas avec la bouteille seule, mais avec le <strong>colis terminé</strong> : bouteille, carton, calage, séparateurs, sachet anti-fuite, coffret éventuel, ruban et documents.</p>
+
+      <div class="formula-box">
+        <div class="formula-item"><div class="formula-val f-p2">Poids réel</div><div class="formula-lbl">Colis fermé sur balance</div></div>
+        <div class="formula-op">+</div>
+        <div class="formula-item"><div class="formula-val f-p2">Dimensions</div><div class="formula-lbl">Colis fermé mesuré</div></div>
+        <div class="formula-op">+</div>
+        <div class="formula-item"><div class="formula-val f-p2">Destination</div><div class="formula-lbl">France / UE / hors UE</div></div>
+        <div class="formula-op">=</div>
+        <div class="formula-item"><div class="formula-val f-violet">Prix réel</div><div class="formula-lbl">Comparer avant achat</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Format envoyé</th><th>Poids courant avant emballage</th><th>Ce qui fait monter le poids</th></tr></thead>
+          <tbody>
+            <tr><td>Bouteille de vin 75 cl</td><td>~1,2 à 1,5 kg</td><td>Carton, papier bulle, insert, sachet anti-fuite</td></tr>
+            <tr><td>Bouteille de champagne / crémant</td><td>~1,6 kg ou plus</td><td>Verre plus lourd, muselet, carton adapté, calage renforcé</td></tr>
+            <tr><td>Bouteille avec coffret cadeau</td><td>très variable</td><td>Coffret bois ou carton, suremballage, protection du coffret</td></tr>
+            <tr><td>3 bouteilles de vin</td><td>~3,6 à 4,5 kg avant emballage</td><td>Séparateurs, carton renforcé, calage entre bouteilles</td></tr>
+            <tr><td>6 bouteilles de vin</td><td>~7,2 à 9 kg avant emballage</td><td>Fond porteur, croisillons, double cannelure, ruban renforcé</td></tr>
+            <tr><td>Magnum</td><td>très variable</td><td>Diamètre, hauteur, verre plus lourd, carton spécial</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Plus la valeur du vin augmente, moins le prix doit être le seul critère. Pour une bouteille ordinaire, un service suivi classique peut suffire si l'emballage est sérieux. Pour un champagne cher, un vieux millésime, un magnum ou un coffret client, il faut comparer aussi le délai, le suivi, la signature, l'assurance possible et l'acceptation du contenu.</p>
+
+      <div class="callout tip">
+        <div class="callout-ico">💡</div>
+        <div class="callout-body">
+          <strong>Le seul poids fiable</strong>
+          Quelques centaines de grammes peuvent suffire à changer le tarif. Pesez et mesurez toujours le colis fermé avant d'acheter l'étiquette. Sur <a href="https://www.universcolis.fr/" style="color:var(--pc);font-weight:600;">UniversColis</a>, vous pouvez comparer les solutions d'envoi avec le poids et les dimensions réels.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Envoyer du vin hors France : restrictions, douane et destinations</h3>
+      <p>La destination change complètement le niveau de contrôle. Une bouteille envoyée en France métropolitaine n'a pas la même logique qu'un colis vers l'Union européenne, l'Outre-mer ou un pays hors UE.</p>
+
+      <div class="dest-scale">
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">France</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Contenu accepté</div>
+              <div class="dest-col-item">Poids réel</div>
+              <div class="dest-col-item">Service choisi</div>
+              <div class="dest-col-item">Emballage adapté</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Union européenne</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Volumes autorisés</div>
+              <div class="dest-col-item">Statut particulier/pro</div>
+              <div class="dest-col-item">Règles transporteur</div>
+              <div class="dest-col-item">Délai et suivi</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Outre-mer</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">CN23 / facture</div>
+              <div class="dest-col-item">Taxes éventuelles</div>
+              <div class="dest-col-item">Délai plus long</div>
+              <div class="dest-col-item">Chaleur / transit</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Hors UE</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Douane complète</div>
+              <div class="dest-col-item">Alcool accepté ?</div>
+              <div class="dest-col-item">Facture obligatoire</div>
+              <div class="dest-col-item">Restrictions pays</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>Avant tout envoi hors France métropolitaine, consultez aussi les documents du transporteur choisi : certains pays peuvent appliquer des restrictions particulières sur l'alcool, même si le vin semble accepté dans le principe.</p>
+      <p>Pour l'Union européenne, La Poste donne des repères de volume pour les envois non commerciaux : jusqu'à 90 litres de vin, dont 60 litres maximum de vin pétillant, et 20 litres de vin fortifié. Ces chiffres ne doivent pas être utilisés comme une autorisation générale pour tous les vendeurs, tous les transporteurs et tous les pays.</p>
+
+      <p style="margin-top:1rem;">Hors Union européenne, une déclaration CN23, une facture commerciale ou une facture pro forma peuvent être nécessaires. Une description vague est mauvaise :</p>
+
+      <div class="customs-compare">
+        <div class="customs-col bad">
+          <div class="customs-col-header">✗ Mauvaise description</div>
+          <div class="customs-col-body">
+            <div class="customs-item">Cadeau</div>
+            <div class="customs-item">Bouteille fragile</div>
+            <div class="customs-item">Champagne</div>
+            <div class="customs-item">Lot de vin</div>
+          </div>
+        </div>
+        <div class="customs-col good">
+          <div class="customs-col-header">✓ Bonne description</div>
+          <div class="customs-col-body">
+            <div class="customs-item">1 bouteille de vin rouge, 75 cl, 13,5 % vol., origine France</div>
+            <div class="customs-item">2 bouteilles de vin blanc, 75 cl chacune, 12,5 % vol.</div>
+            <div class="customs-item">1 bouteille de champagne, 75 cl, degré d'alcool, valeur, origine</div>
+            <div class="customs-item">6 bouteilles de vin rouge, 75 cl, valeur totale, origine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Où vendre du vin en ligne quand on débute ?</h3>
+      <p>Pour un petit vendeur, un caviste, un domaine ou un créateur de coffrets, la bonne question n'est pas seulement "où publier l'annonce ?". Il faut vérifier quatre niveaux : plateforme, droit de vendre de l'alcool, transporteur et destination.</p>
+
+      <div class="chain-flow">
+        <div class="chain-step"><strong>Plateforme autorisée</strong>Vente d'alcool permise</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><strong>Vendeur conforme</strong>Statut, mentions légales</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><strong>Transporteur compatible</strong>Alcool accepté, emballage</div>
+        <div class="chain-arrow">→</div>
+        <div class="chain-step"><strong>Destination livrable</strong>Pays, douane, restrictions</div>
+      </div>
+
+      <p>Avant de publier une annonce, lisez attentivement les conditions d'utilisation, les règles vendeur, les politiques sur les produits interdits et les guides d'aide de chaque plateforme. Les règles peuvent changer selon le pays, le statut du vendeur, la catégorie choisie et le mode de livraison proposé.</p>
+
+      <div class="platform-list">
+        <div class="platform-row">
+          <div class="platform-name">Site propre / Shopify</div>
+          <div class="platform-interest">Meilleur contrôle sur les prix, les pays et les frais de port</div>
+          <span class="platform-badge pb-ok">Recommandé</span>
+        </div>
+        <div class="platform-row">
+          <div class="platform-name">Rakuten</div>
+          <div class="platform-interest">Canal plus ouvert à la revente de vin — vérifier règles annonce</div>
+          <span class="platform-badge pb-ok">Possible</span>
+        </div>
+        <div class="platform-row">
+          <div class="platform-name">Leboncoin</div>
+          <div class="platform-interest">Utile pour annonces entre particuliers ou petites ventes encadrées</div>
+          <span class="platform-badge pb-warn">À encadrer</span>
+        </div>
+        <div class="platform-row">
+          <div class="platform-name">eBay</div>
+          <div class="platform-interest">Possible selon les pays et conditions — vérifier règles alcool</div>
+          <span class="platform-badge pb-warn">À vérifier</span>
+        </div>
+        <div class="platform-row">
+          <div class="platform-name">Amazon / Cdiscount</div>
+          <div class="platform-interest">Plutôt adapté aux vendeurs structurés — autorisation catégorie requise</div>
+          <span class="platform-badge pb-warn">Vendeurs pro</span>
+        </div>
+        <div class="platform-row">
+          <div class="platform-name">Etsy / Vinted</div>
+          <div class="platform-interest">Mauvais choix — Etsy interdit l'alcool, Vinted n'est pas adapté</div>
+          <span class="platform-badge pb-no">Déconseillé</span>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Une annonce publiée ne suffit pas</strong>
+          Une plateforme peut accepter une bouteille, mais le transporteur peut refuser l'alcool, limiter l'indemnisation ou exclure certains pays. Avant de vendre, verrouillez toute la chaîne.
+        </div>
+      </div>
+
+      <p>Si une bouteille arrive cassée, fuit, arrive trop tard ou reste bloquée, le client se retournera d'abord vers le vendeur. D'où l'intérêt de conserver les factures, photographier les envois sensibles, limiter les destinations au départ et comparer les solutions d'envoi avant d'ouvrir trop largement les commandes.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Assurance, valeur déclarée et bouteille chère</h3>
+      <p>L'assurance ne remplace jamais un bon emballage. Pour une bouteille ordinaire, la priorité reste le carton, le calage, le suivi et la preuve de dépôt. Dès que la valeur augmente, vérifiez le <strong>plafond d'indemnisation avant l'envoi</strong>.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Cas d'envoi</th><th>Assurance utile ?</th><th>Vérification prioritaire</th></tr></thead>
+          <tbody>
+            <tr><td>Bouteille ordinaire</td><td>Pas toujours prioritaire</td><td>Emballage, suivi, preuve de dépôt</td></tr>
+            <tr><td>Champagne cher ou coffret premium</td><td>Oui si valeur élevée</td><td>Facture, photos, plafond d'indemnisation</td></tr>
+            <tr><td>Grand cru ou vieux millésime</td><td>Oui, fortement conseillée</td><td>Assurance ad valorem, valeur prouvable</td></tr>
+            <tr><td>Lot de plusieurs bouteilles</td><td>Souvent utile</td><td>Valeur totale, poids, conditions du service</td></tr>
+            <tr><td>International ou Outre-mer</td><td>À vérifier avant envoi</td><td>Pays, exclusions, douane, valeur déclarée</td></tr>
+            <tr><td>Commande client importante</td><td>Recommandée</td><td>Facture, photos, preuve d'emballage, suivi</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Une indemnisation standard peut être très insuffisante si elle est calculée au forfait ou au poids. Pour une bouteille chère, privilégiez une valeur déclarée ou une <strong>assurance ad valorem</strong>, basée sur une valeur réelle prouvable : facture, preuve d'achat ou expertise.</p>
+
+      <p style="margin-top:0.9rem;">Avant fermeture, <strong>photographiez</strong> la bouteille, l'étiquette, le bouchon ou muselet, le calage, le carton intérieur et le colis fermé. En cas de casse ou de fuite, conservez tout : carton, calage, séparateurs, bouteille, traces de liquide et preuve de dépôt.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Checklist finale avant dépôt</h3>
+      <p>Le colis est prêt seulement s'il est solide, silencieux, lisible, compatible avec le transporteur choisi et basé sur le poids réel du colis fermé.</p>
+
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">🍷</span><span>Bouteille intacte, sèche et bien fermée</span></div>
+        <div class="check-item"><span class="check-ico">🛡️</span><span>Goulot, fond, corps et étiquette protégés</span></div>
+        <div class="check-item"><span class="check-ico">📦</span><span>Aucun mouvement interne — test réussi</span></div>
+        <div class="check-item"><span class="check-ico">🫙</span><span>Séparation entre chaque bouteille si lot</span></div>
+        <div class="check-item"><span class="check-ico">📐</span><span>Carton fermé à plat, fond renforcé</span></div>
+        <div class="check-item"><span class="check-ico">🏷️</span><span>Étiquette lisible, sans ancien code-barres</span></div>
+        <div class="check-item"><span class="check-ico">✅</span><span>Transporteur vérifié — contenu et destination acceptés</span></div>
+        <div class="check-item"><span class="check-ico">📄</span><span>CN23, facture ou preuve si destination hors France</span></div>
+        <div class="check-item"><span class="check-ico">📸</span><span>Photos conservées si bouteille chère ou envoi client</span></div>
+      </div>
+
+      <h3 style="margin-top:1.5rem;">Dernier contrôle : envoyer ou reporter ?</h3>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Situation</th><th>Décision prudente</th></tr></thead>
+          <tbody>
+            <tr><td>Bouteille ouverte, humide ou suintante</td><td style="color:var(--danger);font-weight:600;">Ne pas envoyer</td></tr>
+            <tr><td>Bouchon, capsule ou muselet douteux</td><td style="color:var(--danger);font-weight:600;">Ne pas envoyer</td></tr>
+            <tr><td>Canicule, gel ou grand froid</td><td style="color:var(--warn);font-weight:600;">Reporter si possible</td></tr>
+            <tr><td>Départ vendredi ou veille de jour férié</td><td style="color:var(--warn);font-weight:600;">Éviter pour bouteille sensible</td></tr>
+            <tr><td>Destination non vérifiée</td><td style="color:var(--warn);font-weight:600;">Contrôler avant achat étiquette</td></tr>
+            <tr><td>Bouteille chère sans facture ni preuve</td><td style="color:var(--warn);font-weight:600;">Éviter ou prévoir assurance adaptée</td></tr>
+            <tr><td>Grand cru, vieux millésime ou champagne cher</td><td style="color:var(--success);font-weight:600;">Suivi, signature, délai court, assurance</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- /apres -->
+
+  <!-- FAQ -->
+  <div class="prose section-gap">
+    <h3>FAQ</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer une bouteille de vin par La Poste ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, c'est possible sous conditions avec La Poste, Colissimo ou Chronopost. Le contenu doit être accepté, le taux d'alcool compatible avec le service, l'emballage adapté et la destination autorisée. Avant l'envoi, vérifiez toujours les règles du transporteur, surtout pour l'Outre-mer ou l'international.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment emballer une bouteille de vin pour l'envoyer ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Vérifiez d'abord que la bouteille est intacte, propre, sèche et bien fermée. Protégez le goulot, le fond et le corps, ajoutez une protection anti-fuite si nécessaire, puis placez la bouteille dans un carton bouteille ou un carton solide avec calage dense. La bouteille ne doit pas bouger dans le colis.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer du champagne par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, sous conditions à vérifier auprès du transporteur. Le champagne demande plus de prudence qu'un vin tranquille : bouteille plus lourde, pression interne, goulot et muselet sensibles, valeur cadeau fréquente. Utilisez un carton adapté au diamètre réel, protégez le fond et le goulot, et bloquez totalement le mouvement interne.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Combien coûte l'envoi d'une bouteille de vin ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Le prix dépend du colis final : bouteille, carton, calage, protection anti-fuite, coffret éventuel, poids réel, dimensions, destination, service choisi et options. Une bouteille de 75 cl peut approcher 1,5 kg avec le verre et le liquide. Pesez et mesurez toujours le colis fermé avant d'acheter l'étiquette.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer du vin à l'étranger ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, dans certains cas, mais il faut vérifier le pays, le transporteur, le statut de l'envoi et les règles douanières. L'Union européenne est généralement plus simple que le hors UE, mais l'alcool reste à contrôler. Hors UE, vérifiez les restrictions, les documents, la valeur déclarée et les règles d'importation du pays destinataire.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISE À JOUR -->
+  <div class="maj">
+    <strong>Dernière mise à jour</strong><br>
+    Informations logistiques, règles d'expédition, conditions transporteurs et données douanières vérifiées pour publication en 2026. Les conditions pouvant évoluer, vérifiez toujours les CGV officielles du transporteur avant l'envoi.
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <strong>Sources principales</strong>
+    <ul>
+      <li><a href="https://www.laposte.fr/envoyer/envoi-liquides" target="_blank" rel="noopener">La Poste — envoi de liquides et alcool</a></li>
+      <li><a href="https://www.laposte.fr/envoyer/restrictions-envoi-colis-international" target="_blank" rel="noopener">La Poste — restrictions par pays</a></li>
+      <li><a href="https://cn23.laposte.fr/" target="_blank" rel="noopener">La Poste — déclaration CN23</a></li>
+      <li><a href="https://www.chronopost.fr/fr/livraison/nos-offres/chrono-viti" target="_blank" rel="noopener">Chronopost — Chrono Viti</a></li>
+      <li><a href="https://www.mondialrelay.fr/envoi-de-colis/assurer-mon-colis/" target="_blank" rel="noopener">Mondial Relay — assurance colis</a></li>
+      <li><a href="https://mydhl.express.dhl/content/dam/downloads/fr/fr/packing-with-care/dhl_express_packing_guide_fr_fr.pdf.coredownload.pdf" target="_blank" rel="noopener">DHL Express — guide d'emballage</a></li>
+      <li><a href="https://www.ups.com/assets/resources/media/international-alcohol-shipping-guide.pdf" target="_blank" rel="noopener">UPS — International Alcohol Shipping Guide</a></li>
+      <li><a href="https://doi.org/10.20870/oeno-one.2021.55.2.4524" target="_blank" rel="noopener">OENO One — transport et qualité du vin</a></li>
+    </ul>
+  </div>
+
+  <!-- AFFILIATION -->
+  <div class="affil">
+    <span style="color:var(--violet);font-size:1rem;flex-shrink:0;margin-top:1px;">ℹ</span>
+    <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour vous, ce qui nous aide à maintenir nos services gratuits.</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleFaq(btn){
+  const a=btn.nextElementSibling,was=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!was){btn.classList.add('open');a.classList.add('open');}
+}
+const navLinks=document.querySelectorAll('.sn');
+const ids=['risques','emballage','apres'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    let cur=ids[0];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130)cur=id;
+    });
+    navLinks.forEach(l=>{
+      const isActive=l.getAttribute('href')==='#'+cur;
+      l.classList.toggle('active',isActive);
+    });
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>

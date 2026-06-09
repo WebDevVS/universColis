@@ -1,4 +1,23 @@
+{{!-- 
+  SCHEMA-COUCHES
+  Schéma empilé de couches de protection.
+  Avec photo : grid 2 colonnes (schéma + photo)
+  Sans photo  : schéma pleine largeur
+  
+  Paramètres JSON :
+  - layers[] :
+      - label : texte de la couche
+      - sub   : sous-texte optionnel (ex: "surfaces")
+      - level : numéro de style CSS l1 à l6
+  - img    : chemin image (optionnel — si absent, pas de photo)
+  - imgAlt : texte alternatif image
+--}}
+
+{{#if block.img}}
 <div class="layers-wrap">
+{{else}}
+<div class="layers-wrap layers-wrap--full">
+{{/if}}
   <div class="layers-diagram">
     {{#each block.layers}}
     <div class="layer l{{this.level}}">

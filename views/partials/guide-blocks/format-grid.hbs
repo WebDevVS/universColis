@@ -1,30 +1,39 @@
 {{!-- 
   FORMAT-GRID
-  Grille de cartes pour identifier les risques selon le format de bougie.
-  Chaque carte : photo + type + risque + question clé.
-  Utilisé pour : identifier le niveau de risque par type de bougie
+  Grille de cartes avec photo + type + risque + question.
   
   Paramètres JSON :
+  - cols    : nombre de colonnes (2, 3, 4, 5 — défaut 3)
   - cards[] :
-      - img     : chemin image
-      - imgAlt  : texte alternatif
-      - type    : nom du format (ex: "Bougie en pot ou en verre")
-      - risk    : risque principal (ex: "Risque : casse, couvercle mobile")
-      - question: question clé en italique coloré
+      - img          : chemin image
+      - imgAlt       : texte alternatif
+      - type         : nom du format
+      - risk         : risque principal (optionnel)
+      - question     : question clé en italique (optionnel)
+      - name         : nom alternatif à "type" (optionnel)
+      - specs        : spécifications techniques (optionnel)
+      - specialStyle : "special" pour bordure colorée (optionnel)
 --}}
 
-<div class="format-grid">
+<div class="format-grid format-grid--cols-{{#if block.cols}}{{block.cols}}{{else}}3{{/if}}">
   {{#each block.cards}}
-  <div class="format-card">
+  <div class="format-card {{#if this.specialStyle}}{{this.specialStyle}}{{/if}}">
     <div class="format-photo">
       <img src="/static/img/articleImg/{{this.img}}"
            alt="{{this.imgAlt}}"
            loading="lazy">
     </div>
     <div class="format-card-body">
-      <div class="format-type">{{this.type}}</div>
+      <div class="format-type">{{#if this.name}}{{this.name}}{{else}}{{this.type}}{{/if}}</div>
+      {{#if this.specs}}
+      <div class="format-risk">{{this.specs}}</div>
+      {{/if}}
+      {{#if this.risk}}
       <div class="format-risk">{{this.risk}}</div>
+      {{/if}}
+      {{#if this.question}}
       <div class="format-question">{{this.question}}</div>
+      {{/if}}
     </div>
   </div>
   {{/each}}

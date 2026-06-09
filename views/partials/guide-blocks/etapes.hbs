@@ -148,6 +148,26 @@
       {{else if (eq this.type "data-table")}}
       {{> guide-blocks/data-table block=this}}
 
+      {{!-- transport-grid → partial --}}
+      {{else if (eq this.type "transport-grid")}}
+      {{> guide-blocks/transport-grid block=this}}
+
+      {{!-- dest-scale → partial --}}
+      {{else if (eq this.type "dest-scale")}}
+      {{> guide-blocks/dest-scale block=this}}
+
+      {{!-- customs-compare → partial --}}
+      {{else if (eq this.type "customs-compare")}}
+      {{> guide-blocks/customs-compare block=this}}
+
+      {{!-- platform-list → partial --}}
+      {{else if (eq this.type "platform-list")}}
+      {{> guide-blocks/platform-list block=this}}
+
+      {{!-- compare-2 → partial --}}
+      {{else if (eq this.type "compare-2")}}
+      {{> guide-blocks/compare-2 block=this}}
+
       {{/if}}
       {{/each}}
       {{!-- ── FIN BLOCS AVANT ── --}}

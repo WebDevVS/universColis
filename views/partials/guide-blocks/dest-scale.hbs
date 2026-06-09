@@ -1,0 +1,28 @@
+{{!-- 
+  DEST-SCALE
+  Grille 4 colonnes avec header coloré et liste d'items.
+  Utilisé pour : présenter les niveaux de complexité par destination
+  
+  Paramètres JSON :
+  - cols[] : 4 objets
+      - name  : nom de la destination
+      - items[]: liste de strings à vérifier
+      Note : les couleurs sont automatiques selon la position (1=vert, 2=ambre, 3=orange, 4=rouge)
+--}}
+
+<div class="dest-scale">
+  {{#each block.cols}}
+  <div class="dest-col">
+    <div class="dest-col-header">
+      <div class="dest-col-name">{{this.name}}</div>
+    </div>
+    <div class="dest-col-body">
+      <div class="dest-col-items">
+        {{#each this.items}}
+        <div class="dest-col-item">{{this}}</div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
