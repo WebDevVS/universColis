@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-06-09T15:54:00.116Z</updated>
+  <updated>2026-06-11T14:14:33.600Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -11,15 +11,6 @@
       <link href="https://www.universcolis.fr/conseils/comment-emballer-des-appareils-electroniques"/>
       <id>https://www.universcolis.fr/conseils/comment-emballer-des-appareils-electroniques</id>
       <updated>2024-03-21</updated>
-      <summary>Un nouveau guide est disponible.
-      </summary>
-    </entry>
-  
-    <entry>
-      <title>Comment Emballer une Bouteille pour un Envoi Sécurisé ?</title>
-      <link href="https://www.universcolis.fr/conseils/comment-emballer-une-bouteille"/>
-      <id>https://www.universcolis.fr/conseils/comment-emballer-une-bouteille</id>
-      <updated>2024-03-24</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>
@@ -110,6 +101,15 @@
       <link href="https://www.universcolis.fr/conseils/envoyer-bougies-par-colis"/>
       <id>https://www.universcolis.fr/conseils/envoyer-bougies-par-colis</id>
       <updated>2026-05-18</updated>
+      <summary>Un nouveau guide est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Comment emballer et envoyer une bouteille de vin par colis</title>
+      <link href="https://www.universcolis.fr/conseils/expedier-bouteille-vin-colis"/>
+      <id>https://www.universcolis.fr/conseils/expedier-bouteille-vin-colis</id>
+      <updated>2026-06-11</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>
@@ -407,6 +407,15 @@
       <link href="https://www.universcolis.fr/actualites/semaine-metiers-transport-logistique-2026-france-travail-colis"/>
       <id>https://www.universcolis.fr/actualites/semaine-metiers-transport-logistique-2026-france-travail-colis</id>
       <updated>2026-06-09</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>DHL investit 160 M€ en France : quel impact sur vos colis et vos livraisons ?</title>
+      <link href="https://www.universcolis.fr/actualites/dhl-investissement-france-2026-2027-160-millions-colis"/>
+      <id>https://www.universcolis.fr/actualites/dhl-investissement-france-2026-2027-160-millions-colis</id>
+      <updated>2026-06-11</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>

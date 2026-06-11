@@ -17,8 +17,24 @@
 <div class="transport-grid">
   {{#each block.cards}}
   <div class="transport-card">
-    <div style="flex-shrink:0;font-size:1.3rem;">{{this.icon}}</div>
-    <div style="flex:1;">
+    <div class="transport-visual">
+      {{#if this.logo}}
+      <img src="/static/img/logos/{{this.logo}}" alt="Logo {{this.name}}" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Colissimo")}}
+      <img src="/static/img/logos/laposte.webp" alt="Logo Colissimo" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Chronopost")}}
+      <img src="/static/img/logos/chronopost.webp" alt="Logo Chronopost" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Chrono Viti")}}
+      <img src="/static/img/logos/chronopost.webp" alt="Logo Chrono Viti" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Mondial Relay")}}
+      <img src="/static/img/logos/mondialrelay.webp" alt="Logo Mondial Relay" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "DHL Express")}}
+      <img src="/static/img/logos/dhlexpress.webp" alt="Logo DHL Express" class="transport-logo" loading="lazy">
+      {{else}}
+      <span class="transport-fallback-icon">{{this.icon}}</span>
+      {{/if}}
+    </div>
+    <div class="transport-content">
       <span class="transport-badge {{this.badgeStyle}}">{{this.badge}}</span>
       <div class="transport-name">{{this.name}}</div>
       <div class="transport-usage">{{this.usage}}</div>

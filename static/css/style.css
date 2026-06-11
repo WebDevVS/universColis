@@ -10277,6 +10277,10 @@ figure.etape-image:hover .hover-caption {
 .transport-grid { display:flex; flex-direction:column; gap:8px; margin:1.1rem 0; }
 .transport-card { background:white; border-radius:var(--rsm); padding:1rem 1.25rem; border:1.5px solid rgba(0,0,0,0.07); display:flex; align-items:flex-start; gap:12px; transition:box-shadow .2s; }
 .transport-card:hover { box-shadow:0 3px 12px rgba(0,0,0,0.07); }
+.transport-visual { width:44px; height:44px; border-radius:10px; background:var(--light); border:1px solid rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
+.transport-logo { max-width:30px; max-height:30px; width:auto; height:auto; object-fit:contain; display:block; }
+.transport-fallback-icon { font-size:1.3rem; line-height:1; }
+.transport-content { flex:1; min-width:0; }
 .transport-name { font-family:'Sora',sans-serif; font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:3px; }
 .transport-usage { font-size:0.82rem; color:var(--muted); margin-bottom:5px; line-height:1.45; }
 .transport-check { font-size:0.78rem; color:var(--pc,var(--violet)); line-height:1.4; }
@@ -10806,91 +10810,94 @@ figure.etape-image:hover .hover-caption {
 
 /* ── CHECKLIST ── */
 .checklist-box {
-  background: color-mix(in srgb, var(--pc, var(--violet)) 6%, white);
+  background: white;
   border-radius: var(--rsm);
-  border-left: 3px solid var(--pc, var(--violet));
+  border: 1.5px solid color-mix(in srgb, var(--pc, var(--violet)) 20%, transparent);
   padding: 1rem 1.25rem;
   margin: 1.1rem 0;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
 }
 
 .checklist-label {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   color: var(--pc, var(--violet));
-  margin-bottom: 0.75rem;
-}
-
-/* Style numéroté */
-.checklist-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  counter-reset: checklist-counter;
-}
-
-.checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  color: var(--text);
-  counter-increment: checklist-counter;
-}
-
-.checklist-item::before {
-  content: counter(checklist-counter);
+  margin-bottom: 0.85rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-width: 22px;
-  height: 22px;
-  background: var(--pc, var(--violet));
-  color: white;
-  border-radius: 50%;
-  font-size: 0.7rem;
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 1px;
+  gap: 7px;
 }
 
-/* Style icônes */
+.checklist-label::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 2px solid var(--pc, var(--violet));
+  background: color-mix(in srgb, var(--pc, var(--violet)) 15%, white);
+  flex-shrink: 0;
+}
+
+/* Items */
 .checklist {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .check-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: white;
-  border-radius: var(--rsm);
-  padding: 10px 14px;
-  border-left: 3px solid var(--pc, var(--violet));
-  font-size: 0.88rem;
+  gap: 11px;
+  background: color-mix(in srgb, var(--pc, var(--violet)) 4%, white);
+  border-radius: calc(var(--rsm) - 2px);
+  padding: 10px 13px;
+  border: 1px solid color-mix(in srgb, var(--pc, var(--violet)) 10%, transparent);
+  font-size: 0.875rem;
   color: var(--text);
+  line-height: 1.4;
+  transition: background 0.15s, border-color 0.15s;
 }
 
-.check-ico {
-  font-size: 1.1rem;
+.check-item:hover {
+  background: color-mix(in srgb, var(--pc, var(--violet)) 8%, white);
+  border-color: color-mix(in srgb, var(--pc, var(--violet)) 22%, transparent);
+}
+
+/* Checkbox SVG pure CSS */
+.check-item::before {
+  content: '';
+  display: flex;
   flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 5px;
+  border: 1.75px solid color-mix(in srgb, var(--pc, var(--violet)) 45%, transparent);
+  background: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 9'%3E%3Cpath d='M1 4.5L4.5 8L11 1' stroke='%238269A4' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px 8px;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+}
+
+.check-item:hover::before {
+  opacity: 0.65;
 }
 
 /* Note en bas */
 .checklist-note {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--muted);
   margin-top: 0.75rem;
   margin-bottom: 0;
   font-style: italic;
-  border-top: 1px solid color-mix(in srgb, var(--pc, var(--violet)) 15%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--pc, var(--violet)) 12%, transparent);
   padding-top: 0.6rem;
 }
 

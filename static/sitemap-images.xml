@@ -29,15 +29,6 @@
       </image:image>
     
   </url><url>
-    <loc>https://www.universcolis.fr/conseils/comment-emballer-une-bouteille</loc>
-    
-      <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/articleImg/protection-bouteille-papier-bulle-mousse-nid-abeille.webp</image:loc>
-        
-        <image:caption>Emballage optimal de bouteilles fragiles avec papier bulle, mousse, coussins d’air et pictogrammes. Guide visuel ComparateurFrais.</image:caption>
-      </image:image>
-    
-  </url><url>
     <loc>https://www.universcolis.fr/conseils/comment-emballer-des-fleurs-et-plantes</loc>
     
       <image:image>
@@ -125,6 +116,15 @@
         <image:loc>https://www.universcolis.fr/static/img/articleImg/bougie/bougie-pot-verre-non-emballee.webp</image:loc>
         
         <image:caption>Guide 2026 pour expédier des bougies sans casse : pot en verre, calage, chaleur, coffrets mixtes, règles transporteurs et preuves en cas de dommage.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/conseils/expedier-bouteille-vin-colis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/bouteille/emballer-bouteille-vin-carton-calage-papier-bulle.webp</image:loc>
+        
+        <image:caption>Guide 2026 pour expédier une bouteille de vin sans casse ni fuite : calage, protection du goulot, transporteurs, douane, assurance et preuves.</image:caption>
       </image:image>
     
   </url><url>
@@ -422,6 +422,15 @@
         <image:loc>https://www.universcolis.fr/static/img/actualitesImg/france-travail-semaine-transport-logistique-2026-94000-recrutements-colis.webp</image:loc>
         <image:title>france-travail-semaine-transport-logistique-2026-94000-recrutements-colis</image:title>
         <image:caption>Micro-infographie sur la Semaine des métiers du transport et de la logistique organisée par France Travail du 15 au 19 juin 2026. Le visuel met en avant le repère principal « 94 000 projets de recrutement », associé aux métiers du transport, aux entrepôts, aux formations et aux opportunités d'emploi partout en France. L'image aide les candidats, e-commerçants et particuliers à comprendre rapidement pourquoi le recrutement logistique influence aussi la capacité de traitement des colis, les délais de livraison, les retours et la fiabilité des réseaux d'expédition.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/dhl-investissement-france-2026-2027-160-millions-colis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/dhl-investissement-france-2026-2027-160-millions-logistique-colis.webp</image:loc>
+        <image:title>dhl-investissement-france-2026-2027-160-millions-logistique-colis</image:title>
+        <image:caption>Micro-infographie sur le plan d'investissement de DHL en France pour 2026-2027. Le visuel met en avant le repère principal « 160 M€ », associé au renforcement de la logistique, à la modernisation des hubs et entrepôts, à l'électrification de la flotte, aux carburants durables et à l'objectif de décarbonation. L'image aide les e-commerçants, PME et particuliers à comprendre rapidement pourquoi cet investissement peut influencer la capacité du réseau DHL, la fiabilité des livraisons, les flux internationaux et les options d'expédition de colis en France.</image:caption>
       </image:image>
     
   </url><url>

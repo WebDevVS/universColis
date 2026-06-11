@@ -20,25 +20,13 @@
   <div class="checklist-label">{{block.title}}</div>
   {{/if}}
 
-  {{#if (eq block.style "icon")}}
-  {{!-- Style avec icônes emoji --}}
   <div class="checklist">
     {{#each block.items}}
     <div class="check-item">
-      <span class="check-ico">{{this.icon}}</span>
-      <span>{{{this.text}}}</span>
+      {{#if this.text}}{{{this.text}}}{{else}}{{{this}}}{{/if}}
     </div>
     {{/each}}
   </div>
-
-  {{else}}
-  {{!-- Style numéroté (défaut) --}}
-  <ol class="checklist-list">
-    {{#each block.items}}
-    <li class="checklist-item">{{{this}}}</li>
-    {{/each}}
-  </ol>
-  {{/if}}
 
   {{#if block.note}}
   <p class="checklist-note">{{{block.note}}}</p>
