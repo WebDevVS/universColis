@@ -8661,7 +8661,7 @@ figure.etape-image:hover .hover-caption {
 /* ── STICKY NAV ── */
 .sticky-nav {
   position: sticky;
-  top: 70px;
+  top: 60px;
   z-index: 100;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
@@ -10508,6 +10508,24 @@ figure.etape-image:hover .hover-caption {
   margin-bottom: 4px;
 }
 
+.fonction-img {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border-radius: var(--rsm);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.fonction-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .fonction-title {
   font-size: 0.85rem;
   font-weight: 700;
@@ -10528,6 +10546,74 @@ figure.etape-image:hover .hover-caption {
   margin-top: 6px;
   border-top: 1px solid rgba(0,0,0,0.05);
   padding-top: 6px;
+}
+
+/* ── DIAG-GRID-PHOTO ── */
+.diag-grid-photo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 1.1rem 0;
+}
+
+.diag-card-photo {
+  background: white;
+  border-radius: var(--rsm);
+  padding: 1rem;
+  border: 1.5px solid rgba(0,0,0,0.07);
+  transition: box-shadow .2s;
+}
+
+.diag-card-photo:hover {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.diag-photo-icon {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.diag-photo-img {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  border-radius: var(--rsm);
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.diag-photo-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diag-photo-label {
+  font-family: 'Sora', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.diag-photo-risk {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.diag-photo-before {
+  font-size: 0.73rem;
+  font-style: italic;
+  color: var(--pc, var(--violet));
+  line-height: 1.4;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 5px;
+  margin-top: 4px;
 }
 
 /* ── GRID-MATERIEL ── */

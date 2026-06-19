@@ -8333,7 +8333,7 @@ figure.etape-image:hover .hover-caption {
 /* ── STICKY NAV ── */
 .sticky-nav {
   position: sticky;
-  top: 70px;
+  top: 60px;
   z-index: 100;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
@@ -10201,6 +10201,8 @@ figure.etape-image:hover .hover-caption {
   border-top: 1px solid rgba(0,0,0,0.05);
   padding-top: 6px;
 }
+
+/* ── DIAG-GRID-PHOTO ── */
 
 /* ── GRID-MATERIEL ── */
 .mat-needs-grid {
