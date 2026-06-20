@@ -1,0 +1,26 @@
+{{!-- 
+  CHECKLIST-FINALE
+  Grille de blocs colorés avec titre + liste à puces.
+  Utilisé pour : checklist finale multi-catégories avant dépôt
+  
+  Paramètres JSON :
+  - cols     : nombre de colonnes (défaut 5)
+  - blocks[] :
+      - color : couleur CSS — "p1", "p2", "p3", "violet"
+      - icon  : emoji
+      - title : titre du bloc (sans l'icône, elle est ajoutée séparément)
+      - items[]: tableau de strings
+--}}
+
+<div class="checklist-finale checklist-finale--cols-{{#if block.cols}}{{block.cols}}{{else}}5{{/if}}">
+  {{#each block.blocks}}
+  <div class="cf-bloc" style="--pc:var(--{{this.color}})">
+    <div class="cf-title">{{this.icon}} {{this.title}}</div>
+    <div class="cf-items">
+      {{#each this.items}}
+      <div class="cf-item">{{this}}</div>
+      {{/each}}
+    </div>
+  </div>
+  {{/each}}
+</div>

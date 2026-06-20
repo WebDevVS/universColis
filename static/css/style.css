@@ -8766,7 +8766,7 @@ figure.etape-image:hover .hover-caption {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.71rem;
+  font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -10281,7 +10281,7 @@ figure.etape-image:hover .hover-caption {
 .transport-logo { max-width:30px; max-height:30px; width:auto; height:auto; object-fit:contain; display:block; }
 .transport-fallback-icon { font-size:1.3rem; line-height:1; }
 .transport-content { flex:1; min-width:0; }
-.transport-name { font-family:'Sora',sans-serif; font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:3px; }
+.transport-name { font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:3px; }
 .transport-usage { font-size:0.82rem; color:var(--muted); margin-bottom:5px; line-height:1.45; }
 .transport-check { font-size:0.78rem; color:var(--pc,var(--violet)); line-height:1.4; }
 .transport-badge { display:inline-block; font-size:0.7rem; font-weight:700; border-radius:8px; padding:2px 9px; white-space:nowrap; margin-bottom:4px; }
@@ -10298,7 +10298,7 @@ figure.etape-image:hover .hover-caption {
 .dest-col:nth-child(2) .dest-col-header { background:color-mix(in srgb,var(--p2) 12%,white); }
 .dest-col:nth-child(3) .dest-col-header { background:color-mix(in srgb,var(--warn) 12%,white); }
 .dest-col:nth-child(4) .dest-col-header { background:color-mix(in srgb,var(--danger) 12%,white); }
-.dest-col-name { font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; }
+.dest-col-name { font-size:0.78rem; font-weight:700; }
 .dest-col:nth-child(1) .dest-col-name { color:var(--success); }
 .dest-col:nth-child(2) .dest-col-name { color:var(--p2); }
 .dest-col:nth-child(3) .dest-col-name { color:var(--warn); }
@@ -10313,7 +10313,7 @@ figure.etape-image:hover .hover-caption {
 .customs-col { background:white; border-radius:var(--rsm); overflow:hidden; border:1.5px solid rgba(0,0,0,0.07); }
 .customs-col.bad  { border-color:var(--danger-bd); }
 .customs-col.good { border-color:var(--success-bd); }
-.customs-col-header { padding:0.65rem 1rem; font-family:'Sora',sans-serif; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+.customs-col-header { padding:0.65rem 1rem; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
 .customs-col.bad  .customs-col-header { background:var(--danger-bg);  color:var(--danger); }
 .customs-col.good .customs-col-header { background:var(--success-bg); color:var(--success); }
 .customs-col-body { padding:0.75rem 1rem; }
@@ -10326,7 +10326,7 @@ figure.etape-image:hover .hover-caption {
 .platform-list { display:flex; flex-direction:column; gap:6px; margin:1.1rem 0; }
 .platform-row { background:white; border-radius:var(--rsm); padding:0.85rem 1rem; border:1.5px solid rgba(0,0,0,0.07); display:flex; align-items:center; gap:12px; transition:box-shadow .2s; }
 .platform-row:hover { box-shadow:0 3px 10px rgba(0,0,0,0.07); }
-.platform-name { font-family:'Sora',sans-serif; font-size:0.85rem; font-weight:700; color:var(--text); min-width:130px; flex-shrink:0; }
+.platform-name { font-size:0.85rem; font-weight:700; color:var(--text); min-width:130px; flex-shrink:0; }
 .platform-interest { flex:1; font-size:0.82rem; color:var(--muted); }
 .platform-badge { display:inline-block; font-size:0.7rem; font-weight:700; border-radius:8px; padding:2px 9px; white-space:nowrap; flex-shrink:0; }
 .pb-ok   { background:var(--success-bg); color:var(--success); }
@@ -10369,7 +10369,6 @@ figure.etape-image:hover .hover-caption {
 .compare-col-body { padding: 0.75rem; }
 
 .compare-col-label {
-  font-family: 'Sora', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   margin-bottom: 3px;
@@ -10592,7 +10591,6 @@ figure.etape-image:hover .hover-caption {
 }
 
 .diag-photo-label {
-  font-family: 'Sora', sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text);
@@ -10985,6 +10983,70 @@ figure.etape-image:hover .hover-caption {
   font-style: italic;
   border-top: 1px solid color-mix(in srgb, var(--pc, var(--violet)) 12%, transparent);
   padding-top: 0.6rem;
+}
+
+/* ── BATTERY-TREE ── */
+.battery-tree { display:flex; flex-direction:column; gap:6px; margin:1.1rem 0; }
+.bat-row { display:flex; align-items:center; gap:10px; background:white; border-radius:var(--rsm); padding:10px 14px; border-left:4px solid transparent; }
+.bat-row.ok     { border-left-color:var(--success); }
+.bat-row.warn   { border-left-color:var(--warn); }
+.bat-row.danger { border-left-color:var(--danger); }
+.bat-icon { font-size:1.1rem; flex-shrink:0; }
+.bat-content { flex:1; }
+.bat-situation { font-family:'Sora',sans-serif; font-size:0.83rem; font-weight:700; color:var(--text); margin-bottom:2px; }
+.bat-action { font-size:0.79rem; color:var(--muted); line-height:1.4; }
+.bat-badge { display:inline-block; font-size:0.68rem; font-weight:700; border-radius:8px; padding:2px 9px; white-space:nowrap; flex-shrink:0; }
+.bat-badge.ok   { background:var(--success-bg); color:var(--success); }
+.bat-badge.warn { background:var(--warn-bg);    color:var(--warn); }
+.bat-badge.no   { background:var(--danger-bg);  color:var(--danger); }
+
+/* ── ASSURANCE-GRID ── */
+.assurance-grid { display:flex; flex-direction:column; gap:6px; margin:1.1rem 0; }
+.assurance-row { display:flex; align-items:flex-start; gap:12px; background:white; border-radius:var(--rsm); padding:10px 14px; border-left:3px solid var(--pc,var(--violet)); }
+.assurance-val { font-size:0.82rem; font-weight:700; color:var(--text); min-width:130px; flex-shrink:0; }
+.assurance-decision { font-size:0.8rem; color:var(--muted); line-height:1.45; }
+
+/* ── CHECKLIST-FINALE ── */
+.checklist-finale { display:grid; gap:8px; margin:1.1rem 0; }
+.checklist-finale--cols-3 { grid-template-columns:repeat(3,1fr); }
+.checklist-finale--cols-4 { grid-template-columns:repeat(4,1fr); }
+.checklist-finale--cols-5 { grid-template-columns:repeat(5,1fr); }
+.cf-bloc { background:white; border-radius:var(--rsm); padding:0.85rem; border:1.5px solid rgba(0,0,0,0.07); border-top:3px solid var(--pc,var(--violet)); }
+.cf-title { font-size:0.85rem; font-weight:700; color:var(--pc,var(--violet)); margin-bottom:6px; display:flex; align-items:center; gap:6px; }
+.cf-items { display:flex; flex-direction:column; gap:3px; }
+.cf-item { font-size:0.80rem; color:var(--muted); padding-left:12px; position:relative; line-height:1.4; }
+.cf-item::before { content:'·'; position:absolute; left:0; color:var(--pc,var(--violet)); }
+
+/* ── RISK-TRANSPORT-GRID ── */
+.risk-transport-grid { display:flex; flex-direction:column; gap:6px; margin:1.1rem 0; }
+.risk-transport-row { display:grid; grid-template-columns:90px 1fr 1fr 1fr; gap:10px; background:white; border-radius:var(--rsm); padding:10px 14px; align-items:center; border-left:4px solid transparent; }
+.risk-transport-row.low      { border-left-color:var(--success); }
+.risk-transport-row.med      { border-left-color:var(--p2); }
+.risk-transport-row.high     { border-left-color:var(--warn); }
+.risk-transport-row.critical { border-left-color:var(--danger); }
+.risk-transport-row.special  { border-left-color:var(--violet); }
+.rt-level { font-size:0.75rem; font-weight:700; }
+.risk-transport-row.low      .rt-level { color:var(--success); }
+.risk-transport-row.med      .rt-level { color:var(--p2); }
+.risk-transport-row.high     .rt-level { color:var(--warn); }
+.risk-transport-row.critical .rt-level { color:var(--danger); }
+.risk-transport-row.special  .rt-level { color:var(--violet); }
+.rt-example { font-size:0.8rem; color:var(--muted); }
+.rt-priority { font-size:0.8rem; font-weight:600; color:var(--text); }
+.rt-check { font-size:0.78rem; color:var(--muted); font-style:italic; }
+
+/* ── RESPONSIVE nouveaux ── */
+@media(max-width:780px) {
+  .checklist-finale--cols-5 { grid-template-columns:repeat(2,1fr); }
+  .checklist-finale--cols-4 { grid-template-columns:repeat(2,1fr); }
+  .checklist-finale--cols-3 { grid-template-columns:1fr; }
+  .risk-transport-row { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:520px) {
+  .checklist-finale--cols-5,
+  .checklist-finale--cols-4,
+  .checklist-finale--cols-3 { grid-template-columns:1fr; }
+  .risk-transport-row { grid-template-columns:1fr; }
 }
 
 /* ── FAQ ── */

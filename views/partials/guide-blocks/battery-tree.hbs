@@ -1,0 +1,27 @@
+{{!-- 
+  BATTERY-TREE
+  Liste verticale de situations avec icône, contenu et badge à droite.
+  Utilisé pour : arbre décisionnel batterie lithium
+  
+  Paramètres JSON :
+  - rows[] :
+      - style     : "ok" (vert), "warn" (orange), "danger" (rouge)
+      - icon      : emoji
+      - situation : titre de la situation
+      - action    : texte descriptif de l'action à faire
+      - badge     : texte du badge à droite
+      - badgeStyle: "ok", "warn", "no"
+--}}
+
+<div class="battery-tree">
+  {{#each block.rows}}
+  <div class="bat-row {{this.style}}">
+    <div class="bat-icon">{{this.icon}}</div>
+    <div class="bat-content">
+      <div class="bat-situation">{{this.situation}}</div>
+      <div class="bat-action">{{{this.action}}}</div>
+    </div>
+    <span class="bat-badge {{this.badgeStyle}}">{{this.badge}}</span>
+  </div>
+  {{/each}}
+</div>

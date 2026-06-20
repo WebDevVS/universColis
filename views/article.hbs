@@ -54,7 +54,7 @@ STICKY NAV
   ════════════════════════════════════════════ --}}
   <div class="en-bref">
     <div class="en-bref-label">✦ En bref</div>
-    <p class="en-bref-text">{{article.enBref.text}}</p>
+    <p class="en-bref-text">{{{article.enBref.text}}}</p>
     <div class="en-bref-pills">
       {{#each article.enBref.pills}}
       <span class="eb-pill">{{this}}</span>
@@ -66,7 +66,7 @@ STICKY NAV
   AUDIENCE
   ════════════════════════════════════════════ --}}
   {{#if article.blocks}}
-  <div class="prose" >
+  <div class="prose">
     {{#each article.blocks}}
     {{#if (eq this.type "texte")}}
     <p>{{{this.text}}}</p>
@@ -300,6 +300,22 @@ STICKY NAV
       {{!-- compare-2 → partial --}}
       {{else if (eq this.type "compare-2")}}
       {{> guide-blocks/compare-2 block=this}}
+
+      {{!-- battery-tree → partial --}}
+      {{else if (eq this.type "battery-tree")}}
+      {{> guide-blocks/battery-tree block=this}}
+
+      {{!-- assurance-grid → partial --}}
+      {{else if (eq this.type "assurance-grid")}}
+      {{> guide-blocks/assurance-grid block=this}}
+
+      {{!-- checklist-finale → partial --}}
+      {{else if (eq this.type "checklist-finale")}}
+      {{> guide-blocks/checklist-finale block=this}}
+
+      {{!-- risk-transport-grid → partial --}}
+      {{else if (eq this.type "risk-transport-grid")}}
+      {{> guide-blocks/risk-transport-grid block=this}}
 
       {{/if}}
       {{/each}}

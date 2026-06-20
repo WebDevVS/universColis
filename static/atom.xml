@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-06-19T15:19:35.227Z</updated>
+  <updated>2026-06-20T15:15:05.904Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -110,6 +110,15 @@
       <link href="https://www.universcolis.fr/conseils/expedier-bouteille-vin-colis"/>
       <id>https://www.universcolis.fr/conseils/expedier-bouteille-vin-colis</id>
       <updated>2026-06-11</updated>
+      <summary>Un nouveau guide est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Envoyer un appareil photo par colis : emballage, batterie, assurance et précautions</title>
+      <link href="https://www.universcolis.fr/conseils/envoyer-appareil-photo-colis"/>
+      <id>https://www.universcolis.fr/conseils/envoyer-appareil-photo-colis</id>
+      <updated>2026-06-20</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>

@@ -1,0 +1,19 @@
+{{!-- 
+  ASSURANCE-GRID
+  Liste verticale clé/valeur avec bordure colorée.
+  Utilisé pour : niveau de valeur → décision recommandée
+  
+  Paramètres JSON :
+  - rows[] :
+      - val      : texte court (ex: "Valeur faible")
+      - decision : texte descriptif de la décision recommandée
+--}}
+
+<div class="assurance-grid">
+  {{#each block.rows}}
+  <div class="assurance-row">
+    <div class="assurance-val">{{this.val}}</div>
+    <div class="assurance-decision">{{{this.decision}}}</div>
+  </div>
+  {{/each}}
+</div>

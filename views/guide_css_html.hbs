@@ -5945,3 +5945,2742 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+
+ <!-- APPAREIL PHOTO -->
+
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envoyer un appareil photo par colis : emballage, batterie, assurance – UniversColis</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --violet: #8269A4; --violet-l: rgba(130,105,164,0.10); --violet-m: rgba(130,105,164,0.22);
+  --coral: #FA7E75;
+  --bg: #E9E6E1; --text: #1e1e1e; --muted: #666; --light: #f7f5f2;
+  --success: #1a5f17; --success-bg: rgba(31,162,22,0.07); --success-bd: rgba(31,162,22,0.22);
+  --warn: #7a4f00; --warn-bg: rgba(255,160,0,0.09); --warn-bd: rgba(255,160,0,0.28);
+  --danger: #8a0000; --danger-bg: rgba(204,0,0,0.06); --danger-bd: rgba(204,0,0,0.18);
+  --r: 16px; --rsm: 10px;
+  --p1: #5B7FA0; --p1-l: rgba(91,127,160,0.10); --p1-m: rgba(91,127,160,0.22);
+  --p2: #C4843A; --p2-l: rgba(196,132,58,0.10); --p2-m: rgba(196,132,58,0.22);
+  --p3: #6A9E7F; --p3-l: rgba(106,158,127,0.10); --p3-m: rgba(106,158,127,0.22);
+}
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.7; padding-bottom:3rem; }
+
+/* ── BREADCRUMB ── */
+.bc { padding:14px 20px; font-size:0.8rem; color:var(--muted); display:flex; align-items:center; gap:6px; max-width:960px; margin:0 auto; flex-wrap:wrap; }
+.bc a { color:var(--violet); text-decoration:none; font-weight:500; }
+.bc a:hover { text-decoration:underline; }
+
+/* ── HERO ── */
+.hero { max-width:960px; margin:0 auto; padding:2.5rem 2.5rem 0; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:7px; background:rgba(130,105,164,0.10); border:1px solid rgba(130,105,164,0.2); border-radius:20px; padding:4px 14px; font-size:0.73rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--violet); margin-bottom:1.2rem; }
+.hero h1 { font-family:'Sora',sans-serif; font-size:clamp(1.6rem,3.8vw,2.4rem); font-weight:800; line-height:1.15; max-width:700px; margin-bottom:0.75rem; color:var(--text); }
+.hero-tricolor { display:flex; gap:4px; margin-bottom:1.1rem; }
+.hero-tricolor span { height:4px; border-radius:2px; }
+.hero-tricolor span:nth-child(1){width:64px;background:var(--p1);}
+.hero-tricolor span:nth-child(2){width:44px;background:var(--p2);}
+.hero-tricolor span:nth-child(3){width:54px;background:var(--p3);}
+.hero-lead { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--muted); max-width:620px; margin-bottom:1.5rem; font-style:italic; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:1.75rem; }
+.hero-pill { background:white; border:1px solid rgba(0,0,0,0.1); border-radius:20px; padding:5px 14px; font-size:0.82rem; font-weight:600; color:var(--muted); box-shadow:0 1px 4px rgba(0,0,0,0.05); }
+.hero-bottom { background:white; border-radius:var(--r) var(--r) 0 0; margin:0 -2.5rem; padding:1.5rem 2.5rem 0; }
+.hero-bottom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,0.06); border-radius:var(--rsm) var(--rsm) 0 0; overflow:hidden; }
+.hb-col { background:var(--light); padding:1rem 1.25rem; font-size:0.82rem; color:var(--muted); line-height:1.5; border-top:3px solid transparent; text-decoration:none; display:block; transition:background .2s; }
+.hb-col:hover { background:white; }
+.hb-col:nth-child(1){border-top-color:var(--p1);}
+.hb-col:nth-child(2){border-top-color:var(--p2);}
+.hb-col:nth-child(3){border-top-color:var(--p3);}
+.hb-col strong { display:block; font-family:'Sora',sans-serif; font-size:0.85rem; color:var(--text); margin-bottom:3px; }
+
+/* ── STICKY NAV ── */
+.sticky-nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--violet-m); margin-bottom:2rem; }
+.snav-inner { max-width:960px; margin:0 auto; display:flex; overflow-x:auto; scrollbar-width:none; }
+.snav-inner::-webkit-scrollbar{display:none;}
+.sn { display:flex; align-items:center; gap:7px; padding:14px 20px; font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:600; color:var(--muted); text-decoration:none; white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; }
+.sn:hover{color:var(--violet);}
+.sn.active{color:var(--violet);border-bottom-color:var(--violet);}
+.sn.active[data-part="1"]{color:var(--p1);border-bottom-color:var(--p1);}
+.sn.active[data-part="2"]{color:var(--p2);border-bottom-color:var(--p2);}
+.sn.active[data-part="3"]{color:var(--p3);border-bottom-color:var(--p3);}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(130,105,164,0.2);flex-shrink:0;transition:background .2s;}
+.sn.active .sn-dot{background:var(--violet);}
+.sn.active[data-part="1"] .sn-dot{background:var(--p1);}
+.sn.active[data-part="2"] .sn-dot{background:var(--p2);}
+.sn.active[data-part="3"] .sn-dot{background:var(--p3);}
+
+/* ── PAGE ── */
+.page { max-width:960px; margin:0 auto; padding:0 0 3rem; }
+.section-gap { margin-bottom:2.25rem; }
+.p1{--pc:var(--p1);}
+.p2{--pc:var(--p2);}
+.p3{--pc:var(--p3);}
+.part-transition { text-align:center; padding:0.5rem 0 1.75rem; font-family:'Lora',serif; font-size:0.92rem; font-style:italic; color:var(--muted); }
+
+/* ── EN BREF ── */
+.en-bref { background:white; border-radius:var(--r); padding:1.75rem 2rem; margin:0 auto 2rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); border-top:4px solid var(--violet); }
+.en-bref-label { display:inline-flex; align-items:center; gap:6px; font-family:'Sora',sans-serif; font-size:0.71rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:1rem; }
+.en-bref-text { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--text); font-style:italic; margin-bottom:1.25rem; }
+.en-bref-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.eb-pill { background:var(--violet-l); border-radius:20px; padding:5px 14px; font-size:0.83rem; color:var(--violet); font-weight:500; border:1px solid var(--violet-m); }
+
+/* ── PART HEADER ── */
+.part-header { background:color-mix(in srgb,var(--pc) 5%,white); border-radius:var(--r); padding:1.75rem 2rem; margin-bottom:1.25rem; border-left:5px solid var(--pc); display:flex; align-items:flex-start; gap:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.part-num { font-family:'Sora',sans-serif; font-size:2.5rem; font-weight:800; color:var(--pc); opacity:0.25; line-height:1; flex-shrink:0; margin-top:-4px; }
+.part-tag { display:inline-block; background:color-mix(in srgb,var(--pc) 12%,transparent); color:var(--pc); border-radius:20px; padding:3px 12px; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+.part-header h2 { font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
+.part-header p { font-size:0.9rem; color:var(--muted); line-height:1.6; margin:0; }
+
+/* ── PROSE ── */
+.prose { background:white; border-radius:var(--r); padding:2rem; margin-bottom:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.p1 .prose { border-left:3px solid color-mix(in srgb,var(--p1) 35%,transparent); }
+.p2 .prose { border-left:3px solid color-mix(in srgb,var(--p2) 35%,transparent); }
+.p3 .prose { border-left:3px solid color-mix(in srgb,var(--p3) 35%,transparent); }
+.prose h3 { font-family:'Sora',sans-serif; font-size:1.03rem; font-weight:700; color:var(--text); margin-bottom:0.75rem; margin-top:1.5rem; }
+.prose h3:first-child{margin-top:0;}
+.prose p { font-size:0.93rem; color:var(--text); line-height:1.75; margin-bottom:0.9rem; }
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;}
+.prose a{color:var(--pc,var(--violet));font-weight:500;}
+.prose ul { list-style:none; padding:0; display:flex; flex-direction:column; gap:5px; margin:0.75rem 0; }
+.prose ul li { font-size:0.91rem; color:var(--text); padding-left:20px; position:relative; line-height:1.6; }
+.prose ul li::before { content:'—'; position:absolute; left:0; color:var(--pc,var(--violet)); font-weight:700; }
+
+/* ── CALLOUT ── */
+.callout { border-radius:var(--rsm); padding:1rem 1.25rem; margin:1.1rem 0; font-size:0.88rem; line-height:1.65; display:flex; align-items:flex-start; gap:12px; }
+.callout-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.callout-body{flex:1;}
+.callout-body strong { display:block; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+.callout.warn{background:var(--warn-bg);border-left:3px solid #ffa000;color:var(--warn);}
+.callout.warn strong{color:#b37700;}
+.callout.info,.callout.tip{background:color-mix(in srgb,var(--pc,var(--violet)) 9%,white);border-left:3px solid var(--pc,var(--violet));}
+.callout.info strong,.callout.tip strong{color:var(--pc,var(--violet));}
+.callout.danger{background:var(--danger-bg);border-left:3px solid var(--danger);color:var(--danger);}
+.callout.danger strong{color:var(--danger);}
+
+/* ── DATA TABLE ── */
+.table-wrap{overflow-x:auto;margin:1.1rem 0;-webkit-overflow-scrolling:touch;border-radius:var(--rsm);}
+.data-table{width:100%;border-collapse:separate;border-spacing:0 4px;min-width:420px;}
+.data-table th{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);padding:5px 12px;text-align:left;}
+.data-table td{padding:10px 12px;font-size:0.86rem;background:white;vertical-align:top;}
+.data-table tr td:first-child{border-radius:var(--rsm) 0 0 var(--rsm);font-weight:600;}
+.data-table tr td:last-child{border-radius:0 var(--rsm) var(--rsm) 0;color:var(--muted);font-size:0.82rem;}
+
+/* ── DIAG CARDS MATÉRIEL PHOTO ── */
+.diag-grid-photo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.diag-card-photo{background:white;border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);transition:box-shadow .2s;}
+.diag-card-photo:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.diag-photo-icon{font-size:1.4rem;margin-bottom:6px;}
+.diag-photo-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.diag-photo-risk{font-size:0.75rem;color:var(--muted);margin-bottom:4px;line-height:1.4;}
+.diag-photo-before{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;border-top:1px solid rgba(0,0,0,0.05);padding-top:5px;margin-top:4px;}
+
+/* ── ZONES SENSIBLES BOÎTIER ── */
+.zones-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.1rem 0;}
+.zone-card{background:white;border-radius:var(--rsm);padding:0.85rem 1rem;border-left:3px solid var(--pc,var(--violet));display:flex;align-items:flex-start;gap:10px;}
+.zone-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.zone-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.zone-risk{font-size:0.75rem;color:var(--muted);line-height:1.4;}
+.zone-precaution{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));margin-top:3px;line-height:1.3;}
+
+/* ── BATTERIE ARBRE DÉCISIONNEL ── */
+.battery-tree{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.bat-row{display:flex;align-items:center;gap:10px;background:white;border-radius:var(--rsm);padding:10px 14px;border-left:4px solid transparent;}
+.bat-row.ok{border-left-color:var(--success);}
+.bat-row.warn{border-left-color:var(--warn);}
+.bat-row.danger{border-left-color:var(--danger);}
+.bat-icon{font-size:1.1rem;flex-shrink:0;}
+.bat-content{flex:1;}
+.bat-situation{font-family:'Sora',sans-serif;font-size:0.83rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.bat-action{font-size:0.79rem;color:var(--muted);line-height:1.4;}
+.bat-badge{display:inline-block;font-size:0.68rem;font-weight:700;border-radius:8px;padding:2px 9px;white-space:nowrap;flex-shrink:0;}
+.bat-badge.ok{background:var(--success-bg);color:var(--success);}
+.bat-badge.warn{background:var(--warn-bg);color:var(--warn);}
+.bat-badge.no{background:var(--danger-bg);color:var(--danger);}
+
+/* ── PREUVES GRID ── */
+.preuves-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.preuve-card{background:white;border-radius:var(--rsm);padding:0.85rem;border:1.5px solid rgba(0,0,0,0.07);text-align:center;}
+.preuve-icon{font-size:1.3rem;margin-bottom:5px;}
+.preuve-label{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.preuve-desc{font-size:0.72rem;color:var(--muted);line-height:1.4;}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;}
+.step-row{display:grid;grid-template-columns:50px 1fr;position:relative;}
+.step-row:not(:last-child) .step-spine::after{content:'';position:absolute;top:40px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% - 40px);background:linear-gradient(to bottom,color-mix(in srgb,var(--pc) 30%,transparent) 60%,transparent);}
+.step-spine{display:flex;flex-direction:column;align-items:center;position:relative;}
+.step-num{width:38px;height:38px;background:var(--pc);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:800;box-shadow:0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent);z-index:1;flex-shrink:0;}
+.step-content{padding:2px 0 2.5rem 18px;}
+.step-content h4{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;line-height:1.3;}
+.step-content p{font-size:0.91rem;color:var(--text);line-height:1.72;margin-bottom:0.7rem;}
+.step-content p:last-child{margin-bottom:0;}
+.step-content strong{font-weight:600;}
+.step-content ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;margin:0.6rem 0;}
+.step-content ul li{font-size:0.88rem;padding-left:18px;position:relative;line-height:1.55;}
+.step-content ul li::before{content:'→';position:absolute;left:0;color:var(--coral);font-weight:700;}
+
+/* ── STEP WITH IMG ── */
+.step-with-img{display:grid;grid-template-columns:1fr 200px;gap:16px;align-items:start;margin-bottom:0.75rem;}
+.step-img-col{display:flex;flex-direction:column;gap:6px;justify-self:center;max-width:200px;}
+.step-img-ph{width:100%;aspect-ratio:4/3;background:var(--light);border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--muted);text-align:center;padding:12px;border:1.5px dashed rgba(0,0,0,0.1);}
+.step-caption-txt{font-size:0.75rem;font-style:italic;color:var(--muted);line-height:1.5;}
+
+/* ── MAT INLINE ── */
+.mat-inline{background:color-mix(in srgb,var(--pc,var(--violet)) 8%,white);border-radius:var(--rsm);padding:1rem 1.25rem;margin:0.9rem 0;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 22%,transparent);}
+.mat-inline-label{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pc,var(--violet));margin-bottom:0.6rem;}
+.mat-links{display:flex;flex-direction:column;gap:6px;}
+.mat-link-row{display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:9px 12px;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 14%,transparent);transition:border-color .2s;flex-wrap:wrap;}
+.mat-link-row:hover{border-color:color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent);}
+.mat-link-name{flex:1;font-size:0.86rem;font-weight:600;color:var(--text);min-width:120px;}
+.mat-link-desc{font-size:0.78rem;color:var(--muted);width:100%;}
+.mat-link-btn{display:inline-flex;align-items:center;gap:6px;background:var(--pc,var(--violet));color:white;text-decoration:none;padding:6px 13px;border-radius:8px;font-size:0.78rem;font-weight:600;white-space:nowrap;flex-shrink:0;transition:opacity .2s;}
+.mat-link-btn::before{content:'🛒';font-size:0.82rem;}
+.mat-link-btn:hover{opacity:0.82;}
+
+/* ── RISQUE TRANSPORTEUR ── */
+.risk-transport-grid{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.risk-transport-row{display:grid;grid-template-columns:90px 1fr 1fr 1fr;gap:10px;background:white;border-radius:var(--rsm);padding:10px 14px;align-items:center;border-left:4px solid transparent;}
+.risk-transport-row.low{border-left-color:var(--success);}
+.risk-transport-row.med{border-left-color:var(--p2);}
+.risk-transport-row.high{border-left-color:var(--warn);}
+.risk-transport-row.critical{border-left-color:var(--danger);}
+.risk-transport-row.special{border-left-color:var(--violet);}
+.rt-level{font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;}
+.risk-transport-row.low .rt-level{color:var(--success);}
+.risk-transport-row.med .rt-level{color:var(--p2);}
+.risk-transport-row.high .rt-level{color:var(--warn);}
+.risk-transport-row.critical .rt-level{color:var(--danger);}
+.risk-transport-row.special .rt-level{color:var(--violet);}
+.rt-example{font-size:0.8rem;color:var(--muted);}
+.rt-priority{font-size:0.8rem;font-weight:600;color:var(--text);}
+.rt-check{font-size:0.78rem;color:var(--muted);font-style:italic;}
+
+/* ── ASSURANCE TABLE ── */
+.assurance-grid{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.assurance-row{display:flex;align-items:flex-start;gap:12px;background:white;border-radius:var(--rsm);padding:10px 14px;border-left:3px solid var(--pc,var(--violet));}
+.assurance-val{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);min-width:130px;flex-shrink:0;}
+.assurance-decision{font-size:0.8rem;color:var(--muted);line-height:1.45;}
+
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.check-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.check-ico{font-size:1.1rem;flex-shrink:0;}
+
+/* ── CHECKLIST FINALE 5 BLOCS ── */
+.checklist-finale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:1.1rem 0;}
+.cf-bloc{background:white;border-radius:var(--rsm);padding:0.85rem;border-top:3px solid var(--pc,var(--violet));border:1.5px solid rgba(0,0,0,0.07);border-top:3px solid var(--pc,var(--violet));}
+.cf-title{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;color:var(--pc,var(--violet));margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.cf-items{display:flex;flex-direction:column;gap:3px;}
+.cf-item{font-size:0.72rem;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.cf-item::before{content:'·';position:absolute;left:0;color:var(--pc,var(--violet));}
+
+/* ── PROCÉDURE (réutilisé) ── */
+.procedure{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.proc-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.proc-n{width:24px;height:24px;background:var(--pc,var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.73rem;font-weight:800;flex-shrink:0;}
+
+/* ── TIPS ── */
+.tips-wrap{display:flex;flex-direction:column;gap:7px;margin:1.1rem 0;}
+.tips-head{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tips-col-lbl{font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:6px 12px;border-radius:8px;text-align:center;}
+.tips-col-lbl.g{background:var(--success-bg);color:var(--success);}
+.tips-col-lbl.b{background:var(--danger-bg);color:var(--danger);}
+.tips-pair{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tip-c{border-radius:var(--rsm);padding:11px 13px;font-size:0.86rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;}
+.tip-c.g{background:var(--success-bg);border:1.5px solid var(--success-bd);color:var(--success);}
+.tip-c.b{background:var(--danger-bg);border:1.5px solid var(--danger-bd);color:var(--danger);}
+
+/* ── DEST SCALE (réutilisé) ── */
+.dest-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:1.1rem 0;}
+.dest-col{border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);}
+.dest-col-header{padding:0.65rem 0.75rem;text-align:center;}
+.dest-col:nth-child(1) .dest-col-header{background:color-mix(in srgb,var(--success) 12%,white);}
+.dest-col:nth-child(2) .dest-col-header{background:color-mix(in srgb,var(--p2) 12%,white);}
+.dest-col:nth-child(3) .dest-col-header{background:color-mix(in srgb,var(--warn) 12%,white);}
+.dest-col:nth-child(4) .dest-col-header{background:color-mix(in srgb,var(--danger) 12%,white);}
+.dest-col-name{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;}
+.dest-col:nth-child(1) .dest-col-name{color:var(--success);}
+.dest-col:nth-child(2) .dest-col-name{color:var(--p2);}
+.dest-col:nth-child(3) .dest-col-name{color:var(--warn);}
+.dest-col:nth-child(4) .dest-col-name{color:var(--danger);}
+.dest-col-body{background:white;padding:0.65rem 0.75rem;}
+.dest-col-items{display:flex;flex-direction:column;gap:3px;}
+.dest-col-item{font-size:0.72rem;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.dest-col-item::before{content:'·';position:absolute;left:0;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:7px;}
+.faq-item{border:1.5px solid rgba(0,0,0,0.07);border-radius:var(--rsm);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;transition:background .2s;}
+.faq-q:hover{background:var(--violet-l);}
+.faq-q.open{background:var(--violet);color:white;}
+.faq-chev{font-size:0.65rem;flex-shrink:0;transition:transform .25s;}
+.faq-q.open .faq-chev{transform:rotate(180deg);}
+.faq-a{display:none;padding:14px 18px;font-size:0.9rem;color:var(--muted);background:rgba(130,105,164,0.04);border-top:1px solid rgba(130,105,164,0.1);line-height:1.7;}
+.faq-a.open{display:block;}
+
+/* ── SOURCES ── */
+.sources{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.5rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.7;}
+.sources strong{font-family:'Sora',sans-serif;font-size:0.8rem;color:var(--text);display:block;margin-bottom:6px;}
+.sources ul{list-style:none;padding:0;}
+.sources li{padding-left:14px;position:relative;}
+.sources li::before{content:'·';position:absolute;left:0;}
+.sources a{color:var(--violet);text-decoration:none;}
+.sources a:hover{text-decoration:underline;}
+.affil{background:var(--violet-l);border-radius:var(--rsm);padding:11px 16px;margin:1.25rem 0 0;display:flex;align-items:flex-start;gap:9px;font-size:0.79rem;color:var(--muted);line-height:1.5;border-left:3px solid var(--violet);}
+.maj{background:var(--light);border-radius:var(--rsm);padding:0.9rem 1.25rem;margin:1.25rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.6;border-left:3px solid rgba(0,0,0,0.1);}
+.maj strong{color:var(--text);font-family:'Sora',sans-serif;font-size:0.8rem;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .hero{padding:1.75rem 1.5rem 0;}
+  .hero-bottom{margin:0 -1.5rem;padding:1.25rem 1.5rem 0;}
+  .hero-bottom-grid{grid-template-columns:1fr;}
+  .hb-col:not(:last-child){border-bottom:1px solid var(--violet-m);}
+  .part-header{padding:1.5rem;flex-direction:column;gap:0.5rem;}
+  .part-num{font-size:1.8rem;}
+  .prose{padding:1.5rem;}
+  .en-bref{padding:1.5rem;}
+  .diag-grid-photo{grid-template-columns:repeat(2,1fr);}
+  .zones-grid{grid-template-columns:1fr;}
+  .preuves-grid{grid-template-columns:repeat(2,1fr);}
+  .risk-transport-row{grid-template-columns:1fr 1fr;}
+  .tips-pair,.tips-head{grid-template-columns:1fr;}
+  .tips-col-lbl.b{display:none;}
+  .step-with-img{grid-template-columns:1fr;}
+  .dest-scale{grid-template-columns:repeat(2,1fr);}
+  .checklist-finale{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:520px){
+  .page{padding:0 0 2rem;}
+  .en-bref,.part-header,.prose{margin-left:8px;margin-right:8px;}
+  .bc{padding:10px 12px;}
+  .hero h1{font-size:1.35rem;}
+  .step-row{grid-template-columns:40px 1fr;}
+  .step-num{width:32px;height:32px;font-size:0.82rem;}
+  .step-content{padding:2px 0 2rem 12px;}
+  .sn{padding:12px 14px;font-size:0.76rem;}
+  .diag-grid-photo{grid-template-columns:1fr;}
+  .preuves-grid{grid-template-columns:1fr;}
+  .checklist-finale{grid-template-columns:1fr;}
+  .dest-scale{grid-template-columns:1fr;}
+  .risk-transport-row{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<nav class="bc" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/conseils">Conseils d'emballage</a><span>›</span>
+  <span>Envoyer un appareil photo par colis</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">📦 Guide complet 2026</div>
+  <h1>Envoyer un appareil photo par colis : emballage, batterie, assurance et précautions</h1>
+  <div class="hero-tricolor"><span></span><span></span><span></span></div>
+  <p class="hero-lead">Boîtier, objectif, batterie lithium, vente d'occasion, SAV ou cadeau — tout ce qu'il faut vérifier avant d'acheter l'étiquette.</p>
+  <div class="hero-meta">
+    <div class="hero-pill">⏱ 12 min de lecture</div>
+    <div class="hero-pill">📋 3 parties · 8 étapes</div>
+    <div class="hero-pill">📷 Boîtier, objectif, kit, SAV</div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <a href="#avant" class="hb-col"><strong>Partie 1 — Avant d'emballer</strong>Matériel, batterie, risques, preuves</a>
+      <a href="#emballage" class="hb-col"><strong>Partie 2 — Emballage</strong>8 étapes, boîtier, objectif, accessoires</a>
+      <a href="#apres" class="hb-col"><strong>Partie 3 — Après emballage</strong>Transporteur, assurance, douane, preuves</a>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky-nav" aria-label="Navigation">
+  <div class="snav-inner">
+    <a href="#avant"    class="sn active" data-part="1"><span class="sn-dot"></span>Avant d'emballer</a>
+    <a href="#emballage" class="sn" data-part="2"><span class="sn-dot"></span>Emballage</a>
+    <a href="#apres"    class="sn" data-part="3"><span class="sn-dot"></span>Après emballage</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- EN BREF -->
+  <div class="en-bref">
+    <div class="en-bref-label">✦ En bref</div>
+    <p class="en-bref-text">Un appareil photo est un matériel optique et électronique fragile : boîtier, objectif, batterie lithium, carte mémoire, chargeur et accessoires doivent être protégés séparément. L'objectif ne doit pas forcer sur la monture, les lentilles ne doivent subir aucune pression directe et le contenu ne doit jamais bouger dans le carton.</p>
+    <div class="en-bref-pills">
+      <span class="eb-pill">📷 Chaque élément protégé séparément</span>
+      <span class="eb-pill">🔇 Colis silencieux</span>
+      <span class="eb-pill">🔋 Batterie lithium à vérifier</span>
+      <span class="eb-pill">📸 Preuves avant envoi</span>
+      <span class="eb-pill">📦 Discret à l'extérieur</span>
+    </div>
+  </div>
+
+  <!-- ════════ PARTIE 1 ════════ -->
+  <div id="avant" class="section-gap p1">
+
+    <div class="part-header p1">
+      <div class="part-num">1</div>
+      <div>
+        <div class="part-tag">Avant d'emballer</div>
+        <h2>Identifier le matériel photo, la batterie et le risque réel</h2>
+        <p>La première erreur consiste à raisonner uniquement en "objet fragile". Le matériel photo cumule plusieurs vulnérabilités : écran, viseur, monture, capteur, lentilles, bagues, stabilisation, autofocus et batterie lithium.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Peut-on envoyer un appareil photo par colis ?</h3>
+      <p>Dans la plupart des cas, oui, à condition de préparer l'envoi selon le contenu réel, l'état de la batterie, la valeur du matériel et la destination. Un compact peu coûteux envoyé en France, un objectif professionnel vendu sur une plateforme de seconde main, un kit complet ou un boîtier envoyé au SAV ne présentent pas le même niveau de risque.</p>
+      <p>Les données sur la livraison confirment un point essentiel : le risque ne vient pas seulement du transport, mais aussi de la préparation. Pour un appareil photo, plus l'objet est fragile, dense, cher et contestable, plus l'emballage, le calage et les justificatifs avant envoi deviennent importants.</p>
+
+      <div class="diag-grid-photo">
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">📷</div>
+          <div class="diag-photo-label">Boîtier seul</div>
+          <div class="diag-photo-risk">Écran, capteur, monture</div>
+          <div class="diag-photo-before">Éteindre, retirer la carte, poser bouchon boîtier</div>
+        </div>
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">🔭</div>
+          <div class="diag-photo-label">Objectif seul</div>
+          <div class="diag-photo-risk">Lentilles, bagues, monture</div>
+          <div class="diag-photo-before">Bouchons avant/arrière, aucune pression directe</div>
+        </div>
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">📷🔭</div>
+          <div class="diag-photo-label">Boîtier + objectif</div>
+          <div class="diag-photo-risk">Tension sur la monture</div>
+          <div class="diag-photo-before">Séparer si possible, bouchons sur les deux</div>
+        </div>
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">🎒</div>
+          <div class="diag-photo-label">Kit complet</div>
+          <div class="diag-photo-risk">Chocs entre éléments</div>
+          <div class="diag-photo-before">Isoler chaque pièce, accessoires dans sachets</div>
+        </div>
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">🛒</div>
+          <div class="diag-photo-label">Vente d'occasion</div>
+          <div class="diag-photo-risk">Litige état / accessoires</div>
+          <div class="diag-photo-before">Photos, numéro de série, annonce, preuve de dépôt</div>
+        </div>
+        <div class="diag-card-photo">
+          <div class="diag-photo-icon">🔧</div>
+          <div class="diag-photo-label">Réparation SAV</div>
+          <div class="diag-photo-risk">Erreur ou accessoire perdu</div>
+          <div class="diag-photo-before">Formulaire, référence, consignes SAV, liste contenu</div>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Ne laissez jamais un boîtier ouvert dans un colis</strong>
+          La monture, les contacts et le capteur doivent rester protégés contre la poussière, les frottements et les protections improvisées qui pourraient se détacher pendant le transport.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les risques principaux pendant le transport</h3>
+      <p>Un appareil peut être endommagé par un choc visible, mais les dégâts les plus difficiles à prouver viennent souvent de contraintes moins évidentes : vibrations, pression, torsion, humidité, poussière ou mouvement interne dans le carton.</p>
+
+      <div class="zones-grid">
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--p1)"></div>
+          <div>
+            <div class="zone-label">Monture / baïonnette</div>
+            <div class="zone-risk">Torsion en cas de choc latéral si l'objectif reste monté</div>
+            <div class="zone-precaution">→ Séparer l'objectif si possible</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--p2)"></div>
+          <div>
+            <div class="zone-label">Capteur</div>
+            <div class="zone-risk">Poussière si le boîtier reste ouvert</div>
+            <div class="zone-precaution">→ Bouchon de boîtier indispensable</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--danger)"></div>
+          <div>
+            <div class="zone-label">Lentille frontale / arrière</div>
+            <div class="zone-risk">Rayure, pression directe, choc</div>
+            <div class="zone-precaution">→ Bouchons avant et arrière sur l'objectif</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--p3)"></div>
+          <div>
+            <div class="zone-label">Écran / viseur</div>
+            <div class="zone-risk">Pression si le matériel est trop proche du carton</div>
+            <div class="zone-precaution">→ Couche douce au contact, marge de protection</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--violet)"></div>
+          <div>
+            <div class="zone-label">Bagues de zoom / AF / stabilisation</div>
+            <div class="zone-risk">Micro-chocs répétés si le contenu bouge</div>
+            <div class="zone-precaution">→ Calage dense, colis silencieux</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:var(--muted)"></div>
+          <div>
+            <div class="zone-label">Contacts électroniques</div>
+            <div class="zone-risk">Oxydation, rayure, humidité</div>
+            <div class="zone-precaution">→ Bouchons, matériel sec, gel de silice si nécessaire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Un colis appareil photo doit être silencieux</strong>
+          Si le boîtier, l'objectif ou les accessoires bougent encore, ajoutez du calage avant fermeture. La mention "Fragile" ne compensera jamais un contenu mobile.
+        </div>
+      </div>
+
+      <p>L'humidité mérite une attention particulière. Un colis mouillé, un stockage prolongé dans un emballage humide ou de fortes variations de température peuvent favoriser la condensation, les traces internes, l'oxydation des contacts ou le développement de <strong>moisissure optique (fungus)</strong>. Ne jamais enfermer un matériel humide dans un plastique fermé avant qu'il soit complètement sec.</p>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Colis neutre et discret</strong>
+          N'écrivez pas "appareil photo", une marque, un modèle ou une valeur sur le carton. Un emballage bien fermé, accompagné de photos et du numéro de série, est beaucoup plus solide qu'un colis "fragile" visible.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Batterie lithium : faut-il la laisser dans l'appareil ou la retirer ?</h3>
+      <p>Pour un appareil photo courant, ne retirez pas la batterie automatiquement. Le plus simple est souvent de la laisser dans le boîtier, si le service choisi l'accepte, si elle est en bon état, si l'appareil est éteint et si aucun bouton ne peut être actionné pendant le transport. <strong>Ne démontez jamais une batterie intégrée ou difficile à retirer.</strong></p>
+
+      <div class="battery-tree">
+        <div class="bat-row ok">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie intégrée non amovible</div>
+            <div class="bat-action">Ne pas démonter. Laisser dans l'appareil, sans outil, sans forcer.</div>
+          </div>
+          <span class="bat-badge ok">✓ Ne pas démonter</span>
+        </div>
+        <div class="bat-row ok">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie amovible dans le boîtier</div>
+            <div class="bat-action">Appareil éteint, batterie saine dans son compartiment — configuration la plus simple pour un envoi standard.</div>
+          </div>
+          <span class="bat-badge ok">✓ Laisser si accepté</span>
+        </div>
+        <div class="bat-row warn">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie retirée ou supplémentaire</div>
+            <div class="bat-action">Contacts protégés avec matériau non conducteur. Emballée à part, sans contact avec câble, chargeur ou pièce métallique. Vérifier l'acceptation du service.</div>
+          </div>
+          <span class="bat-badge warn">⚠ Isoler les contacts</span>
+        </div>
+        <div class="bat-row warn">
+          <div class="bat-icon">🌍</div>
+          <div class="bat-content">
+            <div class="bat-situation">International / Outre-mer</div>
+            <div class="bat-action">Règles variables selon type, capacité, destination et documents demandés. Vérifier avant dépôt. Colissimo : max 4 piles, 2 batteries lithium-ion, 20 Wh/pile, 100 Wh/batterie, 5 kg net.</div>
+          </div>
+          <span class="bat-badge warn">⚠ Vérifier le service</span>
+        </div>
+        <div class="bat-row danger">
+          <div class="bat-icon">⚠️</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie gonflée, chaude, fissurée, oxydée ou rappelée</div>
+            <div class="bat-action">Ne pas envoyer en colis standard. Pour un SAV, suivre les consignes du réparateur ou du fabricant.</div>
+          </div>
+          <span class="bat-badge no">✗ Ne pas envoyer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Vente d'occasion ou réparation : préparer les preuves</h3>
+      <p>Pour une vente d'occasion, les preuves sont aussi importantes que l'emballage. Avant l'envoi, constituez un dossier complet — il sera indispensable en cas de litige.</p>
+
+      <div class="preuves-grid">
+        <div class="preuve-card">
+          <div class="preuve-icon">📸</div>
+          <div class="preuve-label">Photos état</div>
+          <div class="preuve-desc">Boîtier, écran, objectif, lentilles, monture, batterie, accessoires</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">🔢</div>
+          <div class="preuve-label">Numéro de série</div>
+          <div class="preuve-desc">Photographié lisiblement avant emballage</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">📋</div>
+          <div class="preuve-label">Annonce</div>
+          <div class="preuve-desc">Capture de l'annonce, prix, échanges avec l'acheteur</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">📦</div>
+          <div class="preuve-label">Photos calage</div>
+          <div class="preuve-desc">Boîtier protégé, objectif séparé, accessoires isolés, carton ouvert</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">🧾</div>
+          <div class="preuve-label">Preuve de dépôt</div>
+          <div class="preuve-desc">Reçu, numéro de suivi, poids indiqué au dépôt</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">💰</div>
+          <div class="preuve-label">Valeur prouvable</div>
+          <div class="preuve-desc">Facture, preuve de paiement, annonces comparables</div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-ico">🔧</div>
+        <div class="callout-body">
+          <strong>Pour un envoi en réparation SAV</strong>
+          N'ajoutez pas tout "au cas où". Envoyez seulement ce que le SAV demande. La carte mémoire doit généralement être retirée. Ajoutez dans le colis : référence du dossier, description claire de la panne, coordonnées, preuve d'achat si garantie concernée et liste exacte des accessoires inclus.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /avant -->
+
+  <div class="part-transition">Diagnostic posé, preuves prêtes, batterie vérifiée. Place à la construction du colis.</div>
+
+  <!-- ════════ PARTIE 2 ════════ -->
+  <div id="emballage" class="section-gap p2">
+
+    <div class="part-header p2">
+      <div class="part-num">2</div>
+      <div>
+        <div class="part-tag">Emballage</div>
+        <h2>Comment emballer un appareil photo, un objectif et les accessoires</h2>
+        <p>Chaque protection doit avoir un rôle : protéger l'écran, fermer la monture, isoler l'objectif, maintenir la batterie, bloquer les accessoires, amortir le fond, empêcher le mouvement et garder le carton discret.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <div class="steps-list">
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">1</div></div>
+          <div class="step-content">
+            <h4>Préparer l'appareil avant emballage</h4>
+            <p><strong>Éteignez l'appareil.</strong> Vérifiez que l'interrupteur est bien sur OFF et qu'aucun bouton ne risque d'être pressé pendant le transport. Pour un compact ou un bridge avec objectif rétractable, l'objectif doit être rentré si le modèle le permet.</p>
+            <p><strong>Retirez la carte mémoire</strong>, sauf si elle est volontairement incluse ou demandée par le SAV. Si l'appareil possède deux emplacements, vérifiez les deux. Photographiez ensuite l'état du matériel : écran, boîtier, lentilles, monture, numéro de série, batterie et accessoires inclus.</p>
+
+            <div class="step-with-img">
+              <p>Pour un appareil argentique, vérifiez aussi la présence éventuelle d'une pellicule, le levier d'armement et les joints. Pour une caméra avec écran orientable, micro, griffe accessoire ou ports latéraux, évitez toute pression sur les parties saillantes.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">[ Photo : appareil éteint, carte mémoire retirée, numéro de série visible ]</div>
+                <div class="step-caption-txt">Appareil éteint, carte retirée, numéro de série photographié — avant tout emballage.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Chiffon microfibre propre</div>
+                    <div class="mat-link-desc">Nettoyer légèrement sans rayer avant photo et emballage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Sachets pour carte mémoire et petites pièces</div>
+                    <div class="mat-link-desc">Éviter perte et confusion lors de l'emballage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">2</div></div>
+          <div class="step-content">
+            <h4>Séparer le boîtier et l'objectif si possible</h4>
+            <p>Si l'objectif est amovible, il est généralement préférable de le retirer avant l'envoi. Un objectif monté peut agir comme un levier si le carton tombe ou si un poids appuie sur le côté — cela crée une contrainte directe sur la monture.</p>
+            <p>Une fois l'objectif retiré, installez immédiatement le <strong>bouchon de boîtier</strong>. Le boîtier ne doit jamais rester ouvert. L'objectif doit recevoir son <strong>bouchon avant et son bouchon arrière</strong>. Pour un compact ou un bridge à objectif intégré, renforcez la protection autour de la partie optique et évitez toute pression directe sur l'avant.</p>
+
+            <div class="step-with-img">
+              <p>Pour un compact ou un bridge à objectif intégré, l'objectif ne peut pas être retiré. Il faut alors renforcer la protection autour de la partie optique et éviter toute pression directe sur l'avant de l'appareil.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">[ Photo : boîtier bouchonné à gauche, objectif séparé avec bouchons à droite ]</div>
+                <div class="step-caption-txt">Objectif monté = risque. Boîtier bouchonné + objectif séparé = bon réflexe.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon de boîtier compatible</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon arrière d'objectif</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon avant d'objectif</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">3</div></div>
+          <div class="step-content">
+            <h4>Protéger le boîtier</h4>
+            <p>Le boîtier doit être protégé <strong>sans être comprimé</strong>. Commencez par l'écran : placez une couche douce et propre contre la surface pour limiter les rayures. Ajoutez ensuite une protection amortissante (mousse fine, papier bulle, housse propre).</p>
+            <p>Les parties saillantes doivent rester sans point d'appui : viseur, griffe flash, molettes, trappes, poignée, ports latéraux et écran orientable. <strong>Le ruban adhésif ne doit jamais être collé directement sur le boîtier</strong>, le grip, l'écran ou les caoutchoucs. Il ferme la protection autour du boîtier, pas sur le boîtier.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais</div>
+                    <div class="mat-link-desc">Protection amortissante autour du boîtier</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Mousse fine de protection</div>
+                    <div class="mat-link-desc">Utile pour l'écran et les zones sensibles</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Housse souple ou pochette matelassée</div>
+                    <div class="mat-link-desc">Protection intérieure propre avant calage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">4</div></div>
+          <div class="step-content">
+            <h4>Emballer l'objectif séparément</h4>
+            <p>L'objectif est souvent l'élément le plus fragile, et parfois le plus cher. Il doit être emballé séparément du boîtier, même s'ils partent dans le même colis. <strong>La lentille frontale et la lentille arrière ne doivent jamais recevoir de pression directe.</strong></p>
+            <p>Si l'objectif possède une bague de zoom verrouillable, activez le verrouillage sans forcer. Ne bloquez pas une bague avec du ruban adhésif directement collé sur l'objectif — cela peut laisser des traces ou créer une contrainte. Pour un <strong>téléobjectif ou zoom lumineux</strong>, le calage doit soutenir l'objectif sur sa longueur, pas seulement sur ses extrémités.</p>
+
+            <div class="step-with-img">
+              <p>Pour un objectif lourd, long ou coûteux, ajoutez une petite boîte interne après la protection individuelle. Cette boîte doit ensuite être calée dans le carton extérieur. Les filtres, pare-soleil et adaptateurs doivent être placés dans des étuis ou sachets séparés.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">[ Photo : objectif avec bouchons avant/arrière, emballé séparément ]</div>
+                <div class="step-caption-txt">Bouchon avant/arrière, fût protégé, petite boîte interne pour objectif lourd.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais ou mousse enveloppante</div>
+                    <div class="mat-link-desc">Protéger le fût sans pression directe sur les lentilles</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Petite boîte interne pour objectif</div>
+                    <div class="mat-link-desc">Recommandée pour objectif lourd ou coûteux</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Étui ou pochette pour filtre</div>
+                    <div class="mat-link-desc">Éviter fissure, rayure et perte pendant le transport</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 5 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">5</div></div>
+          <div class="step-content">
+            <h4>Isoler batterie, chargeur, câbles et petits accessoires</h4>
+            <p>Les accessoires <strong>ne doivent jamais servir de calage</strong>. Un chargeur, un câble, une sangle, un filtre ou une bague laissés libres peuvent rayer, comprimer ou heurter le boîtier et l'objectif pendant le transport.</p>
+            <p>Emballez chaque élément séparément : chargeur à part, câbles pliés sans tension, filtres dans leur étui, bouchons et petites pièces regroupés dans un sachet. Si une batterie séparée est incluse et acceptée, ses contacts doivent être protégés et elle ne doit pas toucher un objet conducteur.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Sachets zip ou pochettes séparées</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Ruban isolant ou protection non conductrice</div>
+                    <div class="mat-link-desc">Protéger les contacts d'une batterie séparée</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Petites pochettes matelassées</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 6 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">6</div></div>
+          <div class="step-content">
+            <h4>Choisir le bon carton</h4>
+            <p>Le carton doit être rigide, propre, sec et assez solide pour le poids du matériel. Pour un boîtier récent, un objectif lourd ou un kit complet, privilégiez un <strong>carton double cannelure</strong>. Gardez si possible environ <strong>5 cm de marge</strong> autour du matériel protégé.</p>
+            <p>La boîte d'origine peut servir de protection intérieure si elle maintient bien le boîtier avec ses inserts. Mais elle ne doit pas voyager seule : <strong>placez-la dans un carton extérieur neutre</strong>. Pour un cadeau, la présentation reste à l'intérieur, mais l'extérieur doit rester discret.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton double cannelure</div>
+                    <div class="mat-link-desc">Recommandé pour boîtier, objectif ou kit de valeur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton extérieur neutre</div>
+                    <div class="mat-link-desc">Indispensable si vous utilisez la boîte d'origine</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Plaques de carton ondulé ou mousse</div>
+                    <div class="mat-link-desc">Créer une première marge de protection sur les faces</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 7 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">7</div></div>
+          <div class="step-content">
+            <h4>Caler le colis et supprimer tout mouvement</h4>
+            <p>Placez d'abord une couche amortissante au fond du carton. Le matériel ne doit jamais reposer directement sur le fond. Placez ensuite le boîtier, l'objectif et les accessoires protégés au centre. <strong>Aucun élément ne doit toucher directement les parois.</strong></p>
+            <p>Fermez temporairement le carton et inclinez-le doucement. Si vous entendez un bruit, si quelque chose glisse ou si le contenu semble bouger, le calage est insuffisant. Les chips de calage et coussins d'air peuvent compléter un emballage, mais ils ne doivent pas être la seule protection — un boîtier ou objectif est trop dense.</p>
+
+            <div class="step-with-img">
+              <p>Remplissez les côtés avec un calage dense, puis ajoutez une protection au-dessus. Le dessus doit être comblé sans écraser le matériel.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">[ Schéma : fond amorti, contenu centré, calage 6 faces ]</div>
+                <div class="step-caption-txt">Fond amorti, contenu centré, calage dense sur 6 faces — colis silencieux.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier kraft froissé dense</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Mousse de calage</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier bulle épais</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 8 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">8</div></div>
+          <div class="step-content" style="padding-bottom:0.5rem;">
+            <h4>Fermer, étiqueter et rester discret</h4>
+            <p>Fermez le carton avec un ruban solide et renforcez le fond. Posez l'étiquette à plat sur une surface propre, code-barres lisible, non plié et sans reflet. Si vous réutilisez un carton, <strong>retirez les anciennes étiquettes</strong>.</p>
+            <p><strong>Restez discret</strong> : n'écrivez pas "appareil photo", "objectif", une marque, un modèle ou une valeur sur le carton. La mention "Fragile" peut informer, mais elle ne remplace jamais le calage, le suivi, l'assurance et les preuves.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Ruban adhésif renforcé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Dévidoir pour ruban</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Pochette transparente pour étiquette</div>
+                    <div class="mat-link-desc">Protéger l'étiquette sans gêner le scan du code-barres</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div>
+
+    <!-- ERREURS -->
+    <div class="prose">
+      <h3>Erreurs fréquentes à éviter</h3>
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Utiliser un carton rigide double cannelure avec 5 cm de marge</span></div>
+          <div class="tip-c b"><span>✗</span><span>Utiliser une enveloppe à bulles — compression garantie</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Séparer l'objectif et poser les bouchons sur les deux</span></div>
+          <div class="tip-c b"><span>✗</span><span>Laisser l'objectif monté — risque de torsion sur la monture</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Isoler chaque accessoire dans un sachet ou une pochette</span></div>
+          <div class="tip-c b"><span>✗</span><span>Laisser les accessoires libres comme calage</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Placer la boîte d'origine dans un carton extérieur neutre</span></div>
+          <div class="tip-c b"><span>✗</span><span>Envoyer la boîte d'origine seule — vol et boîte abîmée</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Photographier le matériel, la série, le calage avant fermeture</span></div>
+          <div class="tip-c b"><span>✗</span><span>Envoyer sans aucune photo — dossier faible en cas de litige</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Test de mouvement : colis silencieux avant dépôt</span></div>
+          <div class="tip-c b"><span>✗</span><span>Compter sur "Fragile" pour compenser un calage insuffisant</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /emballage -->
+
+  <div class="part-transition">Colis fermé, silencieux, discret. Il reste à choisir le bon service et vérifier les points critiques avant dépôt.</div>
+
+  <!-- ════════ PARTIE 3 ════════ -->
+  <div id="apres" class="section-gap p3">
+
+    <div class="part-header p3">
+      <div class="part-num">3</div>
+      <div>
+        <div class="part-tag">Après emballage</div>
+        <h2>Transporteur, assurance, douane et preuves</h2>
+        <p>Pesez le colis fermé, mesurez ses dimensions réelles, puis comparez les offres avec les bonnes informations : destination, valeur du matériel, délai, suivi, assurance, batterie lithium et documents éventuels.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Dernière vérification avant de choisir le mode d'envoi</h3>
+      <p>Une fois l'appareil emballé, le colis final n'a souvent plus le même poids ni les mêmes dimensions que prévu. Le carton, les protections, le calage et les accessoires peuvent modifier le format réel de l'envoi. C'est donc à ce moment qu'il devient possible de comparer correctement.</p>
+
+      <div class="callout tip">
+        <div class="callout-ico">💡</div>
+        <div class="callout-body">
+          <strong>Ne choisissez pas seulement le prix</strong>
+          Pour du matériel photo, vérifiez aussi le suivi, l'assurance, la remise contre signature et les restrictions liées à la batterie ou à la destination. Sur <a href="https://www.universcolis.fr/" style="color:var(--pc);font-weight:600;">UniversColis</a>, comparez avec le poids et les dimensions réels du colis fermé.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quel transporteur choisir ?</h3>
+      <p>Il n'existe pas de transporteur idéal pour tous les appareils photo. Le bon choix dépend d'abord de la valeur du matériel, puis de la destination, de la batterie lithium, du suivi, de l'assurance et de la preuve de livraison. Colissimo, Chronopost, Mondial Relay, DHL, UPS ou FedEx peuvent tous être pertinents selon le cas — il faut comparer le service précis, pas seulement le nom du transporteur.</p>
+
+      <div class="risk-transport-grid">
+        <div class="risk-transport-row low">
+          <div class="rt-level">Faible</div>
+          <div class="rt-example">Compact, cadeau à un proche</div>
+          <div class="rt-priority">Suivi</div>
+          <div class="rt-check">Prix, délai</div>
+        </div>
+        <div class="risk-transport-row med">
+          <div class="rt-level">Moyen</div>
+          <div class="rt-example">Bridge, boîtier simple</div>
+          <div class="rt-priority">Suivi + couverture</div>
+          <div class="rt-check">Indemnisation incluse</div>
+        </div>
+        <div class="risk-transport-row high">
+          <div class="rt-level">Élevé</div>
+          <div class="rt-example">Boîtier récent, objectif cher</div>
+          <div class="rt-priority">Assurance</div>
+          <div class="rt-check">Signature, exclusions</div>
+        </div>
+        <div class="risk-transport-row critical">
+          <div class="rt-level">Très élevé</div>
+          <div class="rt-example">Kit pro, forte valeur</div>
+          <div class="rt-priority">Sécurité renforcée</div>
+          <div class="rt-check">Assurance, valeur déclarée</div>
+        </div>
+        <div class="risk-transport-row special">
+          <div class="rt-level">Cas sensible</div>
+          <div class="rt-example">SAV, vente, international</div>
+          <div class="rt-priority">Conformité</div>
+          <div class="rt-check">Douane, batterie, preuves</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Assurance, valeur déclarée et preuve de valeur</h3>
+      <p>L'assurance n'a de sens que si elle correspond à la <strong>valeur réelle du matériel envoyé</strong>. Un boîtier récent, un objectif lumineux, une batterie, un chargeur, des filtres et une boîte d'origine peuvent représenter une valeur bien supérieure à l'indemnisation incluse par défaut.</p>
+      <p>La bonne question n'est pas seulement "combien coûte l'envoi ?" mais : <strong>"quelle somme pourra réellement être défendue si le colis est perdu, abîmé ou contesté ?"</strong> L'assurance ne couvre pas tout automatiquement — elle peut être refusée si l'emballage est insuffisant, si la valeur est mal justifiée ou si les délais de réclamation ne sont pas respectés.</p>
+
+      <div class="assurance-grid">
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur faible</div>
+          <div class="assurance-decision">Suivi + emballage sérieux suffisent dans la plupart des cas</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur moyenne</div>
+          <div class="assurance-decision">Vérifier la couverture incluse dans le service choisi</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur élevée</div>
+          <div class="assurance-decision">Assurance complémentaire + remise contre signature</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur très élevée</div>
+          <div class="assurance-decision">Valeur Déclarée ou service spécialisé — valeur prouvable indispensable</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur mal prouvée</div>
+          <div class="assurance-decision">Indemnisation difficile à défendre, même avec une assurance souscrite</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Une assurance ne remplace jamais l'emballage ni les preuves</strong>
+          Pour du matériel photo, conservez au minimum : valeur, état, numéro de série, contenu, calage, preuve de dépôt et preuve de livraison. La valeur assurée doit être prouvable : facture, preuve de paiement, annonces comparables.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Envoyer un appareil photo à l'étranger ou en Outre-mer</h3>
+      <p>En France métropolitaine, l'envoi reste généralement plus simple. Vers l'Union européenne, les formalités douanières sont en principe plus légères qu'hors UE, mais il faut vérifier le transporteur, l'assurance et la batterie. Hors UE, prévoyez une déclaration douanière précise.</p>
+
+      <div class="dest-scale">
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">France</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Emballage</div>
+              <div class="dest-col-item">Suivi</div>
+              <div class="dest-col-item">Batterie lithium</div>
+              <div class="dest-col-item">Assurance</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Union européenne</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Transporteur</div>
+              <div class="dest-col-item">Assurance</div>
+              <div class="dest-col-item">Batterie</div>
+              <div class="dest-col-item">Territoires particuliers</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Outre-mer</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">CN22 / CN23</div>
+              <div class="dest-col-item">Trajet plus long</div>
+              <div class="dest-col-item">Variations humidité</div>
+              <div class="dest-col-item">Règles destination</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Hors UE</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Déclaration douanière</div>
+              <div class="dest-col-item">Description précise</div>
+              <div class="dest-col-item">Valeur réelle</div>
+              <div class="dest-col-item">Documents adaptés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:1rem;">Évitez les descriptions vagues comme "cadeau", "électronique" ou "matériel photo". Préférez des descriptions précises :</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Élément</th><th>Description conseillée</th><th>Code indicatif</th></tr></thead>
+          <tbody>
+            <tr><td>Appareil photo numérique</td><td>Appareil photo numérique d'occasion, sans carte mémoire</td><td>8525 89 00 00</td></tr>
+            <tr><td>Objectif photo</td><td>Objectif photo d'occasion, monture précisée si utile</td><td>9002 11 00</td></tr>
+            <tr><td>Chargeur</td><td>Chargeur pour appareil photo</td><td>8504 40 60</td></tr>
+            <tr><td>Batterie lithium-ion séparée</td><td>Batterie lithium-ion rechargeable pour appareil photo</td><td>8507 60 00</td></tr>
+            <tr><td>Kit complet</td><td>Boîtier + objectif + accessoires détaillés séparément</td><td>À classifier élément par élément</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">ℹ️</div>
+        <div class="callout-body">
+          <strong>Codes douaniers : repères à confirmer</strong>
+          Vérifiez les codes avec des outils officiels comme <a href="https://www.douane.gouv.fr/demarche/connaitre-la-nomenclature-de-votre-marchandise" target="_blank" rel="noopener">RITA (Douane française)</a> ou <a href="https://trade.ec.europa.eu/access-to-markets/" target="_blank" rel="noopener">Access2Markets (Commission européenne)</a>. Les codes indiqués sont des repères à confirmer selon le modèle exact, la destination, la valeur et le type d'envoi. Le code douanier et la règle de transport des batteries sont deux vérifications distinctes.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Que faire si l'appareil arrive cassé, perdu ou contesté ?</h3>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Problème</th><th>Première action</th><th>Preuves utiles</th></tr></thead>
+          <tbody>
+            <tr><td>Carton abîmé</td><td>Photographier avant ouverture</td><td>Extérieur, étiquette, coins, ruban</td></tr>
+            <tr><td>Matériel cassé</td><td>Photographier objet + emballage intérieur</td><td>Calage, protections, état avant/après</td></tr>
+            <tr><td>Objectif endommagé</td><td>Ne pas forcer bague ou monture bloquée</td><td>Lentilles, monture, bagues, bouchons</td></tr>
+            <tr><td>Colis perdu</td><td>Ouvrir une recherche transporteur</td><td>Dépôt, suivi, valeur, assurance</td></tr>
+            <tr><td>Litige acheteur</td><td>Fournir un dossier structuré</td><td>Série, photos, annonce, suivi, calage</td></tr>
+            <tr><td>SAV contesté</td><td>Demander les photos reçues par le réparateur</td><td>Formulaire, tracking, contenu, emballage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Ne jetez rien avant la fin du dossier</strong>
+          Gardez le carton, le calage et toutes les protections. L'emballage peut prouver soit un choc pendant le transport, soit un emballage insuffisant. Ne forcez pas un objectif bloqué ou une monture déformée — cela peut aggraver le dommage et compliquer l'analyse.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Checklist finale avant dépôt</h3>
+      <p>Le colis est prêt seulement s'il est solide, silencieux, discret, compatible avec le transporteur et défendable en cas de litige.</p>
+
+      <div class="checklist-finale">
+        <div class="cf-bloc" style="--pc:var(--p1);">
+          <div class="cf-title">📷 Matériel</div>
+          <div class="cf-items">
+            <div class="cf-item">Appareil éteint</div>
+            <div class="cf-item">Carte mémoire retirée</div>
+            <div class="cf-item">Batterie contrôlée</div>
+            <div class="cf-item">Numéro de série noté</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p2);">
+          <div class="cf-title">🛡️ Protection</div>
+          <div class="cf-items">
+            <div class="cf-item">Bouchons posés</div>
+            <div class="cf-item">Écran protégé</div>
+            <div class="cf-item">Objectif séparé</div>
+            <div class="cf-item">Accessoires isolés</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p3);">
+          <div class="cf-title">📦 Carton</div>
+          <div class="cf-items">
+            <div class="cf-item">Carton rigide</div>
+            <div class="cf-item">Fond amorti</div>
+            <div class="cf-item">Contenu centré</div>
+            <div class="cf-item">Aucun mouvement</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--violet);">
+          <div class="cf-title">📸 Preuves</div>
+          <div class="cf-items">
+            <div class="cf-item">Photos état + série</div>
+            <div class="cf-item">Photos calage</div>
+            <div class="cf-item">Valeur prouvable</div>
+            <div class="cf-item">Preuve de dépôt</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p3);">
+          <div class="cf-title">🚚 Transport</div>
+          <div class="cf-items">
+            <div class="cf-item">Poids réel mesuré</div>
+            <div class="cf-item">Assurance vérifiée</div>
+            <div class="cf-item">Batterie acceptée</div>
+            <div class="cf-item">Étiquette lisible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /apres -->
+
+  <!-- FAQ -->
+  <div class="prose section-gap">
+    <h3>FAQ</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un appareil photo par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si le colis est rigide, bien calé, suivi, et si la batterie lithium respecte les règles du transporteur. Pour un appareil de valeur, vérifiez aussi l'assurance, la remise contre signature et les preuves à conserver.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment emballer un appareil photo pour l'envoyer ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Éteignez l'appareil, retirez la carte mémoire, séparez l'objectif si possible, installez les bouchons, protégez le boîtier et l'objectif séparément, isolez les accessoires, puis placez le tout au centre d'un carton rigide. Le colis ne doit faire aucun bruit quand on l'incline doucement.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Faut-il retirer l'objectif avant l'envoi ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si l'objectif est amovible. Cela limite les contraintes sur la monture en cas de choc ou de pression latérale. Le boîtier doit recevoir son bouchon, et l'objectif ses bouchons avant et arrière.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un appareil photo avec une batterie lithium ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, sous conditions. La batterie doit être saine, l'appareil éteint et l'envoi accepté par le transporteur. Une batterie séparée doit avoir ses contacts protégés. Une batterie gonflée, chaude, fissurée, oxydée ou suspecte ne doit pas être envoyée en colis standard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Faut-il assurer un appareil photo envoyé par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si sa valeur dépasse l'indemnisation standard. L'assurance doit correspondre à une valeur prouvable : facture, preuve de paiement, capture de vente, numéro de série et photos du matériel. Elle ne remplace jamais un bon emballage ni le respect des conditions du transporteur.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment déclarer un appareil photo pour un envoi hors UE ou Outre-mer ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Utilisez une description précise : "appareil photo numérique d'occasion sans carte mémoire" ou "objectif photo d'occasion". Évitez les mentions vagues comme "cadeau", "électronique" ou "matériel photo". La valeur déclarée doit rester cohérente avec le contenu réel.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maj">
+    <strong>Dernière mise à jour</strong><br>
+    Informations logistiques, règles batterie lithium, conditions transporteurs et données douanières vérifiées pour publication en 2026. Les conditions pouvant évoluer, vérifiez toujours les règles du transporteur avant l'envoi.
+  </div>
+
+  <div class="sources">
+    <strong>Sources principales</strong>
+    <ul>
+      <li><a href="https://www.colissimo.entreprise.laposte.fr/conseils/bien-expedier-ses-colis/un-colis-parfait-la-webserie/batteries-lithium" target="_blank" rel="noopener">La Poste / Colissimo — batteries lithium, limites par colis</a></li>
+      <li><a href="https://aide.laposte.fr/contenu/comment-realiser-ma-declaration-en-douane-cn23" target="_blank" rel="noopener">La Poste — déclaration douanière CN23</a></li>
+      <li><a href="https://www.chronopost.fr/fr/livraison/nos-services/assurance-colis" target="_blank" rel="noopener">Chronopost — assurance colis et option Ad Valorem</a></li>
+      <li><a href="https://www.dhl.com/discover/fr-fr/logistics-advice/import-export-advice/how-to-ship-batteries" target="_blank" rel="noopener">DHL — expédition de batteries lithium</a></li>
+      <li><a href="https://www.douane.gouv.fr/demarche/connaitre-la-nomenclature-de-votre-marchandise" target="_blank" rel="noopener">Douane française — nomenclature douanière</a></li>
+      <li><a href="https://www.vinted.fr/help/729-le-colis-a-ete-endommage-en-cours-dacheminement" target="_blank" rel="noopener">Vinted — colis endommagé pendant l'acheminement</a></li>
+      <li><a href="https://www.leboncoin.fr/dc/vos_droits_et_obligations" target="_blank" rel="noopener">Leboncoin — droits et obligations vendeur</a></li>
+    </ul>
+  </div>
+
+  <div class="affil">
+    <span style="color:var(--violet);font-size:1rem;flex-shrink:0;margin-top:1px;">ℹ</span>
+    <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour vous, ce qui nous aide à maintenir nos services gratuits.</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleFaq(btn){
+  const a=btn.nextElementSibling,was=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!was){btn.classList.add('open');a.classList.add('open');}
+}
+const navLinks=document.querySelectorAll('.sn');
+const ids=['avant','emballage','apres'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    let cur=ids[0];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130)cur=id;
+    });
+    navLinks.forEach(l=>{
+      const isActive=l.getAttribute('href')==='#'+cur;
+      l.classList.toggle('active',isActive);
+    });
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envoyer un appareil photo par colis : emballage, batterie, assurance – UniversColis</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --violet: #8269A4; --violet-l: rgba(130,105,164,0.10); --violet-m: rgba(130,105,164,0.22);
+  --coral: #FA7E75;
+  --bg: #E9E6E1; --text: #1e1e1e; --muted: #666; --light: #f7f5f2;
+  --success: #1a5f17; --success-bg: rgba(31,162,22,0.07); --success-bd: rgba(31,162,22,0.22);
+  --warn: #7a4f00; --warn-bg: rgba(255,160,0,0.09); --warn-bd: rgba(255,160,0,0.28);
+  --danger: #8a0000; --danger-bg: rgba(204,0,0,0.06); --danger-bd: rgba(204,0,0,0.18);
+  --r: 16px; --rsm: 10px;
+  --p1: #5B7FA0; --p1-l: rgba(91,127,160,0.10); --p1-m: rgba(91,127,160,0.22);
+  --p2: #C4843A; --p2-l: rgba(196,132,58,0.10); --p2-m: rgba(196,132,58,0.22);
+  --p3: #6A9E7F; --p3-l: rgba(106,158,127,0.10); --p3-m: rgba(106,158,127,0.22);
+}
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); font-size:16px; line-height:1.7; padding-bottom:3rem; }
+
+/* ── BREADCRUMB ── */
+.bc { padding:14px 20px; font-size:0.8rem; color:var(--muted); display:flex; align-items:center; gap:6px; max-width:960px; margin:0 auto; flex-wrap:wrap; }
+.bc a { color:var(--violet); text-decoration:none; font-weight:500; }
+.bc a:hover { text-decoration:underline; }
+
+/* ── HERO ── */
+.hero { max-width:960px; margin:0 auto; padding:2.5rem 2.5rem 0; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:7px; background:rgba(130,105,164,0.10); border:1px solid rgba(130,105,164,0.2); border-radius:20px; padding:4px 14px; font-size:0.73rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--violet); margin-bottom:1.2rem; }
+.hero h1 { font-family:'Sora',sans-serif; font-size:clamp(1.6rem,3.8vw,2.4rem); font-weight:800; line-height:1.15; max-width:700px; margin-bottom:0.75rem; color:var(--text); }
+.hero-tricolor { display:flex; gap:4px; margin-bottom:1.1rem; }
+.hero-tricolor span { height:4px; border-radius:2px; }
+.hero-tricolor span:nth-child(1){width:64px;background:var(--p1);}
+.hero-tricolor span:nth-child(2){width:44px;background:var(--p2);}
+.hero-tricolor span:nth-child(3){width:54px;background:var(--p3);}
+.hero-lead { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--muted); max-width:620px; margin-bottom:1.5rem; font-style:italic; }
+.hero-meta { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:1.75rem; }
+.hero-pill { background:white; border:1px solid rgba(0,0,0,0.1); border-radius:20px; padding:5px 14px; font-size:0.82rem; font-weight:600; color:var(--muted); box-shadow:0 1px 4px rgba(0,0,0,0.05); }
+.hero-bottom { background:white; border-radius:var(--r) var(--r) 0 0; margin:0 -2.5rem; padding:1.5rem 2.5rem 0; }
+.hero-bottom-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,0.06); border-radius:var(--rsm) var(--rsm) 0 0; overflow:hidden; }
+.hb-col { background:var(--light); padding:1rem 1.25rem; font-size:0.82rem; color:var(--muted); line-height:1.5; border-top:3px solid transparent; text-decoration:none; display:block; transition:background .2s; }
+.hb-col:hover { background:white; }
+.hb-col:nth-child(1){border-top-color:var(--p1);}
+.hb-col:nth-child(2){border-top-color:var(--p2);}
+.hb-col:nth-child(3){border-top-color:var(--p3);}
+.hb-col strong { display:block; font-family:'Sora',sans-serif; font-size:0.85rem; color:var(--text); margin-bottom:3px; }
+
+/* ── STICKY NAV ── */
+.sticky-nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.96); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid var(--violet-m); margin-bottom:2rem; }
+.snav-inner { max-width:960px; margin:0 auto; display:flex; overflow-x:auto; scrollbar-width:none; }
+.snav-inner::-webkit-scrollbar{display:none;}
+.sn { display:flex; align-items:center; gap:7px; padding:14px 20px; font-family:'Sora',sans-serif; font-size:0.8rem; font-weight:600; color:var(--muted); text-decoration:none; white-space:nowrap; border-bottom:3px solid transparent; transition:color .2s,border-color .2s; }
+.sn:hover{color:var(--violet);}
+.sn.active{color:var(--violet);border-bottom-color:var(--violet);}
+.sn.active[data-part="1"]{color:var(--p1);border-bottom-color:var(--p1);}
+.sn.active[data-part="2"]{color:var(--p2);border-bottom-color:var(--p2);}
+.sn.active[data-part="3"]{color:var(--p3);border-bottom-color:var(--p3);}
+.sn-dot{width:8px;height:8px;border-radius:50%;background:rgba(130,105,164,0.2);flex-shrink:0;transition:background .2s;}
+.sn.active .sn-dot{background:var(--violet);}
+.sn.active[data-part="1"] .sn-dot{background:var(--p1);}
+.sn.active[data-part="2"] .sn-dot{background:var(--p2);}
+.sn.active[data-part="3"] .sn-dot{background:var(--p3);}
+
+/* ── PAGE ── */
+.page { max-width:960px; margin:0 auto; padding:0 0 3rem; }
+.section-gap { margin-bottom:2.25rem; }
+.p1{--pc:var(--p1);}
+.p2{--pc:var(--p2);}
+.p3{--pc:var(--p3);}
+.part-transition { text-align:center; padding:0.5rem 0 1.75rem; font-family:'Lora',serif; font-size:0.92rem; font-style:italic; color:var(--muted); }
+
+/* ── EN BREF ── */
+.en-bref { background:white; border-radius:var(--r); padding:1.75rem 2rem; margin:0 auto 2rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); border-top:4px solid var(--violet); }
+.en-bref-label { display:inline-flex; align-items:center; gap:6px; font-family:'Sora',sans-serif; font-size:0.71rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); margin-bottom:1rem; }
+.en-bref-text { font-family:'Lora',serif; font-size:1rem; line-height:1.75; color:var(--text); font-style:italic; margin-bottom:1.25rem; }
+.en-bref-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.eb-pill { background:var(--violet-l); border-radius:20px; padding:5px 14px; font-size:0.83rem; color:var(--violet); font-weight:500; border:1px solid var(--violet-m); }
+
+/* ── PART HEADER ── */
+.part-header { background:color-mix(in srgb,var(--pc) 5%,white); border-radius:var(--r); padding:1.75rem 2rem; margin-bottom:1.25rem; border-left:5px solid var(--pc); display:flex; align-items:flex-start; gap:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.part-num { font-family:'Sora',sans-serif; font-size:2.5rem; font-weight:800; color:var(--pc); opacity:0.25; line-height:1; flex-shrink:0; margin-top:-4px; }
+.part-tag { display:inline-block; background:color-mix(in srgb,var(--pc) 12%,transparent); color:var(--pc); border-radius:20px; padding:3px 12px; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+.part-header h2 { font-family:'Sora',sans-serif; font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:0.4rem; }
+.part-header p { font-size:0.9rem; color:var(--muted); line-height:1.6; margin:0; }
+
+/* ── PROSE ── */
+.prose { background:white; border-radius:var(--r); padding:2rem; margin-bottom:1.25rem; box-shadow:0 2px 18px rgba(0,0,0,0.04); }
+.p1 .prose { border-left:3px solid color-mix(in srgb,var(--p1) 35%,transparent); }
+.p2 .prose { border-left:3px solid color-mix(in srgb,var(--p2) 35%,transparent); }
+.p3 .prose { border-left:3px solid color-mix(in srgb,var(--p3) 35%,transparent); }
+.prose h3 { font-family:'Sora',sans-serif; font-size:1.03rem; font-weight:700; color:var(--text); margin-bottom:0.75rem; margin-top:1.5rem; }
+.prose h3:first-child{margin-top:0;}
+.prose p { font-size:0.93rem; color:var(--text); line-height:1.75; margin-bottom:0.9rem; }
+.prose p:last-child{margin-bottom:0;}
+.prose strong{font-weight:600;}
+.prose a{color:var(--pc,var(--violet));font-weight:500;}
+.prose ul { list-style:none; padding:0; display:flex; flex-direction:column; gap:5px; margin:0.75rem 0; }
+.prose ul li { font-size:0.91rem; color:var(--text); padding-left:20px; position:relative; line-height:1.6; }
+.prose ul li::before { content:'—'; position:absolute; left:0; color:var(--pc,var(--violet)); font-weight:700; }
+
+/* ── CALLOUT ── */
+.callout { border-radius:var(--rsm); padding:1rem 1.25rem; margin:1.1rem 0; font-size:0.88rem; line-height:1.65; display:flex; align-items:flex-start; gap:12px; }
+.callout-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.callout-body{flex:1;}
+.callout-body strong { display:block; font-family:'Sora',sans-serif; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; }
+.callout.warn{background:var(--warn-bg);border-left:3px solid #ffa000;color:var(--warn);}
+.callout.warn strong{color:#b37700;}
+.callout.info,.callout.tip{background:color-mix(in srgb,var(--pc,var(--violet)) 9%,white);border-left:3px solid var(--pc,var(--violet));}
+.callout.info strong,.callout.tip strong{color:var(--pc,var(--violet));}
+.callout.danger{background:var(--danger-bg);border-left:3px solid var(--danger);color:var(--danger);}
+.callout.danger strong{color:var(--danger);}
+
+/* ── DATA TABLE ── */
+.table-wrap{overflow-x:auto;margin:1.1rem 0;-webkit-overflow-scrolling:touch;border-radius:var(--rsm);}
+.data-table{width:100%;border-collapse:separate;border-spacing:0 4px;min-width:420px;}
+.data-table th{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);padding:5px 12px;text-align:left;}
+.data-table td{padding:10px 12px;font-size:0.86rem;background:white;vertical-align:top;}
+.data-table tr td:first-child{border-radius:var(--rsm) 0 0 var(--rsm);font-weight:600;}
+.data-table tr td:last-child{border-radius:0 var(--rsm) var(--rsm) 0;color:var(--muted);font-size:0.82rem;}
+
+/* ── DIAG CARDS MATÉRIEL PHOTO ── */
+.diag-grid-photo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.diag-card-photo{background:white;border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);transition:box-shadow .2s;}
+.diag-card-photo:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.diag-photo-icon{font-size:1.4rem;margin-bottom:6px;}
+.diag-photo-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.diag-photo-risk{font-size:0.75rem;color:var(--muted);margin-bottom:4px;line-height:1.4;}
+.diag-photo-before{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;border-top:1px solid rgba(0,0,0,0.05);padding-top:5px;margin-top:4px;}
+
+/* ── ZONES SENSIBLES BOÎTIER ── */
+.zones-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.1rem 0;}
+.zone-card{background:white;border-radius:var(--rsm);padding:0.85rem 1rem;border-left:3px solid var(--pc,var(--violet));display:flex;align-items:flex-start;gap:10px;}
+.zone-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.zone-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.zone-risk{font-size:0.75rem;color:var(--muted);line-height:1.4;}
+.zone-precaution{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));margin-top:3px;line-height:1.3;}
+
+/* ── BATTERIE ARBRE DÉCISIONNEL ── */
+.battery-tree{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.bat-row{display:flex;align-items:center;gap:10px;background:white;border-radius:var(--rsm);padding:10px 14px;border-left:4px solid transparent;}
+.bat-row.ok{border-left-color:var(--success);}
+.bat-row.warn{border-left-color:var(--warn);}
+.bat-row.danger{border-left-color:var(--danger);}
+.bat-icon{font-size:1.1rem;flex-shrink:0;}
+.bat-content{flex:1;}
+.bat-situation{font-family:'Sora',sans-serif;font-size:0.83rem;font-weight:700;color:var(--text);margin-bottom:2px;}
+.bat-action{font-size:0.79rem;color:var(--muted);line-height:1.4;}
+.bat-badge{display:inline-block;font-size:0.68rem;font-weight:700;border-radius:8px;padding:2px 9px;white-space:nowrap;flex-shrink:0;}
+.bat-badge.ok{background:var(--success-bg);color:var(--success);}
+.bat-badge.warn{background:var(--warn-bg);color:var(--warn);}
+.bat-badge.no{background:var(--danger-bg);color:var(--danger);}
+
+/* ── PREUVES GRID ── */
+.preuves-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.preuve-card{background:white;border-radius:var(--rsm);padding:0.85rem;border:1.5px solid rgba(0,0,0,0.07);text-align:center;}
+.preuve-icon{font-size:1.3rem;margin-bottom:5px;}
+.preuve-label{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.preuve-desc{font-size:0.72rem;color:var(--muted);line-height:1.4;}
+
+/* ── STEPS ── */
+.steps-list{display:flex;flex-direction:column;}
+.step-row{display:grid;grid-template-columns:50px 1fr;position:relative;}
+.step-row:not(:last-child) .step-spine::after{content:'';position:absolute;top:40px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% - 40px);background:linear-gradient(to bottom,color-mix(in srgb,var(--pc) 30%,transparent) 60%,transparent);}
+.step-spine{display:flex;flex-direction:column;align-items:center;position:relative;}
+.step-num{width:38px;height:38px;background:var(--pc);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:800;box-shadow:0 4px 12px color-mix(in srgb,var(--pc) 35%,transparent);z-index:1;flex-shrink:0;}
+.step-content{padding:2px 0 2.5rem 18px;}
+.step-content h4{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--text);margin-bottom:0.5rem;line-height:1.3;}
+.step-content p{font-size:0.91rem;color:var(--text);line-height:1.72;margin-bottom:0.7rem;}
+.step-content p:last-child{margin-bottom:0;}
+.step-content strong{font-weight:600;}
+.step-content ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:4px;margin:0.6rem 0;}
+.step-content ul li{font-size:0.88rem;padding-left:18px;position:relative;line-height:1.55;}
+.step-content ul li::before{content:'→';position:absolute;left:0;color:var(--coral);font-weight:700;}
+
+/* ── STEP WITH IMG ── */
+.step-with-img{display:grid;grid-template-columns:1fr 200px;gap:16px;align-items:start;margin-bottom:0.75rem;}
+.step-img-col{display:flex;flex-direction:column;gap:6px;justify-self:center;max-width:200px;}
+.step-img-ph{width:100%;aspect-ratio:4/3;background:var(--light);border-radius:var(--rsm);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--muted);text-align:center;padding:12px;border:1.5px dashed rgba(0,0,0,0.1);}
+.step-caption-txt{font-size:0.75rem;font-style:italic;color:var(--muted);line-height:1.5;}
+
+/* ── MAT INLINE ── */
+.mat-inline{background:color-mix(in srgb,var(--pc,var(--violet)) 8%,white);border-radius:var(--rsm);padding:1rem 1.25rem;margin:0.9rem 0;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 22%,transparent);}
+.mat-inline-label{font-family:'Sora',sans-serif;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pc,var(--violet));margin-bottom:0.6rem;}
+.mat-links{display:flex;flex-direction:column;gap:6px;}
+.mat-link-row{display:flex;align-items:center;gap:10px;background:white;border-radius:8px;padding:9px 12px;border:1px solid color-mix(in srgb,var(--pc,var(--violet)) 14%,transparent);transition:border-color .2s;flex-wrap:wrap;}
+.mat-link-row:hover{border-color:color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent);}
+.mat-link-name{flex:1;font-size:0.86rem;font-weight:600;color:var(--text);min-width:120px;}
+.mat-link-desc{font-size:0.78rem;color:var(--muted);width:100%;}
+.mat-link-btn{display:inline-flex;align-items:center;gap:6px;background:var(--pc,var(--violet));color:white;text-decoration:none;padding:6px 13px;border-radius:8px;font-size:0.78rem;font-weight:600;white-space:nowrap;flex-shrink:0;transition:opacity .2s;}
+.mat-link-btn::before{content:'🛒';font-size:0.82rem;}
+.mat-link-btn:hover{opacity:0.82;}
+
+/* ── RISQUE TRANSPORTEUR ── */
+.risk-transport-grid{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.risk-transport-row{display:grid;grid-template-columns:90px 1fr 1fr 1fr;gap:10px;background:white;border-radius:var(--rsm);padding:10px 14px;align-items:center;border-left:4px solid transparent;}
+.risk-transport-row.low{border-left-color:var(--success);}
+.risk-transport-row.med{border-left-color:var(--p2);}
+.risk-transport-row.high{border-left-color:var(--warn);}
+.risk-transport-row.critical{border-left-color:var(--danger);}
+.risk-transport-row.special{border-left-color:var(--violet);}
+.rt-level{font-family:'Sora',sans-serif;font-size:0.75rem;font-weight:700;}
+.risk-transport-row.low .rt-level{color:var(--success);}
+.risk-transport-row.med .rt-level{color:var(--p2);}
+.risk-transport-row.high .rt-level{color:var(--warn);}
+.risk-transport-row.critical .rt-level{color:var(--danger);}
+.risk-transport-row.special .rt-level{color:var(--violet);}
+.rt-example{font-size:0.8rem;color:var(--muted);}
+.rt-priority{font-size:0.8rem;font-weight:600;color:var(--text);}
+.rt-check{font-size:0.78rem;color:var(--muted);font-style:italic;}
+
+/* ── ASSURANCE TABLE ── */
+.assurance-grid{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.assurance-row{display:flex;align-items:flex-start;gap:12px;background:white;border-radius:var(--rsm);padding:10px 14px;border-left:3px solid var(--pc,var(--violet));}
+.assurance-val{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);min-width:130px;flex-shrink:0;}
+.assurance-decision{font-size:0.8rem;color:var(--muted);line-height:1.45;}
+
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.check-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.check-ico{font-size:1.1rem;flex-shrink:0;}
+
+/* ── CHECKLIST FINALE 5 BLOCS ── */
+.checklist-finale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:1.1rem 0;}
+.cf-bloc{background:white;border-radius:var(--rsm);padding:0.85rem;border-top:3px solid var(--pc,var(--violet));border:1.5px solid rgba(0,0,0,0.07);border-top:3px solid var(--pc,var(--violet));}
+.cf-title{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;color:var(--pc,var(--violet));margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.cf-items{display:flex;flex-direction:column;gap:3px;}
+.cf-item{font-size:0.72rem;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.cf-item::before{content:'·';position:absolute;left:0;color:var(--pc,var(--violet));}
+
+/* ── PROCÉDURE (réutilisé) ── */
+.procedure{display:flex;flex-direction:column;gap:6px;margin:1.1rem 0;}
+.proc-item{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:11px 16px;border-left:3px solid var(--pc,var(--violet));font-size:0.88rem;}
+.proc-n{width:24px;height:24px;background:var(--pc,var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-family:'Sora',sans-serif;font-size:0.73rem;font-weight:800;flex-shrink:0;}
+
+/* ── TIPS ── */
+.tips-wrap{display:flex;flex-direction:column;gap:7px;margin:1.1rem 0;}
+.tips-head{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tips-col-lbl{font-family:'Sora',sans-serif;font-size:0.74rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:6px 12px;border-radius:8px;text-align:center;}
+.tips-col-lbl.g{background:var(--success-bg);color:var(--success);}
+.tips-col-lbl.b{background:var(--danger-bg);color:var(--danger);}
+.tips-pair{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.tip-c{border-radius:var(--rsm);padding:11px 13px;font-size:0.86rem;line-height:1.5;display:flex;align-items:flex-start;gap:8px;}
+.tip-c.g{background:var(--success-bg);border:1.5px solid var(--success-bd);color:var(--success);}
+.tip-c.b{background:var(--danger-bg);border:1.5px solid var(--danger-bd);color:var(--danger);}
+
+/* ── DEST SCALE (réutilisé) ── */
+.dest-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:1.1rem 0;}
+.dest-col{border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);}
+.dest-col-header{padding:0.65rem 0.75rem;text-align:center;}
+.dest-col:nth-child(1) .dest-col-header{background:color-mix(in srgb,var(--success) 12%,white);}
+.dest-col:nth-child(2) .dest-col-header{background:color-mix(in srgb,var(--p2) 12%,white);}
+.dest-col:nth-child(3) .dest-col-header{background:color-mix(in srgb,var(--warn) 12%,white);}
+.dest-col:nth-child(4) .dest-col-header{background:color-mix(in srgb,var(--danger) 12%,white);}
+.dest-col-name{font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;}
+.dest-col:nth-child(1) .dest-col-name{color:var(--success);}
+.dest-col:nth-child(2) .dest-col-name{color:var(--p2);}
+.dest-col:nth-child(3) .dest-col-name{color:var(--warn);}
+.dest-col:nth-child(4) .dest-col-name{color:var(--danger);}
+.dest-col-body{background:white;padding:0.65rem 0.75rem;}
+.dest-col-items{display:flex;flex-direction:column;gap:3px;}
+.dest-col-item{font-size:0.72rem;color:var(--muted);padding-left:12px;position:relative;line-height:1.4;}
+.dest-col-item::before{content:'·';position:absolute;left:0;}
+
+/* ── FAQ ── */
+.faq-list{display:flex;flex-direction:column;gap:7px;}
+.faq-item{border:1.5px solid rgba(0,0,0,0.07);border-radius:var(--rsm);overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:600;color:var(--text);cursor:pointer;text-align:left;transition:background .2s;}
+.faq-q:hover{background:var(--violet-l);}
+.faq-q.open{background:var(--violet);color:white;}
+.faq-chev{font-size:0.65rem;flex-shrink:0;transition:transform .25s;}
+.faq-q.open .faq-chev{transform:rotate(180deg);}
+.faq-a{display:none;padding:14px 18px;font-size:0.9rem;color:var(--muted);background:rgba(130,105,164,0.04);border-top:1px solid rgba(130,105,164,0.1);line-height:1.7;}
+.faq-a.open{display:block;}
+
+/* ── SOURCES ── */
+.sources{background:var(--light);border-radius:var(--rsm);padding:1.25rem 1.5rem;margin:1.5rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.7;}
+.sources strong{font-family:'Sora',sans-serif;font-size:0.8rem;color:var(--text);display:block;margin-bottom:6px;}
+.sources ul{list-style:none;padding:0;}
+.sources li{padding-left:14px;position:relative;}
+.sources li::before{content:'·';position:absolute;left:0;}
+.sources a{color:var(--violet);text-decoration:none;}
+.sources a:hover{text-decoration:underline;}
+.affil{background:var(--violet-l);border-radius:var(--rsm);padding:11px 16px;margin:1.25rem 0 0;display:flex;align-items:flex-start;gap:9px;font-size:0.79rem;color:var(--muted);line-height:1.5;border-left:3px solid var(--violet);}
+.maj{background:var(--light);border-radius:var(--rsm);padding:0.9rem 1.25rem;margin:1.25rem 0 0;font-size:0.8rem;color:var(--muted);line-height:1.6;border-left:3px solid rgba(0,0,0,0.1);}
+.maj strong{color:var(--text);font-family:'Sora',sans-serif;font-size:0.8rem;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .hero{padding:1.75rem 1.5rem 0;}
+  .hero-bottom{margin:0 -1.5rem;padding:1.25rem 1.5rem 0;}
+  .hero-bottom-grid{grid-template-columns:1fr;}
+  .hb-col:not(:last-child){border-bottom:1px solid var(--violet-m);}
+  .part-header{padding:1.5rem;flex-direction:column;gap:0.5rem;}
+  .part-num{font-size:1.8rem;}
+  .prose{padding:1.5rem;}
+  .en-bref{padding:1.5rem;}
+  .diag-grid-photo{grid-template-columns:repeat(2,1fr);}
+  .zones-grid{grid-template-columns:1fr;}
+  .preuves-grid{grid-template-columns:repeat(2,1fr);}
+  .risk-transport-row{grid-template-columns:1fr 1fr;}
+  .tips-pair,.tips-head{grid-template-columns:1fr;}
+  .tips-col-lbl.b{display:none;}
+  .step-with-img{grid-template-columns:1fr;}
+  .dest-scale{grid-template-columns:repeat(2,1fr);}
+  .checklist-finale{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:520px){
+  .page{padding:0 0 2rem;}
+  .en-bref,.part-header,.prose{margin-left:8px;margin-right:8px;}
+  .bc{padding:10px 12px;}
+  .hero h1{font-size:1.35rem;}
+  .step-row{grid-template-columns:40px 1fr;}
+  .step-num{width:32px;height:32px;font-size:0.82rem;}
+  .step-content{padding:2px 0 2rem 12px;}
+  .sn{padding:12px 14px;font-size:0.76rem;}
+  .diag-grid-photo{grid-template-columns:1fr;}
+  .preuves-grid{grid-template-columns:1fr;}
+  .checklist-finale{grid-template-columns:1fr;}
+  .dest-scale{grid-template-columns:1fr;}
+  .risk-transport-row{grid-template-columns:1fr;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+</head>
+<body>
+
+<nav class="bc" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/conseils">Conseils d'emballage</a><span>›</span>
+  <span>Envoyer un appareil photo par colis</span>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">📦 Guide complet 2026</div>
+  <h1>Envoyer un appareil photo par colis : emballage, batterie, assurance et précautions</h1>
+  <div class="hero-tricolor"><span></span><span></span><span></span></div>
+  <p class="hero-lead">Boîtier, objectif, batterie lithium, vente d'occasion, SAV ou cadeau — tout ce qu'il faut vérifier avant d'acheter l'étiquette.</p>
+  <div class="hero-meta">
+    <div class="hero-pill">⏱ 12 min de lecture</div>
+    <div class="hero-pill">📋 3 parties · 8 étapes</div>
+    <div class="hero-pill">📷 Boîtier, objectif, kit, SAV</div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <a href="#avant" class="hb-col"><strong>Partie 1 — Avant d'emballer</strong>Matériel, batterie, risques, preuves</a>
+      <a href="#emballage" class="hb-col"><strong>Partie 2 — Emballage</strong>8 étapes, boîtier, objectif, accessoires</a>
+      <a href="#apres" class="hb-col"><strong>Partie 3 — Après emballage</strong>Transporteur, assurance, douane, preuves</a>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky-nav" aria-label="Navigation">
+  <div class="snav-inner">
+    <a href="#avant"    class="sn active" data-part="1"><span class="sn-dot"></span>Avant d'emballer</a>
+    <a href="#emballage" class="sn" data-part="2"><span class="sn-dot"></span>Emballage</a>
+    <a href="#apres"    class="sn" data-part="3"><span class="sn-dot"></span>Après emballage</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- EN BREF -->
+  <div class="en-bref">
+    <div class="en-bref-label">✦ En bref</div>
+    <p class="en-bref-text">Un appareil photo est un matériel optique et électronique fragile : boîtier, objectif, batterie lithium, carte mémoire, chargeur et accessoires doivent être protégés séparément. L'objectif ne doit pas forcer sur la monture, les lentilles ne doivent subir aucune pression directe et le contenu ne doit jamais bouger dans le carton.</p>
+    <p class="en-bref-text">L'envoi doit rester solide, silencieux, discret, compatible avec le service choisi et défendable en cas de casse, perte ou litige. Pour une vente d'occasion, un envoi entre particuliers ou un SAV, gardez des preuves avant l'expédition : photos, numéro de série, accessoires, calage, preuve de dépôt et valeur du matériel.</p>
+    <div class="en-bref-pills">
+      <span class="eb-pill">Chaque élément protégé séparément</span>
+      <span class="eb-pill">Colis silencieux</span>
+      <span class="eb-pill">Batterie lithium à vérifier</span>
+      <span class="eb-pill">Preuves avant envoi</span>
+      <span class="eb-pill">Discret à l'extérieur</span>
+    </div>
+  </div>
+
+  <!-- ════════ PARTIE 1 ════════ -->
+  <div id="avant" class="section-gap p1">
+
+    <div class="part-header p1">
+      <div class="part-num">1</div>
+      <div>
+        <div class="part-tag">Avant d'emballer</div>
+        <h2>Identifier le matériel photo, la batterie et le risque réel</h2>
+        <p>La première erreur consiste à raisonner uniquement en "objet fragile". Le matériel photo cumule plusieurs vulnérabilités : écran, viseur, monture, capteur, lentilles, bagues, stabilisation, autofocus et batterie lithium.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Peut-on envoyer un appareil photo par colis ?</h3>
+      <p>Dans la plupart des cas, oui, à condition de préparer l'envoi selon le contenu réel, l'état de la batterie, la valeur du matériel et la destination. Un compact peu coûteux envoyé en France, un objectif professionnel vendu sur une plateforme de seconde main, un kit complet ou un boîtier envoyé au SAV ne présentent pas le même niveau de risque.</p>
+      <p>Les données sur la livraison confirment un point essentiel : le risque ne vient pas seulement du transport, mais aussi de la préparation. Pour un appareil photo, plus l'objet est fragile, dense, cher et contestable, plus l'emballage, le calage et les justificatifs avant envoi deviennent importants.</p>
+
+       <div class="format-grid">
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/boitier-appareil-photo-seul-protection.webp" alt="Boîtier seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Boîtier seul</div>
+            <div class="format-risk">Écran, capteur, monture</div>
+            <div class="format-question">Éteindre, retirer la carte, poser bouchon boîtier</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/objectif-photo-seul-protection.webp" alt="Objectif seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Objectif seul</div>
+            <div class="format-risk">Lentilles, bagues, monture</div>
+            <div class="format-question">Bouchons avant/arrière, aucune pression directe</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/appareil-photo-objectif-monte-risque-transport.webp" alt="Boîtier + objectif" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Boîtier + objectif</div>
+            <div class="format-risk">Tension sur la monture</div>
+            <div class="format-question">Séparer si possible, bouchons sur les deux</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/envoyer-appareil-photo-kit-complet.webp" alt="Kit complet" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Kit complet</div>
+            <div class="format-risk">Chocs entre éléments</div>
+            <div class="format-question">Isoler chaque pièce, accessoires dans sachets</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/appareil-photo-occasion-annonce-preuves.webp" alt="Vente d'occasion" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Vente d'occasion</div>
+            <div class="format-risk">Litige état / accessoires</div>
+            <div class="format-question">Photos, numéro de série, annonce, preuve de dépôt</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/appareil-photo-retour-sav-formulaire.webp" alt="Réparation SAV" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Réparation SAV</div>
+            <div class="format-risk">Erreur ou accessoire perdu</div>
+            <div class="format-question">Formulaire, référence, consignes SAV, liste contenu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Ne laissez jamais un boîtier ouvert dans un colis</strong>
+          La monture, les contacts et le capteur doivent rester protégés contre la poussière, les frottements et les protections improvisées qui pourraient se détacher pendant le transport.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les risques principaux pendant le transport</h3>
+      <p>Un appareil peut être endommagé par un choc visible, mais les dégâts les plus difficiles à prouver viennent souvent de contraintes moins évidentes : vibrations, pression, torsion, humidité, poussière ou mouvement interne dans le carton. Un colis peut donc arriver avec un extérieur correct alors que le boîtier, l'objectif ou les mécanismes internes ont subi des micro-chocs pendant le transport.</p>
+
+      <p>Pendant l'acheminement, le colis est manipulé, empilé, déplacé et parfois secoué. Si le boîtier ou l'objectif bouge à l'intérieur, chaque mouvement peut provoquer un petit impact répété. Ce risque concerne surtout les bagues de zoom, la stabilisation optique, l'autofocus, le viseur, l'écran orientable et les pièces mobiles. <strong>La règle la plus importante est simple : le matériel ne doit toucher ni le fond, ni les côtés, ni le dessus du carton. Il doit rester centré, calé et silencieux.</strong></p>
+
+      <p>La monture, aussi appelée baïonnette, relie le boîtier à l'objectif. Si l'objectif reste monté, il peut agir comme un levier en cas de choc latéral. C'est pourquoi il est préférable de séparer le boîtier et l'objectif lorsque c'est possible. Sur un objectif, la lentille frontale, la lentille arrière, le fût, les bagues, le filetage de filtre, le pare-soleil et les contacts arrière ne doivent pas recevoir de pression directe.</p>
+
+
+             <div class="format-grid">
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/monture-capteur-appareil-photo-sans-objectif.webp" alt="Boîtier seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Monture / baïonnette</div>
+            <div class="format-risk">Torsion en cas de choc latéral si l'objectif reste monté</div>
+            <div class="format-question">→ Séparer l'objectif si possible</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/capteur-appareil-photo-expose.webp" alt="Objectif seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Capteur</div>
+            <div class="format-risk">Poussière si le boîtier reste ouvert</div>
+            <div class="format-question">→ Bouchon de boîtier indispensable</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/lentille-frontale-objectif-photo-abimee.webp" alt="Boîtier + objectif" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Lentille frontale / arrière</div>
+            <div class="format-risk">Rayure, pression directe, choc</div>
+            <div class="format-question">→ Bouchons avant et arrière sur l'objectif</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/ecran-arriere-appareil-photo-protection.webp" alt="Kit complet" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Écran / viseur</div>
+            <div class="format-risk">Pression si le matériel est trop proche du carton</div>
+            <div class="format-question">→ Couche douce au contact, marge de protection</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/bagues-zoom-autofocus-stabilisation-objectif.webp" alt="Bagues de zoom / AF / stabilisation" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Bagues de zoom / AF / stabilisation</div>
+            <div class="format-risk">Micro-chocs répétés si le contenu bouge</div>
+            <div class="format-question">→ Calage dense, colis silencieux</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/contacts-electroniques-objectif-photo.webp" alt="Réparation SAV" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Contacts électroniques</div>
+            <div class="format-risk">Oxydation, rayure, humidité</div>
+            <div class="format-question">→ Bouchons, matériel sec, gel de silice si nécessaire</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Un colis appareil photo doit être silencieux</strong>
+          Si le boîtier, l'objectif ou les accessoires bougent encore, ajoutez du calage avant fermeture. La mention "Fragile" ne compensera jamais un contenu mobile.
+        </div>
+      </div>
+
+      <p>L'humidité mérite une attention particulière. Un colis mouillé, un stockage prolongé dans un emballage humide ou de fortes variations de température peuvent favoriser la condensation, les traces internes, l'oxydation des contacts ou le développement de <strong>moisissure optique (fungus)</strong>. Ne jamais enfermer un matériel humide dans un plastique fermé avant qu'il soit complètement sec. Un sachet de gel de silice peut aider à limiter l'humidité résiduelle, mais il ne corrige pas un matériel déjà mouillé.</p>
+
+      <p>Les <strong>accessoires mal isolés</strong> sont aussi un risque fréquent. Un chargeur, une batterie, un filtre, une bague d'adaptation ou une sangle laissés libres peuvent rayer, comprimer ou heurter le boîtier et l'objectif pendant le transport. Rangez-les séparément : câbles attachés, filtres dans leur étui, batterie isolée si nécessaire, petites pièces dans un sachet.</p>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Colis neutre et discret</strong>
+          N'écrivez pas "appareil photo", une marque, un modèle ou une valeur sur le carton. Un emballage bien fermé, accompagné de photos et du numéro de série, est beaucoup plus solide qu'un colis "fragile" visible.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Batterie lithium : faut-il la laisser dans l'appareil ou la retirer ?</h3>
+      <div class="step-with-img">
+          <div>
+           <p>Pour un appareil photo courant, ne retirez pas la batterie automatiquement. Le plus simple est souvent de la laisser dans le boîtier, si le service choisi l'accepte, si elle est en bon état, si l'appareil est éteint et si aucun bouton ne peut être actionné pendant le transport. <strong>Ne démontez jamais une batterie intégrée ou difficile à retirer.</strong></p>
+          </div>
+          <div class="step-img-col">
+            <img
+              src="/static/img/articleImg/appareil-photo/batterie-appareil-photo-gonflee-interdite.webp"
+              alt="Colis empilés dans un camion avec sculpture fragile mal protégée illustrant le risque de compression"
+              class="step-img-real" loading="lazy">
+            <div class="step-caption-txt">Un colis ne voyage jamais seul — la compression et l'empilement sont des
+              risques invisibles mais réels.</div>
+          </div>
+        </div>
+
+      <p>Pour un envoi standard, la configuration la plus claire est : appareil éteint, batterie saine dans son compartiment, objectif motorisé rentré si nécessaire, calage qui n'appuie sur aucun bouton et aucun accessoire libre dans le carton. Cette logique rejoint les consignes des grands transporteurs. Colissimo encadre les batteries lithium contenues dans un équipement éteint. DHL indique que les batteries lithium-ion doivent rester installées dans l'appareil, avec l'appareil éteint. UPS insiste sur trois risques pratiques : court-circuit, mouvement dans le colis et activation accidentelle.</p>
+
+      <div class="battery-tree">
+        <div class="bat-row ok">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie intégrée non amovible</div>
+            <div class="bat-action">Ne pas démonter. Laisser dans l'appareil, sans outil, sans forcer.</div>
+          </div>
+          <span class="bat-badge ok">✓ Ne pas démonter</span>
+        </div>
+        <div class="bat-row ok">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie amovible dans le boîtier</div>
+            <div class="bat-action">Appareil éteint, batterie saine dans son compartiment — configuration la plus simple pour un envoi standard.</div>
+          </div>
+          <span class="bat-badge ok">✓ Laisser si accepté</span>
+        </div>
+        <div class="bat-row warn">
+          <div class="bat-icon">🔋</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie retirée ou supplémentaire</div>
+            <div class="bat-action">Contacts protégés avec matériau non conducteur. Emballée à part, sans contact avec câble, chargeur ou pièce métallique. Vérifier l'acceptation du service.</div>
+          </div>
+          <span class="bat-badge warn">⚠ Isoler les contacts</span>
+        </div>
+        <div class="bat-row warn">
+          <div class="bat-icon">🌍</div>
+          <div class="bat-content">
+            <div class="bat-situation">International / Outre-mer</div>
+            <div class="bat-action">Règles variables selon type, capacité, destination et documents demandés. Vérifier avant dépôt. Colissimo : max 4 piles, 2 batteries lithium-ion, 20 Wh/pile, 100 Wh/batterie, 5 kg net.</div>
+          </div>
+          <span class="bat-badge warn">⚠ Vérifier le service</span>
+        </div>
+        <div class="bat-row danger">
+          <div class="bat-icon">⚠️</div>
+          <div class="bat-content">
+            <div class="bat-situation">Batterie gonflée, chaude, fissurée, oxydée ou rappelée</div>
+            <div class="bat-action">Ne pas envoyer en colis standard. Pour un SAV, suivre les consignes du réparateur ou du fabricant.</div>
+          </div>
+          <span class="bat-badge no">✗ Ne pas envoyer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Vente d'occasion ou réparation : préparer les preuves</h3>
+      <p>Pour une vente d'occasion, les preuves sont aussi importantes que l'emballage. Avant l'envoi, photographiez l'état du boîtier, de l'écran, de l'objectif, des lentilles, de la monture, de la batterie, des accessoires et du numéro de série. Gardez aussi l'annonce, le prix, la preuve de paiement et les échanges utiles avec l'acheteur.</p>
+      <p>Pendant l'emballage, prenez quelques photos du boîtier protégé, de l'objectif séparé, des accessoires isolés et du calage avant fermeture. Après le dépôt, conservez le reçu, le numéro de suivi et, si possible, le poids indiqué. Avant d'utiliser l'option d'envoi la plus simple, vérifiez le plafond d'indemnisation, le suivi, l'assurance disponible et l'intérêt d'une remise contre signature si le matériel a de la valeur.</p>
+
+       <div class="format-grid">
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/photos-etat-appareil-photo-avant-envoi.webp" alt="Boîtier seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Photos état</div>
+            <div class="format-risk">Boîtier, écran, objectif, lentilles, monture, batterie, accessoires</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/numero-serie-appareil-photo-preuve.webp" alt="Objectif seul" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Numéro de série</div>
+            <div class="format-risk">Photographié lisiblement avant emballage</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/checklist-annonce-appareil-photo-occasion.webp" alt="Boîtier + objectif" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Annonce</div>
+            <div class="format-risk">Capture de l'annonce, prix, échanges avec l'acheteur</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/photo-calage-objectif-carton.webp" alt="Kit complet" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Photos calage</div>
+            <div class="format-risk">Boîtier protégé, objectif séparé, accessoires isolés, carton ouvert</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/preuve-depot-colis-appareil-photo.webp" alt="Bagues de zoom / AF / stabilisation" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Preuve de dépôt</div>
+            <div class="format-risk">Reçu, numéro de suivi, poids indiqué au dépôt</div>
+          </div>
+        </div>
+        <div class="format-card">
+          <div class="format-photo">
+            <img src="/static/img/articleImg/appareil-photo/facture-valeur-prouvable-appareil-photo.webp" alt="Réparation SAV" />
+          </div>
+          <div class="format-card-body">
+            <div class="format-type">Valeur prouvable</div>
+            <div class="format-risk">Facture, preuve de paiement, annonces comparables</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-ico">🔧</div>
+        <div class="callout-body">
+          <strong>Pour un envoi en réparation SAV</strong>
+          N'ajoutez pas tout "au cas où". Envoyez seulement ce que le SAV demande. La carte mémoire doit généralement être retirée. Ajoutez dans le colis : référence du dossier, description claire de la panne, coordonnées, preuve d'achat si garantie concernée et liste exacte des accessoires inclus.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /avant -->
+
+  <div class="part-transition">Diagnostic posé, preuves prêtes, batterie vérifiée. Place à la construction du colis.</div>
+
+  <!-- ════════ PARTIE 2 ════════ -->
+  <div id="emballage" class="section-gap p2">
+
+    <div class="part-header p2">
+      <div class="part-num">2</div>
+      <div>
+        <div class="part-tag">Emballage</div>
+        <h2>Comment emballer un appareil photo, un objectif et les accessoires</h2>
+        <p>Chaque protection doit avoir un rôle : protéger l'écran, fermer la monture, isoler l'objectif, maintenir la batterie, bloquer les accessoires, amortir le fond, empêcher le mouvement et garder le carton discret.</p>
+      <p>Un bon emballage ne consiste pas à ajouter beaucoup de matière au hasard. La logique reste la même que vous envoyiez un cadeau à un proche, une vente d'occasion, un retour SAV ou un colis client. Avec du matériel photo, la bonne question n'est pas "ai-je mis assez de protection ?", mais "est-ce que chaque élément est réellement protégé, séparé et immobilisé ?"</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <div class="steps-list">
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">1</div></div>
+          <div class="step-content">
+            <h4>Préparer l'appareil avant emballage</h4>
+            <p><strong>Éteignez l'appareil.</strong> Vérifiez que l'interrupteur est bien sur OFF et qu'aucun bouton ne risque d'être pressé pendant le transport. Pour un compact ou un bridge avec objectif rétractable, l'objectif doit être rentré si le modèle le permet.</p>
+            <p><strong>Retirez la carte mémoire</strong>, sauf si elle est volontairement incluse ou demandée par le SAV. Si l'appareil possède deux emplacements, vérifiez les deux. Photographiez ensuite l'état du matériel : écran, boîtier, lentilles, monture, numéro de série, batterie et accessoires inclus.</p>
+            <p>Pour un cadeau simple, ces photos peuvent sembler excessives, mais elles restent utiles si le colis est abîmé. Pour une vente, un retour SAV ou un appareil de valeur, elles deviennent indispensables.</p>
+
+            <div class="step-with-img">
+              <p>Pour un appareil argentique, vérifiez aussi la présence éventuelle d'une pellicule, le levier d'armement et les joints. Pour une caméra avec écran orientable, micro, griffe accessoire ou ports latéraux, évitez toute pression sur les parties saillantes.</p>
+              <div class="step-img-col">
+                 <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/accessoires-appareil-photo-avant-emballage.webp" alt="Appareil éteint, carte mémoire retirée, numéro de série visible" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Appareil éteint, carte retirée, numéro de série photographié — avant tout emballage.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Chiffon microfibre propre</div>
+                    <div class="mat-link-desc">Nettoyer légèrement sans rayer avant photo et emballage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Sachets pour carte mémoire et petites pièces</div>
+                    <div class="mat-link-desc">Éviter perte et confusion lors de l'emballage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">2</div></div>
+          <div class="step-content">
+            <h4>Séparer le boîtier et l'objectif si possible</h4>
+            <p>Si l'objectif est amovible, il est généralement préférable de le retirer avant l'envoi. Un objectif monté peut agir comme un levier si le carton tombe ou si un poids appuie sur le côté — cela crée une contrainte directe sur la monture.</p>
+           
+
+            <div class="step-with-img">
+               <p>Une fois l'objectif retiré, installez immédiatement le <strong>bouchon de boîtier</strong>. Le boîtier ne doit jamais rester ouvert. L'objectif doit recevoir son <strong>bouchon avant et son bouchon arrière</strong>. Pour un compact ou un bridge à objectif intégré, renforcez la protection autour de la partie optique et évitez toute pression directe sur l'avant.</p>
+              <div class="step-img-col">
+                 <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/objectif-photo-bouchons-avant-arriere.webp" alt="Appareil éteint, carte mémoire retirée, numéro de série visible" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Objectif monté = risque. Boîtier bouchonné + objectif séparé = bon réflexe.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon de boîtier compatible</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon arrière d'objectif</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Bouchon avant d'objectif</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">3</div></div>
+          <div class="step-content">
+            <h4>Protéger le boîtier</h4>
+            <p>Le boîtier doit être protégé <strong>sans être comprimé</strong>. Commencez par l'écran : placez une couche douce et propre contre la surface pour limiter les rayures. Ajoutez ensuite une protection amortissante (mousse fine, papier bulle, housse propre).</p>
+            <p>Les parties saillantes doivent rester sans point d'appui : viseur, griffe flash, molettes, trappes, poignée, ports latéraux et écran orientable. Les trappes batterie et carte mémoire doivent être bien fermées. <strong>Le ruban adhésif ne doit jamais être collé directement sur le boîtier</strong>, le grip, l'écran, les inscriptions ou les caoutchoucs. Il ferme la protection autour du boîtier, pas sur le boîtier.</p>
+            
+
+            <div class="step-with-img">
+               <p>La protection finale doit former un bloc stable, compact et non glissant. Si le boîtier bouge dans sa propre protection, il faut l'ajuster avant de le placer dans le carton.</p>
+                 <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/boitier-appareil-photo-papier-bulle.webp" alt="Appareil éteint, carte mémoire retirée, numéro de série visible" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Objectif monté = risque. Boîtier bouchonné + objectif séparé = bon réflexe.</div>
+              </div>
+            
+
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais</div>
+                    <div class="mat-link-desc">Protection amortissante autour du boîtier</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Mousse fine de protection</div>
+                    <div class="mat-link-desc">Utile pour l'écran et les zones sensibles</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Housse souple ou pochette matelassée</div>
+                    <div class="mat-link-desc">Protection intérieure propre avant calage</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">4</div></div>
+          <div class="step-content">
+            <h4>Emballer l'objectif séparément</h4>
+            <p>L'objectif est souvent l'élément le plus fragile, et parfois le plus cher. Il doit être emballé séparément du boîtier, même s'ils partent dans le même colis. <strong>La lentille frontale et la lentille arrière ne doivent jamais recevoir de pression directe.</strong></p>
+            <p>Si l'objectif possède une bague de zoom verrouillable, activez le verrouillage sans forcer. Ne bloquez pas une bague avec du ruban adhésif directement collé sur l'objectif — cela peut laisser des traces ou créer une contrainte. Pour un <strong>téléobjectif ou zoom lumineux</strong>, le calage doit soutenir l'objectif sur sa longueur, pas seulement sur ses extrémités.</p>
+
+            <div class="step-with-img">
+              <p>Pour un objectif lourd, long ou coûteux, ajoutez une petite boîte interne après la protection individuelle. Cette boîte doit ensuite être calée dans le carton extérieur. Les filtres, pare-soleil et adaptateurs doivent être placés dans des étuis ou sachets séparés.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/objectif-photo-papier-bulle-ruban.webp" alt="Objectif avec bouchons avant/arrière, emballé séparément" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Bouchon avant/arrière, fût protégé, petite boîte interne pour objectif lourd.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais ou mousse enveloppante</div>
+                    <div class="mat-link-desc">Protéger le fût sans pression directe sur les lentilles</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Petite boîte interne pour objectif</div>
+                    <div class="mat-link-desc">Recommandée pour objectif lourd ou coûteux</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Étui ou pochette pour filtre</div>
+                    <div class="mat-link-desc">Éviter fissure, rayure et perte pendant le transport</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 5 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">5</div></div>
+          <div class="step-content">
+            <h4>Isoler batterie, chargeur, câbles et petits accessoires</h4>
+            <p>Les accessoires <strong>ne doivent jamais servir de calage</strong>. Un chargeur, un câble, une sangle, un filtre ou une bague laissés libres peuvent rayer, comprimer ou heurter le boîtier et l'objectif pendant le transport.</p>
+           
+
+               <div class="step-with-img">
+                <p>Emballez chaque élément séparément : chargeur à part, câbles pliés sans tension, filtres dans leur étui, bouchons et petites pièces regroupés dans un sachet. Si une batterie séparée est incluse et acceptée, ses contacts doivent être protégés et elle ne doit pas toucher un objet conducteur.</p>
+                <div class="step-img-col">
+                 <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/accessoires-appareil-photo-sachet-zip.webp" alt="Appareil éteint, carte mémoire retirée, numéro de série visible" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Objectif monté = risque. Boîtier bouchonné + objectif séparé = bon réflexe.</div>
+                </div>
+              </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Sachets zip ou pochettes séparées</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Ruban isolant ou protection non conductrice</div>
+                    <div class="mat-link-desc">Protéger les contacts d'une batterie séparée</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Petites pochettes matelassées</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 6 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">6</div></div>
+          <div class="step-content">
+            <h4>Choisir le bon carton</h4>
+            <p>Le carton doit être rigide, propre, sec et assez solide pour le poids du matériel. Pour un boîtier récent, un objectif lourd ou un kit complet, privilégiez un <strong>carton double cannelure</strong>. Gardez si possible environ <strong>5 cm de marge</strong> autour du matériel protégé.</p>
+            <p>La boîte d'origine peut servir de protection intérieure si elle maintient bien le boîtier ou l'objectif avec ses inserts. Mais elle ne doit pas voyager seule : <strong>placez-la dans un carton extérieur neutre</strong>. Pour un cadeau, la présentation reste à l'intérieur, mais l'extérieur doit rester discret.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton double cannelure</div>
+                    <div class="mat-link-desc">Recommandé pour boîtier, objectif ou kit de valeur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton extérieur neutre</div>
+                    <div class="mat-link-desc">Indispensable si vous utilisez la boîte d'origine</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Plaques de carton ondulé ou mousse</div>
+                    <div class="mat-link-desc">Créer une première marge de protection sur les faces</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 7 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">7</div></div>
+          <div class="step-content">
+            <h4>Caler le colis et supprimer tout mouvement</h4>
+            <p>Placez d'abord une couche amortissante au fond du carton. Le matériel ne doit jamais reposer directement sur le fond. Placez ensuite le boîtier, l'objectif et les accessoires protégés au centre. <strong>Aucun élément ne doit toucher directement les parois.</strong></p>
+            <p>Fermez temporairement le carton et inclinez-le doucement. Si vous entendez un bruit, si quelque chose glisse ou si le contenu semble bouger, le calage est insuffisant. Les chips de calage et coussins d'air peuvent compléter un emballage, mais ils ne doivent pas être la seule protection — un boîtier ou objectif est trop dense.</p>
+
+            <div class="step-with-img">
+              <p>Remplissez les côtés avec un calage dense, puis ajoutez une protection au-dessus. Le dessus doit être comblé sans écraser le matériel.</p>
+              <div class="step-img-col">
+                <div class="step-img-ph">
+                  <img src="/static/img/articleImg/appareil-photo/carton-calage-appareil-photo-objectif-accessoires.webp" alt="Appareil éteint, carte mémoire retirée, numéro de série visible" style="width:100%;height:auto;object-fit:cover;" />
+                </div>
+                <div class="step-caption-txt">Fond amorti, contenu centré, calage dense sur 6 faces — colis silencieux.</div>
+              </div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier kraft froissé dense</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Mousse de calage</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Papier bulle épais</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 8 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">8</div></div>
+          <div class="step-content" style="padding-bottom:0.5rem;">
+            <h4>Fermer, étiqueter et rester discret</h4>
+            <p>Fermez le carton avec un ruban solide et renforcez le fond. Posez l'étiquette à plat sur une surface propre, code-barres lisible, non plié et sans reflet. Si vous réutilisez un carton, <strong>retirez les anciennes étiquettes</strong>.</p>
+            <p><strong>Restez discret</strong> : n'écrivez pas "appareil photo", "objectif", une marque, un modèle ou une valeur sur le carton. La mention "Fragile" peut informer, mais elle ne remplace jamais le calage, le suivi, l'assurance et les preuves.</p>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Ruban adhésif renforcé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Dévidoir pour ruban</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Pochette transparente pour étiquette</div>
+                    <div class="mat-link-desc">Protéger l'étiquette sans gêner le scan du code-barres</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div>
+
+    <!-- ERREURS -->
+    <div class="prose">
+      <h3>Erreurs fréquentes à éviter</h3>
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Utiliser un carton rigide double cannelure avec 5 cm de marge</span></div>
+          <div class="tip-c b"><span>✗</span><span>Utiliser une enveloppe à bulles — compression garantie</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Séparer l'objectif et poser les bouchons sur les deux</span></div>
+          <div class="tip-c b"><span>✗</span><span>Laisser l'objectif monté — risque de torsion sur la monture</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Isoler chaque accessoire dans un sachet ou une pochette</span></div>
+          <div class="tip-c b"><span>✗</span><span>Laisser les accessoires libres comme calage</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Placer la boîte d'origine dans un carton extérieur neutre</span></div>
+          <div class="tip-c b"><span>✗</span><span>Envoyer la boîte d'origine seule — vol et boîte abîmée</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Photographier le matériel, la série, le calage avant fermeture</span></div>
+          <div class="tip-c b"><span>✗</span><span>Envoyer sans aucune photo — dossier faible en cas de litige</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Test de mouvement : colis silencieux avant dépôt</span></div>
+          <div class="tip-c b"><span>✗</span><span>Compter sur "Fragile" pour compenser un calage insuffisant</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /emballage -->
+
+  <div class="part-transition">Colis fermé, silencieux, discret. Il reste à choisir le bon service et vérifier les points critiques avant dépôt.</div>
+
+  <!-- ════════ PARTIE 3 ════════ -->
+  <div id="apres" class="section-gap p3">
+
+    <div class="part-header p3">
+      <div class="part-num">3</div>
+      <div>
+        <div class="part-tag">Après emballage</div>
+        <h2>Transporteur, assurance, douane et preuves</h2>
+        <p>Pesez le colis fermé, mesurez ses dimensions réelles, puis comparez les offres avec les bonnes informations : destination, valeur du matériel, délai, suivi, assurance, batterie lithium et documents éventuels.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Dernière vérification avant de choisir le mode d'envoi</h3>
+      <p>Une fois l'appareil emballé, le colis final n'a souvent plus le même poids ni les mêmes dimensions que prévu. Le carton, les protections, le calage et les accessoires peuvent modifier le format réel de l'envoi. C'est donc à ce moment qu'il devient possible de comparer correctement.</p>
+
+      <div class="callout tip">
+        <div class="callout-ico">💡</div>
+        <div class="callout-body">
+          <strong>Ne choisissez pas seulement le prix</strong>
+          Pour du matériel photo, vérifiez aussi le suivi, l'assurance, la remise contre signature et les restrictions liées à la batterie ou à la destination. Sur <a href="https://www.universcolis.fr/" style="color:var(--pc);font-weight:600;">UniversColis</a>, comparez avec le poids et les dimensions réels du colis fermé.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quel transporteur choisir ?</h3>
+      <p>Il n'existe pas de transporteur idéal pour tous les appareils photo. Le bon choix dépend d'abord de la valeur du matériel, puis de la destination, de la batterie lithium, du suivi, de l'assurance et de la preuve de livraison. Colissimo, Chronopost, Mondial Relay, DHL, UPS ou FedEx peuvent tous être pertinents selon le cas — il faut comparer le service précis, pas seulement le nom du transporteur.</p>
+
+      <div class="risk-transport-grid">
+        <div class="risk-transport-row low">
+          <div class="rt-level">Faible</div>
+          <div class="rt-example">Compact, cadeau à un proche</div>
+          <div class="rt-priority">Suivi</div>
+          <div class="rt-check">Prix, délai</div>
+        </div>
+        <div class="risk-transport-row med">
+          <div class="rt-level">Moyen</div>
+          <div class="rt-example">Bridge, boîtier simple</div>
+          <div class="rt-priority">Suivi + couverture</div>
+          <div class="rt-check">Indemnisation incluse</div>
+        </div>
+        <div class="risk-transport-row high">
+          <div class="rt-level">Élevé</div>
+          <div class="rt-example">Boîtier récent, objectif cher</div>
+          <div class="rt-priority">Assurance</div>
+          <div class="rt-check">Signature, exclusions</div>
+        </div>
+        <div class="risk-transport-row critical">
+          <div class="rt-level">Très élevé</div>
+          <div class="rt-example">Kit pro, forte valeur</div>
+          <div class="rt-priority">Sécurité renforcée</div>
+          <div class="rt-check">Assurance, valeur déclarée</div>
+        </div>
+        <div class="risk-transport-row special">
+          <div class="rt-level">Cas sensible</div>
+          <div class="rt-example">SAV, vente, international</div>
+          <div class="rt-priority">Conformité</div>
+          <div class="rt-check">Douane, batterie, preuves</div>
+        </div>
+      </div>
+
+      <p>Pour une vente d'occasion, ajoutez les preuves : photos avant envoi, numéro de série, contenu du colis, calage et preuve de dépôt. Pour un SAV, suivez les consignes du fabricant ou du réparateur. Pour l'international ou l'Outre-mer, vérifiez aussi les documents douaniers, les restrictions liées aux batteries lithium et les conditions d'indemnisation.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Assurance, valeur déclarée et preuve de valeur</h3>
+      <p>L'assurance n'a de sens que si elle correspond à la <strong>valeur réelle du matériel envoyé</strong>. Un boîtier récent, un objectif lumineux, une batterie, un chargeur, des filtres et une boîte d'origine peuvent représenter une valeur bien supérieure à l'indemnisation incluse par défaut.</p>
+
+      <p>Il faut distinguer quatre notions. <strong>L'indemnisation de base</strong> correspond à la couverture prévue par le service sans option supplémentaire. <strong>L'assurance complémentaire</strong> augmente cette couverture, mais reste soumise à des plafonds, justificatifs et exclusions. <strong>La Valeur Déclarée</strong>, lorsqu'elle est disponible, est un dispositif plus encadré pour les biens de forte valeur. <strong>La remise contre signature</strong>, elle, prouve une remise au destinataire, mais ne remplace pas une assurance.</p>
+
+      <p>La bonne question n'est pas seulement "combien coûte l'envoi ?" mais : <strong>"quelle somme pourra réellement être défendue si le colis est perdu, abîmé ou contesté ?"</strong> L'assurance ne couvre pas tout automatiquement — elle peut être refusée si l'emballage est insuffisant, si la valeur est mal justifiée, si la batterie lithium n'est pas conforme, si la déclaration est imprécise ou si les délais de réclamation ne sont pas respectés.</p>
+
+      <div class="assurance-grid">
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur faible</div>
+          <div class="assurance-decision">Suivi + emballage sérieux suffisent dans la plupart des cas</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur moyenne</div>
+          <div class="assurance-decision">Vérifier la couverture incluse dans le service choisi</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur élevée</div>
+          <div class="assurance-decision">Assurance complémentaire + remise contre signature</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur très élevée</div>
+          <div class="assurance-decision">Valeur Déclarée ou service spécialisé — valeur prouvable indispensable</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur mal prouvée</div>
+          <div class="assurance-decision">Indemnisation difficile à défendre, même avec une assurance souscrite</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Une assurance ne remplace jamais l'emballage ni les preuves</strong>
+          Pour du matériel photo, conservez au minimum : valeur, état, numéro de série, contenu, calage, preuve de dépôt et preuve de livraison. La valeur assurée doit être prouvable : facture, preuve de paiement, annonces comparables.
+        </div>
+      </div>
+
+      <p>Il faut aussi prouver l'état et la préparation du colis. Photographiez le matériel avant emballage, les accessoires inclus, le numéro de série, les protections, le calage intérieur et le colis fermé. En cas de litige, ces éléments montrent non seulement la valeur, mais aussi que l'appareil a été expédié correctement.</p>
+
+      <div class="callout info">
+        <div class="callout-ico">📋</div>
+        <div class="callout-body">
+          <strong>Cas pratique</strong>
+          Un particulier envoie un boîtier et un objectif d'environ 1 500 € avec un service standard, sans option adaptée. Si le colis est perdu, la compensation peut rester très inférieure à la valeur réelle. Le problème ne vient pas seulement du transport : le niveau de protection choisi n'était pas cohérent avec le contenu.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Envoyer un appareil photo à l'étranger ou en Outre-mer</h3>
+      <p>En France métropolitaine, l'envoi reste généralement plus simple. Vers l'Union européenne, les formalités douanières sont en principe plus légères qu'hors UE, mais il faut vérifier le transporteur, l'assurance et la batterie. L'Outre-mer demande plus de prudence car les règles varient selon la destination, le service et le type d'envoi — le trajet peut aussi être plus long, avec davantage de manutentions et des variations possibles de température ou d'humidité. Hors Union européenne, prévoyez une déclaration douanière, une description précise du contenu, une valeur réelle et les documents adaptés.</p>
+
+      <p>Avec La Poste ou Colissimo, l'expédition hors UE ou vers l'Outre-mer peut nécessiter une déclaration <strong>CN22 ou CN23</strong> selon le service, la valeur et le contenu. Évitez les descriptions vagues comme "cadeau", "électronique" ou "matériel photo" — ne sous-déclarez pas la valeur : une valeur incohérente peut compliquer le dédouanement, fragiliser l'assurance ou créer un litige avec le destinataire.</p>
+
+      <div class="dest-scale">
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">France</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Emballage</div>
+              <div class="dest-col-item">Suivi</div>
+              <div class="dest-col-item">Batterie lithium</div>
+              <div class="dest-col-item">Assurance</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Union européenne</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Transporteur</div>
+              <div class="dest-col-item">Assurance</div>
+              <div class="dest-col-item">Batterie</div>
+              <div class="dest-col-item">Territoires particuliers</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Outre-mer</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">CN22 / CN23</div>
+              <div class="dest-col-item">Trajet plus long</div>
+              <div class="dest-col-item">Variations humidité</div>
+              <div class="dest-col-item">Règles destination</div>
+            </div>
+          </div>
+        </div>
+        <div class="dest-col">
+          <div class="dest-col-header"><div class="dest-col-name">Hors UE</div></div>
+          <div class="dest-col-body">
+            <div class="dest-col-items">
+              <div class="dest-col-item">Déclaration douanière</div>
+              <div class="dest-col-item">Description précise</div>
+              <div class="dest-col-item">Valeur réelle</div>
+              <div class="dest-col-item">Documents adaptés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top:1rem;">Pour la déclaration export, décrivez chaque élément avec une désignation claire et une valeur cohérente :</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Élément</th><th>Description conseillée</th><th>Code indicatif</th></tr></thead>
+          <tbody>
+            <tr><td>Appareil photo numérique</td><td>Appareil photo numérique d'occasion, sans carte mémoire</td><td>8525 89 00 00</td></tr>
+            <tr><td>Objectif photo</td><td>Objectif photo d'occasion, monture précisée si utile</td><td>9002 11 00</td></tr>
+            <tr><td>Chargeur</td><td>Chargeur pour appareil photo</td><td>8504 40 60</td></tr>
+            <tr><td>Batterie lithium-ion séparée</td><td>Batterie lithium-ion rechargeable pour appareil photo</td><td>8507 60 00</td></tr>
+            <tr><td>Kit complet</td><td>Boîtier + objectif + accessoires détaillés séparément</td><td>À classifier élément par élément</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">ℹ️</div>
+        <div class="callout-body">
+          <strong>Codes douaniers : repères à confirmer</strong>
+          Vérifiez les codes avec des outils officiels comme <a href="https://www.douane.gouv.fr/demarche/connaitre-la-nomenclature-de-votre-marchandise" target="_blank" rel="noopener">RITA (Douane française)</a> ou <a href="https://trade.ec.europa.eu/access-to-markets/" target="_blank" rel="noopener">Access2Markets (Commission européenne)</a>. Les codes indiqués sont des repères à confirmer selon le modèle exact, la destination, la valeur et le type d'envoi. Le code douanier et la règle de transport des batteries sont deux vérifications distinctes.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Que faire si l'appareil arrive cassé, perdu ou contesté ?</h3>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Problème</th><th>Première action</th><th>Preuves utiles</th></tr></thead>
+          <tbody>
+            <tr><td>Carton abîmé</td><td>Photographier avant ouverture</td><td>Extérieur, étiquette, coins, ruban</td></tr>
+            <tr><td>Matériel cassé</td><td>Photographier objet + emballage intérieur</td><td>Calage, protections, état avant/après</td></tr>
+            <tr><td>Objectif endommagé</td><td>Ne pas forcer bague ou monture bloquée</td><td>Lentilles, monture, bagues, bouchons</td></tr>
+            <tr><td>Colis perdu</td><td>Ouvrir une recherche transporteur</td><td>Dépôt, suivi, valeur, assurance</td></tr>
+            <tr><td>Litige acheteur</td><td>Fournir un dossier structuré</td><td>Série, photos, annonce, suivi, calage</td></tr>
+            <tr><td>SAV contesté</td><td>Demander les photos reçues par le réparateur</td><td>Formulaire, tracking, contenu, emballage</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Ne jetez rien avant la fin du dossier</strong>
+          Gardez le carton, le calage et toutes les protections. L'emballage peut prouver soit un choc pendant le transport, soit un emballage insuffisant. Ne forcez pas un objectif bloqué ou une monture déformée — cela peut aggraver le dommage et compliquer l'analyse.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Checklist finale avant dépôt</h3>
+      <p>Le colis est prêt seulement s'il est solide, silencieux, discret, compatible avec le transporteur et défendable en cas de litige.</p>
+
+      <div class="checklist-finale">
+        <div class="cf-bloc" style="--pc:var(--p1);">
+          <div class="cf-title">📷 Matériel</div>
+          <div class="cf-items">
+            <div class="cf-item">Appareil éteint</div>
+            <div class="cf-item">Carte mémoire retirée</div>
+            <div class="cf-item">Batterie contrôlée</div>
+            <div class="cf-item">Numéro de série noté</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p2);">
+          <div class="cf-title">🛡️ Protection</div>
+          <div class="cf-items">
+            <div class="cf-item">Bouchons posés</div>
+            <div class="cf-item">Écran protégé</div>
+            <div class="cf-item">Objectif séparé</div>
+            <div class="cf-item">Accessoires isolés</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p3);">
+          <div class="cf-title">📦 Carton</div>
+          <div class="cf-items">
+            <div class="cf-item">Carton rigide</div>
+            <div class="cf-item">Fond amorti</div>
+            <div class="cf-item">Contenu centré</div>
+            <div class="cf-item">Aucun mouvement</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--violet);">
+          <div class="cf-title">📸 Preuves</div>
+          <div class="cf-items">
+            <div class="cf-item">Photos état + série</div>
+            <div class="cf-item">Photos calage</div>
+            <div class="cf-item">Valeur prouvable</div>
+            <div class="cf-item">Preuve de dépôt</div>
+          </div>
+        </div>
+        <div class="cf-bloc" style="--pc:var(--p3);">
+          <div class="cf-title">🚚 Transport</div>
+          <div class="cf-items">
+            <div class="cf-item">Poids réel mesuré</div>
+            <div class="cf-item">Assurance vérifiée</div>
+            <div class="cf-item">Batterie acceptée</div>
+            <div class="cf-item">Étiquette lisible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /apres -->
+
+  <!-- FAQ -->
+  <div class="prose section-gap">
+    <h3>FAQ</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un appareil photo par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si le colis est rigide, bien calé, suivi, et si la batterie lithium respecte les règles du transporteur. Pour un appareil de valeur, vérifiez aussi l'assurance, la remise contre signature et les preuves à conserver.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment emballer un appareil photo pour l'envoyer ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Éteignez l'appareil, retirez la carte mémoire, séparez l'objectif si possible, installez les bouchons, protégez le boîtier et l'objectif séparément, isolez les accessoires, puis placez le tout au centre d'un carton rigide. Le colis ne doit faire aucun bruit quand on l'incline doucement.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Faut-il retirer l'objectif avant l'envoi ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si l'objectif est amovible. Cela limite les contraintes sur la monture en cas de choc ou de pression latérale. Le boîtier doit recevoir son bouchon, et l'objectif ses bouchons avant et arrière.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un appareil photo avec une batterie lithium ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, sous conditions. La batterie doit être saine, l'appareil éteint et l'envoi accepté par le transporteur. Une batterie séparée doit avoir ses contacts protégés. Une batterie gonflée, chaude, fissurée, oxydée ou suspecte ne doit pas être envoyée en colis standard.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Faut-il assurer un appareil photo envoyé par colis ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, si sa valeur dépasse l'indemnisation standard. L'assurance doit correspondre à une valeur prouvable : facture, preuve de paiement, capture de vente, numéro de série et photos du matériel. Elle ne remplace jamais un bon emballage ni le respect des conditions du transporteur.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment déclarer un appareil photo pour un envoi hors UE ou Outre-mer ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Utilisez une description précise : "appareil photo numérique d'occasion sans carte mémoire" ou "objectif photo d'occasion". Évitez les mentions vagues comme "cadeau", "électronique" ou "matériel photo". La valeur déclarée doit rester cohérente avec le contenu réel.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maj">
+    <strong>Dernière mise à jour</strong><br>
+    Informations logistiques, règles batterie lithium, conditions transporteurs et données douanières vérifiées pour publication en 2026. Les conditions pouvant évoluer, vérifiez toujours les règles du transporteur avant l'envoi.
+  </div>
+
+  <div class="sources">
+    <strong>Sources principales</strong>
+    <ul>
+      <li><a href="https://www.colissimo.entreprise.laposte.fr/conseils/bien-expedier-ses-colis/un-colis-parfait-la-webserie/batteries-lithium" target="_blank" rel="noopener">La Poste / Colissimo — batteries lithium, limites par colis</a></li>
+      <li><a href="https://aide.laposte.fr/contenu/comment-realiser-ma-declaration-en-douane-cn23" target="_blank" rel="noopener">La Poste — déclaration douanière CN23</a></li>
+      <li><a href="https://www.chronopost.fr/fr/livraison/nos-services/assurance-colis" target="_blank" rel="noopener">Chronopost — assurance colis et option Ad Valorem</a></li>
+      <li><a href="https://www.dhl.com/discover/fr-fr/logistics-advice/import-export-advice/how-to-ship-batteries" target="_blank" rel="noopener">DHL — expédition de batteries lithium</a></li>
+      <li><a href="https://www.douane.gouv.fr/demarche/connaitre-la-nomenclature-de-votre-marchandise" target="_blank" rel="noopener">Douane française — nomenclature douanière</a></li>
+      <li><a href="https://www.vinted.fr/help/729-le-colis-a-ete-endommage-en-cours-dacheminement" target="_blank" rel="noopener">Vinted — colis endommagé pendant l'acheminement</a></li>
+      <li><a href="https://www.leboncoin.fr/dc/vos_droits_et_obligations" target="_blank" rel="noopener">Leboncoin — droits et obligations vendeur</a></li>
+    </ul>
+  </div>
+
+  <div class="affil">
+    <span style="color:var(--violet);font-size:1rem;flex-shrink:0;margin-top:1px;">ℹ</span>
+    <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour vous, ce qui nous aide à maintenir nos services gratuits.</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleFaq(btn){
+  const a=btn.nextElementSibling,was=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!was){btn.classList.add('open');a.classList.add('open');}
+}
+const navLinks=document.querySelectorAll('.sn');
+const ids=['avant','emballage','apres'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    let cur=ids[0];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130)cur=id;
+    });
+    navLinks.forEach(l=>{
+      const isActive=l.getAttribute('href')==='#'+cur;
+      l.classList.toggle('active',isActive);
+    });
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>

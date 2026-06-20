@@ -298,6 +298,22 @@
       {{else if (eq this.type "grid-cout")}}
       {{> guide-blocks/grid-cout block=this}}
 
+      {{!-- battery-tree → partial --}}
+      {{else if (eq this.type "battery-tree")}}
+      {{> guide-blocks/battery-tree block=this}}
+
+      {{!-- assurance-grid → partial --}}
+      {{else if (eq this.type "assurance-grid")}}
+      {{> guide-blocks/assurance-grid block=this}}
+
+      {{!-- checklist-finale → partial --}}
+      {{else if (eq this.type "checklist-finale")}}
+      {{> guide-blocks/checklist-finale block=this}}
+
+      {{!-- risk-transport-grid → partial --}}
+      {{else if (eq this.type "risk-transport-grid")}}
+      {{> guide-blocks/risk-transport-grid block=this}}
+
       {{/if}}
       {{/each}}
       {{!-- ── FIN BLOCS APRÈS ── --}}

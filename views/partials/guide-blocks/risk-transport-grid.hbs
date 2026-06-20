@@ -1,0 +1,25 @@
+{{!-- 
+  RISK-TRANSPORT-GRID
+  Liste de lignes 4 colonnes avec bordure colorée par niveau.
+  Utilisé pour : niveau de risque → exemple → priorité → vérification
+  Différent de transport-grid : 4 colonnes alignées par ligne, pas de carte verticale
+  
+  Paramètres JSON :
+  - rows[] :
+      - style   : "low" (vert), "med" (ambre), "high" (orange), "critical" (rouge), "special" (violet)
+      - level   : texte du niveau (ex: "Faible", "Très élevé")
+      - example : exemple concret
+      - priority: priorité d'action
+      - check   : ce qu'il faut vérifier
+--}}
+
+<div class="risk-transport-grid">
+  {{#each block.rows}}
+  <div class="risk-transport-row {{this.style}}">
+    <div class="rt-level">{{this.level}}</div>
+    <div class="rt-example">{{this.example}}</div>
+    <div class="rt-priority">{{this.priority}}</div>
+    <div class="rt-check">{{this.check}}</div>
+  </div>
+  {{/each}}
+</div>
