@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-06-20T15:15:05.904Z</updated>
+  <updated>2026-06-22T15:08:40.303Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -434,6 +434,15 @@
       <link href="https://www.universcolis.fr/actualites/bouton-retractation-obligatoire-retours-colis-ecommerce-2026"/>
       <id>https://www.universcolis.fr/actualites/bouton-retractation-obligatoire-retours-colis-ecommerce-2026</id>
       <updated>2026-06-19</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Droits de douane de 3 € sur les petits colis : ce qui change au 1er juillet 2026</title>
+      <link href="https://www.universcolis.fr/actualites/droits-douane-3-euros-petits-colis-juillet-2026"/>
+      <id>https://www.universcolis.fr/actualites/droits-douane-3-euros-petits-colis-juillet-2026</id>
+      <updated>2026-06-22</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>
