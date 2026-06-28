@@ -721,5 +721,32 @@
         <image:caption>Cette infographie montre la différence entre le parcours réel d'un colis Colissimo et les informations visibles dans le suivi. Elle explique qu'un colis peut passer par le dépôt, un centre de tri, le transport international, un autre centre de tri puis la livraison finale, alors que le suivi public n'affiche que certains scans. Le visuel aide à comprendre pourquoi un suivi Colissimo peut sembler bloqué après le départ du pays d'origine, sans que cela signifie automatiquement que le colis est perdu.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/livraison/livraison-dimanche-qui-livre-france</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/livraison-dimanche-france-chronopost-amazon-joybuy-mondial-relay.webp</image:loc>
+        
+        <image:caption>Infographie principale de l'article sur la livraison le dimanche en France. Le visuel compare Chronopost, Amazon, Joybuy et Mondial Relay / lockers selon leur position réelle face à la livraison dominicale. Chronopost apparaît comme le cas le plus clair sur zones éligibles, Amazon comme une option possible selon la commande, Joybuy comme un acteur de livraison rapide à vérifier, et Mondial Relay comme une solution relevant surtout du retrait en locker.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/livraison/colis-non-livre-regle-30-jours-remboursement</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colis-non-livre-regle-30-jours-remboursement.webp</image:loc>
+        
+        <image:caption>Infographie principale de l'article sur les colis non livrés, la règle des 30 jours et le remboursement. Le visuel présente un parcours simple en trois étapes : vérifier le délai de livraison, contacter le vendeur par écrit, puis annuler ou demander le remboursement si la livraison n'intervient pas. L'image rappelle aussi que le vendeur reste l'interlocuteur principal du consommateur, même lorsque le retard semble venir du transporteur.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/divers/comment-envoyer-lettre-recommandee</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/envoyer-lettre-recommandee-avec-ar-etapes.webp</image:loc>
+        
+        <image:caption>Infographie sur l'envoi d'une lettre recommandée avec avis de réception. Elle montre le parcours classique : préparation, dépôt, preuve de dépôt, suivi et AR.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
