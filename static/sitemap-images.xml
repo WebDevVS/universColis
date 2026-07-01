@@ -748,5 +748,32 @@
         <image:caption>Infographie sur l'envoi d'une lettre recommandée avec avis de réception. Elle montre le parcours classique : préparation, dépôt, preuve de dépôt, suivi et AR.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/colis-abime-que-faire</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colis-abime-quelle-decision-prendre.webp</image:loc>
+        
+        <image:caption>Infographie de décision sur les démarches à suivre en cas de colis abîmé. Le visuel distingue quatre situations : avant d'accepter le colis, après ouverture, après un achat en ligne et lors d'un envoi entre particuliers. Il met en avant trois réflexes essentiels : conserver les preuves, formuler des réserves précises et agir rapidement.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/colis-perdu-qui-rembourse</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colis-perdu-remboursement-client-indemnisation-transporteur.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique sur les deux démarches à distinguer après un colis perdu. Le visuel montre d'un côté le client qui contacte le vendeur pour un remboursement ou une réexpédition, et de l'autre le vendeur ou l'expéditeur qui traite une réclamation ou une indemnisation avec le transporteur.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/colis-marque-livre-mais-non-recu</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/preuve-remise-colis-livre-non-recu.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique sur les preuves de remise à demander lorsqu'un colis est marqué livré mais non reçu. Le visuel montre la différence entre un simple statut de suivi, une photo, une signature, un nom de réceptionnaire, un code QR ou une trace de retrait.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
