@@ -775,5 +775,32 @@
         <image:caption>Infographie pédagogique sur les preuves de remise à demander lorsqu'un colis est marqué livré mais non reçu. Le visuel montre la différence entre un simple statut de suivi, une photo, une signature, un nom de réceptionnaire, un code QR ou une trace de retrait.</image:caption>
       </image:image>
     
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/reclamation-colissimo</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/reclamation-colissimo-etapes-cles.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique sur les étapes d'une réclamation Colissimo. Le visuel distingue la vérification initiale, le dépôt de la réclamation et le recours Colissimo en cas de refus.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/assurance-colis-utile-avant-envoi</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/assurance-colis-verifications-essentielles.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique sur la décision d'assurer un colis. Le visuel montre les vérifications essentielles à faire avant de payer une option d'assurance.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/assurance/indemnisation-colis-perdu-abime-combien-recuperer</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/indemnisation-colis-valeur-plafond-remboursement.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique sur l'indemnisation d'un colis perdu ou abîmé. Le visuel montre qu'un objet d'une valeur de 600 € peut être remboursé différemment selon le plafond d'indemnisation, le poids du colis, l'assurance choisie et les justificatifs disponibles.</image:caption>
+      </image:image>
+    
   </url>
 </urlset>
