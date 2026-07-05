@@ -463,11 +463,11 @@
 
         {{#each actualites}}
         <article class="news-card-mixed" itemscope itemtype="https://schema.org/NewsArticle">
-          <meta itemprop="datePublished" content="{{publishedDate}}">
+          <meta itemprop="datePublished" content="{{modifiedDate}}">
           <div class="news-meta-mixed">
             <div class="news-date-compact">
               <i class="fa-regular fa-calendar"></i>
-              <span itemprop="dateModified" content="{{publishedDate}}">{{formatDate publishedDate}}</span>
+              <span itemprop="dateModified" content="{{modifiedDate}}">{{formatDate modifiedDate}}</span>
             </div>
             <div class="news-category-compact">{{keyWord}}</div>
           </div>

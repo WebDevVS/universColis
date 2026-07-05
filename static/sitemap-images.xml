@@ -344,15 +344,6 @@
       </image:image>
     
   </url><url>
-    <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
-    
-      <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/taxe-2-euros-type-marchandise-colis-hors-ue-1er-mars-2026.webp</image:loc>
-        <image:title>taxe-2-euros-type-marchandise-colis-hors-ue-1er-mars-2026</image:title>
-        <image:caption>Visuel explicatif de la taxe de 2 € sur les petits colis importés hors Union européenne. Comprendre comment elle se calcule et qui est concerné dès mars 2026.</image:caption>
-      </image:image>
-    
-  </url><url>
     <loc>https://www.universcolis.fr/actualites/ppwr-2026-colis-e-commerce-boites-envoi</loc>
     
       <image:image>
@@ -457,7 +448,16 @@
       <image:image>
         <image:loc>https://www.universcolis.fr/static/img/actualitesImg/droits-douane-3-euros-petits-colis-frais-import.webp</image:loc>
         <image:title>droits-douane-3-euros-petits-colis-frais-import</image:title>
-        <image:caption>Infographie explicative sur les nouveaux frais pouvant s'appliquer aux petits colis importés hors UE : TVA, droit européen de 3 €, taxe française de 2 € et frais de traitement éventuels du transporteur.</image:caption>
+        <image:caption>Infographie sur le droit européen de 3 € par catégorie d'article appliqué depuis le 1er juillet 2026 aux petits colis importés hors Union européenne, avec rappel du seuil de 150 € et de la taxe française de 2 € suspendue.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/taxe-2-euros-petits-colis-suspendue-droit-europeen-3-euros-2026.webp</image:loc>
+        <image:title>taxe-2-euros-petits-colis-suspendue-droit-europeen-3-euros-2026</image:title>
+        <image:caption>Visuel explicatif sur la suspension de la taxe française de 2 € sur les petits colis depuis le 1er juillet 2026. L'infographie montre que cette taxe nationale est remplacée par le droit européen de 3 € par catégorie d'article, avec TVA et frais transporteur toujours possibles selon le vendeur, la plateforme et le circuit douanier.</image:caption>
       </image:image>
     
   </url><url>

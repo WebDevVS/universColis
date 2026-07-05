@@ -218,12 +218,6 @@
     
   </url>
   <url>
-    <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
-    <priority>0.8</priority>
-    <lastmod>2026-02-25</lastmod>
-    
-  </url>
-  <url>
     <loc>https://www.universcolis.fr/actualites/ppwr-2026-colis-e-commerce-boites-envoi</loc>
     <priority>0.8</priority>
     <lastmod>2026-03-13</lastmod>
@@ -292,7 +286,13 @@
   <url>
     <loc>https://www.universcolis.fr/actualites/droits-douane-3-euros-petits-colis-juillet-2026</loc>
     <priority>0.8</priority>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-05</lastmod>
+    
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
+    <priority>0.8</priority>
+    <lastmod>2026-07-05</lastmod>
     
   </url>
   <url>
