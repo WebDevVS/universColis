@@ -97,8 +97,8 @@
             <div id="ezoic-pub-ad-placeholder-111"></div>
             {{/if}}
 
-            {{#if this.pTitle}}<h3 id="section-{{@index}}">{{this.pTitle}}</h3>{{/if}}
-            {{#if this.pSubtitle}}<p><strong class="subtitle-strong">{{this.pSubtitle}}</strong></p>{{/if}}
+            {{#if this.pTitle}}<h2 id="section-{{@index}}">{{this.pTitle}}</h2>{{/if}}
+            {{#if this.pSubtitle}}<h3 class="subtitle-strong">{{this.pSubtitle}}</h3>{{/if}}
             {{!-- Image AVANT le contenu si demandé --}}
             {{#if this.questionImg}}
             {{#if this.imageBefore}}
@@ -365,7 +365,10 @@
 {{#if showEzoic}}
 <script>
     ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(102, 103, 109, 110, 111);
+        const adIds = [102, 103, 109];
+        {{#if (gt paragraphs.length 7)}}adIds.push(110);{{/if}}
+        {{#if (gt paragraphs.length 11)}}adIds.push(111);{{/if}}
+        ezstandalone.showAds.apply(null, adIds);
     });
 </script>
 {{/if}}

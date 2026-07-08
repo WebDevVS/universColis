@@ -152,11 +152,6 @@
       <lastmod>2026-01-28</lastmod>
     </url>
     <url>
-      <loc>https://www.universcolis.fr/questions/international/ddp-vs-dap-incoterm-2026</loc>
-      <priority>0.7</priority>
-      <lastmod>2026-02-01</lastmod>
-    </url>
-    <url>
       <loc>https://www.universcolis.fr/questions/suivi/suivi-colis-international-quel-site-choisir-selon-le-cas</loc>
       <priority>0.7</priority>
       <lastmod>2026-03-23</lastmod>
@@ -215,5 +210,10 @@
       <loc>https://www.universcolis.fr/questions/assurance/indemnisation-colis-perdu-abime-combien-recuperer</loc>
       <priority>0.7</priority>
       <lastmod>2026-07-03</lastmod>
+    </url>
+    <url>
+      <loc>https://www.universcolis.fr/questions/international/ddp-vs-dap-incoterm-2026</loc>
+      <priority>0.7</priority>
+      <lastmod>2026-07-06</lastmod>
     </url>
   </urlset>

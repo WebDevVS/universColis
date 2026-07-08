@@ -37,7 +37,7 @@
     <link rel="icon" type="image/png" href="/static/img/favicon.png">
 
     {{!-- Pinterest Domain Verification --}}
-    <meta name="p:domain_verify" content="ce41093930421f6e0f655fcbd50c4533"/>
+    <meta name="p:domain_verify" content="ce41093930421f6e0f655fcbd50c4533" />
 
     {{!-- ============================================================ --}}
     {{!-- EZOIC ADS - Scripts header --}}
@@ -85,8 +85,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Fonts non bloquant -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap"></noscript>
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600;700&family=Poppins:wght@400;500;600&display=swap">
+    </noscript>
 
     <!-- Preconnect Font Awesome CDN -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -357,9 +362,9 @@
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <h5 class="footer-title">
+                    <h4 class="footer-title">
                         <i class="fa-solid fa-link me-2"></i>Nos Services
-                    </h5>
+                    </h4>
                     <ul class="footer-links">
                         <li><a href="/"><i class="fa-solid fa-balance-scale me-2"></i>Comparateur de prix</a></li>
                         <li><a href="/suivi"><i class="fa-solid fa-map-marker-alt me-2"></i>Suivi de colis</a></li>
@@ -367,14 +372,15 @@
                         <li><a href="/conseils"><i class="fa-solid fa-lightbulb me-2"></i>Conseils d'emballage</a></li>
                         <li><a href="/actualites"><i class="fa-solid fa-globe me-2"></i>Actualités</a></li>
                         <li><a href="/questions"><i class="fa-solid fa-question me-2"></i>Questions</a></li>
-                        <li><a href="/suivi/statuts-colis"><i class="fa-solid fa-magnifying-glass me-2"></i>Statuts colis</a></li>
+                        <li><a href="/suivi/statuts-colis"><i class="fa-solid fa-magnifying-glass me-2"></i>Statuts
+                                colis</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 mb-4">
-                    <h5 class="footer-title">
+                    <h4 class="footer-title">
                         <i class="fa-solid fa-info-circle me-2"></i>Informations
-                    </h5>
+                    </h4>
                     <ul class="footer-links">
                         <li><a href="/comment-ca-marche"><i class="fa-solid fa-question-circle me-2"></i>Comment ça
                                 marche ?</a></li>
@@ -405,8 +411,8 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="back-to-top">
-        <i class="fa-solid fa-arrow-up"></i>
+    <button id="back-to-top" class="back-to-top" aria-label="Retour en haut de page">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <script src="/bootstrap/js/bootstrap.bundle.min.js" defer></script>
@@ -527,8 +533,11 @@
         {{/if}}
 
         <!-- Font Awesome non bloquant -->
-        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"></noscript>
+        <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" as="style"
+            onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        </noscript>
 
         {{#if isProd}}
         <script type="speculationrules">

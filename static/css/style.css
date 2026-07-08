@@ -13718,7 +13718,7 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-.article-text h3 {
+.article-text h2 {
   color: var(--primary-color);
   font-size: 1.4rem;
   font-weight: 600;
@@ -14705,45 +14705,14 @@ footer {
   transform: scale(1.05) rotate(5deg);
 }
 
-.icon-tarifs {
-  background: linear-gradient(135deg, #8269A4, #9B7FB8);
-  color: white;
-}
-
-.icon-transporteurs {
-  background: linear-gradient(135deg, #FA7E75, #FF9489);
-  color: white;
-}
-
-.icon-delais {
-  background: linear-gradient(135deg, #17a2b8, #3BBDD4);
-  color: white;
-}
-
-.icon-dimensions {
-  background: linear-gradient(135deg, #28a745, #4CBB63);
-  color: white;
-}
-
-.icon-international {
-  background: linear-gradient(135deg, #ffc107, #FFD43B);
-  color: white;
-}
-
-.icon-assurance {
-  background: linear-gradient(135deg, #dc3545, #E8515F);
-  color: white;
-}
-
-.icon-suivi {
-  background: linear-gradient(135deg, #0D9488, #14B8A6);
-  color: white;
-}
-
-.icon-divers {
-  background: linear-gradient(135deg, #6c757d, #868e96);
-  color: white;
-}
+.icon-tarifs         { background: #8269A4 !important; color: white; }
+.icon-transporteurs  { background: #F95E53 !important; color: white; }
+.icon-delais          { background: #17a2b8 !important; color: white; }
+.icon-dimensions     { background: #28a745 !important; color: white; }
+.icon-international  { background: #CA8208 !important; color: white; }
+.icon-assurance       { background: #dc3545 !important; color: white; }
+.icon-suivi           { background: #0D9488 !important; color: white; }
+.icon-divers          { background: #6c757d !important; color: white; }
 
 .big-category-content {
   flex: 1;
@@ -14947,39 +14916,15 @@ footer {
 }
 
 /* Couleurs par catégorie */
-.cat-icon-large.icon-tarifs {
-  background: linear-gradient(135deg, #8269A4, #9B7FB8);
-}
-
-.cat-icon-large.icon-suivi {
-  background: linear-gradient(135deg, #0D9488, #14B8A6);
-}
-
-.cat-icon-large.icon-transporteurs {
-  background: linear-gradient(135deg, #FA7E75, #FF9489);
-}
-
+.cat-icon-large.icon-tarifs        { background: #8269A4 !important; }
+.cat-icon-large.icon-suivi         { background: #0D9488 !important; }
+.cat-icon-large.icon-transporteurs { background: #F95E53 !important; }
 .cat-icon-large.icon-delais,
-.cat-icon-large.icon-livraison {
-  background: linear-gradient(135deg, #17a2b8, #3BBDD4);
-}
-
-.cat-icon-large.icon-dimensions {
-  background: linear-gradient(135deg, #28a745, #4CBB63);
-}
-
-.cat-icon-large.icon-international {
-  background: linear-gradient(135deg, #f59e0b, #FBBF24);
-}
-
-.cat-icon-large.icon-assurance {
-  background: linear-gradient(135deg, #dc3545, #E8515F);
-}
-
-.cat-icon-large.icon-divers {
-  background: linear-gradient(135deg, #6c757d, #868e96);
-}
-
+.cat-icon-large.icon-livraison     { background: #17a2b8 !important; }
+.cat-icon-large.icon-dimensions    { background: #28a745 !important; }
+.cat-icon-large.icon-international { background: #CA8208 !important; }
+.cat-icon-large.icon-assurance     { background: #dc3545 !important; }
+.cat-icon-large.icon-divers        { background: #6c757d !important; }
 
 .hero-title {
   font-family: 'Exo', sans-serif;
@@ -15268,41 +15213,15 @@ footer {
 }
 
 /* Couleurs chips */
-.rel-chip-icon.icon-tarifs {
-  background: linear-gradient(135deg, #8269A4, #9B7FB8);
-}
-
-.rel-chip-icon.icon-suivi {
-  background: linear-gradient(135deg, #0D9488, #14B8A6);
-}
-
-.rel-chip-icon.icon-transporteurs {
-  background: linear-gradient(135deg, #FA7E75, #FF9489);
-}
-
-.rel-chip-icon.icon-delais {
-  background: linear-gradient(135deg, #17a2b8, #3BBDD4);
-}
-
-.rel-chip-icon.icon-dimensions {
-  background: linear-gradient(135deg, #28a745, #4CBB63);
-}
-
-.rel-chip-icon.icon-international {
-  background: linear-gradient(135deg, #f59e0b, #FBBF24);
-}
-
-.rel-chip-icon.icon-assurance {
-  background: linear-gradient(135deg, #dc3545, #E8515F);
-}
-
-.rel-chip-icon.icon-divers {
-  background: linear-gradient(135deg, #6c757d, #868e96);
-}
-
-.rel-chip-icon.icon-livraison {
-  background: linear-gradient(135deg, #17a2b8, #3BBDD4);
-}
+.rel-chip-icon.icon-tarifs         { background: #8269A4 !important; }
+.rel-chip-icon.icon-suivi          { background: #0D9488 !important; }
+.rel-chip-icon.icon-transporteurs  { background: #F95E53 !important; }
+.rel-chip-icon.icon-delais,
+.rel-chip-icon.icon-livraison      { background: #17a2b8 !important; }
+.rel-chip-icon.icon-dimensions     { background: #28a745 !important; }
+.rel-chip-icon.icon-international  { background: #CA8208 !important; }
+.rel-chip-icon.icon-assurance      { background: #dc3545 !important; }
+.rel-chip-icon.icon-divers         { background: #6c757d !important; }
 
 /* Responsive */
 @media (max-width: 576px) {
@@ -15340,10 +15259,10 @@ footer {
   gap: 0.5rem;
   background: var(--accent-color);
   color: white;
-  padding: 0.4rem 1rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
   text-decoration: none;
   margin-bottom: 1rem;
   transition: all 0.3s ease;
@@ -15351,49 +15270,49 @@ footer {
 
 /* Badge catégorie dynamique — page question individuelle */
 .qd-cat-badge--tarifs {
-  background: linear-gradient(135deg, #8269A4, #9B7FB8) !important;
+  background: #8269A4 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--suivi {
-  background: linear-gradient(135deg, #0D9488, #14B8A6) !important;
+  background: #0D9488 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--transporteurs {
-  background: linear-gradient(135deg, #FA7E75, #FF9489) !important;
+  background: #F95E53 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--livraison {
-  background: linear-gradient(135deg, #17a2b8, #3BBDD4) !important;
+  background: #17a2b8 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--dimensions {
-  background: linear-gradient(135deg, #28a745, #4CBB63) !important;
+  background: #28a745 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--international {
-  background: linear-gradient(135deg, #f59e0b, #FBBF24) !important;
+  background: #CA8208 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--assurance {
-  background: linear-gradient(135deg, #dc3545, #E8515F) !important;
+  background: #dc3545 !important;
   color: #fff !important;
   border: none;
 }
 
 .qd-cat-badge--divers {
-  background: linear-gradient(135deg, #6c757d, #868e96) !important;
+  background: #6c757d !important;
   color: #fff !important;
   border: none;
 }
@@ -15589,7 +15508,7 @@ section[id] {
   margin-bottom: 1.5rem;
 }
 
-.content-text h3 {
+.content-text h2 {
   color: var(--primary-color);
   font-size: 1.5rem;
   font-weight: 600;
@@ -15615,6 +15534,10 @@ section[id] {
 .subtitle-strong {
   color: var(--primary-color);
   font-weight: 600;
+}
+
+.content-text h3.subtitle-strong {
+  font-size: 1.2em;
 }
 
 /* Image dans le contenu */
