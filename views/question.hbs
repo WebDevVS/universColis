@@ -97,6 +97,18 @@
             <div id="ezoic-pub-ad-placeholder-111"></div>
             {{/if}}
 
+            {{#if (eq @index 17)}}
+            <div id="ezoic-pub-ad-placeholder-112"></div>
+            {{/if}}
+
+            {{#if (eq @index 24)}}
+            <div id="ezoic-pub-ad-placeholder-113"></div>
+            {{/if}}
+
+            {{#if (eq @index 35)}}
+            <div id="ezoic-pub-ad-placeholder-114"></div>
+            {{/if}}
+
             {{#if this.pTitle}}<h2 id="section-{{@index}}">{{this.pTitle}}</h2>{{/if}}
             {{#if this.pSubtitle}}<h3 class="subtitle-strong">{{this.pSubtitle}}</h3>{{/if}}
             {{!-- Image AVANT le contenu si demandé --}}
@@ -368,6 +380,9 @@
         const adIds = [102, 103, 109];
         {{#if (gt paragraphs.length 7)}}adIds.push(110);{{/if}}
         {{#if (gt paragraphs.length 11)}}adIds.push(111);{{/if}}
+        {{#if (gt paragraphs.length 17)}}adIds.push(112);{{/if}}
+        {{#if (gt paragraphs.length 24)}}adIds.push(113);{{/if}}
+        {{#if (gt paragraphs.length 35)}}adIds.push(114);{{/if}}
         ezstandalone.showAds.apply(null, adIds);
     });
 </script>

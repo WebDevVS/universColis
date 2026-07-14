@@ -488,15 +488,6 @@
       </image:image>
     
   </url><url>
-    <loc>https://www.universcolis.fr/questions/suivi/ou-trouver-numero-de-suivi-colissimo-chronopost-la-poste</loc>
-    
-      <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colissimo-etiquette-numero-suivi.webp</image:loc>
-        
-        <image:caption>Étiquette d’envoi Colissimo illustrant l’emplacement exact du numéro de suivi à côté du code-barres.</image:caption>
-      </image:image>
-    
-  </url><url>
     <loc>https://www.universcolis.fr/questions/suivi/difference-numero-suivi-numero-commande</loc>
     
       <image:image>
@@ -800,6 +791,15 @@
         <image:loc>https://www.universcolis.fr/static/img/questionsImg/paiement-droits-taxes-a-la-livraison-incoterm-dap-ecommerce.webp</image:loc>
         
         <image:caption>Illustration d'une livraison DAP où le destinataire peut devoir payer les droits de douane, la TVA et les frais du transporteur avant la livraison.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/suivi/ou-trouver-numero-de-suivi-colissimo-chronopost-la-poste</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colissimo-etiquette-numero-suivi.webp</image:loc>
+        
+        <image:caption>Photo illustrative d'une étiquette Colissimo apposée sur un colis. Le numéro de suivi apparaît sous le code-barres, ce qui permet à l'expéditeur ou au destinataire de le recopier dans un outil de suivi.</image:caption>
       </image:image>
     
   </url>

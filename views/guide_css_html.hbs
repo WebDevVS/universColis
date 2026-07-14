@@ -8684,3 +8684,1520 @@ window.addEventListener('scroll',()=>{
 </script>
 </body>
 </html>
+
+
+ <!-- TABLEAU -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Envoyer un tableau par colis : emballage, transporteur, assurance – UniversColis</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style> 
+/* ── DIAG GRID TABLEAU (types de tableau) ── */
+.diag-grid-tableau{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:1.1rem 0;}
+.diag-card-tableau{background:white;border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);transition:box-shadow .2s;}
+.diag-card-tableau:hover{box-shadow:0 3px 12px rgba(0,0,0,0.07);}
+.diag-tableau-icon{font-size:1.4rem;margin-bottom:6px;}
+.diag-tableau-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.diag-tableau-risk{font-size:0.75rem;color:var(--muted);margin-bottom:4px;line-height:1.4;}
+.diag-tableau-solution{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;border-top:1px solid rgba(0,0,0,0.05);padding-top:5px;margin-top:4px;}
+
+/* ── GLOSSAIRE GRID ── */
+.glossaire-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:1.1rem 0;}
+.glossaire-item{background:white;border-radius:var(--rsm);padding:0.75rem 1rem;border-left:3px solid color-mix(in srgb,var(--pc,var(--violet)) 35%,transparent);display:flex;flex-direction:column;gap:3px;}
+.glossaire-term{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);}
+.glossaire-def{font-size:0.78rem;color:var(--muted);line-height:1.45;}
+
+/* ── FONCTIONS GRID (3 protections) ── */
+.fonctions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.1rem 0;}
+.fonction-card{background:white;border-radius:var(--rsm);padding:1rem 1.1rem;border-top:3px solid var(--pc,var(--violet));border:1.5px solid rgba(0,0,0,0.07);border-top:3px solid var(--pc,var(--violet));}
+.fonction-num{font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:800;color:var(--pc,var(--violet));opacity:0.2;line-height:1;margin-bottom:4px;}
+.fonction-title{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:5px;}
+.fonction-items{font-size:0.79rem;color:var(--muted);line-height:1.5;margin-bottom:6px;}
+.fonction-key{font-size:0.73rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;border-top:1px solid rgba(0,0,0,0.05);padding-top:5px;}
+
+/* ── NIVEAUX EMBALLAGE ── */
+.niveaux-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:1.1rem 0;}
+.niveau-card{background:white;border-radius:var(--rsm);padding:1rem;border:1.5px solid rgba(0,0,0,0.07);border-top:3px solid rgba(0,0,0,0.07);transition:box-shadow .2s;}
+.niveau-card.active{border-top-color:var(--pc,var(--violet));box-shadow:0 2px 12px rgba(0,0,0,0.07);}
+.niveau-num{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;color:var(--pc,var(--violet));opacity:0.25;line-height:1;margin-bottom:5px;}
+.niveau-label{font-family:'Sora',sans-serif;font-size:0.82rem;font-weight:700;color:var(--text);margin-bottom:4px;}
+.niveau-pour{font-size:0.75rem;color:var(--muted);line-height:1.4;margin-bottom:5px;}
+.niveau-protection{font-size:0.72rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;border-top:1px solid rgba(0,0,0,0.05);padding-top:5px;}
+
+/* ── TRANSPORT GRID ── */
+.transport-grid{display:flex;flex-direction:column;gap:7px;margin:1.1rem 0;}
+.transport-card{background:white;border-radius:var(--rsm);padding:0.9rem 1.1rem;border:1.5px solid rgba(0,0,0,0.07);display:flex;align-items:flex-start;gap:12px;}
+.transport-name{font-family:'Sora',sans-serif;font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:3px;}
+.transport-usage{font-size:0.79rem;color:var(--muted);line-height:1.45;margin-bottom:3px;}
+.transport-check{font-size:0.76rem;font-style:italic;color:var(--pc,var(--violet));line-height:1.4;}
+.transport-badge{display:inline-block;font-size:0.66rem;font-weight:700;border-radius:8px;padding:2px 9px;margin-bottom:4px;}
+.tb-standard{background:var(--success-bg);color:var(--success);}
+.tb-express{background:color-mix(in srgb,var(--p1) 12%,white);color:var(--p1);}
+.tb-intl{background:var(--warn-bg);color:var(--warn);}
+.tb-pro{background:var(--violet-l);color:var(--violet);}
+
+/* ── CUSTOMS COMPARE ── */
+.customs-compare{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1.1rem 0;}
+.customs-col{border-radius:var(--rsm);overflow:hidden;border:1.5px solid rgba(0,0,0,0.07);}
+.customs-col.bad{border-color:var(--danger-bd);}
+.customs-col.good{border-color:var(--success-bd);}
+.customs-col-header{padding:0.65rem 1rem;font-family:'Sora',sans-serif;font-size:0.78rem;font-weight:700;}
+.customs-col.bad .customs-col-header{background:var(--danger-bg);color:var(--danger);}
+.customs-col.good .customs-col-header{background:var(--success-bg);color:var(--success);}
+.customs-col-body{background:white;padding:0.65rem 1rem;display:flex;flex-direction:column;gap:5px;}
+.customs-item{font-size:0.79rem;color:var(--muted);line-height:1.45;padding-left:10px;position:relative;}
+.customs-item::before{content:'·';position:absolute;left:0;}
+
+/* ── FORMULA BOX ── */
+.formula-box{display:flex;align-items:center;gap:12px;background:white;border-radius:var(--rsm);padding:1rem 1.25rem;margin:1.1rem 0;flex-wrap:wrap;border:1.5px solid rgba(0,0,0,0.07);}
+.formula-item{text-align:center;}
+.formula-val{font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;line-height:1;}
+.formula-lbl{font-size:0.72rem;color:var(--muted);margin-top:3px;}
+.formula-op{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:var(--muted);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .diag-grid-tableau{grid-template-columns:repeat(2,1fr);}
+  .fonctions-grid{grid-template-columns:1fr;}
+  .niveaux-grid{grid-template-columns:repeat(2,1fr);}
+  .glossaire-grid{grid-template-columns:1fr;}
+  .customs-compare{grid-template-columns:1fr;}
+  .formula-box{gap:8px;}
+}
+@media(max-width:520px){
+  .diag-grid-tableau{grid-template-columns:1fr;}
+  .niveaux-grid{grid-template-columns:1fr;}
+  .transport-card{flex-direction:column;gap:6px;}
+}
+</style>
+
+</head>
+<body>
+
+<!-- BREADCRUMB -->
+<nav class="bc" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/conseils">Conseils d'emballage</a><span>›</span>
+  <span>Envoyer un tableau par colis</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">📦 Guide complet 2026</div>
+  <h1>Envoyer un tableau par colis : emballage, transporteur, assurance et précautions</h1>
+  <div class="hero-tricolor"><span></span><span></span><span></span></div>
+  <p class="hero-lead">Toile sur châssis, tableau encadré, tableau sous verre, toile roulée ou grand format — tout ce qu'il faut vérifier avant d'acheter l'étiquette.</p>
+  <div class="hero-meta">
+    <div class="hero-pill">⏱ 15 min de lecture</div>
+    <div class="hero-pill">📋 3 parties · 8 étapes</div>
+    <div class="hero-pill">🖼️ Toile, cadre, verre, rouleau</div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-bottom-grid">
+      <a href="#risque" class="hb-col"><strong>Partie 1 — Évaluer le risque</strong>Type de tableau, zones fragiles, glossaire, preuves</a>
+      <a href="#emballage" class="hb-col"><strong>Partie 2 — Emballer</strong>8 étapes, matériaux, cas particuliers, niveaux</a>
+      <a href="#apres" class="hb-col"><strong>Partie 3 — Transporteur et preuves</strong>Transporteurs, assurance, douane, réclamation</a>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav" aria-label="Navigation">
+  <div class="snav-inner">
+    <a href="#risque"   class="sn active" data-part="1"><span class="sn-dot"></span>Évaluer le risque</a>
+    <a href="#emballage" class="sn" data-part="2"><span class="sn-dot"></span>Emballer</a>
+    <a href="#apres"    class="sn" data-part="3"><span class="sn-dot"></span>Transporteur et preuves</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- EN BREF -->
+  <div class="en-bref">
+    <div class="en-bref-label">✦ En bref</div>
+    <p class="en-bref-text">Ce guide explique comment envoyer un tableau par colis, protéger une toile ou un tableau encadré, éviter les erreurs d'emballage, choisir un transporteur adapté, vérifier l'assurance et préparer les preuves utiles en cas de casse, perte ou litige.</p>
+    <p class="en-bref-text">Pour envoyer un tableau par colis sans l'abîmer, il faut protéger la surface peinte, renforcer les coins et les bords, rigidifier l'avant et l'arrière, puis caler l'ensemble pour qu'il ne bouge pas dans le carton. Le papier bulle peut servir à amortir les chocs, mais il ne doit jamais être posé directement contre la peinture.</p>
+    <p class="en-bref-text">Tous les tableaux ne se préparent pas de la même manière. Si votre tableau est sous verre, ancien, grand, texturé ou à forte valeur sentimentale ou financière, un simple carton bien rembourré ne suffit pas toujours. Il faut penser emballage renforcé, assurance adaptée et preuves avant l'envoi.</p>
+    <div class="en-bref-pills">
+      <span class="eb-pill">🖼️ Surface protégée en premier</span>
+      <span class="eb-pill">📐 Mesurer le colis fermé</span>
+      <span class="eb-pill">🔇 Colis silencieux</span>
+      <span class="eb-pill">📸 Preuves avant envoi</span>
+      <span class="eb-pill">✅ Transporteur compatible</span>
+    </div>
+  </div>
+
+  <!-- TABLEAU TYPES -->
+  <div class="prose" style="margin-bottom:1.5rem;">
+    <h3>Quel type de tableau voulez-vous envoyer ?</h3>
+    <div class="diag-grid-tableau">
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">🖼️</div>
+        <div class="diag-tableau-label">Petite toile décorative</div>
+        <div class="diag-tableau-risk">Coins, frottement, pression</div>
+        <div class="diag-tableau-solution">Surface protégée + coins + carton rigide</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">🎨</div>
+        <div class="diag-tableau-label">Toile sur châssis</div>
+        <div class="diag-tableau-risk">Pression au centre, vibration</div>
+        <div class="diag-tableau-solution">Dos protégé + plaques rigides + calage stable</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">🖼️</div>
+        <div class="diag-tableau-label">Tableau encadré</div>
+        <div class="diag-tableau-risk">Coins cassés, cadre fissuré</div>
+        <div class="diag-tableau-solution">Protège-coins + bords protégés + carton adapté</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">🪟</div>
+        <div class="diag-tableau-label">Tableau sous verre</div>
+        <div class="diag-tableau-risk">Verre cassé, éclats, exclusions</div>
+        <div class="diag-tableau-solution">Double emballage + assurance vérifiée</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">📜</div>
+        <div class="diag-tableau-label">Toile roulée</div>
+        <div class="diag-tableau-risk">Fissure, pli, marquage</div>
+        <div class="diag-tableau-solution">Seulement si la toile peut être roulée sans risque</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">📏</div>
+        <div class="diag-tableau-label">Grand tableau 100×80 / 120×80</div>
+        <div class="diag-tableau-risk">Flexion, torsion, hors gabarit</div>
+        <div class="diag-tableau-solution">Carton télescopique, caisse ou transport dédié</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">🏛️</div>
+        <div class="diag-tableau-label">Tableau ancien ou de famille</div>
+        <div class="diag-tableau-risk">Craquelures, écaillage, fragilité</div>
+        <div class="diag-tableau-solution">Éviter pression et roulage, avis pro si fragile</div>
+      </div>
+      <div class="diag-card-tableau">
+        <div class="diag-tableau-icon">💎</div>
+        <div class="diag-tableau-label">Tableau de valeur</div>
+        <div class="diag-tableau-risk">Indemnisation insuffisante</div>
+        <div class="diag-tableau-solution">Preuves + assurance + service compatible</div>
+      </div>
+    </div>
+    <div class="step-img-ph">[ Image : vue d'ensemble des types de tableaux à envoyer ]</div>
+  </div>
+
+  <!-- ════════ PARTIE 1 ════════ -->
+  <div id="risque" class="section-gap p1">
+
+    <div class="part-header p1">
+      <div class="part-num">1</div>
+      <div>
+        <div class="part-tag">Évaluer le risque</div>
+        <h2>Avant d'envoyer un tableau : évaluer le risque réel</h2>
+        <p>La bonne question n'est pas seulement "comment emballer ce tableau ?" — c'est : ce tableau peut-il supporter un transport en réseau colis standard ?</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Peut-on envoyer un tableau par colis ?</h3>
+      <p>Beaucoup de tableaux peuvent voyager par colis lorsqu'ils sont secs, stables, de format raisonnable et correctement protégés : petite toile décorative, tableau encadré simple, œuvre récente bien sèche ou toile sur châssis en bon état.</p>
+      <p>Mais un tableau ne doit pas être traité comme un objet plat ordinaire. Pendant le transport, le colis peut être déplacé, retourné, empilé, compressé, exposé aux vibrations ou subir une chute. Le risque augmente aussi avec chaque manipulation : dépôt, tri, chargement, relais, changement de véhicule, stockage intermédiaire, livraison et déballage. Plus le tableau change de mains, plus l'emballage doit empêcher tout mouvement interne.</p>
+      <p>Pour une œuvre récente, stable, de petit ou moyen format et à faible enjeu financier, un colis renforcé peut suffire. En revanche, si le tableau est ancien, sous verre, fragile, grand, texturé, vendu cher ou important sentimentalement, il faut raisonner comme pour un objet d'art : emballage renforcé, assurance vérifiée, preuves avant l'envoi et transporteur compatible.</p>
+
+      <div class="callout danger">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Avant d'envoyer</strong>
+          Si la peinture s'écaille, si le verre est fissuré, si la toile est détendue ou si le cadre bouge, n'expédiez pas le tableau tel quel. Stabilisez d'abord l'œuvre, renforcez l'emballage ou choisissez une caisse / un transport adapté.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Comprendre les zones fragiles d'un tableau</h3>
+      <p>Un tableau est un assemblage de matériaux sensibles : peinture, vernis, préparation, toile, châssis, cadre, verre éventuel et système d'accroche. Pendant le transport, chacun peut réagir différemment. La couche picturale risque les rayures, l'abrasion, le soulèvement ou la perte de matière. Le vernis peut se mater ou se marquer sous l'effet d'un frottement prolongé. La préparation peut se fissurer ou se désolidariser du support. La toile peut vibrer, se détendre ou être perforée par l'arrière. Le châssis peut se voiler, le cadre s'ouvrir aux angles, et le verre, s'il casse, peut produire des éclats capables d'endommager directement l'œuvre.</p>
+
+      <div class="step-img-ph">[ Schéma annoté d'un tableau : couche picturale, vernis, préparation, toile, châssis, clés, cadre, feuillure, verre, dos, accroches ]</div>
+
+      <p>Une toile tendue se comporte comme une membrane, pas comme une plaque rigide. Une pression au centre peut créer un enfoncement, un poinçonnement ou une mise en contrainte de la couche picturale. Sur une œuvre déjà fragilisée par des craquelures, des empâtements ou une mauvaise adhérence, cette pression peut aggraver les fissures ou favoriser l'écaillage. Le tableau doit donc être soutenu par ses zones structurelles les plus solides : bords du châssis, pourtour du cadre, dos protégé ou rehausse périphérique.</p>
+
+      <div class="step-img-ph">[ Schéma : toile tendue = membrane. Pression au centre à éviter, soutien par les bords ]</div>
+
+      <div class="zones-grid">
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#5B7FA0"></div>
+          <div>
+            <div class="zone-label">Couche picturale</div>
+            <div class="zone-risk">Rayure, abrasion, soulèvement, écaillage</div>
+            <div class="zone-precaution">→ Couche propre non abrasive au contact</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#C4843A"></div>
+          <div>
+            <div class="zone-label">Vernis</div>
+            <div class="zone-risk">Matage, empreintes, traces</div>
+            <div class="zone-precaution">→ Papier glassine ou papier de soie, jamais de bulle direct</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#8269A4"></div>
+          <div>
+            <div class="zone-label">Empâtement / relief</div>
+            <div class="zone-risk">Écrasement, marque, arrachement</div>
+            <div class="zone-precaution">→ Rehausse périphérique, pas de contact frontal</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#6A9E7F"></div>
+          <div>
+            <div class="zone-label">Toile</div>
+            <div class="zone-risk">Déformation, perforation, poinçonnement</div>
+            <div class="zone-precaution">→ Plaque arrière rigide, soutien par les bords</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#FA7E75"></div>
+          <div>
+            <div class="zone-label">Châssis</div>
+            <div class="zone-risk">Torsion, gauchissement</div>
+            <div class="zone-precaution">→ Grand format manipulé à deux, soutien périphérique</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#2a3a4a"></div>
+          <div>
+            <div class="zone-label">Cadre / angles</div>
+            <div class="zone-risk">Angle ouvert, moulure cassée, dorure abîmée</div>
+            <div class="zone-precaution">→ Protège-coins mousse, calage doux sur dorures</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#8a0000"></div>
+          <div>
+            <div class="zone-label">Verre ou plexiglas</div>
+            <div class="zone-risk">Casse, éclats, rayures</div>
+            <div class="zone-precaution">→ Ruban en X ou quadrillage, double emballage rigide</div>
+          </div>
+        </div>
+        <div class="zone-card">
+          <div class="zone-dot" style="background:#666"></div>
+          <div>
+            <div class="zone-label">Dos et accroches</div>
+            <div class="zone-risk">Perforation, rayures, impacts internes</div>
+            <div class="zone-precaution">→ Plaque arrière, accessoires fixés ou séparés</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Le mouvement interne est sous-estimé</strong>
+          Si le tableau bouge dans le carton, les vibrations peuvent provoquer frottements, marques, craquelures aggravées ou chocs répétés.
+        </div>
+      </div>
+      <p>Le bon objectif n'est pas de créer un colis simplement "moelleux". Il faut un colis stable, rigide aux bons endroits et amorti sans compression. En clair : le tableau doit être protégé, mais il ne doit ni flotter, ni subir une pression directe.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Petit vocabulaire utile</h3>
+      <div class="glossaire-grid">
+        <div class="glossaire-item">
+          <div class="glossaire-term">Couche picturale</div>
+          <div class="glossaire-def">La matière peinte visible à la surface</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Vernis</div>
+          <div class="glossaire-def">Couche de finition ou de protection appliquée sur la peinture</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Préparation / apprêt</div>
+          <div class="glossaire-def">Couche intermédiaire entre le support et la peinture</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Châssis</div>
+          <div class="glossaire-def">Structure en bois qui tend la toile</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Clés de châssis</div>
+          <div class="glossaire-def">Petites pièces servant à ajuster la tension du châssis</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Feuillure</div>
+          <div class="glossaire-def">Partie intérieure du cadre où repose l'œuvre</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Support</div>
+          <div class="glossaire-def">Surface de base de l'œuvre, par exemple toile, panneau ou carton</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Empâtement</div>
+          <div class="glossaire-def">Peinture épaisse en relief</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Poinçonnement</div>
+          <div class="glossaire-def">Marque ou enfoncement causé par une pression localisée</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Matage</div>
+          <div class="glossaire-def">Perte de brillance ou apparition de zones mates</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Écaillage</div>
+          <div class="glossaire-def">Détachement de petites particules de peinture</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Craquelure</div>
+          <div class="glossaire-def">Réseau de fissures visibles dans la matière picturale ou le vernis</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Onglet</div>
+          <div class="glossaire-def">Assemblage d'angle du cadre, souvent fragile en cas de choc</div>
+        </div>
+        <div class="glossaire-item">
+          <div class="glossaire-term">Voilage</div>
+          <div class="glossaire-def">Déformation légère d'un élément qui n'est plus parfaitement plan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les risques à anticiper pendant le transport</h3>
+      <p>Un tableau peut arriver "entier" tout en ayant subi des dommages discrets : vernis marqué, surface matée, toile détendue, coin de cadre ouvert, couche picturale soulevée ou microfissure aggravée. Le danger ne vient donc pas seulement d'une grosse chute — il peut aussi venir d'un frottement répété, d'une pression localisée, d'une vibration continue ou d'un calage qui laisse l'œuvre bouger dans le carton.</p>
+
+      <div class="step-img-ph">[ Illustration : forces qui peuvent abîmer un tableau — impact, vibration, pression, torsion, abrasion, humidité ]</div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Partie du tableau</th><th>Ce qui peut arriver</th><th>Cause fréquente</th></tr></thead>
+          <tbody>
+            <tr><td>Couche picturale</td><td>Rayure, abrasion, soulèvement, écaillage</td><td>Frottement, vibration, pression directe</td></tr>
+            <tr><td>Vernis</td><td>Matage, empreintes, traces</td><td>Contact plastique, mousse, papier sale ou pression</td></tr>
+            <tr><td>Empâtement / relief</td><td>Écrasement, marque, arrachement</td><td>Protection frontale posée sur la peinture</td></tr>
+            <tr><td>Toile</td><td>Déformation, perforation, poinçonnement</td><td>Pression au centre, choc arrière, objet saillant</td></tr>
+            <tr><td>Châssis</td><td>Torsion, gauchissement</td><td>Grand format mal manipulé, colis plié</td></tr>
+            <tr><td>Cadre</td><td>Angle ouvert, moulure cassée, dorure abîmée</td><td>Choc sur coin, compression, calage trop dur</td></tr>
+            <tr><td>Verre ou plexiglas</td><td>Casse, éclats, rayures</td><td>Impact, pression, torsion, contact abrasif</td></tr>
+            <tr><td>Feuillure</td><td>Frottement sur les bords de l'œuvre</td><td>Mouvement interne dans le cadre</td></tr>
+            <tr><td>Dos et accroches</td><td>Perforation, rayures, impacts internes</td><td>Absence de protection arrière, accessoires libres</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quand éviter le colis standard ?</h3>
+      <p>Le colis standard convient surtout aux tableaux peu fragiles, bien stabilisés et correctement emballés. Dès que l'œuvre devient grande, vitrée, ancienne, fragile ou difficile à indemniser, il faut changer de niveau de prudence.</p>
+      <p>Évitez l'envoi standard, ou renforcez fortement l'emballage, si la peinture s'écaille, si des craquelures sont ouvertes, si l'empâtement est épais, si la surface est récente ou collante, si le verre est fissuré, si le cadre manque de stabilité, si la toile est détendue ou si le format risque de fléchir.</p>
+      <p>La prudence vaut aussi pour une œuvre de forte valeur ou à forte charge sentimentale. Une assurance peut parfois couvrir une valeur marchande prouvée, mais elle ne couvre pas l'attachement à un tableau de famille, un cadeau peint à la main ou une pièce importante pour son propriétaire.</p>
+
+      <div class="step-img-ph">[ Signaux d'alerte avant envoi en colis standard : peinture qui s'écaille, craquelures ouvertes, empâtement épais, peinture récente, verre fissuré, cadre instable, toile détendue, grand format souple ]</div>
+    </div>
+
+    <div class="prose">
+      <h3>Adapter l'emballage au contexte d'envoi</h3>
+      <p>Le bon emballage ne dépend pas seulement du tableau. Il dépend aussi de la raison de l'envoi. Un artiste qui expédie une œuvre pour une exposition et un particulier qui prépare un cadeau n'ont pas exactement les mêmes contraintes.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Situation</th><th>Points à sécuriser</th></tr></thead>
+          <tbody>
+            <tr><td>Artiste, galerie, exposition</td><td>Inventaire, mini constat d'état, emballage réutilisable, assurance, consignes de retour</td></tr>
+            <tr><td>Vente en ligne : Vinted, Leboncoin, Etsy, eBay</td><td>Annonce, preuve de paiement, photos avant/après emballage, suivi, preuve de dépôt</td></tr>
+            <tr><td>Cadeau (anniversaire, portrait peint…)</td><td>Protection réelle avant papier cadeau, carton extérieur discret, aucun élément libre</td></tr>
+            <tr><td>Tableau ancien, hérité ou de famille</td><td>Craquelures, écailles, cadre fragile, verre, valeur sentimentale difficile à indemniser</td></tr>
+            <tr><td>Envoi à un encadreur ou restaurateur</td><td>Consignes du professionnel, photos des dommages, accessoires retirés ou sécurisés</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Avant d'emballer : créer un mini constat d'état</h3>
+      <p>Avant de sortir le papier bulle, prenez quelques photos. Ce n'est pas la partie la plus excitante, mais c'est souvent celle qui sauve une réclamation.</p>
+      <p>Photographiez la face entière du tableau, les détails de surface, les coins, le cadre, le dos, le châssis, les accroches, le verre éventuel, la signature et les défauts déjà visibles. L'objectif n'est pas de faire un shooting artistique, mais de montrer clairement l'état de l'œuvre avant l'emballage.</p>
+      <p>Ajoutez aussi les preuves de valeur disponibles : facture, certificat, annonce, preuve de paiement, estimation ou devis. Pour une vente en ligne, ces éléments peuvent devenir aussi importants que les photos du tableau lui-même. Pendant l'emballage, continuez à documenter les étapes clés : protection de surface, coins protégés, dos renforcé, plaques rigides, calage, colis fermé et étiquette visible.</p>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Trois familles de preuves à garder</strong>
+          L'état du tableau, la qualité de l'emballage et la valeur de l'œuvre. Sans photos ni preuve de valeur, une réclamation devient beaucoup plus fragile.
+        </div>
+      </div>
+
+      <div class="preuves-grid">
+        <div class="preuve-card">
+          <div class="preuve-icon">📸</div>
+          <div class="preuve-label">Face entière</div>
+          <div class="preuve-desc">Surface, signature, défauts déjà visibles</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">🔍</div>
+          <div class="preuve-label">Détails</div>
+          <div class="preuve-desc">Coins, cadre, moulures, dorures, vernis</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">🔄</div>
+          <div class="preuve-label">Dos et accroches</div>
+          <div class="preuve-desc">Châssis, clés, système d'accroche, verre éventuel</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">📦</div>
+          <div class="preuve-label">Photos d'emballage</div>
+          <div class="preuve-desc">Protection surface, coins, dos, plaques, calage, colis fermé</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">💰</div>
+          <div class="preuve-label">Preuve de valeur</div>
+          <div class="preuve-desc">Facture, certificat, annonce, preuve de paiement, estimation</div>
+        </div>
+        <div class="preuve-card">
+          <div class="preuve-icon">🧾</div>
+          <div class="preuve-label">Preuve de dépôt</div>
+          <div class="preuve-desc">Reçu, numéro de suivi, poids et dimensions déclarés</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quel matériel utiliser pour emballer un tableau ?</h3>
+      <p>Le matériel doit protéger sans salir, rayer, coller, comprimer ou laisser bouger l'œuvre. Le plus important est de séparer les rôles : une couche propre pour le contact, des protections pour les coins et les bords, des plaques pour rigidifier, puis un amortissement extérieur.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Besoin</th><th>À utiliser</th><th>À éviter</th></tr></thead>
+          <tbody>
+            <tr><td>Surface peinte</td><td>Papier glassine, papier cristal, papier de soie sans acide, Tyvek</td><td>Papier journal, papier bulle direct, film plastique direct</td></tr>
+            <tr><td>Coins et bords</td><td>Protège-coins mousse/carton, profilés mousse en U</td><td>Calage trop dur posé sur dorure fragile</td></tr>
+            <tr><td>Avant / arrière</td><td>Carton mousse, plaques rigides, carton double cannelure</td><td>Plaque qui appuie directement sur la peinture</td></tr>
+            <tr><td>Amortissement</td><td>Papier bulle extérieur, mousse PE, kraft dense</td><td>Coussins d'air seuls, calage flottant</td></tr>
+            <tr><td>Fermeture</td><td>Ruban renforcé, fermeture en H</td><td>Ficelle extérieure, ruban faible</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>La règle à retenir</strong>
+          Le papier bulle sert à amortir, pas à toucher la peinture. Il peut être très utile autour d'une protection propre, mais il ne doit jamais devenir la première couche contre une surface peinte, vernie, brillante, fraîche ou texturée.
+        </div>
+      </div>
+
+      <p>Si vous devez emballer un tableau rapidement, réunissez au minimum une couche propre pour la surface, des coins protégés, deux plaques rigides, un amortissement extérieur, un carton solide, du ruban renforcé et des photos. Sans matériau propre pour protéger la peinture, mieux vaut retarder l'envoi que créer une marque irréversible.</p>
+
+      <div class="mat-inline">
+        <div class="mat-inline-label">🛒 Matériel de base pour emballer un tableau</div>
+        <div class="mat-links">
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Papier glassine ou papier de soie sans acide</div>
+              <div class="mat-link-desc">Protège la surface sans abrasion ni adhérence</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Protège-coins mousse ou carton</div>
+              <div class="mat-link-desc">Réduit le risque de choc sur les angles</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Plaques rigides ou carton mousse</div>
+              <div class="mat-link-desc">Rigidifient l'avant et l'arrière</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Papier bulle ou mousse PE</div>
+              <div class="mat-link-desc">Sert d'amortissement extérieur uniquement</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Carton télescopique pour tableau</div>
+              <div class="mat-link-desc">S'adapte mieux aux formats plats et grands tableaux</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /risque -->
+
+  <div class="part-transition">Zones fragiles identifiées, preuves prêtes, matériel choisi. Place à la méthode d'emballage étape par étape.</div>
+
+  <!-- ════════ PARTIE 2 ════════ -->
+  <div id="emballage" class="section-gap p2">
+
+    <div class="part-header p2">
+      <div class="part-num">2</div>
+      <div>
+        <div class="part-tag">Emballage</div>
+        <h2>Comment emballer un tableau sans le comprimer</h2>
+        <p>Un bon emballage de tableau combine trois protections dans le bon ordre : couche propre au contact, rigidité pour limiter la flexion, amortissement extérieur contre les chocs.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Les 3 protections indispensables</h3>
+      <p>L'ordre est important. Le papier bulle amortit bien, mais il ne doit pas devenir la première couche contre la peinture. À l'inverse, une plaque rigide protège mieux lorsqu'elle vient après la couche propre, et avant l'amortissement extérieur.</p>
+
+      <div class="fonctions-grid">
+        <div class="fonction-card" style="--pc:var(--p1)">
+          <div class="fonction-num">1</div>
+          <div class="fonction-title">Couche de contact</div>
+          <div class="fonction-items">Protéger la surface contre rayures, traces et frottements</div>
+          <div class="fonction-key">Papier glassine, papier cristal, papier de soie sans acide, Tyvek</div>
+        </div>
+        <div class="fonction-card" style="--pc:var(--p2)">
+          <div class="fonction-num">2</div>
+          <div class="fonction-title">Protection rigide</div>
+          <div class="fonction-items">Limiter la flexion, la perforation et la pression directe</div>
+          <div class="fonction-key">Plaques rigides, carton mousse, carton double cannelure, caisse</div>
+        </div>
+        <div class="fonction-card" style="--pc:var(--p3)">
+          <div class="fonction-num">3</div>
+          <div class="fonction-title">Amortissement extérieur</div>
+          <div class="fonction-items">Absorber une partie des chocs et vibrations</div>
+          <div class="fonction-key">Papier bulle extérieur, mousse PE, kraft dense, calage propre</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Si le tableau bouge, l'emballage n'est pas terminé</strong>
+          Un bon emballage bloque le mouvement sans comprimer la surface.
+        </div>
+      </div>
+
+      <div class="step-img-ph">[ Schéma ordre de protection : couche propre → protège-coins → plaques rigides avant/arrière → papier bulle amortissement extérieur. Vue en coupe. ]</div>
+    </div>
+
+    <!-- ÉTAPES -->
+    <div class="prose">
+      <div class="steps-list">
+
+        <!-- ÉTAPE 1 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">1</div></div>
+          <div class="step-content">
+            <h4>Préparer une zone propre</h4>
+            <p>Posez l'œuvre sur une surface propre, sèche et plane, puis éloignez tout ce qui peut rayer, tacher ou tomber : cutter ouvert, ruban adhésif, vis, clés, boisson, outils ou petits accessoires.</p>
+            <p>Beaucoup de dégâts arrivent avant même le transport. Préparez tout le matériel à l'avance. Moins vous manipulez le tableau, moins vous prenez de risques.</p>
+            <div class="step-img-ph">[ Photo : zone de préparation propre, tableau à plat, matériaux prêts, objets à éloigner : cutter, boisson, vis ]</div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 2 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">2</div></div>
+          <div class="step-content">
+            <h4>Protéger la surface peinte</h4>
+            <p>La première couche doit protéger sans coller, frotter ou marquer. Utilisez une matière propre, lisse et non abrasive : papier glassine, papier cristal, papier de soie sans acide ou Tyvek selon la fragilité de l'œuvre.</p>
+            <p>Évitez le réflexe du papier bulle directement sur la peinture. Sur une surface vernie, brillante, fraîche ou texturée, ce contact peut laisser des traces, créer une adhérence ou imprimer un relief. Même chose pour le film plastique, le papier journal ou le ruban adhésif : ils n'ont rien à faire contre la couche picturale.</p>
+            <p>Si la peinture présente des empâtements, du relief ou une surface fragile, la protection frontale ne doit pas appuyer dessus. Créez plutôt un espace de sécurité avec des cales périphériques ou une rehausse.</p>
+
+            <div class="callout danger">
+              <div class="callout-ico">⛔</div>
+              <div class="callout-body">
+                <strong>La première couche doit toujours être propre, lisse et non abrasive</strong>
+                Le papier bulle sert à amortir, pas à protéger la peinture au contact.
+              </div>
+            </div>
+
+            <div class="step-img-ph">[ Photo : papier glassine posé sur surface peinte, sans ruban sur la peinture. Pictogramme "non" sur papier bulle direct, film plastique, papier journal ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier glassine</div>
+                    <div class="mat-link-desc">Protection de surface idéale : lisse, sans acide, non abrasive</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier de soie sans acide</div>
+                    <div class="mat-link-desc">Alternative douce pour surface délicate ou vernie</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Tyvek</div>
+                    <div class="mat-link-desc">Pour surfaces très fragiles ou exposition longue</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 3 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">3</div></div>
+          <div class="step-content">
+            <h4>Protéger les coins, les bords et le dos</h4>
+            <p>Les coins sont souvent les premiers à subir un choc. Sur un cadre, l'impact peut ouvrir l'angle ou casser une moulure. Sur une toile sur châssis, il peut transmettre une tension à la toile. Ajoutez donc des protège-coins en mousse ou en carton, puis protégez les bords avec des profilés mousse en U si le format s'y prête.</p>
+            <p>Le dos mérite autant d'attention que l'avant. Une toile peut être poinçonnée par l'arrière si un objet appuie sur elle pendant le transport. Utilisez une plaque rigide, un carton épais, un carton mousse ou une plaque alvéolaire pour limiter ce risque.</p>
+            <p>Sur un tableau ancien, doré, ornementé ou de valeur, évitez toute fixation improvisée. Ne vissez pas, ne clouez pas et ne collez rien directement sur l'œuvre sans avis professionnel.</p>
+
+            <div class="step-img-ph">[ Photo : tableau avec protège-coins, profilés mousse sur les bords, protection arrière par plaque rigide ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Protège-coins mousse</div>
+                    <div class="mat-link-desc">Réduit le risque de choc sur les angles du cadre ou du châssis</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Profilés mousse en U</div>
+                    <div class="mat-link-desc">Protection des bords sur toute la longueur</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 4 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">4</div></div>
+          <div class="step-content">
+            <h4>Rigidifier l'avant et l'arrière</h4>
+            <p>Ajoutez deux plaques rigides légèrement plus grandes que le tableau : une devant, une derrière. Elles viennent après la couche propre et les protections de base, mais avant le papier bulle ou la mousse extérieure. Leur rôle est de limiter la flexion, la perforation et les pressions ponctuelles.</p>
+            <p>L'objectif est de créer un "sandwich" protecteur autour de l'œuvre, sans l'écraser. Pour une toile, la rigidité doit soutenir les bords et le châssis, pas appuyer au centre. Pour un tableau encadré, elle aide à protéger le cadre et le verre contre une pression directe. Pour une surface fragile, la plaque avant doit rester à distance de la couche picturale. Une plaque rigide n'est utile que si elle fonctionne avec le calage et l'amortissement. Mal ajustée, elle peut transmettre une pression ou laisser le tableau vibrer.</p>
+
+            <div class="callout warn">
+              <div class="callout-ico">⚠️</div>
+              <div class="callout-body">
+                <strong>Un tableau doit être maintenu, pas compressé</strong>
+                Une plaque qui appuie au centre d'une toile peut créer une déformation, même si le colis semble bien protégé.
+              </div>
+            </div>
+
+            <div class="step-img-ph">[ Vue en coupe du sandwich rigide : couche propre, tableau, plaque arrière, plaque avant, soutien sur les bords. "Maintenir" sur les bords, "ne pas comprimer" au centre ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Plaques rigides légères</div>
+                    <div class="mat-link-desc">Avant et arrière, légèrement plus grandes que le tableau</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton mousse</div>
+                    <div class="mat-link-desc">Rigidité + légèreté + protection sans pression excessive</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 5 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">5</div></div>
+          <div class="step-content">
+            <h4>Ajouter l'amortissement extérieur</h4>
+            <p>Une fois le tableau protégé et rigidifié, ajoutez l'amortissement extérieur : papier bulle, mousse PE, kraft dense ou calage propre. Cette couche sert à absorber une partie des chocs et des vibrations, mais elle ne remplace pas les plaques rigides.</p>
+            <p>Le papier bulle vient donc plutôt autour du bloc déjà protégé, pas directement contre la peinture. L'amortissement doit entourer l'ensemble de façon régulière. Trop peu, il ne protège pas. Trop serré, il comprime.</p>
+
+            <div class="step-img-ph">[ Photo : papier bulle ou mousse PE autour du tableau déjà rigidifié, à l'extérieur du sandwich ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier bulle épais</div>
+                    <div class="mat-link-desc">Amortissement extérieur autour du sandwich rigide</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Mousse PE</div>
+                    <div class="mat-link-desc">Alternative propre au papier bulle, sans marque</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 6 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">6</div></div>
+          <div class="step-content">
+            <h4>Choisir le bon carton ou la bonne caisse</h4>
+            <p>Choisissez le carton en fonction du tableau <strong>déjà protégé</strong>, pas du tableau nu. Les coins, les plaques, la mousse et le calage ajoutent vite plusieurs centimètres. Un carton trop fin se plie, un carton trop grand laisse bouger l'œuvre, un carton trop petit finit par comprimer le cadre, la toile ou le verre.</p>
+            <p>Utilisez de préférence un carton neuf ou en excellent état. Un carton écrasé, humide ou trop réutilisé protège moins bien. Pour une petite toile de faible valeur, un carton double cannelure peut suffire. Pour une toile sur châssis ou un tableau encadré, un carton spécial tableau ou télescopique sera souvent plus adapté. Pour un grand format, un tableau sous verre ou une valeur élevée, une caisse légère devient plus prudente.</p>
+
+            <div class="step-img-ph">[ Comparaison : carton trop petit, carton trop grand, carton adapté avec espace de calage régulier ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton télescopique pour tableau</div>
+                    <div class="mat-link-desc">S'adapte au format final du colis protégé</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Carton double cannelure</div>
+                    <div class="mat-link-desc">Pour petite toile de faible valeur bien protégée</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 7 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">7</div></div>
+          <div class="step-content">
+            <h4>Caler sur les 6 faces et tester la stabilité</h4>
+            <p>Le tableau doit être protégé sur toutes les faces : avant, arrière, haut, bas, gauche et droite. Même si vous ajoutez "Haut", "Fragile" ou "Ne pas retourner", le colis peut être incliné, empilé ou retourné pendant le tri et la manutention.</p>
+            <p>Placez un calage stable entre le tableau protégé et les parois du carton. Les crochets, câbles, vis, clés de châssis ou certificats rigides doivent être fixés ou placés séparément, sans contact avec l'œuvre.</p>
+            <p>Avant de fermer, faites un test simple : inclinez doucement le colis. Si vous sentez quelque chose glisser ou si vous entendez un claquement, le calage n'est pas terminé. <strong>Un colis tableau doit être silencieux.</strong></p>
+            <p>Les vibrations agissent comme une série de petits chocs répétés. Même sans chute visible, un tableau mal calé peut subir des frottements, tensions ou marques pendant tout le trajet.</p>
+
+            <div class="callout warn">
+              <div class="callout-ico">⚠️</div>
+              <div class="callout-body">
+                <strong>Un colis tableau doit être silencieux</strong>
+                Si vous entendez un mouvement quand vous l'inclinez doucement, ajoutez du calage avant fermeture.
+              </div>
+            </div>
+
+            <div class="step-img-ph">[ Calage sur les 6 faces. Tableau centré, calage haut/bas/gauche/droite/avant/arrière. Test : incliner doucement, aucun mouvement ]</div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Papier kraft froissé dense</div>
+                    <div class="mat-link-desc">Calage efficace et propre sur les 6 faces</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+                <div class="mat-link-row">
+                  <div>
+                    <div class="mat-link-name">Mousse de calage</div>
+                    <div class="mat-link-desc">Calage stable sans compression excessive</div>
+                  </div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ÉTAPE 8 -->
+        <div class="step-row">
+          <div class="step-spine"><div class="step-num">8</div></div>
+          <div class="step-content" style="padding-bottom:0.5rem;">
+            <h4>Fermer, étiqueter et ajouter une fiche de déballage</h4>
+            <p>Fermez le carton avec un ruban renforcé, idéalement en H. L'étiquette de transport doit être lisible, collée bien à plat, sans ancien code-barres visible.</p>
+            <p>Vous pouvez ajouter "Fragile", "Haut", "Ne pas empiler" ou "Garder au sec". Ces mentions peuvent aider, mais elles ne remplacent jamais l'emballage. <strong>Évitez d'indiquer à l'extérieur "œuvre d'art", "tableau de valeur", le prix, le nom de l'artiste ou celui d'une galerie.</strong></p>
+
+            <div class="callout danger">
+              <div class="callout-ico">⛔</div>
+              <div class="callout-body">
+                <strong>La mention "Fragile" signale un risque, elle ne protège pas</strong>
+                Le calage, la rigidité et l'amortissement font le vrai travail.
+              </div>
+            </div>
+
+            <p>Ajoutez une fiche simple dans le colis pour guider l'ouverture :</p>
+            <div class="procedure">
+              <div class="proc-item"><div class="proc-n">1</div><span>Ouvrir à plat</span></div>
+              <div class="proc-item"><div class="proc-n">2</div><span>Ne pas couper profondément au cutter</span></div>
+              <div class="proc-item"><div class="proc-n">3</div><span>Photographier le colis avant ouverture s'il est abîmé</span></div>
+              <div class="proc-item"><div class="proc-n">4</div><span>Retirer les protections dans l'ordre</span></div>
+              <div class="proc-item"><div class="proc-n">5</div><span>Ne pas tirer sur le papier de surface</span></div>
+              <div class="proc-item"><div class="proc-n">6</div><span>Conserver l'emballage en cas de réclamation</span></div>
+            </div>
+
+            <div class="mat-inline">
+              <div class="mat-inline-label">🛒 Matériel pour cette étape</div>
+              <div class="mat-links">
+                <div class="mat-link-row">
+                  <div class="mat-link-name">Ruban adhésif renforcé</div>
+                  <a href="#" class="mat-link-btn">Acheter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /steps -->
+    </div>
+
+    <!-- ERREURS -->
+    <div class="prose">
+      <h3>Les erreurs qui abîment le plus souvent un tableau</h3>
+      <div class="tips-wrap">
+        <div class="tips-head">
+          <div class="tips-col-lbl g">✓ À faire</div>
+          <div class="tips-col-lbl b">✗ À éviter</div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Papier glassine ou papier de soie en première couche au contact</span></div>
+          <div class="tip-c b"><span>✗</span><span>Papier bulle directement sur la peinture</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Plaques rigides qui soutiennent par les bords</span></div>
+          <div class="tip-c b"><span>✗</span><span>Plaque rigide qui appuie au centre de la toile</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Crochets, câbles et clés de châssis fixés ou placés séparément</span></div>
+          <div class="tip-c b"><span>✗</span><span>Crochets, câbles ou vis libres dans le colis</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Carton adapté au colis fermé, neuf ou en excellent état</span></div>
+          <div class="tip-c b"><span>✗</span><span>Tableau qui flotte dans un carton trop grand</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Mesurer le colis fermé avec protections incluses</span></div>
+          <div class="tip-c b"><span>✗</span><span>Mesurer le tableau nu et envoyer un verre déjà fissuré</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Couche propre en premier, puis amortissement autour</span></div>
+          <div class="tip-c b"><span>✗</span><span>Placer l'amortissement avant la couche propre de protection</span></div>
+        </div>
+        <div class="tips-pair">
+          <div class="tip-c g"><span>✓</span><span>Colis immobilisé : le tableau ne bouge pas, ne glisse pas</span></div>
+          <div class="tip-c b"><span>✗</span><span>Confondre rembourrage et immobilisation : un colis rempli mais mobile reste dangereux</span></div>
+        </div>
+      </div>
+
+      <div class="step-img-ph">[ Erreurs courantes : papier bulle direct, tableau qui bouge, plaque au centre, crochet libre, carton trop grand, verre fissuré ]</div>
+    </div>
+
+    <!-- CAS PARTICULIERS -->
+    <div class="prose">
+      <h3>Adapter l'emballage au type de tableau</h3>
+
+      <h3>Toile sur châssis</h3>
+      <p>Une toile sur châssis doit être protégée sans pression au centre. La surface, les coins et le dos doivent être sécurisés, puis l'avant et l'arrière rigidifiés avec des plaques adaptées. L'amortissement vient ensuite autour de ce bloc, avant la mise en carton. Pour un grand format, manipulez le tableau à deux si possible. Soutenez la toile par les bords du châssis et évitez de porter, pousser ou poser une pression au centre de la toile.</p>
+
+      <h3>Tableau encadré</h3>
+      <p>Un cadre peut protéger l'œuvre, mais il peut aussi devenir une source de dommage. Avant l'emballage, inspectez les angles, la feuillure, les ornements, le verre éventuel, les crochets et le dos. Si un élément bouge, frotte ou risque de se détacher, sécurisez-le avant l'envoi.</p>
+
+      <h3>Tableau sous verre</h3>
+      <p>Le verre est l'un des cas les plus délicats. S'il casse, les éclats peuvent rayer, couper ou marquer directement l'œuvre. Un ruban posé en X ou en quadrillage peut aider à retenir une partie des morceaux, mais il ne rend pas le verre incassable.</p>
+
+      <div class="decision-schema">
+        <div class="ds-branch solid">
+          <div class="ds-icon">🪟</div>
+          <div class="ds-content">
+            <div class="ds-label">Petit cadre sous verre de faible valeur</div>
+            <div class="ds-action">Ruban en X sur le verre + protection rigide + double carton</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret">
+          <div class="ds-icon">🪟</div>
+          <div class="ds-content">
+            <div class="ds-label">Grand verre</div>
+            <div class="ds-action">Double emballage très rigide ou transport spécialisé</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">⚠️</div>
+          <div class="ds-content">
+            <div class="ds-label">Verre déjà fissuré</div>
+            <div class="ds-action">Ne pas envoyer tel quel</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">💎</div>
+          <div class="ds-content">
+            <div class="ds-label">Œuvre précieuse sous verre</div>
+            <div class="ds-action">Retrait du verre ou transport spécialisé</div>
+          </div>
+        </div>
+        <div class="ds-branch solid">
+          <div class="ds-icon">🔲</div>
+          <div class="ds-content">
+            <div class="ds-label">Plexiglas</div>
+            <div class="ds-action">Protection contre les rayures — moins risqué que le verre</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">⛔</div>
+          <div class="ds-content">
+            <div class="ds-label">Transporteur exclut le verre ou les objets d'art</div>
+            <div class="ds-action">Ne pas compter sur l'assurance standard. Vérifier les conditions avant achat de l'étiquette.</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Toile roulée dans un tube</h3>
+      <p>Rouler une toile n'est pas une solution automatique. C'est envisageable seulement si l'œuvre est sèche, souple, fine, non craquelée et sans relief important. Une peinture ancienne, récente, collante, épaisse, vernie, craquelée ou avec empâtement ne devrait pas être roulée sans avis professionnel.</p>
+      <p>Le médium aide à évaluer le risque, mais il ne décide pas tout. Une acrylique fine, bien sèche et sans relief peut parfois tolérer un roulage prudent. Une huile, surtout si elle est récente, épaisse ou vernie, demande beaucoup plus de prudence, car la couche picturale peut rester sensible longtemps.</p>
+
+      <div class="decision-schema">
+        <div class="ds-branch solid">
+          <div class="ds-icon">✓</div>
+          <div class="ds-content">
+            <div class="ds-label">Toile fine, souple et bien sèche</div>
+            <div class="ds-action">Possible avec mandrin large et tube rigide — face peinte vers l'extérieur</div>
+          </div>
+        </div>
+        <div class="ds-branch solid">
+          <div class="ds-icon">✓</div>
+          <div class="ds-content">
+            <div class="ds-label">Acrylique fine, bien sèche, sans relief</div>
+            <div class="ds-action">Possible avec prudence et intercalaire propre (papier glassine, Tyvek)</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret">
+          <div class="ds-icon">⚠️</div>
+          <div class="ds-content">
+            <div class="ds-label">Huile fine, stable, sans craquelure</div>
+            <div class="ds-action">Possible seulement si la toile reste souple et si aucun relief ne risque de marquer</div>
+          </div>
+        </div>
+        <div class="ds-branch coffret">
+          <div class="ds-icon">⚠️</div>
+          <div class="ds-content">
+            <div class="ds-label">Peinture récente, collante, vernie ou brillante</div>
+            <div class="ds-action">À éviter — risque d'adhérence ou de marque</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">✗</div>
+          <div class="ds-content">
+            <div class="ds-label">Empâtement, relief, peinture ancienne ou craquelée</div>
+            <div class="ds-action">Ne pas rouler sans avis professionnel — fissures, arrachement, écaillage</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">✗</div>
+          <div class="ds-content">
+            <div class="ds-label">Papier, pastel, fusain ou surface pulvérulente</div>
+            <div class="ds-action">Ne pas rouler sans protection et avis adapté</div>
+          </div>
+        </div>
+        <div class="ds-branch mixte">
+          <div class="ds-icon">❄️</div>
+          <div class="ds-content">
+            <div class="ds-label">Temps froid</div>
+            <div class="ds-action">Éviter de rouler ou de dérouler — la toile est moins souple</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <div class="callout-ico">⛔</div>
+        <div class="callout-body">
+          <strong>Ne roulez jamais une toile froide, craquelée, collante ou avec empâtement</strong>
+          Le roulage peut provoquer fissures, matage, soulèvement de matière ou arrachement localisé.
+        </div>
+      </div>
+      <p>Si le roulage est possible, utilisez un intercalaire propre comme du papier glassine ou du papier de soie sans acide. Roulez sans serrer, autour d'un mandrin large. Placez ensuite le rouleau dans un tube rigide et évitez de laisser la toile stockée longtemps enroulée.</p>
+
+      <h3>Grand tableau</h3>
+      <p>Un grand tableau, par exemple 100×80 ou 120×80, pose surtout des problèmes de flexion, de torsion et de hors gabarit. Mesurez le colis fermé, pas seulement le tableau. Pour un grand format, un simple carton double cannelure peut être insuffisant : il faut souvent ajouter des plaques rigides, un carton télescopique, une caisse légère ou un transport dédié.</p>
+
+      <h3>Plusieurs tableaux dans le même colis</h3>
+      <p>Envoyer plusieurs tableaux dans un même colis est possible, mais chaque œuvre doit être protégée séparément. Les tableaux ne doivent jamais se toucher directement. Traitez chaque tableau comme s'il devait voyager seul, puis séparez-les avec des plaques rigides ou des intercalaires propres.</p>
+
+      <h3>Peinture texturée, fragile ou de valeur</h3>
+      <p>Pour une peinture texturée, brillante, fragile ou de valeur, la protection frontale ne doit pas toucher la couche picturale. Le bon réflexe consiste à créer une rehausse autour de l'œuvre pour maintenir une plaque de protection à distance. Dans ces cas, une rehausse de transport, un cadre de protection ou une caisse légère peut être plus sûr qu'un simple carton renforcé.</p>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Si la surface est texturée, brillante ou en relief</strong>
+          La meilleure protection frontale est celle qui ne touche pas la peinture.
+        </div>
+      </div>
+    </div>
+
+    <!-- NIVEAUX D'EMBALLAGE -->
+    <div class="prose">
+      <h3>Emballage souple, double carton ou caisse : choisir le bon niveau</h3>
+
+      <div class="niveaux-grid">
+        <div class="niveau-card">
+          <div class="niveau-num">1</div>
+          <div class="niveau-label">Carton renforcé</div>
+          <div class="niveau-pour">Petite toile de faible valeur</div>
+          <div class="niveau-protection">Surface + coins + carton solide</div>
+        </div>
+        <div class="niveau-card active">
+          <div class="niveau-num">2</div>
+          <div class="niveau-label">Sandwich rigide + double carton</div>
+          <div class="niveau-pour">Vente en ligne, toile moyenne, cadre simple</div>
+          <div class="niveau-protection">Contact + rigidité + amortissement + calage</div>
+        </div>
+        <div class="niveau-card">
+          <div class="niveau-num">3</div>
+          <div class="niveau-label">Caisse légère ou semi-pro</div>
+          <div class="niveau-pour">Grand format, verre, valeur moyenne à élevée</div>
+          <div class="niveau-protection">Caisse + mousse + calage façonné</div>
+        </div>
+        <div class="niveau-card">
+          <div class="niveau-num">4</div>
+          <div class="niveau-label">Transport spécialisé</div>
+          <div class="niveau-pour">Ancien, précieux, fragile ou irremplaçable</div>
+          <div class="niveau-protection">Caisse pro + assurance + manutention spécialisée</div>
+        </div>
+      </div>
+
+      <div class="mat-inline" style="margin-top:1rem;">
+        <div class="mat-inline-label">🛒 Matériel pour les cas particuliers</div>
+        <div class="mat-links">
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Tube carton rigide grand diamètre</div>
+              <div class="mat-link-desc">Pour toile roulée — mandrin large, tube rigide</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Carton télescopique grand format</div>
+              <div class="mat-link-desc">Pour grand tableau — s'adapte aux dimensions finales</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Plaques de séparation + protège-coins en lot</div>
+              <div class="mat-link-desc">Pour plusieurs tableaux dans le même colis</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Plaques rigides + double carton</div>
+              <div class="mat-link-desc">Pour tableau sous verre — double protection rigide</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+          <div class="mat-link-row">
+            <div>
+              <div class="mat-link-name">Cales périphériques + caisse légère</div>
+              <div class="mat-link-desc">Pour œuvre fragile, texturée ou en relief</div>
+            </div>
+            <a href="#" class="mat-link-btn">Acheter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /emballage -->
+
+  <div class="part-transition">Emballage terminé, colis silencieux. Il reste à choisir le bon transporteur et à sécuriser les preuves.</div>
+
+  <!-- ════════ PARTIE 3 ════════ -->
+  <div id="apres" class="section-gap p3">
+
+    <div class="part-header p3">
+      <div class="part-num">3</div>
+      <div>
+        <div class="part-tag">Transporteur et preuves</div>
+        <h2>Transporteur, assurance, dépôt et réception</h2>
+        <p>Une fois le tableau emballé, ne raisonnez plus avec les dimensions de l'œuvre nue. Le transporteur prend en compte le colis terminé : longueur, largeur, hauteur, poids réel, destination et valeur déclarée.</p>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Mesurer le colis fermé avant de choisir le transporteur</h3>
+      <p>C'est souvent là que les surprises arrivent. Les protège-coins, plaques rigides, mousses, doubles cartons ou caisses ajoutent vite plusieurs centimètres. Ces quelques centimètres peuvent changer le prix, limiter les services disponibles, modifier l'assurance ou faire passer le colis en hors gabarit.</p>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Mesurez le colis fermé, pas le tableau nu</strong>
+          Les protections peuvent changer le tarif, le format accepté, l'assurance et le transporteur possible.
+        </div>
+      </div>
+
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">📏</span><span>Longueur, largeur, hauteur du colis fermé mesurées</span></div>
+        <div class="check-item"><span class="check-ico">⚖️</span><span>Poids réel du colis fermé posé sur balance</span></div>
+        <div class="check-item"><span class="check-ico">🌍</span><span>Destination vérifiée (France, UE, hors UE, Outre-mer)</span></div>
+        <div class="check-item"><span class="check-ico">💰</span><span>Valeur déclarée ou assurance vérifiées avant achat étiquette</span></div>
+        <div class="check-item"><span class="check-ico">🪟</span><span>Présence de verre signalée si nécessaire</span></div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Quel transporteur choisir pour envoyer un tableau ?</h3>
+      <p>Le bon transporteur n'est pas forcément le plus connu ni le moins cher. C'est celui qui accepte le format, le niveau de valeur, le verre éventuel et le risque réel du tableau. Regardez surtout trois points : dimensions, indemnisation, exclusions.</p>
+
+      <div class="transport-grid">
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">📬</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-standard">Standard</span>
+            <div class="transport-name">Colissimo / La Poste</div>
+            <div class="transport-usage">30 kg. L + l + h ≤ 150 cm, L max 100 cm. Indemnisation : 23 €/kg, jusqu'à 690 €.</div>
+            <div class="transport-check">OK petite/moyenne toile. Assurer si la valeur dépasse l'indemnisation au poids.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">⚡</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-express">Express</span>
+            <div class="transport-name">Chronopost</div>
+            <div class="transport-usage">30 kg. L max 150 cm, L + 2H + 2l ≤ 300 cm. Assurance optionnelle jusqu'à 5 000 €.</div>
+            <div class="transport-check">Utile si délai court. Vérifier exclusions œuvres d'art, antiquités, valeur.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">📦</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-standard">Point relais</span>
+            <div class="transport-name">Mondial Relay</div>
+            <div class="transport-usage">25 kg. L + l + H ≤ 150 cm, côté max 120 cm. 25 € inclus, options jusqu'à 500 €.</div>
+            <div class="transport-check">Faible valeur seulement. À éviter pour œuvre d'art, verre ou tableau fragile. Responsabilité non engagée pour objets fragiles.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">🌍</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-intl">International</span>
+            <div class="transport-name">UPS</div>
+            <div class="transport-usage">Œuvres d'art et antiquités listées comme valeur exceptionnelle interdite ou restreinte.</div>
+            <div class="transport-check">Validation obligatoire avant envoi.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">✈️</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-intl">International</span>
+            <div class="transport-name">DHL Express</div>
+            <div class="transport-usage">Œuvres d'art et antiquités soumises à restriction.</div>
+            <div class="transport-check">Accord DHL nécessaire. Pas un colis standard.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">🚛</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-pro">Dédié</span>
+            <div class="transport-name">Cocolis / transport dédié</div>
+            <div class="transport-usage">Format selon véhicule. Assurance optionnelle jusqu'à 5 000 €.</div>
+            <div class="transport-check">Utile pour grand format ou trajet avec moins de ruptures de charge.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">📦</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-intl">International</span>
+            <div class="transport-name">FedEx</div>
+            <div class="transport-usage">Valeur déclarée et responsabilité selon service, pays et justificatifs.</div>
+            <div class="transport-check">À vérifier au cas par cas, surtout à l'international.</div>
+          </div>
+        </div>
+        <div class="transport-card">
+          <div style="flex-shrink:0;font-size:1.3rem;">🎨</div>
+          <div style="flex:1;">
+            <span class="transport-badge tb-pro">Spécialisé</span>
+            <div class="transport-name">Transport spécialisé art</div>
+            <div class="transport-usage">Devis, caisse, manutention et assurance dédiés.</div>
+            <div class="transport-check">Plus sûr pour tableau ancien, précieux, sous verre ou très fragile.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">📌</div>
+        <div class="callout-body">
+          <strong>Ces repères sont à revérifier avant achat de l'étiquette</strong>
+          Les offres, plafonds et exclusions des transporteurs peuvent évoluer. Consultez toujours les conditions officielles du service choisi.
+        </div>
+      </div>
+
+      <p>Regardez aussi les <strong>ruptures de charge</strong> : dépôt, tri, relais, changement de véhicule, stockage intermédiaire, livraison. Moins le tableau change de mains, plus le risque baisse. Ce critère paraît discret, mais il compte beaucoup pour une œuvre qui supporte mal les petits accidents de parcours.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Pourquoi l'indemnisation au poids peut être insuffisante</h3>
+      <p>Un tableau peut être léger et valoir cher. C'est le piège classique des indemnisations calculées au kilo.</p>
+
+      <div class="formula-box">
+        <div class="formula-item"><div class="formula-val" style="color:var(--p2)">400 €</div><div class="formula-lbl">Tableau vendu</div></div>
+        <div class="formula-op">≠</div>
+        <div class="formula-item"><div class="formula-val" style="color:var(--danger)">69 €</div><div class="formula-lbl">3 kg × 23 €/kg</div></div>
+        <div class="formula-item" style="background:var(--danger-bg);border-radius:8px;padding:8px 14px;"><div class="formula-val" style="color:var(--danger);font-size:1.1rem;">– 331 €</div><div class="formula-lbl">Écart potentiel</div></div>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>La signature prouve la remise, pas la valeur</strong>
+          Pour être indemnisé correctement, il faut une assurance compatible et une preuve de valeur.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Faut-il assurer un tableau avant l'expédition ?</h3>
+      <p>L'assurance devient importante dès que le tableau est vendu, envoyé à une galerie, difficile à indemniser ou important sentimentalement. Le suivi permet de localiser le colis. La signature prouve une remise. L'assurance concerne l'indemnisation en cas de perte ou de dommage, dans les limites du contrat.</p>
+
+      <div class="assurance-grid">
+        <div class="assurance-row">
+          <div class="assurance-val">Faible valeur</div>
+          <div class="assurance-decision">Suivi + bon emballage</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur moyenne</div>
+          <div class="assurance-decision">Vérifier l'indemnisation incluse</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur élevée</div>
+          <div class="assurance-decision">Assurance complémentaire + signature</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Très forte valeur</div>
+          <div class="assurance-decision">Transport spécialisé art</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur sentimentale</div>
+          <div class="assurance-decision">Difficile à indemniser correctement — renforcer l'emballage</div>
+        </div>
+        <div class="assurance-row">
+          <div class="assurance-val">Valeur difficile à prouver</div>
+          <div class="assurance-decision">Réclamation fragile sans justificatif — photographier et documenter</div>
+        </div>
+      </div>
+
+      <p>Gardez une <strong>preuve de valeur</strong> : facture, certificat, annonce, preuve de paiement, estimation ou devis. Gardez aussi une <strong>preuve d'état</strong> : photos de l'œuvre avant l'envoi, photos de l'emballage, photo du colis fermé et preuve de dépôt.</p>
+      <p>Une assurance peut être refusée ou limitée si l'objet est exclu, si le verre n'est pas couvert, si la valeur n'est pas prouvée ou si l'emballage est jugé insuffisant. Pour une œuvre importante, un indicateur de choc ou un capteur température/humidité peut aussi aider à documenter le trajet.</p>
+    </div>
+
+    <div class="prose">
+      <h3>Envoyer un tableau à l'étranger ou en Outre-mer</h3>
+      <p>Un envoi international ou vers l'Outre-mer ajoute quelques points de vigilance : trajet plus long, manutentions supplémentaires, stockage, douane, transport aérien ou maritime.</p>
+      <p>Pour un envoi hors Union européenne ou vers certaines destinations, une déclaration douanière peut être nécessaire. La douane française mentionne les formulaires CN22 et CN23 pour les envois postaux, mais précise qu'ils ne peuvent pas être utilisés lorsque la valeur dépasse 1 000 €. Au-delà de ce seuil, une déclaration en douane doit être établie et déposée par La Poste ou selon la procédure du transporteur choisi. Évitez les descriptions vagues comme "objet fragile" ou "cadeau".</p>
+      <p>Pour une vente, une facture commerciale peut être demandée. Pour un envoi non commercial, une facture pro forma peut être utile.</p>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>La douane regarde la description, la valeur et les documents</strong>
+          Pour un tableau envoyé à l'étranger ou en Outre-mer, une description vague peut compliquer le dédouanement ou fragiliser une réclamation.
+        </div>
+      </div>
+
+      <div class="customs-compare">
+        <div class="customs-col bad">
+          <div class="customs-col-header">✗ Description vague</div>
+          <div class="customs-col-body">
+            <div class="customs-item">Objet fragile</div>
+            <div class="customs-item">Cadeau</div>
+            <div class="customs-item">Tableau</div>
+            <div class="customs-item">Matériel décoratif</div>
+          </div>
+        </div>
+        <div class="customs-col good">
+          <div class="customs-col-header">✓ Description précise</div>
+          <div class="customs-col-body">
+            <div class="customs-item">Tableau peint sur toile, sans verre, valeur réelle</div>
+            <div class="customs-item">Tableau encadré, œuvre décorative, valeur réelle</div>
+            <div class="customs-item">Tableau encadré sous verre, fragile, valeur réelle</div>
+            <div class="customs-item">Toile peinte roulée dans tube, valeur réelle</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-ico">ℹ️</div>
+        <div class="callout-body">
+          <strong>Caisse en bois à l'international</strong>
+          Si le tableau part dans une caisse en bois, vérifiez les règles NIMP 15 / ISPM 15 : elles peuvent concerner les emballages et calages en bois utilisés dans le transport international.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Dépôt : les preuves à garder après l'envoi</h3>
+      <p>Une réclamation se prépare avant l'envoi, pas après le dommage. Conservez le numéro de suivi, la preuve de dépôt, les photos du colis fermé, les dimensions et le poids déclarés, la preuve d'assurance, les justificatifs de valeur et les échanges avec le destinataire.</p>
+
+      <div class="checklist">
+        <div class="check-item"><span class="check-ico">🔍</span><span>Numéro de suivi conservé</span></div>
+        <div class="check-item"><span class="check-ico">🧾</span><span>Preuve de dépôt gardée</span></div>
+        <div class="check-item"><span class="check-ico">📸</span><span>Photos du colis fermé sauvegardées</span></div>
+        <div class="check-item"><span class="check-ico">💰</span><span>Justificatifs de valeur conservés</span></div>
+        <div class="check-item"><span class="check-ico">💬</span><span>Échanges avec le destinataire gardés</span></div>
+      </div>
+
+      <div class="callout tip">
+        <div class="callout-ico">💡</div>
+        <div class="callout-body">
+          <strong>Consigne à envoyer au destinataire</strong>
+          Merci de photographier le colis avant ouverture s'il semble abîmé, de l'ouvrir à plat sans couper profondément au cutter et de conserver l'emballage en cas de problème.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>À la réception : ouvrir sans abîmer le tableau</h3>
+      <p>Le déballage est une étape à risque. Un cutter trop profond ou une protection tirée trop vite peut abîmer une œuvre arrivée intacte. Avant d'ouvrir, inspectez le carton : coins écrasés, trous, humidité, ruban décollé, étiquette abîmée ou traces de choc. Si quelque chose semble anormal, photographiez le colis avant ouverture.</p>
+      <p>Ouvrez ensuite à plat, sur une surface propre et sèche. Coupez seulement le ruban extérieur, sans enfoncer la lame. Retirez les protections dans l'ordre et ne tirez pas brutalement sur le papier de surface.</p>
+      <p>Si le tableau est sous verre et que le verre est cassé, ne secouez pas le cadre et ne retirez pas les éclats tout de suite. Photographiez d'abord la situation.</p>
+
+      <div class="callout info">
+        <div class="callout-ico">🌡️</div>
+        <div class="callout-body">
+          <strong>Colis froid, chaud ou humide</strong>
+          Si le colis arrive très froid, très chaud ou après un trajet humide, laissez-le fermé un moment dans une pièce sèche et tempérée avant ouverture. Cette attente limite les risques de condensation, surtout pour les œuvres anciennes, les tableaux sous verre ou les cadres en bois ancien. Ne posez pas le colis contre un radiateur, une fenêtre froide, un sol humide ou une source de chaleur directe.
+        </div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <h3>Que faire si le tableau arrive cassé, mouillé ou abîmé ?</h3>
+      <p>Si le tableau arrive abîmé, documentez avant de déplacer, nettoyer, jeter ou réparer. En réclamation, les preuves comptent autant que le dommage lui-même.</p>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Problème</th><th>Première action</th><th>Preuves utiles</th></tr></thead>
+          <tbody>
+            <tr><td>Carton écrasé</td><td>Photographier avant ouverture</td><td>Extérieur, étiquette, zones écrasées</td></tr>
+            <tr><td>Verre cassé</td><td>Ne pas retirer les éclats sans photo</td><td>Verre, surface, cadre, emballage</td></tr>
+            <tr><td>Cadre cassé</td><td>Photographier les angles</td><td>Avant/après, calage, protections</td></tr>
+            <tr><td>Toile percée</td><td>Garder la protection arrière</td><td>Photos, emballage, zone percée</td></tr>
+            <tr><td>Tableau mouillé</td><td>Ne pas chauffer brutalement</td><td>Humidité, carton, état à réception</td></tr>
+            <tr><td>Acheteur conteste</td><td>Préparer un dossier structuré</td><td>Annonce, paiement, photos, dépôt</td></tr>
+            <tr><td>Colis perdu</td><td>Ouvrir une recherche transporteur</td><td>Suivi, dépôt, valeur, assurance</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="callout-ico">⚠️</div>
+        <div class="callout-body">
+          <strong>Ne jetez rien et ne réparez rien avant d'avoir tout documenté</strong>
+          Gardez le carton, le calage et toutes les protections. Pour une œuvre ancienne ou de valeur, demandez conseil à un professionnel avant toute tentative de séchage ou de réparation.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /apres -->
+
+  <!-- À RETENIR -->
+  <div class="prose section-gap">
+    <h3>À retenir avant d'envoyer un tableau</h3>
+    <p>Un bon envoi de tableau se décide en trois temps. D'abord, vérifier que le tableau peut voyager en colis — type, fragilité, format, état, verre éventuel. Ensuite, choisir un transporteur compatible avec le format, la valeur, le verre éventuel et la destination. Enfin, garder les preuves : état du tableau, emballage, valeur, dépôt et échanges.</p>
+    <p><strong>Le point le plus simple à ne pas oublier : mesurez le colis fermé, pas le tableau nu.</strong></p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="prose section-gap">
+    <h3>FAQ : envoyer un tableau par colis</h3>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un tableau par La Poste ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Oui, pour certains petits et moyens tableaux bien emballés. Vérifiez les dimensions finales du colis fermé, l'indemnisation au poids (23 €/kg, plafond 690 €), la signature, le verre éventuel et les exclusions du service choisi.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Quel transporteur accepte les tableaux ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Cela dépend du service exact. Certains transporteurs acceptent des tableaux décoratifs simples, mais excluent ou restreignent les œuvres d'art, antiquités, objets sous verre ou objets de valeur. Vérifiez toujours les conditions avant achat de l'étiquette.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on envoyer un tableau avec Mondial Relay ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Pour un tableau décoratif de faible valeur, très bien emballé, cela peut être envisageable si les dimensions et conditions sont respectées. Pour un objet d'art, un tableau fragile ou sous verre, la prudence s'impose : Mondial Relay indique que sa responsabilité n'est pas engagée en cas de casse d'objet fragile et liste les objets d'art parmi les objets interdits ou non pris en charge.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment envoyer un tableau sous verre ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Sécurisez le verre avec un ruban en X ou en quadrillage, rigidifiez l'avant et l'arrière, ajoutez un amortissement extérieur, doublez l'emballage et vérifiez les exclusions du transporteur. Pour un grand verre, une œuvre précieuse ou un cadre ancien, évitez le colis standard si possible.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Peut-on mettre du papier bulle directement sur une peinture ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Non. Le papier bulle sert à amortir à l'extérieur. Il ne doit pas toucher directement la peinture, surtout si la surface est vernie, brillante, fraîche, texturée ou fragile. La première couche doit toujours être propre, lisse et non abrasive : papier glassine, papier de soie sans acide ou Tyvek.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Que faire si le tableau arrive cassé ou mouillé ?<span class="faq-chev">▼</span></button>
+        <div class="faq-a">Photographiez le carton, l'étiquette, l'emballage et le dommage. Gardez tout le calage, contactez rapidement le transporteur ou la plateforme, puis fournissez la preuve de dépôt, la preuve de valeur et les photos avant/après. Ne jetez rien et ne réparez rien avant la fin de la réclamation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="maj">
+    <strong>Dernière mise à jour</strong><br>
+    Informations logistiques, conditions transporteurs et données douanières vérifiées pour publication en 2026. Les conditions pouvant évoluer, vérifiez toujours les règles officielles du transporteur avant l'envoi.
+  </div>
+
+  <div class="sources">
+    <strong>Sources principales</strong>
+    <ul>
+      <li><a href="https://www.laposte.fr" target="_blank" rel="noopener">La Poste — dimensions, poids, indemnisation Colissimo</a></li>
+      <li><a href="https://www.chronopost.fr" target="_blank" rel="noopener">Chronopost — conditions et assurance optionnelle</a></li>
+      <li><a href="https://www.mondialrelay.fr" target="_blank" rel="noopener">Mondial Relay — responsabilité, objets interdits, assurance</a></li>
+      <li><a href="https://www.douane.gouv.fr" target="_blank" rel="noopener">Douane française — CN22, CN23, déclaration en douane</a></li>
+    </ul>
+  </div>
+
+  <div class="affil">
+    <span>ℹ</span>
+    <span>Certains liens sur cette page sont affiliés. Nous pouvons toucher une commission sans coût supplémentaire pour vous, ce qui nous aide à maintenir nos services gratuits.</span>
+  </div>
+
+</div><!-- /page -->
+
+<script>
+function toggleFaq(btn){
+  const a=btn.nextElementSibling,was=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open');});
+  if(!was){btn.classList.add('open');a.classList.add('open');}
+}
+const navLinks=document.querySelectorAll('.sn');
+const ids=['risque','emballage','apres'];
+let ticking=false;
+window.addEventListener('scroll',()=>{
+  if(ticking)return;ticking=true;
+  requestAnimationFrame(()=>{
+    let cur=ids[0];
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      if(el&&window.scrollY>=el.offsetTop-130)cur=id;
+    });
+    navLinks.forEach(l=>{
+      const isActive=l.getAttribute('href')==='#'+cur;
+      l.classList.toggle('active',isActive);
+    });
+    ticking=false;
+  });
+},{passive:true});
+</script>
+</body>
+</html>

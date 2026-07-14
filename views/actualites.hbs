@@ -60,6 +60,10 @@
             <div id="ezoic-pub-ad-placeholder-111"></div>
             {{/if}}
 
+            {{#if (eq @index 17)}}
+            <div id="ezoic-pub-ad-placeholder-112"></div>
+            {{/if}}
+
             {{#if this.pTitle}}
             <h2>{{this.pTitle}}</h2>
             {{/if}}
@@ -207,13 +211,15 @@
     <i class="fa-solid fa-share"></i>
 </button>
 
-
-
 {{!-- EZOIC SCRIPT --}}
 {{#if showEzoic}}
 <script>
     ezstandalone.cmd.push(function () {
-        ezstandalone.showAds(102, 103, 109, 110, 111);
+        const adIds = [102, 103, 109];
+        {{#if (gt paragraphs.length 7)}}adIds.push(110);{{/if}}
+        {{#if (gt paragraphs.length 11)}}adIds.push(111);{{/if}}
+        {{#if (gt paragraphs.length 17)}}adIds.push(112);{{/if}}
+        ezstandalone.showAds.apply(null, adIds);
     });
 </script>
 {{/if}}
