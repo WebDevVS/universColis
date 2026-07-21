@@ -68,8 +68,14 @@ STICKY NAV
   {{#if article.blocks}}
   <div class="prose">
     {{#each article.blocks}}
-    {{#if (eq this.type "texte")}}
+    {{#if (eq this.type "h3")}}
+    <h3>{{this.text}}</h3>
+    {{else if (eq this.type "h4")}}
+    <h4>{{this.text}}</h4>
+    {{else if (eq this.type "texte")}}
     <p>{{{this.text}}}</p>
+    {{else if (eq this.type "format-grid")}}
+    {{> guide-blocks/format-grid block=this}}
     {{/if}}
     {{/each}}
   </div>
@@ -101,6 +107,9 @@ STICKY NAV
       {{!-- h3 --}}
       {{#if (eq this.type "h3")}}
       <h3>{{this.text}}</h3>
+
+      {{else if (eq this.type "h4")}}
+      <h4>{{this.text}}</h4>
 
       {{!-- texte --}}
       {{else if (eq this.type "texte")}}
@@ -317,6 +326,10 @@ STICKY NAV
       {{else if (eq this.type "risk-transport-grid")}}
       {{> guide-blocks/risk-transport-grid block=this}}
 
+      {{!-- glossaire-grid → partial --}}
+      {{else if (eq this.type "glossaire-grid")}}
+      {{> guide-blocks/glossaire-grid block=this}}
+
       {{/if}}
       {{/each}}
       {{!-- ── FIN DISPATCH ── --}}
@@ -333,6 +346,33 @@ STICKY NAV
   </div>
   {{/each}}
   {{!-- FIN PARTIES --}}
+
+  {{!-- ════════════════════════════════════════════
+  BLOCS APRES PARTIES
+  ════════════════════════════════════════════ --}}
+  {{#if article.blocksAfterParts}}
+  {{#each article.blocksAfterParts}}
+  <div class="prose section-gap">
+    {{#each this.blocks}}
+    {{#if (eq this.type "h3")}}
+    <h3>{{this.text}}</h3>
+    {{else if (eq this.type "h4")}}
+    <h4>{{this.text}}</h4>
+    {{else if (eq this.type "texte")}}
+    <p>{{{this.text}}}</p>
+    {{else if (eq this.type "info-box")}}
+    <div class="callout {{this.variant}}">
+      <div class="callout-ico">{{this.icon}}</div>
+      <div class="callout-body">
+        <strong>{{this.title}}</strong>
+        {{{this.text}}}
+      </div>
+    </div>
+    {{/if}}
+    {{/each}}
+  </div>
+  {{/each}}
+  {{/if}}
 
   {{!-- ════════════════════════════════════════════
   FAQ
@@ -381,7 +421,7 @@ STICKY NAV
         {{else}}
         {{this.name}}
         {{/if}}
-        {{#if this.article}} — {{this.article}}{{/if}}
+        {{#if this.article}} - {{this.article}}{{/if}}
       </li>
       {{/each}}
     </ul>

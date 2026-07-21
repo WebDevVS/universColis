@@ -314,6 +314,10 @@
       {{else if (eq this.type "risk-transport-grid")}}
       {{> guide-blocks/risk-transport-grid block=this}}
 
+      {{!-- glossaire-grid → partial --}}
+      {{else if (eq this.type "glossaire-grid")}}
+      {{> guide-blocks/glossaire-grid block=this}}
+
       {{/if}}
       {{/each}}
       {{!-- ── FIN BLOCS APRÈS ── --}}

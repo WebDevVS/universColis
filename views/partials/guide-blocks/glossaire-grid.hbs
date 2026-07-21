@@ -1,0 +1,20 @@
+{{!--
+  GLOSSAIRE-GRID
+  Description visuelle : grille de 2 colonnes de courtes définitions de vocabulaire,
+  chaque entrée présentée en carte blanche avec une bordure gauche colorée (couleur
+  de la partie en cours via --pc), un terme en gras et sa définition en dessous.
+  Utilisé pour : glossaires techniques courts (ex. "Petit vocabulaire utile").
+
+  Paramètres JSON :
+  - items[] : liste de paires terme/définition
+    - term : le mot ou l'expression à définir
+    - def  : la définition courte (une phrase)
+--}}
+<div class="glossaire-grid">
+  {{#each items}}
+    <div class="glossaire-item">
+      <div class="glossaire-term">{{this.term}}</div>
+      <div class="glossaire-def">{{this.def}}</div>
+    </div>
+  {{/each}}
+</div>

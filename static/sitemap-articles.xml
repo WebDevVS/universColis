@@ -50,12 +50,6 @@
     
   </url>
   <url>
-    <loc>https://www.universcolis.fr/conseils/comment-emballer-un-tableau-ou-une-oeuvre-art</loc>
-    <priority>0.9</priority>
-    <lastmod>2024-03-24</lastmod>
-    
-  </url>
-  <url>
     <loc>https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile</loc>
     <priority>0.9</priority>
     <lastmod>2026-04-29</lastmod>
@@ -77,6 +71,12 @@
     <loc>https://www.universcolis.fr/conseils/envoyer-appareil-photo-colis</loc>
     <priority>0.9</priority>
     <lastmod>2026-06-20</lastmod>
+    
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/conseils/envoyer-tableau-par-colis</loc>
+    <priority>0.9</priority>
+    <lastmod>2026-07-21</lastmod>
     
   </url>
   <url>
@@ -293,6 +293,12 @@
     <loc>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</loc>
     <priority>0.8</priority>
     <lastmod>2026-07-05</lastmod>
+    
+  </url>
+  <url>
+    <loc>https://www.universcolis.fr/actualites/interdiction-poids-lourds-retard-colis-ete-2026</loc>
+    <priority>0.8</priority>
+    <lastmod>2026-07-21</lastmod>
     
   </url>
   <url>

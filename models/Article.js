@@ -253,6 +253,11 @@ const articleSchema = new Schema({
     }],
   }],
 
+  // Blocs affiches apres toutes les parties (avant FAQ)
+  blocksAfterParts: [{
+    blocks:          [{ type: Schema.Types.Mixed }],
+  }],
+
 }, { collection: 'articles' })
 
 const Article = model('Article', articleSchema)

@@ -22,6 +22,8 @@
       <img src="/static/img/logos/{{this.logo}}" alt="Logo {{this.name}}" class="transport-logo" loading="lazy">
       {{else if (eq this.name "Colissimo")}}
       <img src="/static/img/logos/laposte.webp" alt="Logo Colissimo" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Colissimo / La Poste")}}
+      <img src="/static/img/logos/laposte.webp" alt="Logo Colissimo" class="transport-logo" loading="lazy">
       {{else if (eq this.name "Chronopost")}}
       <img src="/static/img/logos/chronopost.webp" alt="Logo Chronopost" class="transport-logo" loading="lazy">
       {{else if (eq this.name "Chrono Viti")}}
@@ -30,6 +32,12 @@
       <img src="/static/img/logos/mondialrelay.webp" alt="Logo Mondial Relay" class="transport-logo" loading="lazy">
       {{else if (eq this.name "DHL Express")}}
       <img src="/static/img/logos/dhlexpress.webp" alt="Logo DHL Express" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "UPS")}}
+      <img src="/static/img/logos/ups.webp" alt="Logo UPS" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "FedEx")}}
+      <img src="/static/img/logos/fedex.webp" alt="Logo FedEx" class="transport-logo" loading="lazy">
+      {{else if (eq this.name "Cocolis / transport dédié")}}
+      <img src="/static/img/logos/cocolis.webp" alt="Logo Cocolis" class="transport-logo" loading="lazy">
       {{else}}
       <span class="transport-fallback-icon">{{this.icon}}</span>
       {{/if}}

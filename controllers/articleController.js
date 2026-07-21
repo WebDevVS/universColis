@@ -197,6 +197,10 @@ articleController.get('/comment-emballer-une-bouteille', (req, res) => {
   res.redirect(301, '/conseils/expedier-bouteille-vin-colis')
 })
 
+articleController.get('/comment-emballer-un-tableau-ou-une-oeuvre-art', (req, res) => {
+  res.redirect(301, '/conseils/envoyer-tableau-par-colis')
+})
+
 articleController.get('/:slug', async (req, res) => {
   try {
     const article = await getBySlug(req.params.slug);

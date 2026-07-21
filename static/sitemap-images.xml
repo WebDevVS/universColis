@@ -92,15 +92,6 @@
       </image:image>
     
   </url><url>
-    <loc>https://www.universcolis.fr/conseils/comment-emballer-un-tableau-ou-une-oeuvre-art</loc>
-    
-      <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/articleImg/emballage-tableau-coins-mousse-papier-bulle-boite-carton.webp</image:loc>
-        
-        <image:caption>Protégez vos œuvres d’art avec notre guide complet : papier glassine, protections mousse, boîte rigide et étiquetage FRAGILE.</image:caption>
-      </image:image>
-    
-  </url><url>
     <loc>https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile</loc>
     
       <image:image>
@@ -134,6 +125,15 @@
         <image:loc>https://www.universcolis.fr/static/img/articleImg/appareil-photo/carton-calage-appareil-photo-objectif-accessoires.webp</image:loc>
         
         <image:caption>Guide 2026 pour expédier un appareil photo en limitant les risques : boîtier, objectif, batterie lithium, vente d'occasion, SAV, assurance et preuves.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/conseils/envoyer-tableau-par-colis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/articleImg/tableau/ordre-protection-emballage-tableau-encadre-envoi-colis.webp</image:loc>
+        
+        <image:caption>Toile sur châssis, tableau encadré, tableau sous verre ou grand format : le guide pour emballer, assurer et envoyer un tableau par colis sans mauvaise surprise.</image:caption>
       </image:image>
     
   </url><url>
@@ -458,6 +458,15 @@
         <image:loc>https://www.universcolis.fr/static/img/actualitesImg/taxe-2-euros-petits-colis-suspendue-droit-europeen-3-euros-2026.webp</image:loc>
         <image:title>taxe-2-euros-petits-colis-suspendue-droit-europeen-3-euros-2026</image:title>
         <image:caption>Visuel explicatif sur la suspension de la taxe française de 2 € sur les petits colis depuis le 1er juillet 2026. L'infographie montre que cette taxe nationale est remplacée par le droit européen de 3 € par catégorie d'article, avec TVA et frais transporteur toujours possibles selon le vendeur, la plateforme et le circuit douanier.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/interdiction-poids-lourds-retard-colis-ete-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/interdiction-poids-lourds-retard-colis-ete-2026.webp</image:loc>
+        <image:title>interdiction-poids-lourds-retard-colis-ete-2026</image:title>
+        <image:caption>Infographie d'actualité sur les restrictions de circulation des poids lourds en France métropolitaine pendant l'été 2026. Les véhicules de transport de marchandises de plus de 7,5 tonnes sont concernés de 7 h à 19 h les samedis 25 juillet, 1er août et 8 août 2026. Le visuel montre qu'une interruption des liaisons routières peut reporter certains transferts entre centres de tri et plateformes logistiques, entraînant des retards de colis possibles sans suspendre systématiquement les livraisons locales.</image:caption>
       </image:image>
     
   </url><url>

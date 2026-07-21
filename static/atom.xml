@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-07-14T14:32:53.753Z</updated>
+  <updated>2026-07-21T12:38:28.475Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -79,15 +79,6 @@
     </entry>
   
     <entry>
-      <title>Comment Emballer un Tableau ou une Œuvre d'Art pour un Envoi Sécurisé ?</title>
-      <link href="https://www.universcolis.fr/conseils/comment-emballer-un-tableau-ou-une-oeuvre-art"/>
-      <id>https://www.universcolis.fr/conseils/comment-emballer-un-tableau-ou-une-oeuvre-art</id>
-      <updated>2024-03-24</updated>
-      <summary>Un nouveau guide est disponible.
-      </summary>
-    </entry>
-  
-    <entry>
       <title>Comment expédier une œuvre d'art fragile : emballage, transport et assurance</title>
       <link href="https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile"/>
       <id>https://www.universcolis.fr/conseils/expedier-oeuvre-art-fragile</id>
@@ -119,6 +110,15 @@
       <link href="https://www.universcolis.fr/conseils/envoyer-appareil-photo-colis"/>
       <id>https://www.universcolis.fr/conseils/envoyer-appareil-photo-colis</id>
       <updated>2026-06-20</updated>
+      <summary>Un nouveau guide est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Envoyer un tableau par colis : emballage, transporteur, assurance et précautions</title>
+      <link href="https://www.universcolis.fr/conseils/envoyer-tableau-par-colis"/>
+      <id>https://www.universcolis.fr/conseils/envoyer-tableau-par-colis</id>
+      <updated>2026-07-21</updated>
       <summary>Un nouveau guide est disponible.
       </summary>
     </entry>
@@ -443,6 +443,15 @@
       <link href="https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026"/>
       <id>https://www.universcolis.fr/actualites/taxe-2-euros-petits-colis-2026</id>
       <updated>2026-07-05</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>Colis : des retards possibles les 25 juillet, 1er et 8 août 2026</title>
+      <link href="https://www.universcolis.fr/actualites/interdiction-poids-lourds-retard-colis-ete-2026"/>
+      <id>https://www.universcolis.fr/actualites/interdiction-poids-lourds-retard-colis-ete-2026</id>
+      <updated>2026-07-21</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>

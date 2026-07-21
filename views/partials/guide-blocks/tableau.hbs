@@ -8,10 +8,19 @@
   </thead>
   <tbody>
     {{#each block.rows}}
-    <tr class="cov-{{this.color}}">
+    <tr{{#if this.color}} class="cov-{{this.color}}"{{/if}}>
+      {{#if this.cells}}
+      {{#each this.cells}}
+      <td>{{{this}}}</td>
+      {{/each}}
+      {{#if this.badge}}
+      <td><span class="cov-badge {{this.badgeStyle}}">{{this.badge}}</span></td>
+      {{/if}}
+      {{else}}
       <td>{{this.level}}</td>
       <td class="cov-calcul">{{this.calcul}}</td>
       <td><span class="cov-badge {{this.color}}">{{this.when}}</span></td>
+      {{/if}}
     </tr>
     {{/each}}
   </tbody>

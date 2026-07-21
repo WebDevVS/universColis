@@ -9507,6 +9507,7 @@ figure.etape-image:hover .hover-caption {
 
 .coverage-table tr td:first-child {
   border-radius: var(--rsm) 0 0 var(--rsm);
+  font-weight: 600;
 }
 
 .coverage-table tr td:last-child {
@@ -9556,6 +9557,43 @@ figure.etape-image:hover .hover-caption {
 .cov-badge.p {
   background: var(--violet-l);
   color: var(--violet);
+}
+
+/* ── GLOSSAIRE GRID ── */
+.glossaire-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin: 1.1rem 0;
+}
+
+.glossaire-item {
+  background: white;
+  border-radius: var(--rsm);
+  padding: 0.75rem 1rem;
+  border-left: 3px solid color-mix(in srgb, var(--pc, var(--violet)) 35%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.glossaire-term {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.glossaire-def {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px) {
+  .glossaire-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── TIMELINE SINISTRE ── */
