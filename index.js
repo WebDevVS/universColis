@@ -25,6 +25,8 @@ async function start() {
     // Liste des pages où Ezoic se charge (facile à modifier)
     const ezoicPages = [
       '/suivi',           // Page de suivi de colis
+      '/suivi/statuts-colis', // Page détail des statuts colis
+      '/conseils',        // Liste des guides
       '/actualites/',     // Articles d'actualités
       '/questions/'   // Questions FAQ (décommentez pour activer)
       // '/mon-materiel'  // Page matériel (décommentez pour activer)
@@ -39,7 +41,7 @@ async function start() {
     res.locals.pageType = {
       isTracking: req.path === '/suivi',
       isActualite: req.path.startsWith('/actualites/'),
-      isConseils: req.path.startsWith('/conseils/'),
+      isConseils: req.path === '/conseils' || req.path.startsWith('/conseils/'),
       isQuestion: req.path.startsWith('/questions/'),
       isComparateur: req.path === '/' || req.path.startsWith('/comparateur')
     };
