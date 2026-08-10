@@ -206,3 +206,11 @@
 
 <!-- Section "À découvrir" contextuelle -->
 {{> related-links/_base pageType="statuts-colis"}}
+
+{{#if showEzoic}}
+<script>
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds();
+    });
+</script>
+{{/if}}

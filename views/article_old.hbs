@@ -282,3 +282,10 @@
   <i class="fa-solid fa-share"></i>
 </button>
 
+{{#if showEzoic}}
+<script>
+    ezstandalone.cmd.push(function () {
+        ezstandalone.showAds();
+    });
+</script>
+{{/if}}
