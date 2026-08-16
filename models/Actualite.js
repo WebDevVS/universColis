@@ -9,8 +9,10 @@ const actualiteShema = new Schema({
     readingTime: { type: Number, required: false },
     paragraphs: [{
         pTitle: String,
+        pSubtitle: String,
         text: String,
         list: [String],
+        listNum: [String],
         hasLinks: { type: Boolean, default: false },
         isTable: { type: Boolean, default: false },
         table: {

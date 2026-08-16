@@ -470,6 +470,33 @@
       </image:image>
     
   </url><url>
+    <loc>https://www.universcolis.fr/actualites/loi-ppwr-2026-obligations-petits-e-commercants</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/loi-ppwr-2026-obligations-petits-ecommercants-emballages.webp</image:loc>
+        <image:title>loi-ppwr-2026-obligations-petits-ecommercants-emballages</image:title>
+        <image:caption>Infographie sur le PPWR 2026 et les obligations d'emballage des petits e-commerçants en France. Le visuel présente les nouvelles règles européennes applicables depuis le 12 août 2026, la REP emballages, les vérifications à effectuer auprès des fournisseurs et les prochaines échéances concernant les emballages e-commerce.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/ppwr-2026-rep-mandataire-vente-ue</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/ppwr-2026-rep-mandataire-couts-vente-ue.webp</image:loc>
+        <image:title>ppwr-2026-rep-mandataire-couts-vente-ue</image:title>
+        <image:caption>Infographie sur le PPWR 2026, la REP et les ventes transfrontalières dans l'Union européenne. Le visuel rappelle qu'une vente à distance peut créer des obligations dans le pays du client, notamment un enregistrement REP, un mandataire selon le pays et des frais de conformité à comparer avec la rentabilité réelle du marché.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/actualites/fermeture-rakuten-france-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/fermeture-rakuten-france-30-septembre-2026.webp</image:loc>
+        <image:title>fermeture-rakuten-france-30-septembre-2026</image:title>
+        <image:caption>Infographie sur la fermeture de Rakuten France en 2026. Le visuel met en avant la date du 30 septembre 2026 à 23 h 59, à partir de laquelle il ne sera plus possible d'effectuer de nouveaux achats ou de nouvelles ventes sur la marketplace française. Les commandes déjà confirmées pourront toutefois continuer à être traitées après cette échéance.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/questions/livraison/retard-colis-causes-solutions</loc>
     
       <image:image>
@@ -650,39 +677,57 @@
       </image:image>
     
   </url><url>
+    <loc>https://www.universcolis.fr/questions/international/elements-douane-colis-usa-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/documents-douane-colis-usa-cn23-facture-formal-entry.webp</image:loc>
+        
+        <image:caption>Infographie sur les documents douaniers nécessaires pour envoyer un colis de France vers les États-Unis. Le visuel distingue le parcours La Poste et Colissimo avec déclaration CN23 et facture commerciale ou pro forma, le parcours des transporteurs express avec transmission de données douanières et document de valeur, ainsi que le cas des envois de forte valeur pouvant nécessiter une Formal Entry aux États-Unis. L'image accompagne un guide consacré aux formalités douanières USA, aux documents à préparer selon le type d'envoi et aux différences entre circuit postal et transporteurs express.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/envoyer-colis-plus-2500-usd-usa-documents-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colis-plus-2500-usd-usa-formal-entry-informal-entry.webp</image:loc>
+        
+        <image:caption>Infographie pédagogique expliquant le seuil de 2 500 USD pour l'envoi d'un colis de France vers les États-Unis. Le visuel oppose clairement l'Informal Entry, procédure simplifiée souvent possible en dessous de 2 500 USD, à la Formal Entry, procédure douanière plus complète généralement requise au-delà de ce seuil. Cette image aide à comprendre le fonctionnement du dédouanement américain pour les colis de valeur, notamment dans le cadre d'une expédition commerciale ou d'un envoi de marchandise ordinaire vers les USA.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/questions/international/cn22-cn23-formulaire-2976-usa</loc>
     
       <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/formulaire-douane-cn22-cn23-usa.webp</image:loc>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/cn23-facture-commerciale-colis-france-etats-unis.webp</image:loc>
         
-        <image:caption>Comment choisir entre CN22 et CN23 pour vos colis USA ? Découvrez les seuils de 2 kg et 370 € pour une déclaration douanière conforme et un envoi sans blocage.</image:caption>
+        <image:caption>Illustration pédagogique d'un colis expédié depuis la France vers les États-Unis, accompagné d'une déclaration douanière CN23 et d'une facture commerciale. Le visuel montre le parcours France-USA et aide à comprendre les documents généralement demandés pour une vente de marchandises avec un service postal comme Colissimo.</image:caption>
       </image:image>
     
   </url><url>
     <loc>https://www.universcolis.fr/questions/international/facture-commerciale-colis-usa</loc>
     
       <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/exemple-facture-commerciale-envoi-colis-usa.webp</image:loc>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/facture-commerciale-colis-usa-champs-informations-obligatoires.webp</image:loc>
         
-        <image:caption>À quoi ressemble une facture commerciale pour expédier un colis aux États-Unis ? Exemple détaillé des informations exigées par les douanes américaines : expéditeur, destinataire, description des marchandises, codes HS, pays d'origine et signature.</image:caption>
+        <image:caption>Infographie pédagogique présentant les principales informations à renseigner sur une facture commerciale pour un colis envoyé de France vers les États-Unis. Le visuel met en avant les coordonnées du vendeur et du destinataire, la description des marchandises, leur valeur, leur pays d'origine et leur code SH, avec un colis expédié entre la France et les États-Unis.</image:caption>
       </image:image>
     
   </url><url>
     <loc>https://www.universcolis.fr/questions/international/facture-pro-forma-colis-usa</loc>
     
       <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/exemple-facture-pro-forma-colis-cadeau-france-usa.webp</image:loc>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/facture-pro-forma-colis-usa-champs-cles-a-remplir.webp</image:loc>
         
-        <image:caption>À quoi ressemble une facture pro forma pour expédier un colis cadeau de la France vers les États-Unis ? Exemple détaillé des informations attendues par les douanes américaines : expéditeur, destinataire, motif d'export, description des marchandises, code HS, pays d'origine, valeur douanière et déclaration « no charge ».</image:caption>
+        <image:caption>Infographie pédagogique montrant les principaux champs à préparer pour une facture pro forma accompagnant un colis envoyé de France vers les États-Unis. Le visuel présente sur un même document l'expéditeur, le destinataire, la description des marchandises, la quantité, le poids, la valeur douanière, le pays d'origine, le code SH, le motif de l'envoi et la signature. Il sert à comprendre les informations généralement demandées avant de compléter le formulaire ou la facture douanière fournie par le transporteur.</image:caption>
       </image:image>
     
   </url><url>
     <loc>https://www.universcolis.fr/questions/international/restrictions-colis-etats-unis-2026</loc>
     
       <image:image>
-        <image:loc>https://www.universcolis.fr/static/img/questionsImg/envoi-vin-colis-france-usa-particulier-professionnel-2026.webp</image:loc>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/que-peut-on-envoyer-colis-etats-unis-produits-autorises-interdits.webp</image:loc>
         
-        <image:caption>Peut-on envoyer du vin aux États-Unis en 2026 ? Cette infographie compare clairement la situation entre particuliers et professionnels : côté particulier, l'envoi de vin par colis est refusé par les réseaux postaux et la majorité des transporteurs ; côté professionnel, l'expédition reste possible sous conditions strictes, avec licences adaptées, importateur agréé et respect des règles fédérales et locales américaines.</image:caption>
+        <image:caption>Infographie pédagogique sur les produits que l'on peut envoyer par colis depuis la France vers les États-Unis. Le visuel distingue les contenus généralement acceptés, comme les vêtements, les livres, le chocolat, le café et les téléphones avec batterie installée, des produits interdits ou fortement réglementés, notamment le vin, le parfum, les batteries seules, le saucisson, les plantes avec terre et les médicaments.</image:caption>
       </image:image>
     
   </url><url>
@@ -809,6 +854,33 @@
         <image:loc>https://www.universcolis.fr/static/img/questionsImg/colissimo-etiquette-numero-suivi.webp</image:loc>
         
         <image:caption>Photo illustrative d'une étiquette Colissimo apposée sur un colis. Le numéro de suivi apparaît sous le code-barres, ce qui permet à l'expéditeur ou au destinataire de le recopier dans un outil de suivi.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/colissimo-usa-tarifs</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/tarifs-colissimo-usa-2026-prix-par-poids.webp</image:loc>
+        
+        <image:caption>Infographie présentant les tarifs Colissimo USA 2026 pour un envoi depuis la France métropolitaine vers les États-Unis avec La Poste. Le visuel compare les principaux tarifs d'affranchissement par poids : 35,19 € jusqu'à 500 g, 39,19 € jusqu'à 1 kg, 53,99 € jusqu'à 2 kg, 78,69 € jusqu'à 5 kg, 148,99 € jusqu'à 10 kg et 256,89 € jusqu'à 20 kg. Ces prix correspondent au transport seul ; pour une marchandise envoyée aux États-Unis, des droits de douane et des frais de gestion peuvent s'ajouter au montant payé.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/prix-envoi-colis-usa</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/colis-usa-pas-cher-comparer-offres-transporteurs.webp</image:loc>
+        
+        <image:caption>Infographie éditoriale sur le thème « colis USA pas cher » montrant un colis expédié de la France vers les États-Unis et plusieurs offres de transport à comparer avant réservation. Le visuel met en avant l'idée qu'un comparateur permet de confronter en une seule recherche différents services selon le prix et le délai, afin d'identifier plus facilement une offre d'envoi vers les USA moins chère. L'image accompagne un article sur le prix d'envoi d'un colis aux États-Unis, la comparaison des offres de transport et l'intérêt d'utiliser un comparateur avant de réserver.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/international/envoyer-colis-etats-unis</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/envoyer-colis-etats-unis-france-etapes-expedition.webp</image:loc>
+        
+        <image:caption>Infographie expliquant comment envoyer un colis aux États-Unis depuis la France. Le parcours présente quatre étapes clés : préparer et emballer le colis, relever son poids et ses dimensions puis comparer les offres de transport, préparer les informations douanières et le motif de l'envoi, enfin remettre le colis au transporteur. Le visuel accompagne le guide principal UniversColis consacré à l'envoi de colis France–USA pour les particuliers, vendeurs, e-commerçants et entreprises.</image:caption>
       </image:image>
     
   </url>
