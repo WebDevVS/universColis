@@ -188,6 +188,26 @@
             sendClarityConsent();
         };
 
+        {{#if isProd}}
+        window.loadImpactWithConsent = function () {
+            if (window.impactLoaded) return;
+            window.impactLoaded = true;
+
+            (function (i, m, p, a, c, t) {
+                c.ire_o = p;
+                c[p] = c[p] || function () { (c[p].a = c[p].a || []).push(arguments); };
+                t = a.createElement(m);
+                var firstScript = a.getElementsByTagName(m)[0];
+                t.async = 1;
+                t.src = i;
+                firstScript.parentNode.insertBefore(t, firstScript);
+            })('https://utt.impactcdn.com/P-A7707558-549a-4bb5-90b6-da06a105e9af1.js', 'script', 'impactStat', document, window);
+
+            impactStat('transformLinks');
+            impactStat('trackImpression');
+        };
+        {{/if}}
+
         // ── Écoute du consentement GateKeeper (TCF 2.2) ──────────────
         // GateKeeper expose window.__tcfapi dès son chargement.
         // On écoute 'useractioncomplete' (choix actif) ET
@@ -219,6 +239,12 @@
 
             // Chargement conditionnel de Clarity
             window.loadClarityWithConsent(analyticsConsented);
+
+            {{#if isProd}}
+            if (adConsented) {
+                window.loadImpactWithConsent();
+            }
+            {{/if}}
 
             // Push dans le dataLayer pour GTM (si besoin de triggers GTM)
             window.dataLayer = window.dataLayer || [];

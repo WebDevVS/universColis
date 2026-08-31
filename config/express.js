@@ -220,6 +220,8 @@ module.exports = (app) => {
           "https://*.doubleclick.net",
           "https://securepubads.g.doubleclick.net",
           "https://pagead2.googlesyndication.com",
+          // Impact affiliate tracking
+          "https://*.impactcdn.com",
           // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
           "https://www.clarity.ms",
           "https://*.clarity.ms",
@@ -276,6 +278,8 @@ module.exports = (app) => {
           "https://track123.com",
           "https://track123-widget.track123.com",
           "https://track123-widget.track123cdn.com",
+          // Impact affiliate tracking
+          "https://*.impactcdn.com",
           // Ezoic
           "https://*.ezoic.net",
           "https:",  // Pour toutes images de pubs
@@ -313,6 +317,8 @@ module.exports = (app) => {
             "https://*.eu-3-id5-sync.com", // ← AJOUTE
             "https://*.eu-4-id5-sync.com", // ← AJOUTE
             "https://pbserver.ezoic.com",  // ← AJOUTE URGENT
+            // Impact affiliate tracking
+            "https://*.impactcdn.com",
           // Google Ads
           "https://*.googlesyndication.com",
           "https://*.doubleclick.net",

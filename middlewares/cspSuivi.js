@@ -25,6 +25,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://*.doubleclick.net",          // DoubleClick (Google)
       "https://securepubads.g.doubleclick.net",
       "https://pagead2.googlesyndication.com",
+      // Impact affiliate tracking
+      "https://*.impactcdn.com",
       // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
       "https://www.clarity.ms",
       "https://*.clarity.ms",
@@ -75,6 +77,8 @@ module.exports = helmet.contentSecurityPolicy({
       "https://track123.com",
       "https://track123-widget.track123.com",
       "https://track123-widget.track123cdn.com",
+      // Impact affiliate tracking
+      "https://*.impactcdn.com",
       "https://*.ezoic.net",
       "https:",  // Pour toutes les images de pubs
       "http:"    // Certaines pubs anciennes
@@ -103,6 +107,8 @@ module.exports = helmet.contentSecurityPolicy({
         "https://*.eu-3-id5-sync.com", // ← AJOUTE
         "https://*.eu-4-id5-sync.com", // ← AJOUTE
         "https://pbserver.ezoic.com",  // ← AJOUTE URGENT
+      // Impact affiliate tracking
+      "https://*.impactcdn.com",
       "https://*.googlesyndication.com",
       "https://*.doubleclick.net",
       // ⬇️ MICROSOFT CLARITY - AJOUTEZ CECI
