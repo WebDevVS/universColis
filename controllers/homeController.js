@@ -77,27 +77,19 @@ homeController.get('/', async (req, res) => {
                 "@graph": [
                     {
                         "@type": "WebSite",
+                        "@id": "https://www.universcolis.fr/#website",
                         "name": "UniversColis",
-                        "url": "https://www.universcolis.fr/",
-                        "potentialAction": [
-                            {
-                                "@type": "SearchAction",
-                                "target": "https://www.universcolis.fr/comparateur-des-prix?destination={destination}&poids={poids}",
-                                "query-input": [
-                                    "required name=destination",
-                                    "required name=poids"
-                                ]
-                            },
-                        ]
+                        "url": "https://www.universcolis.fr/"
                     },
                     {
                         "@type": "Organization",
+                        "@id": "https://www.universcolis.fr/#organization",
                         "name": "UniversColis",
                         "url": "https://www.universcolis.fr/",
-                        "logo": "https://www.universcolis.fr/static/img/logo.webp",
-                        "sameAs": [
-                            "https://www.universcolis.fr/"
-                        ]
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://www.universcolis.fr/static/img/logo.webp"
+                        }
                     },
                     {
                         "@type": "Service",

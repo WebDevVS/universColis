@@ -379,12 +379,35 @@ module.exports = (app) => {
     methods: ['GET', 'POST', 'PUT', 'DELETE']
   }));
 
-  const limiter = rateLimit({
+  // Limite stricte : endpoints sensibles a l'abus (spam formulaire de contact,
+  // scraping de l'API autocomplete). Aucun crawler de moteur de recherche ne
+  // soumet de formulaire ni n'appelle l'autocomplete, donc pas d'exemption ici.
+  const strictLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
     message: 'Trop de requêtes, réessayez plus tard.'
   });
-  app.use(limiter);
+  app.use('/api', strictLimiter);
+  app.use('/contact', strictLimiter);
+
+  // Limite large : simple consultation de pages. Seuil releve (100 -> 500) car
+  // la navigation normale (et un re-crawl Googlebot/Bingbot) declenchait des
+  // 429 avec l'ancien seuil unique. Les bots de recherche verifies sont en
+  // plus exemptes (contournable via un faux User-Agent, mais sans consequence :
+  // ca allege juste le comptage sur du contenu deja public, aucun acces
+  // supplementaire n'est accorde).
+  const knownSearchBots = /Googlebot|Bingbot|Applebot|DuckDuckBot|YandexBot/i;
+  const pageLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 500,
+    message: 'Trop de requêtes, réessayez plus tard.',
+    // /api et /contact ont deja leur propre strictLimiter : on les exclut ici
+    // pour eviter que ces en-tetes RateLimit-* n'ecrasent ceux du strictLimiter.
+    skip: (req) => knownSearchBots.test(req.headers['user-agent'] || '')
+      || req.path.startsWith('/api')
+      || req.path.startsWith('/contact')
+  });
+  app.use(pageLimiter);
 
   app.use(menuArticles);
 };

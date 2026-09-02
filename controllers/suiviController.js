@@ -98,36 +98,6 @@ suiviController.get('/', async (req, res) => {
                     "description": "Suivi de colis en France et à l’international avec 5 outils de suivi. Compatible Colissimo, Chronopost, DHL, UPS, Mondial Relay et de nombreux autres transporteurs."
                 },
                 {
-                    "@type": "HowTo",
-                    "@id": "https://www.universcolis.fr/suivi#howto",
-                    "name": "Comment suivre un colis sur UniversColis ?",
-                    "description": "Guide étape par étape pour tracker n'importe quel colis en 3 clics",
-                    "inLanguage": "fr-FR",
-                    "step": [
-                        {
-                            "@type": "HowToStep",
-                            "position": 1,
-                            "name": "Entrer le numéro",
-                            "text": "Entrez votre numéro de suivi dans le champ prévu (Ex: AB123456789FR)",
-                            "url": "https://www.universcolis.fr/suivi#tracking-form"
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 2,
-                            "name": "Lancer la recherche",
-                            "text": "Cliquez sur « Suivre » pour lancer la détection automatique du transporteur",
-                            "url": "https://www.universcolis.fr/suivi#tracking-form"
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 3,
-                            "name": "Comparer les résultats",
-                            "text": "Comparez les résultats des 5 trackers disponibles pour obtenir l'information la plus complète",
-                            "url": "https://www.universcolis.fr/suivi#manual-selector"
-                        }
-                    ]
-                },
-                {
                     "@type": "FAQPage",
                     "@id": "https://www.universcolis.fr/suivi#faq",
                     "mainEntity": [

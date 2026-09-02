@@ -49,6 +49,45 @@ comparateurController.get('/', async (req, res) => {
         let searchSummary = null;
 
         // ============================================================
+        // VALIDATION DES PARAMETRES DE RECHERCHE
+        // ============================================================
+        // Deux cas distincts :
+        // - Aucun parametre du tout (visite directe, lien partage, bot qui
+        //   teste l'URL) : pas de rejet, on affiche plus bas le formulaire
+        //   vide (page "outil" utile plutot qu'une redirection qui cache
+        //   completement le comparateur aux crawlers).
+        // - Parametres presents mais invalides (URL modifiee a la main,
+        //   ancien lien casse) : rejet vers l'accueil plutot que de laisser
+        //   l'exception planter le serveur en 500.
+        const isAvance = formType === 'avance';
+        const aucunParametre = !destination && !poids && !formType &&
+            !villeOrigine && !villeDestination && !longueur && !largeur &&
+            !hauteur && !codeContenu;
+
+        if (!aucunParametre) {
+            const destinationValide = !!destination && countries.some(c => c.isoCode === destination);
+            const poidsValide = !!poids && !isNaN(poids) && Number(poids) > 0;
+
+            if (!isAvance) {
+                if (!destinationValide || !poidsValide) {
+                    return res.redirect(302, '/');
+                }
+            } else {
+                const origineParseeValidation = parseVilleCodePostal(villeOrigine);
+                const destinationParseeValidation = parseVilleCodePostal(villeDestination);
+                const dimensionsValides = [longueur, largeur, hauteur].every(v => v && !isNaN(v) && Number(v) > 0);
+                const villesValides = !!origineParseeValidation.ville && !!destinationParseeValidation.ville;
+                const categorieExiste = codeContenu && await Category.exists({ category: codeContenu });
+
+                if (!destinationValide || !poidsValide || !dimensionsValides || !villesValides || !categorieExiste) {
+                    return res.redirect(302, '/');
+                }
+            }
+        }
+
+        const rechercheEffectuee = !aucunParametre;
+
+        // ============================================================
         // FORMULAIRE RAPIDE
         // ============================================================
         // Les valeurs par defaut (villes, dimensions) sont generees
@@ -218,6 +257,16 @@ comparateurController.get('/', async (req, res) => {
             delaiMax: 0
         };
 
+        // Metadonnees SEO : la page "outil vide" (aucune recherche) n'est
+        // pas une page de resultats et ne doit pas se presenter comme telle
+        // (title/description/schema différents du cas avec resultats).
+        const seoTitle = rechercheEffectuee
+            ? "Resultats : Comparez les offres d'envoi de colis - UniversColis"
+            : "Comparateur de prix d'envoi de colis - UniversColis";
+        const seoDescription = rechercheEffectuee
+            ? "Comparez instantanement les tarifs, delais et services pour l'expedition de colis. Filtrez par transporteur, prix ou rapidite et partagez vos resultats en un clic."
+            : "Comparez gratuitement les tarifs d'envoi de colis entre plusieurs transporteurs (Colissimo, Chronopost, DHL, UPS...). Renseignez votre destination et le poids de votre colis pour voir les offres.";
+
         // Rendu de la page avec toutes les offres fusionnees
         res.render('comparateur', {
             title: 'Comparateur des prix',
@@ -238,10 +287,11 @@ comparateurController.get('/', async (req, res) => {
             codeContenu,
             searchSummary,
             formType,
+            rechercheEffectuee,
             hasAutocomplete: true,
 
-            seoTitle: "Resultats : Comparez les offres d'envoi de colis - UniversColis",
-            seoDescription: "Comparez instantanement les tarifs, delais et services pour l'expedition de colis. Filtrez par transporteur, prix ou rapidite et partagez vos resultats en un clic.",
+            seoTitle,
+            seoDescription,
             seoKeywords: [
                 "comparateur colis",
                 "frais envoi",
@@ -261,18 +311,18 @@ comparateurController.get('/', async (req, res) => {
             modifiedDate: "2025-08-25",
 
             ogType: "website",
-            ogTitle: "Resultats : Comparateur d'offres d'envoi de colis - UniversColis",
-            ogDescription: "Trouvez la meilleure offre d'expedition selon vos criteres : prix, delai, transporteur. Comparez et partagez vos resultats facilement.",
+            ogTitle: seoTitle,
+            ogDescription: seoDescription,
             ogUrl: "https://www.universcolis.fr/comparateur-des-prix",
             ogImage: "https://www.universcolis.fr/static/img/og-image.png",
             ogLocale: "fr_FR",
 
             twitterCard: "summary_large_image",
-            twitterTitle: "Resultats : Comparateur d'offres d'envoi de colis - UniversColis",
-            twitterDescription: "Comparez les tarifs et delais d'expedition de colis en temps reel. Filtrez, partagez et reservez en toute simplicite.",
+            twitterTitle: seoTitle,
+            twitterDescription: seoDescription,
             twitterImage: "https://wwww.universcolis.fr/static/img/og-image.png",
 
-            structuredData: JSON.stringify({
+            structuredData: rechercheEffectuee ? JSON.stringify({
                 "@context": "https://schema.org",
                 "@graph": [
                     {
@@ -312,6 +362,21 @@ comparateurController.get('/', async (req, res) => {
                                 }
                             }
                         }))
+                    }
+                ]
+            }) : JSON.stringify({
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "WebPage",
+                        "name": "Comparateur de prix d'envoi de colis",
+                        "url": "https://www.universcolis.fr/comparateur-des-prix",
+                        "description": seoDescription,
+                        "isPartOf": {
+                            "@type": "WebSite",
+                            "name": "UniversColis",
+                            "url": "https://www.universcolis.fr/"
+                        }
                     }
                 ]
             })

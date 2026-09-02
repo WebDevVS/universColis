@@ -37,3 +37,6 @@ coverage/
 # Misc
 *.sublime-workspace
 *.sublime-project
+
+# SEO audits (local only, never pushed)
+seo-audit-*/

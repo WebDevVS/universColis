@@ -4,6 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Preconnect GateKeeper CMP : etablit la connexion en avance pour
+    reduire le temps de blocage de ces deux scripts synchrones (voir plus bas)
+    sans rien changer a leur ordre ni a leur caractere bloquant. -->
+    <link rel="preconnect" href="https://cmp.gatekeeperconsent.com">
+    <link rel="preconnect" href="https://the.gatekeeperconsent.com">
+
     <title>{{seoTitle}}</title>
     <meta name="description" content="{{seoDescription}}" />
     <meta name="keywords" content="{{#each seoKeywords}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}" />
@@ -101,36 +108,40 @@
         as="font" type="font/woff2" crossorigin fetchpriority="high">
 
     <!-- Preload images hero par page -->
+    <!-- Ces images sont un fond decoratif a 10% d'opacite (.background-fix,
+    static/css/style.css) et ne sont jamais le veritable element LCP de la
+    page (celui-ci est le texte/H1). fetchpriority="high" retire ici pour ne
+    plus concurrencer le CSS/police pour la bande passante prioritaire. -->
     {{#if (eq page 'home')}}
-    <link rel="preload" as="image" href="/static/img/home.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/home.webp">
     {{/if}}
 
     {{#if (eq page 'suivi')}}
-    <link rel="preload" as="image" href="/static/img/suivi.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/suivi.webp">
     {{/if}}
 
     {{#if (eq page 'comparateur')}}
-    <link rel="preload" as="image" href="/static/img/resultats.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/resultats.webp">
     {{/if}}
 
     {{#if (eq page 'actualites')}}
-    <link rel="preload" as="image" href="/static/img/actualites.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/actualites.webp">
     {{/if}}
 
     {{#if (eq page 'article')}}
-    <link rel="preload" as="image" href="/static/img/articles.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/articles.webp">
     {{/if}}
 
     {{#if (eq page 'questions')}}
-    <link rel="preload" as="image" href="/static/img/PAA.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/PAA.webp">
     {{/if}}
 
     {{#if (eq page 'question')}}
-    <link rel="preload" as="image" href="/static/img/PAA.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/PAA.webp">
     {{/if}}
 
     {{#if (eq page 'materiel')}}
-    <link rel="preload" as="image" href="/static/img/materiels.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="/static/img/materiels.webp">
     {{/if}}
 
     {{!-- ============================================================ --}}

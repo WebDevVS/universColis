@@ -18,3 +18,5 @@ services:
         sync: false
       - key: EUROSENDER_API_KEY
         sync: false
+      - key: BREVO_API_KEY
+        sync: false

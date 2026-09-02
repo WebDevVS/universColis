@@ -1,4 +1,159 @@
 <section class="container comparateur-page">
+    {{#unless rechercheEffectuee}}
+    <!-- Aucune recherche effectuee : page outil avec formulaire vide -->
+    <!-- plutot qu'une page "resultats" vide (visite directe, lien -->
+    <!-- partage, bot qui teste l'URL du comparateur). -->
+    <div class="text-center mb-4">
+        <h1 class="results-main-title">Comparez les prix d'envoi de colis</h1>
+        <p class="results-subtitle">Renseignez votre destination et le poids de votre colis pour voir les offres des
+            transporteurs</p>
+    </div>
+
+    <div class="submit-form" id="formulaire-comparateur-outil">
+        <nav class="tab-navigation" role="tablist" aria-label="Types de recherche">
+            <div class="tabs">
+                <button class="tab-btn active" data-target="recherche-rapide-outil" role="tab" aria-selected="true"
+                    aria-controls="recherche-rapide-outil">
+                    <i class="fa-solid fa-bolt"></i>
+                    RECHERCHE RAPIDE
+                </button>
+                <button class="tab-btn" data-target="recherche-avancee-outil" role="tab" aria-selected="false"
+                    aria-controls="recherche-avancee-outil">
+                    <i class="fa-solid fa-sliders"></i>
+                    RECHERCHE AVANCÉE
+                </button>
+            </div>
+        </nav>
+
+        <div class="tab-content">
+            <!-- FORMULAIRE RECHERCHE RAPIDE -->
+            <div id="recherche-rapide-outil" class="tab-pane active" role="tabpanel">
+                <form action="/comparateur-des-prix" method="GET">
+                    <input type="hidden" name="formType" value="rapide">
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="origine-rapide" class="form-label">Origine</label>
+                            <input type="hidden" id="origine-rapide" name="origine" value="FR">
+                            <span class="form-control bg-light border-none" readonly>FRANCE</span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="destination-rapide" class="form-label">Destination</label>
+                            <select id="destination-rapide" name="destination" class="form-select" required>
+                                <option value="" disabled selected>Sélectionnez un pays</option>
+                                {{#each countries}}
+                                <option value="{{this.isoCode}}">{{this.label}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <label for="poids-rapide" class="form-label">Poids précis</label>
+                            <div class="position-relative">
+                                <input type="number" id="poids-rapide" class="form-control poids-input" step="0.1"
+                                    min="0.1" placeholder="Ex: 2.5" name="poids" required>
+                                <span class="poids-unit">kg</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex align-items-end">
+                            <button class="btn btn-primary w-100" type="submit">
+                                Comparer les prix
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- FORMULAIRE RECHERCHE AVANCÉE -->
+            <div id="recherche-avancee-outil" class="tab-pane" role="tabpanel">
+                <form action="/comparateur-des-prix" method="GET">
+                    <input type="hidden" name="formType" value="avance">
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="origine-avance" class="form-label">Pays d'origine</label>
+                            <input type="hidden" id="origine-avance" name="origine" value="FR">
+                            <span class="form-control bg-light border-none" readonly>FRANCE</span>
+
+                            <label for="ville-origine" class="form-label mt-3">Ville / Code postal</label>
+                            <input type="text" id="ville-origine" name="ville-origine" class="form-control"
+                                placeholder="Ex : Paris 75000" autocomplete="off" required>
+                            <ul id="results-origine"
+                                class="results-list position-absolute bg-white border w-100 z-index-1000"></ul>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="destination-avance" class="form-label">Pays de destination</label>
+                            <select id="destination-avance" name="destination" class="form-select" required>
+                                <option value="" disabled selected>Sélectionnez un pays</option>
+                                {{#each countries}}
+                                <option value="{{this.isoCode}}">{{this.label}}</option>
+                                {{/each}}
+                            </select>
+
+                            <label for="ville-destination" class="form-label mt-3">Ville / Code postal</label>
+                            <input type="text" id="ville-destination" name="ville-destination" class="form-control"
+                                placeholder="Ex : Lyon 69000" autocomplete="off" required>
+                            <ul id="results-destination"
+                                class="results-list position-absolute bg-white border w-100 z-index-1000"></ul>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <label for="poids-avance" class="form-label">Poids précis</label>
+                            <div class="position-relative">
+                                <input type="number" id="poids-avance" class="form-control poids-input" step="0.1"
+                                    min="0.1" placeholder="Ex: 2.5" name="poids" required>
+                                <span class="poids-unit">kg</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="dimensions" class="form-label">Dimensions (cm)</label>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <input type="number" class="form-control" placeholder="L" name="longueur" min="1"
+                                        required>
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" class="form-control" placeholder="l" name="largeur" min="1"
+                                        required>
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" class="form-control" placeholder="H" name="hauteur" min="1"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <label for="type-envoi" class="form-label">Type d'envoi</label>
+                            <select id="type-envoi" name="code-contenu" class="form-select" required>
+                                <option value="" disabled selected>Sélectionnez</option>
+                                {{#each categories}}
+                                <option value="{{this.category}}">{{this.category}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6 d-flex align-items-end">
+                            <button class="btn btn-primary w-100" type="submit">
+                                Comparer les prix
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
     <!-- Titre principal simplifié -->
     <div class="text-center mb-4">
         <h1 class="results-main-title">Résultats de votre recherche</h1>
@@ -315,6 +470,7 @@
             {{/each}}
         </div>
     </div>
+    {{/unless}}
 </section>
 
 <div class="affiliation-disclaimer">

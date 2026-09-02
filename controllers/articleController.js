@@ -65,7 +65,7 @@ articleController.get('/', async (req, res) => {
             "audienceType": "Particuliers et professionnels expédiant des objets fragiles"
           },
           "hasPart": articles.map(article => ({
-            "@type": "HowTo",
+            "@type": "Article",
             "name": `Comment emballer ${article.cardTitle.toLowerCase()}`,
             "url": `https://www.universcolis.fr/conseils/${article.slug}`,
             "image": `https://www.universcolis.fr/static/img/cardImg/${article.cardImg}`,
@@ -134,7 +134,7 @@ articleController.get('/', async (req, res) => {
         "@type": "ListItem",
         "position": i + 1,
         "item": {
-          "@type": "HowTo",
+          "@type": "Article",
           "name": article.cardTitle,
           "url": `https://www.universcolis.fr/conseils/${article.slug}`,
           "image": `https://www.universcolis.fr/static/img/cardImg/${article.cardImg}`,

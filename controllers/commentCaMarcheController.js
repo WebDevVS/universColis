@@ -72,35 +72,6 @@ commentCaMarcheController.get('/', (req, res) => {
                         ]
                     }
                 },
-                {
-                    "@type": "HowTo",
-                    "name": "Envoyer un colis avec UniversColis",
-                    "description": "Guide en 3 étapes pour comparer et expédier un colis facilement, sans inscription.",
-                    "image": "https://www.universcolis.fr/static/img/og-image.png",
-                    "totalTime": "PT2M",
-                    "supply": [],
-                    "tool": [],
-                    "step": [
-                        {
-                            "@type": "HowToStep",
-                            "position": 1,
-                            "name": "Recherche rapide",
-                            "text": "Indiquez simplement le pays de destination et le poids du colis. Pas besoin d’adresse complète ni de dimensions."
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 2,
-                            "name": "Comparez les offres",
-                            "text": "Classez les résultats par prix, délai ou mode de livraison (relais, domicile, etc.)."
-                        },
-                        {
-                            "@type": "HowToStep",
-                            "position": 3,
-                            "name": "Envoyez sans inscription",
-                            "text": "Sélectionnez l’offre et finalisez l’envoi directement sur le site du transporteur partenaire, sans créer de compte sur UniversColis."
-                        }
-                    ]
-                }
             ]
         })
     });
