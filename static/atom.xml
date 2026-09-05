@@ -3,7 +3,7 @@
   <title>UniversColis - Nouveaux conseils et guides</title>
   <link href="https://www.universcolis.fr/atom.xml" rel="self"/>
   <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
-  <updated>2026-09-02T14:43:25.054Z</updated>
+  <updated>2026-09-05T19:53:25.480Z</updated>
   <id>https://www.universcolis.fr/</id>
   
     <entry>
@@ -479,6 +479,15 @@
       <link href="https://www.universcolis.fr/actualites/fermeture-rakuten-france-2026"/>
       <id>https://www.universcolis.fr/actualites/fermeture-rakuten-france-2026</id>
       <updated>2026-08-16</updated>
+      <summary>Une nouvelle actualité est disponible.
+      </summary>
+    </entry>
+  
+    <entry>
+      <title>UPS : certaines modifications de livraison coûtent désormais jusqu'à 6 € HT</title>
+      <link href="https://www.universcolis.fr/actualites/ups-frais-modification-livraison-2026"/>
+      <id>https://www.universcolis.fr/actualites/ups-frais-modification-livraison-2026</id>
+      <updated>2026-09-05</updated>
       <summary>Une nouvelle actualité est disponible.
       </summary>
     </entry>

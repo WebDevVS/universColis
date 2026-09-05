@@ -497,6 +497,15 @@
       </image:image>
     
   </url><url>
+    <loc>https://www.universcolis.fr/actualites/ups-frais-modification-livraison-2026</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/actualitesImg/ups-frais-modification-livraison-0-euro-6-euros-2026.webp</image:loc>
+        <image:title>ups-frais-modification-livraison-0-euro-6-euros-2026</image:title>
+        <image:caption>Infographie sur les nouveaux frais UPS de modification de livraison en France. Le visuel montre qu'un changement de date ou une redirection vers un UPS Access Point peut rester gratuit en ligne, alors que la même demande peut être facturée 6 € HT par téléphone depuis le 26 août 2026.</image:caption>
+      </image:image>
+    
+  </url><url>
     <loc>https://www.universcolis.fr/questions/livraison/retard-colis-causes-solutions</loc>
     
       <image:image>
@@ -881,6 +890,15 @@
         <image:loc>https://www.universcolis.fr/static/img/questionsImg/envoyer-colis-etats-unis-france-etapes-expedition.webp</image:loc>
         
         <image:caption>Infographie expliquant comment envoyer un colis aux États-Unis depuis la France. Le parcours présente quatre étapes clés : préparer et emballer le colis, relever son poids et ses dimensions puis comparer les offres de transport, préparer les informations douanières et le motif de l'envoi, enfin remettre le colis au transporteur. Le visuel accompagne le guide principal UniversColis consacré à l'envoi de colis France–USA pour les particuliers, vendeurs, e-commerçants et entreprises.</image:caption>
+      </image:image>
+    
+  </url><url>
+    <loc>https://www.universcolis.fr/questions/transporteurs/modifier-livraison-ups</loc>
+    
+      <image:image>
+        <image:loc>https://www.universcolis.fr/static/img/questionsImg/modifier-livraison-ups-date-adresse-access-point.webp</image:loc>
+        
+        <image:caption>Infographie expliquant les principales options pour modifier une livraison UPS. Le visuel présente les changements qui peuvent être proposés selon l'envoi : modifier la date de livraison, demander une autre adresse ou rediriger le colis vers un point de retrait UPS Access Point. Cette image accompagne le guide UniversColis consacré à la modification d'une livraison UPS, aux démarches disponibles et aux tarifs appliqués selon le type de demande.</image:caption>
       </image:image>
     
   </url>
